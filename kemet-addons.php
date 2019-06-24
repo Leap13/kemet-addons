@@ -3,7 +3,7 @@
  * Plugin Name: Kemet Addons
  * Plugin URI: https://kemet.io
  * Description: This Plugin for Kemet Theme
- * Version: 0.0.1
+ * Version: 0.1.0
  * Author: Leap13
  * Author URI: https://leap13.com
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,7 +23,7 @@ if ('kemet' !== get_template()) {
  * Set constants.
  */
 
-define('KEMET_ADDONS_VERSION', '0.0.1');
+define('KEMET_ADDONS_VERSION', '0.1.0');
 define('KEMET_ADDONS_FILE', __FILE__);
 define('KEMET_ADDONS_URL', plugins_url('/', KEMET_ADDONS_FILE));
 define('KEMET_ADDONS_DIR', plugin_dir_path(KEMET_ADDONS_FILE));

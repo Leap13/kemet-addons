@@ -1,16 +1,17 @@
 === Kemet Addons ===
 Contributors: Leap13
-Tags: metabox, Kemet
+Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.2
 Requires PHP: 5.4
+Stable tag: 0.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
-Kemet Addons add extra features to Kemet Theme like metaboxes, activate/deactivate the customizer options
-This plugin requires the [Kemet](https://kemet.io/) theme to be installed.
+Kemet Addons plugin adds more features to Kemet WordPress Theme like metaboxes, activate/deactivate the customizer options. More options will be released soon.
+This plugin works only with: [Kemet WordPress Theme](https://kemet.io/) So you must install and activate it first.
 
 == Installation ==
 
@@ -22,10 +23,9 @@ This plugin requires the [Kemet](https://kemet.io/) theme to be installed.
 
 = I installed the Kemet Addons Plugin but it does not work =
 
-This plugin will work only with the Kemet theme.
-
+Make sure that Kemet WordPress Theme is Installed and activated first as this plugin will work only with it.
 
 == Changelog ==
 
-0.0.1 version
+0.1.0 version
 - Initial Release

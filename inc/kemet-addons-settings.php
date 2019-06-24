@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Kemet Headeer Markup.
  */
@@ -21,7 +15,6 @@ if (class_exists('CSF')) {
     'menu_title' => 'Kemet Panel',
     'menu_slug' => 'kmt-framework',
     'class'  => 'kemet-addons-icon',
-    //'menu_icon'      => KEMET_ADDONS_URL . 'assets/images/k.jpg',
   ));
 
     //

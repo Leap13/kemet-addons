@@ -1,6 +1,5 @@
-<?php //if ( ! defined( 'ABSPATH' )  ) { die; } // Cannot access directly.
+<?php
 
-//
 // Metabox of the PAGE
 // Set a unique slug-like ID
 //

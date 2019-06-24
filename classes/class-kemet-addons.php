@@ -29,8 +29,6 @@ if ( ! class_exists('Kemet_Addons' ) ) {
             if (!isset(self::$instance)) {
                 self::$instance = new self();
             }
-
-            return self::inctanse;
         }
 
         /**
@@ -99,10 +97,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
         }  
 
     }
-
-    if (class_exists('Kemet_Addons')) {
-        $kemetaddons = new Kemet_Addons();
-    }
-
-    //Kemet_Addons::get_instance();
 }
+
+Kemet_Addons::get_instance();
+

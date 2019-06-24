@@ -31,13 +31,13 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			add_action( 'wp', array( $this, 'meta_option_hooks' ) );
+			add_action( 'wp', array( $this, 'meta_options_hooks' ) );
 		}
          
 		/**
 		 * Metabox Hooks
 		 */
-		function meta_option_hooks() {
+		function meta_options_hooks() {
 
 			if ( is_singular() ) {
 				add_action( 'wp_head', array( $this, 'primary_header' ) );
@@ -51,6 +51,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
            
         }
         
+        /**
+		 * Transparent Header Option
+		 */
         
         function add_header_class($classes, $default='') {
 			
@@ -73,14 +76,13 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
         
 
 		/**
-		 * Primary Header
+		 * Disable Primary Header
 		 */
 		function primary_header() {
             
         $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
          
         $display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] ) ? $meta['kemet-main-header-display'] : 'default';
-            //if ( ot_get_option( 'vh_shadow' ) == 'off' ) 
 
 			if ( '1' == $display_header ) {
 				remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
@@ -148,7 +150,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
         }
         
         /**
-		 * Disable Post / Page Sidebar Display
+		 * Post / Page Sidebar Display
 		 *
 		 */       
         function single_page_layout( $defaults ) {
