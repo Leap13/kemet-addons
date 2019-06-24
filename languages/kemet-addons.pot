@@ -1,0 +1,925 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kemet-addons\n"
+"POT-Creation-Date: 2019-06-17 12:44+0200\n"
+"PO-Revision-Date: 2019-06-17 12:47+0200\n"
+"Last-Translator: \n"
+"Language-Team: Kemet Addons\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: addons/blog/classes/class-kemet-addon-blog-markup.php:114
+msgid "Enlarge"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:18
+msgid "Kemet Headers"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:22
+msgid "Logo Left"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:26
+msgid "Logo Center"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:30
+#: addons/extra-headers/customizer/customizer-options.php:34
+#: addons/extra-headers/customizer/customizer-options.php:38
+#: addons/extra-headers/customizer/customizer-options.php:42
+#: addons/extra-headers/customizer/customizer-options.php:46
+msgid "Logo Right"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:68
+msgid "Icon Color"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:88
+msgid "Icon Hover Color"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:109
+msgid "Icon Background Color"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:130
+msgid "Icon Background Hover Color"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:152
+msgid "Icon Border Radius"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:177
+msgid "Header Position"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:179
+#: includes/codestar-framework/fields/typography/typography.php:158
+msgid "Left"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:180
+#: includes/codestar-framework/fields/typography/typography.php:160
+msgid "Right"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:201
+msgid "Enter Width"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:226
+msgid "Enable Box Shadow"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:247
+msgid "Header6 Border Width"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:270
+msgid "Header6 Border Style"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:272
+msgid "Hidden"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:273
+#: includes/codestar-framework/fields/border/border.php:53
+#: includes/codestar-framework/fields/typography/typography.php:203
+msgid "Dotted"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:274
+#: includes/codestar-framework/fields/border/border.php:52
+#: includes/codestar-framework/fields/typography/typography.php:204
+msgid "Dashed"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:275
+#: includes/codestar-framework/fields/border/border.php:51
+#: includes/codestar-framework/fields/typography/typography.php:201
+msgid "Solid"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:276
+#: includes/codestar-framework/fields/border/border.php:54
+#: includes/codestar-framework/fields/typography/typography.php:202
+msgid "Double"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:277
+#: includes/codestar-framework/fields/border/border.php:57
+msgid "Groove"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:278
+msgid "Ridge"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:279
+#: includes/codestar-framework/fields/border/border.php:55
+msgid "Inset"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:280
+#: includes/codestar-framework/fields/border/border.php:56
+msgid "Outset"
+msgstr ""
+
+#: addons/extra-headers/customizer/customizer-options.php:301
+msgid "Header6 Border Color"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:34
+msgid "Disable Primary Header"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:35
+msgid "Disable Main Header In Current Post/Page."
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:41
+msgid "Disable Page Title"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:42
+msgid "Disable Post/Page Title"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:48
+msgid "Disable Featured Image"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:49
+msgid "Disable Post/Page Featured Image"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:55
+msgid "Disable Main Footer"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:56
+msgid "Disable Post/Page Footer Widgets Area"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:62
+msgid "Disable Copyright Area"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:63
+msgid "Disable Post/Page Copyright"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:69
+msgid "Header Transparent"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:71
+#: includes/codestar-framework/fields/typography/typography.php:106
+#: includes/codestar-framework/fields/typography/typography.php:119
+#: includes/codestar-framework/fields/typography/typography.php:132
+#: includes/codestar-framework/fields/typography/typography.php:147
+#: includes/codestar-framework/fields/typography/typography.php:163
+#: includes/codestar-framework/fields/typography/typography.php:176
+#: includes/codestar-framework/fields/typography/typography.php:190
+#: includes/codestar-framework/fields/typography/typography.php:208
+msgid "Default"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:72
+msgid "Enable"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:73
+#: includes/codestar-framework/fields/sorter/sorter.php:22
+msgid "Disabled"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:81
+msgid "Sidebar Layout"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:84
+msgid "No Sidebar"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:85
+msgid "Left Sidebar"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:86
+msgid "Right Sidebar"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:93
+msgid "Page Layout"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:96
+msgid "Boxed Layout"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:97
+msgid "Boxed Content"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:98
+msgid "Full Width Content"
+msgstr ""
+
+#: addons/metabox/classes/class-metabox-data.php:99
+msgid "Stretched Content"
+msgstr ""
+
+#: addons/sticky-header/classes/kemet-sticky-header-panel.php:7
+#: addons/sticky-header/customizer/customizer-options.php:27
+msgid "Sticky Header"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:47
+msgid "Enable Sticky Header"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:69
+msgid "Sticky Header Background"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:91
+msgid "Sticky Logo Image"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:119
+msgid "Sticky Logo Width"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:144
+msgid "Sticky Text Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:166
+msgid "Sticky Text Hover Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:187
+msgid "Sticky Submenu Background Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:209
+msgid "Sticky Submenu Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:231
+msgid "Sticky Submenu Hover Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:253
+msgid "Sticky Divider Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:275
+msgid "Sticky Border Bottom Color"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:298
+msgid "Sticky Visibility"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:300
+msgid "Show On All Devices"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:301
+msgid "Hide On Tablet"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:302
+msgid "Hide On Mobile"
+msgstr ""
+
+#: addons/sticky-header/customizer/customizer-options.php:303
+msgid "Hide On Tablet & Mobile"
+msgstr ""
+
+#: includes/codestar-framework/classes/metabox.class.php:252
+#: includes/codestar-framework/classes/options.class.php:654
+msgid "No option provided by developer."
+msgstr ""
+
+#: includes/codestar-framework/classes/metabox.class.php:270
+msgid "Restore"
+msgstr ""
+
+#: includes/codestar-framework/classes/metabox.class.php:271
+msgid "update post for restore "
+msgstr ""
+
+#: includes/codestar-framework/classes/metabox.class.php:271
+msgid "Cancel"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:237
+#: includes/codestar-framework/functions/actions.php:43
+#: includes/codestar-framework/functions/actions.php:104
+#: includes/codestar-framework/functions/actions.php:126
+msgid "Error while saving."
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:284
+msgid "Success. Imported backup options."
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:294
+msgid "Default options restored."
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:308
+msgid "Default options restored for only this section."
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:366
+msgid "Settings saved."
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:554
+msgid "show all options"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:556
+msgid "Search option(s)"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:559
+#: includes/codestar-framework/classes/options.class.php:678
+msgid "Save"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:559
+#: includes/codestar-framework/classes/options.class.php:678
+msgid "Saving..."
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:560
+#: includes/codestar-framework/classes/options.class.php:679
+msgid "Reset Section"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:560
+#: includes/codestar-framework/classes/options.class.php:679
+msgid "Are you sure to reset this section options?"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:561
+#: includes/codestar-framework/classes/options.class.php:680
+#: includes/codestar-framework/fields/backup/backup.php:34
+msgid "Reset All"
+msgstr ""
+
+#: includes/codestar-framework/classes/options.class.php:561
+#: includes/codestar-framework/classes/options.class.php:680
+msgid "Are you sure to reset all options?"
+msgstr ""
+
+#: includes/codestar-framework/classes/setup.class.php:399
+msgid "Are you sure?"
+msgstr ""
+
+#: includes/codestar-framework/classes/setup.class.php:400
+msgid "Restoring options."
+msgstr ""
+
+#: includes/codestar-framework/classes/setup.class.php:401
+msgid "Importing options."
+msgstr ""
+
+#: includes/codestar-framework/classes/setup.class.php:438
+#, php-format
+msgid "Ooops! This field type (%s) can not be used here, yet."
+msgstr ""
+
+#: includes/codestar-framework/classes/setup.class.php:501
+msgid "This field class is not available!"
+msgstr ""
+
+#: includes/codestar-framework/classes/setup.class.php:505
+msgid "This type is not found!"
+msgstr ""
+
+#: includes/codestar-framework/classes/shortcoder.class.php:242
+msgid "Add one more"
+msgstr ""
+
+#: includes/codestar-framework/classes/shortcoder.class.php:279
+msgid "Security check"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:34
+msgid "No background selected"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:62
+#: includes/codestar-framework/fields/date/date.php:31
+msgid "From"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:79
+#: includes/codestar-framework/fields/date/date.php:32
+msgid "To"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:96
+msgid "Direction"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:102
+msgid "Gradient Direction"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:103
+msgid "&#8659; top to bottom"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:104
+msgid "&#8658; left to right"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:105
+msgid "&#8664; corner top to right"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:106
+msgid "&#8665; corner top to left"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:145
+msgid "Background Position"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:146
+msgid "Left Top"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:147
+msgid "Left Center"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:148
+msgid "Left Bottom"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:149
+msgid "Center Top"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:150
+msgid "Center Center"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:151
+msgid "Center Bottom"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:152
+msgid "Right Top"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:153
+msgid "Right Center"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:154
+msgid "Right Bottom"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:171
+msgid "Background Repeat"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:172
+msgid "Repeat"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:173
+msgid "No Repeat"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:174
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:175
+msgid "Repeat Vertically"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:192
+msgid "Background Attachment"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:193
+msgid "Scroll"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:194
+msgid "Fixed"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:211
+msgid "Background Size"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:212
+msgid "Cover"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:213
+msgid "Contain"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:230
+msgid "Background Origin"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:231
+#: includes/codestar-framework/fields/background/background.php:252
+msgid "Padding Box"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:232
+#: includes/codestar-framework/fields/background/background.php:251
+msgid "Border Box"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:233
+#: includes/codestar-framework/fields/background/background.php:253
+msgid "Content Box"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:250
+msgid "Background Clip"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:270
+msgid "Background Blend Mode"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:271
+#: includes/codestar-framework/fields/link_color/link_color.php:36
+#: includes/codestar-framework/fields/typography/typography.php:173
+msgid "Normal"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:272
+msgid "Multiply"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:273
+msgid "Screen"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:274
+msgid "Overlay"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:275
+msgid "Darken"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:276
+msgid "Lighten"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:277
+msgid "Color Dodge"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:278
+msgid "Saturation"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:279
+msgid "Color"
+msgstr ""
+
+#: includes/codestar-framework/fields/background/background.php:280
+msgid "Luminosity"
+msgstr ""
+
+#: includes/codestar-framework/fields/backup/backup.php:26
+msgid "Import"
+msgstr ""
+
+#: includes/codestar-framework/fields/backup/backup.php:27
+msgid "copy-paste your backup string here"
+msgstr ""
+
+#: includes/codestar-framework/fields/backup/backup.php:31
+msgid "Export and Download Backup"
+msgstr ""
+
+#: includes/codestar-framework/fields/backup/backup.php:35
+msgid "Please be sure for reset all of options."
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:25
+#: includes/codestar-framework/fields/spacing/spacing.php:25
+msgid "top"
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:26
+#: includes/codestar-framework/fields/spacing/spacing.php:26
+msgid "right"
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:27
+#: includes/codestar-framework/fields/spacing/spacing.php:27
+msgid "bottom"
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:28
+#: includes/codestar-framework/fields/spacing/spacing.php:28
+msgid "left"
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:29
+#: includes/codestar-framework/fields/spacing/spacing.php:29
+msgid "all"
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:58
+msgid "ridge"
+msgstr ""
+
+#: includes/codestar-framework/fields/border/border.php:59
+#: includes/codestar-framework/fields/typography/typography.php:186
+#: includes/codestar-framework/fields/typography/typography.php:200
+msgid "None"
+msgstr ""
+
+#: includes/codestar-framework/fields/checkbox/checkbox.php:62
+#: includes/codestar-framework/fields/radio/radio.php:61
+#: includes/codestar-framework/fields/select/select.php:74
+msgid "No data provided for this option type."
+msgstr ""
+
+#: includes/codestar-framework/fields/dimensions/dimensions.php:22
+msgid "width"
+msgstr ""
+
+#: includes/codestar-framework/fields/dimensions/dimensions.php:23
+msgid "height"
+msgstr ""
+
+#: includes/codestar-framework/fields/gallery/gallery.php:20
+msgid "Add Gallery"
+msgstr ""
+
+#: includes/codestar-framework/fields/gallery/gallery.php:21
+msgid "Edit Gallery"
+msgstr ""
+
+#: includes/codestar-framework/fields/gallery/gallery.php:22
+msgid "Clear"
+msgstr ""
+
+#: includes/codestar-framework/fields/group/group.php:23
+msgid "Add New"
+msgstr ""
+
+#: includes/codestar-framework/fields/group/group.php:35
+#: includes/codestar-framework/fields/repeater/repeater.php:30
+msgid "Error: Nested field id can not be same with another nested field id."
+msgstr ""
+
+#: includes/codestar-framework/fields/group/group.php:46
+#: includes/codestar-framework/fields/group/group.php:86
+#: includes/codestar-framework/fields/repeater/repeater.php:51
+#: includes/codestar-framework/fields/repeater/repeater.php:82
+msgid "Are you sure to delete this item?"
+msgstr ""
+
+#: includes/codestar-framework/fields/group/group.php:121
+#: includes/codestar-framework/fields/repeater/repeater.php:96
+msgid "You can not add more than"
+msgstr ""
+
+#: includes/codestar-framework/fields/group/group.php:122
+#: includes/codestar-framework/fields/repeater/repeater.php:97
+msgid "You can not remove less than"
+msgstr ""
+
+#: includes/codestar-framework/fields/icon/icon.php:20
+msgid "Add Icon"
+msgstr ""
+
+#: includes/codestar-framework/fields/icon/icon.php:21
+msgid "Remove Icon"
+msgstr ""
+
+#: includes/codestar-framework/fields/link_color/link_color.php:37
+msgid "Hover"
+msgstr ""
+
+#: includes/codestar-framework/fields/link_color/link_color.php:38
+msgid "Active"
+msgstr ""
+
+#: includes/codestar-framework/fields/link_color/link_color.php:39
+msgid "Visited"
+msgstr ""
+
+#: includes/codestar-framework/fields/link_color/link_color.php:40
+msgid "Focus"
+msgstr ""
+
+#: includes/codestar-framework/fields/media/media.php:23
+#: includes/codestar-framework/fields/upload/upload.php:21
+msgid "Upload"
+msgstr ""
+
+#: includes/codestar-framework/fields/media/media.php:24
+#: includes/codestar-framework/fields/upload/upload.php:22
+msgid "Remove"
+msgstr ""
+
+#: includes/codestar-framework/fields/media/media.php:57
+msgid "No media selected"
+msgstr ""
+
+#: includes/codestar-framework/fields/sorter/sorter.php:21
+msgid "Enabled"
+msgstr ""
+
+#: includes/codestar-framework/fields/switcher/switcher.php:20
+msgid "On"
+msgstr ""
+
+#: includes/codestar-framework/fields/switcher/switcher.php:21
+msgid "Off"
+msgstr ""
+
+#: includes/codestar-framework/fields/textarea/textarea.php:37
+msgid "Add Shortcode"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:83
+msgid "Font Family"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:84
+msgid "Select a font"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:92
+msgid "Backup Font Family"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:117
+msgid "Font Style"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:131
+#: includes/codestar-framework/fields/typography/typography.php:132
+msgid "Load Extra Styles"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:145
+msgid "Subset"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:155
+msgid "Text Align"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:157
+msgid "Inherit"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:159
+msgid "Center"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:161
+msgid "Justify"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:162
+msgid "Initial"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:171
+msgid "Font Variant"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:174
+msgid "Small Caps"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:175
+msgid "All Small Caps"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:184
+msgid "Text Transform"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:187
+msgid "Capitalize"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:188
+msgid "Uppercase"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:189
+msgid "Lowercase"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:198
+msgid "Text Decoration"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:205
+msgid "Wavy"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:206
+msgid "Overline"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:207
+msgid "Line-through"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:220
+msgid "Font Size"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:232
+msgid "Line Height"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:244
+msgid "Letter Spacing"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:256
+msgid "Word Spacing"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:271
+msgid "Font Color"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:282
+msgid "Custom Style"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:349
+msgid "Custom Web Fonts"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:355
+msgid "Safe Web Fonts"
+msgstr ""
+
+#: includes/codestar-framework/fields/typography/typography.php:375
+msgid "Google Web Fonts"
+msgstr ""
+
+#: includes/codestar-framework/functions/actions.php:35
+msgid "No data provided by developer"
+msgstr ""
+
+#: includes/codestar-framework/functions/validate.php:14
+#: includes/codestar-framework/functions/validate.php:86
+msgid "Please write a valid email address!"
+msgstr ""
+
+#: includes/codestar-framework/functions/validate.php:32
+#: includes/codestar-framework/functions/validate.php:106
+msgid "Please write a numeric data!"
+msgstr ""
+
+#: includes/codestar-framework/functions/validate.php:50
+#: includes/codestar-framework/functions/validate.php:126
+msgid "Error! This field is required!"
+msgstr ""
+
+#: includes/codestar-framework/functions/validate.php:68
+#: includes/codestar-framework/functions/validate.php:146
+msgid "Please write a valid url!"
+msgstr ""
+
+#: includes/functions.php:47
+#, php-format
+msgid "%s does not exist."
+msgstr ""
