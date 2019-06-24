@@ -20,7 +20,8 @@ if (class_exists('CSF')) {
     CSF::createOptions($prefix, array(
     'menu_title' => 'Kemet Panel',
     'menu_slug' => 'kmt-framework',
-    'menu_icon'      => KEMET_ADDONS_URL . 'assets/images/k.jpg',
+    'class'  => 'kemet-addons-icon',
+    //'menu_icon'      => KEMET_ADDONS_URL . 'assets/images/k.jpg',
   ));
 
     //

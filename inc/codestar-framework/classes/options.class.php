@@ -23,7 +23,7 @@ if( ! class_exists( 'CSF_Options' ) ) {
     public $args         = array(
 
       // framework title
-      'framework_title'         => 'Kemet Options <small>by Leap13</small>',
+      'framework_title'         => 'Kemet Panel <small>by Leap13</small>',
       'framework_class'         => '',
 
       // menu settings

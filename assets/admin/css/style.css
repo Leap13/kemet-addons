@@ -1,0 +1,4 @@
+#adminmenu #toplevel_page_kmt-framework .dashicons-admin-generic:before {
+    font-family: 'kemet-font';
+    content: "\e900";
+}
