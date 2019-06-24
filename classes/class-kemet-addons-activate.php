@@ -5,7 +5,7 @@
  *
  * @since 1.0
  */
-final class Kemet_Addon_Model {
+final class Kemet_Addon_Activate {
 
 	/**
 	 * Construct
@@ -44,4 +44,4 @@ final class Kemet_Addon_Model {
 	}
 }
 
-new Kemet_Addon_Model();
+new Kemet_Addon_Activate();

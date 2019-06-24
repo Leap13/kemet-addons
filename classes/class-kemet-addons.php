@@ -71,7 +71,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
                 return;
             }
 
-            require_once KEMET_ADDONS_DIR.'classes/class-kemet-ext-model.php';
+            require_once KEMET_ADDONS_DIR.'classes/class-kemet-addons-activate.php';
         }
 
         public function deactivation()
