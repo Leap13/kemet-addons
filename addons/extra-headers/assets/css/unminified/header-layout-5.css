@@ -1,0 +1,13 @@
+.icon-header
+{
+    display: flex;
+    justify-content: space-between;
+}
+.main-navigation
+{
+    width: 100%;
+}
+.kmt-navbar-collapse
+{
+    overflow: hidden;
+}

@@ -23,11 +23,17 @@ if (class_exists('CSF')) {
     'id' => 'primary_tab',
     'title' => 'Kemet Customizer Options',
     'fields' => array(
-      // A switcher field
+      // Addons switcher field
       array(
         'id' => 'metabox',
         'type' => 'switcher',
         'title' => __( 'MetaBox Options', 'kemet-addons' ),
+        'default' => 'true',
+      ),
+      array(
+        'id' => 'extra-headers',
+        'type' => 'switcher',
+        'title' => __( 'Extra Headers', 'kemet-addons' ),
         'default' => 'true',
       ),
     ),

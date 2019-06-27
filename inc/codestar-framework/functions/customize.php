@@ -87,7 +87,8 @@ if( ! class_exists( 'WP_Customize_Control_CSF' ) && class_exists( 'WP_Customize_
         'spacing',
         'switcher',
         'tabbed',
-        'typography'
+        'typography',
+        'kmt-radio-image'
       );
 
       $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
