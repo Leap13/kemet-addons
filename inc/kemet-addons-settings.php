@@ -4,14 +4,14 @@
  * Kemet Headeer Markup.
  */
 // Control core classes for avoid errors
-if (class_exists('CSF')) {
+if (class_exists('KFW')) {
     //
     // Set a unique slug-like ID
     $prefix = 'kmt_framework';
 
     //
     // Create options
-    CSF::createOptions($prefix, array(
+    KFW::createOptions($prefix, array(
     'menu_title' => 'Kemet Panel',
     'menu_slug' => 'kmt-framework',
     'class'  => 'kemet-addons-icon',
@@ -19,7 +19,7 @@ if (class_exists('CSF')) {
 
     //
     // Create a sub-tab
-    CSF::createSection($prefix, array(
+    KFW::createSection($prefix, array(
     'id' => 'primary_tab',
     'title' => 'Kemet Customizer Options',
     'fields' => array(

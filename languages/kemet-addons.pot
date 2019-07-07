@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: inc/codestar-framework\n"
+"X-Poedit-SearchPathExcluded-0: inc/kemet-framework\n"
 
 #: addons/metabox/classes/class-metabox-data.php:35
 msgid "Disable Primary Header"

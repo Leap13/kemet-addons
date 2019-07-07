@@ -8,8 +8,8 @@ $prefix_page_opts = 'kemet_page_options';
 //
 // Create a Metabox Options
 //
-if( class_exists( 'CSF' ) ) {
-CSF::createMetabox( $prefix_page_opts, array(
+if( class_exists( 'KFW' ) ) {
+KFW::createMetabox( $prefix_page_opts, array(
   'title'        => 'Kemet Page Options',
   'post_type'    =>  array( 
                     'page', 
@@ -23,7 +23,7 @@ CSF::createMetabox( $prefix_page_opts, array(
 //
 // Create a section
 //
-CSF::createSection( $prefix_page_opts, array(
+KFW::createSection( $prefix_page_opts, array(
   'title'  => 'Overview',
   'icon'   => 'fa fa-rocket',
   'fields' => array(
