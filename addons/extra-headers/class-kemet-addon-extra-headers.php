@@ -68,14 +68,24 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		 */
 		function html_markup_loader() {
             
-		    $kemet_header_layout = kemet_get_option( 'header-layouts' );
-		 // $options = get_option( 'kmt_header_customizer_options' );
-		//  $kemet_header_layout = isset( $options['header-layouts'] ) ? $options['header-layouts'] : '';
-
-		  $options = get_option('kmt_header_customizer_options'); 
-         $kemet_header_layout = ( isset( $options['header-layouts'] ) && $options['header-layouts'] ) ? $options['header-layouts'] : '';
-		   //$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
-          //      $layout = ( isset( $meta['site-sidebar-layout'] ) && $meta['site-sidebar-layout'] ) ? $meta['site-sidebar-layout'] : '';
+//		    $kemet_header_layout = kemet_get_option( 'header-layouts' );
+//		 // $options = get_option( 'kmt_header_customizer_options' );
+//		//  $kemet_header_layout = isset( $options['header-layouts'] ) ? $options['header-layouts'] : '';
+//
+//		  $options = get_option('kmt_header_customizer_options'); 
+//         $kemet_header_layout = ( isset( $options['header-layouts'] ) && $options['header-layouts'] ) ? $options['header-layouts'] : '';
+//		   //$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
+//          //      $layout = ( isset( $meta['site-sidebar-layout'] ) && $meta['site-sidebar-layout'] ) ? $meta['site-sidebar-layout'] : '';
+//           
+//            if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  ) {
+//			   remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' ); 
+//               kemetaddons_get_template( 'extra-headers/templates/'. esc_attr( $kemet_header_layout ) . '.php' );
+//            } else {
+//                return;
+//            }
+            	
+            
+            $kemet_header_layout = kemet_get_option( 'header-layouts' );
            
             if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  ) {
 			   remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' ); 
@@ -83,6 +93,8 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
             } else {
                 return;
             }
+                    
+		
                     
 		}
 		
@@ -103,7 +115,7 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		public function add_scripts() {
 			Kemet_Minify::kmt_add_js(KEMET_ADDONS_DIR.'addons/extra-headers/assets/js/unminified/header-layout-5.js');
 			Kemet_Minify::kmt_add_js(KEMET_ADDONS_DIR.'addons/extra-headers/assets/js/unminified/header-layout-7.js');
-			wp_add_inline_style( 'kemet-theme-css', Kemet_addon_Dynamic_CSS::return_output() );
+		//	wp_add_inline_style( 'kemet-theme-css', Kemet_addon_Dynamic_CSS::return_output() );
 		}
 	}
     Kemet_Extra_Headers::get_instance();
