@@ -84,7 +84,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
 		 * Includes
 		 */
 		function includes() {
-            require_once KEMET_ADDONS_DIR.'inc/kemet-framework/kemet-framework.php';
+            require_once KEMET_ADDONS_DIR.'inc/k-framework/k-framework.php';
         }
         
         public function load_plugin_textdomain() {
