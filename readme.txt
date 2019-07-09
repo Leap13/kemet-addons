@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
 
-Kemet Addons plugin adds more features to Kemet WordPress Theme like metaboxes, activate/deactivate the customizer options. More options will be released soon.
+Kemet Addons plugin adds extra features to Kemet WordPress Theme like page options, extra customizer options, widgets, metaboxes and More options will be released soon.
 This plugin works only with: [Kemet WordPress Theme](https://kemet.io/) So you must install and activate it first.
 
 == Installation ==
