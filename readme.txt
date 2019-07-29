@@ -29,3 +29,6 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 
 0.1.0 version
 - Initial Release
+
+0.1.1 version
+- Fixed: compatibility problems with PHP7
