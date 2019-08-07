@@ -29,6 +29,11 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => __( 'MetaBox Options', 'kemet-addons' ),
         'default' => 'true',
+      ),array(
+        'id' => 'extra-headers',
+        'type' => 'switcher',
+        'title' => 'Extra Headers',
+        'default' => 'true',
       ),
     ),
   ));
