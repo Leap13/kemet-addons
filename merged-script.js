@@ -1,0 +1,1 @@
+jQuery(document).ready(function(){jQuery(".icon-bars-btn").on("click",function(){var e=jQuery(".header-main-layout-5 .kmt-navbar-collapse");jQuery(this).toggleClass("open"),e.slideToggle("300")})});;

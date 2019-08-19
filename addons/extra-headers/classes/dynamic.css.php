@@ -1,43 +1,21 @@
 <?php
 /**
- * Custom Styling output for Kemet Plugin.
+ * Footer Widgets - Dynamic CSS
  *
- * @package     Kemet
- * @subpackage  Class
- * @author      Kemet
- * @copyright   Copyright (c) 2019, Kemet
- * @link        https://kemet.io/
- * @since       Kemet 1.0.0
+ * @package Astra Addon
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+add_filter( 'kemet_addons_dynamic_css', 'kemet_ext_headers_dynamic_css' );
 
 /**
  * Dynamic CSS
+ *
+ * @param  string $dynamic_css          Astra Dynamic CSS.
+ * @param  string $dynamic_css_filtered Astra Dynamic CSS Filters.
+ * @return string
  */
-if ( ! class_exists( 'Kemet_addon_Dynamic_CSS' ) ) {
-    
-	/**
-	 * Dynamic CSS
-	 */
-	class Kemet_addon_Dynamic_CSS {
-       
-		/**
-		 * Return CSS Output
-		 *
-		 * @return string Generated CSS.
-		 */
-		static public function return_output() {
-			$dynamic_css = '';
-            
-            /**
-			 *
-			 * Contents
-			 * - Header 5 
-             * - Header 6
-			 */
+function kemet_ext_headers_dynamic_css() {
+
             $header_5_icon_color         = kemet_get_option( 'header-5-icon-color' );
             $header_5_icon_h_color       = kemet_get_option( 'header-5-icon-h-color' );
             $header_5_icon_bg_color      = kemet_get_option( 'header-5-icon-bg-color' );
@@ -52,7 +30,7 @@ if ( ! class_exists( 'Kemet_addon_Dynamic_CSS' ) ) {
             $css_output = array();
             
             $css_output = array(     
-                '.kemet-addons-header5 .animated-icon span,.kemet-addons-header7 .animated-icon span' => array(
+                '.icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_5_icon_color),
                 ),
                 '.kemet-addons-header5 .animated-icon:hover span,.kemet-addons-header7 .animated-icon:hover span' => array(
@@ -84,11 +62,16 @@ if ( ! class_exists( 'Kemet_addon_Dynamic_CSS' ) ) {
                     'padding-left' => kemet_get_css_value( $header6_width , 'px'),
                 ),
             );
+//            $css_output = array();   
+            
+//            $css_output = array(     
+//                '.kemet-addons-header5 .animated-icon span,.kemet-addons-header7 .animated-icon span, body' => array(
+//					'background-color' => esc_attr($header_5_icon_color),
+//                 ),
+//              );
 			/* Parse CSS from array() */
-            $parse_css = kemet_parse_css( $css_output );
-            $dynamic_css = $parse_css;
-            return $dynamic_css;
-        }
-    }
 
-}
+            $parse_css = kemet_parse_css( $css_output );
+            return $parse_css;
+
+};

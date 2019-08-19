@@ -40,13 +40,12 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		 */
 		
 		public function __construct() {
-			//add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'customize_register' ) );
 		 	add_action( 'kemet_sitehead', array( $this, 'html_markup_loader' ), 1 );
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
-			//require_once KEMET_EXTRA_HEADERS_DIR . 'classes/dynamic-css.php';	
-            require_once KEMET_EXTRA_HEADERS_DIR . 'customizer/customizer-options.php';
+            require_once KEMET_EXTRA_HEADERS_DIR . 'classes/dynamic.css.php';
 			
 		}
        
@@ -60,7 +59,7 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		 * Customizer Preview
 		 */
 		function preview_scripts() {
-			wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_EXTRA_HEADERS_URL . 'assets/js/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ));
+			wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_EXTRA_HEADERS_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ));
 		}
 
 		/**
@@ -81,23 +80,14 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		}
 		
 		
-		
-		// /**
-		//  * Enqueues scripts and styles for the theme layout
-		//  * post type on the WordPress admin edit post screen.
-		//  *
-		//  * @since 1.0.0
-		//  * @return void
-		//  */
+		 /**
+		  * Enqueues scripts and styles for the header layouts
+		 */
 		public function add_styles() {
-			Kemet_Minify::kmt_add_css(KEMET_ADDONS_DIR.'addons/extra-headers/assets/css/unminified/header-layout-5.css');
-			Kemet_Minify::kmt_add_css(KEMET_ADDONS_DIR.'addons/extra-headers/assets/css/unminified/header-layout-6.css');
-			Kemet_Minify::kmt_add_css(KEMET_ADDONS_DIR.'addons/extra-headers/assets/css/unminified/header-layout-7.css');
+			Kemet_Minify::kmt_add_css(KEMET_ADDONS_DIR.'addons/extra-headers/assets/css/minified/extra-header-layouts.min.css');
 		}
 		public function add_scripts() {
-			Kemet_Minify::kmt_add_js(KEMET_ADDONS_DIR.'addons/extra-headers/assets/js/unminified/header-layout-5.js');
-			Kemet_Minify::kmt_add_js(KEMET_ADDONS_DIR.'addons/extra-headers/assets/js/unminified/header-layout-7.js');
-			wp_add_inline_style( 'kemet-theme-css', Kemet_addon_Dynamic_CSS::return_output() );
+			Kemet_Minify::kmt_add_js(KEMET_ADDONS_DIR.'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js');
 		}
 	}
     Kemet_Extra_Headers::get_instance();
