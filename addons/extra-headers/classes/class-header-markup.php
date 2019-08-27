@@ -1,13 +1,13 @@
 <?php
 /**
- * Header Pro Markup
- *
- * @package Kemet Addon
+ * Extra Headers
+ * 
+ * @package Kemet Addons
  */
 if (! class_exists('Kemet_Header_Markup')) {
 
     /**
-     * Header Pro Markup Initial Setup
+     * Extra Headers Markup
      *
      * @since 1.0.0
      */
@@ -39,15 +39,14 @@ if (! class_exists('Kemet_Header_Markup')) {
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
             remove_action( 'kemet_header', 'kemet_header_markup' );
             add_action( 'kemet_header', array( $this,'html_markup_loader'));
-            add_action('kemet_pro_header_classes', array( $this,'kemet_header_pro_classes') );
-            // add_action( 'after_setup_theme', array( $this, 'refresh' ) );
+            add_action('kemet_extra_headers_classes', array( $this,'kemet_extra_headers_classes') );
         }
         
         function html_markup_loader() {
 
             ?>
     
-            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php do_action('kemet_pro_header_classes') ?> role="banner">
+            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php do_action('kemet_extra_headers_classes') ?> role="banner">
     
                 <?php kemet_sitehead_top(); ?>
     
@@ -71,7 +70,7 @@ if (! class_exists('Kemet_Header_Markup')) {
             }
             return $classes;
         }
-        public function kemet_header_pro_classes()
+        public function kemet_extra_headers_classes()
         {
                 $classes                  = array( 'site-header' );
                 $menu_logo_location       = kemet_get_option('header-layouts');

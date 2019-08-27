@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Kemet Extra Headers
+ * Kemet Extra Headers Addon
  *
  * @package Kemet Addons
  */
@@ -12,7 +12,7 @@ define( 'KEMET_EXTRA_HEADERS_URL', KEMET_ADDONS_URL . 'addons/extra-headers/' );
 if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 
 	/**
-	 * Footer Widgets Markup Initial Setup
+	 * Extra Headers
 	 *
 	 * @since 1.0.0
 	 */
@@ -41,6 +41,7 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		
 		public function __construct() {
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
+            add_action( 'customize_register', array( $this, 'controls_helpers' ) );
 		 	add_action( 'kemet_sitehead', array( $this, 'html_markup_loader' ), 1 );
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
@@ -49,24 +50,28 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 			
 		}
        
-        function customize_register($wp_customize) {
+        public function customize_register($wp_customize) {
 			require KEMET_ADDONS_DIR . 'addons/extra-headers/customizer/customizer-options.php';  
 			
+		}
+        
+        public function controls_helpers() {
+			require_once( KEMET_EXTRA_HEADERS_DIR .'customizer/customizer-helpers.php' );
 		}
 
 			
         /**
 		 * Customizer Preview
 		 */
-		function preview_scripts() {
-			wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_EXTRA_HEADERS_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ));
+		public function preview_scripts() {
+			wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_EXTRA_HEADERS_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
 		}
 
 		/**
 		 * Header Markup
 		 *
 		 */
-		function html_markup_loader() {
+		public function html_markup_loader() {
             
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
            

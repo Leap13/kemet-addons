@@ -1,10 +1,11 @@
 jQuery( document ).ready( function ( ) {
-jQuery('.icon-bars-btn').on('click', function() {
+jQuery('.menu-icon').on('click', function() {
     var header_5 = jQuery( ".header-main-layout-5 .kmt-navbar-collapse" );
   jQuery(this).toggleClass('open');
   header_5.slideToggle( '300' ); 
 });
 })
+
 //var header = document.querySelector("#sitehead.header-main-layout-7");
 //let headerwidth = header.offsetWidth;
 //header.style.width = '55px';

@@ -1,8 +1,8 @@
 <?php
 /**
- * Footer Widgets - Dynamic CSS
+ * Extra Headers - Dynamic CSS
  *
- * @package Astra Addon
+ * @package Kemet Addons
  */
 
 add_filter( 'kemet_addons_dynamic_css', 'kemet_ext_headers_dynamic_css' );
@@ -10,17 +10,18 @@ add_filter( 'kemet_addons_dynamic_css', 'kemet_ext_headers_dynamic_css' );
 /**
  * Dynamic CSS
  *
- * @param  string $dynamic_css          Astra Dynamic CSS.
- * @param  string $dynamic_css_filtered Astra Dynamic CSS Filters.
+ * @param  string $dynamic_css          Kemet Dynamic CSS.
  * @return string
  */
 function kemet_ext_headers_dynamic_css() {
 
-            $header_5_icon_color         = kemet_get_option( 'header-5-icon-color' );
-            $header_5_icon_h_color       = kemet_get_option( 'header-5-icon-h-color' );
-            $header_5_icon_bg_color      = kemet_get_option( 'header-5-icon-bg-color' );
-            $header_5_icon_bg_h_color    = kemet_get_option( 'header-5-icon-bg-h-color' );
-            $header_5_icon_border_radius =  kemet_get_option( 'header-5-icon-border-radius' );
+            $header_icon_bars_logo_bg_color         = kemet_get_option( 'header-icon-bars-logo-bg-color' );
+            $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' );
+            $header_icon_bars_h_color       = kemet_get_option( 'header-icon-bars-h-color' );
+            $header_icon_bars_bg_color     = kemet_get_option( 'header-icon-bars-bg-color' );
+            $header_icon_bars_bg_h_color    = kemet_get_option( 'header-icon-bars-bg-h-color' );
+            $header_icon_bars_borderradius =  kemet_get_option( 'header-icon-bars-border-radius' );
+            $space_icon_bars              = kemet_get_option( 'menu-icon-bars-space' );
 
             $header6_width               = kemet_get_option( 'header6-width' );
             $header6_border_width        = kemet_get_option( 'header6-border-width' );
@@ -30,18 +31,27 @@ function kemet_ext_headers_dynamic_css() {
             $css_output = array();
             
             $css_output = array(     
+                '.main-header-container.logo-menu-icon' => array(
+					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
+                ),
+                '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+                    'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'desktop' ),
+                    'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'desktop' ),
+                    'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'desktop' ),
+                    'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'desktop' ),              
+                ),
                 '.icon-bars-btn span' => array(
-					'background-color' => esc_attr($header_5_icon_color),
+					'background-color' => esc_attr($header_icon_bars_color),
                 ),
-                '.kemet-addons-header5 .animated-icon:hover span,.kemet-addons-header7 .animated-icon:hover span' => array(
-					'background-color' => esc_attr($header_5_icon_h_color),
+                '.icon-bars-btn:hover span, .open .icon-bars-btn span' => array(
+					'background-color' => esc_attr($header_icon_bars_h_color),
                 ),
-                '.kemet-addons-header5 .animated-icon,.kemet-addons-header7 .animated-icon' => array(
-                    'background-color' => esc_attr($header_5_icon_bg_color),
-                    'border-radius'    => kemet_get_css_value( $header_5_icon_border_radius, 'px' ),
+                '.menu-icon-social .menu-icon' => array(
+                    'background-color' => esc_attr($header_icon_bars_bg_color),
+                    'border-radius'    => kemet_get_css_value( $header_icon_bars_borderradius, 'px' ),
                 ),
-                '.kemet-addons-header5 .animated-icon:hover,.kemet-addons-header7 .animated-icon:hover' => array(
-					'background-color' => esc_attr($header_5_icon_bg_h_color),
+                '.menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open' => array(
+					'background-color' => esc_attr($header_icon_bars_bg_h_color),
                 ),
                 '#sitehead.header-main-layout-6,#sitehead.header-main-layout-7' => array(
                     'width' => kemet_get_css_value( $header6_width, 'px' ),
@@ -62,16 +72,29 @@ function kemet_ext_headers_dynamic_css() {
                     'padding-left' => kemet_get_css_value( $header6_width , 'px'),
                 ),
             );
-//            $css_output = array();   
-            
-//            $css_output = array(     
-//                '.kemet-addons-header5 .animated-icon span,.kemet-addons-header7 .animated-icon span, body' => array(
-//					'background-color' => esc_attr($header_5_icon_color),
-//                 ),
-//              );
-			/* Parse CSS from array() */
 
             $parse_css = kemet_parse_css( $css_output );
+            
+            $tablet_styles = array(
+            '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+                    'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'tablet' ),
+                    'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'tablet' ),
+                    'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'tablet' ),
+                    'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'tablet' ),              
+                ),
+             );
+            $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
+            
+            $mobile_styles = array(
+            '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+                    'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'mobile' ),
+                    'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
+                    'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'mobile' ),
+                    'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'mobile' ),              
+                ),
+             );
+            $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
+
             return $parse_css;
 
 };
