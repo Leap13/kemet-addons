@@ -5,16 +5,14 @@
  * and open the template in the editor.
  */
 ?>
-header666666
-<div class="main-header-bar-wrap kemet-addons-header-layout-1 <?php echo $header6_has_box_shadow ?> ">
-	<div class="main-header-bar">
+
+<div class="main-header-bar-wrap ss-wrapper">
+	<div class="main-header-bar ss-content">
 		<?php kemet_main_header_bar_top(); ?>
         <div id="header-layout-6" class="header kemet-addons-header6">
-            <div class="kmt-container">
                 <div class="kmt-flex main-header-container">
                     <?php kemet_sitehead_content(); ?>
                 </div><!-- Main Header Container -->
-            </div><!-- kmt-row -->
         </div>
 		<?php kemet_main_header_bar_bottom(); ?>
 	</div> <!-- Main Header Bar -->

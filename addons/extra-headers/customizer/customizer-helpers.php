@@ -14,3 +14,16 @@ function kemet_header_withicon_layout_style() {
 		return false;
 	}
 }
+
+function kemet_header_layout6_style() {
+    
+	if ( 'header-main-layout-6' == kemet_get_option( 'header-layouts', 'wide' ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function top_header_enabled() {
+    return kemet_get_option( 'enable-top-header', true);
+}

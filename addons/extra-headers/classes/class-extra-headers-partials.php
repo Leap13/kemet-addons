@@ -4,14 +4,14 @@
  * 
  * @package Kemet Addons
  */
-if (! class_exists('Kemet_Header_Markup')) {
+if (! class_exists('Kemet_Extra_Header_Partials')) {
 
     /**
      * Extra Headers Markup
      *
      * @since 1.0.0
      */
-    class Kemet_Header_Markup
+    class Kemet_Extra_Header_Partials
     {
 
         /**
@@ -37,16 +37,15 @@ if (! class_exists('Kemet_Header_Markup')) {
 		 */
 		public function __construct() {
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
-            remove_action( 'kemet_header', 'kemet_header_markup' );
-            add_action( 'kemet_header', array( $this,'html_markup_loader'));
-            add_action('kemet_extra_headers_classes', array( $this,'kemet_extra_headers_classes') );
+            add_filter( 'kemet_sitehead' , array( $this, 'kemet_top_header_template' ), 9 );
+            remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template');
+            add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ));
         }
         
-        function html_markup_loader() {
-
+       public function html_markup_loader() {
             ?>
     
-            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php do_action('kemet_extra_headers_classes') ?> role="banner">
+            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php do_action('kemet_pro_header_classes') ?> role="banner">
     
                 <?php kemet_sitehead_top(); ?>
     
@@ -57,6 +56,70 @@ if (! class_exists('Kemet_Header_Markup')) {
             </header><!-- #sitehead -->
             <?php
         }
+        
+
+            
+       function sitehead_markup_loader() {
+            
+            $kemet_header_layout = kemet_get_option( 'header-layouts' );
+           
+            if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  ) {
+
+                kemetaddons_get_template( 'extra-headers/templates/'. esc_attr( $kemet_header_layout ) . '.php' );
+                } else {
+                    
+                get_template_part( 'templates/header/header-main-layout' );
+            }          
+		}
+        
+        
+        public function kemet_top_header_template() {
+            
+            $enable_top_header = kemet_get_option('enable-top-header');
+            
+            if ($enable_top_header) {
+                kemetaddons_get_template( 'extra-headers/templates/topbar/topbar-layout.php' );
+            }
+            
+        }
+        
+
+	/**
+	 * Function to get top section Left/Right Header
+	 *
+	 * @param string $section   Sections of Small Footer.
+	 * @return mixed            Markup of sections.
+	 */
+	public static function kemet_get_top_section( $option ) {
+
+		 $output  = '';
+		 $section = kemet_get_option( $option );   
+		  if ( is_array( $section ) ) {
+			
+			foreach ( $section as $sectionnn ) {
+
+				switch ( $sectionnn ) {
+
+			case 'search':
+					$output .= kemet_get_search();
+				break;
+
+            case 'menu':
+					$output .= kemet_get_top_menu();
+				break;
+
+			case 'widget':
+					$output .= kemet_get_custom_widget($option);
+			break;
+
+			case 'text-html':
+					$output .= kemet_get_custom_html( $option . '-html' );
+			break;
+			}
+		}
+			return $output;			
+	}
+	}
 
         function kemet_body_classes($classes) {
             if(kemet_get_option ('header-layouts') == 'header-main-layout-6') {
@@ -155,4 +218,4 @@ if (! class_exists('Kemet_Header_Markup')) {
 
     }
 }
-Kemet_Header_Markup::get_instance();
+Kemet_Extra_Header_Partials::get_instance();

@@ -7,7 +7,7 @@
 ?>
 <div class="main-header-bar-wrap">
 	<div class="main-header-bar">
-        <?php //kemet_main_header_bar_top(); ?>
+        <?php kemet_main_header_bar_top(); ?>
         <div class="header-logo-menu-icon">
                 <div class="kmt-navbar-collapse">
                     <?php kemet_primary_navigation_markup(); ?>
