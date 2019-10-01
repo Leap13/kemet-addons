@@ -55,7 +55,7 @@
         left: 0px;
         opacity: 1;
     }
-    .icon-bars-btn span:nth-child(3) {
+    span:nth-child(3) {
         top: 23px;
         left: 0px;
     }
@@ -77,8 +77,8 @@
   transform: rotate(45deg);
   top: 13px;
     }
-  .icon-bars-btn span:nth-child(2){
-  opacity:0;
+   .icon-bars-btn span:nth-child(2){
+   opacity:0;
     }
     .icon-bars-btn span:nth-child(3){
     transform: rotate(-45deg);
