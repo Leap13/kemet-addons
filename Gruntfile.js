@@ -45,17 +45,21 @@ module.exports = function (grunt) {
                         dest: 'addons/extra-headers/assets/css/minified/extra-header-layouts.min.css',
                     },
                 ]
-             }, 
+             } 
         },
     });
 
     // Load grunt tasks
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    
    // grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // SASS compile
     grunt.registerTask('default', ['sass']);
-    grunt.registerTask('minify', ['cssmin']); 
+    //grunt.registerTask('minify', ['cssmin']); 
+    // min all
+    grunt.registerTask('minify', ['cssmin:css']);
 
 
 };
