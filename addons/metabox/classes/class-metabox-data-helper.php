@@ -86,6 +86,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 
 			if ( '1' == $display_header ) {
 				remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
+				remove_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ));
 			}
 		}
 

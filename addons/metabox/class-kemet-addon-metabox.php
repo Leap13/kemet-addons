@@ -42,6 +42,11 @@ if ( ! class_exists( 'Kemet_Metabox)' ) ) {
 		public function __construct() {
 			require_once KEMET_METABOX_DIR . 'classes/class-metabox-data.php';	
 			require_once KEMET_METABOX_DIR . 'classes/class-metabox-data-helper.php';	
+			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+		}
+
+		function add_styles() {
+			Kemet_Minify::add_css(KEMET_METABOX_DIR.'assets/style.min.css');
 		}
        
 		

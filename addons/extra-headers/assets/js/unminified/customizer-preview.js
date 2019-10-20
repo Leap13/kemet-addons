@@ -1,16 +1,8 @@
 (function ($) {
-    
-    wp.customize('kemet-settings[header-icon-bars-logo-bg-color]', function (value) {
-        value.bind(function (color) {
-            if (color == '') {
-                wp.customize.preview.send('refresh');
-            }
-            if (color) {
-                var dynamicStyle = '.main-header-container.logo-menu-icon { background-color: ' + color + '; } ';
-                kemet_add_dynamic_css('header-icon-bars-logo-bg-color', dynamicStyle);
-            }
-        });
-    });
+
+    kemet_css('kemet-settings[header-icon-bars-logo-bg-color]', 'background-color', '.main-header-container.logo-menu-icon');
+
+
     
     wp.customize('kemet-settings[header-icon-bars-color]', function (value) {
         value.bind(function (color) {

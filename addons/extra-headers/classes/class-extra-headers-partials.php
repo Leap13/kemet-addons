@@ -36,34 +36,38 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
 		 *  Constructor
 		 */
 		public function __construct() {
+            
+            add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
+             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
             add_filter( 'kemet_sitehead' , array( $this, 'kemet_top_header_template' ), 9 );
             remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template');
             add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ));
+           
+            
+
         }
         
-       public function html_markup_loader() {
-            ?>
-    
-            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php do_action('kemet_pro_header_classes') ?> role="banner">
-    
-                <?php kemet_sitehead_top(); ?>
-    
-                <?php kemet_sitehead(); ?>
-    
-                <?php kemet_sitehead_bottom(); ?>
-    
-            </header><!-- #sitehead -->
-            <?php
+
+        function theme_defaults( $defaults ) {
+            $defaults['header-icon-bars-logo-bg-color']       = '';
+            $defaults['header-icon-bars-color']  = '';
+
+            return $defaults;
         }
-        
 
             
        function sitehead_markup_loader() {
             
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
+                    $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
+         
+        $display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] ) ? $meta['kemet-main-header-display'] : 'default';
+
+			
+
            
-            if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  ) {
+            if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  || '1' !== $display_header)  {
 
                 kemetaddons_get_template( 'extra-headers/templates/'. esc_attr( $kemet_header_layout ) . '.php' );
                 } else {
@@ -77,7 +81,7 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             
             $enable_top_header = kemet_get_option('enable-top-header');
             
-            if ($enable_top_header) {
+            if ($enable_top_header)  {
                 kemetaddons_get_template( 'extra-headers/templates/topbar/topbar-layout.php' );
             }
             
@@ -189,6 +193,14 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
                
                 echo 'class="' . esc_attr(join(' ', $classes)) . '"';
         }
+
+        function preview_scripts() {
+                if ( SCRIPT_DEBUG ) {
+				wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_EXTRA_HEADERS_URL. 'assets/js/unminified/customizer-preview.js', array( 'jquery', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
+			} else {
+                wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_EXTRA_HEADERS_URL. 'assets/js/minified/customizer-preview.min.js', array( 'jquery', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
+        }
+
         // public static function defaults() {
         //     // Defaults list of options.
         //     return apply_filters(

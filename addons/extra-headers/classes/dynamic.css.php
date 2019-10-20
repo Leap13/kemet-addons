@@ -5,7 +5,7 @@
  * @package Kemet Addons
  */
 
-add_filter( 'kemet_addons_dynamic_css', 'kemet_ext_headers_dynamic_css' );
+add_filter( 'kemet_dynamic_css', 'kemet_ext_headers_dynamic_css', 20 );
 
 /**
  * Dynamic CSS
@@ -13,7 +13,7 @@ add_filter( 'kemet_addons_dynamic_css', 'kemet_ext_headers_dynamic_css' );
  * @param  string $dynamic_css          Kemet Dynamic CSS.
  * @return string
  */
-function kemet_ext_headers_dynamic_css() {
+function kemet_ext_headers_dynamic_css( $dynamic_css ) {
 
             $header_icon_bars_logo_bg_color         = kemet_get_option( 'header-icon-bars-logo-bg-color' );
             $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' );
@@ -44,8 +44,6 @@ function kemet_ext_headers_dynamic_css() {
 			 
 			$topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
             
-
-            $css_output = array();
             
             $css_output = array(     
                 '.main-header-container.logo-menu-icon' => array(
@@ -130,43 +128,43 @@ function kemet_ext_headers_dynamic_css() {
 
             $parse_css = kemet_parse_css( $css_output );
             
-            $tablet_styles = array(
-                '.main-header-container.logo-menu-icon .menu-icon-social' => array(
-                    'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'tablet' ),
-                    'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'tablet' ),
-                    'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'tablet' ),
-                    'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'tablet' ),              
-                ),
-                '.kemet-top-header'  => array(
-                    'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'tablet' ),
-                    'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'tablet' ),
-                    'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'tablet' ),
-                    'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'tablet' ),  
-                ),
-             );
-            $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
+            // $ts = array(
+            //     '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+            //         'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'tablet' ),
+            //         'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'tablet' ),
+            //         'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'tablet' ),
+            //         'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'tablet' ),              
+            //     ),
+            //     '.kemet-top-header'  => array(
+            //         'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'tablet' ),
+            //         'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'tablet' ),
+            //         'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'tablet' ),
+            //         'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'tablet' ),  
+            //     ),
+            //  );
+         //   $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
             
-            $mobile_styles = array(
-                '.main-header-container.logo-menu-icon .menu-icon-social' => array(
-                    'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'mobile' ),
-                    'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
-                    'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'mobile' ),
-                    'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'mobile' ),              
-                ),
-                '.kemet-top-header'  => array(
-                    'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'mobile' ),
-                    'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'mobile' ),
-                    'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'mobile' ),
-                    'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),  
-                ),
-             );
-            $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
+            // $mobile_styles = array(
+            //     '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+            //         'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'mobile' ),
+            //         'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
+            //         'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'mobile' ),
+            //         'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'mobile' ),              
+            //     ),
+            //     '.kemet-top-header'  => array(
+            //         'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'mobile' ),
+            //         'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'mobile' ),
+            //         'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'mobile' ),
+            //         'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),  
+            //     ),
+            //  );
+          //  $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
             
             /**
             * Top Bar Header Spacing
             */
-           kemet_responsive_spacing( 'kemet-settings[topbar-padding]','.kemet-top-header ', 'padding', [ 'top', 'bottom', 'right', 'left' ] );
+           //kemet_responsive_spacing( 'kemet-settings[topbar-padding]','.kemet-top-header ', 'padding', [ 'top', 'bottom', 'right', 'left' ] );
 
-            return $parse_css;
+            return $dynamic_css . $parse_css;
 
 };

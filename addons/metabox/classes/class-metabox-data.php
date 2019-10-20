@@ -3,12 +3,15 @@
 // Metabox of the PAGE
 // Set a unique slug-like ID
 //
-$prefix_page_opts = 'kemet_page_options';
+//$prefix_page_opts = 'kemet_page_options';
 
 //
 // Create a Metabox Options
 //
 if( class_exists( 'KFW' ) ) {
+
+$prefix_page_opts = 'kemet_page_options';
+
 KFW::createMetabox( $prefix_page_opts, array(
   'title'        => 'Kemet Page Options',
   'post_type'    =>  array( 
