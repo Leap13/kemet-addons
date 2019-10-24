@@ -34,4 +34,4 @@ define('KEMET_ADDONS_DIR', plugin_dir_path(KEMET_ADDONS_FILE));
  */
 
 require_once KEMET_ADDONS_DIR.'classes/class-kemet-addons.php';
-require_once KEMET_ADDONS_DIR.'classes/class-kemet-minify.php';
+require_once KEMET_ADDONS_DIR.'classes/class-kemet-style-generator.php';

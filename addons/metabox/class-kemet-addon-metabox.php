@@ -46,7 +46,7 @@ if ( ! class_exists( 'Kemet_Metabox)' ) ) {
 		}
 
 		function add_styles() {
-			Kemet_Minify::add_css(KEMET_METABOX_DIR.'assets/style.min.css');
+			Kemet_Style_Generator::kmt_add_css(KEMET_METABOX_DIR.'assets/style.min.css');
 		}
        
 		
