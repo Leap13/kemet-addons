@@ -20,16 +20,40 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 
 		static private $js_files = array();
 
+		private static $instance;
+
+		public static function get_instance() {
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
+			}
+
+			return self::$instance;
+		}
+
 		public function __construct() {
 			//add_action( 'kfw_kmt_framework_saved', 'refresh_assets');
 			add_action( 'wp_enqueue_scripts', array( $this, 'merge_all_scripts'));
 		}
 
-		public function merge_all_scripts() 
-		{
+		public function merge_all_scripts() {
+			$merged_css_url = self::get_css_url();
+			$merged_js_url = self::get_js_url();
+
+			if ( $merged_css_url != false ) {
+				wp_enqueue_style( 'kemet-addons-css', $merged_css_url, array(), KEMET_ADDONS_VERSION, 'all' );
+			}
+
+			if ( $merged_js_url != false ) {
+				wp_enqueue_script( 'kemet-addons-js', $merged_js_url, array('jquery'), KEMET_ADDONS_VERSION, 'all' );
+			}
+
+			wp_add_inline_style( 'kemet-addons-css', apply_filters( 'kemet_dynamic_css', '' ) );
+		}
+
+		public static function get_css_url() { 
+
 			$css_files = self::get_css_files();
 			$files_count = count( $css_files );
-			$js_files  = self::get_js_files();
 			$merged_style	= '';
 			/* new ner */
 			if ( $files_count > 0 ) {
@@ -38,109 +62,60 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 				//$css_file_path = $handle;
 				$merged_style .=  file_get_contents($file)."\n";
 				if ( $files_count == $k + 1 ) {
-						$handle = 'kmt-addon-css';
+						$handle = 'kmt-addons-css';
 					}
-			if ( ! defined( 'FS_CHMOD_FILE' ) ) {
-				define( 'FS_CHMOD_FILE', ( fileperms( ABSPATH . 'index.php' ) & 0777 | 0644 ) );
-			}
-
-
-		// Stash CSS in uploads directory
-		require_once( ABSPATH . 'wp-admin/includes/file.php' ); // We will probably need to load this file
-		global $wp_filesystem;
-		$upload_dir = wp_upload_dir(); // Grab uploads folder array
-		$dir = trailingslashit( $upload_dir['basedir'] ) . 'kemet-addons/'; // Set storage directory path
-
-		WP_Filesystem(); // Initial WP file system
-		$wp_filesystem->mkdir( $dir ); // Make a new folder for storing our file
-		$wp_filesystem->put_contents( $dir . 'style.css', $merged_style, 0777 | 0644 ); // Finally, store the file :D
-		$wp_upload_dir = $upload_dir['baseurl'] . '/' . 'kemet-addons/';
-		$merged_file = $wp_upload_dir . 'style.css';
-		$handle = 'kemet-addon-css';
-		
-			
-			wp_enqueue_style(
-						$handle,
-						$merged_file,
-						array(),
-						KEMET_ADDONS_VERSION,
-						'all'
-					);
-					}
-				}
-
-			wp_add_inline_style( 'kemet-addon-css', apply_filters( 'kemet_dynamic_css', '' ) );
-		}
-
-		
-		public function refresh_assets() {
-			self::render_css();
-		} 
-
-		public static function load_filesystem() {
-
-			if ( null === self::$kemet_filesystem ) {
-
+				// Stash CSS in uploads directory
+				require_once( ABSPATH . 'wp-admin/includes/file.php' ); // We will probably need to load this file
 				global $wp_filesystem;
-				if ( empty( $wp_filesystem ) ) {
-					require_once( ABSPATH . '/wp-admin/includes/file.php' );
-					WP_Filesystem();
-				}
+				$upload_dir = wp_upload_dir(); // Grab uploads folder array
+				$dir = trailingslashit( $upload_dir['basedir'] ) . 'kemet-addons/'; // Set storage directory path
 
-				self::$kemet_filesystem = $wp_filesystem;
+				WP_Filesystem(); // Initial WP file system
+				$wp_filesystem->mkdir( $dir ); // Make a new folder for storing our file
+				$wp_filesystem->put_contents( $dir . 'style.css', $merged_style, 0777 | 0644 ); // Finally, store the file :D
+				$wp_upload_dir = $upload_dir['baseurl'] . '/' . 'kemet-addons/';
+				$merged_file = $wp_upload_dir . 'style.css';
 			}
+			return $merged_file;
+		} else {
+			return false;
 		}
 
-		private static function render_css() {
-			self::load_filesystem();
+		}
 
-			if ( ! defined( 'FS_CHMOD_FILE' ) ) {
-				define( 'FS_CHMOD_FILE', ( fileperms( ABSPATH . 'index.php' ) & 0777 | 0644 ) );
-			}
+		public static function get_js_url() { 
 
-			if ( get_option( 'kmt-theme-css-status' ) ) {
-				$assets_status = self::clear_assets_cache();
+			$js_files = self::get_js_files();
+			$files_count = count( $js_files );
+			$merged_style	= '';
+			/* new ner */
+			if ( $files_count > 0 ) {
 
-				if ( false == $assets_status ) {
-					return false;
-				}
-			}
-
-			$cache_dir   = self::get_cache_dir();
-			$new_css_key = str_replace( '.', '-', uniqid( '', true ) );
-			//$css_slug    = self::_asset_slug();
-			$css_files   = self::get_css_files();
-			$css         = '';
-			$css_min     = '';
-			$filepath    = $cache_dir['path'] . '-' . $new_css_key . '.css';
-
-			if ( count( $css_files ) > 0 ) {
-
-				foreach ( $css_files as $k => $file ) {
-
-					if ( ! empty( $file ) && file_exists( $file ) ) {
-						$css .= self::$kemet_filesystem->get_contents(
-							$file,
-							FS_CHMOD_FILE
-						);
+			foreach( $js_files as $k => $file) {	
+				//$js_file_path = $handle;
+				$merged_style .=  file_get_contents($file)."\n";
+				if ( $files_count == $k + 1 ) {
+						$handle = 'kemet-addons-js';
 					}
-				}
+				// Stash JS in uploads directory
+				require_once( ABSPATH . 'wp-admin/includes/file.php' ); // We will probably need to load this file
+				global $wp_filesystem;
+				$upload_dir = wp_upload_dir(); // Grab uploads folder array
+				$dir = trailingslashit( $upload_dir['basedir'] ) . 'kemet-addons/'; // Set storage directory path
+
+				WP_Filesystem(); // Initial WP file system
+				$wp_filesystem->mkdir( $dir ); // Make a new folder for storing our file
+				$wp_filesystem->put_contents( $dir . 'style.js', $merged_style, 0777 | 0644 ); // Finally, store the file :D
+				$wp_upload_dir = $upload_dir['baseurl'] . '/' . 'kemet-addons/';
+				$merged_file = $wp_upload_dir . 'style.js';
 			}
-
-			$css = apply_filters( 'kemet_render_css', $css );
-
-			$status = self::$kemet_filesystem->put_contents(
-				$filepath,
-				$css,
-				FS_CHMOD_FILE
-			);
-						$status = ! $status;
-
-			// Save the new css key.
-			update_option( 'kmt-theme-css-status', $status );
-			update_option( self::$_css_key . '-', $new_css_key );
+			return $merged_file;
+		} else {
+			return false;
+		}
 
 		}
+
 
 		static public function get_css_files() {
 
@@ -195,9 +170,17 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 			}
 			
 		}
-		
-		
-	}
-	new Kemet_Style_Generator;
+		public static function trim_css( $css = '' ) {
 
-};
+			// Trim white space for faster page loading.
+			if ( ! empty( $css ) ) {
+				$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
+				$css = str_replace( array( "\r\n", "\r", "\n", "\t", '  ', '    ', '    ' ), '', $css );
+				$css = str_replace( ', ', ',', $css );
+			}
+
+			return $css;
+		}
+	}
+	Kemet_Style_Generator::get_instance();
+}

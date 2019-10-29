@@ -194,6 +194,8 @@ if( ! class_exists( 'KFW' ) ) {
     // General includes
     public static function includes() {
 
+      self::include_plugin_file( 'functions/helpers.php'    );
+      
       // includes free version classes
       self::include_plugin_file( 'classes/abstract.class.php' );
       self::include_plugin_file( 'classes/fields.class.php'   );

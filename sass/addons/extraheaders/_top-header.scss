@@ -27,6 +27,11 @@
                 }
             }
         }
+        li {
+            display: inline-block;
+            position: relative;
+            text-align: right;
+        }
         li.focus > .sub-menu,
         li:hover > .sub-menu {
             top: auto;

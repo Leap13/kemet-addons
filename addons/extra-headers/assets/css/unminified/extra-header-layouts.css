@@ -46,6 +46,12 @@
   display: block;
 }
 
+.top-navigation .nav-menu li {
+  display: inline-block;
+  position: relative;
+  text-align: right;
+}
+
 .top-navigation .nav-menu li.focus > .sub-menu,
 .top-navigation .nav-menu li:hover > .sub-menu {
   top: auto;

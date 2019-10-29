@@ -224,9 +224,10 @@ if( ! class_exists( 'KFW_Options' ) ) {
 
         $_POST = json_decode( stripslashes( $_POST['data'] ), true );
 
-        $nonce = 'kfw_options_nonce'. $this->unique;
+        // $nonce = 'kfw_options_nonce'. $this->unique;
 
-        if( isset( $_POST[$nonce] ) && wp_verify_nonce( $_POST[$nonce], 'kfw_options_nonce' ) ) {
+        // if( isset( $_POST[$nonce] ) && wp_verify_nonce( $_POST[$nonce], 'kfw_options_nonce' ) ) {
+        if( wp_verify_nonce( kfw_get_var( 'kfw_options_nonce'. $this->unique ), 'kfw_options_nonce' ) ) {
 
           $this->set_options();
 
@@ -271,12 +272,15 @@ if( ! class_exists( 'KFW_Options' ) ) {
     // set options
     public function set_options() {
 
-      $nonce = 'kfw_options_nonce'. $this->unique;
+      // $nonce = 'kfw_options_nonce'. $this->unique;
 
-      if( isset( $_POST[$nonce] ) && wp_verify_nonce( $_POST[$nonce], 'kfw_options_nonce' ) ) {
+      // if( isset( $_POST[$nonce] ) && wp_verify_nonce( $_POST[$nonce], 'kfw_options_nonce' ) ) {
 
-        $request    = ( ! empty( $_POST[$this->unique] ) ) ? $_POST[$this->unique] : array();
-        $transient  = ( ! empty( $_POST['kfw_transient'] ) ) ? $_POST['kfw_transient'] : array();
+      //   $request    = ( ! empty( $_POST[$this->unique] ) ) ? $_POST[$this->unique] : array();
+      //   $transient  = ( ! empty( $_POST['kfw_transient'] ) ) ? $_POST['kfw_transient'] : array();
+      if( wp_verify_nonce( kfw_get_var( 'kfw_options_nonce'. $this->unique ), 'kfw_options_nonce' ) ) {
+        $request    = kfw_get_var( $this->unique, array() );
+        $transient  = kfw_get_var( 'kfw_transient' );
         $section_id = ( ! empty( $transient['section'] ) ) ? $transient['section'] : '';
 
         // import data

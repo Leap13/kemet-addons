@@ -1,16 +1,56 @@
 <?php
 /**
- * Template for Small Footer Layout 2
- *
+ * Template for Small Top Bar Layouout
  * @package     Kemet
  * @author      Kemet
  * @copyright   Copyright (c) 2019, Kemet
  * @link        https://kemet.io/
  * @since       Kemet 1.0.0
  */
+/**
+ * Function to get top section Left/Right Header
+ */
+if ( ! function_exists( 'kemet_get_top_section' ) ) {
 
-$section_1 = Kemet_Extra_Header_Partials::kemet_get_top_section( 'top-section-1' );
-$section_2 = Kemet_Extra_Header_Partials::kemet_get_top_section( 'top-section-2' );
+	/**
+	 * Function to get top section Left/Right Header
+	 *
+	 * @param string $section   Sections of Small Footer.
+	 * @return mixed            Markup of sections.
+	 */
+	function kemet_get_top_section( $option ) {
+
+		 $output  = '';
+		 $section = kemet_get_option( $option );   
+		  if ( is_array( $section ) ) {
+			
+			foreach ( $section as $sectionnn ) {
+
+				switch ( $sectionnn ) {
+
+			case 'search':
+					$output .= kemet_get_search();
+				break;
+
+            case 'menu':
+					$output .= kemet_get_top_menu();
+				break;
+
+			case 'widget':
+					$output .= kemet_get_custom_widget($option);
+			break;
+
+			case 'text-html':
+					$output .= kemet_get_custom_html( $option . '-html' );
+			break;
+			}
+		}
+			return $output;			
+	}
+	}
+}
+$section_1 = kemet_get_top_section( 'top-section-1' );
+$section_2 = kemet_get_top_section( 'top-section-2' );
 
 $sections  = 0;
 
@@ -22,20 +62,20 @@ $sections  = 0;
  	$sections++;
  }
 
-// switch ( $sections ) {
-//
-// 	case '2':
-// 			$section_class = 'kmt-topbar-section kmt-col-md-6 kmt-col-xs-12';
-// 		break;
-//
-// 	case '1':
-// 	default:
-// 			$section_class = 'kmt-topbar-section kmt-col-xs-12';
-// 		break;
-// }
-// if ( empty( $section_1 ) && empty( $section_2 ) ) {
-//	return;
-//}
+switch ( $sections ) {
+
+	case '2':
+			$section_class = 'kmt-topbar-section kmt-col-md-6 kmt-col-xs-12';
+		break;
+
+	case '1':
+	default:
+			$section_class = 'kmt-topbar-section kmt-col-xs-12';
+		break;
+}
+if ( empty( $section_1 ) && empty( $section_2 ) ) {
+	return;
+}
 
 $classes = kemet_get_option( 'topbar-responsive' );
 
@@ -46,11 +86,11 @@ $classes = kemet_get_option( 'topbar-responsive' );
 		<div class="kmt-container">
 			<div class="kmt-row kmt-flex kemet-top-header-section-wrap">
 					<div class="kemet-top-header-section kemet-top-header-section-1 kmt-flex kmt-justify-content-flex-start mt-topbar-section-equally kmt-col-md-6 kmt-col-xs-12" >
-							<?php print_r($section_1); ?>
+							<?php echo $section_1; ?>
 					</div>
 
 					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally kmt-col-md-6 kmt-col-xs-12<" >
-							<?php print_r($section_2); ?>
+							<?php echo $section_2; ?>
 					</div>
 			</div>
 		</div><!-- .kmt-container -->
