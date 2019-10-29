@@ -31,27 +31,10 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		 */
 		public function __construct() {
             
-          //  add_action( 'customize_register', array( $this, 'customize_register' ) );
-            
-			
-           // add_filter( 'kemet_theme_defaults', array( $this, 'addons_defaults' ) );
-            
-			//add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
-			
-			//add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
-			//add_action( 'customize_register', array( $this, 'headers_customize_register' ), 2 );
-
-		   // remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template');
-		   
-			
 			add_filter( 'body_class', array( $this,'kemet_body_classes' ));
-			add_action( 'kemet_sitehead_top' , array( $this, 'kemet_top_header_template' ), 9 );
-			
 			add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader'), 1);
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
-
-       
         }
         
 
@@ -90,55 +73,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 				 add_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
             }          
 		}
-
-        public function kemet_top_header_template() {
-            
-            $enable_top_header = kemet_get_option('enable-top-header');
-            
-            if ('1'  == $enable_top_header)  {
-				kemetaddons_get_template( 'extra-headers/templates/topbar/topbar-layout.php' );
-				return true;
-            }
-            
-        }
-        
-
-	/**
-	 * Function to get top section Left/Right Header
-	 *
-	 * @param string $section   Sections of Small Footer.
-	 * @return mixed            Markup of sections.
-	 */
-	public static function kemet_get_top_section( $option ) {
-
-		 $output  = '';
-		 $section = kemet_get_option( $option );   
-		  if ( is_array( $section ) ) {
-			
-			foreach ( $section as $sectionnn ) {
-
-				switch ( $sectionnn ) {
-
-			case 'search':
-					$output .= kemet_get_search();
-				break;
-
-            case 'menu':
-					$output .= kemet_get_top_menu();
-				break;
-
-			case 'widget':
-					$output .= kemet_get_custom_widget($option);
-			break;
-
-			case 'text-html':
-					$output .= kemet_get_custom_html( $option . '-html' );
-			break;
-			}
-		}
-			return $output;			
-	}
-	}
 
         function kemet_body_classes($classes) {
             if(kemet_get_option ('header-layouts') == 'header-main-layout-6') {

@@ -23,7 +23,3 @@ function kemet_header_layout6_style() {
 		return false;
 	}
 }
-
-function top_header_enabled() {
-    return kemet_get_option( 'enable-top-header', true);
-}
