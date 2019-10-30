@@ -6,13 +6,7 @@
  */
 if (! class_exists('Kemet_Extra_Header_Partials')) {
 
-    /**
-     * Extra Headers Markup
-     *
-     * @since 1.0.0
-     */
-    class Kemet_Extra_Header_Partials
-    {
+    class Kemet_Extra_Header_Partials {
 
         /**
          * Member Variable
@@ -46,8 +40,20 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
         
 
         function theme_defaults( $defaults ) {
-            $defaults['header-icon-bars-logo-bg-color']       = '';
-            $defaults['header-icon-bars-color']  = '';
+            $defaults['header-icon-bars-logo-bg-color']  = '';
+            $defaults['header-icon-bars-color']          = '';
+            $defaults['header-icon-bars-h-color']        = '';
+            $defaults['header-icon-bars-bg-color']       = '';
+            $defaults['header-icon-bars-bg-h-color']     = '';
+            $defaults['header-icon-bars-border-radius']  = '';
+            $defaults['menu-icon-bars-space']            = '';
+            // Header 6
+            $defaults['header6-position']                = '';
+            $defaults['header6-width']                   = '';
+            $defaults['header6-box-shadow']              = '';
+            $defaults['header6-border-width']            = '';
+            $defaults['header6-border-style']            = '';
+            $defaults['header6-border-color']            = '';
 
             return $defaults;
         }

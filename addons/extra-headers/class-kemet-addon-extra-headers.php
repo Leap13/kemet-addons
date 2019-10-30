@@ -39,7 +39,6 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		 */
 		
 		public function __construct() {
-		 	//add_action( 'kemet_sitehead', array( $this, 'html_markup_loader' ), 1 );
             
             require_once KEMET_EXTRA_HEADERS_DIR . 'classes/class-extra-headers-partials.php';
             require_once KEMET_EXTRA_HEADERS_DIR . 'classes/class-extra-headers-settings.php';

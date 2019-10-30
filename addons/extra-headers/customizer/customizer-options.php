@@ -66,7 +66,6 @@
 			'label'   => __( 'Logo & Menu Icon Background', 'kemet' ),
 			'section' => 'section-header',
 			'priority' => 11,
-       //     'active_callback' => 'kemet_header_withicon_layout_style',
 		  )
 		)
 	);
@@ -195,7 +194,7 @@
 		)
 	);
     
-        	/**
+    /**
     * Option - Menu Icon Spacing
     */
 	$wp_customize->add_setting(
@@ -375,55 +374,4 @@
                 'active_callback' => 'kemet_header_layout6_style',
 			)
 		)
-	);	
-
-//if( class_exists( 'KFW' ) ) {
-//
-//  //
-//  // Set a unique slug-like ID
-//  $prefix = 'my_framework';
-//
-//  //
-//  // Create customize options
-//  KFW::createCustomizeOptions( $prefix );
-//
-//  //
-//  // Create a section
-//  KFW::createSection( $prefix, array(
-//    //'title'  => 'Tab Title 1',
-//    'assign' => 'section-container-layout',
-//    'fields' => array(
-//
-//      //
-//      // A text field
-//      array(
-//        'id'    => 'opt-text-1',
-//        'type'  => 'checkbox',
-//        'title' => 'Text 12222222222',
-//      ),
-////       array(
-////            'id'        => 'opt-image-select-1',
-////            'type'      => 'image_select',
-////            'title'     => 'Image Select',
-////            'options'   => array(
-////              'value-1' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-////              'value-2' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-////              'value-3' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-////            ),
-////           //'default'   => 'value-2'
-////          ),
-//      array(
-//        'id'          => 'site-content-layouteee',
-//        'type'        => 'image_select',
-//        'title'       => __('Page Layout', 'kemet-addons'),
-//        'placeholder' => 'Select an option',
-//        'options'     => array(
-//          'boxed-container'            => 'Boxed Layout',
-//          'boxed-container1'            => 'Boxed Layout',
-//          'boxed-container2'            => 'Boxed Layout',
-//        ),
-//    ),
-//        
-//    )
-//  ) );
-//}
+	);

@@ -10,7 +10,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_headers_dynamic_css');
 /**
  * Dynamic CSS
  *
- * @param  string $dynamic_css          Kemet Dynamic CSS.
+ * @param  string $dynamic_css
  * @return string
  */
 function kemet_ext_headers_dynamic_css( $dynamic_css ) {
