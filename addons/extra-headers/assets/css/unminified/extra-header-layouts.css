@@ -148,3 +148,95 @@
 .header-main-layout-5 .main-header-menu ul.sub-menu {
   width: 100%;
 }
+
+/*--------------------------------------------------------------
+## Header 6
+--------------------------------------------------------------*/
+.admin-bar.header-main-layout-6 .main-header-bar-wrap {
+  margin-top: 33px;
+}
+
+.header-main-layout-6 .main-header-bar-wrap {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  max-width: 100%;
+  height: 100%;
+  border-bottom: none;
+  z-index: 100;
+  left: 0px;
+}
+
+.header-main-layout-6 .kmt-site-identity {
+  padding: 100px 0px;
+}
+
+.header-main-layout-6 #site-navigation {
+  display: block;
+}
+
+.header-main-layout-6 #site-navigation li {
+  width: 100%;
+  display: block;
+  float: none;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-main-layout-6 #site-navigation li:last-child {
+  border-bottom: 0px;
+}
+
+.header-main-layout-6 #site-navigation .sub-menu {
+  display: none;
+  position: relative;
+  top: 0;
+  width: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.header-main-layout-6 .main-header-container {
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header-main-layout-6 .main-navigation,
+.header-main-layout-6 .kmt-main-header-bar-alignment {
+  width: 100%;
+  text-align: center;
+}
+
+.header-main-layout-6 .kmt-menu-toggle {
+  display: inline-block;
+  position: absolute;
+  font-size: inherit;
+  top: -1px;
+  right: 20px;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0 .907em;
+  font-weight: 400;
+  line-height: inherit;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.header-main-layout-6 .kmt-menu-toggle::before {
+  font-weight: 700;
+  content: "\e900";
+  font-family: Kemet-font;
+  text-decoration: inherit;
+  display: inline-block;
+}
+
+.header-main-layout-6 .kmt-submenu-expanded > .kmt-menu-toggle::before {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}

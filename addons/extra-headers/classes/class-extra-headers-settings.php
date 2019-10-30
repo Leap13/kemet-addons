@@ -79,7 +79,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             if(kemet_get_option ('header-layouts') == 'header-main-layout-6') {
                 
                 $classes[] = 'header-main-layout-6';
-                $classes[] = 'kemet-addons-header6-'. kemet_get_option('header6-position') ;
+                $classes[] = 'kemet-main-header6-align-'. kemet_get_option('header6-position') ;
             } 
             return $classes;
 		}

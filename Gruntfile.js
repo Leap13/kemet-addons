@@ -25,6 +25,7 @@ module.exports = function (grunt) {
                         {
                             'addons/extra-headers/assets/css/unminified/extra-header-layouts.css': 'sass/extraheaders.scss',
                             'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
+                           // 'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
 
                         },
 
@@ -69,7 +70,7 @@ module.exports = function (grunt) {
    // grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // SASS compile
-    grunt.registerTask('default', ['sass']);
+    grunt.registerTask('default', ['sass', 'cssmin:css']);
     //grunt.registerTask('minify', ['cssmin']); 
     grunt.registerTask('default', ['uglify']); 
     // min all

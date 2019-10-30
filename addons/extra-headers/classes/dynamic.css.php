@@ -54,18 +54,18 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'width' => kemet_get_css_value( $header6_width, 'px' ),
                     'border-color' => esc_attr( $header6_border_color ),
                 ),
-                '.kemet-addons-header6-right .site-header.header-main-layout-6,.kemet-addons-header7-right #sitehead.header-main-layout-7' => array(
+                '.kemet-main-header6-align-right .site-header.header-main-layout-6,.kemet-addons-header7-right #sitehead.header-main-layout-7' => array(
                     'border-left-style' => esc_attr( $header6_border_style ),
                     'border-left-width' => kemet_get_css_value( $header6_border_width , 'px' ),
                 ),
-                '.kemet-addons-header6-left .site-header.header-main-layout-6,.kemet-addons-header7-left #sitehead.header-main-layout-7' => array(
+                '.kemet-main-header6-align-left .site-header.header-main-layout-6,.kemet-addons-header7-left #sitehead.header-main-layout-7' => array(
                     'border-right-style' => esc_attr( $header6_border_style ),
                     'border-right-width' => kemet_get_css_value( $header6_border_width , 'px' ),
                 ),
-                'body.kemet-addons-header6-right' => array(
+                'body.kemet-main-header6-align-right' => array(
                     'padding-right' => kemet_get_css_value( $header6_width , 'px'),
                 ),
-                'body.kemet-addons-header6-left' => array(
+                'body.kemet-main-header6-align-left' => array(
                     'padding-left' => kemet_get_css_value( $header6_width , 'px'),
                 ),     
             );
