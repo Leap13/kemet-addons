@@ -55,6 +55,7 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
+                    'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
                     'addons/top-bar-section/assets/js/minified/customizer-preview.min.js': 'addons/top-bar-section/assets/js/unminified/customizer-preview.js',
                 }
             }

@@ -60,10 +60,11 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 
 			foreach( $css_files as $k => $file) {	
 				//$css_file_path = $handle;
-				$merged_style .=  file_get_contents($file)."\n";
+				$merged_style .=  file_get_contents($file);
 				if ( $files_count == $k + 1 ) {
 						$handle = 'kmt-addons-css';
 					}
+				//$merged_style = apply_filters( 'kemet_render_css', $merged_style );
 				// Stash CSS in uploads directory
 				require_once( ABSPATH . 'wp-admin/includes/file.php' ); // We will probably need to load this file
 				global $wp_filesystem;
@@ -93,7 +94,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 
 			foreach( $js_files as $k => $file) {	
 				//$js_file_path = $handle;
-				$merged_style .=  file_get_contents($file)."\n";
+				$merged_style .=  file_get_contents($file);
 				if ( $files_count == $k + 1 ) {
 						$handle = 'kemet-addons-js';
 					}
@@ -169,17 +170,6 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 				self::$js_files[] = $src;
 			}
 			
-		}
-		public static function trim_css( $css = '' ) {
-
-			// Trim white space for faster page loading.
-			if ( ! empty( $css ) ) {
-				$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
-				$css = str_replace( array( "\r\n", "\r", "\n", "\t", '  ', '    ', '    ' ), '', $css );
-				$css = str_replace( ', ', ',', $css );
-			}
-
-			return $css;
 		}
 	}
 	Kemet_Style_Generator::get_instance();
