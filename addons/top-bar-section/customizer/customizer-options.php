@@ -1,4 +1,9 @@
 <?php
+/**
+ * Top Bar Section Customizer
+ * 
+ * @package Kemet Addons
+ */
 
 $wp_customize->add_setting(
 	KEMET_THEME_SETTINGS . '[top-section-1]', array(

@@ -1,22 +1,18 @@
 <?php
 /**
- * Template for Small Top Bar Layouout
+ * Template for Top Bar Layouout
  * @package     Kemet
  * @author      Kemet
  * @copyright   Copyright (c) 2019, Kemet
  * @link        https://kemet.io/
  * @since       Kemet 1.0.0
  */
-/**
- * Function to get top section Left/Right Header
- */
 if ( ! function_exists( 'kemet_get_top_section' ) ) {
 
 	/**
-	 * Function to get top section Left/Right Header
-	 *
-	 * @param string $section   Sections of Small Footer.
-	 * @return mixed            Markup of sections.
+	 * Function to get top section
+	 * @param string $section
+	 * @return mixed
 	 */
 	function kemet_get_top_section( $option ) {
 

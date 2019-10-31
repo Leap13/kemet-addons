@@ -1,21 +1,22 @@
 <?php
+
 /**
- * Top Bar Section
- * 
+ * Kemet Meta Box Options
+ *
  * @package Kemet Addons
  */
 
-define( 'KEMET_TOPBAR_DIR', KEMET_ADDONS_DIR . 'addons/top-bar-section/' );
-define( 'KEMET_TOPBAR_URL', KEMET_ADDONS_URL . 'addons/top-bar-section/' );
+define( 'KEMET_GOTOP_DIR', KEMET_ADDONS_DIR . 'addons/go-top/' );
+define( 'KEMET_GOTOP_DIR', KEMET_ADDONS_URL . 'addons/go-top/' );
 
-if ( ! class_exists( 'Kemet_Topbar' ) ) {
+if ( ! class_exists( 'Kemet_GoTop' ) ) {
 
 	/**
 	 * Meta Box Markup Initial Setup
 	 *
 	 * @since 1.0.0
 	 */
-	class Kemet_Topbar {
+	class Kemet_GoTop {
 
 		/**
 		 * Member Variable
@@ -40,17 +41,17 @@ if ( ! class_exists( 'Kemet_Topbar' ) ) {
 		
 		public function __construct() {
             
-            require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-section-partials.php';
+            require_once KEMET_GOTOP_DIR . 'classes/class-go-top-partials.php';
             
             if ( ! is_admin() ) {
-				require_once KEMET_TOPBAR_DIR . 'classes/dynamic.css.php';
+				require_once KEMET_GOTOP_DIR . 'classes/dynamic.css.php';
 			}
 		}
        
 		
 
 	}
-    Kemet_Topbar::get_instance();
+    Kemet_GoTop::get_instance();
 }
 
 /**
