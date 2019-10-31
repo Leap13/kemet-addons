@@ -39,11 +39,7 @@
                     'header-main-layout-6' => array(
 						'label' => __( 'Logo Right', 'kemet' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/logo-center.png',
-					), 
-                    'header-main-layout-7' => array(
-						'label' => __( 'Logo Right', 'kemet' ),
-						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/logo-center.png',
-					), 
+					),
 				),
 			)
 		)

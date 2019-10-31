@@ -33,12 +33,12 @@ if (class_exists('KFW')) {
         'id' => 'extra-headers',
         'type' => 'switcher',
         'title' => 'Extra Headers',
-        'default' => 'true',
+        'default' => 'false',
       ),array(
         'id' => 'top-bar-section',
         'type' => 'switcher',
         'title' => 'Top Bar Section',
-        'default' => 'true',
+        'default' => 'false',
       ),
     ),
   ));
