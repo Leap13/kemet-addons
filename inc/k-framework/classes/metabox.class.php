@@ -223,12 +223,26 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
     }
 
-    // save metabox
+    // // save metabox
+    // public function save_meta_box( $post_id ) {
+
+    //   $nonce = 'kfw_metabox_nonce'. $this->unique;
+
+    //   if( ! isset( $_POST[$nonce] ) && ! wp_verify_nonce( $_POST[$nonce], 'kfw_metabox_nonce' ) ) {
+    //     return $post_id;
+    //   }
+
+    //   if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+    //     return $post_id;
+    //   }
+
+    //   update_post_meta( $post_id, $this->unique, wp_unslash( (array) $_POST[$this->unique] ) );
+
+    // }
+        // save metabox
     public function save_meta_box( $post_id ) {
 
-      $nonce = 'kfw_metabox_nonce'. $this->unique;
-
-      if( ! isset( $_POST[$nonce] ) && ! wp_verify_nonce( $_POST[$nonce], 'kfw_metabox_nonce' ) ) {
+      if( ! wp_verify_nonce( kfw_get_var( 'kfw_metabox_nonce'. $this->unique ), 'kfw_metabox_nonce' ) ) {
         return $post_id;
       }
 
@@ -236,7 +250,101 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
         return $post_id;
       }
 
-      update_post_meta( $post_id, $this->unique, wp_unslash( (array) $_POST[$this->unique] ) );
+      $errors  = array();
+      $request = kfw_get_var( $this->unique );
+
+      if( ! empty( $request ) ) {
+
+        // ignore _nonce
+        if( isset( $request['_nonce'] ) ) {
+          unset( $request['_nonce'] );
+        }
+
+        // sanitize and validate
+        $section_key = 1;
+        foreach( $this->sections as $section ) {
+
+          if( ! empty( $section['fields'] ) ) {
+
+            foreach( $section['fields'] as $field ) {
+
+              if( ! empty( $field['id'] ) ) {
+
+                // sanitize
+                if( ! empty( $field['sanitize'] ) ) {
+
+                  $sanitize              = $field['sanitize'];
+                  $value_sanitize        = isset( $request[$field['id']] ) ? $request[$field['id']] : '';
+                  $request[$field['id']] = call_user_func( $sanitize, $value_sanitize );
+
+                }
+
+                // validate
+                if( ! empty( $field['validate'] ) ) {
+
+                  $validate       = $field['validate'];
+                  $value_validate = isset( $request[$field['id']] ) ? $request[$field['id']] : '';
+                  $has_validated  = call_user_func( $validate, $value_validate );
+
+                  if( ! empty( $has_validated ) ) {
+
+                    $errors['sections'][$section_key] = true;
+                    $errors['fields'][$field['id']] = $has_validated;
+                    $request[$field['id']] = $this->get_meta_value( $field );
+
+                  }
+
+                }
+
+                // auto sanitize
+                if( ! isset( $request[$field['id']] ) || is_null( $request[$field['id']] ) ) {
+                  $request[$field['id']] = '';
+                }
+
+              }
+
+            }
+
+          }
+
+          $section_key++;
+        }
+
+      }
+
+      $request = apply_filters( "kfw_{$this->unique}_save", $request, $post_id, $this );
+
+      do_action( "kfw_{$this->unique}_save_before", $request, $post_id, $this );
+
+      if( empty( $request ) || ! empty( $request['_restore'] ) ) {
+
+        if( $this->args['data_type'] !== 'serialize' ) {
+          foreach ( $request as $key => $value ) {
+            delete_post_meta( $post_id, $key );
+          }
+        } else {
+          delete_post_meta( $post_id, $this->unique );
+        }
+
+      } else {
+
+        if( $this->args['data_type'] !== 'serialize' ) {
+          foreach ( $request as $key => $value ) {
+            update_post_meta( $post_id, $key, $value );
+          }
+        } else {
+          update_post_meta( $post_id, $this->unique, $request );
+        }
+
+        if( ! empty( $errors ) ) {
+          update_post_meta( $post_id, '_kfw_errors', $errors );
+        }
+
+      }
+
+      do_action( "kfw_{$this->unique}_saved", $request, $post_id, $this );
+
+      do_action( "kfw_{$this->unique}_save_after", $request, $post_id, $this );
 
     }
   }

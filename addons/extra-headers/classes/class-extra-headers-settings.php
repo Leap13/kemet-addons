@@ -32,7 +32,8 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			add_filter( 'body_class', array( $this,'kemet_body_classes' ));
 			add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader'), 1);
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
-			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
+            add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
+            add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
         }
         
 
@@ -40,7 +41,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 
             ?>
     
-            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php do_action('kemet_pro_header_classes') ?> role="banner">
+            <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php kemet_header_classes();?> role="banner">
     
                 <?php kemet_sitehead_top(); ?>
     
@@ -76,7 +77,11 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		}
 
         function kemet_body_classes($classes) {
-            if(kemet_get_option ('header-layouts') == 'header-main-layout-6') {
+            $options = get_option( 'kmt_framework' );
+			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
+			$display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] ) ? $meta['kemet-main-header-display'] : 'default';
+
+            if((kemet_get_option ('header-layouts') == 'header-main-layout-6') && ( '1' !== $display_header )) {
                 
                 $classes[] = 'header-main-layout-6';
                 $classes[] = 'kemet-main-header6-align-'. kemet_get_option('header6-position') ;
@@ -84,61 +89,15 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             return $classes;
 		}
 		
-        public function kemet_extra_headers_classes()
-        {
-                $classes                  = array( 'site-header' );
-                $menu_logo_location       = kemet_get_option('header-layouts');
-                $mobile_header_alignment  = kemet_get_option('header-main-menu-align');
-                $primary_menu_disable     = kemet_get_option('disable-primary-nav');
-                $primary_menu_custom_item = kemet_get_option('header-main-rt-section');
-                $logo_title_inline        = kemet_get_option('logo-title-inline');
-                $header_transparent       = kemet_get_option('enable-transparent');
-                $enabled_sticky           = kemet_get_option('enable-sticky');
-                $sticky_logo              = kemet_get_option('sticky-logo');
-                $sticky_responsive        = kemet_get_option('sticky-responsive');
-                $header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
-    
-                if ($menu_logo_location) {
-                    $classes[] = $menu_logo_location;
-                }
-    
-                 if ($primary_menu_disable) {
-                     $classes[] = 'kmt-primary-menu-disabled';
-    
-                    if ('none' == $primary_menu_custom_item) {
-                        $classes[] = 'kmt-no-menu-items';
-                    }
-                }
-                // Add class if Inline Logo & Site Title.
-                if ($logo_title_inline) {
-                    $classes[] = 'kmt-logo-title-inline';
-                }
-            
-                if ($header_transparent &&  $menu_logo_location  != 'header-main-layout-5') {
-                    $classes[] = 'kmt-header-transparent';
-                }
-    
-                // if ($enabled_sticky &&  $menu_logo_location  != 'header-main-layout-6' &&  $menu_logo_location  != 'header-main-layout-7') {
-                //     $classes[] = 'kmt-sticky-header';
-                // }
+        function header_classes( $classes ) {
 
-    
-                // if ('' !== $sticky_logo) {
-                //     $classes[] = 'kmt-sticky-logo';
-                // }
+                $header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
+
                 if ($header6_has_box_shadow == true) {
-                    $classes[] = "header6-has-box-shadow" ;
+                    $classes[] = 'header6-has-box-shadow';
                 }
-                $classes[] =  $sticky_responsive;
-    
-                 $classes[] = 'kmt-mobile-header-' . $mobile_header_alignment;
-    
-                 $classes = array_unique(apply_filters('kemet_header_class', $classes));
-    
-                 $classes = array_map('sanitize_html_class', $classes);
-    
-               
-                 echo 'class="' . esc_attr(join(' ', $classes)) . '"';
+
+               return $classes;
          }
         
         

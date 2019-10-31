@@ -168,7 +168,7 @@
 }
 
 .header-main-layout-6 .kmt-site-identity {
-  padding: 100px 0px;
+  padding: 60px 0px;
 }
 
 .header-main-layout-6 #site-navigation {
@@ -188,16 +188,52 @@
 }
 
 .header-main-layout-6 #site-navigation .sub-menu {
-  display: none;
-  position: relative;
-  top: 0;
   width: 100%;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: none;
-  box-shadow: none;
+}
+
+.header-main-layout-6 .kmt-sitehead-custom-menu-items {
+  display: block;
+  text-align: center;
+}
+
+.header-main-layout-6.header6-has-box-shadow .main-header-bar-wrap {
+  box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-6 .kmt-search-icon {
+  display: none;
+}
+
+.header-main-layout-6 .kmt-search-menu-icon {
+  position: relative;
+  display: block;
+  right: auto;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+.header-main-layout-6 .kmt-search-menu-icon .search-form {
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.header-main-layout-6 .kmt-search-menu-icon .search-field {
+  width: 100%;
+}
+
+.header-main-layout-6 .kmt-search-menu-icon .search-submit {
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
 .header-main-layout-6 .main-header-container {
@@ -212,31 +248,17 @@
   text-align: center;
 }
 
-.header-main-layout-6 .kmt-menu-toggle {
-  display: inline-block;
-  position: absolute;
-  font-size: inherit;
-  top: -1px;
-  right: 20px;
-  cursor: pointer;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 0 .907em;
-  font-weight: 400;
-  line-height: inherit;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+.kmt-header-break-point.kemet-main-header6-align-left, .kmt-header-break-point.kemet-main-header6-align-right {
+  padding: 0px;
 }
 
-.header-main-layout-6 .kmt-menu-toggle::before {
-  font-weight: 700;
-  content: "\e900";
-  font-family: Kemet-font;
-  text-decoration: inherit;
-  display: inline-block;
+.kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
+  width: 100%;
+  border: 0px !important;
 }
 
-.header-main-layout-6 .kmt-submenu-expanded > .kmt-menu-toggle::before {
-  -webkit-transform: rotateX(180deg);
-  transform: rotateX(180deg);
+.kmt-header-break-point .header-main-layout-6 .ss-wrapper {
+  position: initial;
+  margin: 0px;
+  height: auto;
 }
