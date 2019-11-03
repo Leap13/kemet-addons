@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Kemet Meta Box Options
+ * Kemet Go Top Options
  *
  * @package Kemet Addons
  */

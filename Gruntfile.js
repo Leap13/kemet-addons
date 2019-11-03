@@ -25,6 +25,7 @@ module.exports = function (grunt) {
                         {
                             'addons/extra-headers/assets/css/unminified/extra-header-layouts.css': 'sass/extraheaders.scss',
                             'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
+                            'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
                            // 'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
 
                         },
