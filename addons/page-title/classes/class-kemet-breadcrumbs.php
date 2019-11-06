@@ -374,6 +374,7 @@ class Kemet_Breadcrumb_Trail {
 		if ( is_multisite() && ! is_main_site() && true === $this->args['network'] )
 			$this->items[] = sprintf( '<a href="%s" rel="home">%s</a>', esc_url( network_home_url() ), $this->labels['home'] );
 	}
+	
 	/**
 	 * Adds the current site's home page link to the items array.
 	 *
