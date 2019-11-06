@@ -39,12 +39,18 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => 'Top Bar Section',
         'default' => 'false',
-      ),array(
-        'id' => 'go-top',
+        ),array(
+        'id' => 'page-title',
         'type' => 'switcher',
-        'title' => 'Go Top Link',
+        'title' => 'Page Title',
         'default' => 'false',
       ),
+      // ),array(
+      //   'id' => 'go-top',
+      //   'type' => 'switcher',
+      //   'title' => 'Go Top Link',
+      //   'default' => 'false',
+      // ),
     ),
   ));
 

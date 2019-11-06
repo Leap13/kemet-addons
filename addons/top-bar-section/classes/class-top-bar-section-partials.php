@@ -47,12 +47,7 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
 
         public function kemet_top_header_template() {
             
-           // $enable_top_header = kemet_get_option('enable-top-header');
-            
-           // if ('1'  == $enable_top_header)  {
 				kemetaddons_get_template( 'top-bar-section/templates/topbar-layout.php' );
-			//	return true;
-          //  }
             
         }
 

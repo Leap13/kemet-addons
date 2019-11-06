@@ -63,4 +63,9 @@ function kemetaddons_get_template( $template_name, $args = array(), $tempate_pat
 }
 
 
-
+if ( ! function_exists( 'kmt_get_panel_option' ) ) {
+  function kmt_get_panel_option( $option = '', $default = null ) {
+    $options = get_option( 'kmt_framework' ); // Attention: Set your unique id of the framework
+    return ( isset( $options[$option] ) ) ? $options[$option] : $default;
+  }
+}
