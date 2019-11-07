@@ -14,6 +14,7 @@
 //$is_breadcrumb_enabled = '';
 $title                 = kemet_get_the_title();
 $description           = get_the_archive_description();
+$classes = kemet_get_option( 'page-title-layouts' );
 
 // if ( $show_breadcrumb ) {
 // 	$is_breadcrumb_enabled = $show_breadcrumb;
@@ -21,7 +22,7 @@ $description           = get_the_archive_description();
 
 ?>
 <div class="kmt-page-title-addon-content">
-	<div class="kmt-page-title kmt-page-title-layout-1" >
+	<div class="kmt-page-title <?php echo esc_attr( $classes ); ?>" >
 		<div class="kmt-container">
 			<div class="kmt-page-title-wrap">
 				<?php if ( $title ) { ?>

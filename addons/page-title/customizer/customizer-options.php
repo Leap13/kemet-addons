@@ -5,35 +5,7 @@
  * @package Kemet Addons
  */
 
-// $wp_customize->add_setting(
-// 	KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
-// 		'default'           => kemet_get_option( 'page-title-layouts' ),
-// 		'type'              => 'option',
-// 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
-// 	)
-// );
-// $wp_customize->add_control(
-// 			new Kemet_Control_Sortable(
-// 		$wp_customize, KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
-// 		'type'     => 'kmt-radio-image',
-// 		'section'  => 'section-page-title-header',
-// 		'priority' => 50,
-// 		'label'    => __( 'Page Title Layouts', 'kemet' ),
-// 		'choices'  => array(
-// 					'page-title-layout-1' => array (
-// 						'label' => __( 'Page Title Layout 1', 'kemet' ),
-// 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
-// 					),
-// 					'page-title-layout-2' => array (
-// 						'label' => __( 'Page Title Layout 2' , 'kemet' ),
-//                         'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
-//                     ),
-// 				),
-// 	)
-// 	)
-// 	);
-
-	    $wp_customize->add_setting(
+    $wp_customize->add_setting(
  		KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
  			'default'           => kemet_get_option( 'page-title-layouts' ),
  			'type'              => 'option',
@@ -49,11 +21,11 @@
 				'label'    => __( 'Page Title Layouts', 'kemet' ),
 				'type'     => 'kmt-radio-image',
 				'choices'  => array(
-					'header-main-layout-1' => array(
+					'page-title-layout-1' => array(
 						'label' => __( 'Logo Left', 'kemet' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
 					),
-					'header-main-layout-2' => array(
+					'page-title-layout-2' => array(
 						'label' => __( 'Logo Center', 'kemet' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
 					),
@@ -62,6 +34,101 @@
 		)
 	);
 
+	/**
+     * Option:Page Title Alignment
+     */
+    $wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[page-title-alignmrent]',array(
+					'default'           => kemet_get_option('page-title-alignmrent'),
+					'type'              => 'option',
+					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+			)
+	);
+	$wp_customize->add_control(
+			KEMET_THEME_SETTINGS . '[page-title-alignmrent]' ,array(
+					'priority'   => 5,
+					'section'    => 'section-page-title-header',
+					'type'     => 'select',
+					'label'    => __( 'Page Title Alignment', 'kemet' ),
+					'active_callback' => 'kemet_page_title_layout1_style',
+					'choices'  => array(
+							'align-center'        => __( 'Center', 'kemet' ),
+							'align-right'        => __( 'Right', 'kemet' ),
+							'align-left'        => __( 'Left', 'kemet' ),
+					),
+			)
+	);
+    /**
+    * Option - Page Title Spacing
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[page-title-space]', array(
+			'default'           => '',
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Responsive_Spacing(
+			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-space]', array(
+				'type'           => 'kmt-responsive-spacing',
+				'section'        => 'section-page-title-header',
+				'priority'       => 10,
+				'label'          => __( 'Page Title Spacing', 'kemet' ),
+				'linked_choices' => true,
+				'unit_choices'   => array( 'px', 'em', '%' ),
+				'choices'        => array(
+					'top'    => __( 'Top', 'kemet' ),
+					'right'  => __( 'Right', 'kemet' ),
+					'bottom' => __( 'Bottom', 'kemet' ),
+					'left'   => __( 'Left', 'kemet' ),
+				),
+			)
+		)
+	);
+
+	/**
+	 * Option: header Background
+	 */
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
+				'default'           => kemet_get_option( 'page-title-bg-obj' ),
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_background_obj' ),
+			)
+		);
+		$wp_customize->add_control(
+			new Kemet_Control_Background(
+				$wp_customize, KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
+				'type'    => 'kmt-background',
+				'section' => 'section-page-title-header',
+				'priority' => 15,
+				'label'   => __( 'Page Title Background', 'kemet' ),
+				)
+			)
+		);
+
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[merge-with-header]', array(
+			'default'           => false,
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[merge-with-header]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-page-title-header',
+			'label'           => __( 'Merge Page title with Main Header', 'kemet' ),
+            'priority'        => 20,
+            
+		)
+	);
 	/**
 	 * Option: Kemet Breadcrumbs
 	 */
@@ -77,7 +144,7 @@
 			'type'            => 'checkbox',
 			'section'         => 'section-page-title-header',
 			'label'           => __( 'Enable Breadcrumbs', 'kemet' ),
-            'priority'        => 5,
+            'priority'        => 50,
             
 		)
 	);

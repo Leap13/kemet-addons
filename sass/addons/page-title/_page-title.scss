@@ -1,4 +1,30 @@
-.kmt-page-title{
-    padding-top: 1.2 em;
-    padding-bottom: 1.2 em;
+.kmt-page-title-addon-content {
+    padding: 50px 0px;
+    background-color: $color-background-page-title;
+}
+.kmt-advanced-headers-breadcrumb {
+    .trail-items, li {
+        list-style: none;
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
+    }
+    .breadcrumb-sep {
+        padding: 0 0.4em;
+    }
+}
+.page-title-layout-2 {
+    .kmt-container {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .kmt-page-title-wrap, .kmt-advanced-headers-breadcrumb  {
+        flex-grow: 1;
+        text-align: center;
+        align-self: center;
+        text-align: left;
+    }
+    .kmt-advanced-headers-breadcrumb {
+        text-align: right;
+    }
 }

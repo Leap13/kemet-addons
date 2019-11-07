@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------
+## Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Page Title
+--------------------------------------------------------------*/
+.kmt-page-title-addon-content {
+  padding: 50px 0px;
+  background-color: #ccc;
+}
+
+.kmt-advanced-headers-breadcrumb .trail-items, .kmt-advanced-headers-breadcrumb li {
+  list-style: none;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+.kmt-advanced-headers-breadcrumb .breadcrumb-sep {
+  padding: 0 0.4em;
+}
+
+.page-title-layout-2 .kmt-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.page-title-layout-2 .kmt-page-title-wrap, .page-title-layout-2 .kmt-advanced-headers-breadcrumb {
+  flex-grow: 1;
+  text-align: center;
+  align-self: center;
+  text-align: left;
+}
+
+.page-title-layout-2 .kmt-advanced-headers-breadcrumb {
+  text-align: right;
+}

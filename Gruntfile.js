@@ -26,17 +26,19 @@ module.exports = function (grunt) {
                             'addons/extra-headers/assets/css/unminified/extra-header-layouts.css': 'sass/extraheaders.scss',
                             'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
                             'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
+                            'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                            // 'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
 
                         },
 
-                        // {
-                        //     expand: true,
-                        //     cwd: 'styles',
-                        //     src: ['**.scss'],
-                        //     dest: 'styles',
-                        //     ext: '.css'
-                        // },
+                        {
+                            
+                            expand: true,
+                            cwd: 'styles',
+                            src: ['**.scss'],
+                            dest: 'styles',
+                            ext: '.css'
+                        },
                     ]
                 }
             },
@@ -50,6 +52,10 @@ module.exports = function (grunt) {
                     {
                         src: 'addons/top-bar-section/assets/css/unminified/style.css',
                         dest: 'addons/top-bar-section/assets/css/minified/style.min.css',
+                    },
+                    {
+                        src: 'addons/page-title/assets/css/unminified/style.css',
+                        dest: 'addons/page-title/assets/css/minified/style.min.css',
                     },
                 ]
              } 

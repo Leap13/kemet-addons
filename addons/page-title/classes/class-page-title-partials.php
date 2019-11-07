@@ -37,9 +37,9 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
 		public function __construct() {
             add_filter( 'kemet_the_title_enabled', '__return_false' );
             add_action( 'kemet_header_after' , array( $this, 'kemet_page_title_markup' ), 9 );
-            // add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
-             add_action( 'customize_register', array( $this, 'customize_register_before_theme' ) );
-              add_action( 'customize_register', array( $this, 'controls_helpers' ) );
+            add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+            add_action( 'customize_register', array( $this, 'customize_register_before_theme' ) );
+            add_action( 'customize_register', array( $this, 'controls_helpers' ) );
              
             // add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
              add_action( 'customize_register', array( $this, 'customize_register' ) );
@@ -105,15 +105,15 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
         }
 
         function add_styles() {
-            Kemet_Style_Generator::kmt_add_css(KEMET_PAGE_TITLE_DIR.'assets/css/minified/style.min.css');
+            Kemet_Style_Generator::kmt_add_css( KEMET_PAGE_TITLE_DIR.'assets/css/minified/style.min.css');
 
 	    }
         
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_PAGE_TITLE_DIR . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
+				wp_enqueue_script( 'kemet-pagetitle-customize-preview-js', KEMET_PAGE_TITLE_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
 			} else {
-                wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_PAGE_TITLE_DIR . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
+                wp_enqueue_script( 'kemet-pagetitle-customize-preview-js', KEMET_PAGE_TITLE_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
         }
 
 

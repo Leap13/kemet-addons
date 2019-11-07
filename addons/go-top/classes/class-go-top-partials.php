@@ -97,9 +97,9 @@ if (! class_exists('Kemet_Go_Top_Partials')) {
         
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_TOPBAR_DIR . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
+				wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_TOPBAR_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
 			} else {
-                wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_TOPBAR_DIR . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
+                wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_TOPBAR_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
         }
 
 
