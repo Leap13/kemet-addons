@@ -97,9 +97,6 @@ class Kemet_Breadcrumb_Trail {
 	 *     @type string    $container      Container HTML element. nav|div
 	 *     @type string    $before         String to output before breadcrumb menu.
 	 *     @type string    $after          String to output after breadcrumb menu.
-	 *     @type string    $browse_tag     The HTML tag to use to wrap the "Browse" header text.
-	 *     @type string    $list_tag       The HTML tag to use for the list wrapper.
-	 *     @type string    $item_tag       The HTML tag to use for the item wrapper.
 	 *     @type bool      $show_on_front  Whether to show when `is_front_page()`.
 	 *     @type bool      $network        Whether to link to the network main site (multisite only).
 	 *     @type bool      $show_title     Whether to show the title (last item) in the trail.
@@ -115,13 +112,13 @@ class Kemet_Breadcrumb_Trail {
 			'container'       => 'nav',
 			'before'          => '',
 			'after'           => '',
-			'browse_tag'      => 'h2',
+			//'browse_tag'      => 'h2',
 			'list_tag'        => 'ul',
 			'item_tag'        => 'li',
 			'show_on_front'   => false,
 			'network'         => false,
 			'show_title'      => true,
-			'show_browse'     => true,
+			//'show_browse'     => true,
 			'labels'          => array(),
 			'post_taxonomy'   => array(),
 			'echo'            => true
@@ -169,7 +166,7 @@ class Kemet_Breadcrumb_Trail {
 				$item = ! empty( $matches ) ? sprintf( '%s<span itemprop="name">%s</span>%s', $matches[1], $matches[2], $matches[3] ) : sprintf( '<span itemprop="name">%s</span>', $item );
 				// Wrap the item with its itemprop.
 				$item = ! empty( $matches )
-					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemprop=$2item$2>', $item )
+					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemtype="http://schema.org/Thing" itemprop=$2item$2>', $item )
 					: sprintf( '<span itemprop="item">%s</span>', $item );
 				// Add list item classes.
 				$item_class = 'trail-item';
@@ -239,7 +236,7 @@ class Kemet_Breadcrumb_Trail {
 			// Translators: %s is the page number.
 			'paged'               => esc_html__( 'Page %s',                               'breadcrumb-trail' ),
 			// Translators: %s is the page number.
-			'paged_comments'      => esc_html__( 'Comment Page %s',                       'breadcrumb-trail' ),
+			//'paged_comments'      => esc_html__( 'Comment Page %s',                       'breadcrumb-trail' ),
 			// Translators: Minute archive title. %s is the minute time format.
 			'archive_minute'      => esc_html__( 'Minute %s',                             'breadcrumb-trail' ),
 			// Translators: Weekly archive title. %s is the week date format.
@@ -265,7 +262,7 @@ class Kemet_Breadcrumb_Trail {
 		$defaults = array();
 		// If post permalink is set to `%postname%`, use the `category` taxonomy.
 		if ( '%postname%' === trim( get_option( 'permalink_structure' ), '/' ) )
-			$defaults['post'] = 'category';
+			$defaults['post'] = 'tag';
 		$this->post_taxonomy = apply_filters( 'breadcrumb_trail_post_taxonomy', wp_parse_args( $this->args['post_taxonomy'], $defaults ) );
 	}
 	/**
@@ -441,12 +438,26 @@ class Kemet_Breadcrumb_Trail {
 		// Get the queried post.
 		$post    = get_queried_object();
 		$post_id = get_queried_object_id();
+		$posts_taxonomy 		= kemet_get_option( 'kemet-breadcrumb-posts-taxonomy', 'category' );
 		// If the post has a parent, follow the parent trail.
 		if ( 0 < $post->post_parent )
 			$this->add_post_parents( $post->post_parent );
 		// If the post doesn't have a parent, get its hierarchy based off the post type.
 		else
 			$this->add_post_hierarchy( $post_id );
+		// If the post type is 'post'.
+		if ( 'post' === $post->post_type
+			&& 'none' != $posts_taxonomy ) {
+
+			if ( 'blog' == $posts_taxonomy
+				&& ( 'posts' !== get_option( 'show_on_front' ) && 0 < $post_id ) ) {
+				$page_id = get_option( 'page_for_posts');
+				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $page_id ) ), get_the_title( $page_id ) );
+			} else {
+				$this->add_post_terms( $post_id, $posts_taxonomy );
+			}
+
+		}
 		// Display terms for specific post type taxonomy if requested.
 		if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) )
 			$this->add_post_terms( $post_id, $this->post_taxonomy[ $post->post_type ] );

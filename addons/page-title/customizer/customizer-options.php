@@ -120,4 +120,30 @@
 		)
 	);
 
+	/**
+	 * Option: Breadcrumbs Taxonomy
+	 */
+
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
+				'default'           => kemet_get_option( 'kemet-breadcrumb-posts-taxonomy' ),
+				'type'              => 'option',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			)
+		);
+		$wp_customize->add_control(
+			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
+				'type'     => 'select',
+				'section'  => 'section-page-title-header',
+				'priority' => 20,
+				'label'    => __( 'Posts Taxonomy', 'kemet' ),
+				'choices'  => array(
+					'none' 		=> esc_html__( 'None', 'kemet' ),
+					'category' 	=> esc_html__( 'Category', 'kemet' ),
+					'post_tag' 	=> esc_html__( 'Tag', 'kemet' ),
+					'blog' 		=> esc_html__( 'Blog Page', 'kemet' ),
+				),
+			)
+		);
+
 

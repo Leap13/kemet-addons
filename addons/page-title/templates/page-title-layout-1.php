@@ -10,7 +10,7 @@
  * @package Kemet Addon
  */
 
-//$show_breadcrumb       = Kemet_Ext_Advanced_Headers_Loader::kemet_advanced_headers_layout_option( 'breadcrumb' );
+//$show_breadcrumb       = apply_filters( 'kemet_the_page_title_enabled', true ) ) ;
 //$is_breadcrumb_enabled = '';
 $title                 = kemet_get_the_title();
 $description           = get_the_archive_description();
@@ -35,12 +35,12 @@ $description           = get_the_archive_description();
 				</div>
 				<?php } ?>
 			</div>
-	<?php //if ( $is_breadcrumb_enabled ) { ?>
+	<?php if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) { ?>
 			<div class="kmt-advanced-headers-breadcrumb">
 			<?php kemet_breadcrumb_trail() ?>
 				<?php //Kemet_Ext_Advanced_Headers_Markup::advanced_headers_breadcrumbs_markup(); ?>
 			</div><!-- .kmt-advanced-headers-breadcrumb -->
-	<?php //} ?>
+	<?php } ?>
 		</div>
 	</div>
 </div>

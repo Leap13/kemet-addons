@@ -35,7 +35,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
 		 *  Constructor
 		 */
 		public function __construct() {
-           // add_filter( 'kemet_the_title_enabled', '__return_false' );
+            add_filter( 'kemet_the_title_enabled', '__return_false' );
             add_action( 'kemet_header_after' , array( $this, 'kemet_page_title_markup' ), 9 );
             // add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
              add_action( 'customize_register', array( $this, 'customize_register_before_theme' ) );
@@ -53,7 +53,9 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
         // }
 
         function kemet_page_title_markup() {
+            if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) {
             kemetaddons_get_template( 'page-title/templates/page-title-layout-1.php' );
+            }
 
          }
          function page_title_displayed() {
