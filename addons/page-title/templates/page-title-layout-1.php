@@ -15,14 +15,19 @@
 $title                 = kemet_get_the_title();
 $description           = get_the_archive_description();
 $classes = kemet_get_option( 'page-title-layouts' );
+$alignclass = '';
+$classes .= kemet_get_option( 'page-title-responsive' );
 
 // if ( $show_breadcrumb ) {
 // 	$is_breadcrumb_enabled = $show_breadcrumb;
 // }
+if ( 'page-title-layout-1' == $classes ) {
+	$alignclass = ' ' . kemet_get_option( 'page-title-alignmrent' );
+}
 
 ?>
 <div class="kmt-page-title-addon-content">
-	<div class="kmt-page-title <?php echo esc_attr( $classes ); ?>" >
+	<div class="kmt-page-title <?php echo esc_attr( $classes . $alignclass); ?>" >
 		<div class="kmt-container">
 			<div class="kmt-page-title-wrap">
 				<?php if ( $title ) { ?>
