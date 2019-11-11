@@ -10,24 +10,19 @@
  * @package Kemet Addon
  */
 
-//$show_breadcrumb       = apply_filters( 'kemet_the_page_title_enabled', true ) ) ;
-//$is_breadcrumb_enabled = '';
 $title                 = kemet_get_the_title();
 $description           = get_the_archive_description();
-$classes = kemet_get_option( 'page-title-layouts' );
-$alignclass = '';
-$classes .= kemet_get_option( 'page-title-responsive' );
-
-// if ( $show_breadcrumb ) {
-// 	$is_breadcrumb_enabled = $show_breadcrumb;
-// }
-if ( 'page-title-layout-1' == $classes ) {
-	$alignclass = ' ' . kemet_get_option( 'page-title-alignmrent' );
+$classes []= kemet_get_option( 'page-title-layouts' );
+$classes_responsive = kemet_get_option( 'page-title-responsive' );
+if ( "page-title-layout-1" === kemet_get_option( 'page-title-layouts' )) {
+	$classes []= kemet_get_option( 'page_title_alignment' );
 }
 
+$classes   = implode( ' ', $classes );
+
 ?>
-<div class="kmt-page-title-addon-content">
-	<div class="kmt-page-title <?php echo esc_attr( $classes . $alignclass); ?>" >
+<div class="kmt-page-title-addon-content <?php echo esc_attr( $classes_responsive); ?>">
+	<div class="kmt-page-title <?php echo esc_attr( $classes); ?>" >
 		<div class="kmt-container">
 			<div class="kmt-page-title-wrap">
 				<?php if ( $title ) { ?>

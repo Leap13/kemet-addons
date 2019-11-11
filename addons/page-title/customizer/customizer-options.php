@@ -40,14 +40,14 @@
      * Option: Page Title Alignment
      */
     $wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[page-title-alignmrent]',array(
-					'default'           => kemet_get_option('page-title-alignmrent'),
+			KEMET_THEME_SETTINGS . '[page_title_alignment]',array(
+					'default'           => kemet_get_option('page_title_alignment'),
 					'type'              => 'option',
 					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
 			)
 	);
 	$wp_customize->add_control(
-			KEMET_THEME_SETTINGS . '[page-title-alignmrent]' ,array(
+			KEMET_THEME_SETTINGS . '[page_title_alignment]' ,array(
 					'priority'   => 5,
 					'section'    => 'section-page-title-header',
 					'type'     => 'select',
@@ -310,6 +310,34 @@
           * Option: Page Title Bottom Line width
           */
          $wp_customize->add_setting(
+             KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
+                 'default'           => '',
+                 'type'              => 'option',
+                 'transport'         => 'postMessage',
+                 'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+             )
+         );
+         $wp_customize->add_control(
+             new Kemet_Control_Slider(
+                 $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
+                     'type'        => 'kmt-slider',
+                     'section'     => 'section-page-title-header',
+                     'priority'    => 45,
+                     'label'       => __( 'Bottom Line Height', 'kemet' ),
+                     'suffix'      => '',
+                     'input_attrs' => array(
+                         'min'  => 0,
+                         'max'  => 20,
+                     ),
+                 )
+             )
+		 );
+
+
+		  /**
+          * Option: Page Title Bottom Line width
+          */
+         $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
                  'default'           => '',
                  'type'              => 'option',
@@ -326,9 +354,8 @@
                      'label'       => __( 'Bottom Line width', 'kemet' ),
                      'suffix'      => '',
                      'input_attrs' => array(
-                         'min'  => 20,
-                        // 'step' => 0.01,
-                         'max'  => 150,
+                         'min'  => 0,
+                         'max'  => 300,
                      ),
                  )
              )
@@ -338,7 +365,7 @@
       * Option: Page Title Bottom Line Color
       */
 	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[page-title-bottom-line-color]', array(
+		KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
@@ -347,7 +374,7 @@
 	);
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-bottom-line-color]', array(
+			$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
 				'label'   => __( 'Page Title Bottom Line Color', 'kemet' ),
 				'priority'       => 50,
 				'section' => 'section-page-title-header',
@@ -563,6 +590,61 @@
 				'label'   => __( 'Breadcrumbs Link Hover Color', 'kemet' ),
 				'priority'       => 57,
 				'section' => 'section-breadcrumbs',
+			)
+		)
+	);
+    
+    /**
+      * Option: Breadcrumbs Home Style
+      */
+        $wp_customize->add_setting(
+ 		KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_home]', array(
+ 			'default'           => kemet_get_option( 'kemet_breadcrumbs_home' ),
+ 			'type'              => 'option',
+ 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+ 		)
+ 	);
+
+	$wp_customize->add_control(
+		new Kemet_Control_Radio_Image(
+			$wp_customize, KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_home]', array(
+				'section'  => 'section-breadcrumbs',
+				'priority' => 70,
+				'label'    => __( 'Breadcrumbs Home style', 'kemet' ),
+				'type'     => 'kmt-radio-image',
+				'choices'  => array(
+					'text' => array(
+						'label' => __( 'Text', 'kemet' ),
+						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
+					),
+					'icon' => array(
+						'label' => __( 'Icon', 'kemet' ),
+						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
+					),
+				),
+			)
+		)
+	);
+    
+    /**
+      * Option: Breadcrumbs Prefix Text
+      */
+        $wp_customize->add_setting(
+ 		KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_prefix]', array(
+ 			'default'           => kemet_get_option( 'kemet_breadcrumbs_prefix' ),
+ 			'type'              => 'option',
+ 			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_text_field',
+ 		)
+ 	);
+
+	$wp_customize->add_control(
+		new Kemet_Control_Radio_Image(
+			$wp_customize, KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_prefix]', array(
+				'section'  => 'section-breadcrumbs',
+				'priority' => 70,
+				'label'    => __( 'Breadcrumbs Prefix Text', 'kemet' ),
+				'type'     => 'text',
 			)
 		)
 	);

@@ -24,8 +24,9 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_font_weight        = kemet_get_option( 'page-title-font-weight' );
             $page_title_font_transform        = kemet_get_option( 'pagetitle-text-transform' );
             $page_title_line_height        = kemet_get_option( 'pagetitle-line-height' );
-            $Page_title_bottomline_width         = kemet_get_option( 'page-title-bottomline-width' );
-            $Page_title_bottomline_width         = kemet_get_option( 'page-title-bottom-line-color' );
+            $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
+            $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' );
+            $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
             
             $css_output = array(
                '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
@@ -43,6 +44,11 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'text-transform' => esc_attr( $page_title_font_transform ),
                     'line-height'     => kemet_get_css_value( $page_title_line_height, 'px' ),
                ),
+               '.kemet-page-title::after' => array(
+                   'background-color'  => esc_attr( $Page_title_bottomline_color ),
+                   'height'  => kemet_get_css_value( $Page_title_bottomline_height, 'px' ),
+                   'width'  => kemet_get_css_value( $Page_title_bottomline_width, 'px' ),
+               ),
  
             );
 
@@ -50,20 +56,26 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             
             $tablet_styles = array(
                 '.kmt-page-title-addon-content' => array(
-                    'margin-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'tablet' ),
-                    'margin-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'tablet' ),
-                    'margin-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'tablet' ),
-                    'margin-left'   => kemet_responsive_spacing( $page_title_space, 'left', 'tablet' ),              
+                    'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'tablet' ),
+                    'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'tablet' ),
+                    'padding-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'tablet' ),
+                    'padding-left'   => kemet_responsive_spacing( $page_title_space, 'left', 'tablet' ),              
+                ),
+                 '.kemet-page-title'  => array(
+                    'font-size'      => kemet_responsive_font( $page_title_font_size, 'tablet' ),
                 ),
              );
             $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
             
             $mobile_styles = array(
                 '.kmt-page-title-addon-content' => array(
-                    'margin-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'mobile' ),
-                    'margin-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'mobile' ),
-                    'margin-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'mobile' ),
-                    'margin-left'   => kemet_responsive_spacing( $page_title_space, 'left', 'mobile' ),              
+                    'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'mobile' ),
+                    'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'mobile' ),
+                    'padding-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'mobile' ),
+                    'padding-left'   => kemet_responsive_spacing( $page_title_space, 'left', 'mobile' ),              
+                ),
+                 '.kemet-page-title'  => array(
+                    'font-size'      => kemet_responsive_font( $page_title_font_size, 'mobile' ),
                 ),
              );
             $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );

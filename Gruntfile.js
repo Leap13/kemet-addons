@@ -65,6 +65,8 @@ module.exports = function (grunt) {
                 files: {
                     'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
                     'addons/top-bar-section/assets/js/minified/customizer-preview.min.js': 'addons/top-bar-section/assets/js/unminified/customizer-preview.js',
+                    'addons/page-title/assets/js/minified/customizer-preview.min.js': 'addons/page-title/assets/js/unminified/customizer-preview.js',
+
                 }
             }
         },

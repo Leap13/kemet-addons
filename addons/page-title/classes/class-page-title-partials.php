@@ -43,7 +43,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
              
              add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
              add_action( 'customize_register', array( $this, 'customize_register' ) );
-            // add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
+             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
             // Advanced Header with Merge header action.
 			add_action( 'kemet_before_header_block', array( $this, 'header_merged_with_title' ) );
 
@@ -124,7 +124,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
         function theme_defaults( $defaults ) {
             // Page title Options
             $defaults['page-title-layouts']                 = 'page-title-layout-1';
-            $defaults['page-title-alignmrent']              = 'align-center';
+            $defaults['page_title_alignment']              = 'align-center';
             $defaults['page-title-bg-obj']                  = array(
 				'background-color'      => '#eaeaea',
 				'background-image'      => '',
@@ -142,8 +142,9 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             $defaults['pagetitle-text-transform']           = '';
             $defaults['pagetitle-line-height']              = '';
             $defaults['page-title-responsive']              = 'all-devices';
-            $defaults['pagetitle-bottomline-width']         = '';
-            $defaults['page-title-bottom-line-color']       = '';
+            $defaults['pagetitle-bottomline-height']        = 'px';
+            $defaults['pagetitle-bottomline-width']         = 'px';
+            $defaults['pagetitle-bottomline-color']       = '';
             // Breadcrumbs Defaults
             $defaults['kemet_has_breadcrumbs']              = '';
             $defaults['show-item-title']                    = '';
