@@ -119,7 +119,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-space]', array(
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-page-title-header',
-				'priority'       => 16,
+				'priority'       => 20,
 				'label'          => __( 'Page Title Spacing', 'kemet' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
@@ -148,7 +148,7 @@
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-color]', array(
 				'label'   => __( 'Page Title Color', 'kemet' ),
-				'priority'       => 17,
+				'priority'       => 25,
 				'section' => 'section-page-title-header',
 			)
 		)
@@ -168,7 +168,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
 				'type'        => 'kmt-responsive',
 				'section'     => 'section-page-title-header',
-				'priority'    => 18,
+				'priority'    => 30,
 				'label'       => __( 'Page Title Font Size', 'kemet' ),
 				'input_attrs' => array(
 					'min' => 0,
@@ -197,7 +197,7 @@
                   'type'     => 'kmt-font-family',
                   'label'    => __( 'Font Family', 'kemet' ),
                   'section'  => 'section-page-title-header',
-                  'priority' => 20,
+                  'priority' => 35,
                   'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-weight]',
               )
           )
@@ -219,7 +219,7 @@
                      'type'     => 'kmt-font-weight',
                      'label'    => __( 'Font Weight', 'kemet' ),
                      'section'  => 'section-page-title-header',
-                     'priority' => 25,
+                     'priority' => 40,
                      'connect'  => KEMET_THEME_SETTINGS . '[footer-font-family]',
  
                  )
@@ -242,7 +242,7 @@
                  'section'  => 'section-page-title-header',
                  'label'    => __( 'Text Transform', 'kemet' ),
                  'type'     => 'select',
-                 'priority' => 30,
+                 'priority' => 45,
                  'choices'  => array(
                      ''           => __( 'Inherit', 'kemet' ),
                      'none'       => __( 'None', 'kemet' ),
@@ -269,7 +269,7 @@
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
-                     'priority'    => 35,
+                     'priority'    => 50,
                      'label'       => __( 'Line Height', 'kemet' ),
                      'suffix'      => '',
                      'input_attrs' => array(
@@ -293,7 +293,7 @@
 	);
 	$wp_customize->add_control(
 			KEMET_THEME_SETTINGS . '[page-title-responsive]' ,array(
-					'priority'   => 40,
+					'priority'   => 55,
 					'section'    => 'section-page-title-header',
 					'type'     => 'select',
 					'label'    => __( 'Page Title Visibility', 'kemet' ),
@@ -322,7 +322,7 @@
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
-                     'priority'    => 45,
+                     'priority'    => 60,
                      'label'       => __( 'Bottom Line Height', 'kemet' ),
                      'suffix'      => '',
                      'input_attrs' => array(
@@ -350,7 +350,7 @@
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
-                     'priority'    => 45,
+                     'priority'    => 65,
                      'label'       => __( 'Bottom Line width', 'kemet' ),
                      'suffix'      => '',
                      'input_attrs' => array(
@@ -376,7 +376,7 @@
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
 				'label'   => __( 'Page Title Bottom Line Color', 'kemet' ),
-				'priority'       => 50,
+				'priority'       => 70,
 				'section' => 'section-page-title-header',
 			)
 		)
@@ -417,21 +417,21 @@
 
 
 	/**
-	 * Option: Kemet Breadcrumbs
+	 * Option: Show item title
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[kemet_has_breadcrumbs]', array(
-			'default'           => false,
+		KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
+			'default'           => true,
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[kemet_has_breadcrumbs]', array(
+		KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
 			'label'           => __( 'Enable Breadcrumbs', 'kemet' ),
-            'priority'        => 50,
+            'priority'        => 1,
             
 		)
 	);
@@ -468,7 +468,7 @@
 	$wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[kemet-breadcrumb-separator]', array(
 			'section'  => 'section-breadcrumbs',
-			'priority' => 20,
+			'priority' => 15,
 			'label'    => __( 'Breadcrumbs Separator', 'kemet' ),
 			'type'     => 'text',
 		)

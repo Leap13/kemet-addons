@@ -14,8 +14,6 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_page_title_dynamic_css');
  * @return string
  */
 function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
-           // $page_title_layout        = kemet_get_option( 'page-title-layouts' );
-           // $page_title_alignmrent        = kemet_get_option( 'page-title-alignmrent' );
             $page_title_bg        = kemet_get_option( 'page-title-bg-obj' );
             $page_title_space        = kemet_get_option( 'page-title-space' );
             $page_title_color        = kemet_get_option( 'page-title-color' );
