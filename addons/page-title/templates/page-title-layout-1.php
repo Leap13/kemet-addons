@@ -20,6 +20,21 @@ if ( "page-title-layout-1" === kemet_get_option( 'page-title-layouts' )) {
 
 $classes   = implode( ' ', $classes );
 
+if ( ! function_exists( 'kemet_enabled_breadcrumbs' ) ) {
+
+	function kemet_enabled_breadcrumbs() {
+
+		$return = true;
+
+		if ( true != kemet_get_option( 'breadcrumbs-enabled', true ) ) {
+			$return = false;
+		}
+
+		return apply_filters( 'kemet_display_breadcrumbs', $return );
+
+	}
+
+ }
 ?>
 <div class="kmt-page-title-addon-content <?php echo esc_attr( $classes_responsive); ?>">
 	<div class="kmt-page-title <?php echo esc_attr( $classes); ?>" >
@@ -37,10 +52,8 @@ $classes   = implode( ' ', $classes );
 				<?php } ?>
 			</div>
 	<?php if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) { ?>
-			<div class="kmt-advanced-headers-breadcrumb">
 			<?php kemet_breadcrumb_trail() ?>
 				<?php //Kemet_Ext_Advanced_Headers_Markup::advanced_headers_breadcrumbs_markup(); ?>
-			</div><!-- .kmt-advanced-headers-breadcrumb -->
 	<?php } ?>
 		</div>
 	</div>

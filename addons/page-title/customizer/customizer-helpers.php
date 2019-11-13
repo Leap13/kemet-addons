@@ -1,11 +1,4 @@
 <?php
-function kemet_has_breadcrumbs() {
-	if ( function_exists( 'yoast_breadcrumb' ) ) {
-		return true;
-	} else {
-		return kemet_get_option( 'kemet_has_breadcrumbs', true );
-	}
-}
 
 function kemet_page_title_layout1_style() {
     
@@ -15,22 +8,17 @@ function kemet_page_title_layout1_style() {
 		return false;
 	}
 }
+if ( ! function_exists( 'kemet_enabled_breadcrumbs' ) ) {
 
-// if ( ! function_exists( 'kemet_has_breadcrumbs' ) ) {
+	function kemet_enabled_breadcrumbs() {
 
-// 	function kemet_has_breadcrumbs() {
+		$return = true;
 
-// 		// Return true by default
-// 		$return = true;
+		if ( true != kemet_get_option( 'breadcrumbs-enabled', true ) ) {
+			$return = false;
+		}
 
-// 		// Return false if disabled via Customizer
-// 		if ( true != kemet_get_option( 'kemet_has_breadcrumbs', true ) ) {
-// 			$return = false;
-// 		}
+		return apply_filters( 'kemet_display_breadcrumbs', $return );
 
-// 		// Apply filters and return
-// 		return apply_filters( 'kemet_display_breadcrumbs', $return );
-
-// 	}
-
-// }
+	}
+}

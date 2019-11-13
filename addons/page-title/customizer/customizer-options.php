@@ -339,7 +339,7 @@
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
-                 'default'           => '',
+                 'default'           => '150',
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -457,20 +457,20 @@
 	/**
 	 * Option: Breadcrumbs Separator
 	 */
-	$wp_customize->add_setting(
+
+		$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[kemet-breadcrumb-separator]', array(
 			'default'           => kemet_get_option( 'kemet-breadcrumb-separator' ),
 			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_text_field',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 		)
 	);
 	$wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[kemet-breadcrumb-separator]', array(
-			'section'  => 'section-breadcrumbs',
-			'priority' => 15,
-			'label'    => __( 'Breadcrumbs Separator', 'kemet' ),
 			'type'     => 'text',
+			'section'  => 'section-breadcrumbs',
+			'priority' => 10,
+			'label'    => __( 'Custom Text / HTML', 'kemet' ),
 		)
 	);
 
@@ -604,50 +604,6 @@
  			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
  		)
  	);
-
-	$wp_customize->add_control(
-		new Kemet_Control_Radio_Image(
-			$wp_customize, KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_home]', array(
-				'section'  => 'section-breadcrumbs',
-				'priority' => 70,
-				'label'    => __( 'Breadcrumbs Home style', 'kemet' ),
-				'type'     => 'kmt-radio-image',
-				'choices'  => array(
-					'text' => array(
-						'label' => __( 'Text', 'kemet' ),
-						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
-					),
-					'icon' => array(
-						'label' => __( 'Icon', 'kemet' ),
-						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
-					),
-				),
-			)
-		)
-	);
-    
-    /**
-      * Option: Breadcrumbs Prefix Text
-      */
-        $wp_customize->add_setting(
- 		KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_prefix]', array(
- 			'default'           => kemet_get_option( 'kemet_breadcrumbs_prefix' ),
- 			'type'              => 'option',
- 			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_text_field',
- 		)
- 	);
-
-	$wp_customize->add_control(
-		new Kemet_Control_Radio_Image(
-			$wp_customize, KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_prefix]', array(
-				'section'  => 'section-breadcrumbs',
-				'priority' => 70,
-				'label'    => __( 'Breadcrumbs Prefix Text', 'kemet' ),
-				'type'     => 'text',
-			)
-		)
-	);
 	
 
 

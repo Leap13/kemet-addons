@@ -25,6 +25,11 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
             $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' );
             $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
+            // Breadcrumbs
+            $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
+            $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
+            $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color' );
+            $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
             
             $css_output = array(
                '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
@@ -40,12 +45,27 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'font-weight'    => kemet_get_css_value( $page_title_font_weight, 'font' ),
                     'font-size'      => kemet_responsive_font( $page_title_font_size, 'desktop' ),
                     'text-transform' => esc_attr( $page_title_font_transform ),
-                    'line-height'     => kemet_get_css_value( $page_title_line_height, 'px' ),
+                    'line-height'     => esc_attr( $page_title_line_height),
                ),
                '.kemet-page-title::after' => array(
                    'background-color'  => esc_attr( $Page_title_bottomline_color ),
                    'height'  => kemet_get_css_value( $Page_title_bottomline_height, 'px' ),
                    'width'  => kemet_get_css_value( $Page_title_bottomline_width, 'px' ),
+               ),
+               '.kemet-breadcrumb-trail'  => array (
+                    'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'desktop' ),
+                    'padding-right'  => kemet_responsive_spacing( $breadcrumbs_spacing, 'right', 'desktop' ),
+                    'padding-bottom' => kemet_responsive_spacing( $breadcrumbs_spacing, 'bottom', 'desktop' ),
+                    'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'desktop' ), 
+               ),
+               '.kemet-breadcrumb-trail span'  => array(
+                   'color'  => esc_attr( $breadcrumbs_color ),
+               ),
+               '.kemet-breadcrumb-trail a span'  => array(
+                   'color'  => esc_attr( $breadcrumbs_link_color ),
+               ),
+               '.kemet-breadcrumb-trail a:hover span'  => array(
+                   'color'  => esc_attr( $breadcrumbs_link_h_color ),
                ),
  
             );
@@ -62,6 +82,12 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                  '.kemet-page-title'  => array(
                     'font-size'      => kemet_responsive_font( $page_title_font_size, 'tablet' ),
                 ),
+                '.kemet-breadcrumb-trail'  => array (
+                    'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'tablet' ),
+                    'padding-right'  => kemet_responsive_spacing( $breadcrumbs_spacing, 'right', 'tablet' ),
+                    'padding-bottom' => kemet_responsive_spacing( $breadcrumbs_spacing, 'bottom', 'tablet' ),
+                    'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'tablet' ), 
+               ),
              );
             $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
             
@@ -75,6 +101,12 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                  '.kemet-page-title'  => array(
                     'font-size'      => kemet_responsive_font( $page_title_font_size, 'mobile' ),
                 ),
+                '.kemet-breadcrumb-trail'  => array (
+                    'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'mobile' ),
+                    'padding-right'  => kemet_responsive_spacing( $breadcrumbs_spacing, 'right', 'mobile' ),
+                    'padding-bottom' => kemet_responsive_spacing( $breadcrumbs_spacing, 'bottom', 'mobile' ),
+                    'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'mobile' ), 
+               ),
              );
             $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
             

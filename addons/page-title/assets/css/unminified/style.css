@@ -15,14 +15,14 @@
   background-color: #ccc;
 }
 
-.kmt-advanced-headers-breadcrumb .trail-items, .kmt-advanced-headers-breadcrumb li {
+.kemet-breadcrumb-trail .trail-items, .kemet-breadcrumb-trail li {
   list-style: none;
   display: inline-block;
   margin: 0px;
   padding: 0px;
 }
 
-.kmt-advanced-headers-breadcrumb .breadcrumb-sep {
+.kemet-breadcrumb-trail .breadcrumb-sep {
   padding: 0 0.4em;
 }
 
@@ -31,14 +31,14 @@
   flex-wrap: nowrap;
 }
 
-.page-title-layout-2 .kmt-page-title-wrap, .page-title-layout-2 .kmt-advanced-headers-breadcrumb {
+.page-title-layout-2 .kmt-page-title-wrap, .page-title-layout-2 .kemet-breadcrumb-trail {
   flex-grow: 1;
   text-align: center;
   align-self: center;
   text-align: left;
 }
 
-.page-title-layout-2 .kmt-advanced-headers-breadcrumb {
+.page-title-layout-2 .kemet-breadcrumb-trail {
   text-align: right;
 }
 

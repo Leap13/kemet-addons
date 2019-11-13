@@ -31,6 +31,10 @@
  * @return void
  */
 function kemet_breadcrumb_trail( $args = array() ) {
+	if ( ! kemet_enabled_breadcrumbs()
+		|| is_front_page() ) {
+		return;
+	}
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null, $args );
 	if ( ! is_object( $breadcrumb ) )
 		$breadcrumb = new Kemet_Breadcrumb_Trail( $args );
@@ -142,7 +146,7 @@ class Kemet_Breadcrumb_Trail {
 	public function get_trail() {
 		// Set up variables that we'll need.
         $breadcrumb    = '';
-        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'kemet-breadcrumb-separator', '>' ) );
+        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'kemet-breadcrumb-separator', '»' ) );
 		$separator      = '<span class="breadcrumb-sep">' . $separator . '</span>';
 		$item_count    = count( $this->items );
 		$item_position = 0;
@@ -511,10 +515,13 @@ class Kemet_Breadcrumb_Trail {
 
 		}
 		// Display terms for specific post type taxonomy if requested.
-		if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) )
+		else { if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) ) {
 			$this->add_post_terms( $post_id, $this->post_taxonomy[ $post->post_type ] );
+		}
+		}
 		// End with the post title.
-		if ( $post_title = single_post_title( '', false ) ) {
+		
+		if ( true == kemet_get_option('show-item-title') && $post_title = single_post_title( '', false ) ) {
 			if ( ( 1 < get_query_var( 'page' ) || is_paged() ) || ( get_option( 'page_comments' ) && 1 < absint( get_query_var( 'cpage' ) ) ) )
 				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), $post_title );
 			elseif ( true === $this->args['show_title'] )

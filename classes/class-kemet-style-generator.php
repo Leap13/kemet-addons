@@ -31,7 +31,6 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 		}
 
 		public function __construct() {
-			//add_action( 'kfw_kmt_framework_saved', 'refresh_assets');
 			add_action( 'wp_enqueue_scripts', array( $this, 'merge_all_scripts'));
 		}
 
@@ -64,8 +63,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 				if ( $files_count == $k + 1 ) {
 						$handle = 'kmt-addons-css';
 					}
-				//$merged_style = apply_filters( 'kemet_render_css', $merged_style );
-				// Stash CSS in uploads directory
+
 				require_once( ABSPATH . 'wp-admin/includes/file.php' ); // We will probably need to load this file
 				global $wp_filesystem;
 				$upload_dir = wp_upload_dir(); // Grab uploads folder array
@@ -89,7 +87,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 			$js_files = self::get_js_files();
 			$files_count = count( $js_files );
 			$merged_style	= '';
-			/* new ner */
+
 			if ( $files_count > 0 ) {
 
 			foreach( $js_files as $k => $file) {	
@@ -137,15 +135,6 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 		}
 
 	
-
-		/**
-		 * Used to add enqueue frontend styles.
-		 *
-		 * @since 1.0
-		 * @param string  $src    Source URL.
-		 * @param boolean $handle Script handle.
-		 * @return void
-		 */
 		static public function kmt_add_css( $src = null, $handle = false ) {
 			if ( false != $handle ) {
 				self::$css_files[ $handle ] = $src;
@@ -154,14 +143,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 			}
 		}
 		
-		/**
-		 * Used to enqueue frontend scripts.
-		 *
-		 * @since 1.0
-		 * @param string  $src    Source URL.
-		 * @param boolean $handle Script handle.
-		 * @return void
-		 */
+
 		static public function kmt_add_js( $src = null, $handle = false ) {
 
 			if ( false != $handle ) {

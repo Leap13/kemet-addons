@@ -2,7 +2,7 @@
     padding: 50px 0px;
     background-color: $color-background-page-title;
 }
-.kmt-advanced-headers-breadcrumb {
+.kemet-breadcrumb-trail {
     .trail-items, li {
         list-style: none;
         display: inline-block;
@@ -18,13 +18,13 @@
         display: flex;
         flex-wrap: nowrap;
     }
-    .kmt-page-title-wrap, .kmt-advanced-headers-breadcrumb  {
+    .kmt-page-title-wrap, .kemet-breadcrumb-trail  {
         flex-grow: 1;
         text-align: center;
         align-self: center;
         text-align: left;
     }
-    .kmt-advanced-headers-breadcrumb {
+    .kemet-breadcrumb-trail {
         text-align: right;
     }
 }
