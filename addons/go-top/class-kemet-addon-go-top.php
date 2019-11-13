@@ -7,7 +7,7 @@
  */
 
 define( 'KEMET_GOTOP_DIR', KEMET_ADDONS_DIR . 'addons/go-top/' );
-define( 'KEMET_GOTOP_DIR', KEMET_ADDONS_URL . 'addons/go-top/' );
+define( 'KEMET_GOTOP_URL', KEMET_ADDONS_URL . 'addons/go-top/' );
 
 if ( ! class_exists( 'Kemet_GoTop' ) ) {
 

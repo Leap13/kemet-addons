@@ -75,7 +75,20 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
 
 
         function theme_defaults( $defaults ) {
-
+            $defaults['top-section-1-html']              = '';
+            $defaults['top-section-2-html']                    = '';
+            $defaults['topbar-padding']         = '';
+            $defaults['topbar-bg-color']    = '';
+            $defaults['topbar-font-size']                  = '';
+            $defaults['topbar-text-color']                  = '';
+            $defaults['topbar-bg-color']             = '';
+            $defaults['topbar-link-color']           = '';
+            $defaults['topbar-link-h-color']           = '';
+            $defaults['topbar-border-size']           = '';
+            $defaults['topbar-border-bottom-color']           = '';
+            $defaults['topbar-submenu-bg-color']           = '';
+            $defaults['topbar-submenu-items-color']           = '';
+            $defaults['topbar-submenu-items-h-color']           = '';
 
             return $defaults;
         }

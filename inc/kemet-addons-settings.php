@@ -44,13 +44,12 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => 'Page Title',
         'default' => 'false',
+      ),array(
+        'id' => 'go-top',
+        'type' => 'switcher',
+        'title' => 'Go Top Link',
+        'default' => 'false',
       ),
-      // ),array(
-      //   'id' => 'go-top',
-      //   'type' => 'switcher',
-      //   'title' => 'Go Top Link',
-      //   'default' => 'false',
-      // ),
     ),
   ));
 
