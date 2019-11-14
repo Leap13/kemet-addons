@@ -18,12 +18,12 @@ $wp_customize->add_control(
 		'type'     => 'kmt-sortable',
 		'section'  => 'section-topbar-header',
 		'priority' => 5,
-		'label'    => __( 'Top Section 1', 'kemet' ),
+		'label'    => __( 'Top Section 1', 'kemet-addons' ),
 		'choices'  => array(
-				'search'    => __( 'Search', 'kemet' ),
-				'menu' => __( 'Menu', 'kemet' ),
-				'widget'    => __( 'Widget', 'kemet' ),
-				'text-html' => __( 'Text / HTML', 'kemet' ),
+				'search'    => __( 'Search', 'kemet-addons' ),
+				'menu' => __( 'Menu', 'kemet-addons' ),
+				'widget'    => __( 'Widget', 'kemet-addons' ),
+				'text-html' => __( 'Text / HTML', 'kemet-addons' ),
 		),
 	)
 	)
@@ -34,7 +34,7 @@ $wp_customize->add_control(
 	$wp_customize->add_section(
 		new Kemet_WP_Customize_Section(
 			$wp_customize, 'section-topbar-header', array(
-					'title'    => __( 'Top Bar Header', 'kemet' ),
+					'title'    => __( 'Top Bar Header', 'kemet-addons' ),
 					'panel'    => 'panel-layout',
 					'section'  => 'section-header-group',
 					'priority' => 15,
@@ -57,7 +57,7 @@ $wp_customize->add_control(
 			'type'     => 'textarea',
 			'section'  => 'section-topbar-header',
 			'priority' => 10,
-			'label'    => __( 'Custom Text / HTML', 'kemet' ),
+			'label'    => __( 'Custom Text / HTML', 'kemet-addons' ),
 		)
 	);
 
@@ -84,13 +84,13 @@ $wp_customize->add_control(
 		'type'     => 'kmt-sortable',
 		'section'  => 'section-topbar-header',
 		'priority' => 15,
-		'label'    => __( 'Top  Section 2', 'kemet' ),
+		'label'    => __( 'Top  Section 2', 'kemet-addons' ),
 		'choices'  => 
 			array(
-				'search'    => __( 'Search', 'kemet' ),
-				'menu' => __( 'Menu', 'kemet' ),
-				'widget'    => __( 'Widget', 'kemet' ),
-				'text-html' => __( 'Text / HTML', 'kemet' ),
+				'search'    => __( 'Search', 'kemet-addons' ),
+				'menu' => __( 'Menu', 'kemet-addons' ),
+				'widget'    => __( 'Widget', 'kemet-addons' ),
+				'text-html' => __( 'Text / HTML', 'kemet-addons' ),
 		),
 	)
 					)
@@ -112,7 +112,7 @@ $wp_customize->add_control(
 			'type'     => 'textarea',
 			'section'  => 'section-topbar-header',
 			'priority' => 20,
-			'label'    => __( 'Custom Text / HTML', 'kemet' ),
+			'label'    => __( 'Custom Text / HTML', 'kemet-addons' ),
 		)
 	);
 
@@ -144,14 +144,14 @@ $wp_customize->add_control(
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-topbar-header',
 				'priority'       => 30,
-				'label'          => __( 'Top Bar Padding', 'kemet' ),
+				'label'          => __( 'Top Bar Padding', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
-						'top'    => __( 'Top', 'kemet' ),
-						'right'  => __( 'Right', 'kemet' ),
-						'bottom' => __( 'Bottom', 'kemet' ),
-						'left'   => __( 'Left', 'kemet' ),
+						'top'    => __( 'Top', 'kemet-addons' ),
+						'right'  => __( 'Right', 'kemet-addons' ),
+						'bottom' => __( 'Bottom', 'kemet-addons' ),
+						'left'   => __( 'Left', 'kemet-addons' ),
 				),
 			)
 		)
@@ -172,7 +172,7 @@ $wp_customize->add_control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
                 'priority'       => 31,
                 'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar Background Color', 'kemet' ),
+				'label'   => __( 'Top Bar Background Color', 'kemet-addons' ),
 			)
 		)
 	);
@@ -193,7 +193,7 @@ $wp_customize->add_control(
 				'type'        => 'kmt-responsive',
 				'section'     => 'section-topbar-header',
 				'priority'    => 35,
-				'label'       => __( 'Top Bar Font Size', 'kemet' ),
+				'label'       => __( 'Top Bar Font Size', 'kemet-addons' ),
 				'input_attrs' => array(
 					'min' => 0,
 				),
@@ -220,12 +220,12 @@ $wp_customize->add_control(
 					'priority'   => 36,
 					'section'    => 'section-topbar-header',
 					'type'     => 'select',
-					'label'    => __( 'Top Bar Visibility', 'kemet' ),
+					'label'    => __( 'Top Bar Visibility', 'kemet-addons' ),
 					'choices'  => array(
-							'all-devices'        => __( 'Show On All Devices', 'kemet' ),
-							'hide-tablet'        => __( 'Hide On Tablet', 'kemet' ),
-							'hide-mobile'        => __( 'Hide On Mobile', 'kemet' ),
-							'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet' ),
+							'all-devices'        => __( 'Show On All Devices', 'kemet-addons' ),
+							'hide-tablet'        => __( 'Hide On Tablet', 'kemet-addons' ),
+							'hide-mobile'        => __( 'Hide On Mobile', 'kemet-addons' ),
+							'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet-addons' ),
 					),
 			)
 	);
@@ -245,7 +245,7 @@ $wp_customize->add_control(
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-text-color]', array(
-				'label'   => __( 'Top Bar Text Color', 'kemet' ),
+				'label'   => __( 'Top Bar Text Color', 'kemet-addons' ),
 				'priority'       => 37,
 				'section' => 'section-topbar-header',
 			)
@@ -267,7 +267,7 @@ $wp_customize->add_control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
                 'priority'       => 40,
                 'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar Background Color', 'kemet' ),
+				'label'   => __( 'Top Bar Background Color', 'kemet-addons' ),
 			)
 		)
 	);
@@ -288,7 +288,7 @@ $wp_customize->add_control(
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-link-color]', array(
-				'label'   => __( 'Top Bar Link Color', 'kemet' ),
+				'label'   => __( 'Top Bar Link Color', 'kemet-addons' ),
 				'priority'       => 50,
 				'section' => 'section-topbar-header',
 			)
@@ -309,7 +309,7 @@ $wp_customize->add_control(
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-link-h-color]', array(
-				'label'   => __( 'Top Bar Link Hover Color', 'kemet' ),
+				'label'   => __( 'Top Bar Link Hover Color', 'kemet-addons' ),
 				'priority'       => 55,
 				'section' => 'section-topbar-header',
 			)
@@ -333,14 +333,14 @@ $wp_customize->add_control(
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-topbar-header',
 				'priority'       => 30,
-				'label'          => __( 'Top Bar Border Size', 'kemet' ),
+				'label'          => __( 'Top Bar Border Size', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em'),
 				'choices'        => array(
-						'top'    => __( 'Top', 'kemet' ),
-						'right'  => __( 'Right', 'kemet' ),
-						'bottom' => __( 'Bottom', 'kemet' ),
-						'left'   => __( 'Left', 'kemet' ),
+						'top'    => __( 'Top', 'kemet-addons' ),
+						'right'  => __( 'Right', 'kemet-addons' ),
+						'bottom' => __( 'Bottom', 'kemet-addons' ),
+						'left'   => __( 'Left', 'kemet-addons' ),
 				),
 			)
 		)
@@ -362,7 +362,7 @@ $wp_customize->add_control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-border-bottom-color]', array(
 				'section'  => 'section-topbar-header',
 				'priority' => 65,
-				'label'    => __( 'Top Bar Border Bottom Color', 'kemet' ),
+				'label'    => __( 'Top Bar Border Bottom Color', 'kemet-addons' ),
 			)
 		)
 	);
@@ -382,7 +382,7 @@ $wp_customize->add_control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-submenu-bg-color]', array(
 				'priority'       => 70,
 				'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar SubMenu Background Color', 'kemet' ),
+				'label'   => __( 'Top Bar SubMenu Background Color', 'kemet-addons' ),
 			)
 		)
 	);
@@ -403,7 +403,7 @@ $wp_customize->add_control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-submenu-items-color]', array(
 				'priority'       => 75,
 				'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar SubMenu Items Color', 'kemet' ),
+				'label'   => __( 'Top Bar SubMenu Items Color', 'kemet-addons' ),
 			)
 		)
 	);
@@ -424,7 +424,7 @@ $wp_customize->add_control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-submenu-items-h-color]', array(
 				'priority'       => 80,
 				'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar SubMenu Items Hover Color', 'kemet' ),
+				'label'   => __( 'Top Bar SubMenu Items Hover Color', 'kemet-addons' ),
 			)
 		)
 	);

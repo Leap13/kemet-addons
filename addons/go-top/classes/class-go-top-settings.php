@@ -43,7 +43,7 @@ if (! class_exists('Kemet_Go_Top_Settings')) {
             $wp_customize->add_section(
                 new Kemet_WP_Customize_Section(
                     $wp_customize, 'section-go-top', array(
-                            'title'    => __( 'Go Top Section', 'kemet' ),
+                            'title'    => __( 'Go Top Section', 'kemet-addons' ),
                             'panel'    => 'panel-layout',
                             'section'   => 'section-footer-group',
                             'priority' => 40,

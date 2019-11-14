@@ -37,7 +37,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $wp_customize->add_section(
                 new Kemet_WP_Customize_Section(
                     $wp_customize, 'section-page-title-header', array(
-                            'title'    => __( 'Page Title', 'kemet' ),
+                            'title'    => __( 'Page Title', 'kemet-addons' ),
                             'panel'    => 'panel-layout',
                             'section'  => 'section-header-group',
                             'priority' => 45,
@@ -48,7 +48,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $wp_customize->add_section(
                 new Kemet_WP_Customize_Section(
                     $wp_customize, 'section-breadcrumbs', array(
-                            'title'    => __( 'Breadcrumbs', 'kemet' ),
+                            'title'    => __( 'Breadcrumbs', 'kemet-addons' ),
                             'panel'    => 'panel-layout',
                             'section'  => 'section-header-group',
                             'priority' => 50,

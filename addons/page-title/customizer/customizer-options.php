@@ -24,15 +24,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
 				'section'  => 'section-page-title-header',
 				'priority' => 1,
-				'label'    => __( 'Page Title Layouts', 'kemet' ),
+				'label'    => __( 'Page Title Layouts', 'kemet-addons' ),
 				'type'     => 'kmt-radio-image',
 				'choices'  => array(
 					'page-title-layout-1' => array(
-						'label' => __( 'Logo Left', 'kemet' ),
+						'label' => __( 'Logo Left', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-01.png',
 					),
 					'page-title-layout-2' => array(
-						'label' => __( 'Logo Center', 'kemet' ),
+						'label' => __( 'Logo Center', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-02.png',
 					),
 				),
@@ -55,12 +55,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'priority'   => 5,
 					'section'    => 'section-page-title-header',
 					'type'     => 'select',
-					'label'    => __( 'Page Title Alignment', 'kemet' ),
+					'label'    => __( 'Page Title Alignment', 'kemet-addons' ),
 					'active_callback' => 'kemet_page_title_layout1_style',
 					'choices'  => array(
-							'align-center'        => __( 'Center', 'kemet' ),
-							'align-right'        => __( 'Right', 'kemet' ),
-							'align-left'        => __( 'Left', 'kemet' ),
+							'align-center'        => __( 'Center', 'kemet-addons' ),
+							'align-right'        => __( 'Right', 'kemet-addons' ),
+							'align-left'        => __( 'Left', 'kemet-addons' ),
 					),
 			)
 	);
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'    => 'kmt-background',
 				'section' => 'section-page-title-header',
 				'priority' => 10,
-				'label'   => __( 'Page Title Background', 'kemet' ),
+				'label'   => __( 'Page Title Background', 'kemet-addons' ),
 				)
 			)
 		);
@@ -101,7 +101,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
 				'type'            => 'checkbox',
 				'section'         => 'section-page-title-header',
-				'label'           => __( 'Merge Page title with Main Header', 'kemet' ),
+				'label'           => __( 'Merge Page title with Main Header', 'kemet-addons' ),
 				'priority'        => 15,
 				
 			)
@@ -124,14 +124,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-page-title-header',
 				'priority'       => 20,
-				'label'          => __( 'Page Title Spacing', 'kemet' ),
+				'label'          => __( 'Page Title Spacing', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
-					'top'    => __( 'Top', 'kemet' ),
-					'right'  => __( 'Right', 'kemet' ),
-					'bottom' => __( 'Bottom', 'kemet' ),
-					'left'   => __( 'Left', 'kemet' ),
+					'top'    => __( 'Top', 'kemet-addons' ),
+					'right'  => __( 'Right', 'kemet-addons' ),
+					'bottom' => __( 'Bottom', 'kemet-addons' ),
+					'left'   => __( 'Left', 'kemet-addons' ),
 				),
 			)
 		)
@@ -151,7 +151,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-color]', array(
-				'label'   => __( 'Page Title Color', 'kemet' ),
+				'label'   => __( 'Page Title Color', 'kemet-addons' ),
 				'priority'       => 25,
 				'section' => 'section-page-title-header',
 			)
@@ -173,7 +173,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'        => 'kmt-responsive',
 				'section'     => 'section-page-title-header',
 				'priority'    => 30,
-				'label'       => __( 'Page Title Font Size', 'kemet' ),
+				'label'       => __( 'Page Title Font Size', 'kemet-addons' ),
 				'input_attrs' => array(
 					'min' => 0,
 				),
@@ -199,7 +199,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           new Kemet_Control_Typography(
               $wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-family]', array(
                   'type'     => 'kmt-font-family',
-                  'label'    => __( 'Font Family', 'kemet' ),
+                  'label'    => __( 'Font Family', 'kemet-addons' ),
                   'section'  => 'section-page-title-header',
                   'priority' => 35,
                   'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-weight]',
@@ -221,7 +221,7 @@ if ( ! defined( 'ABSPATH' ) ) {
              new Kemet_Control_Typography(
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-font-weight]', array(
                      'type'     => 'kmt-font-weight',
-                     'label'    => __( 'Font Weight', 'kemet' ),
+                     'label'    => __( 'Font Weight', 'kemet-addons' ),
                      'section'  => 'section-page-title-header',
                      'priority' => 40,
                      'connect'  => KEMET_THEME_SETTINGS . '[footer-font-family]',
@@ -244,15 +244,15 @@ if ( ! defined( 'ABSPATH' ) ) {
          $wp_customize->add_control(
              KEMET_THEME_SETTINGS . '[pagetitle-text-transform]', array(
                  'section'  => 'section-page-title-header',
-                 'label'    => __( 'Text Transform', 'kemet' ),
+                 'label'    => __( 'Text Transform', 'kemet-addons' ),
                  'type'     => 'select',
                  'priority' => 45,
                  'choices'  => array(
-                     ''           => __( 'Inherit', 'kemet' ),
-                     'none'       => __( 'None', 'kemet' ),
-                     'capitalize' => __( 'Capitalize', 'kemet' ),
-                     'uppercase'  => __( 'Uppercase', 'kemet' ),
-                     'lowercase'  => __( 'Lowercase', 'kemet' ),
+                     ''           => __( 'Inherit', 'kemet-addons' ),
+                     'none'       => __( 'None', 'kemet-addons' ),
+                     'capitalize' => __( 'Capitalize', 'kemet-addons' ),
+                     'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
+                     'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
                  ),
              )
          );
@@ -274,7 +274,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
                      'priority'    => 50,
-                     'label'       => __( 'Line Height', 'kemet' ),
+                     'label'       => __( 'Line Height', 'kemet-addons' ),
                      'suffix'      => '',
                      'input_attrs' => array(
                          'min'  => 1,
@@ -300,12 +300,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'priority'   => 55,
 					'section'    => 'section-page-title-header',
 					'type'     => 'select',
-					'label'    => __( 'Page Title Visibility', 'kemet' ),
+					'label'    => __( 'Page Title Visibility', 'kemet-addons' ),
 					'choices'  => array(
-							'all-devices'        => __( 'Show On All Devices', 'kemet' ),
-							'hide-tablet'        => __( 'Hide On Tablet', 'kemet' ),
-							'hide-mobile'        => __( 'Hide On Mobile', 'kemet' ),
-							'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet' ),
+							'all-devices'        => __( 'Show On All Devices', 'kemet-addons' ),
+							'hide-tablet'        => __( 'Hide On Tablet', 'kemet-addons' ),
+							'hide-mobile'        => __( 'Hide On Mobile', 'kemet-addons' ),
+							'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet-addons' ),
 					),
 			)
 	);
@@ -327,7 +327,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
                      'priority'    => 60,
-                     'label'       => __( 'Bottom Line Height', 'kemet' ),
+                     'label'       => __( 'Bottom Line Height', 'kemet-addons' ),
                      'suffix'      => '',
                      'input_attrs' => array(
                          'min'  => 0,
@@ -355,7 +355,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
                      'priority'    => 65,
-                     'label'       => __( 'Bottom Line width', 'kemet' ),
+                     'label'       => __( 'Bottom Line width', 'kemet-addons' ),
                      'suffix'      => '',
                      'input_attrs' => array(
                          'min'  => 0,
@@ -379,7 +379,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
-				'label'   => __( 'Page Title Bottom Line Color', 'kemet' ),
+				'label'   => __( 'Page Title Bottom Line Color', 'kemet-addons' ),
 				'priority'       => 70,
 				'section' => 'section-page-title-header',
 			)
@@ -400,7 +400,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Enable Breadcrumbs', 'kemet' ),
+			'label'           => __( 'Enable Breadcrumbs', 'kemet-addons' ),
             'priority'        => 1,
             
 		)
@@ -419,7 +419,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		KEMET_THEME_SETTINGS . '[show-item-title]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Show Item Title', 'kemet' ),
+			'label'           => __( 'Show Item Title', 'kemet-addons' ),
             'priority'        => 10,
             
 		)
@@ -440,7 +440,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'type'     => 'text',
 			'section'  => 'section-breadcrumbs',
 			'priority' => 10,
-			'label'    => __( 'Custom Text / HTML', 'kemet' ),
+			'label'    => __( 'Custom Text / HTML', 'kemet-addons' ),
 		)
 	);
 
@@ -460,12 +460,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'     => 'select',
 				'section'  => 'section-breadcrumbs',
 				'priority' => 20,
-				'label'    => __( 'Posts Taxonomy', 'kemet' ),
+				'label'    => __( 'Posts Taxonomy', 'kemet-addons' ),
 				'choices'  => array(
-					'none' 		=> esc_html__( 'None', 'kemet' ),
-					'category' 	=> esc_html__( 'Category', 'kemet' ),
-					'post_tag' 	=> esc_html__( 'Tag', 'kemet' ),
-					'blog' 		=> esc_html__( 'Blog Page', 'kemet' ),
+					'none' 		=> esc_html__( 'None', 'kemet-addons' ),
+					'category' 	=> esc_html__( 'Category', 'kemet-addons' ),
+					'post_tag' 	=> esc_html__( 'Tag', 'kemet-addons' ),
+					'blog' 		=> esc_html__( 'Blog Page', 'kemet-addons' ),
 				),
 			)
 		);
@@ -487,14 +487,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-breadcrumbs',
 				'priority'       => 50,
-				'label'          => __( 'Breadcrumbs Spacing', 'kemet' ),
+				'label'          => __( 'Breadcrumbs Spacing', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
-					'top'    => __( 'Top', 'kemet' ),
-					'right'  => __( 'Right', 'kemet' ),
-					'bottom' => __( 'Bottom', 'kemet' ),
-					'left'   => __( 'Left', 'kemet' ),
+					'top'    => __( 'Top', 'kemet-addons' ),
+					'right'  => __( 'Right', 'kemet-addons' ),
+					'bottom' => __( 'Bottom', 'kemet-addons' ),
+					'left'   => __( 'Left', 'kemet-addons' ),
 				),
 			)
 		)
@@ -515,7 +515,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-				'label'   => __( 'Breadcrumbs Text Color', 'kemet' ),
+				'label'   => __( 'Breadcrumbs Text Color', 'kemet-addons' ),
 				'priority'       => 57,
 				'section' => 'section-breadcrumbs',
 			)
@@ -536,7 +536,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-				'label'   => __( 'Breadcrumbs Link Color', 'kemet' ),
+				'label'   => __( 'Breadcrumbs Link Color', 'kemet-addons' ),
 				'priority'       => 57,
 				'section' => 'section-breadcrumbs',
 			)
@@ -557,7 +557,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-				'label'   => __( 'Breadcrumbs Link Hover Color', 'kemet' ),
+				'label'   => __( 'Breadcrumbs Link Hover Color', 'kemet-addons' ),
 				'priority'       => 57,
 				'section' => 'section-breadcrumbs',
 			)

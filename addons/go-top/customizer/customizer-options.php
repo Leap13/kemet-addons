@@ -47,7 +47,7 @@
                 'type'        => 'kmt-slider',
                 'section'     => 'section-go-top',
                 'priority'    => 2,
-                'label'       => __( 'Button Size', 'kemet' ),
+                'label'       => __( 'Button Size', 'kemet-addons' ),
                 'suffix'      => 'px',
                 'input_attrs' => array(
                     'min'  => 0,
@@ -217,10 +217,10 @@
             'type'     => 'select',
             'label'    => __( 'Go Top Link Visibility', 'kemet-addons' ),
             'choices'  => array(
-                'all-devices'        => __( 'Show On All Devices', 'kemet' ),
-                'hide-tablet'        => __( 'Hide On Tablet', 'kemet' ),
-                'hide-mobile'        => __( 'Hide On Mobile', 'kemet' ),
-                'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet' ),
+                'all-devices'        => __( 'Show On All Devices', 'kemet-addons' ),
+                'hide-tablet'        => __( 'Hide On Tablet', 'kemet-addons' ),
+                'hide-mobile'        => __( 'Hide On Mobile', 'kemet-addons' ),
+                'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet-addons' ),
             ),
             'active_callback' => 'kmt_dep_go_top',
         )

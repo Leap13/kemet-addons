@@ -85,7 +85,6 @@ if ( ! class_exists('Kemet_Addons' ) ) {
 		 */
 		function includes() {
             require_once KEMET_ADDONS_DIR.'inc/k-framework/k-framework.php';
-         //   require_once KEMET_ADDONS_DIR.'inc/codestar-framework/codestar-framework.php';
             require_once KEMET_ADDONS_DIR.'inc/functions.php';
         }
         

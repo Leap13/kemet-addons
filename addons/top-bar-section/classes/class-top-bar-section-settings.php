@@ -37,7 +37,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $wp_customize->add_section(
                 new Kemet_WP_Customize_Section(
                     $wp_customize, 'section-topbar-header', array(
-                            'title'    => __( 'Top Bar Section', 'kemet' ),
+                            'title'    => __( 'Top Bar Section', 'kemet-addons' ),
                             'panel'    => 'panel-layout',
                             'section'  => 'section-header-group',
                             'priority' => 15,
