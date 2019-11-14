@@ -49,6 +49,11 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => 'Go Top Link',
         'default' => 'false',
+      // ),array(
+      //   'id' => 'sticky-header',
+      //   'type' => 'switcher',
+      //   'title' => 'Sticky Header',
+      //   'default' => 'false',
       ),
     ),
   ));

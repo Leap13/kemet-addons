@@ -1,0 +1,41 @@
+.sticky-custom-logo-link
+{
+  display: none;
+}
+
+.kmt-is-sticky
+{
+  position: fixed;
+  width: 100%;
+    .sticky-custom-logo-link
+    {
+      display: inline-block;
+    }
+}
+
+.kmt-is-sticky.kmt-sticky-logo .custom-logo-link
+{
+  display: none;
+}
+
+/* Sticky Header Responsive */
+@media only screen and (max-width: 480px) {
+  .sticky-hide-mobile.kmt-is-sticky
+  {
+    position: relative !important;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .sticky-hide-tablet.kmt-is-sticky
+  {
+    position: relative !important;
+  }
+}
+  
+@media only screen and (max-width: 767px) {
+  .sticky-hide-tablet-mobile.kmt-is-sticky
+  {
+    position: relative !important;
+  }
+}

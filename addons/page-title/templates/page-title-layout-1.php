@@ -1,11 +1,7 @@
 <?php
 
 /**
- * The title bar style 1 for our theme.
- *
- * This template generates markup required for the title bar style 1
- *
- * @todo Update this template for Default Advanced Headers Style
+ * Page Title
  *
  * @package Kemet Addon
  */
@@ -20,21 +16,6 @@ if ( "page-title-layout-1" === kemet_get_option( 'page-title-layouts' )) {
 
 $classes   = implode( ' ', $classes );
 
-if ( ! function_exists( 'kemet_enabled_breadcrumbs' ) ) {
-
-	function kemet_enabled_breadcrumbs() {
-
-		$return = true;
-
-		if ( true != kemet_get_option( 'breadcrumbs-enabled', true ) ) {
-			$return = false;
-		}
-
-		return apply_filters( 'kemet_display_breadcrumbs', $return );
-
-	}
-
- }
 ?>
 <div class="kmt-page-title-addon-content <?php echo esc_attr( $classes_responsive); ?>">
 	<div class="kmt-page-title <?php echo esc_attr( $classes); ?>" >

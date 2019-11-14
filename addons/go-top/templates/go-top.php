@@ -1,18 +1,11 @@
 <?php
 /**
- * Template for Go Top Layouout
- * @package     Kemet
- * @author      Kemet
- * @copyright   Copyright (c) 2019, Kemet
- * @link        https://kemet.io/
- * @since       Kemet 1.0.0
+ * Template for Go Top Template
  */
-/**
- * Function to get site Go Top Link
- */
+$gotop_responsive = kemet_get_option( 'go-top-responsive' );
 ?>
-    <div class = 'kmt-go-top-container <?php echo kemet_get_option( 'go-top-responsive' ) ?>'>
-        <button class = "kmt-go-top-link" id = "kmt-go-top">
-            <span>&#8593;</span>
+    <div class="kmt-go-top-container <?php echo esc_attr( $gotop_responsive ); ?>">
+        <button class="kmt-go-top-link" id="kmt-go-top">
+            <span><?php esc_html_e( 'Go Top', 'kemet-addons' ); ?></span>
         </button>
     </div> 

@@ -7,12 +7,6 @@
 
 add_filter( 'kemet_dynamic_css', 'kemet_ext_page_title_dynamic_css');
 
-/**
- * Dynamic CSS
- *
- * @param  string $dynamic_css
- * @return string
- */
 function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_bg        = kemet_get_option( 'page-title-bg-obj' );
             $page_title_space        = kemet_get_option( 'page-title-space' );
@@ -31,7 +25,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color' );
             $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
             
-            $css_output = array(
+            $css_content = array(
                '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
                '.kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'desktop' ),
@@ -70,9 +64,9 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
  
             );
 
-           $parse_css = kemet_parse_css( $css_output );
+           $parse_css = kemet_parse_css( $css_content );
             
-            $tablet_styles = array(
+            $css_tablet = array(
                 '.kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'tablet' ),
                     'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'tablet' ),
@@ -89,9 +83,9 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'tablet' ), 
                ),
              );
-            $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
+            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
-            $mobile_styles = array(
+            $css_mobile = array(
                 '.kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'mobile' ),
                     'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'mobile' ),
@@ -108,7 +102,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'mobile' ), 
                ),
              );
-            $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
+            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             
             return $dynamic_css . $parse_css;
 }

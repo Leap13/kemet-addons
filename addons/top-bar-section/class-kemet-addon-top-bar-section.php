@@ -39,9 +39,10 @@ if ( ! class_exists( 'Kemet_Topbar' ) ) {
 		 */
 		
 		public function __construct() {
-            
-            require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-section-partials.php';
-            
+
+            require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-section-settings.php';
+			require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-section-partials.php';
+		
             if ( ! is_admin() ) {
 				require_once KEMET_TOPBAR_DIR . 'classes/dynamic.css.php';
 			}

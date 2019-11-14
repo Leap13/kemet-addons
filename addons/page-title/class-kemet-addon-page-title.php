@@ -10,11 +10,6 @@ define( 'KEMET_PAGE_TITLE_URL', KEMET_ADDONS_URL . 'addons/page-title/' );
 
 if ( ! class_exists( 'Kemet_Page_Title' ) ) {
 
-	/**
-	 * Meta Box Markup Initial Setup
-	 *
-	 * @since 1.0.0
-	 */
 	class Kemet_Page_Title {
 
 		/**
@@ -39,7 +34,8 @@ if ( ! class_exists( 'Kemet_Page_Title' ) ) {
 		 */
 		
 		public function __construct() {
-            
+
+            require_once KEMET_PAGE_TITLE_DIR . 'classes/class-page-title-settings.php';
 			require_once KEMET_PAGE_TITLE_DIR . 'classes/class-page-title-partials.php';
 			require_once KEMET_PAGE_TITLE_DIR . 'classes/class-kemet-breadcrumbs.php';
             
@@ -53,7 +49,3 @@ if ( ! class_exists( 'Kemet_Page_Title' ) ) {
 	}
     Kemet_Page_Title::get_instance();
 }
-
-/**
-*  Kicking this off by calling 'get_instance()' method
-*/

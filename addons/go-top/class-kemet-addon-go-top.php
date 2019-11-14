@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Kemet Go Top Options
  *
@@ -12,7 +11,7 @@ define( 'KEMET_GOTOP_URL', KEMET_ADDONS_URL . 'addons/go-top/' );
 if ( ! class_exists( 'Kemet_GoTop' ) ) {
 
 	/**
-	 * Meta Box Markup Initial Setup
+	 * Go Top Setup
 	 *
 	 * @since 1.0.0
 	 */
@@ -41,19 +40,15 @@ if ( ! class_exists( 'Kemet_GoTop' ) ) {
 		
 		public function __construct() {
             
-            require_once KEMET_GOTOP_DIR . 'classes/class-go-top-partials.php';
-            
+			require_once KEMET_GOTOP_DIR . 'classes/class-go-top-settings.php';
+			require_once KEMET_GOTOP_DIR . 'classes/class-go-top-partials.php';
+
             if ( ! is_admin() ) {
 				require_once KEMET_GOTOP_DIR . 'classes/dynamic.css.php';
 			}
 		}
-       
-		
 
 	}
+
     Kemet_GoTop::get_instance();
 }
-
-/**
-*  Kicking this off by calling 'get_instance()' method
-*/

@@ -30,9 +30,10 @@
  * @param  array $args Arguments to pass to Breadcrumb_Trail.
  * @return void
  */
+
 function kemet_breadcrumb_trail( $args = array() ) {
-	if ( ! kemet_enabled_breadcrumbs()
-		|| is_front_page() ) {
+	$breadcrumbs_display = kemet_get_option( 'breadcrumbs-enabled', true );
+	if ( true != $breadcrumbs_display || is_front_page() ) {
 		return;
 	}
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null, $args );

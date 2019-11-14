@@ -1,6 +1,6 @@
 <?php
 /**
- * Page Title addon - Dynamic CSS
+ * Go Top - Dynamic CSS
  * 
  * @package Kemet Addons
  */
@@ -22,14 +22,8 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
 			$go_top_bg_h_color             = kemet_get_option('go-top-bg-h-color');
 			$go_top_border_radius          = kemet_get_option('go-top-border-radius');
 			$go_top_button_size            = kemet_get_option('go-top-button-size');
-
-            // Breadcrumbs
-            $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
-            $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
-            $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color' );
-            $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
             
-            $css_output = array(
+            $css_content = array(
                 '.kmt-go-top-link' => array(
 					'background-color' => esc_attr( $go_top_bg_color ),
 					'border-radius'    => kemet_get_css_value( $go_top_border_radius, 'px' ),
@@ -46,23 +40,23 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
  
             );
 
-           $parse_css = kemet_parse_css( $css_output );
+           $parse_css = kemet_parse_css( $css_content );
             
-            $tablet_styles = array(
+            $css_tablet = array(
                 '.kmt-go-top-link' => array(
                     'font-size'    => kemet_responsive_font( $go_top_icon_size, 'tablet' ),
                 ),
 
              );
-            $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
+            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
-            $mobile_styles = array(
+            $css_mobile = array(
                 '.kmt-go-top-link' => array(
                     'font-size'    => kemet_responsive_font( $go_top_icon_size, 'mobile' ),
                 ),
 
              );
-            $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
+            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             
             return $dynamic_css . $parse_css;
 }

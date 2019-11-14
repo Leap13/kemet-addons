@@ -29,6 +29,7 @@
             'priority'        => 1,
 		)
     );
+    
     /**
 	 * Option: Go Top Link Button Size
 	 */

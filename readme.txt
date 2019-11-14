@@ -25,6 +25,10 @@ This plugin works only with: [Kemet WordPress Theme](https://kemet.io/) So you m
 
 Make sure that Kemet WordPress Theme is Installed and activated first as this plugin will work only with it.
 
+== Resources ==
+* Breadcrumbs https://themehybrid.com/plugins/breadcrumb-trail, @author: Justin Tadlock <justin@justintadlock.com>
+ @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
 == Changelog ==
 
 0.1.0 version

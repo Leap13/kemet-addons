@@ -4,6 +4,10 @@
  * 
  * @package Kemet Addons
  */
+// Block direct access to the file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 	/**
      * Option: Page Title Layouts
      */
@@ -381,41 +385,7 @@
 			)
 		)
 	);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		 
-
-
-
-
-
-
-
+	
 	/**
 	 * Option: Show item title
 	 */

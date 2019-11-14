@@ -27,7 +27,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $header6_border_style        = kemet_get_option( 'header6-border-style' );
             $header6_border_color        = kemet_get_option( 'header6-border-color' );
             
-            $css_output = array(     
+            $css_content = array(     
                 '.main-header-container.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),
@@ -70,9 +70,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),     
             );
 
-            $parse_css = kemet_parse_css( $css_output );
+            $parse_css = kemet_parse_css( $css_content );
             
-            $tablet_styles = array(
+            $css_tablet = array(
                 '.main-header-container.logo-menu-icon .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'tablet' ),
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'tablet' ),
@@ -80,9 +80,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'tablet' ),              
                 ),
              );
-           $parse_css .= kemet_parse_css( $tablet_styles, '', '768' );
+           $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
-            $mobile_styles = array(
+            $css_mobile = array(
                 '.main-header-container.logo-menu-icon .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'mobile' ),
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
@@ -90,7 +90,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'mobile' ),              
                 ),
              );
-           $parse_css .= kemet_parse_css( $mobile_styles, '', '544' );
+           $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             
             return $dynamic_css . $parse_css;
 }
