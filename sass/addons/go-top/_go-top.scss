@@ -18,8 +18,8 @@
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     &:before {
-        content: 'O';
-        font-family: 12pc;
+        content: "\e911";
+        font-family: 'kemet-font';
         font-size: 20px;
     }
     span {

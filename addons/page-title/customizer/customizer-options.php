@@ -29,11 +29,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'choices'  => array(
 					'page-title-layout-1' => array(
 						'label' => __( 'Logo Left', 'kemet' ),
-						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
+						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-01.png',
 					),
 					'page-title-layout-2' => array(
 						'label' => __( 'Logo Center', 'kemet' ),
-						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/logo-center.png',
+						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-02.png',
 					),
 				),
 			)
