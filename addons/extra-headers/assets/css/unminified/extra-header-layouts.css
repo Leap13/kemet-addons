@@ -263,6 +263,34 @@
   height: auto;
 }
 
+@media only screen and (max-width: 1220px) {
+  .kmt-header-break-point .header-main-layout-6 .main-header-container {
+    display: flex !important;
+  }
+  .kmt-header-break-point .header-main-layout-6 .menu-icon-social {
+    display: none !important;
+  }
+  .kmt-header-break-point .header-main-layout-6 .main-header-container {
+    flex-direction: row;
+    display: flex;
+  }
+  .kmt-header-break-point .header-main-layout-6 .site-branding {
+    margin-top: 0;
+  }
+  .kmt-header-break-point .header-main-layout-6 .kmt-site-identity {
+    padding: 0;
+  }
+  .kmt-header-break-point .header-main-layout-6 .ss-content {
+    width: auto;
+  }
+  .kmt-header-break-point .header-main-layout-6 .site-branding {
+    padding-left: 20px;
+  }
+  .kmt-header-break-point .kmt-mobile-menu-buttons {
+    padding-right: 20px;
+  }
+}
+
 /*--------------------------------------------------------------
 ## Header 8
 --------------------------------------------------------------*/

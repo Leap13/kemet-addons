@@ -55,6 +55,8 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header6-border-style']            = '';
             $defaults['header6-border-color']            = '';
             //Header8
+            $defaults['header8-position']                = '';
+            $defaults['header8-width']                   = '';
             $defaults['header8-box-shadow']              = '';
             return $defaults;
         }
