@@ -85,7 +85,12 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
                 
                 $classes[] = 'header-main-layout-6';
                 $classes[] = 'kemet-main-header6-align-'. kemet_get_option('header6-position') ;
-            } 
+			} 
+			if((kemet_get_option ('header-layouts') == 'header-main-layout-8') && ( '1' !== $display_header )) {
+                
+                $classes[] = 'header-main-layout-8';
+                $classes[] = 'kemet-main-header8-align-'. kemet_get_option('header8-position') ;
+            }
             return $classes;
 		}
 		
@@ -96,7 +101,11 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
                 if ($header6_has_box_shadow == true) {
                     $classes[] = 'header6-has-box-shadow';
                 }
+				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
 
+                if ($header8_has_box_shadow == true) {
+                    $classes[] = 'header8-has-box-shadow';
+                }
                return $classes;
          }
         

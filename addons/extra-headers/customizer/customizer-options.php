@@ -40,6 +40,10 @@
 						'label' => __( 'Logo Right', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-06.png',
 					),
+					'header-main-layout-8' => array(
+						'label' => __( 'Logo Right', 'kemet-addons' ),
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-06.png',
+					),
 				),
 			)
 		)
@@ -369,5 +373,29 @@
 				'label'    => __( 'Header6 Border Color', 'kemet-addons' ),
                 'active_callback' => 'kemet_header_layout6_style',
 			)
+		)
+	);
+
+
+	//Header8
+	/**
+	 * Option: Enable Box Shadow
+	 * 
+	 */
+	
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
+			'default'           => false,
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-header',
+			'label'           => __( 'Header8 Enable Box Shadow', 'kemet-addons' ),
+            'priority'        => 19,
+            
 		)
 	);

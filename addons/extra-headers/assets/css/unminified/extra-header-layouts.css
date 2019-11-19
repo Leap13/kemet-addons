@@ -262,3 +262,191 @@
   margin: 0px;
   height: auto;
 }
+
+/*--------------------------------------------------------------
+## Header 8
+--------------------------------------------------------------*/
+.admin-bar.header-main-layout-8 .main-header-bar-wrap {
+  margin-top: 33px;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.w-300 {
+  width: 300px !important;
+}
+
+.d-none {
+  display: none;
+}
+
+.header-main-layout-8.header8-has-box-shadow .main-header-bar-wrap {
+  box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-8 .main-header-bar-wrap {
+  width: 60px;
+  position: fixed;
+  top: 0;
+  max-width: 100%;
+  height: 100%;
+  border-bottom: none;
+  z-index: 100;
+  left: 0px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.header-main-layout-8 .kmt-site-identity {
+  padding: 60px 0px;
+}
+
+.header-main-layout-8 .menu-icon-social {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header-main-layout-8 .site-title {
+  display: block;
+}
+
+.header-main-layout-8 .ss-content {
+  overflow-y: hidden;
+}
+
+.header-main-layout-8 .kmt-flex {
+  overflow: hidden;
+}
+
+.header-main-layout-8 .site-branding {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.header-main-layout-8 #site-navigation {
+  display: block;
+}
+
+.header-main-layout-8 #site-navigation li {
+  width: 100%;
+  display: block;
+  float: none;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-main-layout-8 #site-navigation li:last-child {
+  border-bottom: 0px;
+}
+
+.header-main-layout-8 #site-navigation .sub-menu {
+  width: 100%;
+}
+
+.header-main-layout-8 .kmt-sitehead-custom-menu-items {
+  display: block;
+  text-align: center;
+}
+
+.header-main-layout-8.header8-has-box-shadow .main-header-bar-wrap {
+  box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-8 .kmt-search-icon {
+  display: none;
+}
+
+.header-main-layout-8 .kmt-search-menu-icon {
+  position: relative;
+  display: block;
+  right: auto;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+.header-main-layout-8 .kmt-search-menu-icon .search-form {
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.header-main-layout-8 .kmt-search-menu-icon .search-field {
+  width: 100%;
+}
+
+.header-main-layout-8 .kmt-search-menu-icon .search-submit {
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.header-main-layout-8 .main-header-container {
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  display: none;
+}
+
+.header-main-layout-8 .main-navigation,
+.header-main-layout-8 .kmt-main-header-bar-alignment {
+  width: 100%;
+  text-align: center;
+}
+
+.kmt-header-break-point.kemet-main-header8-align-left, .kmt-header-break-point.kemet-main-header8-align-right {
+  padding: 0px;
+}
+
+.kmt-header-break-point .header-main-layout-8 .main-header-bar-wrap {
+  width: 100%;
+  border: 0px !important;
+}
+
+.kmt-header-break-point .header-main-layout-8 .ss-wrapper {
+  position: initial;
+  margin: 0px;
+  height: auto;
+}
+
+@media only screen and (max-width: 1220px) {
+  .kmt-header-break-point .header-main-layout-8 .main-header-container {
+    display: flex !important;
+  }
+  .kmt-header-break-point .header-main-layout-8 .menu-icon-social {
+    display: none !important;
+  }
+  .kmt-header-break-point .header-main-layout-8 .main-header-container {
+    flex-direction: row;
+    display: flex;
+  }
+  .kmt-header-break-point .header-main-layout-8 .site-branding {
+    margin-top: 0;
+  }
+  .kmt-header-break-point .header-main-layout-8 .kmt-site-identity {
+    padding: 0;
+  }
+  .kmt-header-break-point .header-main-layout-8 .ss-content {
+    width: auto;
+  }
+  .kmt-header-break-point .header-main-layout-8 .site-branding {
+    padding-left: 20px;
+  }
+  .kmt-header-break-point .kmt-mobile-menu-buttons {
+    padding-right: 20px;
+  }
+}
+
+/*# sourceMappingURL=extra-header-layouts.css.map */
