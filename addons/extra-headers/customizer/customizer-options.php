@@ -294,7 +294,7 @@
 			'section'         => 'section-header',
 			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
             'priority'        => 19,
-            
+			'active_callback' => 'kemet_header_layout6_style',	
 		)
 	);
 	
@@ -379,27 +379,6 @@
 
 	//Header8
 	/**
-	 * Option: Enable Box Shadow
-	 * 
-	 */
-	
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
-			'default'           => false,
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-header',
-			'label'           => __( 'Header8 Enable Box Shadow', 'kemet-addons' ),
-            'priority'        => 19,
-            
-		)
-	);
-	/**
 	 * Option: Header6 Position
 	 */
 	$wp_customize->add_setting(
@@ -428,7 +407,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[header6-width]', array(
-			'default'           => 300,
+			'default'           => 60,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
@@ -457,9 +436,28 @@
 				'input_attrs' => array(
 					'min'  => 60,
 					'step' => 1,
-					'max'  => 400,
+					'max'  => 150,
 				),
                 'active_callback' => 'kemet_header_layout8_style',
 			)
+		)
+	);
+	/**
+	 * Option: Enable Box Shadow
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
+			'default'           => false,
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-header',
+			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
+            'priority'        => 19,
+			'active_callback' => 'kemet_header_layout8_style',	
 		)
 	);

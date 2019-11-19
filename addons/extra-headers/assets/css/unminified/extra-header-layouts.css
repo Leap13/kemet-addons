@@ -164,7 +164,6 @@
   height: 100%;
   border-bottom: none;
   z-index: 100;
-  left: 0px;
 }
 
 .header-main-layout-6 .kmt-site-identity {
@@ -196,8 +195,20 @@
   text-align: center;
 }
 
-.header-main-layout-6.header6-has-box-shadow .main-header-bar-wrap {
+.header-main-layout-6.has-box-shadow.header6-align-right .main-header-bar-wrap {
+  box-shadow: -2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-6.has-box-shadow.header6-align-left .main-header-bar-wrap {
   box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-6.header6-align-right .main-header-bar-wrap {
+  right: 0;
+}
+
+.header-main-layout-6.header6-align-left .main-header-bar-wrap {
+  left: 0;
 }
 
 .header-main-layout-6 .kmt-search-icon {
@@ -282,6 +293,7 @@
   }
   .kmt-header-break-point .header-main-layout-6 .ss-content {
     width: auto;
+    overflow: hidden;
   }
   .kmt-header-break-point .header-main-layout-6 .site-branding {
     padding-left: 20px;
@@ -310,8 +322,24 @@
   display: none;
 }
 
-.header-main-layout-8.header8-has-box-shadow .main-header-bar-wrap {
+.header-main-layout-8 {
+  position: relative;
+}
+
+.header-main-layout-8.has-box-shadow.header8-align-right .main-header-bar-wrap {
+  box-shadow: -2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-8.has-box-shadow.header8-align-left .main-header-bar-wrap {
   box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
+}
+
+.header-main-layout-8.header8-align-right .main-header-bar-wrap {
+  right: 0;
+}
+
+.header-main-layout-8.header8-align-left .main-header-bar-wrap {
+  left: 0;
 }
 
 .header-main-layout-8 .main-header-bar-wrap {
@@ -322,7 +350,6 @@
   height: 100%;
   border-bottom: none;
   z-index: 100;
-  left: 0px;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
@@ -379,10 +406,6 @@
 .header-main-layout-8 .kmt-sitehead-custom-menu-items {
   display: block;
   text-align: center;
-}
-
-.header-main-layout-8.header8-has-box-shadow .main-header-bar-wrap {
-  box-shadow: 2px 0 4px 2px rgba(0, 0, 0, 0.15);
 }
 
 .header-main-layout-8 .kmt-search-icon {

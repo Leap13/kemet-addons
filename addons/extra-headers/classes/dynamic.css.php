@@ -26,6 +26,8 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $header6_border_width        = kemet_get_option( 'header6-border-width' );
             $header6_border_style        = kemet_get_option( 'header6-border-style' );
             $header6_border_color        = kemet_get_option( 'header6-border-color' );
+            $header8_position               = kemet_get_option( 'header6-position' );
+            
             
             $header8_width               = kemet_get_option( 'header8-width' );
 
@@ -69,7 +71,10 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.kemet-main-header6-align-left' => array(
                     'padding-left' => kemet_get_css_value( $header6_width , 'px'),
-                ),  
+                ), 
+                '.header-main-layout-8 .main-header-bar-wrap' => array(
+                    'width' => kemet_get_css_value( $header8_width, 'px' ),
+                ), 
                 '.kemet-main-header8-align-right' => array(
                     'padding-right' => kemet_get_css_value( $header8_width , 'px'),
                 ),
