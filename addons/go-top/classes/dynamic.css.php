@@ -31,7 +31,9 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
 					'height'           => kemet_get_css_value( $go_top_button_size,'px' ),
 					'line-height'      => kemet_get_css_value( $go_top_button_size,'px'),
 					'color'            => esc_attr($go_top_icon_color),
-					'font-size'        => kemet_responsive_font( $go_top_icon_size, 'desktop' ),
+				),
+				'.kmt-go-top-link:before' => array(
+					'font-size'      => kemet_responsive_font( $go_top_icon_size, 'desktop' ),
 				),
 				'.kmt-go-top-link:hover' => array(
 					'color'            => esc_attr($go_top_icon_h_color),
@@ -43,7 +45,7 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
            $parse_css = kemet_parse_css( $css_content );
             
             $css_tablet = array(
-                '.kmt-go-top-link' => array(
+                '.kmt-go-top-link:before' => array(
                     'font-size'    => kemet_responsive_font( $go_top_icon_size, 'tablet' ),
                 ),
 
@@ -51,7 +53,7 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
             $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
             $css_mobile = array(
-                '.kmt-go-top-link' => array(
+                '.kmt-go-top-link:before' => array(
                     'font-size'    => kemet_responsive_font( $go_top_icon_size, 'mobile' ),
                 ),
 

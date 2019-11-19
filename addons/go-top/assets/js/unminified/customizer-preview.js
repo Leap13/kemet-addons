@@ -1,6 +1,6 @@
 (function ($) {
 
-    kemet_responsive_font_size('kemet-settings[go-top-icon-size]', '.kmt-go-top-link', 'px');
+    kemet_responsive_font_size('kemet-settings[go-top-icon-size]', '.kmt-go-top-link:before', 'px');
     kemet_css('kemet-settings[go-top-icon-color]', 'color', ' .kmt-go-top-link');
     kemet_css('kemet-settings[go-top-icon-h-color]', 'color', ' .kmt-go-top-link:hover');
     kemet_css('kemet-settings[go-top-bg-color]', 'color', '.kmt-go-top-link');
