@@ -7,7 +7,6 @@
 }
 .header-main-layout-6 {
     .main-header-bar-wrap {
-        width: 300px;
         position: fixed;
         top: 0;
         max-width: 100%;
@@ -58,37 +57,7 @@
             left: 0;
         }
     }
-    .kmt-search-icon {
-        display: none;
-    }
-    .kmt-search-menu-icon {
-        position: relative;
-        display: block;
-        right: auto;
-        visibility: visible;
-        opacity: 1;
-        -webkit-transform: none;
-        -ms-transform: none;
-        transform: none;
-        .search-form {
-        padding: 0;
-        display: block;
-        overflow: hidden;
-        }
-        .search-field {
-        width: 100%;
-        }
-        .search-submit {
-        display: block;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        right: 0;
-        padding: 0 1em;
-        -webkit-border-radius: 0;
-        border-radius: 0;
-        }
-    }
+    
     .main-header-container {
         justify-content: center;
         flex-direction: column;
@@ -99,8 +68,122 @@
         width: 100%;
         text-align: center;
     }
+    &.top-bar-search-box{
+        .kemet-top-header-section{
+            .kmt-search-icon{
+                display: none;
+            }
+            .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                .search-submit{
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    -webkit-border-radius: 0;
+                    border-radius: 0;
+                }
+                .search-field {
+                    width: 100%;
+                    margin: 0;
+                }
+                .search-form {
+                    padding: 0;
+                    display: block;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    
+    &.top-bar-search-icon{
+        .kmt-search-menu-icon{
+            visibility: hidden;
+            opacity: 0;
+            z-index: 10;
+            right: auto;
+            .search-submit{
+                display: none;
+            }
+        }
+        .kemet-top-header-section{
+            .kmt-search-icon{
+                display: block;
+            }
+            .kmt-dropdown-active{
+                visibility: visible;
+                opacity: 1;
+            }
+        }   
+    }
+    &.search-box{
+        #site-navigation{
+            .kmt-search-icon{
+                display: none;
+            }
+            .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                .search-submit{
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    -webkit-border-radius: 0;
+                    border-radius: 0;
+                }
+                .search-field {
+                    width: 100%;
+                    margin: 0
+                }
+                .search-form {
+                    padding: 0;
+                    display: block;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+            }
+        }    
+    }
+    &.search-icon{
+        #site-navigation{
+            .kmt-search-icon{
+                display: block;
+            }
+            .kmt-search-menu-icon{
+                visibility: hidden;
+                opacity: 0;
+                transform: translate(-24% , 80%);
+                .search-submit{
+                    display: none;
+                }
+                form{
+                    &:before{
+                        right: 40%;
+                        left: auto;
+                    }
+                }
+            }
+            .kmt-dropdown-active{
+                visibility: visible;
+                opacity: 1;
+            }
+        } 
+    }
 }
-.kmt-header-break-point {
+.kmt-header-break-point{
     &.kemet-main-header6-align-left, &.kemet-main-header6-align-right {
         padding: 0px;
     }
@@ -115,37 +198,36 @@
         height: auto;
         }
      }
-}
-@media only screen and (max-width: 1220px){
-    .kmt-header-break-point{
-        .header-main-layout-6{
-            .main-header-container{
-                display: flex !important;
-            }
-            .menu-icon-social{
-                display: none !important;
-            }
-            .main-header-container{
-                flex-direction: row;
-                display: flex;
-                
-            }
-            .site-branding{
-                margin-top: 0;
-            }
-            .kmt-site-identity{
-                padding: 0;
-            }
-            .ss-content{
-                width: auto;
-                overflow: hidden;
-            }
-            .site-branding{
-                padding-left: 20px;
-            }
+    .header-main-layout-6{
+        .main-header-container{
+            display: flex !important;
         }
-        .kmt-mobile-menu-buttons{
-            padding-right: 20px;
+        .menu-icon-social{
+            display: none !important;
         }
+        .main-header-container{
+            flex-direction: row;
+            display: flex;
+            
+        }
+        .site-branding{
+            margin-top: 0;
+        }
+        .kmt-site-identity{
+            padding: 0;
+        }
+        .ss-content{
+            width: auto;
+            overflow: hidden;
+        }
+        .site-branding{
+            padding-left: 20px;
+        }
+        .ss-wrapper{
+            box-shadow: 0px 2px 4px 0px rgba(0,0,0,.15) !important;
+        }
+    }
+    .kmt-mobile-menu-buttons{
+        padding-right: 20px;
     }
 }

@@ -60,12 +60,6 @@
     .site-title{
         display: block;
     }
-    .ss-content{
-        overflow-y: hidden;
-    }
-    .kmt-flex{
-        overflow: hidden;
-    }
     .site-branding{
         margin-top: 100px;
         text-align: center;
@@ -93,34 +87,7 @@
     .kmt-search-icon {
         display: none;
     }
-    .kmt-search-menu-icon {
-        position: relative;
-        display: block;
-        right: auto;
-        visibility: visible;
-        opacity: 1;
-        -webkit-transform: none;
-        -ms-transform: none;
-        transform: none;
-        .search-form {
-        padding: 0;
-        display: block;
-        overflow: hidden;
-        }
-        .search-field {
-        width: 100%;
-        }
-        .search-submit {
-        display: block;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        right: 0;
-        padding: 0 1em;
-        -webkit-border-radius: 0;
-        border-radius: 0;
-        }
-    }
+    
     .main-header-container {
         justify-content: center;
         flex-direction: column;
@@ -132,8 +99,179 @@
         width: 100%;
         text-align: center;
     }
+    &.top-bar-search-box{
+        .kemet-top-header-section{
+            .kmt-search-icon{
+                display: none;
+            }
+            .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                .search-submit{
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    -webkit-border-radius: 0;
+                    border-radius: 0;
+                }
+                .search-field {
+                    width: 100%;
+                    margin: 0;
+                }
+                .search-form {
+                    padding: 0;
+                    display: block;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    
+    &.top-bar-search-icon{
+        .kmt-search-menu-icon{
+            visibility: hidden;
+            opacity: 0;
+            z-index: 10;
+            right: auto;
+            .search-submit{
+                display: none;
+            }
+        }
+        .kemet-top-header-section{
+            .kmt-search-icon{
+                display: block;
+            }
+            .kmt-dropdown-active{
+                visibility: visible;
+                opacity: 1;
+            }
+        }   
+    }
+    &.search-box{
+        #site-navigation{
+            .kmt-search-icon{
+                display: none;
+            }
+            .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                .search-submit{
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    -webkit-border-radius: 0;
+                    border-radius: 0;
+                }
+                .search-field {
+                    width: 100%;
+                    margin: 0
+                }
+                .search-form {
+                    padding: 0;
+                    display: block;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+            }
+        }    
+    }
+    &.search-icon{
+        #site-navigation{
+            .kmt-search-icon{
+                display: block;
+            }
+            .kmt-search-menu-icon{
+                visibility: hidden;
+                opacity: 0;
+                .search-submit{
+                    display: none;
+                }
+                form{
+                    &:before{
+                        right: 85%;
+                        left: auto;
+                    }
+                }
+            }
+            .kmt-dropdown-active{
+                visibility: visible;
+                opacity: 1;
+            }
+        } 
+    }
 }
-.kmt-header-break-point {
+.kemet-top-header-section-1{
+    .kmt-search-menu-icon {
+        form{
+            &:before{
+                right: 85%;
+                left: auto;
+            }
+        }
+    }
+}
+.kemet-top-header-section-2{
+    .kmt-search-menu-icon{
+        form{
+            &:before{
+                left: 85%;
+                right: auto;
+            }
+        }
+    }
+}
+
+.kemet-top-header-section{
+    .kmt-search-menu-icon{
+        .search-field{
+            background-color: #fff;
+        }
+    }
+}
+
+.kmt-header-break-point{
+    .header-main-layout-8{
+        .main-header-container{
+            display: flex !important;
+        }
+        .menu-icon-social{
+            display: none !important;
+        }
+        .main-header-container{
+            flex-direction: row;
+            display: flex;
+            
+        }
+        .site-branding{
+            margin-top: 0;
+        }
+        .kmt-site-identity{
+            padding: 0;
+        }
+        .ss-content{
+            overflow: hidden;
+            width: auto;
+        }
+        .site-branding{
+            padding-left: 20px;
+        }
+    }
+    .kmt-mobile-menu-buttons{
+        padding-right: 20px;
+    }
     &.kemet-main-header8-align-left, &.kemet-main-header8-align-right {
         padding: 0px;
     }
@@ -148,37 +286,4 @@
         height: auto;
         }
      }
-}
-
-@media only screen and (max-width: 1220px){
-    .kmt-header-break-point{
-        .header-main-layout-8{
-            .main-header-container{
-                display: flex !important;
-            }
-            .menu-icon-social{
-                display: none !important;
-            }
-            .main-header-container{
-                flex-direction: row;
-                display: flex;
-                
-            }
-            .site-branding{
-                margin-top: 0;
-            }
-            .kmt-site-identity{
-                padding: 0;
-            }
-            .ss-content{
-                width: auto;
-            }
-            .site-branding{
-                padding-left: 20px;
-            }
-        }
-        .kmt-mobile-menu-buttons{
-            padding-right: 20px;
-        }
-    }
 }

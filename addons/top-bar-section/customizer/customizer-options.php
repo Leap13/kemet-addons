@@ -428,3 +428,26 @@ $wp_customize->add_control(
 			)
 		)
 	);
+
+	/**
+	 * Option: Search Style
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
+			'default'           => 'search-box',
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
+			'type'     => 'select',
+			'section'  => 'section-topbar-header',
+			'priority' => 10,
+			'label'    => __( 'Search Style', 'kemet-addons' ),
+			'choices'  => array(
+				'search-box'    => __( 'Search Box', 'kemet-addons' ),
+				'search-icon'   => __( 'Icon', 'kemet-addons' ),
+			),
+		)
+	);	

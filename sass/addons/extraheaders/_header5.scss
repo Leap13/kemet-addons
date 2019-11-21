@@ -120,4 +120,160 @@
     .main-header-menu ul.sub-menu {
     width: 100%;
     }
+    &.top-bar-search-box{
+        .kemet-top-header-section{
+            .kmt-search-icon{
+                display: none;
+            }
+            .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                .search-submit{
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    -webkit-border-radius: 0;
+                    border-radius: 0;
+                }
+                .search-field {
+                    width: 100%;
+                    margin: 0;
+                }
+                .search-form {
+                    padding: 0;
+                    display: block;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    
+    &.top-bar-search-icon{
+        .kmt-search-menu-icon{
+            visibility: hidden;
+            opacity: 0;
+            z-index: 10;
+            right: auto;
+            .search-submit{
+                display: none;
+            }
+        }
+        .kemet-top-header-section{
+            .kmt-search-icon{
+                display: block;
+            }
+            .kmt-dropdown-active{
+                visibility: visible;
+                opacity: 1;
+            }
+        }   
+    }
+    &.search-box{
+        #site-navigation{
+            .kmt-search-icon{
+                display: none;
+            }
+            .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                .search-submit{
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    -webkit-border-radius: 0;
+                    border-radius: 0;
+                }
+                .search-field {
+                    width: 100%;
+                    margin: 0
+                }
+                .search-form {
+                    padding: 0;
+                    display: block;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+            }
+        }    
+    }
+    &.search-icon{
+        #site-navigation{
+            .kmt-search-icon{
+                display: block;
+            }
+            .kmt-search-menu-icon{
+                visibility: hidden;
+                opacity: 0;
+                .search-submit{
+                    display: none;
+                }
+                form{
+                    &:before{
+                        right: 85%;
+                        left: auto;
+                    }
+                }
+            }
+            .kmt-dropdown-active{
+                visibility: visible;
+                opacity: 1;
+            }
+        } 
+    }
+    
+}
+
+.kemet-top-header-section-1{
+    .kmt-search-menu-icon {
+        form{
+            &:before{
+                right: 85%;
+                left: auto;
+            }
+        }
+    }          
+}
+
+.kemet-top-header-section{
+    .kmt-search-menu-icon{
+        .search-field{
+            background-color: #fff;
+        }
+    }
+}
+.kmt-header-break-point{
+    @media (max-width: 767px){
+        .kemet-top-header-section-2{
+            .kmt-search-menu-icon{
+                form{
+                    &:before{
+                        left: auto;
+                        right: 85%;
+                    }
+                }
+            }
+        }        
+    }
+    .kemet-top-header-section{
+        .kmt-search-menu-icon{
+            @media (max-width: 767px) {
+                left: 0;
+                right: auto;
+            }
+        }
+    }
+    
 }
