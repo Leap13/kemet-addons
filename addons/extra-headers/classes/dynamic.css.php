@@ -34,6 +34,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $search_btn_bg_color         = kemet_get_option('search-btn-bg-color'); 
             $search_btn_h_bg_color       = kemet_get_option('search-btn-h-bg-color'); 
             $search_btn_color            = kemet_get_option('search-btn-color'); 
+            $search_border_color         = Kemet_get_option('search-border-color');
             $css_content = array(     
                 '.main-header-container.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
@@ -60,6 +61,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.kmt-search-menu-icon .search-submit' => array(
                     'background-color' => esc_attr($search_btn_bg_color),
                     'color' => esc_attr($search_btn_color),
+                ),
+                '.kmt-search-menu-icon form' => array(
+                    'border-color' => esc_attr($search_border_color),
                 ),
                 '.kmt-search-menu-icon .search-submit:hover' => array(
 					'background-color' => esc_attr($search_btn_h_bg_color),

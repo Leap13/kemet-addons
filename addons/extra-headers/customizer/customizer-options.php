@@ -324,7 +324,27 @@
 		  $wp_customize, KEMET_THEME_SETTINGS . '[search-btn-color]', array(
 			'label'   => __( 'Search Button Color', 'kemet-addons' ),
 			'section' => 'section-header',
-			'priority' => 19,
+			'priority' => 16,
+		  )
+		)
+	);
+	/**
+   	* Option: Search Border Color
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[search-border-color]', array(
+		  'default'           => '',
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[search-border-color]', array(
+			'label'   => __( 'Search Border Color', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 16,
 		  )
 		)
 	);
