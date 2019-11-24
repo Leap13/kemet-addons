@@ -72,6 +72,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
+                    'addons/extra-headers/assets/js/minified/customizer-preview.min.js': 'addons/extra-headers/assets/js/unminified/customizer-preview.js',
                     'addons/top-bar-section/assets/js/minified/customizer-preview.min.js': 'addons/top-bar-section/assets/js/unminified/customizer-preview.js',
                     'addons/page-title/assets/js/minified/customizer-preview.min.js': 'addons/page-title/assets/js/unminified/customizer-preview.js',
                     'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',

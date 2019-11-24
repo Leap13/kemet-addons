@@ -296,6 +296,10 @@
   margin-top: 33px;
 }
 
+.header-main-layout-6 .main-header-bar-navigation {
+  width: 100%;
+}
+
 .header-main-layout-6 .main-header-bar-wrap {
   position: fixed;
   top: 0;

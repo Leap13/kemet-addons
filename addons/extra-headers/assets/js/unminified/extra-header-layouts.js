@@ -15,6 +15,6 @@ $('.header-main-layout-8 .main-header-bar-wrap').mouseleave(function(){
     $('.header-main-layout-8 .main-header-container').removeClass('d-block');
     $('.header-main-layout-8 .main-header-bar-wrap').removeClass('w-300');
     $('.header-main-layout-8 .menu-icon-social .menu-icon').removeClass('d-none open');
-  },1000);
+  },2000);
 });
 })(jQuery);

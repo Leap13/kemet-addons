@@ -284,7 +284,7 @@
 		  $wp_customize, KEMET_THEME_SETTINGS . '[search-btn-bg-color]', array(
 			'label'   => __( 'Search Button Background Color', 'kemet-addons' ),
 			'section' => 'section-header',
-			'priority' => 17,
+			'priority' => 16,
 		  )
 		)
 	);
@@ -304,7 +304,7 @@
 		  $wp_customize, KEMET_THEME_SETTINGS . '[search-btn-h-bg-color]', array(
 			'label'   => __( 'Search Button Hover', 'kemet-addons' ),
 			'section' => 'section-header',
-			'priority' => 18,
+			'priority' => 16,
 		  )
 		)
 	);
