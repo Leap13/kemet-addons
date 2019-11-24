@@ -239,7 +239,7 @@
 		KEMET_THEME_SETTINGS . '[search-style]', array(
 			'type'     => 'select',
 			'section'  => 'section-header',
-			'priority' => 15,
+			'priority' => 16,
 			'label'    => __( 'Search Style', 'kemet-addons' ),
 			'choices'  => array(
 				'search-box'    => __( 'Search Box', 'kemet-addons' ),
@@ -248,6 +248,86 @@
             'active_callback' => 'kemet_header_layoutall_style',
 		)
 	);	
+
+	/**
+	 * Option: Search Box Shadow
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[search-box-shadow]', array(
+			'default'           => false,
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[search-box-shadow]', array(
+			'type'     => 'checkbox',
+			'section'  => 'section-header',
+			'priority' => 16,
+			'label'    => __( 'Enable Search Box Shadow', 'kemet-addons' ),
+            'active_callback' => 'kemet_header_layoutall_style',
+		)
+	);	
+	/**
+   	* Option: Search Button Background Color
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[search-btn-bg-color]', array(
+		  'default'           => '',
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[search-btn-bg-color]', array(
+			'label'   => __( 'Search Button Background Color', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 17,
+		  )
+		)
+	);
+	/**
+   	* Option: Search Button Hover Background Color
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[search-btn-h-bg-color]', array(
+		  'default'           => '',
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[search-btn-h-bg-color]', array(
+			'label'   => __( 'Search Button Hover', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 18,
+		  )
+		)
+	);
+	/**
+   	* Option: Search Button Color
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[search-btn-color]', array(
+		  'default'           => '',
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[search-btn-color]', array(
+			'label'   => __( 'Search Button Color', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 19,
+		  )
+		)
+	);
 	/**
 	 * Option: Header6 Position
 	 */

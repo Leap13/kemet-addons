@@ -135,15 +135,6 @@
     }
     
     &.top-bar-search-icon{
-        .kmt-search-menu-icon{
-            visibility: hidden;
-            opacity: 0;
-            z-index: 10;
-            right: auto;
-            .search-submit{
-                display: none;
-            }
-        }
         .kemet-top-header-section{
             .kmt-search-icon{
                 display: block;
@@ -151,6 +142,13 @@
             .kmt-dropdown-active{
                 visibility: visible;
                 opacity: 1;
+            }
+            .kmt-search-menu-icon{
+                z-index: 10;
+                right: auto;
+                .search-submit{
+                    display: none;
+                }
             }
         }   
     }
@@ -160,11 +158,12 @@
                 display: none;
             }
             .kmt-search-menu-icon{
-                visibility: visible;
-                opacity: 1;
-                position: relative;
-                display: block;
-                transform: none;
+                    visibility: visible;
+                    opacity: 1;
+                    position: relative;
+                    display: block;
+                    transform: none;
+                    right: 0;
                 .search-submit{
                     display: block;
                     position: absolute;
@@ -194,14 +193,13 @@
                 display: block;
             }
             .kmt-search-menu-icon{
-                visibility: hidden;
-                opacity: 0;
+                    top: 10%;
                 .search-submit{
                     display: none;
                 }
                 form{
                     &:before{
-                        right: 85%;
+                        right: 40%;
                         left: auto;
                     }
                 }
@@ -211,6 +209,13 @@
                 opacity: 1;
             }
         } 
+    }
+    &.search-box-shadow{
+        .kmt-search-menu-icon{
+            form{
+                box-shadow: 0 3px 13px 0 rgba(0,0,0,.2);
+            }
+        }
     }
 }
 .kemet-top-header-section-1{
@@ -276,6 +281,16 @@
         padding: 0px;
     }
     .header-main-layout-8{
+        &.search-icon{
+            #site-navigation{
+                .kmt-search-menu-icon{
+                    right: 36%;
+                    @media (max-width: 767px) {
+                        right: 32%;
+                    }
+                }
+            }
+        }
         .main-header-bar-wrap {
         width: 100%;
         border: 0px !important; 

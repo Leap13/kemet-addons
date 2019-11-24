@@ -31,6 +31,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             
             $header8_width               = kemet_get_option( 'header8-width' );
 
+            $search_btn_bg_color         = kemet_get_option('search-btn-bg-color'); 
+            $search_btn_h_bg_color       = kemet_get_option('search-btn-h-bg-color'); 
+            $search_btn_color            = kemet_get_option('search-btn-color'); 
             $css_content = array(     
                 '.main-header-container.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
@@ -53,6 +56,13 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open' => array(
 					'background-color' => esc_attr($header_icon_bars_bg_h_color),
+                ),
+                '.kmt-search-menu-icon .search-submit' => array(
+                    'background-color' => esc_attr($search_btn_bg_color),
+                    'color' => esc_attr($search_btn_color),
+                ),
+                '.kmt-search-menu-icon .search-submit:hover' => array(
+					'background-color' => esc_attr($search_btn_h_bg_color),
                 ),
                 '.header-main-layout-6 .main-header-bar-wrap' => array(
                     'width' => kemet_get_css_value( $header6_width, 'px' ),

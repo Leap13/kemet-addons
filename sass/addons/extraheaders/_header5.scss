@@ -233,6 +233,13 @@
             }
         } 
     }
+    &.search-box-shadow{
+        .kmt-search-menu-icon{
+            form{
+                box-shadow: 0 3px 13px 0 rgba(0,0,0,.2);
+            }
+        }
+    }
     
 }
 

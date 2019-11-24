@@ -95,6 +95,11 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		}
 		
         function header_classes( $classes ) {
+			$search_box_shadow = kemet_get_option('search-box-shadow');
+
+			if($search_box_shadow == true){
+				$classes[] = 'search-box-shadow';
+			}
 
 			if((kemet_get_option ('header-layouts') == 'header-main-layout-8') && ( '1' !== $display_header )) {
 				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
