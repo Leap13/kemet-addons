@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../../../../../sass/single-post.scss",
+		"../../../../../sass/variables/variables.scss",
+		"../../../../../sass/variables/_colors.scss",
+		"../../../../../sass/variables/_mediaqueries.scss",
+		"../../../../../sass/addons/single-post/_single-post.scss"
+	],
+	"names": [],
+	"mappings": "AAAA;;gEAEgE;ACFhE;;gEAEgE;AAEhE;;gEAEgE;ADFhE;;gEAEgE;AINhE,AAEQ,OAFD,AACF,eAAe,CACZ,gBAAgB,CAAA;EACZ,OAAO,EAAE,IAAI;CAChB"
+}

@@ -28,6 +28,7 @@ module.exports = function (grunt) {
                             'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
                             'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
                             'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
+                            'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
                     //        'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         },
 
@@ -62,6 +63,10 @@ module.exports = function (grunt) {
                         dest: 'addons/go-top/assets/css/minified/style.min.css',
                     },
                     {
+                        src: 'addons/single-post/assets/css/unminified/style.css',
+                        dest: 'addons/single-post/assets/css/minified/style.min.css',
+                    },
+                    {
                    //    src: 'addons/sticky-header/assets/css/unminified/style.css',
                    //    dest: 'addons/sticky-header/assets/css/minified/style.min.css',
                     },
@@ -76,6 +81,7 @@ module.exports = function (grunt) {
                     'addons/top-bar-section/assets/js/minified/customizer-preview.min.js': 'addons/top-bar-section/assets/js/unminified/customizer-preview.js',
                     'addons/page-title/assets/js/minified/customizer-preview.min.js': 'addons/page-title/assets/js/unminified/customizer-preview.js',
                     'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',
+                    'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
                   //  'addons/sticky-header/assets/js/minified/customizer-preview.min.js': 'addons/sticky-header/assets/js/unminified/customizer-preview.js',
                 }
             }

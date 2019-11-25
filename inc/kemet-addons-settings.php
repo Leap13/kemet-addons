@@ -54,7 +54,12 @@ if (class_exists('KFW')) {
       //   'type' => 'switcher',
       //   'title' => 'Sticky Header',
       //   'default' => 'false',
-      ),
+      ),array(
+        'id' => 'single-post',
+        'type' => 'switcher',
+        'title' => 'Single Post Options',
+        'default' => 'false',
+      )
     ),
   ));
 

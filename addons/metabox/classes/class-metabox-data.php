@@ -37,7 +37,6 @@ KFW::createSection( $prefix_page_opts, array(
       'title' =>  __('Disable Primary Header', 'kemet-addons'),
       'label' => __('Disable Main Header In Current Post/Page.', 'kemet-addons'),
     ),
-
      array(
       'id'    => 'site-post-title',
       'type'  => 'checkbox',

@@ -95,6 +95,8 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		}
 		
         function header_classes( $classes ) {
+			
+			
 			$search_box_shadow = kemet_get_option('search-box-shadow');
 
 			if($search_box_shadow == true){
