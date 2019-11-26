@@ -36,7 +36,7 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
         
 		function theme_defaults( $defaults ) {
             
-			$defaults['next-prev-links'] = '';
+			$defaults['prev-next-links'] = '';
 
             return $defaults;
         }

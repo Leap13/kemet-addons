@@ -6,8 +6,9 @@
 		"../../../../../sass/variables/variables.scss",
 		"../../../../../sass/variables/_colors.scss",
 		"../../../../../sass/variables/_mediaqueries.scss",
-		"../../../../../sass/addons/single-post/_single-post.scss"
+		"../../../../../sass/addons/single-post/_single-post.scss",
+		"../../../../../sass/addons/single-post/_author-box.scss"
 	],
 	"names": [],
-	"mappings": "AAAA;;gEAEgE;ACFhE;;gEAEgE;AAEhE;;gEAEgE;ADFhE;;gEAEgE;AINhE,AAEQ,OAFD,AACF,eAAe,CACZ,gBAAgB,CAAA;EACZ,OAAO,EAAE,IAAI;CAChB"
+	"mappings": "AAAA;;gEAEgE;ACFhE;;gEAEgE;AAEhE;;gEAEgE;ADFhE;;gEAEgE;AINhE,AAEQ,OAFD,AACF,eAAe,CACZ,gBAAgB,CAAA;EACZ,OAAO,EAAE,IAAI;CAChB;;AJIT;;gEAEgE;AKVhE,AAAA,wBAAwB,CAAA;EACpB,WAAW,EAAE,QAAQ;EACrB,UAAU,EAAE,cAAc;CAC7B"
 }
