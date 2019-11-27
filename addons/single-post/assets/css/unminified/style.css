@@ -14,6 +14,10 @@
   display: none;
 }
 
+.kmt-separate-container .kmt-author-box {
+  background-color: #ffffff;
+}
+
 /*--------------------------------------------------------------
 ## Author Box
 --------------------------------------------------------------*/

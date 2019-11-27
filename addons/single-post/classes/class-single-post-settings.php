@@ -37,7 +37,9 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
 		function theme_defaults( $defaults ) {
             
 			$defaults['prev-next-links'] = '';
-
+			$defaults['padding-inside-container'] = '';
+			$defaults['featured-image-header'] = '';
+			$defaults['kemet-related-posts-taxonomy'] = '';
             return $defaults;
         }
 		function customize_register($wp_customize) {

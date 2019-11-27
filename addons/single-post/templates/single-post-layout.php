@@ -20,17 +20,7 @@
 		<?php kemet_single_header_top(); ?>
 
 		<?php kemet_blog_post_thumbnai_and_title_order(); ?>
-		<?php if(kemet_get_option('enable-author-box') == true){ ?>
-		<section class="kmt-author-box kmt-archive-description">
-			<div class="kmt-author-bio">
-				<h1 class='page-title kmt-archive-title'><?php echo get_the_author(); ?></h1>
-				<p><?php echo wp_kses_post( get_the_author_meta( 'description' ) ); ?></p>
-			</div>
-			<div class="kmt-author-avatar">
-				<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
-			</div>
-		</section>
-		<?php } ?>
+		
 		<?php kemet_single_header_bottom(); ?>
 
 	</header><!-- .entry-header -->
@@ -68,3 +58,20 @@
 	</div><!-- .entry-content .clear -->
 </div>
 
+<?php if(kemet_get_option('enable-author-box') == true){ 
+	add_action('kemet_entry_after' , 'author_box_template' , 1);
+
+	function author_box_template(){
+?>
+<section class="kmt-author-box kmt-archive-description">
+	<div class="kmt-author-bio">
+		<h1 class='page-title kmt-archive-title'><?php echo get_the_author(); ?></h1>
+		<p><?php echo wp_kses_post( get_the_author_meta( 'description' ) ); ?></p>
+	</div>
+	<div class="kmt-author-avatar">
+		<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
+	</div>
+</section>
+
+<?php }
+} ?>

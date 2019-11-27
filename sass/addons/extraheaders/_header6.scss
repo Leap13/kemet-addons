@@ -33,7 +33,13 @@
             border-bottom: 0px;
         }
         .sub-menu {
+            //position: static;
             width: 100%;
+        }
+        &:hover{
+            .sub-menu{
+                display: block;
+            }
         }
     }
     .kmt-sitehead-custom-menu-items {
@@ -71,130 +77,17 @@
         width: 100%;
         text-align: center;
     }
-    &.top-bar-search-box{
-        .kemet-top-header-section{
-            .kmt-search-icon{
-                display: none;
-            }
-            .kmt-search-menu-icon{
-                visibility: visible;
-                opacity: 1;
-                position: relative;
-                display: block;
-                transform: none;
-                .search-submit{
-                    display: block;
-                    position: absolute;
-                    height: 100%;
-                    top: 0;
-                    right: 0;
-                    padding: 0 1em;
-                    -webkit-border-radius: 0;
-                    border-radius: 0;
-                }
-                .search-field {
-                    width: 100%;
-                    margin: 0;
-                }
-                .search-form {
-                    padding: 0;
-                    display: block;
-                    overflow: hidden;
-                    box-shadow: none;
-                }
-            }
-        }
-    }
-    
-    &.top-bar-search-icon{
-        .kemet-top-header-section{
-            .kmt-search-icon{
-                display: block;
-            }
-            .kmt-search-menu-icon{
-                z-index: 10;
-                right: auto;
-                .search-submit{
-                    display: none;
-                }
-            }
-        }   
-    }
-    &.search-box{
-        #site-navigation{
-            .kmt-search-icon{
-                display: none;
-            }
-            .kmt-search-menu-icon{
-                    visibility: visible;
-                    opacity: 1;
-                    position: relative;
-                    display: block;
-                    transform: none;
-                    right: 0;
-                .search-submit{
-                    display: block;
-                    position: absolute;
-                    height: 100%;
-                    top: 0;
-                    right: 0;
-                    padding: 0 1em;
-                    -webkit-border-radius: 0;
-                    border-radius: 0;
-                }
-                .search-field {
-                    width: 100%;
-                    margin: 0
-                }
-                .search-form {
-                    padding: 0;
-                    display: block;
-                    overflow: hidden;
-                    box-shadow: none;
-                }
-            }
-        }    
-    }
-    &.search-icon{
-        #site-navigation{
-            .kmt-search-icon{
-                display: block;
-            }
-            .kmt-search-menu-icon{
-                    top: 10%;
-                .search-submit{
-                    display: none;
-                }
-                form{
-                    &:before{
-                        right: 40%;
-                        left: auto;
-                    }
-                }
-            }
-            .kmt-dropdown-active{
-                visibility: visible;
-                opacity: 1;
-            }
-        } 
-    }
-    &.search-box-shadow{
-        .kmt-search-menu-icon{
-            form{
-                box-shadow: 0 3px 13px 0 rgba(0,0,0,.2);
-            }
-        }
-    }
 }
 .kmt-header-break-point{
     &.kemet-main-header6-align-left, &.kemet-main-header6-align-right {
         padding: 0px;
     }
-    .header-main-layout-6 {
+    .header-main-layout-6{
         .main-header-bar-wrap {
-        width: 100%;
-        border: 0px !important; 
-        }
+            width: 100% ;
+            border: 0px !important; 
+            }
+    }
         .ss-wrapper {
         position: initial;
         margin: 0px;
@@ -235,8 +128,123 @@
         .site-branding{
             padding-left: 20px;
         }
-     }
+     
     .kmt-mobile-menu-buttons{
         padding-right: 20px;
+    }
+}
+
+.top-bar-search-box{
+    .kemet-top-header-section{
+        .kmt-search-icon{
+            display: none;
+        }
+        .kmt-search-menu-icon{
+            visibility: visible;
+            opacity: 1;
+            position: relative;
+            display: block;
+            transform: none;
+            .search-submit{
+                display: block;
+                position: absolute;
+                height: 100%;
+                top: 0;
+                right: 0;
+                padding: 0 1em;
+                -webkit-border-radius: 0;
+                border-radius: 0;
+            }
+            .search-field {
+                width: 100%;
+                margin: 0;
+            }
+            .search-form {
+                padding: 0;
+                display: block;
+                overflow: hidden;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.top-bar-search-icon{
+    .kemet-top-header-section{
+        .kmt-search-icon{
+            display: block;
+        }
+        .kmt-search-menu-icon{
+            z-index: 10;
+            right: auto;
+            .search-submit{
+                display: none;
+            }
+        }
+    }   
+}
+.search-box{
+    #site-navigation{
+        .kmt-search-icon{
+            display: none;
+        }
+        .kmt-search-menu-icon{
+                visibility: visible;
+                opacity: 1;
+                position: relative;
+                display: block;
+                transform: none;
+                right: 0;
+            .search-submit{
+                display: block;
+                position: absolute;
+                height: 100%;
+                top: 0;
+                right: 0;
+                padding: 0 1em;
+                -webkit-border-radius: 0;
+                border-radius: 0;
+            }
+            .search-field {
+                width: 100%;
+                margin: 0
+            }
+            .search-form {
+                padding: 0;
+                display: block;
+                overflow: hidden;
+                box-shadow: none;
+            }
+        }
+    }    
+}
+.search-icon{
+    #site-navigation{
+        .kmt-search-icon{
+            display: block;
+        }
+        .kmt-search-menu-icon{
+                top: 10%;
+            .search-submit{
+                display: none;
+            }
+            form{
+                &:before{
+                    right: 40%;
+                    left: auto;
+                }
+            }
+        }
+        .kmt-dropdown-active{
+            visibility: visible;
+            opacity: 1;
+        }
+    } 
+}
+.search-box-shadow{
+    .kmt-search-menu-icon{
+        form{
+            box-shadow: 0 3px 13px 0 rgba(0,0,0,.2);
+        }
     }
 }

@@ -56,7 +56,9 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
 				$classes[] = 'hide-nav-links';
 			}
             return $classes;
-		}
+        }
+        
+        
          /**
 		  * Enqueues scripts and styles for the header layouts
 		 */
