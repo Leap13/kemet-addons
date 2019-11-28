@@ -66,6 +66,38 @@
             float: none;
             position: relative;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            &:hover{
+                > .sub-menu{            
+                    position: static;
+                }
+                >a{
+                    &:after{
+                        transform: rotateX(180deg) !important;
+                    }
+                }
+            } 
+            ul{
+                li{
+                    &:hover{
+                        >a{
+                            &:after{
+                                transform: rotateX(180deg);
+                            }
+                        }
+                    }
+                    &.menu-item-has-children{
+                        width: 80%;
+                        margin: auto;
+                        >a{
+                            position: static;
+                            &:after{
+                                top: inherit;
+                                transform: translate(0,0%);
+                            }
+                        }
+                    }
+                }
+            } 
         }
         li:last-child {
             border-bottom: 0px;

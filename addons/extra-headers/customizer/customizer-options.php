@@ -245,7 +245,6 @@
 				'search-box'    => __( 'Search Box', 'kemet-addons' ),
 				'search-icon'   => __( 'Icon', 'kemet-addons' ),
 			),
-            'active_callback' => 'kemet_header_layoutall_style',
 		)
 	);	
 

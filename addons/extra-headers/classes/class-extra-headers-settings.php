@@ -121,14 +121,11 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 				$classes[] = 'header6-align-'. kemet_get_option('header6-position') ;
 			}
 
-			if('header-main-layout-6' == $kemet_header_layout || 'header-main-layout-5' == $kemet_header_layout || 'header-main-layout-8' == $kemet_header_layout){
-				
 				$search_style = kemet_get_option('search-style');
 
 				if ($search_style == true) {
 					$classes[] = $search_style;
 				}
-			}
 			return $classes;
          }
         

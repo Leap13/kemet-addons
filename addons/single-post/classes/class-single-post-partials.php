@@ -40,7 +40,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
 
     function related_posts_template(){
             if ( is_single() ) {
-                kemetaddons_get_template( 'single-post/templates/related-posts.php' ); 
+                //kemetaddons_get_template( 'single-post/templates/related-posts.php' ); 
             } 
         }
 
