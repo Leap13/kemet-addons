@@ -5,7 +5,12 @@
     kemet_css('kemet-settings[search-btn-bg-color]', 'background-color', '.kmt-search-menu-icon .search-submit');
     kemet_css('kemet-settings[search-btn-h-bg-color]', 'background-color', '.kmt-search-menu-icon .search-submit:hover');
     kemet_css('kemet-settings[search-btn-color]', 'color', '.kmt-search-menu-icon .search-submit');
-    kemet_css('kemet-settings[search-border-color]', 'border-color', '.kmt-search-menu-icon form');
+    wp.customize( 'kemet-settings[search-border-color]', function( value ) {
+		value.bind( function( border_color ) {
+            jQuery(  '.kmt-search-menu-icon form' ).css( 'border-color', border_color );
+            jQuery( '.kmt-search-menu-icon form' ).css( 'background-color', border_color );
+		} );
+	} );
     kemet_css('kemet-settings[header-icon-bars-h-color]', 'background-color', '.icon-bars-btn:hover span, .open .icon-bars-btn span');
     kemet_css('kemet-settings[header-icon-bars-bg-color]', 'background-color', '.menu-icon-social .menu-icon');
     kemet_css('kemet-settings[header-icon-bars-bg-h-color]', 'background-color', '.menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open');

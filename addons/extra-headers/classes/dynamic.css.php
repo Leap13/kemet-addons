@@ -64,6 +64,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.kmt-search-menu-icon form' => array(
                     'border-color' => esc_attr($search_border_color),
+                    'background-color' => esc_attr($search_border_color),
                 ),
                 '.kmt-search-menu-icon .search-submit:hover' => array(
 					'background-color' => esc_attr($search_btn_h_bg_color),

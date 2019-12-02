@@ -34,16 +34,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_entry_content_single', array( $this, 'kemet_single_post_template_loader') , 1);
-            add_action( 'kemet_entry_after', array( $this, 'related_posts_template' ),1 );
-            //add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
         }
-
-    function related_posts_template(){
-            if ( is_single() ) {
-                //kemetaddons_get_template( 'single-post/templates/related-posts.php' ); 
-            } 
-        }
-
         public function kemet_single_post_template_loader() {
             remove_action( 'kemet_entry_content_single', 'kemet_entry_content_single_template' );
             kemetaddons_get_template( 'single-post/templates/single-post-layout.php' );  

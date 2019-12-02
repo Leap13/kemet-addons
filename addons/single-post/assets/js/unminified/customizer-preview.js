@@ -1,1 +1,1 @@
-kemet_responsive_spacing( 'kemet-settings[padding-inside-container]','.single-post .site-content .kmt-article-single , .navigation .site-content .kmt-article-single , .single-post.kmt-page-builder-template .comments-area', 'margin', ['top', 'right', 'bottom', 'left' ] );
+kemet_responsive_spacing( 'kemet-settings[padding-inside-container]','.single-post .single-layout-1 .entry-header,.single-post .navigation , .single-post .comments-area .comment-respond , .single-post .kmt-author-box', 'margin', ['top', 'right', 'bottom', 'left' ] );

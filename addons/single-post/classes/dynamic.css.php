@@ -34,7 +34,7 @@ function kemet_single_post_dynamic_css( $dynamic_css ) {
             
             $css_content = array(
                     '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $header_featured_image ),  
-                    '.single-post .site-content .kmt-article-single , .navigation .site-content .kmt-article-single , .single-post.kmt-page-builder-template .comments-area' => array(
+                    '.single-post .entry-header,.single-post .navigation , .single-post .comments-area .comment-respond , .single-post .kmt-author-box' => array(
                     'padding-top'    => kemet_responsive_spacing( $padding_inside_container, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $padding_inside_container, 'right', 'desktop' ),
                     'padding-bottom' => kemet_responsive_spacing( $padding_inside_container, 'bottom', 'desktop' ),

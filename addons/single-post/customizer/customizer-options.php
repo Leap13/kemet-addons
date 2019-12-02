@@ -61,26 +61,32 @@
 		  )
 		)
 	);
-	/**
-	 * Option: Related Posts Taxonomy
-	 */
-
+	   /**
+    * Option - Padding Inside Container
+    */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[kemet-related-posts-taxonomy]', array(
-			'default'           => 'category',
+		KEMET_THEME_SETTINGS . '[padding-inside-container]', array(
+			'default'           => kemet_get_option( 'padding-inside-container' ),
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[kemet-related-posts-taxonomy]', array(
-			'type'     => 'select',
-			'section'  => 'section-blog-single',
-			'priority' => 12,
-			'label'    => __( 'Posts Taxonomy', 'kemet-addons' ),
-			'choices'  => array(
-				'tag' 		=> __( 'tag', 'kemet-addons' ),
-				'category' 	=> __( 'Category', 'kemet-addons' ),
-			),
+		new Kemet_Control_Responsive_Spacing(
+			$wp_customize, KEMET_THEME_SETTINGS . '[padding-inside-container]', array(
+				'type'           => 'kmt-responsive-spacing',
+				'section'        => 'section-blog-single',
+				'priority'       => 14,
+				'label'          => __( 'Padding Inside Container', 'kemet' ),
+				'linked_choices' => true,
+				'unit_choices'   => array( 'px', 'em', '%' ),
+				'choices'        => array(
+					'top'    => __( 'Top', 'kemet' ),
+					'right'  => __( 'Right', 'kemet' ),
+					'bottom' => __( 'Bottom', 'kemet' ),
+					'left'   => __( 'Left', 'kemet' ),
+				),
+			)
 		)
 	);

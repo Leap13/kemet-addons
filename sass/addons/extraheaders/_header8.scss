@@ -135,6 +135,8 @@
 }
 .kemet-top-header-section-1{
     .kmt-search-menu-icon {
+        right: auto;
+        left: 30px;
         form{
             &:before{
                 right: 85%;
@@ -142,22 +144,23 @@
             }
         }
     }
-}
-.kemet-top-header-section-2{
-    .kmt-search-menu-icon{
-        form{
-            &:before{
-                left: 85%;
-                right: auto;
-            }
-        }
+    .kmt-dropdown-active{
+        left: 0;
     }
 }
-
 .kemet-top-header-section{
-    .kmt-search-menu-icon{
-        .search-field{
-            background-color: #fff;
+    &.kemet-top-header-section-2{
+        .kmt-search-menu-icon{
+            right: 30px;
+            form{
+                &:before{
+                    left: 85%;
+                    right: auto;
+                }
+            }
+        }
+        .kmt-dropdown-active{
+            right: 0;
         }
     }
 }

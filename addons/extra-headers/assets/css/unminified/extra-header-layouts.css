@@ -154,14 +154,18 @@
   left: auto;
 }
 
-.kemet-top-header-section .kmt-search-menu-icon .search-field {
-  background-color: #fff;
-}
-
 @media (max-width: 767px) {
-  .kmt-header-break-point .kemet-top-header-section-2 .kmt-search-menu-icon form:before {
+  .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon, .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-1 .kmt-search-menu-icon {
+    left: 30px;
+    right: auto;
+  }
+  .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon form:before, .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-1 .kmt-search-menu-icon form:before {
     left: auto;
     right: 85%;
+  }
+  .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-2 .kmt-dropdown-active, .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-1 .kmt-dropdown-active {
+    right: auto;
+    left: 0;
   }
 }
 
@@ -279,18 +283,26 @@
   padding: 0px;
 }
 
+.kmt-header-break-point .search-icon #site-navigation .kmt-search-menu-icon {
+  right: auto;
+}
+
+.kmt-header-break-point .search-icon #site-navigation form:before {
+  right: 85% !important;
+}
+
 .kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
   width: 100%;
   border: 0px !important;
 }
 
 .kmt-header-break-point .header-main-layout-6.search-icon #site-navigation .kmt-search-menu-icon {
-  right: 36%;
+  right: 36% !important;
 }
 
 @media (max-width: 767px) {
   .kmt-header-break-point .header-main-layout-6.search-icon #site-navigation .kmt-search-menu-icon {
-    right: 32%;
+    right: 32% !important;
   }
 }
 
@@ -340,11 +352,14 @@
 }
 
 .top-bar-search-box .kemet-top-header-section .kmt-search-menu-icon {
+  width: 250px;
   visibility: visible;
   opacity: 1;
   position: relative;
   display: block;
   transform: none;
+  right: auto;
+  left: 0;
 }
 
 .top-bar-search-box .kemet-top-header-section .kmt-search-menu-icon .search-submit {
@@ -356,6 +371,7 @@
   padding: 0 1em;
   -webkit-border-radius: 0;
   border-radius: 0;
+  border: 0;
 }
 
 .top-bar-search-box .kemet-top-header-section .kmt-search-menu-icon .search-field {
@@ -376,7 +392,6 @@
 
 .top-bar-search-icon .kemet-top-header-section .kmt-search-menu-icon {
   z-index: 10;
-  right: auto;
 }
 
 .top-bar-search-icon .kemet-top-header-section .kmt-search-menu-icon .search-submit {
@@ -387,7 +402,13 @@
   display: none;
 }
 
+.search-box #site-navigation .kmt-search-container {
+  width: 250px;
+  margin: auto;
+}
+
 .search-box #site-navigation .kmt-search-menu-icon {
+  width: 250px;
   visibility: visible;
   opacity: 1;
   position: relative;
@@ -421,12 +442,11 @@
 }
 
 .search-icon.header-main-layout-6 #site-navigation .kmt-search-menu-icon, .search-icon.header-main-layout-8 #site-navigation .kmt-search-menu-icon {
-  top: 10%;
   right: auto;
 }
 
 .search-icon.header-main-layout-6 #site-navigation .kmt-search-menu-icon form:before, .search-icon.header-main-layout-8 #site-navigation .kmt-search-menu-icon form:before {
-  right: 40%;
+  right: 40% !important;
   left: auto;
 }
 
@@ -435,7 +455,7 @@
 }
 
 .search-icon #site-navigation .kmt-search-menu-icon {
-  right: 0;
+  right: 30px;
 }
 
 .search-icon #site-navigation .kmt-search-menu-icon .search-submit {
@@ -449,6 +469,7 @@
 .search-icon #site-navigation .kmt-dropdown-active {
   visibility: visible;
   opacity: 1;
+  right: 0;
 }
 
 .search-box-shadow .kmt-search-menu-icon form {
@@ -595,18 +616,31 @@
   text-align: center;
 }
 
+.kemet-top-header-section-1 .kmt-search-menu-icon {
+  right: auto;
+  left: 30px;
+}
+
 .kemet-top-header-section-1 .kmt-search-menu-icon form:before {
   right: 85%;
   left: auto;
 }
 
-.kemet-top-header-section-2 .kmt-search-menu-icon form:before {
+.kemet-top-header-section-1 .kmt-dropdown-active {
+  left: 0;
+}
+
+.kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon {
+  right: 30px;
+}
+
+.kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon form:before {
   left: 85%;
   right: auto;
 }
 
-.kemet-top-header-section .kmt-search-menu-icon .search-field {
-  background-color: #fff;
+.kemet-top-header-section.kemet-top-header-section-2 .kmt-dropdown-active {
+  right: 0;
 }
 
 .kmt-header-break-point .header-main-layout-8 .main-header-container {

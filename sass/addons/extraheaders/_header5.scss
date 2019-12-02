@@ -132,23 +132,23 @@
         }
     }          
 }
-
-.kemet-top-header-section{
-    .kmt-search-menu-icon{
-        .search-field{
-            background-color: #fff;
-        }
-    }
-}
 .kmt-header-break-point{
     @media (max-width: 767px){
-        .kemet-top-header-section-2{
-            .kmt-search-menu-icon{
-                form{
-                    &:before{
-                        left: auto;
-                        right: 85%;
+        .kemet-top-header-section{
+            &.kemet-top-header-section-2 , &.kemet-top-header-section-1{
+                .kmt-search-menu-icon{
+                    left: 30px;
+                    right: auto;
+                    form{
+                        &:before{
+                            left: auto;
+                            right: 85%;
+                        }
                     }
+                }
+                .kmt-dropdown-active{
+                    right: auto;
+                    left: 0;
                 }
             }
         }        
