@@ -29,18 +29,6 @@ $wp_customize->add_control(
 	)
 	);
 
-
-	// Layout Panel Header Top bar
-	$wp_customize->add_section(
-		new Kemet_WP_Customize_Section(
-			$wp_customize, 'section-topbar-header', array(
-					'title'    => __( 'Top Bar Header', 'kemet-addons' ),
-					'panel'    => 'panel-layout',
-					'section'  => 'section-header-group',
-					'priority' => 15,
-				)
-		)
-	);
 	/**
 	 * Option: Right Section Text / HTML
 	 */
@@ -162,9 +150,10 @@ $wp_customize->add_control(
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'topbar-bg-color' ),
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -239,7 +228,7 @@ $wp_customize->add_control(
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -259,7 +248,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
 			'default'           => '',
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -282,7 +271,7 @@ $wp_customize->add_control(
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -303,7 +292,7 @@ $wp_customize->add_control(
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -354,7 +343,7 @@ $wp_customize->add_control(
 			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -374,7 +363,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-bg-color]', array(
 			'default'           => '',
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -395,7 +384,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-items-color]', array(
 			'default'           => '',
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -416,7 +405,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-items-h-color]', array(
 			'default'           => '',
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
 	$wp_customize->add_control(

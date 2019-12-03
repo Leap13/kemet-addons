@@ -68,6 +68,7 @@ if( ! class_exists( 'WP_Customize_Control_KFW' ) && class_exists( 'WP_Customize_
       $complex = array(
         'checkbox',
         'switcher',
+        'text',
       );
 
       $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';

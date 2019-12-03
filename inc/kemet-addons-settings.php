@@ -22,6 +22,7 @@ if (class_exists('KFW')) {
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
     'title' => 'Kemet Customizer Options',
+    'priority' => '1',
     'fields' => array(
       // A switcher field
       array(
@@ -54,9 +55,34 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => 'Sticky Header',
         'default' => 'false',
+      ),array(
+        'id' => 'extra-widgets',
+        'type' => 'switcher',
+        'title' => 'Extra Widgets',
+        'default' => 'false',
       ),
     ),
-  ));
+  ),
+      //
+    // Create a sub-tab
+    KFW::createSection($prefix, array(
+    'id' => 'primary_tab',
+    'title' => 'Kemet Integration',
+    'priority' => '5',
+    'fields' => array(
+      // A switcher field
+      array(
+        'id' => 'kmt-mailchimp-api-key',
+        'type' => 'text',
+        'title' => __( 'Mailchimp API Key', 'kemet-addons' ),
+      ),array(
+        'id' => 'kmt-mailchimp-list-id',
+        'type' => 'text',
+        'title' => __( 'Mailchimp List ID', 'kemet-addons' ),
+      ),
+    ),
+  )
+    ));
 
   
 }

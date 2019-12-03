@@ -47,6 +47,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 			}
 
 			wp_add_inline_style( 'kemet-addons-css', apply_filters( 'kemet_dynamic_css', '' ) );
+		//	wp_localize_script( 'kemet-addons-js', 'kemet_addons_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 		}
 
 		public static function get_css_url() { 

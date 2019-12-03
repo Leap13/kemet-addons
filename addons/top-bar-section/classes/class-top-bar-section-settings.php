@@ -26,8 +26,8 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
 		 *  Constructor
 		 */
 		public function __construct() {
-            add_action( 'customize_register', array( $this, 'customize_register' ), 5 );
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
+            add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
         }
 
@@ -55,7 +55,6 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-bg-color']    = '';
             $defaults['topbar-font-size']                  = '';
             $defaults['topbar-text-color']                  = '';
-            $defaults['topbar-bg-color']             = '';
             $defaults['topbar-link-color']           = '';
             $defaults['topbar-link-h-color']           = '';
             $defaults['topbar-border-size']           = '';
@@ -63,7 +62,6 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-submenu-bg-color']           = '';
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';
-
             return $defaults;
         }
         
