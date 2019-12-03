@@ -113,11 +113,15 @@
         #site-navigation{
             .kmt-search-menu-icon{
                 right: auto;
+                left: 30px;
             }
             form{
                 &:before{
                     right: 85% !important;
                 }
+            }
+            .kmt-dropdown-active{
+                left: 0;
             }
         }   
     }
@@ -130,10 +134,14 @@
             &.search-icon{
                 #site-navigation{
                     .kmt-search-menu-icon{
+                        left: auto;
                         right: 36% !important;
                         @media (max-width: 767px) {
                             right: 32% !important;
                         }
+                    }
+                    .kmt-dropdown-active{
+                        left: auto;
                     }
                 }
             }

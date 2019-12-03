@@ -14,6 +14,8 @@ if ( ! function_exists( 'kemet_get_top_section' ) ) {
 	 * @param string $section
 	 * @return mixed
 	 */
+
+	 
 	function kemet_get_top_section( $option ) {
 
 		 $output  = '';

@@ -202,10 +202,14 @@
         &.search-icon{
             #site-navigation{
                 .kmt-search-menu-icon{
+                    left: auto !important;
                     right: 36%;
                     @media (max-width: 767px) {
                         right: 32%;
                     }
+                }
+                .kmt-dropdown-active{
+                    left: auto;
                 }
             }
         }

@@ -285,10 +285,15 @@
 
 .kmt-header-break-point .search-icon #site-navigation .kmt-search-menu-icon {
   right: auto;
+  left: 30px;
 }
 
 .kmt-header-break-point .search-icon #site-navigation form:before {
   right: 85% !important;
+}
+
+.kmt-header-break-point .search-icon #site-navigation .kmt-dropdown-active {
+  left: 0;
 }
 
 .kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
@@ -297,6 +302,7 @@
 }
 
 .kmt-header-break-point .header-main-layout-6.search-icon #site-navigation .kmt-search-menu-icon {
+  left: auto;
   right: 36% !important;
 }
 
@@ -304,6 +310,10 @@
   .kmt-header-break-point .header-main-layout-6.search-icon #site-navigation .kmt-search-menu-icon {
     right: 32% !important;
   }
+}
+
+.kmt-header-break-point .header-main-layout-6.search-icon #site-navigation .kmt-dropdown-active {
+  left: auto;
 }
 
 .kmt-header-break-point .ss-wrapper {
@@ -682,6 +692,7 @@
 }
 
 .kmt-header-break-point .header-main-layout-8.search-icon #site-navigation .kmt-search-menu-icon {
+  left: auto !important;
   right: 36%;
 }
 
@@ -689,6 +700,10 @@
   .kmt-header-break-point .header-main-layout-8.search-icon #site-navigation .kmt-search-menu-icon {
     right: 32%;
   }
+}
+
+.kmt-header-break-point .header-main-layout-8.search-icon #site-navigation .kmt-dropdown-active {
+  left: auto;
 }
 
 .kmt-header-break-point .header-main-layout-8 .main-header-bar-wrap {

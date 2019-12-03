@@ -36,9 +36,10 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
         }
 
         public function kemet_top_header_template() {
-            
-			kemetaddons_get_template( 'top-bar-section/templates/topbar-layout.php' );
-            
+
+            if ( apply_filters( 'kemet_top_bar_enabled', true ) ) {
+                kemetaddons_get_template( 'top-bar-section/templates/topbar-layout.php' );
+            }
         }
 
         function add_styles() {
