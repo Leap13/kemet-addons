@@ -211,15 +211,15 @@ if ( ! defined( 'ABSPATH' ) ) {
           * Option: Page Title Font Weight
           */
          $wp_customize->add_setting(
-             KEMET_THEME_SETTINGS . '[pagetitle-font-weight]', array(
-                 'default'           => kemet_get_option( 'pagetitle-font-weight' ),
+             KEMET_THEME_SETTINGS . '[page-title-font-weight]', array(
+                 'default'           => kemet_get_option( 'page-title-font-weight' ),
                  'type'              => 'option',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
              )
          );
          $wp_customize->add_control(
              new Kemet_Control_Typography(
-                 $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-font-weight]', array(
+                 $wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-weight]', array(
                      'type'     => 'kmt-font-weight',
                      'label'    => __( 'Font Weight', 'kemet-addons' ),
                      'section'  => 'section-page-title-header',

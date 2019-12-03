@@ -198,19 +198,19 @@
     &.kemet-main-header8-align-left, &.kemet-main-header8-align-right {
         padding: 0px;
     }
-    .header-main-layout-8{
+    .header-main-layout-8 , .header-main-layout-6{
         &.search-icon{
             #site-navigation{
+                .kmt-search-container{
+                    width: fit-content;
+                    margin: auto;
                 .kmt-search-menu-icon{
-                    left: auto !important;
-                    right: 36%;
-                    @media (max-width: 767px) {
-                        right: 32%;
-                    }
+                    left: 30px;
                 }
                 .kmt-dropdown-active{
-                    left: auto;
+                    left: 0;
                 }
+                    }
             }
         }
         .main-header-bar-wrap {

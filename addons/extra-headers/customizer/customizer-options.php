@@ -327,26 +327,32 @@
 		  )
 		)
 	);
+	if(kemet_get_option('search-style') == 'search-box'){
 	/**
-   	* Option: Search Border Color
-    */
+	 * Option: Search Form Border Size
+	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[search-border-color]', array(
-		  'default'           => '',
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		KEMET_THEME_SETTINGS . '[search-border-size]', array(
+			'default'           => kemet_get_option( 'search-border-size' ),
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[search-border-color]', array(
-			'label'   => __( 'Search Border Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 16,
-		  )
+		KEMET_THEME_SETTINGS . '[search-border-size]', array(
+			'type'        => 'number',
+			'section'     => 'section-header',
+			'priority'    => 17,
+			'label'       => __( 'Search Form Border Size', 'kemet' ),
+			'input_attrs' => array(
+				'min'  => 0,
+				'step' => 1,
+				'max'  => 15,
+			),
 		)
 	);
+}
 	/**
 	 * Option: Header6 Position
 	 */

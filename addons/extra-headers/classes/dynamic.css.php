@@ -34,7 +34,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $search_btn_bg_color         = kemet_get_option('search-btn-bg-color'); 
             $search_btn_h_bg_color       = kemet_get_option('search-btn-h-bg-color'); 
             $search_btn_color            = kemet_get_option('search-btn-color'); 
-            $search_border_color         = Kemet_get_option('search-border-color');
+            $search_border_size     = kemet_get_option( 'search-border-size' );
             $css_content = array(     
                 '.main-header-container.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
@@ -62,10 +62,6 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'background-color' => esc_attr($search_btn_bg_color),
                     'color' => esc_attr($search_btn_color),
                 ),
-                '.kmt-search-menu-icon form' => array(
-                    'border-color' => esc_attr($search_border_color),
-                    'background-color' => esc_attr($search_border_color),
-                ),
                 '.kmt-search-menu-icon .search-submit:hover' => array(
 					'background-color' => esc_attr($search_btn_h_bg_color),
                 ),
@@ -73,6 +69,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'width' => kemet_get_css_value( $header6_width, 'px' ),
                     'border-color' => esc_attr( $header6_border_color ),
                 ),
+                '.search-box #site-navigation .kmt-search-menu-icon form , .top-bar-search-box .kemet-top-header-section .kmt-search-menu-icon .search-form' => array(
+					'border-width'     => kemet_get_css_value( $search_border_size , 'px' , '0' ),
+				),		
                 '.kemet-main-header6-align-right .header-main-layout-6 .main-header-bar-wrap' => array(
                     'border-left-style' => esc_attr( $header6_border_style ),
                     'border-left-width' => kemet_get_css_value( $header6_border_width , 'px' ),
