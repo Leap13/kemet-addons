@@ -17,7 +17,6 @@ if (class_exists('KFW')) {
     'class'  => 'kemet-addons-icon',
   ));
 
-
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
