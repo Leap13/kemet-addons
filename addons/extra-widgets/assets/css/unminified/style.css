@@ -8,60 +8,39 @@
 # Normalize
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Page Title
+## Extra Widgets
 --------------------------------------------------------------*/
-.kmt-extra-widgets-link {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  z-index: 99999;
-  opacity: 0;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  border: none;
-  visibility: hidden;
-  transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
+.widget_mailchimp .mailchimp-form .et-mailchimp-form div:first-child {
+  margin: 20px 0;
 }
 
-.kmt-extra-widgets-link:before {
-  content: "\e911";
-  font-family: 'kemet-font';
-  font-size: 20px;
+.widget_mailchimp .mailchimp-form .et-mailchimp-form input[name=email] {
+  padding: 15px;
 }
 
-.kmt-extra-widgets-link span {
-  font-size: 0;
-  position: absolute;
+.widget_mailchimp .mailchimp-form .et-mailchimp-form input[name=email]:focus {
+  outline: none;
 }
 
-.kmt-extra-widgets-link.is-opacity {
-  opacity: 1;
-  visibility: visible;
+.widget_mailchimp .mailchimp-form .et-mailchimp-form span {
+  color: #dd3333;
 }
 
-/* Go Top Responsive */
-@media only screen and (max-width: 480px) {
-  .hide-mobile {
-    display: none !important;
-  }
+.widget_mailchimp .mailchimp-form .et-mailchimp-form span.alert {
+  display: none;
 }
 
-@media only screen and (min-width: 481px) and (max-width: 767px) {
-  .hide-tablet {
-    display: none !important;
-  }
+.widget_mailchimp .mailchimp-form .et-mailchimp-form span.alert.visible {
+  display: block;
 }
 
-@media only screen and (max-width: 767px) {
-  .hide-tablet-mobile {
-    display: none !important;
-  }
+.widget_mailchimp .mailchimp-form .et-mailchimp-form div.alert {
+  color: #dd3333;
+  display: none;
 }
+
+.widget_mailchimp .mailchimp-form .et-mailchimp-form div.alert.visible {
+  display: block;
+}
+
+/*# sourceMappingURL=style.css.map */

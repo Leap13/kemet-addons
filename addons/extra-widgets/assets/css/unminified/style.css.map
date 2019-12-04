@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../../../../../sass/extra-widgets.scss",
+		"../../../../../sass/variables/variables.scss",
+		"../../../../../sass/variables/_colors.scss",
+		"../../../../../sass/variables/_mediaqueries.scss",
+		"../../../../../sass/addons/extra-widgets/_extra-widgets.scss"
+	],
+	"names": [],
+	"mappings": "AACA;;gEAEgE;ACHhE;;gEAEgE;AAEhE;;gEAEgE;ADDhE;;gEAEgE;AIPhE,AAGY,iBAHK,CACb,eAAe,CACX,kBAAkB,CACd,GAAG,AAAA,YAAY,CAAA;EACX,MAAM,EAAE,MAAM;CACjB;;AALb,AAMY,iBANK,CACb,eAAe,CACX,kBAAkB,CAId,KAAK,CAAA,AAAA,IAAC,CAAD,KAAC,AAAA,EAAW;EACb,OAAO,EAAE,IAAI;CAIhB;;AAXb,AAQgB,iBARC,CACb,eAAe,CACX,kBAAkB,CAId,KAAK,CAAA,AAAA,IAAC,CAAD,KAAC,AAAA,CAED,MAAM,CAAA;EACH,OAAO,EAAE,IAAI;CAChB;;AAVjB,AAYY,iBAZK,CACb,eAAe,CACX,kBAAkB,CAUd,IAAI,CAAA;EACA,KAAK,EFgBH,OAAO;CETZ;;AApBb,AAcgB,iBAdC,CACb,eAAe,CACX,kBAAkB,CAUd,IAAI,AAEC,MAAM,CAAA;EACH,OAAO,EAAE,IAAI;CAIhB;;AAnBjB,AAgBgB,iBAhBC,CACb,eAAe,CACX,kBAAkB,CAUd,IAAI,AAEC,MAAM,AAEN,QAAQ,CAAA;EACL,OAAO,EAAE,KAAK;CACjB;;AAlBjB,AAsBgB,iBAtBC,CACb,eAAe,CACX,kBAAkB,CAmBd,GAAG,AACE,MAAM,CAAA;EACH,KAAK,EFMP,OAAO;EELL,OAAO,EAAE,IAAI;CAIhB;;AA5BjB,AAyBgB,iBAzBC,CACb,eAAe,CACX,kBAAkB,CAmBd,GAAG,AACE,MAAM,AAGN,QAAQ,CAAA;EACL,OAAO,EAAE,KAAK;CACjB"
+}

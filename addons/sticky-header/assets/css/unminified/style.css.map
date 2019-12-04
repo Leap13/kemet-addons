@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../../../../../sass/sticky-header.scss",
+		"../../../../../sass/variables/variables.scss",
+		"../../../../../sass/variables/_colors.scss",
+		"../../../../../sass/variables/_mediaqueries.scss",
+		"../../../../../sass/addons/sticky-header/_sticky-header.scss"
+	],
+	"names": [],
+	"mappings": "AAAA;;gEAEgE;ACFhE;;gEAEgE;AAEhE;;gEAEgE;ADFhE;;gEAEgE;AINhE,AAAA,wBAAwB,CACxB;EACE,OAAO,EAAE,IAAI;CACd;;AAED,AAAA,cAAc,CAAC;EACb,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;CAiBZ;;AAnBD,AAGI,cAHU,CAGV,wBAAwB,CACxB;EACE,OAAO,EAAE,YAAY;CACtB;;AANL,AAOI,cAPU,CAOV,gBAAgB,CAAC;EACf,gBAAgB,EAAE,WAAW;CAC9B;;AATL,AAUI,cAVU,CAUV,iBAAiB,CAAC;EAChB,OAAO,EAAE,IAAI;CACd;;AAZL,AAaI,cAbU,CAaV,mBAAmB,CAAC;EAClB,OAAO,EAAE,KAAK;CACf;;AAfL,AAgBI,cAhBU,CAgBV,sBAAsB,CAAC;EACrB,OAAO,EAAE,IAAI;CACd;;AAEL,AAAA,mBAAmB,CAAC;EAClB,OAAO,EAAE,IAAI;CACd;;AAED,8BAA8B;AAC9B,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK;EACtC,AAAA,mBAAmB,AAAA,cAAc,CACjC;IACE,QAAQ,EAAE,mBAAmB;GAC9B;;;AAGH,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK,OAAO,SAAS,EAAE,KAAK;EAC7D,AAAA,mBAAmB,AAAA,cAAc,CACjC;IACE,QAAQ,EAAE,mBAAmB;GAC9B;;;AAGH,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK;EACtC,AAAA,0BAA0B,AAAA,cAAc,CACxC;IACE,QAAQ,EAAE,mBAAmB;GAC9B"
+}

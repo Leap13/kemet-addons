@@ -1,0 +1,36 @@
+.widget_mailchimp{
+    .mailchimp-form{
+        .et-mailchimp-form{
+            div:first-child{
+                margin: 20px 0;
+            }
+            input[name=email]{
+                padding: 15px;
+                &:focus{
+                    outline: none;
+                }
+            }
+            span{
+                color: $color-error;
+                &.alert{
+                    display: none;
+                &.visible{
+                    display: block;
+                }    
+                }
+            }
+            div{
+                &.alert{
+                    color: $color-error;
+                    display: none;
+                &.visible{
+                    display: block;
+                } 
+                }
+
+            }
+        } 
+    }
+}
+
+

@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
     'use strict';
     // Project configuration
-
+    const sass = require('node-sass');
     var pkgInfo = grunt.file.readJSON('package.json');
 
     grunt.initConfig({
@@ -13,6 +13,7 @@ module.exports = function (grunt) {
                     sourcemap: 'none',
                     outputStyle: 'expanded',
                     linefeed: 'lf',
+                    implementation: sass, sourceMap: true
                 },
                 dist: {
                     files: [
@@ -28,6 +29,7 @@ module.exports = function (grunt) {
                             'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
                             'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                             'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
+                            'addons/extra-widgets/assets/css/unminified/style.css': 'sass/extra-widgets.scss',
                         },
 
                         {
@@ -64,6 +66,10 @@ module.exports = function (grunt) {
                        src: 'addons/sticky-header/assets/css/unminified/style.css',
                        dest: 'addons/sticky-header/assets/css/minified/style.min.css',
                     },
+                    {
+                        src: 'addons/extra-widgets/assets/css/unminified/style.css',
+                        dest: 'addons/extra-widgets/assets/css/minified/style.min.css',
+                     },
                 ]
              } 
         },
