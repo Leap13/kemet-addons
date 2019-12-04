@@ -17,11 +17,11 @@ if (class_exists('KFW')) {
     'class'  => 'kemet-addons-icon',
   ));
 
-    //
+
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => 'Kemet Customizer Options',
+    'title' => __( 'Kemet Customizer Options', 'kemet-addons'),
     'priority' => '1',
     'fields' => array(
       // A switcher field
@@ -33,32 +33,32 @@ if (class_exists('KFW')) {
       ),array(
         'id' => 'extra-headers',
         'type' => 'switcher',
-        'title' => 'Extra Headers',
+        'title' => __( 'Extra Headers', 'kemet-addons' ),
         'default' => 'false',
       ),array(
         'id' => 'top-bar-section',
         'type' => 'switcher',
-        'title' => 'Top Bar Section',
+        'title' => __( 'Top Bar Section', 'kemet-addons' ),
         'default' => 'false',
         ),array(
         'id' => 'page-title',
         'type' => 'switcher',
-        'title' => 'Page Title',
+        'title' => __( 'Page Title & Breadcrumbs', 'kemet-addons'),
         'default' => 'false',
       ),array(
         'id' => 'go-top',
         'type' => 'switcher',
-        'title' => 'Go Top Link',
+        'title' => __( 'Go Top Link', 'kemet-addons'),
         'default' => 'false',
       ),array(
         'id' => 'sticky-header',
         'type' => 'switcher',
-        'title' => 'Sticky Header',
+        'title' => __( 'Sticky Header', 'kemet-addons'),
         'default' => 'false',
       ),array(
         'id' => 'extra-widgets',
         'type' => 'switcher',
-        'title' => 'Extra Widgets',
+        'title' => __( 'Extra Widgets', 'kemet-addons'),
         'default' => 'false',
       ),
     ),
@@ -67,7 +67,7 @@ if (class_exists('KFW')) {
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => 'Kemet Integration',
+    'title' => __( 'Kemet Integration', 'kemet-addons' ),
     'priority' => '5',
     'fields' => array(
       // A switcher field
