@@ -2,7 +2,9 @@
 /* 
  * Header 5 Layout
  */
+
 ?>
+
 <div class="main-header-bar-wrap">
 	<div class="main-header-bar">
         <?php kemet_main_header_bar_top(); ?>

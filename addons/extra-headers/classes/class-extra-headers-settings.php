@@ -38,7 +38,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
         
 
         function html_markup_loader() {
-
             ?>
     
             <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php kemet_header_classes();?> role="banner">
@@ -49,7 +48,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
     
                 <?php kemet_sitehead_bottom(); ?>
     
-            </header><!-- #sitehead -->
+			</header><!-- #sitehead -->
             <?php
 		}
 		
@@ -90,12 +89,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
 
-			$search_box_shadow = kemet_get_option('search-box-shadow');
-
-			if($search_box_shadow == true){
-				$classes[] = 'search-box-shadow';
-			}
-
 			if('header-main-layout-8' == $kemet_header_layout) {
 
 				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
@@ -113,16 +106,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 				}
 				
 				$classes[] = 'header6-align-'. kemet_get_option('header6-position') ;
-			}
-
-				$search_style = kemet_get_option('search-style');
-			
-				if ( wp_is_mobile() ) {
-					$classes[] = 'search-box';
-				}else{
-					$classes[] = $search_style;
-				}
-				
+			}	
 			return $classes;
          }
         
