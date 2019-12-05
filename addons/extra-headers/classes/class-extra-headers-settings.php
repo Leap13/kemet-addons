@@ -116,10 +116,13 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			}
 
 				$search_style = kemet_get_option('search-style');
-
-				if ($search_style == true) {
+			
+				if ( wp_is_mobile() ) {
+					$classes[] = 'search-box';
+				}else{
 					$classes[] = $search_style;
 				}
+				
 			return $classes;
          }
         
