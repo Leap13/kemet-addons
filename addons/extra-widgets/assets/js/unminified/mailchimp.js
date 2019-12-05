@@ -39,7 +39,7 @@
             
             validateValue(email.val(), email.next(".alert") , true);
  
-            if (email.val() != email.attr('placeholder')){
+            if (email.val() != ''){
                 console.log('work');
                 $this.find(".sending").addClass('visible');
  

@@ -25,11 +25,12 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
 		 *  Constructor
 		 */
 		public function __construct() {
+            require_once KEMET_WIDGETS_DIR . 'classes/helper.php'; 
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
-           //require_once( KEMET_WIDGETS_DIR .'classes/helper.php' );
             add_action( 'widgets_init', array( $this, 'kemet_extra_widgets_markup'), 10 );
             add_action( 'widgets_init', array( $this, 'register_kemet_widgets'));
+
         }
 
         public static function kemet_extra_widgets_markup() {
@@ -59,8 +60,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             Kemet_Style_Generator::kmt_add_css(KEMET_WIDGETS_DIR.'assets/css/minified/style.min.css');
         }
         public function add_scripts() {
-             //Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/minified/mailchimp.min.js');
-             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/unminified/mailchimp.js');
+             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/minified/mailchimp.min.js');
 		}
         
     }

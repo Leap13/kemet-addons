@@ -40,12 +40,8 @@ if ( ! class_exists( 'Kemet_Extra_Widgets' ) ) {
 		
 		public function __construct() {
             
-			//require_once KEMET_WIDGETS_DIR . 'classes/class-widgets-settings.php';
 			require_once KEMET_WIDGETS_DIR . 'classes/class-widgets-partials.php';
 
-            if ( ! is_admin() ) {
-			//	require_once KEMET_WIDGETS_DIR . 'classes/dynamic.css.php';
-			}
 		}
 
 	}

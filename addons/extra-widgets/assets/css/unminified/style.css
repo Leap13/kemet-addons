@@ -15,7 +15,8 @@
 }
 
 .widget_mailchimp .mailchimp-form .et-mailchimp-form input[name=email] {
-  padding: 15px;
+  width: 100%;
+  padding: 16px 45px 16px 15px;
 }
 
 .widget_mailchimp .mailchimp-form .et-mailchimp-form input[name=email]:focus {
@@ -35,8 +36,15 @@
 }
 
 .widget_mailchimp .mailchimp-form .et-mailchimp-form div.alert {
-  color: #dd3333;
   display: none;
+}
+
+.widget_mailchimp .mailchimp-form .et-mailchimp-form div.alert.success {
+  color: #28a745;
+}
+
+.widget_mailchimp .mailchimp-form .et-mailchimp-form div.alert.error {
+  color: #dd3333;
 }
 
 .widget_mailchimp .mailchimp-form .et-mailchimp-form div.alert.visible {

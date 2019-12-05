@@ -5,7 +5,8 @@
                 margin: 20px 0;
             }
             input[name=email]{
-                padding: 15px;
+                width: 100%;
+                padding: 16px 45px 16px 15px;
                 &:focus{
                     outline: none;
                 }
@@ -21,7 +22,12 @@
             }
             div{
                 &.alert{
-                    color: $color-error;
+                    &.success{
+                        color: $color_success;
+                    }
+                    &.error{
+                        color: $color-error;
+                    }
                     display: none;
                 &.visible{
                     display: block;
