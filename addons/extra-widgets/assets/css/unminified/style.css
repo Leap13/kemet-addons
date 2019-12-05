@@ -1,0 +1,54 @@
+/*--------------------------------------------------------------
+## Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Extra Widgets
+--------------------------------------------------------------*/
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div:first-child {
+  margin: 20px 0;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form input[name=email] {
+  width: 100%;
+  padding: 16px 45px 16px 15px;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form input[name=email]:focus {
+  outline: none;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span {
+  color: #dd3333;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert {
+  display: none;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert.visible {
+  display: block;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert {
+  display: none;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.success {
+  color: #28a745;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.error {
+  color: #dd3333;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.visible {
+  display: block;
+}
+
+/*# sourceMappingURL=style.css.map */

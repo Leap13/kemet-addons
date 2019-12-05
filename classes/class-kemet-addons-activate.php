@@ -24,6 +24,7 @@ final class Kemet_Addon_Activate {
 	 * @return void
 	 */
 	function load_kmt_addons() {
+		
         $enabled_addon = get_option( 'kmt_framework' );
 
 		if ( 0 < count( $enabled_addon ) ) {

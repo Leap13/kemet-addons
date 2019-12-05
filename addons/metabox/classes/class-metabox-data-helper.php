@@ -41,8 +41,10 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 
 			if ( is_singular() ) {
 				add_action( 'wp_head', array( $this, 'primary_header' ) );
-                add_filter( 'kemet_header_class', array( $this, 'add_header_class' ) );
+				add_filter( 'kemet_header_class', array( $this, 'add_header_class' ) );
 				add_filter( 'kemet_the_title_enabled', array( $this, 'post_title' ) );
+				add_filter ( 'kemet_the_page_title_enabled', array( $this, 'post_title' ));
+				add_filter( 'kemet_page_breadcrumbs_enabled', array( $this, 'breadcrumbs_display' ) );
 				add_filter( 'kemet_featured_image_enabled', array( $this, 'featured_img' ) );
                 add_filter( 'kemet_main_footer_disable', array($this, 'kemet_footer_display') );  
                 add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display'));
@@ -86,6 +88,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 
 			if ( '1' == $display_header ) {
 				remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
+				remove_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ));
 			}
 		}
 
