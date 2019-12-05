@@ -6,6 +6,11 @@
     }
 }
 .header-main-layout-6 {
+    .kmt-sitehead-custom-menu-items{
+        &.main-header-container div:last-child{
+            width: 100%;
+        }
+    }
     .main-header-bar-navigation{
         width: 100%;
     }

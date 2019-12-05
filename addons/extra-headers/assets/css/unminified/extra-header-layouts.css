@@ -156,6 +156,10 @@
   margin-top: 33px;
 }
 
+.header-main-layout-6 .kmt-sitehead-custom-menu-items.main-header-container div:last-child {
+  width: 100%;
+}
+
 .header-main-layout-6 .main-header-bar-navigation {
   width: 100%;
 }
