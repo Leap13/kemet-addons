@@ -3,7 +3,7 @@
  * Plugin Name: Kemet Addons
  * Plugin URI: https://kemet.io
  * Description: This Plugin for Kemet Theme
- * Version: 0.1.7
+ * Version: 1.0.0
  * Author: Leap13
  * Author URI: https://leap13.com
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,4 +34,3 @@ define('KEMET_ADDONS_DIR', plugin_dir_path(KEMET_ADDONS_FILE));
  */
 
 require_once KEMET_ADDONS_DIR.'classes/class-kemet-addons.php';
-require_once KEMET_ADDONS_DIR.'classes/class-kemet-style-generator.php';
