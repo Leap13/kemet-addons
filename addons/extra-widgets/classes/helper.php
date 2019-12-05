@@ -1,6 +1,6 @@
 <?php
 
-
+//MailChimp
 function mailchimp_post( $email, $status, $list_id, $api_key){
  
     $data = array(
@@ -15,7 +15,7 @@ function mailchimp_post( $email, $status, $list_id, $api_key){
         'Content-Type: application/json', 
         'Authorization: Basic '.base64_encode( 'user:'.$api_key )
     );
- 
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $mailchimp = curl_init();
   
     curl_setopt($mailchimp, CURLOPT_URL, $url);
@@ -25,7 +25,7 @@ function mailchimp_post( $email, $status, $list_id, $api_key){
     curl_setopt($mailchimp, CURLOPT_TIMEOUT, 10);
     curl_setopt($mailchimp, CURLOPT_POST, true);
     curl_setopt($mailchimp, CURLOPT_POSTFIELDS, json_encode($data) );
-    curl_setopt($mailchimp, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+    curl_setopt($mailchimp, CURLOPT_USERAGENT, $userAgent);
     curl_setopt($mailchimp, CURLOPT_SSL_VERIFYPEER, false);
   
     return curl_exec($mailchimp);

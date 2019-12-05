@@ -32,7 +32,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             add_action( 'widgets_init', array( $this, 'register_kemet_widgets'));
 
         }
-
+        
         public static function kemet_extra_widgets_markup() {
 
             // Define array of custom widgets for the theme

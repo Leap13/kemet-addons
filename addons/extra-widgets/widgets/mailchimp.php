@@ -1,8 +1,5 @@
 <?php
-add_action('widgets_init', 'register_mailchimp_widget');
-function register_mailchimp_widget(){
-    register_widget( 'Kemet_MailChimp_Widget' );
-}
+
 class Kemet_MailChimp_Widget extends WP_Widget {
  
     public function __construct() {
