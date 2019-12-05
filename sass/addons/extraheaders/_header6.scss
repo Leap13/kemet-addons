@@ -156,14 +156,14 @@
 .search-icon{
     &.header-main-layout-6 , &.header-main-layout-8{
         .main-header-bar{
-			.kmt-sitehead-custom-menu-items{
-            .kmt-search-menu-icon{
-                left: 30px;
-            }
-            .kmt-dropdown-active{
-                left: 0;
-            }
-        } 
+            .kmt-sitehead-custom-menu-items{
+                .kmt-search-menu-icon{
+                    left: 30px;
+                }
+                .kmt-dropdown-active{
+                    left: 0;
+                }
+            } 
+        }
     }
-}
 }
