@@ -3,11 +3,6 @@
  * Kemet Addons Class.
  */
 
-/**
- * Provide Extension related data.
- *
- * @since 1.0
- */
 if ( ! class_exists('Kemet_Addons' ) ) {
     
     /**
@@ -55,8 +50,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
             add_action( 'admin_enqueue_scripts', array($this, 'kmt_admin_styles'));
         }
 
-        public function activation()
-        {
+        public function activation() {
             //registered KA
             //Flush rewrite rules
             flush_rewrite_rules();
@@ -65,8 +59,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
         /**
          * After Setup Theme.
          */
-        public function setup()
-        {
+        public function setup() {
             if (!defined('KEMET_THEME_VERSION')) {
                 return;
             }
@@ -74,8 +67,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
             require_once KEMET_ADDONS_DIR.'classes/class-kemet-addons-activate.php';
         }
 
-        public function deactivation()
-        {
+        public function deactivation() {
             //Flush rewrite rules
             flush_rewrite_rules();
         }

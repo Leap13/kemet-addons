@@ -1,4 +1,4 @@
-<?php // 
+<?php 
 /**
  * Kemet Extra Headers Addon
  *

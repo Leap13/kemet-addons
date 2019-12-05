@@ -1,18 +1,18 @@
 <?php
-
 /**
- * Kemet Headeer Markup.
+ * Kemet Panel Settings
  */
+
 // Control core classes for avoid errors
 if (class_exists('KFW')) {
-    //
+
     // Set a unique slug-like ID
     $prefix = 'kmt_framework';
 
     //
     // Create options
     KFW::createOptions($prefix, array(
-    'menu_title' => 'Kemet Panel',
+    'menu_title' => __( 'Kemet Panel', 'kemet-addons' ),
     'menu_slug' => 'kmt-framework',
     'class'  => 'kemet-addons-icon',
   ));
@@ -21,7 +21,7 @@ if (class_exists('KFW')) {
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => 'Kemet Customizer Options',
+    'title' => __( 'Kemet Customizer Options', 'kemet-addons' ),
     'priority' => '1',
     'fields' => array(
       // A switcher field
@@ -33,41 +33,40 @@ if (class_exists('KFW')) {
       ),array(
         'id' => 'extra-headers',
         'type' => 'switcher',
-        'title' => 'Extra Headers',
+        'title' => __( 'Extra Headers', 'kemet-addons' ),
         'default' => 'false',
       ),array(
         'id' => 'top-bar-section',
         'type' => 'switcher',
-        'title' => 'Top Bar Section',
+        'title' => __('Top Bar Section', 'kemet-addons'),
         'default' => 'false',
         ),array(
         'id' => 'page-title',
         'type' => 'switcher',
-        'title' => 'Page Title',
+        'title' => __('Page Title', 'kemet-addons'),
         'default' => 'false',
       ),array(
         'id' => 'go-top',
         'type' => 'switcher',
-        'title' => 'Go Top Link',
+        'title' => __( 'Go Top Link', 'kemet-addons' ),
         'default' => 'false',
       ),array(
         'id' => 'sticky-header',
         'type' => 'switcher',
-        'title' => 'Sticky Header',
+        'title' => __( 'Sticky Header', 'kemet-addons'),
         'default' => 'false',
       ),array(
         'id' => 'extra-widgets',
         'type' => 'switcher',
-        'title' => 'Extra Widgets',
+        'title' => __('Extra Widgets', 'kemet-addons'),
         'default' => 'false',
       ),
     ),
   ),
-      //
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => 'Kemet Integration',
+    'title' => __( 'Kemet Integration', 'kemet-addons'),
     'priority' => '5',
     'fields' => array(
       // A switcher field

@@ -78,6 +78,20 @@ module.exports = function (grunt) {
                 }
             }
         },
+        makepot: {
+            target: {
+                options: {
+                    domainPath: '/',
+                    potFilename: 'languages/kemet-addons.pot',
+                    potHeaders: {
+                        poedit: true,
+                        'x-poedit-keywordslist': true
+                    },
+                    type: 'wp-theme',
+                    updateTimestamp: true
+                }
+            }
+        },
     });
 
     // Load grunt tasks
@@ -85,6 +99,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
    // grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-wp-i18n');
 
     // SASS compile
     grunt.registerTask('default', ['sass', 'cssmin:css']);

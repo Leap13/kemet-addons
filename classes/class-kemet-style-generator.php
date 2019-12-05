@@ -1,6 +1,6 @@
 <?php
 /**
- * Minify Loader Class
+ * Generator Class
  *
  * @package     Kemet
  */
@@ -47,7 +47,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 			}
 
 			wp_add_inline_style( 'kemet-addons-css', apply_filters( 'kemet_dynamic_css', '' ) );
-		//	wp_localize_script( 'kemet-addons-js', 'kemet_addons_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+			wp_localize_script( 'kemet-addons-js', 'kemet_addons_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 		}
 
 		public static function get_css_url() { 
@@ -55,11 +55,11 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 			$css_files = self::get_css_files();
 			$files_count = count( $css_files );
 			$merged_style	= '';
-			/* new ner */
+			/* new */
 			if ( $files_count > 0 ) {
 
 			foreach( $css_files as $k => $file) {	
-				//$css_file_path = $handle;
+
 				$merged_style .=  file_get_contents($file);
 				if ( $files_count == $k + 1 ) {
 						$handle = 'kmt-addons-css';

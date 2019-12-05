@@ -15,7 +15,8 @@
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-uglify": "^4.0.1",
-    "grunt-sass": "^2.1.0"
+    "grunt-sass": "^2.1.0",
+    "grunt-wp-i18n": "^1.0.3"
   },
   "dependencies": {
     "node": "^12.10.0"
