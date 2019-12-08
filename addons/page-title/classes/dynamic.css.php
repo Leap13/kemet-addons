@@ -13,7 +13,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_color        = kemet_get_option( 'page-title-color' );
             $page_title_font_size        = kemet_get_option( 'page-title-font-size' );
             $page_title_font_family        = kemet_get_option( 'page-title-font-family' );
-            $page_title_font_weight        = kemet_get_option( 'page-title-font-weight' );
+            $page_title_font_weight        = kemet_get_option( 'pagetitle-font-weight' );
             $page_title_font_transform        = kemet_get_option( 'pagetitle-text-transform' );
             $page_title_line_height        = kemet_get_option( 'pagetitle-line-height' );
             $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
