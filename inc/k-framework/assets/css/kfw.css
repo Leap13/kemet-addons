@@ -3948,3 +3948,43 @@
   padding: 4px 5px 4px 20px;
   direction: rtl;
 }
+/***********************************/
+/******** Kemet Panel **************/
+.kfw-header-left:before {
+    font-family: 'KMTAncientOwl' !important;
+    content: "\e900";
+    color: #fab522;
+    padding: 10px;
+    font-size: 140px;
+    line-height: normal;
+    margin-right: 15px;
+    position: absolute;
+    top: 3px;
+    left: -24px;
+}
+.kfw-theme-light .kfw-nav-background {
+  display: none;
+}
+.kfw-nav ul li {
+  display: inline-block;
+}
+.kfw-nav {
+  float: none;
+  width: 100%;
+}
+.kfw-content {
+  margin-left: 0px;
+}
+.kfw-theme-light .kfw-nav ul li .kfw-section-active,
+.kfw-theme-light .kfw-nav ul li a {
+  border: 0px;
+}
+.kfw-header {
+  overflow: hidden;
+}
+.kfw-theme-light .kfw-header-inner {
+  overflow: hidden;
+}
+.kfw-header-inner h1 {
+  margin-left: 30px;;
+}

@@ -43,30 +43,22 @@ KFW::createSection( $prefix_page_opts, array(
       'type'  => 'checkbox',
       'title' =>  __('Disable Page Title', 'kemet-addons'),
       'label' => __('Disable Post/Page Title', 'kemet-addons'),
-    ),
-    
-    array(
+    ),array(
       'id'    => 'kmt-featured-img',
       'type'  => 'checkbox',
       'title' =>  __('Disable Featured Image', 'kemet-addons'),
       'label' => __('Disable Post/Page Featured Image', 'kemet-addons'),
-    ),
-        
-    array(
+    ),array(
       'id'    => 'kemet-footer-display',
       'type'  => 'checkbox',
       'title' =>  __('Disable Main Footer', 'kemet-addons'),
       'label' => __('Disable Post/Page Footer Widgets Area', 'kemet-addons'),
-    ),
-      
-     array(
+    ),array(
       'id'    => 'copyright-footer-layout',
       'type'  => 'checkbox',
       'title' =>  __('Disable Copyright Area', 'kemet-addons'),
       'label' => __('Disable Post/Page Copyright', 'kemet-addons'),
-    ),
-    
-      array(
+    ), array(
       'id'    => 'kemet-meta-enable-header-transparent',
       'type'  => 'select',
       'title' =>  __('Header Transparent', 'kemet-addons'),
@@ -75,10 +67,7 @@ KFW::createSection( $prefix_page_opts, array(
         'enabled'     => __('Enable', 'kemet-addons'),
         'disabled'     => __('Disabled', 'kemet-addons'),
       ),
-    ),
-
-
-    array(
+    ), array(
       'id'          => 'site-sidebar-layout',
       'type'        => 'select',
       'title'       => __('Sidebar Layout', 'kemet-addons'),
@@ -89,9 +78,7 @@ KFW::createSection( $prefix_page_opts, array(
         'left-sidebar'     => __('Left Sidebar', 'kemet-addons'),
         'right-sidebar'     => __('Right Sidebar', 'kemet-addons'),
       ),
-    ),
-
-    array(
+    ), array(
       'id'          => 'site-content-layout',
       'type'        => 'select',
       'title'       => __('Page Layout', 'kemet-addons'),
