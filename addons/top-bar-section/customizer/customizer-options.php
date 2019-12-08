@@ -106,7 +106,7 @@ $wp_customize->add_control(
 
 		if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
-			KEMET_THEME_SETTINGS . '[topbar-section-2-html]', array(
+			KEMET_THEME_SETTINGS . '[top-section-2-html]', array(
 				'selector'            => '.kemet-top-header-section-2',
 				'container_inclusive' => true,
 				'render_callback'     => array( 'Kemet_Customizer_Partials', '_render_topbar_section_2_html' ),
@@ -415,5 +415,28 @@ $wp_customize->add_control(
 				'section' => 'section-topbar-header',
 				'label'   => __( 'Top Bar SubMenu Items Hover Color', 'kemet-addons' ),
 			)
+		)
+	);
+
+	/**
+	 * Option: Search Style
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
+			'default'           => 'search-box',
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
+			'type'     => 'select',
+			'section'  => 'section-topbar-header',
+			'priority' => 10,
+			'label'    => __( 'Search Style', 'kemet-addons' ),
+			'choices'  => array(
+				'search-box'    => __( 'Search Box', 'kemet-addons' ),
+				'search-icon'   => __( 'Icon', 'kemet-addons' ),
+			),
 		)
 	);

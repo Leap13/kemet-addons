@@ -38,7 +38,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
         
 
         function html_markup_loader() {
-
             ?>
     
             <header itemtype="https://schema.org/WPHeader" itemscope="itemscope" id="sitehead" <?php kemet_header_classes();?> role="banner">
@@ -49,7 +48,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
     
                 <?php kemet_sitehead_bottom(); ?>
     
-            </header><!-- #sitehead -->
+			</header><!-- #sitehead -->
             <?php
 		}
 		
@@ -57,47 +56,58 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
 			$options = get_option( 'kmt_framework' );
-			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
-			$display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] ) ? $meta['kemet-main-header-display'] : 'default';
 
-			if ( '1' == $display_header ) {
-
-				remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
-				remove_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ));
-				
-			} else if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  ) {
-				add_action( 'kemet_header', array( $this,'html_markup_loader'));	
-				remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
-				kemetaddons_get_template( 'extra-headers/templates/'. esc_attr( $kemet_header_layout ) . '.php' );
-				
-			} else if ( 1 !== ( $options['extra-headers'] ) ) {
-				
-				 add_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
-           	 }          
+			if ( apply_filters( 'kemet_primary_header_enabled', true ) ) {
+				if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout && 'header-main-layout-4' !== $kemet_header_layout  ) {
+					add_action( 'kemet_header', array( $this,'html_markup_loader'));	
+					remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
+					kemetaddons_get_template( 'extra-headers/templates/'. esc_attr( $kemet_header_layout ) . '.php' );
+					
+				} else if ( 1 !== ( $options['extra-headers'] ) ) {
+					add_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
+					}  
+			}        
 		}
 
         function kemet_body_classes($classes) {
-            $options = get_option( 'kmt_framework' );
-			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
-			$display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] ) ? $meta['kemet-main-header-display'] : 'default';
+            $kemet_header_layout = kemet_get_option( 'header-layouts' );
 
-            if((kemet_get_option ('header-layouts') == 'header-main-layout-6') && ( '1' !== $display_header )) {
+            if('header-main-layout-6' == $kemet_header_layout) {
                 
                 $classes[] = 'header-main-layout-6';
                 $classes[] = 'kemet-main-header6-align-'. kemet_get_option('header6-position') ;
-            } 
+			} 
+			if('header-main-layout-8' == $kemet_header_layout) {
+                
+                $classes[] = 'header-main-layout-8';
+                $classes[] = 'kemet-main-header8-align-'. kemet_get_option('header8-position') ;
+            }
             return $classes;
 		}
 		
         function header_classes( $classes ) {
+			
+			$kemet_header_layout = kemet_get_option( 'header-layouts' );
 
-                $header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
+			if('header-main-layout-8' == $kemet_header_layout) {
 
-                if ($header6_has_box_shadow == true) {
-                    $classes[] = 'header6-has-box-shadow';
-                }
+				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
+				if ($header8_has_box_shadow == true) {
+					$classes[] = 'has-box-shadow';
+				}
+				$classes[] = 'header8-align-'. kemet_get_option('header8-position') ;
+			}
+			if( 'header-main-layout-6' == $kemet_header_layout ) {
 
-               return $classes;
+				$header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
+
+				if ($header6_has_box_shadow == true) {
+					$classes[] = 'has-box-shadow';
+				}
+				
+				$classes[] = 'header6-align-'. kemet_get_option('header6-position') ;
+			}	
+			return $classes;
          }
         
         
