@@ -396,3 +396,27 @@
 			'active_callback' => 'kemet_header_layout8_style',	
 		)
 	);
+
+	/**
+	 * Option: Header8 Position
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[header8-position]', array(
+			'default'           => 'left',
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[header8-position]', array(
+			'type'     => 'select',
+			'section'  => 'section-header',
+			'priority' => 17,
+			'label'    => __( 'Header Position', 'kemet-addons' ),
+			'choices'  => array(
+				'left'    => __( 'Left', 'kemet-addons' ),
+				'right'   => __( 'Right', 'kemet-addons' ),
+			),
+            'active_callback' => 'kemet_header_layout8_style',
+		)
+	);
