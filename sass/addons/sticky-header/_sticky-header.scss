@@ -13,6 +13,16 @@
     &.sticky-slide{
       animation-name: slideInDown;
     }
+    &.kmt-sticky-header{
+      &.sticky-main-header{
+        .main-header-bar-wrap{
+          display: block;
+        }
+      }
+    }
+    .main-header-bar-wrap{
+      display: none;
+    }
     .sticky-custom-logo-link
     {
       display: inline-block;
@@ -27,7 +37,14 @@
       display: block;
     }
     .kemet-top-header-wrap {
-      display: none;;
+      display: none;
+    }
+    &.kmt-sticky-header{
+      &.kmt-sticky-top-bar{
+        .kemet-top-header-wrap{
+          display: block;
+        }
+      }
     }
 }
 .sticky-custom-logo {

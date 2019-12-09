@@ -29,6 +29,14 @@
   animation-name: slideInDown;
 }
 
+.kmt-is-sticky.kmt-sticky-header.sticky-main-header .main-header-bar-wrap {
+  display: block;
+}
+
+.kmt-is-sticky .main-header-bar-wrap {
+  display: none;
+}
+
 .kmt-is-sticky .sticky-custom-logo-link {
   display: inline-block;
 }
@@ -47,6 +55,10 @@
 
 .kmt-is-sticky .kemet-top-header-wrap {
   display: none;
+}
+
+.kmt-is-sticky.kmt-sticky-header.kmt-sticky-top-bar .kemet-top-header-wrap {
+  display: block;
 }
 
 .sticky-custom-logo {
