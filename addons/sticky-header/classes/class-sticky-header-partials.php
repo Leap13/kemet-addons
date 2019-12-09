@@ -138,10 +138,12 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
         public function header_classes($classes) {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
             $sticky_logo              = kemet_get_option( 'sticky-logo' );
-            if( $enabled_sticky ) {
+            $kemet_header_layout = kemet_get_option( 'header-layouts' );
+            $sticky_responsive        = kemet_get_option('sticky-responsive');
+            if( $enabled_sticky && 'header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout) {
                 $classes[] = 'kmt-sticky-header';
             }
-
+            $classes[] =  $sticky_responsive;
             if ( '' !== $sticky_logo ) {
                 $classes[] = 'kmt-sticky-logo';
             }
