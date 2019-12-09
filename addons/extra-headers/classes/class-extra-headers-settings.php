@@ -86,14 +86,28 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		}
 		
         function header_classes( $classes ) {
+			
+			$kemet_header_layout = kemet_get_option( 'header-layouts' );
 
-                $header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
+			if('header-main-layout-8' == $kemet_header_layout) {
 
-                if ($header6_has_box_shadow == true) {
-                    $classes[] = 'header6-has-box-shadow';
-                }
+				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
+				if ($header8_has_box_shadow == true) {
+					$classes[] = 'has-box-shadow';
+				}
+				$classes[] = 'header8-align-'. kemet_get_option('header8-position') ;
+			}
+			if( 'header-main-layout-6' == $kemet_header_layout ) {
 
-               return $classes;
+				$header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
+
+				if ($header6_has_box_shadow == true) {
+					$classes[] = 'has-box-shadow';
+				}
+				
+				$classes[] = 'header6-align-'. kemet_get_option('header6-position') ;
+			}	
+			return $classes;
          }
         
         
