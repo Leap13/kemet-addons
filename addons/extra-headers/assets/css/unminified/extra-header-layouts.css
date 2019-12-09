@@ -265,6 +265,10 @@
   border: 0px !important;
 }
 
+.kmt-header-break-point .kmt-sitehead-custom-menu-items .kmt-search-container {
+  width: inherit;
+}
+
 .kmt-header-break-point .ss-wrapper {
   position: initial;
   margin: 0px;
@@ -314,12 +318,16 @@
   left: 0;
 }
 
+.search-icon.header-main-layout-6 .main-header-bar .kmt-sitehead-custom-menu-items .kmt-search-container {
+  width: 250px;
+}
+
 .search-icon.header-main-layout-6 .main-header-bar .kmt-sitehead-custom-menu-items .kmt-search-menu-icon {
-  left: 0px;
+  left: 30px;
 }
 
 .search-icon.header-main-layout-6 .main-header-bar .kmt-sitehead-custom-menu-items .kmt-dropdown-active {
-  left: -119px;
+  left: 0px;
 }
 
 /*--------------------------------------------------------------

@@ -121,7 +121,11 @@
             }
             
         }
-
+        .kmt-sitehead-custom-menu-items{
+            .kmt-search-container{
+                width: inherit;
+            }
+        }
         .ss-wrapper {
         position: initial;
         margin: 0px;
@@ -174,11 +178,14 @@
     &.header-main-layout-6{
         .main-header-bar{
             .kmt-sitehead-custom-menu-items{
+                .kmt-search-container{
+                    width: 250px;
+                }
                 .kmt-search-menu-icon{
-                    left: 0px;
+                    left: 30px;
                 }
                 .kmt-dropdown-active{
-                    left: -119px;
+                    left: 0px;
                 }
             } 
         }
