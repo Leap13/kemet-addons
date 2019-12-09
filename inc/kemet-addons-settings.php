@@ -12,9 +12,9 @@ if (class_exists('KFW')) {
     //
     // Create options
     KFW::createOptions($prefix, array(
-    'menu_title' => __( 'Welcome to Kemet Theme', 'kemet-addons' ),
+    'menu_title' => __( 'Kemet', 'kemet-addons' ),
     'menu_slug' => 'kmt-framework',
-    'class'  => 'kemet-addons-icon',
+    'class'  => 'kemet-addons-options',
     'show_search' => false,
     'show_all_options'  => false,
     'theme'   => 'light',
@@ -24,14 +24,14 @@ if (class_exists('KFW')) {
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => __( 'Kemet Customizer Options', 'kemet-addons' ),
+    'title' => __( 'Customizer Options', 'kemet-addons' ),
     'priority' => '1',
     'fields' => array(
       // A switcher field
       array(
         'id' => 'metabox',
         'type' => 'switcher',
-        'title' => __( 'MetaBox Options', 'kemet-addons' ),
+        'title' => __( 'Single page/post options', 'kemet-addons' ),
         'subtitle' => __('Enable/Disable the page options to customize your single page/post.', 'kemet-ddons'),
         'default' => 'true',
       ),array(
@@ -76,7 +76,7 @@ if (class_exists('KFW')) {
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => __( 'Kemet Integration', 'kemet-addons'),
+    'title' => __( 'Integration', 'kemet-addons'),
     'priority' => '5',
     'fields' => array(
       // A switcher field

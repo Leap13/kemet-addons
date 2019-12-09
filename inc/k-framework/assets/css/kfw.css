@@ -3988,3 +3988,13 @@
 .kfw-header-inner h1 {
   margin-left: 30px;;
 }
+.kfw-options.kemet-addons-options {
+  margin: 100px;
+  margin-left: 80px;
+}
+.kemet-addons-options .kfw-field .kfw-fieldset {
+  margin-left: 45%;
+}
+.kemet-addons-options .kfw-field .kfw-title {
+  width: 40%;
+}
