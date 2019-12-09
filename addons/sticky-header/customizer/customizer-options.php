@@ -263,3 +263,26 @@
             ),
         )
     );
+
+	/**
+     * Option:Sticky Responsive
+     */
+    $wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[sticky-style]',array(
+            'default'           => 'sticky-fade',
+            'type'              => 'option',
+            'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+        )
+    );
+    $wp_customize->add_control(
+        KEMET_THEME_SETTINGS . '[sticky-style]' ,array(
+            'priority'   => 55,
+            'section'    => 'section-sticky-header',
+            'type'     => 'select',
+            'label'    => __( 'Sticky Style', 'kemet-addons' ),
+            'choices'  => array(
+				'sticky-fade'        => __( 'Fade', 'kemet-addons' ),
+                'sticky-slide'        => __( 'Slide', 'kemet-addons' ),
+            ),
+        )
+    );

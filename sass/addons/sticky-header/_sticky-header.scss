@@ -2,10 +2,22 @@
 {
   display: none;
 }
-
+.kmt-sticky-header{
+  .main-header-bar{
+    padding-top: 0;
+  }
+}
 .kmt-is-sticky {
-  position: fixed;
-  width: 100%;
+    position: fixed;
+    width: 100%;
+    animation-duration: 1s; 
+    animation-fill-mode: both; 
+    &.sticky-fade{
+      animation-name: fadeIn;
+    }
+    &.sticky-slide{
+      animation-name: slideInDown;
+    }
     .sticky-custom-logo-link
     {
       display: inline-block;
@@ -26,7 +38,19 @@
 .sticky-custom-logo {
   display: none;
 }
-
+@keyframes fadeIn { 
+  0% {opacity: 0;} 
+  100% {opacity: 1;} 
+}
+@keyframes slideInDown { 
+  0% { 
+      transform: translate3d(0, -100%, 0); 
+      visibility: visible; 
+  } 
+  100% { 
+      transform: translate3d(0, 0, 0); 
+  } 
+}
 /* Sticky Header Responsive */
 @media only screen and (max-width: 480px) {
   .sticky-hide-mobile.kmt-is-sticky
@@ -41,7 +65,6 @@
     position: relative !important;
   }
 }
-  
 @media only screen and (max-width: 767px) {
   .sticky-hide-tablet-mobile.kmt-is-sticky
   {

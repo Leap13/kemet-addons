@@ -138,6 +138,9 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
         public function header_classes($classes) {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
             $sticky_logo              = kemet_get_option( 'sticky-logo' );
+            $sticky_style              = kemet_get_option( 'sticky-style' );
+
+            $classes[] = $sticky_style;
             if( $enabled_sticky ) {
                 $classes[] = 'kmt-sticky-header';
             }
@@ -145,6 +148,8 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
             if ( '' !== $sticky_logo ) {
                 $classes[] = 'kmt-sticky-logo';
             }
+
+
             return $classes;
             echo 'class="' . esc_attr( join( ' ', $classes ) ) . '"';
         }
