@@ -70,7 +70,12 @@ if (class_exists('KFW')) {
         'title' => __('Extra Widgets', 'kemet-addons'),
         'subtitle' => __('Enable/Disable Extra Kemet Wordpress widgets to build your website', 'kemet-ddons'),
         'default' => 'false',
-      ),
+      ),array(
+        'id' => 'single-post',
+        'type' => 'switcher',
+        'title' => 'Single Post Options',
+        'default' => 'false',
+      )
     ),
   ),
     // Create a sub-tab

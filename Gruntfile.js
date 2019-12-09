@@ -30,6 +30,7 @@ module.exports = function (grunt) {
                             'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
                             'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                             'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
+                            'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
                         },
 
                         {
@@ -77,6 +78,7 @@ module.exports = function (grunt) {
                     'addons/page-title/assets/js/minified/customizer-preview.min.js': 'addons/page-title/assets/js/unminified/customizer-preview.js',
                     'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',
                     'addons/sticky-header/assets/js/minified/customizer-preview.min.js': 'addons/sticky-header/assets/js/unminified/customizer-preview.js',
+                    'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
                 }
             }
         },

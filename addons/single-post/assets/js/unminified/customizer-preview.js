@@ -1,0 +1,1 @@
+kemet_responsive_spacing( 'kemet-settings[padding-inside-container]','.single-post .single-layout-1 .entry-header,.single-post .navigation , .single-post .comments-area .comment-respond , .single-post .kmt-author-box', 'padding', ['top', 'right', 'bottom', 'left' ] );
