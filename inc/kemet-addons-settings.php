@@ -75,8 +75,8 @@ if (class_exists('KFW')) {
   ),
     // Create a sub-tab
     KFW::createSection($prefix, array(
-    'id' => 'primary_tab',
-    'title' => __( 'Integration', 'kemet-addons'),
+    'id' => 'integrations_tab',
+    'title' => __( 'Integrations', 'kemet-addons'),
     'priority' => '5',
     'fields' => array(
       // A switcher field
@@ -89,12 +89,27 @@ if (class_exists('KFW')) {
         'id' => 'kmt-mailchimp-list-id',
         'type' => 'text',
         'title' => __( 'Mailchimp List ID', 'kemet-addons' ),
-                'subtitle' => sprintf(esc_html__('Used for the MailChimp widget which working with Extra Widgets Addon. %1$sFollow this article%2$s to get your List ID.', 'kemet-addons'), '<a href="https://mailchimp.com/help/find-audience-id/" target="_blank">', '</a>' ),
-
+        'subtitle' => sprintf(esc_html__('Used for the MailChimp widget which working with Extra Widgets Addon. %1$sFollow this article%2$s to get your List ID.', 'kemet-addons'), '<a href="https://mailchimp.com/help/find-audience-id/" target="_blank">', '</a>' ),
+      ),
+    ),
+  ),
+      // Create a sub-tab
+    KFW::createSection($prefix, array(
+    'id' => 'info_tab',
+    'title' => __( 'System Info', 'kemet-addons'),
+    'priority' => '10',
+    'fields' => array(
+      // A switcher field
+      array(
+        'id' => 'system-info-php',
+        'type' => 'systeminfo',
+        //'default' => 'kljlkj',
+        //'title' => __( 'php v', 'kemet-addons' ),
+        //'subtitle' => sprintf(esc_html__('Used for the MailChimp widget which working with Extra Widgets Addon. %1$sFollow this article%2$s to get your API Key.', 'kemet-addons'), '<a href="https://mailchimp.com/help/about-api-keys/" target="_blank">', '</a>' ),
       ),
     ),
   )
-    ));
+    )));
 
   
 }
