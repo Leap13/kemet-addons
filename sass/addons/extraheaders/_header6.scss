@@ -16,6 +16,13 @@
             }
         }
     }
+    .kmt-sitehead-custom-menu-items{
+		&.separator{
+			&:before , &:after{
+			content: "";
+		}
+		}	
+	}
 }
 .header-main-layout-6 {
     &.search-icon{

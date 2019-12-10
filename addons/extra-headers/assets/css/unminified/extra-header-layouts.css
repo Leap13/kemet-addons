@@ -164,6 +164,10 @@
   content: "";
 }
 
+.ss-wrapper .kmt-sitehead-custom-menu-items.separator:before, .ss-wrapper .kmt-sitehead-custom-menu-items.separator:after {
+  content: "";
+}
+
 .header-main-layout-6.search-icon .ss-content {
   overflow-x: hidden;
 }
