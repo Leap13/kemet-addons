@@ -5,6 +5,15 @@
     kemet_css('kemet-settings[sticky-header-icon-h-color]', 'color', '.kmt-sticky-header-link:hover');
     kemet_css('kemet-settings[sticky-header-bg-color]', 'color', '.kmt-sticky-header-link');
     kemet_css('kemet-settings[sticky-header-bg-h-color]', 'color', '.kmt-sticky-header-link:hover');
+    /**
+	 * Sticky Header background
+	 */
+	wp.customize( 'kemet-settings[sticky-bg-obj]', function( value ) {
+		value.bind( function( bg_obj ) {
+			var dynamicStyle = ' body:not(.kmt-header-break-point) .kmt-is-sticky .main-header-bar { {{css}} }';	
+			kemet_background_obj_css( wp.customize, bg_obj, 'sticky-bg-obj', dynamicStyle );
+		} );
+	} );
     wp.customize('kemet-settings[sticky-header-border-radius]', function (setting) {
         setting.bind(function (border) {
             var dynamicStyle = '.kmt-sticky-header-link { border-radius: ' + (parseInt(border)) + 'px } ';

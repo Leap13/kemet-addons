@@ -26,7 +26,6 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
 		 *  Constructor
 		 */
 		public function __construct() {
-            //add_filter( 'kemet_has_custom_logo', '__return_true' );
             add_action ('kemet_header', array( $this, 'sticky_header_logo'), 1 );
             add_action( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
@@ -57,22 +56,6 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
 
 				$size = 'full';
 
-				// if ( is_customize_preview() ) {
-				// 	$size = 'full';
-				// }
-
-				// $html = sprintf(
-				// 	'<a href="%1$s" class="custom-logo-link sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
-				// 	esc_url( home_url( '/' ) ),
-				// 	wp_get_attachment_image(
-				// 		$custom_logo_id,
-				// 		$size,
-				// 		false,
-				// 		array(
-				// 			'class' => 'custom-logo',
-				// 		)
-				// 	)
-                // );
                 $html = sprintf(
 					'<a href="%1$s" class="custom-logo-link sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
@@ -97,8 +80,6 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
 							)
 						)
 					);
-
-				//remove_filter( 'wp_get_attachment_image_attributes', array( $this, 'replace_sticky_header_attr' ) );
 			}
 
 			return $html;
