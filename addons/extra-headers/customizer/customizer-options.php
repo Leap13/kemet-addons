@@ -226,26 +226,26 @@
 	);
 
 	/**
-	 * Option: Header6 Position
+	 * Option:Vertical Headers Position
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-position]', array(
+		KEMET_THEME_SETTINGS . '[vertical-headers-position]', array(
 			'default'           => 'left',
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header6-position]', array(
+		KEMET_THEME_SETTINGS . '[vertical-headers-position]', array(
 			'type'     => 'select',
 			'section'  => 'section-header',
 			'priority' => 17,
-			'label'    => __( 'Header Position', 'kemet-addons' ),
+			'label'    => __( 'Vertical Headers Position', 'kemet-addons' ),
 			'choices'  => array(
 				'left'    => __( 'Left', 'kemet-addons' ),
 				'right'   => __( 'Right', 'kemet-addons' ),
 			),
-            'active_callback' => 'kemet_header_layout6_style',
+            'active_callback' => 'kemet_header_layout8or6_style',
 		)
 	);	
     

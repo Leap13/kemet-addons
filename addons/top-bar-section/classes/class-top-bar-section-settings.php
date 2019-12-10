@@ -75,7 +75,6 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             if ($search_style == true) {
                 $classes[] = 'top-bar-' . $search_style;
             }
-            $classes[] = 'header8-align-'. kemet_get_option('header8-position') ;
 
 			return $classes;
          }

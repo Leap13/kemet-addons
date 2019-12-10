@@ -30,3 +30,12 @@ function kemet_header_layout8_style() {
 		return false;
 	}
 }
+
+function kemet_header_layout8or6_style() {
+    
+	if ( 'header-main-layout-8' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-6' == kemet_get_option( 'header-layouts', 'wide' ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
