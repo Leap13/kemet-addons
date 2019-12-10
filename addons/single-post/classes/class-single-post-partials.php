@@ -51,7 +51,12 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
         }
         
         function enable_page_title_in_content(){
-            return kemet_get_option('enable-page-title-content-area');
+            if(is_singular()){
+                return kemet_get_option('enable-page-title-content-area');
+            }else{
+                return false;
+            }
+            
         }
         
          /**
