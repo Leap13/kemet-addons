@@ -57,22 +57,6 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
 
 				$size = 'full';
 
-				// if ( is_customize_preview() ) {
-				// 	$size = 'full';
-				// }
-
-				// $html = sprintf(
-				// 	'<a href="%1$s" class="custom-logo-link sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
-				// 	esc_url( home_url( '/' ) ),
-				// 	wp_get_attachment_image(
-				// 		$custom_logo_id,
-				// 		$size,
-				// 		false,
-				// 		array(
-				// 			'class' => 'custom-logo',
-				// 		)
-				// 	)
-                // );
                 $html = sprintf(
 					'<a href="%1$s" class="custom-logo-link sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
@@ -97,8 +81,6 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
 							)
 						)
 					);
-
-				//remove_filter( 'wp_get_attachment_image_attributes', array( $this, 'replace_sticky_header_attr' ) );
 			}
 
 			return $html;
@@ -138,9 +120,13 @@ if (! class_exists('Kemet_Sticky_Header_Partials')) {
         public function header_classes($classes) {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
             $sticky_logo              = kemet_get_option( 'sticky-logo' );
-            if( $enabled_sticky ) {
+            $kemet_header_layout = kemet_get_option( 'header-layouts' );
+            $sticky_responsive        = kemet_get_option('sticky-responsive');
+            if( $enabled_sticky && 'header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout) {
                 $classes[] = 'kmt-sticky-header';
             }
+
+            $classes[] =  $sticky_responsive;
 
             if ( '' !== $sticky_logo ) {
                 $classes[] = 'kmt-sticky-logo';

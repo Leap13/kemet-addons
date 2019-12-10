@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     // Project configuration
 
     var pkgInfo = grunt.file.readJSON('package.json');
-
+    const sass = require('node-sass');
     grunt.initConfig({
             pkg: grunt.file.readJSON('package.json'),
 
@@ -13,6 +13,8 @@ module.exports = function (grunt) {
                     sourcemap: 'none',
                     outputStyle: 'expanded',
                     linefeed: 'lf',
+                    implementation: sass,
+                    sourceMap: false
                 },
                 dist: {
                     files: [

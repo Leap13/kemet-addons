@@ -1,33 +1,71 @@
 .admin-bar {
-    &.header-main-layout-6 {
+    &.header-main-layout-8{
         .main-header-bar-wrap {
         margin-top: 33px;
         }
     }
 }
-.header-main-layout-6 {
-    &.search-icon{
-        .ss-content{
-            overflow-x: hidden;
+.header-main-layout-8{
+    position: relative;
+    &.has-box-shadow.header8-align-right{
+        .main-header-bar-wrap {
+            box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);
         }
     }
-    .main-header-bar-navigation{
-        width: 100%;
+    &.has-box-shadow.header8-align-left{
+        .main-header-bar-wrap {
+            box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
+        }
     }
+    &.header8-align-right{
+        .main-header-bar-wrap {
+            right: 0;
+        }
+    }
+    &.header8-align-left{
+        .main-header-bar-wrap {
+            left: 0;
+        }
+    }
+    .header-main-layout-8 .kmt-sitehead-custom-menu-items {
+        display: block;
+        text-align: center;
+    }    
     .main-header-bar-wrap {
+        width: 60px;
         position: fixed;
         top: 0;
         max-width: 100%;
         height: 100%;
         border-bottom: none;
         z-index: 100;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &.side-header{
+            width: 300px !important;
+        }
     }
     .kmt-site-identity {
         padding: 60px 0px;
     }
+    .menu-icon-social{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+    .site-title{
+        display: block;
+    }
+    .site-branding{
+        margin-top: 100px;
+        text-align: center;
+    }
     #site-navigation {
         display: block;
-        li{
+        li {
             width: 100%;
             display: block;
             float: none;
@@ -48,7 +86,7 @@
                     &:hover{
                         >a{
                             &:after{
-                                transform: rotateX(180deg) !important;
+                                transform: rotateX(180deg);
                             }
                         }
                     }
@@ -64,7 +102,7 @@
                         }
                     }
                 }
-            }       
+            } 
         }
         li:last-child {
             border-bottom: 0px;
@@ -72,37 +110,24 @@
         .sub-menu {
             width: 100%;
         }
-        
     }
     .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
-    }
-    &.has-box-shadow.header6-align-right{
-        .main-header-bar-wrap {
-            box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);
-        }
-    }
-    &.has-box-shadow.header6-align-left{
-        .main-header-bar-wrap {
-            box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
-        }
-    }
-    &.header6-align-right{
-        .main-header-bar-wrap {
-            right: 0;
-        }
-    }
-    &.header6-align-left{
-        .main-header-bar-wrap {
-            left: 0;
-        }
     }
     
     .main-header-container {
         justify-content: center;
         flex-direction: column;
         width: 100%;
+        display: none;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &.side-header{
+            display: block;
+        }
     }
     .main-navigation,
     .kmt-main-header-bar-alignment {
@@ -111,28 +136,7 @@
     }
 }
 .kmt-header-break-point{
-    &.kemet-main-header6-align-left, &.kemet-main-header6-align-right {
-        padding: 0px;
-    }
-    .header-main-layout-6{
-        .main-header-bar-wrap {
-            width: 100% ;
-            border: 0px !important; 
-            }
-            
-        }
-        .kmt-sitehead-custom-menu-items{
-            .kmt-search-container{
-                width: inherit;
-            }
-        }
-        .ss-wrapper {
-        position: initial;
-        margin: 0px;
-        height: auto;
-        box-shadow: 0px 2px 4px 0px rgba(0,0,0,.15) !important;
-        }
-        
+    .header-main-layout-8{
         .main-header-container{
             display: flex !important;
         }
@@ -151,43 +155,45 @@
             padding: 0;
         }
         .ss-content{
-            width: 100%;
             overflow: hidden;
+            width: auto;
         }
         .site-branding{
             padding-left: 20px;
         }
-     
-    .kmt-mobile-menu-buttons{
-        padding-right: 20px;
-    }
-}
-.search-icon{
-    &.header-main-layout-8{
-        .main-header-bar{
-            .kmt-sitehead-custom-menu-items{
-                .kmt-search-menu-icon{
-                    left: 30px;
-                }
-                .kmt-dropdown-active{
-                    left: 0;
-                }
-            } 
+        .kmt-mobile-menu-buttons{
+            padding-right: 20px;
         }
     }
-    &.header-main-layout-6{
-        .main-header-bar{
+    
+    &.kemet-main-header8-align-left, &.kemet-main-header8-align-right {
+        padding: 0px;
+    }
+    .header-main-layout-8 , .header-main-layout-6{
+        &.search-icon{
             .kmt-sitehead-custom-menu-items{
                 .kmt-search-container{
-                    width: 250px;
-                }
+                    width: fit-content;
+                    margin: auto;
                 .kmt-search-menu-icon{
-                    left: 30px;
+                    left: auto;
+                    right: 30px;
                 }
                 .kmt-dropdown-active{
-                    left: 0px;
+                    left: auto;
+                    right: 0;
                 }
-            } 
+                    }
+            }
         }
-    }
+        .main-header-bar-wrap {
+        width: 100%;
+        border: 0px !important; 
+        }
+        .ss-wrapper {
+        position: initial;
+        margin: 0px;
+        height: auto;
+        }
+     }
 }
