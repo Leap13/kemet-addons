@@ -1,22 +1,25 @@
 (function($){
  
     "use strict";
- 
-    function validateValue($value, $target , $email){
-        if ($email == true) {
-            if ($value == '') {
-                $target.addClass('visible');
-            } else {
-                $target.removeClass('visible');
+    var valid = false;
+    function validateValue($value, $target){
+
+        function IsEmail(email) {
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(!regex.test(email)) {
+              return false;
+            }else{
+              return true;
             }
- 
+          }
+        
+        if ($value == '' || IsEmail($value) == false) {
+            $target.addClass('visible');
         } else {
-            if ($value == '') {
-                $target.addClass('visible');
-            } else {
-                $target.removeClass('visible');
-            }
+            $target.removeClass('visible');
+            valid = true;
         }
+ 
     };
     
     $('.kmt-mailchimp-form').each(function(){
@@ -37,10 +40,10 @@
  
             // 3. Before submit validate email
             
-            validateValue(email.val(), email.next(".alert") , true);
+            validateValue(email.val(), email.next(".alert"));
  
-            if (email.val() != ''){
-                console.log('work');
+            if (email.val() != '' && valid == true){
+
                 $this.find(".sending").addClass('visible');
  
                 // 4. POST AJAX
