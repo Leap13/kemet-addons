@@ -3998,3 +3998,20 @@
 .kemet-addons-options .kfw-field .kfw-title {
   width: 40%;
 }
+.kemet-addons-options .kfw-header-inner {
+  padding: 40px;
+}
+.kemet-addons-options .kfw-nav-options .kfw-tab-depth-0 a {
+  font-size: 16px;
+  line-height: 1.8em;
+}
+.kfw-field-systeminfo table.widefat {
+  border: 0px;
+  box-shadow: none;
+}
+.kfw-field-systeminfo table.widefat tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+.kfw-field-systeminfo .widefat td:first-child {
+  width: 30%;
+}

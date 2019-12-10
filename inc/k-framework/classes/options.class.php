@@ -23,7 +23,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
     public $args         = array(
 
       // framework title
-      'framework_title'         => 'Welcome to Kemet Theme <small>by Leap13</small>',
+      'framework_title'         => 'Welcome to <strong>Kemet Theme </strong><small>by Leap13</small>',
       'framework_class'         => '',
 
       // menu settings

@@ -103,9 +103,6 @@ if (class_exists('KFW')) {
       array(
         'id' => 'system-info-php',
         'type' => 'systeminfo',
-        //'default' => 'kljlkj',
-        //'title' => __( 'php v', 'kemet-addons' ),
-        //'subtitle' => sprintf(esc_html__('Used for the MailChimp widget which working with Extra Widgets Addon. %1$sFollow this article%2$s to get your API Key.', 'kemet-addons'), '<a href="https://mailchimp.com/help/about-api-keys/" target="_blank">', '</a>' ),
       ),
     ),
   )
