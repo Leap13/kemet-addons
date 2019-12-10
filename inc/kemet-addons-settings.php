@@ -12,9 +12,9 @@ if (class_exists('KFW')) {
     //
     // Create options
     KFW::createOptions($prefix, array(
-    'menu_title' => __( 'Welcome to Kemet Theme', 'kemet-addons' ),
+    'menu_title' => __( 'Kemet', 'kemet-addons' ),
     'menu_slug' => 'kmt-framework',
-    'class'  => 'kemet-addons-icon',
+    'class'  => 'kemet-addons-options',
     'show_search' => false,
     'show_all_options'  => false,
     'theme'   => 'light',
@@ -24,14 +24,14 @@ if (class_exists('KFW')) {
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => __( 'Kemet Customizer Options', 'kemet-addons' ),
+    'title' => __( 'Customizer Options', 'kemet-addons' ),
     'priority' => '1',
     'fields' => array(
       // A switcher field
       array(
         'id' => 'metabox',
         'type' => 'switcher',
-        'title' => __( 'MetaBox Options', 'kemet-addons' ),
+        'title' => __( 'Single page/post options', 'kemet-addons' ),
         'subtitle' => __('Enable/Disable the page options to customize your single page/post.', 'kemet-ddons'),
         'default' => 'true',
       ),array(
@@ -75,8 +75,8 @@ if (class_exists('KFW')) {
   ),
     // Create a sub-tab
     KFW::createSection($prefix, array(
-    'id' => 'primary_tab',
-    'title' => __( 'Kemet Integration', 'kemet-addons'),
+    'id' => 'integrations_tab',
+    'title' => __( 'Integrations', 'kemet-addons'),
     'priority' => '5',
     'fields' => array(
       // A switcher field
@@ -89,12 +89,24 @@ if (class_exists('KFW')) {
         'id' => 'kmt-mailchimp-list-id',
         'type' => 'text',
         'title' => __( 'Mailchimp List ID', 'kemet-addons' ),
-                'subtitle' => sprintf(esc_html__('Used for the MailChimp widget which working with Extra Widgets Addon. %1$sFollow this article%2$s to get your List ID.', 'kemet-addons'), '<a href="https://mailchimp.com/help/find-audience-id/" target="_blank">', '</a>' ),
-
+        'subtitle' => sprintf(esc_html__('Used for the MailChimp widget which working with Extra Widgets Addon. %1$sFollow this article%2$s to get your List ID.', 'kemet-addons'), '<a href="https://mailchimp.com/help/find-audience-id/" target="_blank">', '</a>' ),
+      ),
+    ),
+  ),
+      // Create a sub-tab
+    KFW::createSection($prefix, array(
+    'id' => 'info_tab',
+    'title' => __( 'System Info', 'kemet-addons'),
+    'priority' => '10',
+    'fields' => array(
+      // A switcher field
+      array(
+        'id' => 'system-info-php',
+        'type' => 'systeminfo',
       ),
     ),
   )
-    ));
+    )));
 
   
 }
