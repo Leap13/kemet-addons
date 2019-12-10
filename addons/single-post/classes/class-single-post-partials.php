@@ -34,6 +34,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_entry_content_single', array( $this, 'kemet_single_post_template_loader') , 1);
+            add_filter( 'kemet_the_title_enabled', array( $this, 'enable_page_title_in_content' ) );
         }
         public function kemet_single_post_template_loader() {
             remove_action( 'kemet_entry_content_single', 'kemet_entry_content_single_template' );
@@ -49,6 +50,9 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             return $classes;
         }
         
+        function enable_page_title_in_content(){
+            return kemet_get_option('enable-page-title-content-area');
+        }
         
          /**
 		  * Enqueues scripts and styles for the header layouts
