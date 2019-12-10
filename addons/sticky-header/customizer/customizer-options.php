@@ -215,28 +215,6 @@
 			)
 		)
     );
-    
-    /**
-	 * Option: Sticky Divider Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-divider-color]', array(
-			'default'           => kemet_get_option( 'sticky-divider-color' ),
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-divider-color]', array(
-				'label'   => __( 'Sticky Divider Color', 'kemet-addons' ),
-				'priority'=> 45,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
-
     /**
 	 * Option: Sticky Border Bottom Color
 	 */

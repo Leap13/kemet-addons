@@ -21,7 +21,8 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			$sticky_menu_link_h_color           = kemet_get_option('sticky-menu-link-h-color');
 			$sticky_submenu_bg_color             = kemet_get_option( 'sticky-submenu-bg-color' );
 			$sticky_submenu_link_color             = kemet_get_option( 'sticky-submenu-link-color' );
-			$sticky_submenu_link_h_color             = kemet_get_option( 'sticky-submenu-link-h-color' );    
+			$sticky_submenu_link_h_color             = kemet_get_option( 'sticky-submenu-link-h-color' ); 
+			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color');	   
             $css_output = array(
             //Sticky Header
 				'.kmt-is-sticky .main-header-bar-wrap' => kemet_get_background_obj( $sticky_bg_obj ),
@@ -43,6 +44,9 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				),
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(
 					'max-width' => kemet_get_css_value( $sticky_logo_width['desktop'], 'px' ),
+				),
+				'.kmt-is-sticky .main-header-bar' => array(
+					'border-bottom-color' => esc_attr( $sticky_border_bottom_color),
 				),
 			);
 
