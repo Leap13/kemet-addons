@@ -5,6 +5,7 @@
     kemet_css('kemet-settings[header-icon-bars-h-color]', 'background-color', '.icon-bars-btn:hover span, .open .icon-bars-btn span');
     kemet_css('kemet-settings[header-icon-bars-bg-color]', 'background-color', '.menu-icon-social .menu-icon');
     kemet_css('kemet-settings[header-icon-bars-bg-h-color]', 'background-color', '.menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open');
+    kemet_css('kemet-settings[separator-color]', 'border=bottom-color', '.ss-wrapper #site-navigation .menu-separator>.menu-item:before');
     wp.customize('kemet-settings[header-icon-bars-border-radius]', function (setting) {
         setting.bind(function (border) {
 
