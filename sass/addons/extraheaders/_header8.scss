@@ -45,6 +45,10 @@
         transition: all 0.4s ease-in-out;
         &.side-header{
             width: 300px !important;
+            .main-header-container{
+                opacity: 1;
+                visibility: visible;
+            }    
         }
     }
     .kmt-site-identity {
@@ -119,16 +123,14 @@
         justify-content: center;
         flex-direction: column;
         width: 100%;
-        display: none;
+        opacity: 0;
+        visibility: hidden;
         -webkit-transition: all 0.4s ease-in-out;
         -moz-transition: all 0.4s ease-in-out;
         -o-transition: all 0.4s ease-in-out;
         transition: all 0.4s ease-in-out;
-        &.side-header{
-            display: block;
-        }
     }
-    .main-navigation,
+    .henavigation,
     .kmt-main-header-bar-alignment {
         width: 100%;
         text-align: center;

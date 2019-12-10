@@ -6,21 +6,16 @@
   });
   $('.header-main-layout-8 .menu-icon-social .menu-icon').click(function (){
     if($(this).hasClass('open') == false){
-      $('.header-main-layout-8 .main-header-container').fadeOut(300);
       $('.header-main-layout-8 .main-header-bar-wrap').removeClass('side-header');
     }else{
-      $('.header-main-layout-8 .main-header-container').fadeIn(400);
       $('.header-main-layout-8 .main-header-bar-wrap').addClass('side-header');
     }
     
 });
-// $('.header-main-layout-8 .menu-icon-social .menu-icon.open').click(function(){
-  
-// });
+
 var animation = '';
 $('.header-main-layout-8 .main-header-bar-wrap').mouseleave(function(){
   animation = setTimeout(function(){
-    $('.header-main-layout-8 .main-header-container').fadeOut(300);
     $('.header-main-layout-8 .main-header-bar-wrap').removeClass('side-header');
     $('.header-main-layout-8 .menu-icon-social .menu-icon').removeClass('open');
   },2000);

@@ -364,6 +364,11 @@
   width: 300px !important;
 }
 
+.header-main-layout-8 .main-header-bar-wrap.side-header .main-header-container {
+  opacity: 1;
+  visibility: visible;
+}
+
 .header-main-layout-8 .kmt-site-identity {
   padding: 60px 0px;
 }
@@ -438,18 +443,15 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
-.header-main-layout-8 .main-header-container.side-header {
-  display: block;
-}
-
-.header-main-layout-8 .main-navigation,
+.header-main-layout-8 .henavigation,
 .header-main-layout-8 .kmt-main-header-bar-alignment {
   width: 100%;
   text-align: center;
