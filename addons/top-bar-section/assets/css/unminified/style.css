@@ -86,6 +86,25 @@
   line-height: normal;
 }
 
+/* Sticky Header Responsive */
+@media only screen and (max-width: 480px) {
+  .kemet-top-header.hide-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .kemet-top-header.hide-tablet {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .kemet-top-header.hide-tablet-mobile {
+    display: none;
+  }
+}
+
 @media (max-width: 767px) {
   .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon, .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-1 .kmt-search-menu-icon {
     left: 30px;
