@@ -16,7 +16,26 @@
             'label'           => __( 'Enable Sticky Header', 'kemet-addons' ),
             'priority'        => 5,
         )
+	);
+	
+	/**
+     * Option: Enable Sticky Top Bar 
+     */
+	$wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
+            'default'           => kemet_get_option( 'sticky-top-bar' ),
+            'type'              => 'option',
+            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+        )
     );
+    $wp_customize->add_control(
+        KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
+            'type'            => 'checkbox',
+            'section'         => 'section-sticky-header',
+            'label'           => __( 'Enable Sticky Top Bar', 'kemet-addons' ),
+            'priority'        => 5,
+        )
+	);
 
     /**
 	 * Option: Sticky Header Background
@@ -196,28 +215,6 @@
 			)
 		)
     );
-    
-    /**
-	 * Option: Sticky Divider Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-divider-color]', array(
-			'default'           => kemet_get_option( 'sticky-divider-color' ),
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-divider-color]', array(
-				'label'   => __( 'Sticky Divider Color', 'kemet-addons' ),
-				'priority'=> 45,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
-
     /**
 	 * Option: Sticky Border Bottom Color
 	 */
@@ -260,6 +257,29 @@
                 'sticky-hide-tablet'        => __( 'Hide On Tablet', 'kemet-addons' ),
                 'sticky-hide-mobile'        => __( 'Hide On Mobile', 'kemet-addons' ),
                 'sticky-hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet-addons' ),
+            ),
+        )
+    );
+
+	/**
+     * Option:Sticky Responsive
+     */
+    $wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[sticky-style]',array(
+            'default'           => 'sticky-fade',
+            'type'              => 'option',
+            'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+        )
+    );
+    $wp_customize->add_control(
+        KEMET_THEME_SETTINGS . '[sticky-style]' ,array(
+            'priority'   => 55,
+            'section'    => 'section-sticky-header',
+            'type'     => 'select',
+            'label'    => __( 'Sticky Style', 'kemet-addons' ),
+            'choices'  => array(
+				'sticky-fade'        => __( 'Fade', 'kemet-addons' ),
+                'sticky-slide'        => __( 'Slide', 'kemet-addons' ),
             ),
         )
     );
