@@ -70,6 +70,12 @@ if (class_exists('KFW')) {
         'title' => __('Extra Widgets', 'kemet-addons'),
         'subtitle' => __('Enable/Disable Extra Kemet Wordpress widgets to build your website', 'kemet-ddons'),
         'default' => 'false',
+      ),array(
+        'id' => 'single-post',
+        'type' => 'switcher',
+        'title' => __('Single Post Options', 'kemet-addons'),
+        'subtitle' => __('Enable/Disable Extra option to customize single post content.', 'kemet-ddons'),
+        'default' => 'false',
       ),
     ),
   ),
@@ -93,6 +99,19 @@ if (class_exists('KFW')) {
       ),
     ),
   ),
+    // Create a sub-tab
+    KFW::createSection($prefix, array(
+    'id' => 'plugins_tab',
+    'title' => __( 'Plugins', 'kemet-addons'),
+    'priority' => '10',
+    'fields' => array(
+      // A switcher field
+      array(
+        'id' => 'plugins',
+        'type' => 'pluginstab',
+      ),
+    ),
+  )),
       // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'info_tab',

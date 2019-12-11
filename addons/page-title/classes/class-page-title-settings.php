@@ -76,7 +76,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['page-title-color']                   = '';
             $defaults['page-title-font-size']                   = '';
             $defaults['page-title-font-family']             = 'inherit';
-            $defaults['pagetitle-font-weight']              = '';
+            $defaults['page-title-font-weight']              = '';
             $defaults['pagetitle-text-transform']           = '';
             $defaults['pagetitle-line-height']              = '';
             $defaults['page-title-responsive']              = 'all-devices';
