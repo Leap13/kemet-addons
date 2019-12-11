@@ -1,0 +1,13 @@
+.single{
+    &.hide-nav-links{
+        .post-navigation{
+            display: none;
+        }
+    }
+}
+
+.kmt-separate-container {
+    .kmt-author-box{
+        background-color: $color-background-body;
+    }
+}

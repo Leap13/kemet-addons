@@ -241,7 +241,7 @@
      */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[sticky-responsive]',array(
-            'default'           => kemet_get_option('sticky-responsive'),
+            'default'           => 'all-devices',
             'type'              => 'option',
             'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
         )
