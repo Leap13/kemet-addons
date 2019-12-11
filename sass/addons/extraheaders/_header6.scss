@@ -12,6 +12,8 @@
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
                 &:before{
                     content: "";
+                    width: 0;
+                    height: 0;
                 }
             }
         }
