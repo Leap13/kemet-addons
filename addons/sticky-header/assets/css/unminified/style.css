@@ -89,6 +89,9 @@
   .sticky-hide-mobile.kmt-is-sticky {
     position: relative !important;
   }
+  .kmt-is-sticky {
+    top: 0px;
+  }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {

@@ -149,6 +149,18 @@
   width: 100%;
 }
 
+.kmt-header-break-point .header-main-layout-5 .kmt-navbar-collapse {
+  display: block;
+}
+
+.kmt-header-break-point .header-main-layout-5 .main-header-menu {
+  display: block;
+}
+
+.kmt-header-break-point .header-main-layout-5 .kmt-mobile-menu-buttons {
+  align-items: center;
+}
+
 /*--------------------------------------------------------------
 ## Header 6
 --------------------------------------------------------------*/
