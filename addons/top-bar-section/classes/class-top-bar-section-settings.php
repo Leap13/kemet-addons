@@ -45,6 +45,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
                         )
                 )
             );
+            require_once KEMET_TOPBAR_DIR .'customizer/customizer-helpers.php';
             require_once KEMET_TOPBAR_DIR . 'customizer/customizer-options.php';  
         }
 

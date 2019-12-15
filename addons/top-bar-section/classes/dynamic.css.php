@@ -31,7 +31,6 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 			 
 			$topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
             $top_bar_content_align          = kemet_get_option( 'top-bar-content-align' );
-
             $css_content = array(     
 
                 // Top Bar Header   topbar-bg-color

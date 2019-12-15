@@ -1,8 +1,9 @@
 <?php
 
 function kemet_top_bar_has_content_style() {
-    
-	if ( kemet_get_top_section( 'top-section-1' ) != '' || kemet_get_top_section( 'top-section-2' ) != '') {
+	$top_bar_section1 = kemet_get_option( 'top-section-1');
+	$top_bar_section2 = kemet_get_option( 'top-section-2');
+	if ( !empty($top_bar_section1) || !empty($top_bar_section2)) {
 		return true;
 	} else {
 		return false;

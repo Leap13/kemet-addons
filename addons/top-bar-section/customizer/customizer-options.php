@@ -454,6 +454,7 @@ $wp_customize->add_control(
 	$wp_customize->add_control( new Kemet_Control_Icon_Select( $wp_customize, KEMET_THEME_SETTINGS . '[top-bar-content-align]', array(
 			'label'    => __( 'Top Bar Content Align', 'kemet' ),
 			'section'  => 'section-topbar-header',
+			'active_callback' => 'kemet_top_bar_has_content_style',
 			'priority' 				=> 10,
 			'choices'  => array(
 					'flex-start' => array(
@@ -465,5 +466,5 @@ $wp_customize->add_control(
 					'flex-end' => array(
 						'icon' => 'dashicons-editor-alignright',
 					),	
-				),
+				),	
 		) ) );
