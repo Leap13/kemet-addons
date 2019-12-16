@@ -60,18 +60,18 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'width' => kemet_get_css_value( $header6_width, 'px' ),
                     'border-color' => esc_attr( $header6_border_color ),
                 ),
-                '.kemet-main-header6-align-right .header-main-layout-6 .main-header-bar-wrap' => array(
+                '.kemet-main-v-header-align-right.header-main-layout-6 .main-header-bar-wrap' => array(
                     'border-left-style' => esc_attr( $header6_border_style ),
                     'border-left-width' => kemet_get_css_value( $header6_border_width , 'px' ),
                 ),
-                '.kemet-main-header6-align-left .header-main-layout-6 .main-header-bar-wrap' => array(
+                '.kemet-main-v-header-align-left.header-main-layout-6 .main-header-bar-wrap' => array(
                     'border-right-style' => esc_attr( $header6_border_style ),
                     'border-right-width' => kemet_get_css_value( $header6_border_width , 'px' ),
                 ),
-                '.kemet-main-header6-align-right' => array(
+                '.kemet-main-v-header-align-right.header-main-layout-6' => array(
                     'padding-right' => kemet_get_css_value( $header6_width , 'px'),
                 ),
-                '.kemet-main-header6-align-left' => array(
+                '.kemet-main-v-header-align-left.header-main-layout-6' => array(
                     'padding-left' => kemet_get_css_value( $header6_width , 'px'),
                 ),     
             );
