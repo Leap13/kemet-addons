@@ -13,7 +13,187 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Start class
 if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
     class Kemet_Social_Icons_Widget extends WP_Widget {
- 
+       public $fields = array(
+          array(
+            'id'      => 'title',
+            'type'    => 'text',
+            'title'   => 'Title',
+          ),
+          array(
+            'id'     => 'social-profile',
+            'type'   => 'repeater',
+            'title'  => 'Add Profile',
+            'fields' => array(
+          
+              array(
+                'id'    => 'profile-title',
+                'type'  => 'text',
+                'title' => 'Title'
+              ),
+              array(
+                'id'    => 'link',
+                'type'  => 'text',
+                'title' => 'Link'
+              ),
+              array(
+                'id'          => 'link-target',
+                'type'        => 'select',
+                'title'       => 'Target',
+                'options'     => array(
+                  'same-page'  => 'Same Page',
+                  'new-page'  => 'New Page',
+                ),
+                'default'     => 'new-page'
+              ),
+              array(
+                'id'    => 'no-follow',
+                'type'  => 'switcher',
+                'title' => 'No Follow',
+              ),
+              array(
+                'id'    => 'social-icon',
+                'type'  => 'icon',
+                'title' => 'Icon',
+              ),
+            ),
+          ),
+    
+          array(
+            'id'          => 'alignment',
+            'type'        => 'select',
+            'title'       => 'Alignment',
+            'options'     => array(
+              'inline'  => 'Inline',
+              'stack'  => 'Stack',
+            ),
+            'default'     => 'inline'
+          ),
+          array(
+            'id'          => 'icon-style',
+            'type'        => 'select',
+            'title'       => 'Icon Style',
+            'options'     => array(
+              'simple'  => 'Simple',
+              'circle'  => 'Circle',
+              'square'  => 'Square',
+              'circle-outline'  => 'Circle Outline',
+              'square-outline'  => 'Square Outline',
+            ),
+            'default'     => 'simple'
+          ),
+          array(
+            'id'          => 'icon-color-mode',
+            'type'        => 'select',
+            'title'       => 'Icon Color',
+            'options'     => array(
+              'official-color'  => 'Official Color',
+              'custom'  => 'Custom',
+            ),
+            'default'     => 'official-color',
+          ),
+          array(
+            'id'    => 'icon-color',
+            'type'  => 'color',
+            'title' => 'Color',
+            'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+          ),
+          array(
+            'id'    => 'icon-bg-color',
+            'type'  => 'color',
+            'title' => 'Background Color',
+            'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+          ),
+          array(
+            'id'    => 'icon-hover-color',
+            'type'  => 'color',
+            'title' => 'Icon Hover Color',
+            'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+          ),
+          array(
+            'id'    => 'icon-hover-bg-color',
+            'type'  => 'color',
+            'title' => 'Background Hover Color',
+            'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+          ),
+          array(
+            'id'    => 'icon-width',
+            'type'  => 'number',
+            'title' => 'Icon Width',
+            'unit'  => 'px',
+            'output_mode' => 'width'
+          ),
+          array(
+            'id'    => 'space-between-icon-text',
+            'type'  => 'number',
+            'title' => 'Space Between Icon & Text:',
+            'unit'  => 'px',
+            'output_mode' => 'padding'
+          ),
+          array(
+            'id'    => 'space-between-profiles',
+            'type'  => 'number',
+            'title' => 'Space Between Social Profiles:',
+            'unit'  => 'px',
+          'output_mode' => 'padding'
+          ),
+      );
+     public $test2 =  array(
+        'id'     => 'social-profile',
+        'type'   => 'repeater',
+        'title'  => 'Add Profile',
+        'fields' => array(
+      
+          array(
+            'id'    => 'profile-title',
+            'type'  => 'text',
+            'title' => 'Title'
+          ),
+          array(
+            'id'    => 'link',
+            'type'  => 'text',
+            'title' => 'Link'
+          ),
+          array(
+            'id'          => 'link-target',
+            'type'        => 'select',
+            'title'       => 'Target',
+            'options'     => array(
+              'same-page'  => 'Same Page',
+              'new-page'  => 'New Page',
+            ),
+            'default'     => 'new-page'
+          ),
+          array(
+            'id'    => 'no-follow',
+            'type'  => 'switcher',
+            'title' => 'No Follow',
+          ),
+          array(
+            'id'    => 'social-icon',
+            'type'  => 'icon',
+            'title' => 'Icon',
+          ),
+        ),
+      );
+      public $unique  = '';
+      public $args    = array(
+        'title'       => '',
+        'classname'   => '',
+        'description' => '',
+        'width'       => '',
+        'defaults'    => array(),
+        'fields'      => array(array(
+                      'id'          => 'icon-color-mode',
+                      'type'        => 'select',
+                      'title'       => 'Icon Color',
+                      'options'     => array(
+                        'official-color'  => 'Official Color',
+                        'custom'  => 'Custom',
+                      ),
+                      'default'     => 'custom',
+                      )),
+        'class'       => '',
+      );
     public function __construct() {
         parent::__construct(
             'social-icons',
@@ -21,7 +201,16 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
             array( 'description' => esc_html__('Mailchimp subscribe widget', 'kemet-addons'))
         );
     }
- 
+    // get default value
+    public function get_default( $field, $options = array() ) {
+
+      $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : null;
+      $default = ( isset( $field['default'] ) ) ? $field['default'] : $default;
+      $default = ( isset( $options[$field['id']] ) ) ? $options[$field['id']] : $default;
+
+      return $default;
+
+    }
     public function widget( $args, $instance ) {
  
         extract($args);
@@ -58,143 +247,60 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
 
     }
  
-    public function form( $instance ) {     
-        $defaults = array(
-            'title' => esc_html__('Social Profile', 'kemet-addons'),
-        );
-        $instance = wp_parse_args((array) $instance, $defaults);
-        $title					 = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : '';
+    public function form( $instance ) {    
+        $createField = new KFW(); 
+        
+        if( ! empty( $this->args['fields'] ) ) {
 
-        $fields = array(
-            array(
-              'id'      => 'title',
-              'type'    => 'text',
-              'title'   => 'Title',
-            ),
-            array(
-              'id'     => 'social-profile',
-              'type'   => 'repeater',
-              'title'  => 'Add Profile',
-              'fields' => array(
-            
-                array(
-                  'id'    => 'profile-title',
-                  'type'  => 'text',
-                  'title' => 'Title'
-                ),
-                array(
-                  'id'    => 'link',
-                  'type'  => 'text',
-                  'title' => 'Link'
-                ),
-                array(
-                  'id'          => 'link-target',
-                  'type'        => 'select',
-                  'title'       => 'Target',
-                  'options'     => array(
-                    'same-page'  => 'Same Page',
-                    'new-page'  => 'New Page',
-                  ),
-                  'default'     => 'new-page'
-                ),
-                array(
-                  'id'    => 'no-follow',
-                  'type'  => 'switcher',
-                  'title' => 'No Follow',
-                ),
-                array(
-                  'id'    => 'social-icon',
-                  'type'  => 'icon',
-                  'title' => 'Icon',
-                ),
-              ),
-            ),
-      
-            array(
-              'id'          => 'alignment',
-              'type'        => 'select',
-              'title'       => 'Alignment',
-              'options'     => array(
-                'inline'  => 'Inline',
-                'stack'  => 'Stack',
-              ),
-              'default'     => 'inline'
-            ),
-            array(
-              'id'          => 'icon-style',
-              'type'        => 'select',
-              'title'       => 'Icon Style',
-              'options'     => array(
-                'simple'  => 'Simple',
-                'circle'  => 'Circle',
-                'square'  => 'Square',
-                'circle-outline'  => 'Circle Outline',
-                'square-outline'  => 'Square Outline',
-              ),
-              'default'     => 'simple'
-            ),
-            array(
-              'id'          => 'icon-color-mode',
-              'type'        => 'select',
-              'title'       => 'Icon Color',
-              'options'     => array(
-                'official-color'  => 'Official Color',
-                'custom'  => 'Custom',
-              ),
-              'default'     => 'official-color',
-            ),
-            array(
-              'id'    => 'icon-color',
-              'type'  => 'color',
-              'title' => 'Color',
-              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
-            ),
-            array(
-              'id'    => 'icon-bg-color',
-              'type'  => 'color',
-              'title' => 'Background Color',
-              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
-            ),
-            array(
-              'id'    => 'icon-hover-color',
-              'type'  => 'color',
-              'title' => 'Icon Hover Color',
-              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
-            ),
-            array(
-              'id'    => 'icon-hover-bg-color',
-              'type'  => 'color',
-              'title' => 'Background Hover Color',
-              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
-            ),
-            array(
-              'id'    => 'icon-width',
-              'type'  => 'number',
-              'title' => 'Icon Width',
-              'unit'  => 'px',
-              'output_mode' => 'width'
-            ),
-            array(
-              'id'    => 'space-between-icon-text',
-              'type'  => 'number',
-              'title' => 'Space Between Icon & Text:',
-              'unit'  => 'px',
-              'output_mode' => 'padding'
-            ),
-            array(
-              'id'    => 'space-between-profiles',
-              'type'  => 'number',
-              'title' => 'Space Between Social Profiles:',
-              'unit'  => 'px',
-              'output_mode' => 'padding'
-            ),
-        );
-        ?>
-            <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php echo $instance['title']; ?></label> 
-                <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
-            </p>
-    <?php }
+          $class = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
+  
+          echo '<div class="kfw kfw-widgets kfw-fields'. $class .'">';
+  
+          foreach( $this->args['fields'] as $field ) {
+  
+            $field_value  = '';
+            $field_unique = '';
+  
+            if( ! empty( $field['id'] ) ) {
+  
+              $field_value  = $this->get_default( $field, $instance );
+              $field_unique = 'widget-' . $this->unique;
+  
+              if( $field['id'] === 'title' ) {
+                $field['attributes']['id'] = 'widget-'. $this->unique . '-title';
+              }
+  
+            }
+  
+            $createField->field( $field, $field_value, $field_unique );
+  
+          }
+  
+          echo '</div>';
+  
+        }
+
+        var_dump($instance);
+        
+     }
+
+     // Sanitize widget form values as they are saved.
+    public function update( $new_instance, $old_instance ) {
+
+      // auto sanitize
+      foreach( $this->args['fields'] as $field ) {
+        if( ! empty( $field['id'] ) && ( ! isset( $new_instance[$field['id']] ) || is_null( $new_instance[$field['id']] ) ) ) {
+          $new_instance[$field['id']] = '';
+        }
+      }
+
+      $new_instance = apply_filters( "kfw_{$this->unique}_save", $new_instance, $this->args, $this );
+
+      do_action( "kfw_{$this->unique}_save_before", $new_instance, $this->args, $this );
+
+      return $new_instance;
+
+    }
     }
  
 }
