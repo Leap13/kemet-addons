@@ -20,6 +20,7 @@ if( ! class_exists( 'KFW' ) ) {
     public static $args    = array(
       'options'            => array(),
       'metaboxes'          => array(),
+      'widgets'            => array(),
     );
 
     // shortcode instances
@@ -68,6 +69,20 @@ if( ! class_exists( 'KFW' ) ) {
         }
       }
       
+      // create widgets
+      if ( ! empty( self::$args['widgets'] ) && class_exists( 'WP_Widget_Factory' ) ) {
+
+        $wp_widget_factory = new WP_Widget_Factory();
+
+        foreach( self::$args['widgets'] as $key => $value ) {
+          if( ! isset( self::$inited[$key] ) ) {
+            self::$inited[$key] = true;
+            $wp_widget_factory->register( KFW_Widget::instance( $key, $value ) );
+          }
+        }
+
+      }
+
     // setup customize options
       $params = array();
       if ( ! empty( self::$args['customize_options'] ) ) {
@@ -122,6 +137,11 @@ if( ! class_exists( 'KFW' ) ) {
       self::set_used_fields( $sections );
     }
 
+    // create widget
+    public static function createWidget( $id, $args = array() ) {
+      self::$args['widgets'][$id] = $args;
+      self::set_used_fields( $args );
+    }
     // constants
     public static function constants() {
 
@@ -200,9 +220,10 @@ if( ! class_exists( 'KFW' ) ) {
       self::include_plugin_file( 'classes/abstract.class.php' );
       self::include_plugin_file( 'classes/fields.class.php'   );
       self::include_plugin_file( 'classes/options.class.php'  );
-
+      self::include_plugin_file( 'classes/widgets.class.php' );
       // includes premium version classes
       if( self::$premium ) {
+        self::include_plugin_file( 'classes/widgets.class.php' );
         self::include_plugin_file( 'classes/metabox.class.php' );
         self::include_plugin_file( 'classes/customize-options.class.php' );
       }
