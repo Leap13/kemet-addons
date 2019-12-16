@@ -5,6 +5,16 @@
         }
     }
 }
+.v-header-align-right{
+    .main-header-bar-wrap {
+        right: 0;
+    }
+}
+.v-header-align-left{
+    .main-header-bar-wrap {
+        left: 0;
+    }
+}
 .ss-wrapper{
     #site-navigation {
         .menu-separator{
@@ -108,17 +118,6 @@
             box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
         }
     }
-    &.v-header-align-right{
-        .main-header-bar-wrap {
-            right: 0;
-        }
-    }
-    &.v-header-align-left{
-        .main-header-bar-wrap {
-            left: 0;
-        }
-    }
-    
     .main-header-container {
         justify-content: center;
         flex-direction: column;

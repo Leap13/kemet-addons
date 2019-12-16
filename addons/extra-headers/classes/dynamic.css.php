@@ -22,7 +22,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $header_icon_bars_borderradius =  kemet_get_option( 'header-icon-bars-border-radius' );
             $space_icon_bars              = kemet_get_option( 'menu-icon-bars-space' );
 
-            $header6_width               = kemet_get_option( 'header6-width' );
+            $vertical_header_width               = kemet_get_option( 'vertical-header-width' );
             $header6_border_width        = kemet_get_option( 'header6-border-width' );
             $header6_border_style        = kemet_get_option( 'header6-border-style' );
             $header6_border_color        = kemet_get_option( 'header6-border-color' );
@@ -57,7 +57,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
 					'background-color' => esc_attr($header_icon_bars_bg_h_color),
                 ),
                 '.header-main-layout-6 .main-header-bar-wrap' => array(
-                    'width' => kemet_get_css_value( $header6_width, 'px' ),
+                    'width' => kemet_get_css_value( $vertical_header_width, 'px' ),
                     'border-color' => esc_attr( $header6_border_color ),
                 ),
                 '.kemet-main-v-header-align-right.header-main-layout-6 .main-header-bar-wrap' => array(
@@ -69,10 +69,10 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'border-right-width' => kemet_get_css_value( $header6_border_width , 'px' ),
                 ),
                 '.kemet-main-v-header-align-right.header-main-layout-6' => array(
-                    'padding-right' => kemet_get_css_value( $header6_width , 'px'),
+                    'padding-right' => kemet_get_css_value( $vertical_header_width , 'px'),
                 ),
                 '.kemet-main-v-header-align-left.header-main-layout-6' => array(
-                    'padding-left' => kemet_get_css_value( $header6_width , 'px'),
+                    'padding-left' => kemet_get_css_value( $vertical_header_width , 'px'),
                 ),     
             );
 
