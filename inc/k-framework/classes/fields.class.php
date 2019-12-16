@@ -9,7 +9,6 @@
  */
 if( ! class_exists( 'KFW_Fields' ) ) {
   abstract class KFW_Fields extends KFW_Abstract {
-
     public function __construct( $field = array(), $value = '', $unique = '', $where = '', $parent = '' ) {
       $this->field  = $field;
       $this->value  = $value;
@@ -17,7 +16,6 @@ if( ! class_exists( 'KFW_Fields' ) ) {
       $this->where  = $where;
       $this->parent = $parent;
     }
-
     public function field_name( $nested_name = '' ) {
 
       $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';

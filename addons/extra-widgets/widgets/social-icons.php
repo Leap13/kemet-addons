@@ -58,25 +58,142 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
 
     }
  
-    public function form( $instance ) {
+    public function form( $instance ) {     
         $defaults = array(
-            'title' => esc_html__('Socisl Profile', 'kemet-addons'),
+            'title' => esc_html__('Social Profile', 'kemet-addons'),
         );
- 
         $instance = wp_parse_args((array) $instance, $defaults);
         $title					 = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : '';
+
+        $fields = array(
+            array(
+              'id'      => 'title',
+              'type'    => 'text',
+              'title'   => 'Title',
+            ),
+            array(
+              'id'     => 'social-profile',
+              'type'   => 'repeater',
+              'title'  => 'Add Profile',
+              'fields' => array(
+            
+                array(
+                  'id'    => 'profile-title',
+                  'type'  => 'text',
+                  'title' => 'Title'
+                ),
+                array(
+                  'id'    => 'link',
+                  'type'  => 'text',
+                  'title' => 'Link'
+                ),
+                array(
+                  'id'          => 'link-target',
+                  'type'        => 'select',
+                  'title'       => 'Target',
+                  'options'     => array(
+                    'same-page'  => 'Same Page',
+                    'new-page'  => 'New Page',
+                  ),
+                  'default'     => 'new-page'
+                ),
+                array(
+                  'id'    => 'no-follow',
+                  'type'  => 'switcher',
+                  'title' => 'No Follow',
+                ),
+                array(
+                  'id'    => 'social-icon',
+                  'type'  => 'icon',
+                  'title' => 'Icon',
+                ),
+              ),
+            ),
+      
+            array(
+              'id'          => 'alignment',
+              'type'        => 'select',
+              'title'       => 'Alignment',
+              'options'     => array(
+                'inline'  => 'Inline',
+                'stack'  => 'Stack',
+              ),
+              'default'     => 'inline'
+            ),
+            array(
+              'id'          => 'icon-style',
+              'type'        => 'select',
+              'title'       => 'Icon Style',
+              'options'     => array(
+                'simple'  => 'Simple',
+                'circle'  => 'Circle',
+                'square'  => 'Square',
+                'circle-outline'  => 'Circle Outline',
+                'square-outline'  => 'Square Outline',
+              ),
+              'default'     => 'simple'
+            ),
+            array(
+              'id'          => 'icon-color-mode',
+              'type'        => 'select',
+              'title'       => 'Icon Color',
+              'options'     => array(
+                'official-color'  => 'Official Color',
+                'custom'  => 'Custom',
+              ),
+              'default'     => 'official-color',
+            ),
+            array(
+              'id'    => 'icon-color',
+              'type'  => 'color',
+              'title' => 'Color',
+              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+            ),
+            array(
+              'id'    => 'icon-bg-color',
+              'type'  => 'color',
+              'title' => 'Background Color',
+              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+            ),
+            array(
+              'id'    => 'icon-hover-color',
+              'type'  => 'color',
+              'title' => 'Icon Hover Color',
+              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+            ),
+            array(
+              'id'    => 'icon-hover-bg-color',
+              'type'  => 'color',
+              'title' => 'Background Hover Color',
+              'dependency' => array( 'icon-color-mode', '==', 'custom' ),
+            ),
+            array(
+              'id'    => 'icon-width',
+              'type'  => 'number',
+              'title' => 'Icon Width',
+              'unit'  => 'px',
+              'output_mode' => 'width'
+            ),
+            array(
+              'id'    => 'space-between-icon-text',
+              'type'  => 'number',
+              'title' => 'Space Between Icon & Text:',
+              'unit'  => 'px',
+              'output_mode' => 'padding'
+            ),
+            array(
+              'id'    => 'space-between-profiles',
+              'type'  => 'number',
+              'title' => 'Space Between Social Profiles:',
+              'unit'  => 'px',
+              'output_mode' => 'padding'
+            ),
+        );
         ?>
             <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php echo esc_html__( 'Title:', 'kemet-addons' ); ?></label> 
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php echo $instance['title']; ?></label> 
                 <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
             </p>
-            <?php 
-                array(
-                    'id'    => 'profile-title',
-                    'type'  => 'text',
-                    'title' => 'Title'
-                );
-            ?>
     <?php }
     }
  

@@ -1,5 +1,5 @@
 <?php
-  KFW::createWidget( 'kemet_social_icons', array(
+KFW::createWidget( 'kemet_social_icons', array(
     'title'       => 'Kemet Social Icons',
     'classname'   => 'csf-widget-classname',
     'description' => 'Social Profile',
