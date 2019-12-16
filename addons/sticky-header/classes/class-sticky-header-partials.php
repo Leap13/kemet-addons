@@ -100,18 +100,25 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
             return $attr;
         }
 
-        public function header_classes( $classes ) {
+        public function header_classes($classes) {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
             $sticky_logo              = kemet_get_option( 'sticky-logo' );
-            $kemet_header_layout = kemet_get_option( 'header-layouts' );
-            $sticky_responsive        = kemet_get_option( 'sticky-responsive' );
-            if ( $enabled_sticky && 'header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout ) {
+            $sticky_style             = kemet_get_option( 'sticky-style' );
+            $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );
+            if( $enabled_sticky ) {
                 $classes[] = 'kmt-sticky-header';
+                $classes[] = 'sticky-main-header';
+                $classes[] = $sticky_style;
+                if ( '' !== $sticky_logo ) {
+                    $classes[] = 'kmt-sticky-logo';
+                }
             }
-            $classes[] =  $sticky_responsive;
-            if ( '' !== $sticky_logo ) {
-                $classes[] = 'kmt-sticky-logo';
+            if($enable_top_bar){
+                $classes[] = 'kmt-sticky-header';
+                $classes[] = 'kmt-sticky-top-bar';
+                $classes[] = $sticky_style;
             }
+            
             return $classes;
             echo 'class="' . esc_attr( join( ' ', $classes ) ) . '"';
         }

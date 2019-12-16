@@ -1,6 +1,10 @@
-.sticky-custom-logo-link
-{
+.sticky-custom-logo-link {
   display: none;
+}
+.kmt-sticky-header{
+  .main-header-bar{
+    padding-top: 0;
+  }
 }
 .kmt-is-sticky {
     position: fixed;

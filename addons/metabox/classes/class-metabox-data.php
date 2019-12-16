@@ -71,7 +71,6 @@ $fields = array(
     ),
   ),
 
-
   array(
     'id'          => 'site-sidebar-layout',
     'type'        => 'select',
