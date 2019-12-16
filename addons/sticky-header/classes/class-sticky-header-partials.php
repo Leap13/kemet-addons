@@ -109,8 +109,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
             $sticky_responsive        = kemet_get_option('sticky-responsive');
             if( $enabled_sticky && 'header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout) {
                 $classes[] = 'kmt-sticky-header';
-            }
-            $classes[] =  $sticky_responsive;
+                $classes[] =  $sticky_responsive;
             if( $enabled_sticky ) {
                 $classes[] = 'kmt-sticky-header';
                 $classes[] = 'sticky-main-header';
@@ -123,6 +122,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
                 $classes[] = 'kmt-sticky-header';
                 $classes[] = 'kmt-sticky-top-bar';
                 $classes[] = $sticky_style;
+            }
             }
             
             return $classes;
