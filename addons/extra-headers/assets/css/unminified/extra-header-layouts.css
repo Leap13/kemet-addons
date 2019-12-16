@@ -33,11 +33,6 @@
   display: inline-block;
 }
 
-.header-main-layout-5 .site-branding {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 .open .icon-bars-btn {
   top: 8px;
 }
@@ -314,10 +309,6 @@
   display: flex;
 }
 
-.kmt-header-break-point .site-branding {
-  margin-top: 0;
-}
-
 .kmt-header-break-point .kmt-site-identity {
   padding: 0;
 }
@@ -426,7 +417,6 @@
 }
 
 .header-main-layout-8 .site-branding {
-  margin-top: 100px;
   text-align: center;
 }
 
@@ -510,10 +500,6 @@
 .kmt-header-break-point .header-main-layout-8 .main-header-container {
   flex-direction: row;
   display: flex;
-}
-
-.kmt-header-break-point .header-main-layout-8 .site-branding {
-  margin-top: 0;
 }
 
 .kmt-header-break-point .header-main-layout-8 .kmt-site-identity {

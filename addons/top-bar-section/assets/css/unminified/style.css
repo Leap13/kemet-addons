@@ -98,6 +98,10 @@
   display: none;
 }
 
+.kemet-top-header {
+  padding: 10px 0px;
+}
+
 .top-bar-search-box .kemet-top-header-section .kmt-search-icon {
   display: none;
 }
