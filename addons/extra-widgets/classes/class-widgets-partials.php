@@ -49,8 +49,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 }
             }
         }
-       
-       
+        
         public function add_styles() {
             Kemet_Style_Generator::kmt_add_css(KEMET_WIDGETS_DIR.'assets/css/minified/style.min.css');
         }

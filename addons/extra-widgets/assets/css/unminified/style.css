@@ -23,10 +23,6 @@
   outline: none;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span {
-  color: #dd3333;
-}
-
 .widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert {
   display: none;
 }
@@ -39,16 +35,21 @@
   display: none;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.success {
-  color: #28a745;
-}
-
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.error {
-  color: #dd3333;
-}
-
 .widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.visible {
   display: block;
 }
 
-/*# sourceMappingURL=style.css.map */
+.kmt-social-profile {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.kmt-social-profile .profile-link {
+  padding: 20px;
+  background-color: #191919;
+  display: inline-block;
+}
+
+.kmt-social-profile .profile-link .profile-icon {
+  color: #fff;
+}

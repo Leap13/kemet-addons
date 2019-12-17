@@ -31,6 +31,7 @@ module.exports = function (grunt) {
                         'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
+                        'addons/extra-widgets/assets/css/unminified/style.css': 'sass/extra-widgets.scss',
                     },
 
                     {
@@ -67,6 +68,14 @@ module.exports = function (grunt) {
                         src: 'addons/sticky-header/assets/css/unminified/style.css',
                         dest: 'addons/sticky-header/assets/css/minified/style.min.css',
                     },
+                    {
+                        src: 'addons/extra-widgets/assets/css/unminified/style.css',
+                        dest: 'addons/extra-widgets/assets/css/minified/style.min.css',
+                    },
+                    {
+                        src: 'inc/k-framework/assets/css/kfw.css',
+                        dest: 'inc/k-framework/assets/css/kfw.min.css',
+                    },
                 ]
             }
         },
@@ -79,6 +88,8 @@ module.exports = function (grunt) {
                     'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',
                     'addons/sticky-header/assets/js/minified/customizer-preview.min.js': 'addons/sticky-header/assets/js/unminified/customizer-preview.js',
                     'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
+                    'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
+                    'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
                 }
             }
         },

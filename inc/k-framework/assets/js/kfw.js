@@ -1004,7 +1004,9 @@
 
           $modal.find('.kfw-modal-loading').show();
 
-          window.wp.ajax.post( 'kfw-get-icons', { nonce: $button.data('nonce') } ).done( function( response ) {
+          window.wp.ajax.post( 'kfw-get-icons', {
+            nonce: $button.data('nonce')
+          }).done( function( response ) {
 
             $modal.find('.kfw-modal-loading').hide();
 
@@ -1018,7 +1020,7 @@
 
               var icon = $(this).data('kfw-icon');
 
-              KFW.vars.$icon_target.find('i').removeAttr('class').addClass(icon);
+              KFW.vars.$icon_target.find('span.dashicons').removeAttr('class').addClass("dashicons "+icon);
               KFW.vars.$icon_target.find('input').val(icon).trigger('change');
               KFW.vars.$icon_target.find('.kfw-icon-preview').removeClass('hidden');
               KFW.vars.$icon_target.find('.kfw-icon-remove').removeClass('hidden');
@@ -1047,25 +1049,23 @@
             });
 
             $modal.on('click', '.kfw-modal-close, .kfw-modal-overlay', function() {
-
               $modal.hide();
-
             });
 
+          }).fail( function( response ) {
+            $modal.find('.kfw-modal-loading').hide();
+            $modal.find('.kfw-modal-load').html( response.error );
+            $modal.on('click', function() { $modal.hide(); });
           });
-
         }
 
       });
 
       $this.on('click', '.kfw-icon-remove', function( e ) {
-
         e.preventDefault();
-
         $this.find('.kfw-icon-preview').addClass('hidden');
         $this.find('input').val('').trigger('change');
         $(this).addClass('hidden');
-
       });
 
     });

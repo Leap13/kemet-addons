@@ -1246,7 +1246,7 @@
 .kfw-field-icon .button {
   margin-right: 5px;
 }
-.kfw-field-icon .kfw-icon-preview i {
+.kfw-field-icon .kfw-icon-preview span {
   display: inline-block;
   font-size: 14px;
   width: 30px;

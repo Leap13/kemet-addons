@@ -12,7 +12,7 @@
                 }
             }
             span{
-                color: $color-error;
+                //color: $color-error;
                 &.alert{
                     display: none;
                 &.visible{
@@ -22,12 +22,12 @@
             }
             div{
                 &.alert{
-                    &.success{
-                        color: $color_success;
-                    }
-                    &.error{
-                        color: $color-error;
-                    }
+                    // &.success{
+                    //     color: $color_success;
+                    // }
+                    // &.error{
+                    //     color: $color-error;
+                    // }
                     display: none;
                 &.visible{
                     display: block;
@@ -36,6 +36,19 @@
 
             }
         } 
+    }
+}
+
+.kmt-social-profile{
+    display: flex;
+    flex-wrap: wrap;
+    .profile-link{
+        padding: 20px;
+        background-color: #191919;
+        display: inline-block;
+        .profile-icon{
+            color: #fff;
+        }
     }
 }
 

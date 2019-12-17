@@ -1,35 +1,37 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php
 /**
+ * Mailchimp Widget.
  *
- * Widgets Class
- *
- * @since 1.0.0
- * @version 1.0.0
- *
+ * @package Kemet Addons
  */
-if( ! class_exists( 'KFW_Widget' ) ) {
-  class KFW_Widget extends WP_Widget {
 
-    // constans
-    public $unique  = '';
-    public $args    = array(
-      'title'       => '',
-      'classname'   => '',
-      'description' => '',
-      'width'       => '',
-      'defaults'    => array(),
-      'fields'      => array(),
-      'class'       => '',
-    );
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-    public function __construct( $key, $params ) {
-
+// Start class
+if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
+    class Kemet_Create_Widget extends WP_Widget {
+      // constans
+      public $extra_fields = array();
+      public $unique  = '';
+      public $args    = array(
+        'title'       => '',
+        'classname'   => '',
+        'description' => '',
+        'width'       => '',
+        'defaults'    => array(),
+        'fields'      => array(),
+        'class'       => '',
+      );
+      
+    public function __construct( $key, $params , $extra_params) {
       $widget_ops  = array();
       $control_ops = array();
-
+      $this->extra_fields = $extra_params;
       $this->unique = $key;
-      $this->args   = apply_filters( "kfw_{$this->unique}_args", wp_parse_args( $params, $this->args ), $this );
-
+      $this->args   = apply_filters( "kfw_{$this->unique}_args", wp_parse_args( $params, $this->args ), $this ); 
       // Set control options
       if( ! empty( $this->args['width'] ) ) {
         $control_ops['width'] = $this->args['width'];
@@ -53,8 +55,8 @@ if( ! class_exists( 'KFW_Widget' ) ) {
     }
 
     // Register widget with WordPress
-    public static function instance( $key, $params = array() ) {
-      return new self( $key, $params );
+    public static function instance( $key, $params = array() , $extra_fields) {
+      return new self( $key, $params , $extra_fields);
     }
 
     // Front-end display of widget.
@@ -67,15 +69,23 @@ if( ! class_exists( 'KFW_Widget' ) ) {
 
       $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : null;
       $default = ( isset( $field['default'] ) ) ? $field['default'] : $default;
-      $default = ( isset( $options[$field['id']] ) ) ? $options[$field['id']] : $default;
-
+      $default = ( isset( $options[$field['id']] ) ) ? $options[$field['id']] : $default;   
+      
       return $default;
 
     }
 
     // Back-end widget form.
-    public function form( $instance ) {
-
+    public function form( $instance ) {  
+        $defaults = '';
+        if(! empty($this->extra_fields)){
+            foreach($this->extra_fields as $field){
+                $defaults = array(
+                    $field['id'] => esc_html__($field['title'], 'kemet-addons'),
+                );
+            }
+        }   
+      $instance = wp_parse_args((array) $instance, $defaults); 
       if( ! empty( $this->args['fields'] ) ) {
 
         $class = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
@@ -100,12 +110,18 @@ if( ! class_exists( 'KFW_Widget' ) ) {
 
           KFW::field( $field, $field_value, $field_unique );
 
-        }
-
-        echo '</div>';
+        } 
+        if(! empty($this->extra_fields)){
+            foreach($this->extra_fields as $field){ ?>
+              <p>
+                <label for="<?php echo $this->get_field_id( $field['id'] ); ?>"><?php echo esc_html__( $field['title'], 'kemet-addons' ); ?></label> 
+                <input class="<?php echo $field['classname'] ?>" id="<?php echo $this->get_field_id( $field['id'] ); ?>" name="<?php echo $this->get_field_name( $field['id'] ); ?>" value="<?php echo esc_attr($instance[$field['id']]) ?>" />
+            </p>
+            <?php }
+        } 
+       echo '</div>';
 
       }
-
     }
 
     // Sanitize widget form values as they are saved.
@@ -117,13 +133,14 @@ if( ! class_exists( 'KFW_Widget' ) ) {
           $new_instance[$field['id']] = '';
         }
       }
-
-      $new_instance = apply_filters( "kfw_{$this->unique}_save", $new_instance, $this->args, $this );
+      $new_instance['color'] = strip_tags( $new_instance['color'] );
+      $new_instance = apply_filters( "kfw_{test}_save", $new_instance, $this->args, $this );
 
       do_action( "kfw_{$this->unique}_save_before", $new_instance, $this->args, $this );
 
       return $new_instance;
 
+      }
     }
-  }
+ 
 }

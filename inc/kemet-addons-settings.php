@@ -5,7 +5,6 @@
 
 // Control core classes for avoid errors
 if (class_exists('KFW')) {
-
     // Set a unique slug-like ID
     $prefix = 'kmt_framework';
 
