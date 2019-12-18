@@ -39,15 +39,28 @@
     }
 }
 
-.kmt-social-profile{
+.kmt-social-profiles{
     display: flex;
     flex-wrap: wrap;
-    .profile-link{
-        padding: 20px;
-        background-color: #191919;
-        display: inline-block;
+    .kmt-profile-link{
+        display: block;
+        .profile-title{
+            display: inline-block;
+        }
         .profile-icon{
+            height: 2em;
+            width: 2em;
+            display: inline-block;
             color: #fff;
+            background-color: inherit;
+            font-size: 20px;
+            text-align: center;
+        }
+        .dashicons, .dashicons-before:before{
+            width: unset;
+            height: unset;
+            font-size: inherit;
+            line-height: inherit;
         }
     }
 }

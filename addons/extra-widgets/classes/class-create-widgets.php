@@ -14,7 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
     class Kemet_Create_Widget extends WP_Widget {
       // constans
-      public $extra_fields = array();
       public $unique  = '';
       public $args    = array(
         'title'       => '',
@@ -26,10 +25,9 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
         'class'       => '',
       );
       
-    public function __construct( $key, $params , $extra_params) {
+    public function __construct( $key, $params ) {
       $widget_ops  = array();
       $control_ops = array();
-      $this->extra_fields = $extra_params;
       $this->unique = $key;
       $this->args   = apply_filters( "kfw_{$this->unique}_args", wp_parse_args( $params, $this->args ), $this ); 
       // Set control options
@@ -49,22 +47,16 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
       // Set filters
       $widget_ops  = apply_filters( "kfw_{$this->unique}_widget_ops", $widget_ops, $this );
       $control_ops = apply_filters( "kfw_{$this->unique}_control_ops", $control_ops, $this );
-
       parent::__construct( $this->unique, $this->args['title'], $widget_ops, $control_ops );
-
     }
-
     // Register widget with WordPress
-    public static function instance( $key, $params = array() , $extra_fields) {
-      return new self( $key, $params , $extra_fields);
+    public static function instance( $key, $params = array() ) {
+      return new self( $key, $params );
     }
-
     // Front-end display of widget.
     public function widget( $args, $instance ) {
       call_user_func( $this->unique, $args, $instance );
     }
-
-    // get default value
     public function get_default( $field, $options = array() ) {
 
       $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : null;
@@ -74,18 +66,8 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
       return $default;
 
     }
-
     // Back-end widget form.
-    public function form( $instance ) {  
-        $defaults = '';
-        if(! empty($this->extra_fields)){
-            foreach($this->extra_fields as $field){
-                $defaults = array(
-                    $field['id'] => esc_html__($field['title'], 'kemet-addons'),
-                );
-            }
-        }   
-      $instance = wp_parse_args((array) $instance, $defaults); 
+    public function form( $instance ) {   
       if( ! empty( $this->args['fields'] ) ) {
 
         $class = ( $this->args['class'] ) ? ' '. $this->args['class'] : '';
@@ -110,14 +92,6 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
 
           KFW::field( $field, $field_value, $field_unique );
 
-        } 
-        if(! empty($this->extra_fields)){
-            foreach($this->extra_fields as $field){ ?>
-              <p>
-                <label for="<?php echo $this->get_field_id( $field['id'] ); ?>"><?php echo esc_html__( $field['title'], 'kemet-addons' ); ?></label> 
-                <input class="<?php echo $field['classname'] ?>" id="<?php echo $this->get_field_id( $field['id'] ); ?>" name="<?php echo $this->get_field_name( $field['id'] ); ?>" value="<?php echo esc_attr($instance[$field['id']]) ?>" />
-            </p>
-            <?php }
         } 
        echo '</div>';
 

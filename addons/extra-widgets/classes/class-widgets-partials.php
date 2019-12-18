@@ -36,7 +36,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             // Define array of custom widgets for the theme
             $widgets = apply_filters( 'kemet_custom_widgets', array(
                 'mailchimp',
-                'social-icons'
+                'social-icons',
             ) );
 
             // Loop through widgets and load their files

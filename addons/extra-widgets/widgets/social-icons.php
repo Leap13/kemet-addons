@@ -2,20 +2,14 @@
 
 $Social_icons_widget = array(
   'title'       => 'Kemet Social Icons',
-  'classname'   => 'csf-widget-classname',
+  'classname'   => 'kwf-widget-social-icon',
   'description' => 'Social Profile',
   'fields'      => array(
     array(
       'id'      => 'title',
       'type'    => 'text',
       'title'   => 'Title',
-    ),
-    array(
-      'id'      => 'icon',
-      'type'    => 'icon',
-      'title'   => 'icon',
-    ),
-    array(
+    ),array(
       'id'     => 'social-profile',
       'type'   => 'repeater',
       'title'  => 'Add Profile',
@@ -36,8 +30,8 @@ $Social_icons_widget = array(
           'type'        => 'select',
           'title'       => 'Target',
           'options'     => array(
-            'same-page'  => 'Same Page',
-            'new-page'  => 'New Page',
+            '_self'  => 'Same Page',
+            '_blank'  => 'New Page',
           ),
           'default'     => 'new-page'
         ),
@@ -51,15 +45,30 @@ $Social_icons_widget = array(
           'type'  => 'icon',
           'title' => 'Icon',
         ),
+        array(
+          'id'    => 'icon-color',
+          'type'  => 'color',
+          'title' => 'Icon Color',
+        ),
+        array(
+          'id'    => 'icon-hover-color',
+          'type'  => 'color',
+          'title' => 'Icon Hover Color',
+        ),
       ),
+    ),
+    array(
+      'id'    => 'enable-title',
+      'type'  => 'switcher',
+      'title' => 'Display Profile Title',
     ),
     array(
       'id'          => 'alignment',
       'type'        => 'select',
       'title'       => 'Alignment',
       'options'     => array(
-        'inline'  => 'Inline',
-        'stack'  => 'Stack',
+        'row'  => 'Inline',
+        'column'  => 'Stack',
       ),
       'default'     => 'inline'
     ),
@@ -68,46 +77,22 @@ $Social_icons_widget = array(
       'type'        => 'select',
       'title'       => 'Icon Style',
       'options'     => array(
-        'simple'  => 'Simple',
         'circle'  => 'Circle',
         'square'  => 'Square',
         'circle-outline'  => 'Circle Outline',
         'square-outline'  => 'Square Outline',
       ),
-      'default'     => 'simple'
-    ),
-    array(
-      'id'          => 'icon-color-mode',
-      'type'        => 'select',
-      'title'       => 'Icon Color',
-      'options'     => array(
-        'official-color'  => 'Official Color',
-        'custom'  => 'Custom',
-      ),
-      'default'     => 'official-color',
-    ),
-    array(
-      'id'    => 'icon-color',
-      'type'  => 'color',
-      'title' => 'Color',
+      'default'     => 'square'
     ),
     array(
       'id'    => 'icon-bg-color',
       'type'  => 'color',
       'title' => 'Background Color',
-      'dependency' => array( 'icon-color-mode', '==', 'custom' ),
-    ),
-    array(
-      'id'    => 'icon-hover-color',
-      'type'  => 'color',
-      'title' => 'Icon Hover Color',
-      'dependency' => array( 'icon-color-mode', '==', 'custom' ),
     ),
     array(
       'id'    => 'icon-hover-bg-color',
       'type'  => 'color',
       'title' => 'Background Hover Color',
-      'dependency' => array( 'icon-color-mode', '==', 'custom' ),
     ),
     array(
       'id'    => 'icon-width',
@@ -133,35 +118,83 @@ $Social_icons_widget = array(
   )
 );
 
-
-  
-  
-register_widget( Kemet_Create_Widget::instance( "front_end" , $Social_icons_widget , $extra_fields = '' ) );
-
 if( ! function_exists( 'front_end' ) ) {
   function front_end( $args, $instance ) {
-      function kemet_test_dynamic_css($dynamic_css){
-        // Custom colors only.
-        $css_content = array(
-          '.kmt-social-profile .profile-link .profile-icon' => array(
-            'color' => esc_attr( $instance['icon-color'] ),
-          ),
-        );
-        $parse_css = kemet_parse_css( $css_content );
-        return $dynamic_css . $parse_css;
-      }
-    add_filter( 'kemet_dynamic_css', 'kemet_test_dynamic_css');
     echo $args['before_widget'];
-
     if ( ! empty( $instance['title'] ) ) {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-    } ?>
-    <?php foreach($instance['social-profile'] as $profile) ?>
-    <div class="kmt-social-profile">
-      <a href="<?php echo $profile['link'] ?>" class="profile-link">
-        <span class="profile-icon"><span class="dashicons <?php echo $profile['social-icon'];?>"></span></span>
+    } 
+    if(! empty($instance['social-profile'])){
+    ?>
+    <div class="kmt-social-profiles <?php echo $instance['icon-style'] ?>">
+    <?php foreach($instance['social-profile'] as $profile){ 
+        $icon_class = explode('-', $profile['social-icon'],2)[1];
+        $link_target = isset($profile['link-target']) ? $profile['link-target'] : '_blank';
+      ?>
+      <a href="<?php echo $profile['link'] ?>" class="kmt-profile-link" target="<?php echo $link_target ?>">
+        <span class="profile-icon <?php echo $icon_class ?>"><span class="dashicons <?php echo $profile['social-icon'];?>"></span></span>
+        <?php if($instance['enable-title']){ ?>
+        <span class='profile-title'><?php echo $profile['profile-title']; ?></span>
+        <?php } ?>
       </a>
-    </div>
- <?php 
-}  
+ <?php }
+    echo '</div>';
+    } 
+    //Css Style
+    $icon_color = !empty($instance['icon-color']) ? $instance['icon-color'] : '';
+    $icon_hover_color = !empty($instance['icon-hover-color']) ? $instance['icon-hover-color'] : '';
+    $icon_bg_color = !empty($instance['icon-bg-color']) ? $instance['icon-bg-color'] : '';
+    $icon__hover_bg_color = !empty($instance['icon-hover-bg-color']) ? $instance['icon-hover-bg-color'] : '';
+    $alignment = !empty($instance['alignment']) ? $instance['alignment'] : '';
+    $space_between_profiles = ($instance['alignment'] == 'row') ? 'padding-right:' . $instance['space-between-profiles'] . 'px' : 'padding-bottom:' . $instance['space-between-profiles'] . 'px';
+    $icon_width = !empty($instance['icon-width']) ? $instance['icon-width'] .'px' : '';
+    $space_text_icon = !empty($instance['space-between-icon-text']) ? $instance['space-between-icon-text'] .'px' : '';
+    ?> 
+  <style>
+    .kmt-social-profiles .kmt-profile-link .profile-icon { 
+      <?php if ( $icon_bg_color ) { echo 'background-color:' . $icon_bg_color; } ?>;
+      <?php if ( $icon_width ) { echo 'font-size:' . $icon_width; } ?>;
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-title { 
+      <?php if ( $space_text_icon ) { echo 'padding-left:' . $space_text_icon; } ?>;
+    }
+    <?php foreach($instance['social-profile'] as $profile){ 
+      $icon_class = explode('-', $profile['social-icon'],2)[1];
+      ?>
+      .kmt-social-profiles .kmt-profile-link .profile-icon.<?php {echo $icon_class;} ?> {
+        <?php if ( $profile['icon-color'] ){ echo 'color: '.$profile['icon-color']; } ?>;
+      }
+      .kmt-social-profiles .kmt-profile-link .profile-icon.<?php {echo $icon_class;} ?>:hover {
+        <?php if ( $profile['icon-hover-color'] ){ echo 'color:' . $profile['icon-hover-color']; } ?>;
+      }
+      <?php } ?>
+    .kmt-social-profiles.circle .kmt-profile-link .profile-icon{
+      <?php { echo 'border-radius: 50%'; } ?>;
+    }
+    .kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon{
+      <?php { echo 'background:transparent; border-radius: 50%; border:1px solid'.$icon_bg_color; } ?>;
+    }
+    .kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon:hover{
+      <?php { echo 'background: transparent; border-color: '. $icon__hover_bg_color;} ?>;
+    }
+    .kmt-social-profiles.square-outline .kmt-profile-link .profile-icon{
+      <?php { echo 'background:transparent; border-radius: unset; border:1px solid'.$icon_bg_color; } ?>;
+    }
+    .kmt-social-profiles.square-outline .kmt-profile-link .profile-icon:hover{
+      <?php { echo 'background: transparent; border-color: '. $icon__hover_bg_color;} ?>;
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-icon:hover { 
+      <?php if ( $icon__hover_bg_color ){ echo 'background-color:' . $icon__hover_bg_color; } ?>;
+    }
+    .kmt-social-profiles .kmt-profile-link:not(:last-child){
+      <?php { echo $space_between_profiles;} ?>;
+    }
+    .kmt-social-profiles { 
+      <?php if ( $alignment ){ echo 'flex-direction:' . $alignment; } ?>;
+		}
+  </style>
+<?php } 
 }
+
+
+register_widget( Kemet_Create_Widget::instance( "front_end" , $Social_icons_widget , $extra_fields = '' ) );
