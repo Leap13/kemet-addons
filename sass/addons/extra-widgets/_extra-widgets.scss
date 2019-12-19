@@ -42,8 +42,35 @@
 .kmt-social-profiles{
     display: flex;
     flex-wrap: wrap;
+    &.simple{
+        .kmt-profile-link{
+            line-height: 1;
+            .profile-icon{
+                height: 1em;
+                width: 1em;
+            }
+        }
+    }
+    &.circle-outline , &.square-outline{
+        .kmt-profile-link{
+            .profile-icon{
+                border-width: 1px;
+                border-style: solid;
+                border-color: #00000033;
+                background: transparent;
+            }
+        }   
+    }
+    &.circle-outline , &.circle{
+        .kmt-profile-link{
+            .profile-icon{
+                border-radius: 50%;
+            }
+        }
+    }
     .kmt-profile-link{
         display: block;
+        line-height: 2;
         .profile-title{
             display: inline-block;
         }
@@ -53,7 +80,7 @@
             display: inline-block;
             color: #fff;
             background-color: inherit;
-            font-size: 20px;
+            font-size: 15px;
             text-align: center;
         }
         .dashicons, .dashicons-before:before{

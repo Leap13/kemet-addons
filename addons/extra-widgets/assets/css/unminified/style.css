@@ -44,8 +44,29 @@
   flex-wrap: wrap;
 }
 
+.kmt-social-profiles.simple .kmt-profile-link {
+  line-height: 1;
+}
+
+.kmt-social-profiles.simple .kmt-profile-link .profile-icon {
+  height: 1em;
+  width: 1em;
+}
+
+.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon, .kmt-social-profiles.square-outline .kmt-profile-link .profile-icon {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #00000033;
+  background: transparent;
+}
+
+.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon, .kmt-social-profiles.circle .kmt-profile-link .profile-icon {
+  border-radius: 50%;
+}
+
 .kmt-social-profiles .kmt-profile-link {
   display: block;
+  line-height: 2;
 }
 
 .kmt-social-profiles .kmt-profile-link .profile-title {
@@ -58,7 +79,7 @@
   display: inline-block;
   color: #fff;
   background-color: inherit;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
 }
 

@@ -55,7 +55,7 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
     }
     // Front-end display of widget.
     public function widget( $args, $instance ) {
-      call_user_func( $this->unique, $args, $instance );
+      call_user_func( $this->unique, $args, $instance , '#'.$this->id.' ');
     }
     public function get_default( $field, $options = array() ) {
 

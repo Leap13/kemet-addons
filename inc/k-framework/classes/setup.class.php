@@ -20,7 +20,6 @@ if( ! class_exists( 'KFW' ) ) {
     public static $args    = array(
       'options'            => array(),
       'metaboxes'          => array(),
-      'widgets'            => array(),
     );
 
     // shortcode instances
@@ -41,7 +40,7 @@ if( ! class_exists( 'KFW' ) ) {
       add_action( 'after_setup_theme', array( 'KFW', 'setup' ) );
       add_action( 'init', array( 'KFW', 'setup' ) );
       add_action( 'switch_theme', array( 'KFW', 'setup' ) );
-      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ), 20 );
+      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ),1 );
 
     }
 

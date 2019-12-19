@@ -2368,6 +2368,9 @@
 .kfw-widgets > .kfw-field .kfw-fieldset {
   margin-left: 0;
 }
+.kfw-fieldset .kfw--unit{
+  padding-left: 10px;
+}
 .kfw-widgets .kfw-field-text input {
   width: 100%;
 }
