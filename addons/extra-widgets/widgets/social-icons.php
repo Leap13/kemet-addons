@@ -167,10 +167,10 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
           $icon_class = '';
         }
       ?>
-      <a href="<?php echo $profile['link'] ?>" class="kmt-profile-link" target="<?php echo $link_target ?>">
-        <span class="profile-icon <?php echo $icon_class ?>"><span class="dashicons <?php echo $profile['social-icon'];?>"></span></span>
+      <a href="<?php echo esc_attr($profile['link']) ?>" class="kmt-profile-link" target="<?php echo esc_attr($link_target) ?>">
+        <span class="profile-icon <?php echo esc_attr($icon_class) ?>"><span class="dashicons <?php echo esc_attr($profile['social-icon']);?>"></span></span>
         <?php if($instance['enable-title']){ ?>
-        <span class='profile-title'><?php echo $profile['profile-title']; ?></span>
+        <span class='profile-title'><?php echo esc_attr($profile['profile-title']); ?></span>
         <?php } ?>
       </a>
  <?php }
@@ -196,45 +196,47 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     ?> 
   <style>
     <?php echo $id ?>.kmt-social-profiles.circle .kmt-profile-link .profile-icon , <?php echo $id ?>.kmt-social-profiles.square .kmt-profile-link .profile-icon{ 
-      <?php if ( $icon_bg_color ) { echo 'background-color:' . $icon_bg_color; } ?>;
+      <?php if ( $icon_bg_color ) { echo 'background-color:' . esc_attr($icon_bg_color); } ?>;
     }
     <?php echo $id ?>.kmt-social-profiles.circle .kmt-profile-link .profile-icon:hover , <?php echo $id ?>.kmt-social-profiles.square .kmt-profile-link .profile-icon:hover{ 
-      <?php if ( $icon__hover_bg_color ){ echo 'background-color:' . $icon__hover_bg_color; } ?>;
+      <?php if ( $icon__hover_bg_color ){ echo 'background-color:' . esc_attr($icon__hover_bg_color); } ?>;
     }
     <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon { 
-      <?php if ( $icon_width ) { echo 'font-size:' . $icon_width; } ?>;
+      <?php if ( $icon_width ) { echo 'font-size:' . esc_attr($icon_width); } ?>;
     }
     <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-title { 
-      <?php if ( $space_text_icon ) { echo 'padding-left:' . $space_text_icon; } ?>;
+      <?php if ( $space_text_icon ) { echo 'padding-left:' . esc_attr($space_text_icon); } ?>;
     }
     <?php foreach($instance['social-profile'] as $profile){ 
+      if(!empty($profile['social-icon'])){
       $icon_class = explode('-', $profile['social-icon'],2)[1];
       ?>
-      .kmt-social-profiles .kmt-profile-link .profile-icon.<?php {echo $icon_class;} ?> {
-        <?php if ( $profile['icon-color'] ){ echo 'color: '.$profile['icon-color']; } ?>;
+      .kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?> {
+        <?php if ( $profile['icon-color'] ){ echo 'color: '.esc_attr($profile['icon-color']); } ?>;
       }
-      <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon.<?php {echo $icon_class;} ?>:hover {
-        <?php if ( $profile['icon-hover-color'] ){ echo 'color:' . $profile['icon-hover-color']; } ?>;
+      <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>:hover {
+        <?php if ( $profile['icon-hover-color'] ){ echo 'color:' . esc_attr($profile['icon-hover-color']); } ?>;
       }
-      <?php } ?>
+      <?php }
+      } ?>
 
     <?php echo $id ?>.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon{
-      <?php if ( $border_color ){ echo 'border:1px solid'.$border_color; } ?>;
+      <?php if ( $border_color ){ echo 'border:1px solid'.esc_attr($border_color); } ?>;
     }
     <?php echo $id ?>.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon:hover{
-      <?php if ( $icon__hover_border_color ){ echo 'border-color: '. $icon__hover_border_color;} ?>;
+      <?php if ( $icon__hover_border_color ){ echo 'border-color: '. esc_attr($icon__hover_border_color);} ?>;
     }
     <?php echo $id ?>.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon{
-      <?php if ( $border_color ){ echo 'background:transparent; border-radius: unset; border:1px solid'.$border_color; } ?>;
+      <?php if ( $border_color ){ echo 'background:transparent; border-radius: unset; border:1px solid'.esc_attr($border_color); } ?>;
     }
     <?php echo $id ?>.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon:hover{
-      <?php if ( $icon__hover_border_color ){ echo 'background: transparent; border-color: '. $icon__hover_border_color;} ?>;
+      <?php if ( $icon__hover_border_color ){ echo 'background: transparent; border-color: '. esc_attr($icon__hover_border_color);} ?>;
     }
     <?php echo $id ?>.kmt-social-profiles .kmt-profile-link:not(:last-child){
       <?php { echo $space_between_profiles;} ?>;
     }
     <?php echo $id ?>.kmt-social-profiles { 
-      <?php if ( $alignment ){ echo 'flex-direction:' . $alignment; } ?>;
+      <?php if ( $alignment ){ echo 'flex-direction:' . esc_attr($alignment); } ?>;
 		}
   </style>
 <?php echo $args['after_widget']; 

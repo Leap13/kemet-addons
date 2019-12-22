@@ -1,6 +1,6 @@
 <?php
 /**
- * Mailchimp Widget.
+ * Create Widget Class.
  *
  * @package Kemet Addons
  */
