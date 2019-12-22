@@ -67,6 +67,7 @@
 .kmt-social-profiles .kmt-profile-link {
   display: block;
   line-height: 2;
+  margin-bottom: 5px;
 }
 
 .kmt-social-profiles .kmt-profile-link .profile-title {
