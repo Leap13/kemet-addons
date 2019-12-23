@@ -1774,12 +1774,12 @@
 }
 .kfw-field-switcher .kfw--ball {
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 4px;
   width: 24px;
-  height: 18px;
+  height: 20px;
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 11px;
   transition: all .1s;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }
@@ -1802,7 +1802,7 @@
 }
 .kfw-field-switcher .kfw--off {
   padding-right: 0;
-  padding-left: 28px;
+  padding-left: 25px;
   opacity: 1;
 }
 .kfw-field-switcher .kfw--active {
@@ -4014,4 +4014,11 @@
 }
 .kfw-field-systeminfo .widefat td:first-child {
   width: 30%;
+}
+.kfw-field-switcher .kfw--switcher {
+    border-radius: 14px;
+    background-color: #969696;
+}
+.kfw-field-switcher .kfw--active {
+    background: #fab522;
 }

@@ -99,19 +99,19 @@ if (class_exists('KFW')) {
       ),
     ),
   ),
-    // Create a sub-tab
-    KFW::createSection($prefix, array(
-    'id' => 'plugins_tab',
-    'title' => __( 'Plugins', 'kemet-addons'),
-    'priority' => '10',
-    'fields' => array(
-      // A switcher field
-      array(
-        'id' => 'plugins',
-        'type' => 'pluginstab',
-      ),
-    ),
-  )),
+  //   // Create a sub-tab
+  //   KFW::createSection($prefix, array(
+  //   'id' => 'plugins_tab',
+  //   'title' => __( 'Plugins', 'kemet-addons'),
+  //   'priority' => '10',
+  //   'fields' => array(
+  //     // A switcher field
+  //     array(
+  //       'id' => 'plugins',
+  //       'type' => 'pluginstab',
+  //     ),
+  //   ),
+  // )),
       // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'info_tab',
