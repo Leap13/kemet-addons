@@ -1,38 +1,18 @@
-.admin-bar {
-    &.header-main-layout-8{
-        .main-header-bar-wrap {
-        margin-top: 33px;
-        }
-    }
-}
-.header-main-layout-8{
+.header-main-layout-7{
     position: relative;
-    &.has-box-shadow.header8-align-right{
-        .main-header-bar-wrap {
-            box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);
-        }
-    }
-    &.has-box-shadow.header8-align-left{
-        .main-header-bar-wrap {
-            box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
-        }
-    }
-    &.header8-align-right{
-        .main-header-bar-wrap {
-            right: 0;
-        }
-    }
-    &.header8-align-left{
-        .main-header-bar-wrap {
-            left: 0;
-        }
-    }
     .header-main-layout-8 .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
     }    
     .main-header-bar-wrap {
-        width: 60px;
+        padding-top: 150px;
+        opacity: 0;
+        visibility: hidden;
+        &.side-header{
+            opacity: 0.8;
+            visibility: visible;
+        }
+        width: 100%;
         position: fixed;
         top: 0;
         max-width: 100%;
@@ -43,21 +23,16 @@
         -moz-transition: all 0.4s ease-in-out;
         -o-transition: all 0.4s ease-in-out;
         transition: all 0.4s ease-in-out;
-        &.side-header{
-            width: 300px !important;
-            .main-header-container{
-                opacity: 1;
-                visibility: visible;
-            }    
-        }
-    }
-    .kmt-site-identity {
-        padding: 60px 0px;
+        .main-header-container{
+            visibility: visible;
+        }    
+        background-color: #fff;
     }
     .menu-icon-social{
-        position: absolute;
+        position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
+        height: 0;
         z-index: 999;
     }
     .site-title{
@@ -123,8 +98,6 @@
         justify-content: center;
         flex-direction: column;
         width: 100%;
-        opacity: 0;
-        visibility: hidden;
         -webkit-transition: all 0.4s ease-in-out;
         -moz-transition: all 0.4s ease-in-out;
         -o-transition: all 0.4s ease-in-out;
@@ -137,7 +110,11 @@
     }
 }
 .kmt-header-break-point{
-    .header-main-layout-8{
+    .header-main-layout-7{
+        .main-header-bar-wrap {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
         .main-header-container{
             display: flex !important;
         }
@@ -146,15 +123,10 @@
         }
         .main-header-container{
             flex-direction: row;
-            display: flex;
-            
+            display: flex;  
         }
         .kmt-site-identity{
             padding: 0;
-        }
-        .ss-content{
-            overflow: hidden;
-            width: auto;
         }
         .site-branding{
             padding-left: 20px;
@@ -163,33 +135,4 @@
             padding-right: 20px;
         }
     }
-    
-    &.kemet-main-header8-align-left, &.kemet-main-header8-align-right {
-        padding: 0px;
-    }
-    .header-main-layout-8 ,.header-main-layout-7 , .header-main-layout-6{
-        &.search-icon{
-            .kmt-sitehead-custom-menu-items{
-                .kmt-search-container{
-                    width: fit-content;
-                    margin: auto;
-                .kmt-search-menu-icon{
-                    left: 30px;
-                }
-                .kmt-dropdown-active{
-                    left: 0;
-                 }
-                    }
-            }
-        }
-        .main-header-bar-wrap {
-        width: 100%;
-        border: 0px !important; 
-        }
-        .ss-wrapper {
-        position: initial;
-        margin: 0px;
-        height: auto;
-        }
-     }
 }

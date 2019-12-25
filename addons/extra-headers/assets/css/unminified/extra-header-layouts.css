@@ -347,6 +347,158 @@
 }
 
 /*--------------------------------------------------------------
+## Header 7
+--------------------------------------------------------------*/
+.header-main-layout-7 {
+  position: relative;
+}
+
+.header-main-layout-7 .header-main-layout-8 .kmt-sitehead-custom-menu-items {
+  display: block;
+  text-align: center;
+}
+
+.header-main-layout-7 .main-header-bar-wrap {
+  padding-top: 150px;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  max-width: 100%;
+  height: 100%;
+  border-bottom: none;
+  z-index: 100;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  background-color: #fff;
+}
+
+.header-main-layout-7 .main-header-bar-wrap.side-header {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.header-main-layout-7 .main-header-bar-wrap .main-header-container {
+  visibility: visible;
+}
+
+.header-main-layout-7 .menu-icon-social {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 0;
+  z-index: 999;
+}
+
+.header-main-layout-7 .site-title {
+  display: block;
+}
+
+.header-main-layout-7 .site-branding {
+  text-align: center;
+}
+
+.header-main-layout-7 #site-navigation {
+  display: block;
+}
+
+.header-main-layout-7 #site-navigation li {
+  width: 100%;
+  display: block;
+  float: none;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-main-layout-7 #site-navigation li:hover > .sub-menu {
+  position: static;
+}
+
+.header-main-layout-7 #site-navigation li:hover > a:after {
+  transform: rotateX(180deg) !important;
+}
+
+.header-main-layout-7 #site-navigation li ul li:hover > a:after {
+  transform: rotateX(180deg);
+}
+
+.header-main-layout-7 #site-navigation li ul li.menu-item-has-children {
+  width: 80%;
+  margin: auto;
+}
+
+.header-main-layout-7 #site-navigation li ul li.menu-item-has-children > a {
+  position: static;
+}
+
+.header-main-layout-7 #site-navigation li ul li.menu-item-has-children > a:after {
+  top: inherit;
+  transform: translate(0, 0%);
+}
+
+.header-main-layout-7 #site-navigation li:last-child {
+  border-bottom: 0px;
+}
+
+.header-main-layout-7 #site-navigation .sub-menu {
+  width: 100%;
+}
+
+.header-main-layout-7 .kmt-sitehead-custom-menu-items {
+  display: block;
+  text-align: center;
+}
+
+.header-main-layout-7 .main-header-container {
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.header-main-layout-7 .henavigation,
+.header-main-layout-7 .kmt-main-header-bar-alignment {
+  width: 100%;
+  text-align: center;
+}
+
+.kmt-header-break-point .header-main-layout-7 .main-header-bar-wrap {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.kmt-header-break-point .header-main-layout-7 .main-header-container {
+  display: flex !important;
+}
+
+.kmt-header-break-point .header-main-layout-7 .menu-icon-social {
+  display: none !important;
+}
+
+.kmt-header-break-point .header-main-layout-7 .main-header-container {
+  flex-direction: row;
+  display: flex;
+}
+
+.kmt-header-break-point .header-main-layout-7 .kmt-site-identity {
+  padding: 0;
+}
+
+.kmt-header-break-point .header-main-layout-7 .site-branding {
+  padding-left: 20px;
+}
+
+.kmt-header-break-point .header-main-layout-7 .kmt-mobile-menu-buttons {
+  padding-right: 20px;
+}
+
+/*--------------------------------------------------------------
 ## Header 8
 --------------------------------------------------------------*/
 .admin-bar.header-main-layout-8 .main-header-bar-wrap {
@@ -523,25 +675,25 @@
   padding: 0px;
 }
 
-.kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container {
+.kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container, .kmt-header-break-point .header-main-layout-7.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container {
   width: fit-content;
   margin: auto;
 }
 
-.kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-search-menu-icon, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-search-menu-icon {
+.kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-search-menu-icon, .kmt-header-break-point .header-main-layout-7.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-search-menu-icon, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-search-menu-icon {
   left: 30px;
 }
 
-.kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-dropdown-active, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-dropdown-active {
+.kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-dropdown-active, .kmt-header-break-point .header-main-layout-7.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-dropdown-active, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container .kmt-dropdown-active {
   left: 0;
 }
 
-.kmt-header-break-point .header-main-layout-8 .main-header-bar-wrap, .kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
+.kmt-header-break-point .header-main-layout-8 .main-header-bar-wrap, .kmt-header-break-point .header-main-layout-7 .main-header-bar-wrap, .kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
   width: 100%;
   border: 0px !important;
 }
 
-.kmt-header-break-point .header-main-layout-8 .ss-wrapper, .kmt-header-break-point .header-main-layout-6 .ss-wrapper {
+.kmt-header-break-point .header-main-layout-8 .ss-wrapper, .kmt-header-break-point .header-main-layout-7 .ss-wrapper, .kmt-header-break-point .header-main-layout-6 .ss-wrapper {
   position: initial;
   margin: 0px;
   height: auto;

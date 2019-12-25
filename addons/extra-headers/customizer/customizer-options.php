@@ -40,9 +40,13 @@
 						'label' => __( 'Logo Right', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-06.png',
 					),
+					'header-main-layout-7' => array(
+						'label' => __( 'Logo Right', 'kemet-addons' ),
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-05.png',
+					),
 					'header-main-layout-8' => array(
 						'label' => __( 'Logo Right', 'kemet-addons' ),
-						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-07.png',
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-08.png',
 					),
 				),
 			)
