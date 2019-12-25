@@ -381,6 +381,18 @@
   visibility: visible;
 }
 
+.header-main-layout-7 .main-header-bar-wrap.side-header .main-header-bar {
+  display: block;
+}
+
+.header-main-layout-7 .main-header-bar-wrap .main-header-bar {
+  display: none;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
 .header-main-layout-7 .main-header-bar-wrap .main-header-container {
   visibility: visible;
 }
