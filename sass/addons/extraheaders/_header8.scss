@@ -117,6 +117,9 @@
     .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
+        .kmt-search-container{
+            width: 250px;
+        }
     }
     
     .main-header-container {
@@ -168,29 +171,31 @@
     &.kemet-main-header8-align-left, &.kemet-main-header8-align-right {
         padding: 0px;
     }
-    .header-main-layout-8 ,.header-main-layout-7 , .header-main-layout-6{
+    .header-main-layout-8 , .header-main-layout-6{
         &.search-icon{
             .kmt-sitehead-custom-menu-items{
                 .kmt-search-container{
                     width: fit-content;
                     margin: auto;
                 .kmt-search-menu-icon{
-                    left: 30px;
+                    left: unset;
                 }
                 .kmt-dropdown-active{
-                    left: 0;
+                    left: unset;
                  }
                     }
             }
         }
+     }
+     .header-main-layout-8 , .header-main-layout-6 ,.header-main-layout-7 {
         .main-header-bar-wrap {
-        width: 100%;
-        border: 0px !important; 
-        }
-        .ss-wrapper {
-        position: initial;
-        margin: 0px;
-        height: auto;
-        }
+            width: 100%;
+            border: 0px !important; 
+            }
+            .ss-wrapper {
+            position: initial;
+            margin: 0px;
+            height: auto;
+            }
      }
 }

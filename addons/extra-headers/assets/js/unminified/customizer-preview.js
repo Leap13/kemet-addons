@@ -14,6 +14,6 @@
 
         });
     });
-    kemet_responsive_spacing('kemet-settings[menu-icon-bars-space]', '.site-header .menu-icon-social', 'margin', ['top', 'right', 'bottom', 'left']);
+    kemet_responsive_spacing('kemet-settings[menu-icon-bars-space]', '.kemet-merged-header-title .site-header .menu-icon-social', 'margin', ['top', 'right', 'bottom', 'left']);
 
 })(jQuery);
