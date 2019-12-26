@@ -3,6 +3,7 @@
 $Social_icons_widget = array(
   'title'       => 'Kemet Social Icons',
   'classname'   => 'kwf-widget-social-icon',
+  'id'          => 'kemet-widget-social-icons',
   'description' => 'Social Profile',
   'fields'      => array(
     array(
@@ -35,11 +36,6 @@ $Social_icons_widget = array(
             '_blank'  => 'New Page',
           ),
           'default'     => 'new-page'
-        ),
-        array(
-          'id'    => 'no-follow',
-          'type'  => 'switcher',
-          'title' => 'No Follow',
         ),
         array(
           'id'    => 'social-icon',

@@ -2501,7 +2501,9 @@
 .control-section .kfw-dependency-control.hidden {
   display: none !important;
 }
-
+.kfw-field .kfw-field-number .kfw--unit{
+  padding-left: 10px;
+}
 /**
  * 06. Taxonomy
  */

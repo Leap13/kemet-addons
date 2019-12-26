@@ -18,18 +18,20 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
       public $args    = array(
         'title'       => '',
         'classname'   => '',
+        'id'          => '',
         'description' => '',
         'width'       => '',
         'defaults'    => array(),
         'fields'      => array(),
         'class'       => '',
       );
-      
+      public $front_end_function = '';
     public function __construct( $key, $params ) {
       $widget_ops  = array();
       $control_ops = array();
-      $this->unique = $key;
+      $this->front_end_function = $key;
       $this->args   = apply_filters( "kfw_{$this->unique}_args", wp_parse_args( $params, $this->args ), $this ); 
+      $this->unique = $this->args['id'];
       // Set control options
       if( ! empty( $this->args['width'] ) ) {
         $control_ops['width'] = $this->args['width'];
@@ -55,7 +57,7 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
     }
     // Front-end display of widget.
     public function widget( $args, $instance ) {
-      call_user_func( $this->unique, $args, $instance , '#'.$this->id.' ');
+      call_user_func( $this->front_end_function, $args, $instance , '#'.$this->id.' ');
     }
     public function get_default( $field, $options = array() ) {
 
