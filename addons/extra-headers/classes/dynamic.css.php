@@ -37,7 +37,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.main-header-container.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),
-                '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+                '.site-header .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'desktop' ),
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'desktop' ),
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'desktop' ),
@@ -79,7 +79,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $parse_css = kemet_parse_css( $css_content );
             
             $css_tablet = array(
-                '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+                '.site-header .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'tablet' ),
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'tablet' ),
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'tablet' ),
@@ -89,7 +89,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
             $css_mobile = array(
-                '.main-header-container.logo-menu-icon .menu-icon-social' => array(
+                '.site-header .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'mobile' ),
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'mobile' ),

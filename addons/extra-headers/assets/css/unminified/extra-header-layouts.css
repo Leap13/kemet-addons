@@ -358,8 +358,12 @@
   text-align: center;
 }
 
+.header-main-layout-7 .header-layout-7-logo {
+  display: flex;
+  align-items: center;
+}
+
 .header-main-layout-7 .main-header-bar-wrap {
-  padding-top: 150px;
   opacity: 0;
   visibility: hidden;
   width: 100%;
@@ -394,14 +398,13 @@
 }
 
 .header-main-layout-7 .main-header-bar-wrap .main-header-container {
-  visibility: visible;
+  padding-top: 150px;
 }
 
 .header-main-layout-7 .menu-icon-social {
   position: fixed;
   top: 0;
   right: 0;
-  height: 0;
   z-index: 999;
 }
 
@@ -410,7 +413,7 @@
 }
 
 .header-main-layout-7 .site-branding {
-  text-align: center;
+  text-align: left;
 }
 
 .header-main-layout-7 #site-navigation {
@@ -480,9 +483,17 @@
   text-align: center;
 }
 
+.kmt-header-break-point .header-main-layout-7 .main-header-container {
+  padding-top: unset;
+}
+
 .kmt-header-break-point .header-main-layout-7 .main-header-bar-wrap {
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+.kmt-header-break-point .header-main-layout-7 .main-header-bar-wrap .main-header-bar {
+  display: block !important;
 }
 
 .kmt-header-break-point .header-main-layout-7 .main-header-container {
@@ -664,6 +675,8 @@
 .kmt-header-break-point .header-main-layout-8 .main-header-container {
   flex-direction: row;
   display: flex;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .kmt-header-break-point .header-main-layout-8 .kmt-site-identity {

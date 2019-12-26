@@ -147,7 +147,8 @@
         .main-header-container{
             flex-direction: row;
             display: flex;
-            
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         .kmt-site-identity{
             padding: 0;
