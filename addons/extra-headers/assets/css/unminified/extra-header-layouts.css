@@ -493,6 +493,7 @@
 }
 
 .kmt-header-break-point .header-main-layout-7 .main-header-bar-wrap .main-header-bar {
+  padding: 0;
   display: block !important;
 }
 

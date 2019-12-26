@@ -34,7 +34,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.ss-wrapper #site-navigation .main-header-menu.menu-separator>.menu-item' => array(
                     'border-bottom-color' 		=> esc_attr($separator_color),
                 ),
-                '.main-header-container.logo-menu-icon' => array(
+                '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),
                 '.site-header .menu-icon-social' => array(
