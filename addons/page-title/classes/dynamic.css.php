@@ -19,6 +19,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
             $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' );
             $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
+            $layout3_border_right_color         =  kemet_get_option( 'page-title-border-right-color' );
             // Breadcrumbs
             $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
             $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
@@ -46,6 +47,9 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                    'height'  => kemet_get_css_value( $Page_title_bottomline_height, 'px' ),
                    'width'  => kemet_get_css_value( $Page_title_bottomline_width, 'px' ),
                ),
+               '.page-title-layout-3 .kmt-page-title-wrap' => array(
+                    'border-right-color'  => esc_attr( $layout3_border_right_color ),
+                ),
                '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $breadcrumbs_spacing, 'right', 'desktop' ),

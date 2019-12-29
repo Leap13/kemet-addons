@@ -35,6 +35,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						'label' => __( 'Logo Center', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-02.png',
 					),
+					'page-title-layout-3' => array(
+						'label' => __( 'Logo Center', 'kemet-addons' ),
+						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-03.png',
+					),
 				),
 			)
 		)
@@ -579,7 +583,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  			'type'              => 'option',
  			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
  		)
- 	);
+	 );
+	 
+	 /**
+	 * Option: Page Title Border Color
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
+			'default'           => kemet_get_option( 'page-title-border-right-color' ),
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
+			'section' => 'section-page-title-header',
+			'priority' => 5,
+			'label'   => __( 'Page Title Border Right Color', 'kemet-addons' ),
+			'active_callback' => 'kemet_page_title_layout3_style',
+			)
+		)
+	); 
 	
 
 
