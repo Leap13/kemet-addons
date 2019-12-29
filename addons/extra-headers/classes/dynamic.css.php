@@ -62,11 +62,11 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.kemet-main-header6-align-right .header-main-layout-6 .main-header-bar-wrap' => array(
                     'border-left-style' => esc_attr( $header6_border_style ),
-                    'border-left-width' => kemet_get_css_value( $header6_border_width , 'px' ),
+                    'border-left-width' => kemet_responsive_slider( $header6_border_width , 'desktop' ),
                 ),
                 '.kemet-main-header6-align-left .header-main-layout-6 .main-header-bar-wrap' => array(
                     'border-right-style' => esc_attr( $header6_border_style ),
-                    'border-right-width' => kemet_get_css_value( $header6_border_width , 'px' ),
+                    'border-right-width' => kemet_responsive_slider( $header6_border_width , 'desktop' ),
                 ),
                 '.kemet-main-header6-align-right' => array(
                     'padding-right' => kemet_get_css_value( $header6_width , 'px'),
@@ -85,6 +85,12 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'tablet' ),
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'tablet' ),              
                 ),
+                '.kemet-main-header6-align-right .header-main-layout-6 .main-header-bar-wrap' => array(
+                    'border-left-width' => kemet_responsive_slider( $header6_border_width , 'tablet' ),
+                ),
+                '.kemet-main-header6-align-left .header-main-layout-6 .main-header-bar-wrap' => array(
+                    'border-right-width' => kemet_responsive_slider( $header6_border_width , 'tablet' ),
+                ),
              );
            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
@@ -94,6 +100,12 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'mobile' ),
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'mobile' ),              
+                ),
+                '.kemet-main-header6-align-right .header-main-layout-6 .main-header-bar-wrap' => array(
+                    'border-left-width' => kemet_responsive_slider( $header6_border_width , 'mobile' ),
+                ),
+                '.kemet-main-header6-align-left .header-main-layout-6 .main-header-bar-wrap' => array(
+                    'border-right-width' => kemet_responsive_slider( $header6_border_width , 'mobile' ),
                 ),
              );
            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );

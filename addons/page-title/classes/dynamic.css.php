@@ -37,7 +37,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                    'color'  => esc_attr( $page_title_color ),
                    'font-family'    => kemet_get_css_value( $page_title_font_family, 'font' ),
                     'font-weight'    => kemet_get_css_value( $page_title_font_weight, 'font' ),
-                    'font-size'      => kemet_responsive_font( $page_title_font_size, 'desktop' ),
+                    'font-size'      => kemet_responsive_slider( $page_title_font_size, 'desktop' ),
                     'text-transform' => esc_attr( $page_title_font_transform ),
                     'line-height'     => esc_attr( $page_title_line_height),
                ),
@@ -74,7 +74,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $page_title_space, 'left', 'tablet' ),              
                 ),
                  '.kemet-page-title'  => array(
-                    'font-size'      => kemet_responsive_font( $page_title_font_size, 'tablet' ),
+                    'font-size'      => kemet_responsive_slider( $page_title_font_size, 'tablet' ),
                 ),
                 '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'tablet' ),
@@ -93,7 +93,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $page_title_space, 'left', 'mobile' ),              
                 ),
                  '.kemet-page-title'  => array(
-                    'font-size'      => kemet_responsive_font( $page_title_font_size, 'mobile' ),
+                    'font-size'      => kemet_responsive_slider( $page_title_font_size, 'mobile' ),
                 ),
                 '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'mobile' ),

@@ -171,26 +171,30 @@ $wp_customize->add_control(
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-font-size]', array(
-			'default'           => kemet_get_option( 'topbar-font-size' ),
+			'default'           => '',
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_typo' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Responsive(
+		new Kemet_Control_Responsive_Slider(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-font-size]', array(
-				'type'        => 'kmt-responsive',
-				'section'     => 'section-topbar-header',
-				'priority'    => 35,
-				'label'       => __( 'Top Bar Font Size', 'kemet-addons' ),
-				'input_attrs' => array(
-					'min' => 0,
-				),
-				'units'       => array(
-					'px' => 'px',
-					'em' => 'em',
-					
-				),
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-topbar-header',
+				'priority'       => 35,
+				'label'          => __( 'Top Bar Font Size', 'kemet' ),
+				'unit_choices'   => array(
+					 'px' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' =>300,
+					 ),
+					 'em' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' => 10,
+					 ),
+				 ),
 			)
 		)
 	);

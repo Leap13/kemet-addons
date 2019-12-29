@@ -164,27 +164,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 		KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
 			'default'           => kemet_get_option( 'page-title-font-size' ),
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_typo' ),
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Responsive(
+		new Kemet_Control_Responsive_Slider(
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
-				'type'        => 'kmt-responsive',
-				'section'     => 'section-page-title-header',
-				'priority'    => 30,
-				'label'       => __( 'Page Title Font Size', 'kemet-addons' ),
-				'input_attrs' => array(
-					'min' => 0,
-				),
-				'units'       => array(
-					'px' => 'px',
-					'em' => 'em',
-					
-				),
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-page-title-header',
+				'priority'       => 30,
+				'label'          => __( 'Page Title Font Size', 'kemet' ),
+				'unit_choices'   => array(
+					 'px' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' =>300,
+					 ),
+					 'em' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' => 10,
+					 ),
+				 ),
 			)
 		)
 	);
+	
 	   /**
        * Option: Page Title Font Family
        */

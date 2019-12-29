@@ -51,7 +51,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'border-bottom-width' => kemet_responsive_spacing( $topbar_border_size, 'bottom', 'desktop' ),
                     'border-left-width'   => kemet_responsive_spacing( $topbar_border_size, 'left', 'desktop' ), 
                     
-					'font-size'    => kemet_responsive_font( $topbar_font_size, 'desktop' ),
+					'font-size'    => kemet_responsive_slider( $topbar_font_size, 'desktop' ),
 					'color'          => esc_attr($topbar_text_color),
                 ),
                 '.kemet-top-header a'  => array(
@@ -81,6 +81,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'tablet' ),
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'tablet' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'tablet' ),  
+                    'font-size'    => kemet_responsive_slider( $topbar_font_size, 'tablet' ),
                 ),
              );
            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
@@ -90,7 +91,8 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'mobile' ),
                     'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'mobile' ),
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'mobile' ),
-                    'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),  
+                    'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),
+                    'font-size'    => kemet_responsive_slider( $topbar_font_size, 'mobile' ),
                 ),
              );
            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
