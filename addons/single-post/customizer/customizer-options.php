@@ -110,3 +110,46 @@
 			)
 		)
 	);
+
+	//Title and meta position
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
+			'default'           => 'left',
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
+			'type'     => 'select',
+			'section'  => 'section-blog-single',
+			'priority' => 17,
+			'label'    => __( 'Title And Meta Position', 'kemet-addons' ),
+			'choices'  => array(
+				'left'    => __( 'Left', 'kemet-addons' ),
+				'right'   => __( 'Right', 'kemet-addons' ),
+				'center'   => __( 'Center', 'kemet-addons' ),
+			),
+		)
+	);
+	//Content Alignment
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[content-alignment]', array(
+			'default'           => 'left',
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[content-alignment]', array(
+			'type'     => 'select',
+			'section'  => 'section-blog-single',
+			'priority' => 17,
+			'label'    => __( 'Content Alignment', 'kemet-addons' ),
+			'choices'  => array(
+				'left'    => __( 'Left', 'kemet-addons' ),
+				'right'   => __( 'Right', 'kemet-addons' ),
+				'center'   => __( 'Center', 'kemet-addons' ),
+			),
+		)
+	);

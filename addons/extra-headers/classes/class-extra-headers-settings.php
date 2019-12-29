@@ -75,12 +75,12 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             if('header-main-layout-6' == $kemet_header_layout) {
                 
                 $classes[] = 'header-main-layout-6';
-                $classes[] = 'kemet-main-header6-align-'. kemet_get_option('header6-position') ;
+                $classes[] = 'kemet-main-v-header-align-'. kemet_get_option('v-headers-position') ;
 			} 
 			if('header-main-layout-8' == $kemet_header_layout) {
                 
                 $classes[] = 'header-main-layout-8';
-                $classes[] = 'kemet-main-header8-align-'. kemet_get_option('header8-position') ;
+                $classes[] = 'kemet-main-v-header-align-'. kemet_get_option('v-headers-position') ;
             }
             return $classes;
 		}
@@ -95,7 +95,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 				if ($header8_has_box_shadow == true) {
 					$classes[] = 'has-box-shadow';
 				}
-				$classes[] = 'header8-align-'. kemet_get_option('header8-position') ;
+				$classes[] = 'v-header-align-'. kemet_get_option('v-headers-position') ;
 			}
 			if( 'header-main-layout-6' == $kemet_header_layout ) {
 
@@ -105,7 +105,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 					$classes[] = 'has-box-shadow';
 				}
 				
-				$classes[] = 'header6-align-'. kemet_get_option('header6-position') ;
+				$classes[] = 'v-header-align-'. kemet_get_option('v-headers-position') ;
 			}	
 			return $classes;
          }

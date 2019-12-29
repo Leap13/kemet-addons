@@ -231,17 +231,17 @@
 	);
 
 	/**
-	 * Option: Header6 Position
+	 * Option: Vertical Header Position
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-position]', array(
+		KEMET_THEME_SETTINGS . '[v-headers-position]', array(
 			'default'           => 'left',
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header6-position]', array(
+		KEMET_THEME_SETTINGS . '[v-headers-position]', array(
 			'type'     => 'select',
 			'section'  => 'section-header',
 			'priority' => 17,
@@ -250,7 +250,7 @@
 				'left'    => __( 'Left', 'kemet-addons' ),
 				'right'   => __( 'Right', 'kemet-addons' ),
 			),
-            'active_callback' => 'kemet_header_layout6_style',
+            'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);	
     
@@ -258,7 +258,7 @@
 	 * Option: Enter Width
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-width]', array(
+		KEMET_THEME_SETTINGS . '[vertical-header-width]', array(
 			'default'           => 300,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
@@ -267,7 +267,7 @@
 	);
 	$wp_customize->add_control(
 		new Kemet_Control_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[header6-width]', array(
+			$wp_customize, KEMET_THEME_SETTINGS . '[vertical-header-width]', array(
 				'type'        => 'kmt-slider',
 				'section'     => 'section-header',
 				'priority'    => 18,
@@ -278,7 +278,7 @@
 					'step' => 1,
 					'max'  => 400,
 				),
-                'active_callback' => 'kemet_header_layout6_style',
+                'active_callback' => 'kemet_header_layout_vertical_style',
 			)
 		)
 	);
