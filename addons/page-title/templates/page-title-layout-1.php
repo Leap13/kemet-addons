@@ -34,7 +34,6 @@ $classes   = implode( ' ', $classes );
 			</div>
 	<?php if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) { ?>
 			<?php kemet_breadcrumb_trail() ?>
-				<?php //Kemet_Ext_Advanced_Headers_Markup::advanced_headers_breadcrumbs_markup(); ?>
 	<?php } ?>
 		</div>
 	</div>

@@ -8,3 +8,11 @@ function kemet_page_title_layout1_style() {
 		return false;
 	}
 }
+function kemet_page_title_layout3_style() {
+    
+	if ( 'page-title-layout-3' == kemet_get_option( 'page-title-layouts', '' ) ) {
+		return true;
+	} else {
+		return false;
+	}
+} 

@@ -33,8 +33,13 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
         }
 
         public function kemet_page_title_markup() {
+            $page_title_layout = kemet_get_option( 'page-title-layouts' );
             if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) {
-            kemetaddons_get_template( 'page-title/templates/page-title-layout-1.php' );
+                if($page_title_layout !== 'page-title-layout-2'){
+                    kemetaddons_get_template( 'page-title/templates/'. esc_attr( $page_title_layout ) . '.php' );
+                }else{
+                    kemetaddons_get_template( 'page-title/templates/page-title-layout-1.php' );
+                }
             }
             $header_merged_title = kemet_get_option('merge-with-header');
             if( $header_merged_title == '1') {

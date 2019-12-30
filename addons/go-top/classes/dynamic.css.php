@@ -26,14 +26,14 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
             $css_content = array(
                 '.kmt-go-top-link' => array(
 					'background-color' => esc_attr( $go_top_bg_color ),
-					'border-radius'    => kemet_get_css_value( $go_top_border_radius, 'px' ),
-					'width'            => kemet_get_css_value( $go_top_button_size,'px' ),
-					'height'           => kemet_get_css_value( $go_top_button_size,'px' ),
-					'line-height'      => kemet_get_css_value( $go_top_button_size,'px'),
+					'border-radius'    => kemet_responsive_slider( $go_top_border_radius, 'desktop' ),
+					'width'            => kemet_responsive_slider( $go_top_button_size,'desktop' ),
+					'height'           => kemet_responsive_slider( $go_top_button_size,'desktop' ),
+					'line-height'      => kemet_responsive_slider( $go_top_button_size,'desktop'),
 					'color'            => esc_attr($go_top_icon_color),
 				),
 				'.kmt-go-top-link:before' => array(
-					'font-size'      => kemet_responsive_font( $go_top_icon_size, 'desktop' ),
+					'font-size'      => kemet_responsive_slider( $go_top_icon_size, 'desktop' ),
 				),
 				'.kmt-go-top-link:hover' => array(
 					'color'            => esc_attr($go_top_icon_h_color),
@@ -46,17 +46,27 @@ function kemet_ext_go_top_dynamic_css( $dynamic_css ) {
             
             $css_tablet = array(
                 '.kmt-go-top-link:before' => array(
-                    'font-size'    => kemet_responsive_font( $go_top_icon_size, 'tablet' ),
+                    'font-size'    => kemet_responsive_slider( $go_top_icon_size, 'tablet' ),
                 ),
-
+				'.kmt-go-top-link' => array(
+					'border-radius'    => kemet_responsive_slider( $go_top_border_radius, 'tablet' ),
+					'width'            => kemet_responsive_slider( $go_top_button_size,'tablet' ),
+					'height'           => kemet_responsive_slider( $go_top_button_size,'tablet' ),
+					'line-height'      => kemet_responsive_slider( $go_top_button_size,'tablet'),
+				),
              );
             $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
             $css_mobile = array(
                 '.kmt-go-top-link:before' => array(
-                    'font-size'    => kemet_responsive_font( $go_top_icon_size, 'mobile' ),
+                    'font-size'    => kemet_responsive_slider( $go_top_icon_size, 'mobile' ),
                 ),
-
+				'.kmt-go-top-link' => array(
+					'border-radius'    => kemet_responsive_slider( $go_top_border_radius, 'mobile' ),
+					'width'            => kemet_responsive_slider( $go_top_button_size,'mobile' ),
+					'height'           => kemet_responsive_slider( $go_top_button_size,'mobile' ),
+					'line-height'      => kemet_responsive_slider( $go_top_button_size,'mobile'),
+				),
              );
             $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             

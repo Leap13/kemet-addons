@@ -25,9 +25,9 @@ if ('kemet' !== get_template()) {
 
 define( 'KEMET_ADDONS_FILE', __FILE__ );
 define( 'KEMET_ADDONS_BASE', plugin_basename( KEMET_ADDONS_FILE));
-define('KEMET_ADDONS_VERSION', '0.9.0');
-define('KEMET_ADDONS_URL', plugins_url('/', KEMET_ADDONS_FILE));
-define('KEMET_ADDONS_DIR', plugin_dir_path(KEMET_ADDONS_FILE));
+define( 'KEMET_ADDONS_VERSION', '0.9.0' );
+define( 'KEMET_ADDONS_URL', plugins_url('/', KEMET_ADDONS_FILE));
+define( 'KEMET_ADDONS_DIR', plugin_dir_path(KEMET_ADDONS_FILE));
 
 /*
  * Main Kemet Addons

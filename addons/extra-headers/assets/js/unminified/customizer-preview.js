@@ -1,6 +1,6 @@
 (function ($) {
 
-    kemet_css('kemet-settings[header-icon-bars-logo-bg-color]', 'background-color', '.main-header-container.logo-menu-icon');
+    kemet_css('kemet-settings[header-icon-bars-logo-bg-color]', 'background-color', '.site-header .logo-menu-icon');
     kemet_css('kemet-settings[header-icon-bars-color]', 'background-color', '.icon-bars-btn span');
     kemet_css('kemet-settings[header-icon-bars-h-color]', 'background-color', '.icon-bars-btn:hover span, .open .icon-bars-btn span');
     kemet_css('kemet-settings[header-icon-bars-bg-color]', 'background-color', '.menu-icon-social .menu-icon');
@@ -14,6 +14,6 @@
 
         });
     });
-    kemet_responsive_spacing('kemet-settings[menu-icon-bars-space]', '.main-header-container.logo-menu-icon .menu-icon-social', 'margin', ['top', 'right', 'bottom', 'left']);
+    kemet_responsive_spacing('kemet-settings[menu-icon-bars-space]', '.kemet-merged-header-title .site-header .menu-icon-social', 'margin', ['top', 'right', 'bottom', 'left']);
 
 })(jQuery);

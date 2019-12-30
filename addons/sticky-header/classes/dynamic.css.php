@@ -43,7 +43,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 					'background-color' => esc_attr( $sticky_submenu_bg_color),
 				),
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(
-					'max-width' => kemet_get_css_value( $sticky_logo_width['desktop'], 'px' ),
+					'max-width' => kemet_responsive_slider( $sticky_logo_width, 'desktop' ),
 				),
 				'.kmt-is-sticky .main-header-bar' => array(
 					'border-bottom-color' => esc_attr( $sticky_border_bottom_color),
@@ -54,14 +54,14 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 
 			$css_tablet = array(
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(
-					'max-width' => kemet_get_css_value( $sticky_logo_width['tablet'], 'px' ),
+					'max-width' => kemet_responsive_slider( $sticky_logo_width, 'tablet' ),
 				),
 			 );
 			$parse_css .= kemet_parse_css( $css_tablet, '', '768' );
 			
 			$css_mobile = array(
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(
-					'max-width' => kemet_get_css_value( $sticky_logo_width['mobile'], 'px' ),
+					'max-width' => kemet_responsive_slider( $sticky_logo_width, 'mobile' ),
 				),
 			);
 

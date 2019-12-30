@@ -13,7 +13,7 @@
         padding: 0 0.4em;
     }
 }
-.page-title-layout-2 {
+.page-title-layout-2{
     .kmt-container {
         display: flex;
         flex-wrap: nowrap;
@@ -57,4 +57,22 @@
         margin-left: auto; 
     }
 }
+}
+//Page Title Layout 3
+.page-title-layout-3{
+    .kmt-page-title-wrap{
+        border-right: 3px solid;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    .page-title-layout-3{
+        .kmt-page-title-wrap{
+            justify-content: center;
+            border-right: none;
+        }
+        .kemet-breadcrumb-trail{
+            display: none;
+        }
+    }
 }

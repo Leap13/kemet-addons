@@ -86,11 +86,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[sticky-logo-width]', array(
-			'default'           => array(
-				'desktop' => '',
-				'tablet'  => '',
-				'mobile'  => '',
-			),
+			'default'           => '',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -99,15 +95,22 @@
 	$wp_customize->add_control(
 		new Kemet_Control_Responsive_Slider(
 			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-logo-width]', array(
-				'type'        => 'kmt-responsive-slider',
-				'section'     => 'section-sticky-header',
-				'priority'    => 16,
-				'label'       => __( 'Sticky Logo Width', 'kemet-addons' ),
-				'input_attrs' => array(
-					'min'  => 20,
-					'step' => 1,
-					'max'  => 200,
-				),
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-sticky-header',
+				'priority'       => 16,
+				'label'          => __( 'Sticky Logo Width', 'kemet' ),
+				'unit_choices'   => array(
+					 'px' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' =>300,
+					 ),
+					 'em' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' => 10,
+					 ),
+				 ),
 			)
 		)
 	);
