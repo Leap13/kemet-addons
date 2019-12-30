@@ -48,13 +48,13 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header-icon-bars-border-radius']  = '';
             $defaults['menu-icon-bars-space']            = '';
             $defaults['box-shadow']                      = '';
-            // Header 6
+            // Vertical Headers
             $defaults['header6-position']                = '';
-            $defaults['header6-width']                   = '';
+            $defaults['vertical-header-width']           = 300;
+            $defaults['v-headers-position']              = 'left';
             $defaults['header6-border-width']            = '';
             $defaults['header6-border-style']            = '';
             $defaults['header6-border-color']            = '';
-            //Header8
             $defaults['header8-position']                = '';
             $defaults['header8-width']                   = '';
             return $defaults;

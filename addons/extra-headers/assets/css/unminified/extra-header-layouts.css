@@ -399,8 +399,12 @@
 .header-main-layout-7 .menu-icon-social {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 50px;
   z-index: 999;
+}
+
+.header-main-layout-7 .menu-icon-social .menu-icon {
+  border-radius: 50%;
 }
 
 .header-main-layout-7 .site-title {
@@ -409,6 +413,7 @@
 
 .header-main-layout-7 .site-branding {
   text-align: left;
+  padding: 0 50px;
 }
 
 .header-main-layout-7 #site-navigation {

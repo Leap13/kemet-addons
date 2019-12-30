@@ -43,14 +43,18 @@
     .menu-icon-social{
         position: fixed;
         top: 0;
-        right: 0;
+        right: 50px;
         z-index: 999;
+        .menu-icon{
+            border-radius: 50%;
+        }
     }
     .site-title{
         display: block;
     }
     .site-branding{
         text-align: left;
+        padding: 0 50px;
     }
     #site-navigation {
         display: block;
