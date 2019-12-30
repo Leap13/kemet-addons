@@ -53,6 +53,14 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
 
         public function theme_defaults( $defaults ) {
             $defaults['enable-sticky']           = '1';
+            $defaults['sticky-bg-obj']           = array(
+                'background-color'      => '#fff',
+                'background-image'      => '',
+                'background-repeat'     => 'repeat',
+                'background-position'   => 'center center',
+                'background-size'       => 'auto',
+                'background-attachment' => 'scroll',
+            );
             $defaults['sticky-logo-width']     = '';
             $defaults['sticky-menu-link-color']  = '';
             $defaults['sticky-menu-link-h-color']  = '';
