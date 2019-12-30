@@ -180,16 +180,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'priority'       => 30,
 				'label'          => __( 'Page Title Font Size', 'kemet' ),
 				'unit_choices'   => array(
-					 'px' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' =>300,
-					 ),
-					 'em' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 10,
-					 ),
+					'px' => array(
+						'min' => 1,
+						'step' => 1,
+						'max' =>200,
+					),
+					'em' => array(
+						'min' => 0.1,
+						'step' => 0.1,
+						'max' => 10,
+					),
 				 ),
 			)
 		)

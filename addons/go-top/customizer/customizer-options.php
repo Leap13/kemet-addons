@@ -88,16 +88,16 @@
 				'priority'       => 3,
 				'label'          => __( 'Icon Size', 'kemet' ),
 				'unit_choices'   => array(
-					 'px' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 100,
-					 ),
-					 'em' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 10,
-					 ),
+                    'px' => array(
+                        'min' => 1,
+                        'step' => 1,
+                        'max' =>200,
+                    ),
+                    'em' => array(
+                        'min' => 0.1,
+                        'step' => 0.1,
+                        'max' => 10,
+                    ),
                  ),
                  'active_callback' => 'kmt_dep_go_top',
 			)

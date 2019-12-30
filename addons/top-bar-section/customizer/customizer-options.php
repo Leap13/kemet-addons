@@ -184,16 +184,16 @@ $wp_customize->add_control(
 				'priority'       => 35,
 				'label'          => __( 'Top Bar Font Size', 'kemet' ),
 				'unit_choices'   => array(
-					 'px' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' =>300,
-					 ),
-					 'em' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 10,
-					 ),
+					'px' => array(
+						'min' => 1,
+						'step' => 1,
+						'max' =>200,
+					),
+					'em' => array(
+						'min' => 0.1,
+						'step' => 0.1,
+						'max' => 10,
+					),
 				 ),
 			)
 		)
