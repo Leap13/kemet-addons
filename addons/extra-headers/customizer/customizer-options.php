@@ -320,17 +320,17 @@
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-header',
 				'priority'       => 20,
-				'label'          => __( 'Header6 Border Width', 'kemet' ),
+				'label'          => __( 'Border Width', 'kemet' ),
 				'unit_choices'   => array(
 					 'px' => array(
 						 'min' => 1,
 						 'step' => 1,
-						 'max' =>300,
+						 'max' =>10,
 					 ),
 					 'em' => array(
 						 'min' => 1,
 						 'step' => 1,
-						 'max' => 10,
+						 'max' => 3,
 					 ),
 				 ),
 				 'active_callback' => 'kemet_header_layout6_style',
@@ -352,7 +352,7 @@
 			'type'     => 'select',
 			'section'  => 'section-header',
 			'priority' => 21,
-			'label'    => __( 'Header6 Border Style', 'kemet-addons' ),
+			'label'    => __( 'Border Type', 'kemet-addons' ),
 			'choices'  => array(
 				'hidden'    => __( 'Hidden', 'kemet-addons' ),
 				'dotted'    => __( 'Dotted', 'kemet-addons' ),
@@ -384,7 +384,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[header6-border-color]', array(
 				'section'  => 'section-header',
 				'priority' => 22,
-				'label'    => __( 'Header6 Border Color', 'kemet-addons' ),
+				'label'    => __( 'Border Color', 'kemet-addons' ),
                 'active_callback' => 'kemet_header_layout6_style',
 			)
 		)
