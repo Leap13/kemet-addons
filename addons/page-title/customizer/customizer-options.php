@@ -234,7 +234,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                      'label'    => __( 'Font Weight', 'kemet-addons' ),
                      'section'  => 'section-page-title-header',
                      'priority' => 40,
-                     'connect'  => KEMET_THEME_SETTINGS . '[footer-font-family]',
+                     'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-family]',
  
                  )
              )

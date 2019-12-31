@@ -184,6 +184,10 @@
   content: "";
 }
 
+.header-main-layout-6 .main-header-bar {
+  border-bottom-width: 0;
+}
+
 .header-main-layout-6.search-icon .ss-content {
   overflow-x: hidden;
 }
@@ -584,7 +588,7 @@
 .header-main-layout-8 .menu-icon-social {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 2px;
   z-index: 999;
 }
 

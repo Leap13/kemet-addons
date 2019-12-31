@@ -23,7 +23,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $space_icon_bars                = kemet_get_option( 'menu-icon-bars-space' );
 
             $vertical_header_width        = kemet_get_option( 'vertical-header-width' );
-            $header6_border_width         = kemet_get_option( 'header6-border-width' );
+            $header6_border_width         = kemet_get_option( 'header-main-sep' );
             $header6_border_style         = kemet_get_option( 'header6-border-style' );
             $header6_border_color         = kemet_get_option( 'header6-border-color' );
             //Main Menu Separator

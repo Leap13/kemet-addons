@@ -37,6 +37,9 @@
 	}
 }
 .header-main-layout-6 {
+    .main-header-bar{
+        border-bottom-width: 0;
+    }
     &.search-icon{
         .ss-content{
             overflow-x: hidden;
