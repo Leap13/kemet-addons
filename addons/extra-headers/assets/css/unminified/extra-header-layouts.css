@@ -170,6 +170,10 @@
   left: 0;
 }
 
+.ss-wrapper {
+  overflow-x: hidden;
+}
+
 .ss-wrapper #site-navigation .menu-separator > .menu-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -187,10 +191,6 @@
 
 .header-main-layout-6 .main-header-bar {
   border-bottom-width: 0 !important;
-}
-
-.header-main-layout-6.search-icon .ss-content {
-  overflow-x: hidden;
 }
 
 .header-main-layout-6 .main-header-bar-navigation {
