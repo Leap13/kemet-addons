@@ -55,20 +55,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 			)
 	);
 	$wp_customize->add_control(
-			KEMET_THEME_SETTINGS . '[page_title_alignment]' ,array(
-					'priority'   => 5,
-					'section'    => 'section-page-title-header',
-					'type'     => 'select',
-					'label'    => __( 'Page Title Alignment', 'kemet-addons' ),
-					'active_callback' => 'kemet_page_title_layout1_style',
-					'choices'  => array(
-							'align-center'        => __( 'Center', 'kemet-addons' ),
-							'align-right'        => __( 'Right', 'kemet-addons' ),
-							'align-left'        => __( 'Left', 'kemet-addons' ),
+		new Kemet_Control_Icon_Select(
+			$wp_customize, KEMET_THEME_SETTINGS . '[page_title_alignment]', array(
+				'priority'       => 5,
+				'section' => 'section-page-title-header',
+				'label'   => __( 'Page Title Alignment', 'kemet-addons' ),
+				'choices'  => array(
+					'align-left' => array(
+						'icon' => 'dashicons-editor-alignleft'
 					),
+					'align-center' => array(
+						'icon' => 'dashicons-editor-aligncenter'
+					),
+					'align-right' => array(
+						'icon' => 'dashicons-editor-alignright'
+					),	
+				),
 			)
+		)
 	);
-
 	/**
 	 * Option: Page Title Background
 	 */

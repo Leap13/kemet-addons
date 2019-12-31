@@ -120,16 +120,23 @@
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
-			'type'     => 'select',
-			'section'  => 'section-blog-single',
-			'priority' => 17,
-			'label'    => __( 'Title And Meta Position', 'kemet-addons' ),
-			'choices'  => array(
-				'left'    => __( 'Left', 'kemet-addons' ),
-				'right'   => __( 'Right', 'kemet-addons' ),
-				'center'   => __( 'Center', 'kemet-addons' ),
-			),
+		new Kemet_Control_Icon_Select(
+			$wp_customize, KEMET_THEME_SETTINGS . '[title-meta-position]', array(
+				'priority'       => 17,
+				'section' => 'section-blog-single',
+				'label'   => __( 'Title And Meta Position', 'kemet-addons' ),
+				'choices'  => array(
+					'left' => array(
+						'icon' => 'dashicons-editor-alignleft'
+					),
+					'center' => array(
+						'icon' => 'dashicons-editor-aligncenter'
+					),
+					'right' => array(
+						'icon' => 'dashicons-editor-alignright'
+					),	
+				),
+			)
 		)
 	);
 	//Content Alignment
@@ -141,15 +148,22 @@
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[content-alignment]', array(
-			'type'     => 'select',
-			'section'  => 'section-blog-single',
-			'priority' => 17,
-			'label'    => __( 'Content Alignment', 'kemet-addons' ),
-			'choices'  => array(
-				'left'    => __( 'Left', 'kemet-addons' ),
-				'right'   => __( 'Right', 'kemet-addons' ),
-				'center'   => __( 'Center', 'kemet-addons' ),
-			),
+		new Kemet_Control_Icon_Select(
+			$wp_customize, KEMET_THEME_SETTINGS . '[content-alignment]', array(
+				'priority'       => 17,
+				'section' => 'section-blog-single',
+				'label'   => __( 'Content Alignment', 'kemet-addons' ),
+				'choices'  => array(
+					'left' => array(
+						'icon' => 'dashicons-editor-alignleft'
+					),
+					'center' => array(
+						'icon' => 'dashicons-editor-aligncenter'
+					),
+					'right' => array(
+						'icon' => 'dashicons-editor-alignright'
+					),	
+				),
+			)
 		)
 	);
