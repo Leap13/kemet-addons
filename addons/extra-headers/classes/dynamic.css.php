@@ -26,14 +26,8 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $vertical_border_width         = kemet_get_option( 'header-main-sep' );
             $vheader_border_style         = kemet_get_option( 'vheader-border-style' );
             $vheader_border_color         = kemet_get_option( 'header-main-sep-color' );
-            //Main Menu Separator
-            $separator_color 		   = kemet_get_option( 'separator-color' );
             
             $css_content = array(     
-                //Separator Color
-                '.ss-wrapper #site-navigation .main-header-menu.menu-separator>.menu-item' => array(
-                    'border-bottom-color' 		=> esc_attr($separator_color),
-                ),
                 '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),

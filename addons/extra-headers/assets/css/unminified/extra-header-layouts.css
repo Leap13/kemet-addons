@@ -174,21 +174,6 @@
   overflow-x: hidden;
 }
 
-.ss-wrapper #site-navigation .menu-separator > .menu-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.ss-wrapper #site-navigation .menu-separator > .menu-item:before {
-  content: "";
-  width: 0;
-  height: 0;
-  padding: 0;
-}
-
-.ss-wrapper .kmt-sitehead-custom-menu-items.separator:before, .ss-wrapper .kmt-sitehead-custom-menu-items.separator:after {
-  content: "" !important;
-}
-
 .header-main-layout-6 .main-header-bar {
   border-bottom-width: 0 !important;
 }
