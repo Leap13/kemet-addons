@@ -185,7 +185,7 @@
 }
 
 .header-main-layout-6 .main-header-bar {
-  border-bottom-width: 0;
+  border-bottom-width: 0 !important;
 }
 
 .header-main-layout-6.search-icon .ss-content {
@@ -543,6 +543,10 @@
 
 .header-main-layout-8 {
   position: relative;
+}
+
+.header-main-layout-8 .main-header-bar {
+  border-bottom-width: 0 !important;
 }
 
 .header-main-layout-8.has-box-shadow.v-header-align-right .main-header-bar-wrap {

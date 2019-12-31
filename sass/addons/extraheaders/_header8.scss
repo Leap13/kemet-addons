@@ -13,6 +13,9 @@
 }
 .header-main-layout-8{
     position: relative;
+    .main-header-bar{
+        border-bottom-width: 0 !important;
+    }
     &.has-box-shadow.v-header-align-right {
         .main-header-bar-wrap {
             box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);

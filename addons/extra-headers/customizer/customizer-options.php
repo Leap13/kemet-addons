@@ -302,48 +302,18 @@
             'active_callback' => 'kemet_header_layout6_style',
 		)
 	);
-	
-	/**
-	 * Option: Header6 Border Width
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-border-width]', array(
-			'default'           => kemet_get_option( 'header6-border-width' ),
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[header6-border-width]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-header',
-				'priority'       => 20,
-				'label'          => __( 'Border Width', 'kemet' ),
-				'unit_choices'   => array(
-					 'px' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 15,
-					 ),
-				 ),
-				 'active_callback' => 'kemet_header_layout6_style',
-			)
-		)
-	);
 	/**
 	 * Option: Header6 Border Style
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-border-style]', array(
+		KEMET_THEME_SETTINGS . '[vheader-border-style]', array(
 			'default'           => 'solid',
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header6-border-style]', array(
+		KEMET_THEME_SETTINGS . '[vheader-border-style]', array(
 			'type'     => 'select',
 			'section'  => 'section-header',
 			'priority' => 21,
@@ -359,31 +329,9 @@
 				'inset'     => __( 'Inset', 'kemet-addons' ),
 				'outset'    => __( 'Outset', 'kemet-addons' ),
 			),
-            'active_callback' => 'kemet_header_layout6_style',
+            'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);	
-
-	/**
-	 * Option: Header6 Border Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-border-color]', array(
-			'default'           => '',
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[header6-border-color]', array(
-				'section'  => 'section-header',
-				'priority' => 22,
-				'label'    => __( 'Border Color', 'kemet-addons' ),
-                'active_callback' => 'kemet_header_layout6_style',
-			)
-		)
-	);
 	//Header8
 
 	/**
