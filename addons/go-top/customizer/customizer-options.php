@@ -52,18 +52,8 @@
 					 'px' => array(
 						 'min' => 1,
 						 'step' => 1,
-						 'max' => 70,
+						 'max' => 15,
 					 ),
-					 'em' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 10,
-                     ),
-                     '%' => array(
-                        'min' => 1,
-                        'step' => 1,
-                        'max' => 100,
-                    ),
                  ),
                  'active_callback' => 'kmt_dep_go_top',
 			)
@@ -126,11 +116,11 @@
 					 'px' => array(
 						 'min' => 1,
 						 'step' => 1,
-						 'max' => 70,
+						 'max' => 100,
 					 ),
 					 'em' => array(
-						 'min' => 1,
-						 'step' => 1,
+						 'min' => 0.1,
+						 'step' => 0.1,
 						 'max' => 10,
                      ),
                      '%' => array(

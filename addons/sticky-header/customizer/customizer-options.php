@@ -42,7 +42,14 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[sticky-bg-obj]', array(
-			'default'           => kemet_get_option( 'sticky-bg-obj' ),
+			'default'           => array(
+				'background-color'      => '#fff',
+				'background-image'      => '',
+				'background-repeat'     => 'repeat',
+				'background-position'   => 'center center',
+				'background-size'       => 'auto',
+				'background-attachment' => 'scroll',
+			),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_background_obj' ),
@@ -106,8 +113,8 @@
 						 'max' =>300,
 					 ),
 					 'em' => array(
-						 'min' => 1,
-						 'step' => 1,
+						 'min' => 0.1,
+						 'step' => 0.1,
 						 'max' => 10,
 					 ),
 				 ),
