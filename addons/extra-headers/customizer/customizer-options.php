@@ -278,32 +278,32 @@
 					'step' => 1,
 					'max'  => 400,
 				),
-                'active_callback' => 'kemet_header_layout_vertical_style',
+                'active_callback' => 'kemet_header_layout6_style',
 			)
 		)
 	);
 
 	/**
-	 * Option: Enable Box Shadow
+	 * Option: Vertical Headers Enable Box Shadow
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header6-box-shadow]', array(
+		KEMET_THEME_SETTINGS . '[vheader-box-shadow]', array(
 			'default'           => false,
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header6-box-shadow]', array(
+		KEMET_THEME_SETTINGS . '[vheader-box-shadow]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-header',
 			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
             'priority'        => 19,
-            'active_callback' => 'kemet_header_layout6_style',
+            'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);
 	/**
-	 * Option: Header6 Border Style
+	 * Option: Vertical Headers Border Style
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[vheader-border-style]', array(
@@ -316,7 +316,7 @@
 		KEMET_THEME_SETTINGS . '[vheader-border-style]', array(
 			'type'     => 'select',
 			'section'  => 'section-header',
-			'priority' => 21,
+			'priority' => 100,
 			'label'    => __( 'Border Type', 'kemet-addons' ),
 			'choices'  => array(
 				'hidden'    => __( 'Hidden', 'kemet-addons' ),
@@ -332,24 +332,3 @@
             'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);	
-	//Header8
-
-	/**
-	 * Option: Enable Box Shadow
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
-			'default'           => false,
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header8-box-shadow]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-header',
-			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
-            'priority'        => 19,
-			'active_callback' => 'kemet_header_layout8_style',	
-		)
-	);

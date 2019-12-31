@@ -88,20 +88,18 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
         function header_classes( $classes ) {
 			
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
-
+			$vheader_has_box_shadow   = kemet_get_option('vheader-box-shadow');
+			
 			if('header-main-layout-8' == $kemet_header_layout) {
 
-				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
-				if ($header8_has_box_shadow == true) {
+				if ($vheader_has_box_shadow == true) {
 					$classes[] = 'has-box-shadow';
 				}
 				$classes[] = 'v-header-align-'. kemet_get_option('v-headers-position') ;
 			}
 			if( 'header-main-layout-6' == $kemet_header_layout ) {
 
-				$header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
-
-				if ($header6_has_box_shadow == true) {
+				if ($vheader_has_box_shadow == true) {
 					$classes[] = 'has-box-shadow';
 				}
 				

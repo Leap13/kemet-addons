@@ -24,6 +24,7 @@
                     content: "";
                     width: 0;
                     height: 0;
+                    padding: 0;
                 }
             }
         }
@@ -31,7 +32,7 @@
     .kmt-sitehead-custom-menu-items{
 		&.separator{
 			&:before , &:after{
-			content: "";
+			content: "" !important; 
 		}
 		}	
 	}
