@@ -45,11 +45,11 @@
   background-color: transparent;
 }
 
-.kmt-is-sticky .custom-logo-link {
+.kmt-is-sticky.kmt-sticky-logo .custom-logo-link {
   display: none;
 }
 
-.kmt-is-sticky .sticky-custom-logo {
+.kmt-is-sticky.kmt-sticky-logo .sticky-custom-logo {
   display: block;
 }
 

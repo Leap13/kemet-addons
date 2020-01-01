@@ -27,6 +27,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $vheader_border_style         = kemet_get_option( 'vheader-border-style' );
             $vheader_border_color         = kemet_get_option( 'header-main-sep-color' );
             
+            $mini_vheader_width         = kemet_get_option( 'mini-vheader-width' );
             $css_content = array(     
                 '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
@@ -43,7 +44,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.icon-bars-btn:hover span, .open .icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_icon_bars_h_color),
                 ),
-                '.menu-icon-social .menu-icon' => array(
+                '.site-header .menu-icon-social .menu-icon' => array(
                     'background-color' => esc_attr($header_icon_bars_bg_color),
                     'border-radius'    => kemet_get_css_value( $header_icon_bars_borderradius, 'px' ),
                 ),
@@ -53,6 +54,16 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.header-main-layout-6 .main-header-bar-wrap' => array(
                     'width' => kemet_get_css_value( $vertical_header_width, 'px' ),
                     'border-color' => esc_attr( $vheader_border_color ),
+                ),
+                '.header-main-layout-8 .main-header-bar-wrap' => array(
+                    'width' => kemet_get_css_value( $mini_vheader_width, 'px' ),
+                    'border-color' => esc_attr( $vheader_border_color ),
+                ),
+                '.kemet-main-v-header-align-right.header-main-layout-8' => array(
+                    'padding-right' => kemet_get_css_value( $mini_vheader_width , 'px'),
+                ),
+                '.kemet-main-v-header-align-left.header-main-layout-8' => array(
+                    'padding-left' => kemet_get_css_value( $mini_vheader_width , 'px'),
                 ),
                 '.kemet-main-v-header-align-right .main-header-bar-wrap' => array(
                     'border-left-style' => esc_attr( $vheader_border_style ),

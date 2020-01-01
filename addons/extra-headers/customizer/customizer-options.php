@@ -52,7 +52,25 @@
 			)
 		)
 	);
-    
+    /**
+	 * Option: Icon Label
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[header-icon-label]', array(
+			'default'           => kemet_get_option( 'header-icon-label' ),
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[header-icon-label]', array(
+			'section'  => 'section-header',
+			'priority' => 10,
+			'label'    => __( 'Icon Label', 'kemet' ),
+			'type'     => 'text',
+		)
+	);
     /**
    	* Option: Icon Background Color
     */
@@ -335,3 +353,32 @@
             'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);	
+
+	/**
+	 * Option: Enter Width
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[mini-vheader-width]', array(
+			'default'           => 60,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[mini-vheader-width]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-header',
+				'priority'    => 18,
+				'label'       => __( 'Vertical Header Width', 'kemet-addons' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 60,
+					'step' => 1,
+					'max'  => 100,
+				),
+                'active_callback' => 'kemet_header_layout8_style',
+			)
+		)
+	);

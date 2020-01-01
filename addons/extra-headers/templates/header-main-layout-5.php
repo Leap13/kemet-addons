@@ -3,6 +3,7 @@
 /* 
  * Header 5 Layout
  */
+$icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 ?>
 <div class="main-header-bar-wrap">
 	<div class="main-header-bar">
@@ -19,6 +20,9 @@
                                   <span></span>
                                   <span></span>
                                 </a>
+                                <?php if(!empty($icon_label)){ ?>
+                                    <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
+                                <?php } ?> 
                             </div>
                             <div class="social-icons">
                                 <?php echo kemet_header_custom_item_outside_menu(); ?>
@@ -44,6 +48,9 @@
                                   <span></span>
                                   <span></span>
                                 </a>
+                                <?php if(!empty($icon_label)){ ?>
+                                    <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
+                                <?php } ?> 
                             </div>
                             <div class="social-icons">
                                 <?php echo kemet_header_custom_item_outside_menu(); ?>

@@ -24,7 +24,7 @@
   padding: 5px;
   height: 56px;
   float: right;
-  width: 56px;
+  min-width: 56px;
   text-align: center;
   line-height: initial;
 }

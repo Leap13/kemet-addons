@@ -2,6 +2,7 @@
 /* 
  * Header 7 Layout
  */
+$icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 ?>
 <div class="kmt-container">
     <div class="header-layout-7-logo logo-menu-icon">
@@ -16,8 +17,12 @@
                 <span></span>
                 <span></span>
             </a>
+            <?php if(!empty($icon_label)){ ?>
+                <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
+            <?php } ?>    
         </div>
     </div>
+
 </div>
 
 <div class="main-header-bar-wrap ss-wrapper">
