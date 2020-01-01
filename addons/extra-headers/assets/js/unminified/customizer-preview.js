@@ -33,11 +33,16 @@
 
 	wp.customize('kemet-settings[header-icon-label]', function (setting) {
 		setting.bind(function (label) {
-            if (label != '') {
+            if ($('.menu-icon-social .menu-icon .header-icon-label').length > 0) {
                 $('.menu-icon-social .menu-icon .header-icon-label').text(label);
-            }else{
-                $('.menu-icon-social .menu-icon .header-icon-label').text('');
-            }
+            } else {
+				var html = $('.menu-icon-social .menu-icon').html();
+				if ('' != label) {
+					html += '<span class="header-icon-label">' + label + '</span>';
+				}
+				$('.menu-icon-social .menu-icon').html(html)
+			}
+            
 		});
 	});
     kemet_responsive_slider('kemet-settings[header-main-sep]', '.kemet-main-v-header-align-right .main-header-bar-wrap', 'border-left-width');
