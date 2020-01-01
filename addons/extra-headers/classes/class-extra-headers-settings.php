@@ -34,15 +34,15 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ) );
-        }
+			add_action( 'customize_controls_print_scripts', array( $this, 'headers_controls_scripts' ) );
+        } 
         
 				/**
 		 * Customizer Controls
 		 *
 		 * @return void
 		 */
-		function controls_scripts() {
+		function headers_controls_scripts() {
 
 			$js_prefix  = '.min.js';
 			$css_prefix = '.min.css';
@@ -53,7 +53,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			}
 
 			// Customizer Core.
-			wp_enqueue_script( 'extra-headers-controls-toggle-js', KEMET_EXTRA_HEADERS_URL . 'assets/js/' . $dir . '/extra-headers-controls-toggle' . $js_prefix, array(), KEMET_THEME_VERSION, true );
+			wp_enqueue_script( 'kemet-customizer-controls-toggle-js', KEMET_EXTRA_HEADERS_URL . 'assets/js/' . $dir . '/extra-headers-controls-toggle' . $js_prefix, array(), KEMET_ADDONS_VERSION, true );
 
 		}
         function html_markup_loader() {
@@ -143,7 +143,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 
 		public function add_scripts() {
 			 Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/minified/extra-header-layouts.min.js');
-			 Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/minified/extra-headers-controls-toggle.min.js');
 			 Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/minified/simple-scrollbar.min.js');
 
 		}
