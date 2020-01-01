@@ -185,17 +185,20 @@
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[header-icon-bars-border-radius]', array(
-            'priority'       => 16,
-            'section' => 'section-header',
-			'label'       => __( 'Icon Border Radius', 'kemet-addons' ),
-			'type'        => 'number',
-			'input_attrs' => array(
-				'min'  => 0,
-				'step' => 1,
-				'max'  => 200,
-			),
-            'active_callback' => 'kemet_header_withicon_layout_style',
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-border-radius]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-header',
+				'priority'    => 16,
+				'label'       => __( 'Icon Border Radius', 'kemet' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 100,
+				),
+				'active_callback' => 'kemet_header_withicon_layout_style',
+			)
 		)
 	);
     

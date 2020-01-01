@@ -55,7 +55,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'border-color' => esc_attr( $vheader_border_color ),
                 ),
                 '.kemet-main-v-header-align-right .main-header-bar-wrap' => array(
-                    'border-left-style' => esc_attr( $header6_border_style ),
+                    'border-left-style' => esc_attr( $vheader_border_style ),
                     'border-left-width' => kemet_responsive_slider( $vertical_border_width , 'desktop' ),
                 ),
                 '.kemet-main-v-header-align-left .main-header-bar-wrap' => array(
