@@ -76,6 +76,12 @@ if (class_exists('KFW')) {
         'title' => __('Single Post Options', 'kemet-addons'),
         'subtitle' => __('Enable/Disable Extra option to customize single post content.', 'kemet-ddons'),
         'default' => 'false',
+      ),array(
+        'id' => 'blog-layouts',
+        'type' => 'switcher',
+        'title' => __('Blog Layouts', 'kemet-addons'),
+        'subtitle' => __('Enable/Disable Extra Blog Layouts', 'kemet-ddons'),
+        'default' => 'false',
       ),
     ),
   ),
