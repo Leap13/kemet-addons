@@ -14,7 +14,7 @@
 		} );
 	} );
 
-    wp.customize('sticky-submenu-link-color]', function (value) {
+	wp.customize('kemet-settings[sticky-submenu-link-color]', function (value) {
 		value.bind(function (color) {
 			jQuery('.kmt-is-sticky .main-header-menu .sub-menu li a').css('color', color);
 			jQuery('.kmt-is-sticky .main-header-menu .sub-menu li a').css('border-bottom-color', color);

@@ -164,10 +164,12 @@
 
 .v-header-align-right .main-header-bar-wrap {
   right: 0;
+  border-left: 1px solid #eee;
 }
 
 .v-header-align-left .main-header-bar-wrap {
   left: 0;
+  border-right: 1px solid #eee;
 }
 
 .ss-wrapper {
