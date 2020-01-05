@@ -1,5 +1,4 @@
 (function ($) {
-
     kemet_css('kemet-settings[header-icon-bars-logo-bg-color]', 'background-color', '.site-header .logo-menu-icon');
     kemet_css('kemet-settings[header-main-sep-color]', 'border-color', '.kemet-main-v-header-align-right .main-header-bar-wrap , .kemet-main-v-header-align-left .main-header-bar-wrap');
     kemet_css('kemet-settings[header-icon-bars-color]', 'background-color', '.icon-bars-btn span');

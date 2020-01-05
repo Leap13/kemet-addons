@@ -161,7 +161,7 @@ $wp_customize->add_control(
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
-                'priority'       => 31,
+                'priority'       => 37,
                 'section' => 'section-topbar-header',
 				'label'   => __( 'Top Bar Background Color', 'kemet-addons' ),
 			)
@@ -246,28 +246,6 @@ $wp_customize->add_control(
 			)
 		)
 	);
-	
-	/**
-	 * Option: Top Bar Header Background
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
-			'default'           => '',
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
-                'priority'       => 40,
-                'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar Background Color', 'kemet-addons' ),
-			)
-		)
-	);
-
-
 
 	 /**
       * Option:Top Bar Link Color
@@ -369,6 +347,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-bg-color]', array(
 			'default'           => '',
 			'type'              => 'option',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
@@ -390,6 +369,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-items-color]', array(
 			'default'           => '',
 			'type'              => 'option',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
@@ -411,6 +391,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-items-h-color]', array(
 			'default'           => '',
 			'type'              => 'option',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		)
 	);
@@ -451,6 +432,7 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[top-bar-content-align]', array(
 			'default'           => '',
 			'type'              => 'option',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);

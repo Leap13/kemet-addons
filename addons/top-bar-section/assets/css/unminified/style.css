@@ -26,7 +26,6 @@
 }
 
 .top-navigation .nav-menu .sub-menu {
-  min-width: 150px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -71,7 +70,7 @@
 }
 
 .top-navigation .nav-menu .menu-item-has-children > a::after {
-  content: "\e900";
+  content: "\e907";
   display: inline-block;
   font-family: Kemet-font;
   font-size: 9px;
@@ -99,6 +98,7 @@
 
 .kemet-top-header {
   padding: 10px 0px;
+  border-bottom-width: 1px;
 }
 
 .top-bar-search-box .kemet-top-header-section .kmt-search-icon {

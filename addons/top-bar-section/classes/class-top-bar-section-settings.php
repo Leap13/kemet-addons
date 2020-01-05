@@ -29,7 +29,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
-            add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
+            add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
             add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
         }
 

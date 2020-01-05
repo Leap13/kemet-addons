@@ -36,9 +36,6 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'justify-content' => kemet_get_option( 'top-bar-content-align' ),
                 ),
                 // Top Bar Header   topbar-bg-color
-                '.kemet-top-header' => array(
-                   
-                ),
                 '.kemet-top-header'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'desktop' ),
