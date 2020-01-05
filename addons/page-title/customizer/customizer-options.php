@@ -465,7 +465,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
-				'default'           => kemet_get_option( 'kemet-breadcrumb-posts-taxonomy' ),
+				'default'           => 'category',
 				'type'              => 'option',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 			)
@@ -477,7 +477,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'priority' => 20,
 				'label'    => __( 'Posts Taxonomy', 'kemet-addons' ),
 				'choices'  => array(
-					'none' 		=> esc_html__( 'None', 'kemet-addons' ),
 					'category' 	=> esc_html__( 'Category', 'kemet-addons' ),
 					'post_tag' 	=> esc_html__( 'Tag', 'kemet-addons' ),
 					'blog' 		=> esc_html__( 'Blog Page', 'kemet-addons' ),
