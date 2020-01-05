@@ -52,7 +52,7 @@
 					 'px' => array(
 						 'min' => 1,
 						 'step' => 1,
-						 'max' => 15,
+						 'max' => 200,
 					 ),
                  ),
                  'active_callback' => 'kmt_dep_go_top',
@@ -66,7 +66,8 @@
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[go-top-icon-size]', array(
 			'default'           => kemet_get_option( 'go-top-icon-size' ),
-			'type'              => 'option',
+            'type'              => 'option',
+            'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
 		)
     );
@@ -141,6 +142,7 @@
         KEMET_THEME_SETTINGS . '[go-top-icon-color]', array(
             'default'           => '',
             'type'              => 'option',
+            'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
         )
     );
@@ -162,6 +164,7 @@
         KEMET_THEME_SETTINGS . '[go-top-icon-h-color]', array(
             'default'           => '',
             'type'              => 'option',
+            'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
         )
     );
@@ -182,7 +185,8 @@
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[go-top-bg-color]', array(
 			'default'           => kemet_get_option( 'go-top-bg-color' ),
-			'type'              => 'option',
+            'type'              => 'option',
+            'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
 		)
 	);
@@ -203,7 +207,8 @@
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[go-top-bg-h-color]', array(
 			'default'           => kemet_get_option( 'go-top-bg-color' ),
-			'type'              => 'option',
+            'type'              => 'option',
+            'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
 		)
 	);
