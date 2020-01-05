@@ -469,7 +469,6 @@ $wp_customize->add_control(
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
-				'active_callback' => 'kemet_top_bar_has_content_style',
 			)
 		)
 	);

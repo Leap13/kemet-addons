@@ -1,7 +1,6 @@
 (function ($) {
     kemet_css('kemet-settings[sticky-menu-link-color]', 'color', '.kmt-is-sticky .main-header-menu a');
     kemet_css('kemet-settings[sticky-menu-link-h-color]', 'color', '.kmt-is-sticky .main-header-menu li:hover a,.kmt-is-sticky .main-header-menu li.current_page_item a');
-    kemet_css('kemet-settings[sticky-submenu-link-h-color]', 'color', '.kmt-is-sticky .main-header-menu .sub-menu li:hover > a');
     kemet_css('kemet-settings[sticky-submenu-bg-color]', 'background-color', '.kmt-is-sticky .main-header-menu ul.sub-menu');
     kemet_css('kemet-settings[sticky-border-bottom-color]', 'border-bottom-color', '.kmt-is-sticky .main-header-bar');
     /**
@@ -13,11 +12,20 @@
 			kemet_background_obj_css( wp.customize, bg_obj, 'sticky-bg-obj', dynamicStyle );
 		} );
 	} );
+	wp.customize('kemet-settings[sticky-submenu-link-color]', function (setting) {
+		setting.bind(function (color) {
 
-	wp.customize('kemet-settings[sticky-submenu-link-color]', function (value) {
-		value.bind(function (color) {
-			jQuery('.kmt-is-sticky .main-header-menu .sub-menu li a').css('color', color);
-			jQuery('.kmt-is-sticky .main-header-menu .sub-menu li a').css('border-bottom-color', color);
+			dynamicStyle = '.kmt-is-sticky .main-header-menu .sub-menu li a{ color: ' + color + ' } ';
+			dynamicStyle += '.kmt-is-sticky .main-header-menu .sub-menu li a{ border-bottom-color: ' + color + ' } ';
+			kemet_add_dynamic_css('sticky-submenu-link-color', dynamicStyle);
+
+		});
+	});
+	wp.customize('kemet-settings[sticky-submenu-link-h-color]', function (setting) {
+		setting.bind(function (color) {
+			dynamicStyle = '.site-header.kmt-is-sticky .main-header-menu .sub-menu li:hover a,.kmt-is-sticky .main-header-menu .sub-menu li.current_page_item a{ color: ' + color + ' } ';
+			kemet_add_dynamic_css('sticky-submenu-link-h-color', dynamicStyle);
+
 		});
 	});
     /*
