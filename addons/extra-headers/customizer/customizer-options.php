@@ -88,7 +88,7 @@
 			'label'   => __( 'Logo & Menu Icon Background', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 11,
-			'active_callback' => 'kemet_header_withicon_layout_style',
+			'active_callback' => 'has_menu_icon_bg_color',
 		  )
 		)
 	);

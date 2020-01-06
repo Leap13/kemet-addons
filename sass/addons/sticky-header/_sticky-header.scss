@@ -4,6 +4,7 @@
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
+    background-color: #fff;
     animation-duration: 1s; 
     animation-fill-mode: both; 
     &.sticky-fade{
