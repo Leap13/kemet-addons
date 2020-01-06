@@ -33,7 +33,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_register', array( $this, 'customize_register' ) );
-            add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ), 1 );
+            add_action( 'wp_head', array( $this, 'new_blog_layouts' ));
             //add_action( 'customize_register', array( $this, 'controls_helpers' ) );
            // add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
 
@@ -64,18 +64,17 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
         /**
 		 * Blog 
 		 */
-		// function new_blog_layouts() {
+		function new_blog_layouts() {
 
-		// 	$blog_layout = kemet_get_option( 'blog-layouts' );
+			$blog_layout = kemet_get_option( 'blog-layouts' );
 
-		// 	if ( 'blog-layout-1' !== $blog_layout ) {
-		// 		remove_action( 'kemet_entry_content_blog', 'kemet_entry_content_blog_template' );
-		// 		add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ) );
-		// 	}
-		// }
+			if ( 'blog-layout-1' !== $blog_layout ) {
+				remove_action( 'kemet_entry_content_blog', 'kemet_entry_content_blog_template' );
+				add_action( 'kemet_entry_content_blog', array( $this, 'blog_templates' ) );
+			}
+		}
 
-        function blog_template() {
-            echo 'ofoiuopdius';
+        function blog_templates() {
             kemetaddons_get_template( 'blog-layouts/templates/' . esc_attr( kemet_get_option( 'blog-layouts' ) ) . '.php' );
         }
 
