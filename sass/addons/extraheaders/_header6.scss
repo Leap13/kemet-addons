@@ -114,7 +114,7 @@
 }
 .kmt-header-break-point{
     &.kemet-main-v-header-align-left, &.kemet-main-v-header-align-right {
-        padding: 0px;
+        padding: 0 !important;
     }
     .header-main-layout-6{
         .main-header-bar-wrap {

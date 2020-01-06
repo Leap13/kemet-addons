@@ -268,7 +268,7 @@
 }
 
 .kmt-header-break-point.kemet-main-v-header-align-left, .kmt-header-break-point.kemet-main-v-header-align-right {
-  padding: 0px;
+  padding: 0 !important;
 }
 
 .kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
@@ -696,10 +696,6 @@
 
 .kmt-header-break-point .header-main-layout-8 .kmt-mobile-menu-buttons {
   padding-right: 20px;
-}
-
-.kmt-header-break-point.kemet-main-v-header-align-left, .kmt-header-break-point.kemet-main-v-header-align-right {
-  padding: 0px;
 }
 
 .kmt-header-break-point .header-main-layout-8.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container, .kmt-header-break-point .header-main-layout-6.search-icon .kmt-sitehead-custom-menu-items .kmt-search-container {
