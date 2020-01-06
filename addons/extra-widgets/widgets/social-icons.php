@@ -4,7 +4,7 @@ $Social_icons_widget = array(
   'title'       => 'Kemet Social Icons',
   'classname'   => 'kwf-widget-social-icon',
   'id'          => 'kemet-widget-social-icons',
-  'description' => 'Social Profile',
+  'description' => 'Social Icons',
   'fields'      => array(
     array(
       'id'      => 'title',
@@ -14,7 +14,8 @@ $Social_icons_widget = array(
     array(
       'id'     => 'social-profile',
       'type'   => 'group',
-      'title'  => 'Add Profile',
+      'title'  => 'Add Icon',
+      'button_title'  => 'Add Icon',
       'accordion_title_auto'  => true,
       'fields' => array(
     
@@ -59,7 +60,7 @@ $Social_icons_widget = array(
     array(
       'id'    => 'enable-title',
       'type'  => 'switcher',
-      'title' => 'Display Profile Title',
+      'title' => 'Display Icon Title',
     ),
     array(
       'id'          => 'alignment',
@@ -141,7 +142,7 @@ $Social_icons_widget = array(
     array(
       'id'    => 'space-between-profiles',
       'type'  => 'number',
-      'title' => 'Space Between Social Profiles:',
+      'title' => 'Space Between Social Icons:',
       'unit'  => 'px',
       'output_mode' => 'padding'
     ),
