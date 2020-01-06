@@ -44,7 +44,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.icon-bars-btn:hover span, .open .icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_icon_bars_h_color),
                 ),
-                '.site-header .menu-icon-social .menu-icon' => array(
+                '.menu-icon-social .menu-icon' => array(
                     'background-color' => esc_attr($header_icon_bars_bg_color),
                     'border-radius'    => kemet_get_css_value( $header_icon_bars_borderradius, 'px' ),
                 ),

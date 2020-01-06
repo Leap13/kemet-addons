@@ -69,6 +69,7 @@
 			'priority' => 10,
 			'label'    => __( 'Icon Label', 'kemet' ),
 			'type'     => 'text',
+			'active_callback' => 'kemet_header_has_icon_label',
 		)
 	);
     /**
