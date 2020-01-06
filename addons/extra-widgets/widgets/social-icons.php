@@ -15,17 +15,19 @@ $Social_icons_widget = array(
       'id'     => 'social-profile',
       'type'   => 'group',
       'title'  => 'Add Profile',
+      'accordion_title_auto'  => true,
       'fields' => array(
     
         array(
           'id'    => 'profile-title',
           'type'  => 'text',
-          'title' => 'Title'
+          'title' => 'Title',
         ),
         array(
           'id'    => 'link',
           'type'  => 'text',
-          'title' => 'Link'
+          'title' => 'Link',
+          'validate' => 'kfw_validate_url',
         ),
         array(
           'id'          => 'link-target',

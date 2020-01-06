@@ -50,7 +50,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
           echo '<span class="kfw-cloneable-text">';
           echo ( $title_number ) ? '<span class="kfw-cloneable-title-number"></span>' : '';
           echo ( $title_prefix ) ? '<span class="kfw-cloneable-title-prefix">'. $title_prefix .'</span>' : '';
-          echo ( $title_auto ) ? '<span class="kfw-cloneable-value"><span class="kfw-cloneable-placeholder"></span></span>' : '';
+          echo ( $title_auto ) ? '<span class="kfw-cloneable-value">'.$this->field['title'].'</span>' : '';
           echo '</span>';
           echo '</h4>';
 

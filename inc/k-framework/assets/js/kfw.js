@@ -820,6 +820,7 @@
             var $title  = $header.find('.kfw-cloneable-value');
 
             $first.on('keyup', function( event ) {
+              $panel.find('.kfw-cloneable-title-prefix').fadeOut();
               $title.text($first.val());
             });
 

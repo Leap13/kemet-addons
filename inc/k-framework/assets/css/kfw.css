@@ -617,9 +617,6 @@
   position: relative;
   padding: 30px;
 }
-.kfw-field + .kfw-field:not(.hidden) {
-  border-top: 1px solid #eee;
-}
 .kfw-field p:first-child {
   margin-top: 0;
 }
