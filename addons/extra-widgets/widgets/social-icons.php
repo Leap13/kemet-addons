@@ -236,7 +236,16 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     }
     <?php echo $id ?>.kmt-social-profiles { 
       <?php if ( $alignment ){ echo 'flex-direction:' . esc_attr($alignment); } ?>;
-		}
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-icon.facebook{
+      color: #3b5998;
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-icon.twitter{
+      color: #00aced;
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-icon.googleplus{
+      color: #dd4b39;
+    }
   </style>
 <?php echo $args['after_widget']; 
   } 
