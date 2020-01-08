@@ -71,6 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
+				'active_callback'	=> 'kemet_page_title_layout1_style'
 			)
 		)
 	);

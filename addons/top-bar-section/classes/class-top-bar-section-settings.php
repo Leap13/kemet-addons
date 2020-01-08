@@ -57,6 +57,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['top-section-1-html']              = '';
             $defaults['top-section-2-html']                    = '';
             $defaults['topbar-padding']         = '';
+            $defaults['topbar-responsive']         = 'all-devices';
             $defaults['topbar-bg-color']    = '';
             $defaults['topbar-font-size']                  = '';
             $defaults['topbar-text-color']                  = '';

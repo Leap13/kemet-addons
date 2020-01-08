@@ -54,9 +54,8 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             if(is_singular()){
                 return kemet_get_option('enable-page-title-content-area');
             }else{
-                return false;
-            }
-            
+                return true;
+            }       
         }
         
          /**

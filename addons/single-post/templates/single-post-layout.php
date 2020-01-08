@@ -19,7 +19,7 @@
 
 		<?php kemet_single_header_top(); ?>
 		
-		<?php kemet_blog_post_thumbnai_and_title_order(); ?>
+		<?php kemet_single_post_thumbnai_and_title_order(); ?>
 		
 		<?php kemet_single_header_bottom(); ?>
 
