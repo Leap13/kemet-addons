@@ -8,7 +8,7 @@
 	 */
 	wp.customize( 'kemet-settings[sticky-bg-obj]', function( value ) {
 		value.bind( function( bg_obj ) {
-			var dynamicStyle = ' body:not(.kmt-header-break-point) .kmt-is-sticky .main-header-bar { {{css}} }';	
+			var dynamicStyle = ' .kmt-is-sticky .main-header-bar-wrap { {{css}} }';	
 			kemet_background_obj_css( wp.customize, bg_obj, 'sticky-bg-obj', dynamicStyle );
 		} );
 	} );

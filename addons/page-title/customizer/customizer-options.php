@@ -305,7 +305,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      */
     $wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[page-title-responsive]',array(
-					'default'           => kemet_get_option('sticky-responsive'),
+					'default'           => kemet_get_option('page-title-responsive'),
 					'type'              => 'option',
 					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
 			)

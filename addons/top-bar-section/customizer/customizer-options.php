@@ -205,7 +205,7 @@ $wp_customize->add_control(
      */
     $wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[topbar-responsive]',array(
-					'default'           => kemet_get_option('sticky-responsive'),
+					'default'           => kemet_get_option('topbar-responsive'),
 					'type'              => 'option',
 					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
 			)
