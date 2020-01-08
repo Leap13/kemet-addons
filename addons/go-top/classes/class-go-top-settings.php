@@ -65,7 +65,7 @@ if (! class_exists('Kemet_Go_Top_Settings')) {
             $defaults['go-top-icon-h-color']           = '';
             $defaults['go-top-bg-color']           = '';
             $defaults['go-top-bg-h-color']           = '';
-            $defaults['go-top-responsive']           = 'all-device';
+            $defaults['go-top-responsive']           = 'all-devices';
 
             return $defaults;
         }

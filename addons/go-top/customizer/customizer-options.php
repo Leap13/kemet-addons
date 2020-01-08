@@ -228,7 +228,7 @@
      */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[go-top-responsive]',array(
-            'default'           => kemet_get_option('go-top-responsive'),
+            'default'           => 'all-devices',
             'type'              => 'option',
             'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
         )
