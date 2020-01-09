@@ -65,7 +65,7 @@
   border-right: 3px solid;
 }
 
-@media only screen and (min-width: 481px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .page-title-layout-3 .kmt-page-title-wrap {
     justify-content: center;
     border-right: none;
