@@ -52,7 +52,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             require_once KEMET_TOPBAR_DIR . 'customizer/customizer-options.php';  
         }
 
-
+        
         function theme_defaults( $defaults ) {
             $defaults['top-section-1-html']              = '';
             $defaults['top-section-2-html']                    = '';
@@ -61,6 +61,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-bg-color']    = '';
             $defaults['topbar-font-size']                  = '';
             $defaults['topbar-text-color']                  = '';
+            $defaults['top-bar-search-style']               = 'search-box';
             $defaults['topbar-bg-color']             = '';
             $defaults['topbar-link-color']           = '';
             $defaults['topbar-link-h-color']           = '';

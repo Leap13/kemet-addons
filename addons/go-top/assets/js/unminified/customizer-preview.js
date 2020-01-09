@@ -1,5 +1,5 @@
 (function ($) {
-    console.log("Hello From go to top");
+    
     kemet_responsive_slider('kemet-settings[go-top-icon-size]', '.kmt-go-top-link:before', 'font-size');
     kemet_css('kemet-settings[go-top-icon-color]', 'color', ' .kmt-go-top-link');
     kemet_css('kemet-settings[go-top-icon-h-color]', 'color', ' .kmt-go-top-link:hover');
