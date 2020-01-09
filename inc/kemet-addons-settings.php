@@ -99,24 +99,41 @@ if (class_exists('KFW')) {
       ),
     ),
   ),
-  //   // Create a sub-tab
-  //   KFW::createSection($prefix, array(
-  //   'id' => 'plugins_tab',
-  //   'title' => __( 'Plugins', 'kemet-addons'),
-  //   'priority' => '10',
-  //   'fields' => array(
-  //     // A switcher field
-  //     array(
-  //       'id' => 'plugins',
-  //       'type' => 'pluginstab',
-  //     ),
-  //   ),
-  // )),
+      // Create a sub-tab
+      KFW::createSection($prefix, array(
+      'id' => 'plugins_tab',
+      'title' => __( 'Plugins', 'kemet-addons'),
+      'priority' => '10',
+      'fields' => array(
+        // A Card field
+        array(
+          'id' => 'plugins',
+          'type' => 'plugins',
+          'plugins' => array(
+            array(
+              'title' => 'Elementor',
+              'plugin' => 'elementor/elementor.php',
+              'install_url' => 'update.php?action=install-plugin&plugin=elementor',
+              'plugin_image' => 'https://ps.w.org/elementor/assets/banner-772x250.png?rev=1475479',
+              'description' => 'The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.'
+            ),
+            array(
+              'title' => 'Premium Addons for Elementor',
+              'plugin' => 'premium-addons-for-elementor/premium-addons-for-elementor.php',
+              'install_url' => 'update.php?action=install-plugin&plugin=premium-addons-for-elementor',
+              'plugin_image' => 'https://ps.w.org/premium-addons-for-elementor/assets/banner-772x250.jpg?rev=1876380',
+              'description' => 'The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.'
+            ),
+            
+          ),
+        ),
+      ),
+    )),
       // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'info_tab',
     'title' => __( 'System Info', 'kemet-addons'),
-    'priority' => '10',
+    'priority' => '15',
     'fields' => array(
       // A switcher field
       array(

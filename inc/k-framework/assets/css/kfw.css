@@ -4022,3 +4022,66 @@
 .kfw-field-switcher .kfw--active {
     background: #fab522;
 }
+/* Kemet Plugins */
+.kmt-plugins-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.kmt-plugins-container h2{
+  font-size: 24px;
+}
+.kmt-plugins-container .kmt-card{
+  width: 49%;
+  display: flex;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.kmt-plugins-container .kmt-card .button{
+  cursor: pointer;
+}
+.kmt-plugins-container .kmt-card .kmt-card-body{
+  border-top: 1px solid #ccc;
+  padding: 10px 20px;
+}
+.kmt-plugins-container .kmt-card .kmt-card-footer{
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+}
+.kmt-plugins-container .kmt-card-header .card-img img{
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+  margin: auto;
+}
+.kmt-plugins-container .kmt-card .kmt-card-body .plugin-description{
+  color: #777;
+  font-size: 13px;
+}
+@media only screen and (max-width: 767px) {
+  .kmt-plugins-container .kmt-card{
+    width: 100%;
+  }
+  .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description{
+    font-size: 10px;
+  }
+  .kmt-plugins-container h2{
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 1200px) {
+  .kmt-plugins-container .kmt-card{
+    width: 100%;
+  }
+  .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description{
+    font-size: 10px;
+  }
+  .kmt-plugins-container h2{
+    font-size: 20px;
+  }
+}
