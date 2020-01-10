@@ -114,13 +114,13 @@
     }
 }
 .kmt-header-break-point{
-    &.kemet-main-v-header-align-left, &.kemet-main-v-header-align-right {
-        padding: 0 !important;
+    &.kemet-main-v-header-align-left.header-main-layout-6, &.kemet-main-v-header-align-right.header-main-layout-6 ,&.kemet-main-v-header-align-left.header-main-layout-8, &.kemet-main-v-header-align-right.header-main-layout-8{
+        padding: 0 ;
     }
     .header-main-layout-6{
         .main-header-bar-wrap {
             width: 100% ;
-            border: 0px !important; 
+            border: 0px; 
             }
             
         }

@@ -12,15 +12,15 @@
 ?>
 
 <div <?php kemet_blog_layout_class( 'single-layout-1' ); ?>>
-	
+
 	<?php kemet_single_header_before(); ?>
 
 	<header class="entry-header <?php kemet_entry_header_class(); ?>">
 
 		<?php kemet_single_header_top(); ?>
-		
+
 		<?php kemet_single_post_thumbnai_and_title_order(); ?>
-		
+
 		<?php kemet_single_header_bottom(); ?>
 
 	</header><!-- .entry-header -->
@@ -28,9 +28,11 @@
 	<?php kemet_single_header_after(); ?>
 
 	<div class="entry-content clear" itemprop="text">
+
 		<?php kemet_entry_content_before(); ?>
 
 		<?php the_content(); ?>
+
 		<?php
 			kemet_edit_post_link(
 
@@ -43,6 +45,7 @@
 				'</span>'
 			);
 		?>
+
 		<?php kemet_entry_content_after(); ?>
 
 		<?php

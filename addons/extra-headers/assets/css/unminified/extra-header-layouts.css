@@ -268,13 +268,13 @@
   text-align: center;
 }
 
-.kmt-header-break-point.kemet-main-v-header-align-left, .kmt-header-break-point.kemet-main-v-header-align-right {
-  padding: 0 !important;
+.kmt-header-break-point.kemet-main-v-header-align-left.header-main-layout-6, .kmt-header-break-point.kemet-main-v-header-align-right.header-main-layout-6, .kmt-header-break-point.kemet-main-v-header-align-left.header-main-layout-8, .kmt-header-break-point.kemet-main-v-header-align-right.header-main-layout-8 {
+  padding: 0;
 }
 
 .kmt-header-break-point .header-main-layout-6 .main-header-bar-wrap {
   width: 100%;
-  border: 0px !important;
+  border: 0px;
 }
 
 .kmt-header-break-point .kmt-sitehead-custom-menu-items .kmt-search-container {
