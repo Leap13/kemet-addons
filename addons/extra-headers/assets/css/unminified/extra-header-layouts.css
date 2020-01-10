@@ -724,3 +724,66 @@
   margin: 0px;
   height: auto;
 }
+
+/*--------------------------------------------------------------
+## Header 9
+--------------------------------------------------------------*/
+.header-main-layout-9 .main-header-container {
+  text-align: center;
+  position: relative;
+  left: -30px;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.header-main-layout-9 .main-header-container.side-header {
+  left: 0;
+  opacity: 1;
+}
+
+.header-main-layout-9 .inline-icon-menu-header {
+  display: flex;
+  align-items: center;
+}
+
+.header-main-layout-9 .inline-logo-menu {
+  display: flex;
+}
+
+.header-main-layout-9 .inline-logo-menu .site-branding {
+  position: relative;
+  padding-right: 20px;
+}
+
+.header-main-layout-9 .inline-logo-menu .site-branding:after {
+  right: 0;
+  content: "";
+  position: absolute;
+  height: 30px;
+  top: 35px;
+  width: 2px;
+  background-color: #eee;
+}
+
+.header-main-layout-9 .inline-logo-menu .menu-icon-social {
+  margin-left: 20px;
+  position: relative;
+  z-index: 99;
+}
+
+.kmt-header-break-point .header-main-layout-9 .main-header-container {
+  opacity: 1;
+  left: 0;
+}
+
+.kmt-header-break-point .header-main-layout-9 .inline-icon-menu-header {
+  display: block;
+}
+
+.kmt-header-break-point .header-main-layout-9 .site-branding:after {
+  height: 0;
+  width: 0;
+}

@@ -48,6 +48,10 @@
 						'label' => __( 'Logo Right', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-08.png',
 					),
+					'header-main-layout-9' => array(
+						'label' => __( 'Logo Right', 'kemet-addons' ),
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-05.png',
+					),
 				),
 			)
 		)

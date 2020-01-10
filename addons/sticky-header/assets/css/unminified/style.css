@@ -66,6 +66,10 @@
   display: none;
 }
 
+.kmt-header-break-point .kmt-is-sticky {
+  top: 0;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

@@ -46,4 +46,9 @@
   $('.header-main-layout-7 .main-header-bar-wrap , .header-main-layout-7 .menu-icon-social').mouseenter(function () {
     clearTimeout(header7Animation);
   });
+  
+
+  $('.header-main-layout-9 .menu-icon-social .menu-icon').click(function () {
+      $('.header-main-layout-9 .main-header-container').toggleClass('side-header');
+  });
 })(jQuery);
