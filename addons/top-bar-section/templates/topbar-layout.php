@@ -74,7 +74,10 @@ if ( empty( $section_1 ) && empty( $section_2 ) ) {
 }
 
 $classes = kemet_get_option( 'topbar-responsive' );
-
+if(in_array('search' , kemet_get_option( 'top-section-1' )) || in_array('search' , kemet_get_option( 'top-section-2' ))){
+	$search_style = kemet_get_option('top-bar-search-style');
+	$classes .= ' top-bar-' . $search_style;
+}
 ?>
 
 <div class="kemet-top-header-wrap" >

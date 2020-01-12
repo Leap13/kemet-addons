@@ -30,7 +30,6 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
-            add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
         }
 
         public function controls_helpers() {
@@ -74,16 +73,6 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             return $defaults;
         }
         
-        function header_classes( $classes ) {
-
-            $search_style = kemet_get_option('top-bar-search-style');
-
-            if ($search_style == true) {
-                $classes[] = 'top-bar-' . $search_style;
-            }
-
-			return $classes;
-         }
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_TOPBAR_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
