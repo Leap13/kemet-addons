@@ -28,12 +28,12 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                             </div>
                         </div>
                     </div>
-                    <?php echo kemet_header_custom_item_outside_menu(); ?>
                     <div class="kmt-flex main-header-container">
                         <?php kemet_primary_navigation_markup(); ?>
                     </div>
-            <?php kemet_main_header_bar_bottom(); ?>
-            </div>  
+                    <?php echo kemet_header_custom_item_outside_menu(); ?> 
+             <?php kemet_main_header_bar_bottom(); ?>
+            </div> 
         </div> 
     </div> 
 </div>
