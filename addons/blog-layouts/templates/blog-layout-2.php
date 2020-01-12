@@ -3,5 +3,9 @@
  * Blog Layout 2
  */
 ?>
-<div>
-222222222222</div>
+<div class="post-content">
+
+    <?php kemet_blog_post_order(); ?>
+
+</div><!-- .post-content -->
+

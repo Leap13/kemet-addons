@@ -1,29 +1,14 @@
 <?php
 /* 
- * Header 7 Layout
+ * Blog Layout 3
  */
 ?>
-<div class="header-layout-7-logo logo-menu-icon">
-    <?php kemet_site_branding_markup(); ?>
-    <?php kemet_toggle_buttons_markup(); ?>
-    <?php echo kemet_header_custom_item_outside_menu(); ?>
-</div>
-<div class="menu-icon-social">
-    <div class="menu-icon">
-        <a id="nav-icon" class="icon-bars-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </a>
-    </div>
-</div>
-<div class="main-header-bar-wrap ss-wrapper">
-	<div class="main-header-bar ss-content">
-		<?php kemet_main_header_bar_top(); ?>
-        <div id="header-layout-7" class="header">
-                <div class="kmt-flex main-header-container">
-                    <?php kemet_primary_navigation_markup(); ?>
-                </div>
-		<?php kemet_main_header_bar_bottom(); ?>
-	</div> 
-</div>
+<div <?php kemet_blog_layout_class( 'blog-layout-3' ); ?>>
+
+<div class="post-content kmt-col-md-12">
+
+    <?php kemet_blog_post_order(); ?>
+
+</div><!-- .post-content -->
+
+</div> <!-- .blog-layout-1 -->

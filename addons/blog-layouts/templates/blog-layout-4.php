@@ -1,25 +1,14 @@
 <?php
 /* 
- * Header 8 Layout
+ * Blog Layout 4
  */
 ?>
+<div <?php kemet_blog_layout_class( 'blog-layout-4' ); ?>>
 
-<div class="main-header-bar-wrap ss-wrapper">
-    <div class="menu-icon-social">
-        <div class="menu-icon">
-            <a id="nav-icon" class="icon-bars-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </div>
-    </div>
-	<div class="main-header-bar ss-content">
-		<?php kemet_main_header_bar_top(); ?>
-        <div id="header-layout-8" class="header">
-                <div class="kmt-flex main-header-container">
-                    <?php kemet_sitehead_content(); ?>
-                </div>
-		<?php kemet_main_header_bar_bottom(); ?>
-	</div> 
-</div>
+<div class="post-content kmt-col-md-12">
+
+    <?php kemet_blog_post_order(); ?>
+
+</div><!-- .post-content -->
+
+</div> <!-- .blog-layout-1 -->

@@ -31,7 +31,7 @@ module.exports = function (grunt) {
                         'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
-                        'addons/extra-headers/assets/css/unminified/blog-layouts.css': 'sass/blog-layouts.scss',
+                        'addons/blog-layouts/assets/css/unminified/blog-layouts.css': 'sass/blog-layouts.scss',
                     },
 
                     {

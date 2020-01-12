@@ -3,5 +3,8 @@
 * Blog Layout 1
 */
 ?>
-<div>
-11111111</div>
+<div class="post-content kmt-col-md-12">
+
+    <?php kemet_blog_post_order(); ?>
+
+</div><!-- .post-content -->
