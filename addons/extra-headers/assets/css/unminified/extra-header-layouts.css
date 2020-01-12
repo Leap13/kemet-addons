@@ -751,6 +751,7 @@
 
 .header-main-layout-9 .inline-logo-menu {
   display: flex;
+  align-items: center;
 }
 
 .header-main-layout-9 .inline-logo-menu .site-branding {
