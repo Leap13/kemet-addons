@@ -617,9 +617,6 @@
   position: relative;
   padding: 30px;
 }
-.kfw-field + .kfw-field:not(.hidden) {
-  border-top: 1px solid #eee;
-}
 .kfw-field p:first-child {
   margin-top: 0;
 }
@@ -1246,7 +1243,7 @@
 .kfw-field-icon .button {
   margin-right: 5px;
 }
-.kfw-field-icon .kfw-icon-preview i {
+.kfw-field-icon .kfw-icon-preview span {
   display: inline-block;
   font-size: 14px;
   width: 30px;
@@ -1774,12 +1771,12 @@
 }
 .kfw-field-switcher .kfw--ball {
   position: absolute;
-  top: 3px;
+  top: 4px;
   left: 4px;
   width: 24px;
-  height: 20px;
+  height: 18px;
   background-color: #fff;
-  border-radius: 11px;
+  border-radius: 4px;
   transition: all .1s;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }
@@ -1802,7 +1799,7 @@
 }
 .kfw-field-switcher .kfw--off {
   padding-right: 0;
-  padding-left: 25px;
+  padding-left: 28px;
   opacity: 1;
 }
 .kfw-field-switcher .kfw--active {
@@ -2368,6 +2365,9 @@
 .kfw-widgets > .kfw-field .kfw-fieldset {
   margin-left: 0;
 }
+.kfw-fieldset .kfw--unit{
+  padding-left: 10px;
+}
 .kfw-widgets .kfw-field-text input {
   width: 100%;
 }
@@ -2498,7 +2498,9 @@
 .control-section .kfw-dependency-control.hidden {
   display: none !important;
 }
-
+.kfw-field .kfw-field-number .kfw--unit{
+  padding-left: 10px;
+}
 /**
  * 06. Taxonomy
  */
@@ -4014,74 +4016,4 @@
 }
 .kfw-field-systeminfo .widefat td:first-child {
   width: 30%;
-}
-.kfw-field-switcher .kfw--switcher {
-    border-radius: 14px;
-    background-color: #969696;
-}
-.kfw-field-switcher .kfw--active {
-    background: #fab522;
-}
-/* Kemet Plugins */
-.kmt-plugins-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  overflow: hidden;
-}
-.kmt-plugins-container h2{
-  font-size: 24px;
-}
-.kmt-plugins-container .kmt-card{
-  width: 49%;
-  display: flex;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.kmt-plugins-container .kmt-card .button{
-  cursor: pointer;
-}
-.kmt-plugins-container .kmt-card .kmt-card-body{
-  border-top: 1px solid #ccc;
-  padding: 10px 20px;
-}
-.kmt-plugins-container .kmt-card .kmt-card-footer{
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 20px;
-}
-.kmt-plugins-container .kmt-card-header .card-img img{
-  max-width: 100%;
-  max-height: 200px;
-  display: block;
-  margin: auto;
-}
-.kmt-plugins-container .kmt-card .kmt-card-body .plugin-description{
-  color: #777;
-  font-size: 13px;
-}
-@media only screen and (max-width: 767px) {
-  .kmt-plugins-container .kmt-card{
-    width: 100%;
-  }
-  .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description{
-    font-size: 10px;
-  }
-  .kmt-plugins-container h2{
-    font-size: 20px;
-  }
-}
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
-  .kmt-plugins-container .kmt-card{
-    width: 100%;
-  }
-  .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description{
-    font-size: 10px;
-  }
-  .kmt-plugins-container h2{
-    font-size: 20px;
-  }
 }

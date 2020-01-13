@@ -40,7 +40,7 @@ if( ! class_exists( 'KFW' ) ) {
       add_action( 'after_setup_theme', array( 'KFW', 'setup' ) );
       add_action( 'init', array( 'KFW', 'setup' ) );
       add_action( 'switch_theme', array( 'KFW', 'setup' ) );
-      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ), 20 );
+      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ),1 );
 
     }
 
@@ -67,7 +67,7 @@ if( ! class_exists( 'KFW' ) ) {
           }
         }
       }
-      
+
     // setup customize options
       $params = array();
       if ( ! empty( self::$args['customize_options'] ) ) {
@@ -195,14 +195,15 @@ if( ! class_exists( 'KFW' ) ) {
     public static function includes() {
 
       self::include_plugin_file( 'functions/helpers.php'    );
-      
+      self::include_plugin_file( 'functions/actions.php'    );
       // includes free version classes
       self::include_plugin_file( 'classes/abstract.class.php' );
       self::include_plugin_file( 'classes/fields.class.php'   );
       self::include_plugin_file( 'classes/options.class.php'  );
-
+      self::include_plugin_file( 'classes/widgets.class.php' );
       // includes premium version classes
       if( self::$premium ) {
+        self::include_plugin_file( 'classes/widgets.class.php' );
         self::include_plugin_file( 'classes/metabox.class.php' );
         self::include_plugin_file( 'classes/customize-options.class.php' );
       }
