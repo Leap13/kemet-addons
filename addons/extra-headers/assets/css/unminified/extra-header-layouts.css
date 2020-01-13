@@ -457,8 +457,8 @@
   width: 100%;
 }
 
-.header-main-layout-7 .kmt-sitehead-custom-menu-items {
-  display: block;
+.header-main-layout-7 .kmt-outside-menu .kmt-sitehead-custom-menu-items {
+  display: flex;
   text-align: center;
 }
 

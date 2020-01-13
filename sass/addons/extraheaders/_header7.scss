@@ -106,11 +106,12 @@
             width: 100%;
         }
     }
-    .kmt-sitehead-custom-menu-items {
-        display: block;
-        text-align: center;
+    .kmt-outside-menu{
+        .kmt-sitehead-custom-menu-items {
+            display: flex;
+            text-align: center;
+        }
     }
-    
     .main-header-container {
         justify-content: center;
         flex-direction: column;
