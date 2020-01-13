@@ -118,6 +118,16 @@
 }
 .kmt-header-break-point{
     .header-main-layout-5{
+        .mobile-icon-logo{
+            display: flex;
+        }
+        .header-logo-menu-icon{
+            display: flex;
+            flex-direction: column-reverse;
+            .kmt-container{
+                width: 100%;
+            }
+        }
         .kmt-navbar-collapse{
             display: block;
         }
