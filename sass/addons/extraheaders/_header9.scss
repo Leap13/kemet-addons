@@ -1,4 +1,8 @@
 .header-main-layout-9{
+    .header9-logo-menu{
+        display: flex;
+        align-items: center;
+    }
     .main-header-container{
         text-align: center;
         position: relative;
@@ -16,6 +20,7 @@
     .inline-icon-menu-header{
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
     .inline-logo-menu{
         display: flex;
@@ -28,7 +33,7 @@
                 content: "";
                 position: absolute;
                 height: 30px;
-                top: 35px;
+                top: 35%;
                 width: 2px;
                 background-color: #eee;
             }
@@ -54,6 +59,9 @@
                 height: 0;
                 width: 0;
             }
+        }
+        .header9-logo-menu{
+            display: block;
         }
     }
 }

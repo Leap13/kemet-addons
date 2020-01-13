@@ -728,6 +728,11 @@
 /*--------------------------------------------------------------
 ## Header 9
 --------------------------------------------------------------*/
+.header-main-layout-9 .header9-logo-menu {
+  display: flex;
+  align-items: center;
+}
+
 .header-main-layout-9 .main-header-container {
   text-align: center;
   position: relative;
@@ -747,6 +752,7 @@
 .header-main-layout-9 .inline-icon-menu-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header-main-layout-9 .inline-logo-menu {
@@ -764,7 +770,7 @@
   content: "";
   position: absolute;
   height: 30px;
-  top: 35px;
+  top: 35%;
   width: 2px;
   background-color: #eee;
 }
@@ -787,4 +793,8 @@
 .kmt-header-break-point .header-main-layout-9 .site-branding:after {
   height: 0;
   width: 0;
+}
+
+.kmt-header-break-point .header-main-layout-9 .header9-logo-menu {
+  display: block;
 }
