@@ -55,6 +55,8 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
         function theme_defaults( $defaults ) {
             $defaults['top-section-1-html']              = '';
             $defaults['top-section-2-html']                    = '';
+            $defaults['section1-content-align']              = 'flex-start';
+            $defaults['section2-content-align']                    = 'flex-end';
             $defaults['topbar-padding']         = '';
             $defaults['topbar-responsive']         = 'all-devices';
             $defaults['topbar-bg-color']    = '';

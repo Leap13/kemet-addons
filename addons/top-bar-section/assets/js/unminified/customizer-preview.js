@@ -19,7 +19,8 @@
     kemet_css('kemet-settings[topbar-text-color]', 'color', '.kemet-top-header');
     kemet_css('kemet-settings[topbar-submenu-items-color]', 'color', '.top-navigation ul.sub-menu li a');
     kemet_css('kemet-settings[topbar-submenu-items-h-color]', 'color', '.top-navigation ul.sub-menu li:hover a');
-    kemet_css('kemet-settings[top-bar-content-align]', 'justify-content', '.kemet-top-header-section-wrap .kemet-top-header-section');
+    kemet_css('kemet-settings[section1-content-align]', 'justify-content', '.kemet-top-header-section-wrap .kemet-top-header-section-1');
+    kemet_css('kemet-settings[section2-content-align]', 'justify-content', '.kemet-top-header-section-wrap .kemet-top-header-section-2');
     wp.customize('kemet-settings[topbar-border-bottom-size]', function (value) {
         value.bind(function (border) {
             var dynamicStyle = '.kemet-top-header{ border-width: ' + border + 'px }';

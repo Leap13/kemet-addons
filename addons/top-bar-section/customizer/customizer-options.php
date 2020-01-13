@@ -429,8 +429,8 @@ $wp_customize->add_control(
 	);
 
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[top-bar-content-align]', array(
-			'default'           => '',
+		KEMET_THEME_SETTINGS . '[section1-content-align]', array(
+			'default'           => 'flex-start',
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -438,10 +438,39 @@ $wp_customize->add_control(
 	);
 	$wp_customize->add_control(
 		new Kemet_Control_Icon_Select(
-			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-content-align]', array(
+			$wp_customize, KEMET_THEME_SETTINGS . '[section1-content-align]', array(
 				'priority'       => 10,
 				'section' => 'section-topbar-header',
-				'label'   => __( 'Top Bar Content Align', 'kemet-addons' ),
+				'label'   => __( 'Section 1 Content Alignment', 'kemet-addons' ),
+				'choices'  => array(
+					'flex-start' => array(
+						'icon' => 'dashicons-editor-alignleft'
+					),
+					'center' => array(
+						'icon' => 'dashicons-editor-aligncenter'
+					),
+					'flex-end' => array(
+						'icon' => 'dashicons-editor-alignright'
+					),	
+				),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[section2-content-align]', array(
+			'default'           => 'flex-end',
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Icon_Select(
+			$wp_customize, KEMET_THEME_SETTINGS . '[section2-content-align]', array(
+				'priority'       => 16,
+				'section' => 'section-topbar-header',
+				'label'   => __( 'Section 2 Content Alignment', 'kemet-addons' ),
 				'choices'  => array(
 					'flex-start' => array(
 						'icon' => 'dashicons-editor-alignleft'
