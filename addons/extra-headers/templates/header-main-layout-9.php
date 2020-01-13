@@ -11,7 +11,7 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
     
         <div class="kmt-container">
             <div id="header-layout-9" class="header inline-icon-menu-header">
-                <div class="menu-icon">
+                <div class="menu-icon-header-9">
                     <div class="inline-logo-menu"> 
                         <?php kemet_site_branding_markup(); ?>
                             <?php if(wp_is_mobile()){

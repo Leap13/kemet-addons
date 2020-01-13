@@ -17,8 +17,8 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                  <div class="mobile-icon-logo">   
                 <?php kemet_site_branding_markup(); ?> 
                 <?php kemet_toggle_buttons_markup(); ?>
-                 </div>
-                    <div class="menu-icon-social">
+                <div class="menu-icon-social">
+                    <?php echo kemet_header_custom_item_outside_menu(); ?>
                         <div class="menu-icon">
                             <a id="nav-icon" class="icon-bars-btn">
                                 <span></span>
@@ -29,10 +29,8 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                                 <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
                             <?php } ?> 
                         </div>
-                        <div class="social-icons">
-                            <?php echo kemet_header_custom_item_outside_menu(); ?>
-                        </div>
                     </div>
+                 </div>
                 </div>
             </div>
         </div><!-- Header Layout 5 -->

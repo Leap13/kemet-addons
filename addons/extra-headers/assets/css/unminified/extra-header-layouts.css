@@ -18,6 +18,7 @@
   float: right;
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
 }
 
 .menu-icon-social .menu-icon {
@@ -145,6 +146,7 @@
 
 .kmt-header-break-point .header-main-layout-5 .mobile-icon-logo {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .kmt-header-break-point .header-main-layout-5 .header-logo-menu-icon {
@@ -305,7 +307,7 @@
   display: flex !important;
 }
 
-.kmt-header-break-point .menu-icon-social {
+.kmt-header-break-point .menu-icon {
   display: none !important;
 }
 
@@ -362,6 +364,7 @@
 .header-main-layout-7 .header-layout-7-logo {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .header-main-layout-7 .main-header-bar-wrap {

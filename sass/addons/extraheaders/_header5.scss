@@ -6,6 +6,7 @@
     float: right;
     margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
     .menu-icon {
         padding: 5px;
         height: 56px;
@@ -120,6 +121,7 @@
     .header-main-layout-5{
         .mobile-icon-logo{
             display: flex;
+            flex-wrap: wrap;
         }
         .header-logo-menu-icon{
             display: flex;
