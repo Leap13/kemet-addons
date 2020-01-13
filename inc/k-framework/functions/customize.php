@@ -70,6 +70,7 @@ if( ! class_exists( 'WP_Customize_Control_KFW' ) && class_exists( 'WP_Customize_
         'switcher',
         'text',
         'systeminfo',
+        'group',
       );
 
       $field_id   = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
