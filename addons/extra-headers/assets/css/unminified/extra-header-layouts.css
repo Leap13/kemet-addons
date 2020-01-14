@@ -159,7 +159,7 @@
 }
 
 .kmt-header-break-point .header-main-layout-5 .kmt-navbar-collapse {
-  display: block;
+  display: block !important;
 }
 
 .kmt-header-break-point .header-main-layout-5 .main-header-menu {

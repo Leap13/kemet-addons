@@ -200,10 +200,8 @@ if( ! class_exists( 'KFW' ) ) {
       self::include_plugin_file( 'classes/abstract.class.php' );
       self::include_plugin_file( 'classes/fields.class.php'   );
       self::include_plugin_file( 'classes/options.class.php'  );
-      self::include_plugin_file( 'classes/widgets.class.php' );
       // includes premium version classes
       if( self::$premium ) {
-        self::include_plugin_file( 'classes/widgets.class.php' );
         self::include_plugin_file( 'classes/metabox.class.php' );
         self::include_plugin_file( 'classes/customize-options.class.php' );
       }

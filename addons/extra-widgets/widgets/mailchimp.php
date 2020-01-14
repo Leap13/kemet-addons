@@ -16,7 +16,7 @@ if ( ! class_exists( 'Kemet_MailChimp_Widget' ) ) {
  
     public function __construct() {
         parent::__construct(
-            'kemet-widget-mailchimp',
+            'mailchimp',
             esc_html__('Kemet Mailchimp', 'kemet-addons'),
             array( 'description' => esc_html__('Mailchimp subscribe widget', 'kemet-addons'))
         );
@@ -65,7 +65,7 @@ if ( ! class_exists( 'Kemet_MailChimp_Widget' ) ) {
         );
  
         $instance = wp_parse_args((array) $instance, $defaults);
-        $title	  = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : '';
+        $title					 = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : '';
         ?>
             <p>
                 <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php echo esc_html__( 'Title:', 'kemet-addons' ); ?></label> 
