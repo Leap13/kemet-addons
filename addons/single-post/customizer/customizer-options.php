@@ -55,7 +55,7 @@
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[enable-page-title-content-area]', array(
             'type' => 'checkbox',
-			'label'   => __( 'Enable Page Title In Content Area', 'kemet-addons' ),
+			'label'   => __( 'Enable Post Title in Content Area', 'kemet-addons' ),
 			'section' => 'section-blog-single',
 			'priority' => 11,
 		  )
@@ -75,7 +75,7 @@
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[featured-image-header]', array(
             'type' => 'checkbox',
-			'label'   => __( 'Featured Image In Header', 'kemet-addons' ),
+			'label'   => __( 'Enable Featured Image in Page Title', 'kemet-addons' ),
 			'section' => 'section-blog-single',
 			'priority' => 11,
 		  )

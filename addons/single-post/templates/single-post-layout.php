@@ -66,13 +66,13 @@
 
 	function author_box_template(){
 ?>
-<section class="kmt-author-box kmt-archive-description">
+<section class="kmt-author-box kmt-archive-description"> 
+	<div class="kmt-author-avatar">
+		<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
+	</div>
 	<div class="kmt-author-bio">
 		<h1 class='page-title kmt-archive-title'><?php echo get_the_author(); ?></h1>
 		<p><?php echo wp_kses_post( get_the_author_meta( 'description' ) ); ?></p>
-	</div>
-	<div class="kmt-author-avatar">
-		<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
 	</div>
 </section>
 

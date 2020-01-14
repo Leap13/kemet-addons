@@ -68,6 +68,10 @@ module.exports = function (grunt) {
                         dest: 'addons/sticky-header/assets/css/minified/style.min.css',
                     },
                     {
+                        src: 'addons/single-post/assets/css/unminified/style.css',
+                        dest: 'addons/single-post/assets/css/minified/style.min.css',
+                    },
+                    {
                         src: 'inc/k-framework/assets/css/kfw.css',
                         dest: 'inc/k-framework/assets/css/kfw.min.css',
                     },
