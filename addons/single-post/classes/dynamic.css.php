@@ -40,7 +40,7 @@ function kemet_single_post_dynamic_css( $dynamic_css ) {
                 '.single .entry-header' => array(
                         'text-align' => esc_attr($title_meta_poistion),
                 ), 
-                '.single-post .kmt-article-single, .single-post .comments-area .comment-respond , .single-post .kmt-author-box' => array(
+                '.single-post .kmt-article-single, .single-post .comments-area .comment-respond , .single-post .kmt-author-box-info' => array(
                 'padding-top'    => kemet_responsive_spacing( $padding_inside_container, 'top', 'desktop' ),
                 'padding-right'  => kemet_responsive_spacing( $padding_inside_container, 'right', 'desktop' ),
                 'padding-bottom' => kemet_responsive_spacing( $padding_inside_container, 'bottom', 'desktop' ),
@@ -50,6 +50,26 @@ function kemet_single_post_dynamic_css( $dynamic_css ) {
                     'text-align' => esc_attr($content_alignment),
                 ),
             );
+
+            $css_tablet = array(
+                '.single-post .kmt-article-single, .single-post .comments-area .comment-respond , .single-post .kmt-author-box-info' => array(
+                    'padding-top'    => kemet_responsive_spacing( $padding_inside_container, 'top', 'tablet' ),
+                    'padding-right'  => kemet_responsive_spacing( $padding_inside_container, 'right', 'tablet' ),
+                    'padding-bottom' => kemet_responsive_spacing( $padding_inside_container, 'bottom', 'tablet' ),
+                    'padding-left'   => kemet_responsive_spacing( $padding_inside_container, 'left', 'tablet' ),              
+                ),
+             );
+           $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
+            
+            $css_mobile = array(
+                '.single-post .kmt-article-single, .single-post .comments-area .comment-respond , .single-post .kmt-author-box-info' => array(
+                    'padding-top'    => kemet_responsive_spacing( $padding_inside_container, 'top', 'mobile' ),
+                    'padding-right'  => kemet_responsive_spacing( $padding_inside_container, 'right', 'mobile' ),
+                    'padding-bottom' => kemet_responsive_spacing( $padding_inside_container, 'bottom', 'mobile' ),
+                    'padding-left'   => kemet_responsive_spacing( $padding_inside_container, 'left', 'mobile' ),              
+                ),
+             );
+           $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
 
             $parse_css .= kemet_parse_css( $css_content );
             

@@ -21,11 +21,22 @@
 /*--------------------------------------------------------------
 ## Author Box
 --------------------------------------------------------------*/
-.kmt-archive-description {
-  padding-top: 1.3333em;
+.kmt-author-box-info {
+  display: flex;
+  padding: 4em 6.67em;
+  align-items: center;
   border-top: 1px solid #eee;
 }
 
-.kmt-author-bio {
+.kmt-author-box-info .kmt-author-bio {
   text-align: right;
+}
+
+.kmt-author-box-info .kmt-author-avatar img {
+  border-radius: 50%;
+}
+
+.kmt-separate-container .kmt-author-box-info {
+  background-color: #fff;
+  border-top: 0;
 }
