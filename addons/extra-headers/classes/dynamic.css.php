@@ -28,9 +28,15 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $vheader_border_color         = kemet_get_option( 'header-main-sep-color' );
             
             $mini_vheader_width         = kemet_get_option( 'mini-vheader-width' );
+
+            //Header9
+            $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' );
             $css_content = array(     
                 '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
+                ),
+                '.header-main-layout-9 .inline-logo-menu .site-branding:after' => array(
+                    'background-color' => esc_attr($logo_icon_separator),
                 ),
                 '.site-header .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'desktop' ),

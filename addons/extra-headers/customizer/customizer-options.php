@@ -50,7 +50,7 @@
 					),
 					'header-main-layout-9' => array(
 						'label' => __( 'Logo Right', 'kemet-addons' ),
-						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-05.png',
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-09.png',
 					),
 				),
 			)
@@ -385,5 +385,28 @@
 				),
                 'active_callback' => 'kemet_header_layout8_style',
 			)
+		)
+	);
+
+	//Header9
+	/**
+   	* Option: Header9 Logo Icon Separator Color 
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
+		  'default'           => '',
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
+			'label'   => __( 'Logo Icon Separator Color', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 1,
+            'active_callback' => 'kemet_header_withicon_layout_style',
+		  )
 		)
 	);

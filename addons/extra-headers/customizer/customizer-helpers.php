@@ -6,14 +6,14 @@
 
 function kemet_header_withicon_layout_style() {
     
-	if ( 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-8' == kemet_get_option( 'header-layouts', 'wide' )) {
+	if ( 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-8' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-9' == kemet_get_option( 'header-layouts', 'wide' )) {
 		return true;
 	} else {
 		return false;
 	}
 }
 function kemet_header_has_icon_label(){
-	if ( 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' ) ) {
+	if ( 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-9' == kemet_get_option( 'header-layouts', 'wide' )) {
 		return true;
 	} else {
 		return false;
