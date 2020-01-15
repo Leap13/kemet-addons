@@ -63,3 +63,5 @@ wp_link_pages(
 </div><!-- .blog-entry-content -->
 </div><!-- .post-content -->
 </div> <!-- .blog-layout-1 -->
+
+
