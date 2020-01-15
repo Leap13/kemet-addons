@@ -167,3 +167,25 @@
 			)
 		)
 	);
+		/**
+		 * Option: Page Title Text Transform
+		*/
+		$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[page-header-title]', array(
+			'default'           => kemet_get_option( 'page-header-title' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[page-header-title]', array(
+			'section'  => 'section-blog-single',
+			'label'    => __( 'Page Header Title', 'kemet-addons' ),
+			'type'     => 'select',
+			'priority' => 20,
+			'choices'  => array(
+				'blog' => __( 'Blog', 'kemet-addons' ),
+				'post-title'  => __( 'Post Title', 'kemet-addons' ),
+			),
+		)
+	);
