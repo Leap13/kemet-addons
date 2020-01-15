@@ -99,14 +99,14 @@ if ( ! class_exists( 'KFW_Field_plugins' ) ) {
 					    $status = 'deactivate';
                         $button = '<a class="button button-primary kmt-active-plugin" data-status = '.$status.'  data-url-deactivate = '.$deactivate_url.' onclick="active_plugin(event)" >' . $button_label . '</a>';
                     }else{
-                        $button_label = __( 'Active '.$plugin_name, 'kemet' );
+                        $button_label = __( 'Active', 'kemet' );
 					    $status = 'activate';
                         $button = '<a class="button button-primary kmt-active-plugin" data-status = '.$status.'  data-url-activate = '.$activate_url.' onclick="active_plugin(event)" >' . $button_label . '</a>';
                     }
                 } else {
                     if ( current_user_can( 'install_plugins' ) ) {
                         $status = 'install';
-                        $button_label = __( 'Install and Activate '.$plugin_name, 'kemet' );
+                        $button_label = __( 'Install and Activate', 'kemet' );
                         $button = '<a class="button button-primary kmt-active-plugin" data-status = '.$status.' data-url-install = '.$install_url.'  data-url-activate = '.$activate_url.' onclick="active_plugin(event)" >' . $button_label . '</a>'; 
                     }
                 }

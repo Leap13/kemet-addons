@@ -290,7 +290,7 @@ class Kemet_Breadcrumb_Trail {
 			$this->add_site_home_link();
 			// If viewing the home/blog page.
 			if ( is_home() ) {
-				$this->add_home_items();
+				$this->add_blog_items();
 			}
 			// If viewing a single post.
 			elseif ( is_singular() ) {

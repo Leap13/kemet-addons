@@ -112,6 +112,7 @@ if (class_exists('KFW')) {
           'plugins' => array(
             'premium-addons-for-elementor',
             'elementor',
+            'premium-blocks-for-gutenberg',
           ),
         ),
       ),
