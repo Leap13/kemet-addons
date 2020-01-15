@@ -110,21 +110,8 @@ if (class_exists('KFW')) {
           'id' => 'plugins',
           'type' => 'plugins',
           'plugins' => array(
-            array(
-              'title' => 'Elementor',
-              'plugin' => 'elementor/elementor.php',
-              'install_url' => 'update.php?action=install-plugin&plugin=elementor',
-              'plugin_image' => 'https://ps.w.org/elementor/assets/banner-772x250.png?rev=1475479',
-              'description' => 'The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.'
-            ),
-            array(
-              'title' => 'Premium Addons for Elementor',
-              'plugin' => 'premium-addons-for-elementor/premium-addons-for-elementor.php',
-              'install_url' => 'update.php?action=install-plugin&plugin=premium-addons-for-elementor',
-              'plugin_image' => 'https://ps.w.org/premium-addons-for-elementor/assets/banner-772x250.jpg?rev=1876380',
-              'description' => 'The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.'
-            ),
-            
+            'premium-addons-for-elementor',
+            'elementor',
           ),
         ),
       ),
