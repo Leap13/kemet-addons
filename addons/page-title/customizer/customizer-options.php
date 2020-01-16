@@ -102,7 +102,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
-				'default'           => false,
+				'default'           => kemet_get_option( 'merge-with-header' ),
 				'type'              => 'option',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 			)
@@ -122,7 +122,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-space]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'page-title-space' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -152,7 +152,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-color]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'page-title-color' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -278,7 +278,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
-                 'default'           => '',
+                 'default'           => kemet_get_option( 'pagetitle-line-height' ),
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -331,7 +331,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
-                 'default'           => '',
+                 'default'           => kemet_get_option('pagetitle-bottomline-height'),
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -359,7 +359,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
-                 'default'           => '150',
+                 'default'           => kemet_get_option('pagetitle-bottomline-width'),
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -386,7 +386,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
-			'default'           => '',
+			'default'           => kemet_get_option('pagetitle-bottomline-color'),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -407,7 +407,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
-			'default'           => true,
+			'default'           => kemet_get_option('breadcrumbs-enabled'),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -426,7 +426,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[show-item-title]', array(
-			'default'           => false,
+			'default'           => kemet_get_option('show-item-title'),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -466,7 +466,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
-				'default'           => 'category',
+				'default'           => kemet_get_option( 'kemet-breadcrumb-posts-taxonomy' ),
 				'type'              => 'option',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 			)
@@ -490,7 +490,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-space]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'breadcrumbs-space' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -521,7 +521,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'breadcrumbs-color' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -542,7 +542,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'breadcrumbs-link-color' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -563,7 +563,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-			'default'           => '',
+			'default'           => kemet_get_option( 'breadcrumbs-link-h-color' ),
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),

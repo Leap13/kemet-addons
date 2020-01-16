@@ -31,14 +31,17 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
-            //add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
         }
         
 		function theme_defaults( $defaults ) {
             
-			$defaults['prev-next-links'] = '';
+			$defaults['prev-next-links'] = false;
+			$defaults['enable-author-box'] = false;
+			$defaults['enable-page-title-content-area'] = false;
 			$defaults['padding-inside-container'] = '';
-			$defaults['featured-image-header'] = '';
+			$defaults['title-meta-position'] = 'left';
+			$defaults['content-alignment'] = 'left';
+			$defaults['featured-image-header'] = false;
 			$defaults['kemet-related-posts-taxonomy'] = '';
 			$defaults['page-header-title'] = 'blog';
             return $defaults;

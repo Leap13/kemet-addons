@@ -53,13 +53,24 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
 
         public function theme_defaults( $defaults ) {
             $defaults['enable-sticky']           = '1';
-            $defaults['sticky-bg-obj']           = array();
+            $defaults['sticky-bg-obj']           = array(
+                'background-color'      => '',
+                'background-image'      => '',
+                'background-repeat'     => 'repeat',
+                'background-position'   => 'center center',
+                'background-size'       => 'auto',
+                'background-attachment' => 'scroll',
+            );
+            $defaults['sticky-top-bar']           = false;
             $defaults['sticky-logo-width']     = '';
             $defaults['sticky-menu-link-color']  = '';
             $defaults['sticky-menu-link-h-color']  = '';
             $defaults['sticky-submenu-bg-color']  = '';
             $defaults['sticky-submenu-link-color']  = '';
             $defaults['sticky-submenu-link-h-color']  = '';
+            $defaults['sticky-border-bottom-color']  = '';
+            $defaults['sticky-responsive']  = 'all-devices';
+            $defaults['sticky-style']  = 'sticky-slide';
             return $defaults;
         }
 
