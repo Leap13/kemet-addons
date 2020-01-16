@@ -1,10 +1,15 @@
 .kmt-author-box-info{
-    display: flex;
-    align-items: center;
     border-top: 1px solid #eee;
     padding: 2em 0;
-    .kmt-author-bio{
-        text-align: right;
+    .author-title{
+        margin-bottom: 10px;
+    }
+    .kmt-author-info{
+        display: flex;
+        align-items: center;
+        p{
+            margin-left: 10px;
+        }
     }
     .kmt-author-avatar{
         img{

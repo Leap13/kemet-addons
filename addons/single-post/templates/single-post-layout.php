@@ -67,11 +67,11 @@
 	function author_box_template(){
 ?>
 <section class="kmt-author-box-info"> 
-	<div class="kmt-author-avatar">
+	<h4 class='author-title'><?php echo get_the_author(); ?></h4>
+	<div class="kmt-author-info">
+		<div class="kmt-author-avatar">
 		<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
-	</div>
-	<div class="kmt-author-bio">
-		<h2 class='author-info'><?php echo get_the_author(); ?></h2>
+		</div>
 		<p><?php echo wp_kses_post( get_the_author_meta( 'description' ) ); ?></p>
 	</div>
 </section>
