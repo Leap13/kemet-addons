@@ -273,6 +273,10 @@ if( ! class_exists( 'KFW' ) ) {
       wp_enqueue_script( 'kfw-plugins', KFW::include_plugin_url( 'assets/js/kfw-plugins'. $min .'.js' ), array(), '1.0.0', true );
       wp_enqueue_script( 'kfw', KFW::include_plugin_url( 'assets/js/kfw'. $min .'.js' ), array( 'kfw-plugins' ), '1.0.0', true );
 
+      //Plugins Install / Activate / Deactivate
+      wp_enqueue_script( 'kfw-plugins-field', KFW::include_plugin_url( 'assets/js/kfw-plugins-field'. $min .'.js' ), array(), '1.0.0', true );
+      wp_enqueue_script( 'kfw', KFW::include_plugin_url( 'assets/js/kfw'. $min .'.js' ), array( 'kfw-plugins-field' ), '1.0.0', true );
+
       wp_localize_script( 'kfw', 'kfw_vars', array(
         'color_palette'  => apply_filters( 'kfw_color_palette', array() ),
         'i18n'           => array(
