@@ -55,8 +55,7 @@ if ( ! class_exists( 'KFW_Field_systeminfo' ) ) {
                 <td><?php  //echo "kok";
                     $memory_limit = wp_convert_hr_to_bytes( WP_MEMORY_LIMIT );
                     if ($memory_limit < 67108864) {
-                        //echo sprintf('%1$s - <span style="color: red;">%2$s <a href="%3$s" target="_blank">%4$s</a></span>', size_format($memory_limit) . '/request', esc_html__(' - We recommend setting wp memory at least 64MB. See: ', 'kemet-addons'), 'https://wordpress.org/support/article/editing-wp-config-php/#increasing-memory-allocated-to-php', esc_html__('Increasing memory allocated to PHP', 'kemet-addons'));
-                        echo '<mark>' . sprintf( __( '%1$s - We recommend setting wp memory at least 64MB. See:</mark><a href="%s" target="_blank">Increasing wp memory</a>', 'kemet-addons' ), size_format($memory_limit), 'https://wordpress.org/support/article/editing-wp-config-php/#increasing-memory-allocated-to-php' );
+                        echo '<mark>' . sprintf( __( '%1$s - We recommend setting wp memory at least 64MB. </mark>See:<a href="%s" target="_blank">Increasing wp memory</a>', 'kemet-addons' ), size_format($memory_limit), 'https://wordpress.org/support/article/common-wordpress-errors/' );
                         } else {
                         echo size_format( $memory_limit );
                     }
@@ -127,7 +126,7 @@ if ( ! class_exists( 'KFW_Field_systeminfo' ) ) {
                     <?php
                     $time_limit = ini_get('max_execution_time'); 
                     if ( $time_limit < 60 && $time_limit != 0 ) {
-                        echo '<mark>' . sprintf( __( '%s - We recommend setting max execution time at least 60. See: </mark><a href="%s" target="_blank">Increasing max execution to PHP</a>', 'kemet-addonss' ), $time_limit, 'https://wordpress.org/support/article/common-wordpress-errors/' );
+                        echo '<mark>' . sprintf( __( '%s - We recommend setting max execution time at least 60. </mark> See:<a href="%s" target="_blank">Increasing max execution to PHP</a>', 'kemet-addonss' ), $time_limit, 'https://wordpress.org/support/article/common-wordpress-errors/' );
                     } else {
                         echo $time_limit;
                     }
