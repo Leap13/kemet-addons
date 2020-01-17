@@ -1,47 +1,32 @@
 .header-main-layout-7{
+    position: absolute;
     .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
     }    
-    .header-layout-7-logo{
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
+    .site-branding{
+        margin: 35px;
     }
     .main-header-bar-wrap {
         text-align: center;
-        opacity: 0;
-        visibility: hidden;
-        &.side-header{
-            opacity: 0.8;
-            visibility: visible;
-            .main-header-bar{
-                display: block;
-            }
-        }
+        width: 100%;
         .main-header-bar{
-            border: 0 !important;
-            display: none;
+            padding-top: 150px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
             -webkit-transition: all 0.4s ease-in-out;
             -moz-transition: all 0.4s ease-in-out;
             -o-transition: all 0.4s ease-in-out;
             transition: all 0.4s ease-in-out;
-        }
-        width: 100%;
-        position: fixed;
-        top: 0;
-        max-width: 100%;
-        height: 100%;
-        border-bottom: none;
-        z-index: 100;
-        -webkit-transition: all 0.4s ease-in-out;
-        -moz-transition: all 0.4s ease-in-out;
-        -o-transition: all 0.4s ease-in-out;
-        transition: all 0.4s ease-in-out;
-        .main-header-container{
-            padding-top: 150px;
-        }    
-        background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            &.side-header{
+                opacity: 0.8;
+                visibility: visible;
+            }
+        }  
     }
     .menu-icon-social{
         position: fixed;
@@ -54,10 +39,6 @@
     }
     .site-title{
         display: block;
-    }
-    .site-branding{
-        text-align: left;
-        padding: 0 50px;
     }
     #site-navigation {
         display: block;
@@ -107,11 +88,9 @@
             width: 100%;
         }
     }
-    .kmt-outside-menu{
-        .kmt-sitehead-custom-menu-items {
-            display: flex;
-            text-align: center;
-        }
+    .kmt-sitehead-custom-menu-items {
+        display: block;
+        text-align: center;
     }
     .main-header-container {
         justify-content: center;
@@ -130,19 +109,19 @@
 }
 .kmt-header-break-point{
     .header-main-layout-7{
+        position: relative;
         .main-header-container{
             padding-top: unset;
         } 
-        .main-header-bar-wrap{
-            visibility: visible !important;
-            opacity: 1 !important;
-            .main-header-bar {
-                padding: 0;
-                display: block !important;
-            }
-        } 
-        .main-header-container{
-            display: flex !important;
+        .main-header-bar{
+            opacity: 1;
+            visibility: visible;
+            position: static;
+            padding: 1.5em 0 0;
+            display: flex;
+        }
+        .site-branding{
+            margin: 0;
         }
         .menu-icon-social{
             display: none !important;
@@ -159,6 +138,11 @@
         }
         .kmt-mobile-menu-buttons{
             padding-right: 20px;
+        }
+        .kmt-outside-menu{
+            .kmt-sitehead-custom-menu-items {
+                display: flex;
+            }
         }
     }
 }

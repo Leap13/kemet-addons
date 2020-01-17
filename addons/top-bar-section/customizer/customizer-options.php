@@ -294,7 +294,6 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[topbar-border-size]', array(
 			'default'           => kemet_get_option( 'topbar-border-size' ),
 			'type'              => 'option',
-			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
 		)
 	);

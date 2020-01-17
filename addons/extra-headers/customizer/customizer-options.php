@@ -406,7 +406,7 @@
 			'label'   => __( 'Logo Icon Separator Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 1,
-            'active_callback' => 'kemet_header_withicon_layout_style',
+            'active_callback' => 'kemet_header_layout9_style',
 		  )
 		)
 	);
