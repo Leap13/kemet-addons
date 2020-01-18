@@ -398,6 +398,7 @@
 }
 
 .header-main-layout-7 .main-header-bar-wrap .main-header-bar {
+  border-width: 0;
   z-index: 999;
   padding-top: 150px;
   position: fixed;
