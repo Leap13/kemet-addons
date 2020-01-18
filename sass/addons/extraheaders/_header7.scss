@@ -1,16 +1,21 @@
 .header-main-layout-7{
-    position: absolute;
+    .top-navigation{
+        .nav-menu{
+            z-index: 99;
+        }
+    }
     .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
     }    
     .site-branding{
-        margin: 35px;
+        position: absolute;
     }
     .main-header-bar-wrap {
         text-align: center;
         width: 100%;
         .main-header-bar{
+            z-index: 999;
             padding-top: 150px;
             position: fixed;
             top: 0;
@@ -32,7 +37,7 @@
         position: fixed;
         top: 0;
         right: 50px;
-        z-index: 999;
+        z-index: 9999;
         .menu-icon{
             border-radius: 50%;
         }
@@ -109,6 +114,11 @@
 }
 .kmt-header-break-point{
     .header-main-layout-7{
+        .top-navigation{
+            .nav-menu{
+                z-index: 999999;
+            }
+        }
         position: relative;
         .main-header-container{
             padding-top: unset;
@@ -122,6 +132,7 @@
         }
         .site-branding{
             margin: 0;
+            position: static;
         }
         .menu-icon-social{
             display: none !important;
