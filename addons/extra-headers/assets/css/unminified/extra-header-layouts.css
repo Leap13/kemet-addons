@@ -127,6 +127,14 @@
   padding-top: 0;
 }
 
+.header-main-layout-5 .header-main-layout-5.kmt-header-transparent {
+  position: relative;
+}
+
+.header-main-layout-5 .header-main-layout-5.kmt-header-transparent .main-header-container {
+  position: absolute;
+}
+
 .header-main-layout-5 .main-header-container {
   position: relative;
   width: 100%;
@@ -143,8 +151,8 @@
   justify-content: flex-end;
 }
 
-.kmt-header-break-point .header-main-layout-5 .main-header-bar {
-  padding: 1.5em 0 0;
+.kmt-header-break-point .header-main-layout-5 .main-header-container.mobile-icon-logo {
+  border-width: 0;
 }
 
 .kmt-header-break-point .header-main-layout-5 .header-logo-menu-icon {

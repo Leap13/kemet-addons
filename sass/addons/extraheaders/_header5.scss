@@ -103,6 +103,13 @@
     border: none !important;
     padding-top: 0;
     }
+    .header-main-layout-5.kmt-header-transparent {
+        position: relative;
+    }
+    
+    .header-main-layout-5.kmt-header-transparent .main-header-container {
+    position: absolute;
+    }
     .main-header-container {
     position: relative;
     width: 100%;
@@ -119,8 +126,10 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-        .main-header-bar{
-            padding: 1.5em 0 0;
+        .main-header-container{
+            &.mobile-icon-logo{
+                border-width: 0;
+            }
         }
         .header-logo-menu-icon{
             display: flex;

@@ -99,7 +99,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
 			$vheader_has_box_shadow   = kemet_get_option('vheader-box-shadow');
-			if('header-main-layout-8' == $kemet_header_layout || 'header-main-layout-6' == $kemet_header_layout){
+			if('header-main-layout-8' == $kemet_header_layout || 'header-main-layout-6' == $kemet_header_layout || 'header-main-layout-7' == $kemet_header_layout){
 				if(in_array('kmt-header-transparent' , $classes)){
 					$overlay_enabled = array_search('kmt-header-transparent', $classes);
 					unset($classes[$overlay_enabled]);
