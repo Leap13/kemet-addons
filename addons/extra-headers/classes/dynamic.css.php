@@ -44,17 +44,17 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'desktop' ),
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'desktop' ),              
                 ),
-                '.icon-bars-btn span' => array(
+                '.site-header .menu-icon-social .icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_icon_bars_color),
                 ),
-                '.icon-bars-btn:hover span, .open .icon-bars-btn span' => array(
+                '.site-header .icon-bars-btn:hover span,.site-header .open .icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_icon_bars_h_color),
                 ),
-                '.menu-icon-social .menu-icon' => array(
+                '.site-header .menu-icon-social .menu-icon' => array(
                     'background-color' => esc_attr($header_icon_bars_bg_color),
                     'border-radius'    => kemet_get_css_value( $header_icon_bars_borderradius, 'px' ),
                 ),
-                '.menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open' => array(
+                '.site-header .menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open' => array(
 					'background-color' => esc_attr($header_icon_bars_bg_h_color),
                 ),
                 '.header-main-layout-6 .main-header-bar-wrap' => array(
