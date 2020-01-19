@@ -110,7 +110,7 @@ if ( ! class_exists( 'Kemet_Social_Icons_Widget' ) ) {
         }
       }
       $new_instance['color'] = strip_tags( $new_instance['color'] );
-      $new_instance = apply_filters( "kfw_{test}_save", $new_instance, $this->args, $this );
+      $new_instance = apply_filters( "kfw_{$this->unique}_save", $new_instance, $this->args, $this );
 
       do_action( "kfw_{$this->unique}_save_before", $new_instance, $this->args, $this );
 
