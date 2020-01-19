@@ -18,11 +18,11 @@ if( ! class_exists( 'KFW_Field_text' ) ) {
 
       $type = ( ! empty( $this->field['attributes']['type'] ) ) ? $this->field['attributes']['type'] : 'text';
 
-     // echo $this->field_before();
+      echo $this->field_before();
 
       echo '<input type="'. $type .'" name="'. $this->field_name() .'" value="'. $this->value .'"'. $this->field_attributes() .' />';
 
-    // echo $this->field_after();
+      echo $this->field_after();
 
     }
 

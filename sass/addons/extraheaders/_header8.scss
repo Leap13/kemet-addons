@@ -13,6 +13,9 @@
 }
 .header-main-layout-8{
     position: relative;
+    .main-header-bar{
+        border-bottom-width: 0 !important;
+    }
     &.has-box-shadow.v-header-align-right {
         .main-header-bar-wrap {
             box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);
@@ -23,21 +26,12 @@
             box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
         }
     }
-    // &.v-header-align-right {
-    //     .main-header-bar-wrap {
-    //         right: 0;
-    //     }
-    // }
-    //  &.v-header-align-left {
-    //     .main-header-bar-wrap {
-    //         left: 0;
-    //     }
-    // }
     .header-main-layout-8 .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
     }    
     .main-header-bar-wrap {
+        text-align: center;
         width: 60px;
         position: fixed;
         top: 0;
@@ -58,12 +52,12 @@
         }
     }
     .kmt-site-identity {
-        padding: 60px 0px;
+        padding-top: 60px;
     }
     .menu-icon-social{
         position: absolute;
         top: 0;
-        left: 0;
+        left: 2px;
         z-index: 999;
     }
     .site-title{
@@ -123,9 +117,6 @@
     .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
-        .kmt-search-container{
-            width: 250px;
-        }
     }
     
     .main-header-container {
@@ -134,10 +125,10 @@
         width: 100%;
         opacity: 0;
         visibility: hidden;
-        -webkit-transition: all 0.4s ease-in-out;
-        -moz-transition: all 0.4s ease-in-out;
-        -o-transition: all 0.4s ease-in-out;
-        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
     .henavigation,
     .kmt-main-header-bar-alignment {
@@ -168,18 +159,20 @@
         }
         .site-branding{
             padding-left: 20px;
+            text-align: left;
         }
         .kmt-mobile-menu-buttons{
             padding-right: 20px;
         }
-    }
-    
-    &.kemet-main-v-header-align-left, &.kemet-main-v-header-align-right {
-        padding: 0px;
+        .kmt-outside-menu{
+            .kmt-sitehead-custom-menu-items {
+                display: flex;
+            }
+        }  
     }
     .header-main-layout-8 , .header-main-layout-6{
-        &.search-icon{
-            .kmt-sitehead-custom-menu-items{
+        .kmt-sitehead-custom-menu-items{
+            .search-icon{
                 .kmt-search-container{
                     width: fit-content;
                     margin: auto;

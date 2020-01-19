@@ -14,13 +14,10 @@
   display: none;
 }
 
-.kmt-sticky-header .main-header-bar {
-  padding-top: 0;
-}
-
 .kmt-is-sticky {
   position: fixed;
   width: 100%;
+  background-color: #fff;
   animation-duration: 1s;
   animation-fill-mode: both;
 }
@@ -49,11 +46,11 @@
   background-color: transparent;
 }
 
-.kmt-is-sticky .custom-logo-link {
+.kmt-is-sticky.kmt-sticky-logo .custom-logo-link {
   display: none;
 }
 
-.kmt-is-sticky .sticky-custom-logo {
+.kmt-is-sticky.kmt-sticky-logo .sticky-custom-logo {
   display: block;
 }
 
@@ -67,6 +64,10 @@
 
 .sticky-custom-logo {
   display: none;
+}
+
+.kmt-header-break-point .kmt-is-sticky {
+  top: 0;
 }
 
 @keyframes fadeIn {

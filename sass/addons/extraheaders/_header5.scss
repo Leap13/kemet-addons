@@ -6,11 +6,12 @@
     float: right;
     margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
     .menu-icon {
         padding: 5px;
         height: 56px;
         float: right;
-        width: 56px;
+        min-width: 56px;
         text-align: center;
         line-height: initial;
     }
@@ -32,10 +33,9 @@
         background-color: #4a4a4a;
         position: absolute;
         border-radius: 2px;
-        transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+        transition: all .5s cubic-bezier(.8,.5,.2,1.4) , background-color 0s;
         width:100%;
         height: 2px;
-        transition-duration: 500ms
     }
 }
 .kemet-top-header-section-wrap .kmt-col-md-6 {
@@ -101,17 +101,19 @@
     }
     .main-header-bar {
     border: none !important;
+    padding-top: 0;
+    }
+    .header-main-layout-5.kmt-header-transparent {
+        position: relative;
+    }
+    
+    .header-main-layout-5.kmt-header-transparent .main-header-container {
+    position: absolute;
     }
     .main-header-container {
     position: relative;
     width: 100%;
     border-style: solid;
-    }
-    &.kmt-header-transparent {
-    position: relative;
-    }
-    &.kmt-header-transparent .main-header-container {
-    position: absolute;
     }
     .main-header-menu ul.sub-menu {
     width: 100%;
@@ -119,8 +121,25 @@
 }
 .kmt-header-break-point{
     .header-main-layout-5{
+        .mobile-icon-logo{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .main-header-container{
+            &.logo-menu-icon{
+                border-width: 0;
+            }
+        }
+        .header-logo-menu-icon{
+            display: flex;
+            flex-direction: column-reverse;
+            .kmt-container{
+                width: 100%;
+            }
+        }
         .kmt-navbar-collapse{
-            display: block;
+            display: block !important;;
         }
         .main-header-menu{
             display: block;

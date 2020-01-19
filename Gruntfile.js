@@ -26,6 +26,7 @@ module.exports = function (grunt) {
                     /* Editor Style */
                     {
                         'addons/extra-headers/assets/css/unminified/extra-header-layouts.css': 'sass/extraheaders.scss',
+                        'addons/extra-widgets/assets/css/unminified/style.css': 'sass/extra-widgets.scss',
                         'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
                         'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
                         'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
@@ -52,6 +53,10 @@ module.exports = function (grunt) {
                         dest: 'addons/extra-headers/assets/css/minified/extra-header-layouts.min.css',
                     },
                     {
+                        src: 'addons/extra-widgets/assets/css/unminified/style.css',
+                        dest: 'addons/extra-widgets/assets/css/minified/style.min.css',
+                    },
+                    {
                         src: 'addons/top-bar-section/assets/css/unminified/style.css',
                         dest: 'addons/top-bar-section/assets/css/minified/style.min.css',
                     },
@@ -67,6 +72,14 @@ module.exports = function (grunt) {
                         src: 'addons/sticky-header/assets/css/unminified/style.css',
                         dest: 'addons/sticky-header/assets/css/minified/style.min.css',
                     },
+                    {
+                        src: 'addons/single-post/assets/css/unminified/style.css',
+                        dest: 'addons/single-post/assets/css/minified/style.min.css',
+                    },
+                    {
+                        src: 'inc/k-framework/assets/css/kfw.css',
+                        dest: 'inc/k-framework/assets/css/kfw.min.css',
+                    },
                 ]
             }
         },
@@ -75,12 +88,14 @@ module.exports = function (grunt) {
                 files: {
                     'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
                     'addons/extra-headers/assets/js/minified/customizer-preview.min.js': 'addons/extra-headers/assets/js/unminified/customizer-preview.js',
+                    'addons/extra-headers/assets/js/minified/extra-headers-controls-toggle.min.js': 'addons/extra-headers/assets/js/unminified/extra-headers-controls-toggle.js',
                     'addons/top-bar-section/assets/js/minified/customizer-preview.min.js': 'addons/top-bar-section/assets/js/unminified/customizer-preview.js',
                     'addons/page-title/assets/js/minified/customizer-preview.min.js': 'addons/page-title/assets/js/unminified/customizer-preview.js',
                     'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',
                     'addons/sticky-header/assets/js/minified/customizer-preview.min.js': 'addons/sticky-header/assets/js/unminified/customizer-preview.js',
                     'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
+                    'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
 
                 }
             }

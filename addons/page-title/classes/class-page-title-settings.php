@@ -71,27 +71,29 @@ if (! class_exists('Kemet_Page_Title_settings')) {
 				'background-size'       => 'auto',
 				'background-attachment' => 'scroll',
             );
-            $defaults['merge-with-header']                  = '';
+            $defaults['merge-with-header']                  = false;
             $defaults['page-title-space']                   = '';
             $defaults['page-title-color']                   = '';
             $defaults['page-title-font-size']                   = '';
             $defaults['page-title-font-family']             = 'inherit';
-            $defaults['page-title-font-weight']              = '';
+            $defaults['page-title-font-weight']              = 'inherit';
             $defaults['pagetitle-text-transform']           = '';
             $defaults['pagetitle-line-height']              = '';
             $defaults['page-title-responsive']              = 'all-devices';
             $defaults['pagetitle-bottomline-height']        = '';
-            $defaults['pagetitle-bottomline-width']         = '40';
+            $defaults['pagetitle-bottomline-width']         = 150;
             $defaults['pagetitle-bottomline-color']       = '';
             // Breadcrumbs Defaults
             $defaults['kemet_has_breadcrumbs']              = '';
-            $defaults['show-item-title']                    = '';
+            $defaults['show-item-title']                    = true;
             $defaults['kemet-breadcrumb-separator']         = '';
-            $defaults['kemet-breadcrumb-posts-taxonomy']    = '';
+            $defaults['kemet-breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
             $defaults['breadcrumbs-color']                  = '';
             $defaults['breadcrumbs-link-color']             = '';
             $defaults['breadcrumbs-link-h-color']           = '';
+            $defaults['page-title-border-right-color']      = '';
+            $defaults['breadcrumbs-enabled']                = true; 
             return $defaults;
         }
         

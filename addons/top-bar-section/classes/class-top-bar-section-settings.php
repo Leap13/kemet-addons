@@ -26,12 +26,15 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
 		 *  Constructor
 		 */
 		public function __construct() {
-            add_action( 'customize_register', array( $this, 'customize_register' ), 5 );
+            add_action( 'customize_register', array( $this, 'customize_register' ) );
+            add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
-            add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
-            add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
+            add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
         }
 
+        public function controls_helpers() {
+			require_once( KEMET_TOPBAR_DIR .'customizer/customizer-helpers.php' );
+		}
 		public function customize_register( $wp_customize ) {
 
 			// Update the Customizer Sections under Layout.
@@ -48,15 +51,20 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             require_once KEMET_TOPBAR_DIR . 'customizer/customizer-options.php';  
         }
 
-
+        
         function theme_defaults( $defaults ) {
+            $defaults['top-section-1']              = '';
+            $defaults['top-section-2']              = '';
             $defaults['top-section-1-html']              = '';
             $defaults['top-section-2-html']                    = '';
+            $defaults['section1-content-align']              = 'flex-start';
+            $defaults['section2-content-align']                    = 'flex-end';
             $defaults['topbar-padding']         = '';
+            $defaults['topbar-responsive']         = 'all-devices';
             $defaults['topbar-bg-color']    = '';
             $defaults['topbar-font-size']                  = '';
             $defaults['topbar-text-color']                  = '';
-            $defaults['topbar-bg-color']             = '';
+            $defaults['top-bar-search-style']               = 'search-box';
             $defaults['topbar-link-color']           = '';
             $defaults['topbar-link-h-color']           = '';
             $defaults['topbar-border-size']           = '';
@@ -64,20 +72,9 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-submenu-bg-color']           = '';
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';
-
             return $defaults;
         }
         
-        function header_classes( $classes ) {
-
-            $search_style = kemet_get_option('top-bar-search-style');
-
-            if ($search_style == true) {
-                $classes[] = 'top-bar-' . $search_style;
-            }
-
-			return $classes;
-         }
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {
 				wp_enqueue_script( 'kemet-topbar-customize-preview-js', KEMET_TOPBAR_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);

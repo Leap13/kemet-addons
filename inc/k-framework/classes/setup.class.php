@@ -40,7 +40,7 @@ if( ! class_exists( 'KFW' ) ) {
       add_action( 'after_setup_theme', array( 'KFW', 'setup' ) );
       add_action( 'init', array( 'KFW', 'setup' ) );
       add_action( 'switch_theme', array( 'KFW', 'setup' ) );
-      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ), 20 );
+      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ),1 );
 
     }
 
@@ -67,7 +67,7 @@ if( ! class_exists( 'KFW' ) ) {
           }
         }
       }
-      
+
     // setup customize options
       $params = array();
       if ( ! empty( self::$args['customize_options'] ) ) {
@@ -195,12 +195,11 @@ if( ! class_exists( 'KFW' ) ) {
     public static function includes() {
 
       self::include_plugin_file( 'functions/helpers.php'    );
-      
+      self::include_plugin_file( 'functions/actions.php'    );
       // includes free version classes
       self::include_plugin_file( 'classes/abstract.class.php' );
       self::include_plugin_file( 'classes/fields.class.php'   );
       self::include_plugin_file( 'classes/options.class.php'  );
-
       // includes premium version classes
       if( self::$premium ) {
         self::include_plugin_file( 'classes/metabox.class.php' );
@@ -273,6 +272,10 @@ if( ! class_exists( 'KFW' ) ) {
       // framework core scripts
       wp_enqueue_script( 'kfw-plugins', KFW::include_plugin_url( 'assets/js/kfw-plugins'. $min .'.js' ), array(), '1.0.0', true );
       wp_enqueue_script( 'kfw', KFW::include_plugin_url( 'assets/js/kfw'. $min .'.js' ), array( 'kfw-plugins' ), '1.0.0', true );
+
+      //Plugins Install / Activate / Deactivate
+      wp_enqueue_script( 'kfw-plugins-field', KFW::include_plugin_url( 'assets/js/kfw-plugins-field'. $min .'.js' ), array(), '1.0.0', true );
+      wp_enqueue_script( 'kfw', KFW::include_plugin_url( 'assets/js/kfw'. $min .'.js' ), array( 'kfw-plugins-field' ), '1.0.0', true );
 
       wp_localize_script( 'kfw', 'kfw_vars', array(
         'color_palette'  => apply_filters( 'kfw_color_palette', array() ),

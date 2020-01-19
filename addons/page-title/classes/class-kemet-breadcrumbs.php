@@ -15,7 +15,7 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   BreadcrumbTrail
- * @version   0.9.0
+ * @version   0.9.2
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2017, Justin Tadlock
  * @link      https://themehybrid.com/plugins/breadcrumb-trail
@@ -290,7 +290,7 @@ class Kemet_Breadcrumb_Trail {
 			$this->add_site_home_link();
 			// If viewing the home/blog page.
 			if ( is_home() ) {
-				$this->add_home_items();
+				$this->add_blog_items();
 			}
 			// If viewing a single post.
 			elseif ( is_singular() ) {

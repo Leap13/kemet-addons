@@ -99,24 +99,29 @@ if (class_exists('KFW')) {
       ),
     ),
   ),
-  //   // Create a sub-tab
-  //   KFW::createSection($prefix, array(
-  //   'id' => 'plugins_tab',
-  //   'title' => __( 'Plugins', 'kemet-addons'),
-  //   'priority' => '10',
-  //   'fields' => array(
-  //     // A switcher field
-  //     array(
-  //       'id' => 'plugins',
-  //       'type' => 'pluginstab',
-  //     ),
-  //   ),
-  // )),
+      // Create a sub-tab
+      KFW::createSection($prefix, array(
+      'id' => 'plugins_tab',
+      'title' => __( 'Plugins', 'kemet-addons'),
+      'priority' => '10',
+      'fields' => array(
+        // A Card field
+        array(
+          'id' => 'plugins',
+          'type' => 'plugins',
+          'plugins' => array(
+            'premium-addons-for-elementor',
+            'elementor',
+            'premium-blocks-for-gutenberg',
+          ),
+        ),
+      ),
+    )),
       // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'info_tab',
     'title' => __( 'System Info', 'kemet-addons'),
-    'priority' => '10',
+    'priority' => '15',
     'fields' => array(
       // A switcher field
       array(

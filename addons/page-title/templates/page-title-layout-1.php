@@ -7,6 +7,12 @@
  */
 
 $title                 = kemet_get_the_title();
+if(is_singular()){
+	$header_title = kemet_get_option('page-header-title');
+	if($header_title == 'blog'){
+		$title  = esc_html__( 'Blog', 'kemet-addons' );
+	}
+}
 $description           = get_the_archive_description();
 $classes []= kemet_get_option( 'page-title-layouts' );
 $classes_responsive = kemet_get_option( 'page-title-responsive' );

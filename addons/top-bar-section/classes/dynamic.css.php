@@ -28,15 +28,18 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 			$topbar_submenu_bg_color   = kemet_get_option( 'topbar-submenu-bg-color' );
 			$topbar_submenu_items_color   = kemet_get_option( 'topbar-submenu-items-color' );
 			$topbar_submenu_items_h_color   = kemet_get_option( 'topbar-submenu-items-h-color' );
-			 
+            $section1_content_align          = kemet_get_option( 'section1-content-align' );
+            $section2_content_align          = kemet_get_option( 'section2-content-align' );
 			$topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
             
             $css_content = array(     
-
-                // Top Bar Header   topbar-bg-color
-                '.kemet-top-header' => array(
-                   
+                '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
+                    'justify-content' => $section1_content_align,
                 ),
+                '.kemet-top-header-section-wrap .kemet-top-header-section-2' => array(
+                    'justify-content' => $section2_content_align,
+                ),
+                // Top Bar Header   topbar-bg-color
                 '.kemet-top-header'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_spacing, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $topbar_spacing, 'right', 'desktop' ),

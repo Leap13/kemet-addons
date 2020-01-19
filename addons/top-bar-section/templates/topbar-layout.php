@@ -47,34 +47,48 @@ if ( ! function_exists( 'kemet_get_top_section' ) ) {
 }
 $section_1 = kemet_get_top_section( 'top-section-1' );
 $section_2 = kemet_get_top_section( 'top-section-2' );
-
+$section1_class = 'kmt-col-md-6';
+$section2_class = 'kmt-col-md-6';
 $sections  = 0;
 
- if ( '' != $section_1 ) {
- 	$sections++;
- }
 
+if($section_1 != '' && $section_2 == ''){
+	$section1_class = 'kmt-col-md-12';
+	$section2_class = 'kmt-col-md-6';
+}elseif($section_2 != '' && $section_1 == ''){
+	$section1_class = 'kmt-col-md-6';
+	$section2_class = 'kmt-col-md-12';
+}else{
+	$section1_class = 'kmt-col-md-6';
+	$section2_class = 'kmt-col-md-6';
+}
+ if ( '' != $section_1 ) {
+	 $sections++;
+ }
  if ( '' != $section_2 ) {
  	$sections++;
- }
+ } 
 
 if ( empty( $section_1 ) && empty( $section_2 ) ) {
 	return;
 }
 
 $classes = kemet_get_option( 'topbar-responsive' );
-
+if(in_array('search' , (array)kemet_get_option( 'top-section-1' )) || in_array('search' , (array)kemet_get_option( 'top-section-2' ))){
+	$search_style = kemet_get_option('top-bar-search-style');
+	$classes .= ' top-bar-' . $search_style;
+}
 ?>
 
 <div class="kemet-top-header-wrap" >
 	<div class="kemet-top-header  <?php echo esc_attr( $classes ); ?>" >
 		<div class="kmt-container">
 			<div class="kmt-row kmt-flex kemet-top-header-section-wrap">
-					<div class="kemet-top-header-section kemet-top-header-section-1 kmt-flex kmt-justify-content-flex-start mt-topbar-section-equally kmt-col-md-6 kmt-col-xs-12" >
+					<div class="kemet-top-header-section kemet-top-header-section-1 kmt-flex kmt-justify-content-flex-start mt-topbar-section-equally <?php echo $section1_class; ?> kmt-col-xs-12" >
 							<?php echo $section_1; ?>
 					</div>
 
-					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally kmt-col-md-6 kmt-col-xs-12<" >
+					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally <?php echo $section2_class; ?> kmt-col-xs-12<" >
 							<?php echo $section_2; ?>
 					</div>
 			</div>

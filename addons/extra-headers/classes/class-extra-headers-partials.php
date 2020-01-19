@@ -40,6 +40,10 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
         
 
         function theme_defaults( $defaults ) {
+            $defaults['header-layouts']  = 'header-main-layout-1';
+            $defaults['header-icon-label']  = '';
+            $defaults['vheader-box-shadow']  = false;
+            $defaults['vheader-border-style']  = 'solid';
             $defaults['header-icon-bars-logo-bg-color']  = '';
             $defaults['header-icon-bars-color']          = '';
             $defaults['header-icon-bars-h-color']        = '';
@@ -47,14 +51,15 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header-icon-bars-bg-h-color']     = '';
             $defaults['header-icon-bars-border-radius']  = '';
             $defaults['menu-icon-bars-space']            = '';
-            $defaults['box-shadow']                      = '';
-            // Header 6
+            $defaults['logo-icon-separator-color']       = '';
+            // Vertical Headers
             $defaults['header6-position']                = '';
-            $defaults['header6-width']                   = '';
+            $defaults['vertical-header-width']           = 300;
+            $defaults['mini-vheader-width']           = 60;
+            $defaults['v-headers-position']              = 'left';
             $defaults['header6-border-width']            = '';
             $defaults['header6-border-style']            = '';
             $defaults['header6-border-color']            = '';
-            //Header8
             $defaults['header8-position']                = '';
             $defaults['header8-width']                   = '';
             return $defaults;

@@ -24,7 +24,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
         public function __construct() {
             //add_filter( 'kemet_has_custom_logo', '__return_true' );
             add_action ( 'kemet_header', array( $this, 'sticky_header_logo' ), 1 );
-            add_action( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
+            add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
         }
@@ -107,26 +107,27 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
             $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
             $sticky_responsive        = kemet_get_option('sticky-responsive');
-            if( $enabled_sticky && 'header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout) {
+            if( ($enabled_sticky) && ('header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout)) {
                 $classes[] = 'kmt-sticky-header';
                 $classes[] =  $sticky_responsive;
-            if( $enabled_sticky ) {
-                $classes[] = 'kmt-sticky-header';
-                $classes[] = 'sticky-main-header';
-                $classes[] = $sticky_style;
-                if ( '' !== $sticky_logo ) {
-                    $classes[] = 'kmt-sticky-logo';
+                if( $enabled_sticky ) {
+                    $classes[] = 'kmt-sticky-header';
+                    $classes[] = 'sticky-main-header';
+                    $classes[] = $sticky_style;
+                    if ( '' !== $sticky_logo ) {
+                        $classes[] = 'kmt-sticky-logo';
+                    }
                 }
-            }
-            if($enable_top_bar){
-                $classes[] = 'kmt-sticky-header';
-                $classes[] = 'kmt-sticky-top-bar';
-                $classes[] = $sticky_style;
-            }
+                if($enable_top_bar){
+                    $classes[] = 'kmt-sticky-header';
+                    $classes[] = 'kmt-sticky-top-bar';
+                    $classes[] = $sticky_style;
+                }
+
             }
             
             return $classes;
-            echo 'class="' . esc_attr( join( ' ', $classes ) ) . '"';
+            
         }
 
         public function add_styles() {

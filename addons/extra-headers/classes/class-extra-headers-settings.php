@@ -33,8 +33,8 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader'), 1);
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
-            add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
-        }
+			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
+        } 
         
 
         function html_markup_loader() {
@@ -71,6 +71,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 
         function kemet_body_classes($classes) {
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
+			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
 
             if('header-main-layout-6' == $kemet_header_layout) {
                 
@@ -81,32 +82,52 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
                 
                 $classes[] = 'header-main-layout-8';
                 $classes[] = 'kemet-main-v-header-align-'. kemet_get_option('v-headers-position') ;
-            }
+			}
+			if ( is_singular() ) {
+				if(isset($meta['kemet-main-header-display']) && $meta['kemet-main-header-display'] == '1'){
+					$header_align_class = 'kemet-main-v-header-align-'. kemet_get_option('v-headers-position');
+					if(in_array($header_align_class , $classes)){
+						$align_header = array_search($header_align_class, $classes);
+						unset($classes[$align_header]);
+					}
+				}
+			}
             return $classes;
 		}
 		
         function header_classes( $classes ) {
-			
+			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
-
+			$vheader_has_box_shadow   = kemet_get_option('vheader-box-shadow');
+			if('header-main-layout-8' == $kemet_header_layout || 'header-main-layout-6' == $kemet_header_layout || 'header-main-layout-7' == $kemet_header_layout){
+				if(in_array('kmt-header-transparent' , $classes)){
+					$overlay_enabled = array_search('kmt-header-transparent', $classes);
+					unset($classes[$overlay_enabled]);
+				}
+			}
 			if('header-main-layout-8' == $kemet_header_layout) {
-
-				$header8_has_box_shadow   = kemet_get_option('header8-box-shadow');
-				if ($header8_has_box_shadow == true) {
+				if ($vheader_has_box_shadow == true) {
 					$classes[] = 'has-box-shadow';
 				}
 				$classes[] = 'v-header-align-'. kemet_get_option('v-headers-position') ;
 			}
 			if( 'header-main-layout-6' == $kemet_header_layout ) {
 
-				$header6_has_box_shadow   = kemet_get_option('header6-box-shadow');
-
-				if ($header6_has_box_shadow == true) {
+				if ($vheader_has_box_shadow == true) {
 					$classes[] = 'has-box-shadow';
 				}
 				
 				$classes[] = 'v-header-align-'. kemet_get_option('v-headers-position') ;
-			}	
+			}
+			if ( is_singular() ) {
+				if(isset($meta['kemet-main-header-display']) && $meta['kemet-main-header-display'] == '1'){
+					$header_align_class = 'v-header-align-'. kemet_get_option('v-headers-position');
+					if(in_array($header_align_class , $classes)){
+						$align_header = array_search($header_align_class, $classes);
+						unset($classes[$align_header]);
+					}
+				}	
+			}
 			return $classes;
          }
         

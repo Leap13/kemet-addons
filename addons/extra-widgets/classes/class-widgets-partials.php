@@ -36,6 +36,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             // Define array of custom widgets for the theme
             $widgets = apply_filters( 'kemet_custom_widgets', array(
                 'mailchimp',
+                'social-icons',
             ) );
 
             // Loop through widgets and load their files
@@ -48,8 +49,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 }
             }
         }
-       
-       
+        
         public function add_styles() {
             Kemet_Style_Generator::kmt_add_css(KEMET_WIDGETS_DIR.'assets/css/minified/style.min.css');
         }

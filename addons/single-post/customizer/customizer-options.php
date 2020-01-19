@@ -5,7 +5,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[prev-next-links]', array(
-		  'default'           => false,
+		  'default'           => kemet_get_option( 'prev-next-links' ),
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -26,7 +26,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[enable-author-box]', array(
-		  'default'           => false,
+		  'default'           => kemet_get_option( 'enable-author-box' ),
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -46,7 +46,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[enable-page-title-content-area]', array(
-		  'default'           => false,
+		  'default'           => kemet_get_option( 'enable-page-title-content-area' ),
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -55,7 +55,7 @@
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[enable-page-title-content-area]', array(
             'type' => 'checkbox',
-			'label'   => __( 'Enable Page Title In Content Area', 'kemet-addons' ),
+			'label'   => __( 'Enable Post Title in Content Area', 'kemet-addons' ),
 			'section' => 'section-blog-single',
 			'priority' => 11,
 		  )
@@ -66,7 +66,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[featured-image-header]', array(
-		  'default'           => false,
+		  'default'           => kemet_get_option( 'featured-image-header' ),
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -75,7 +75,7 @@
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[featured-image-header]', array(
             'type' => 'checkbox',
-			'label'   => __( 'Featured Image In Header', 'kemet-addons' ),
+			'label'   => __( 'Enable Featured Image in Page Title', 'kemet-addons' ),
 			'section' => 'section-blog-single',
 			'priority' => 11,
 		  )
@@ -114,42 +114,78 @@
 	//Title and meta position
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
-			'default'           => 'left',
+			'default'           => kemet_get_option( 'title-meta-position' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
-			'type'     => 'select',
-			'section'  => 'section-blog-single',
-			'priority' => 17,
-			'label'    => __( 'Title And Meta Position', 'kemet-addons' ),
-			'choices'  => array(
-				'left'    => __( 'Left', 'kemet-addons' ),
-				'right'   => __( 'Right', 'kemet-addons' ),
-				'center'   => __( 'Center', 'kemet-addons' ),
-			),
+		new Kemet_Control_Icon_Select(
+			$wp_customize, KEMET_THEME_SETTINGS . '[title-meta-position]', array(
+				'priority'       => 17,
+				'section' => 'section-blog-single',
+				'label'   => __( 'Title And Meta Position', 'kemet-addons' ),
+				'choices'  => array(
+					'left' => array(
+						'icon' => 'dashicons-editor-alignleft'
+					),
+					'center' => array(
+						'icon' => 'dashicons-editor-aligncenter'
+					),
+					'right' => array(
+						'icon' => 'dashicons-editor-alignright'
+					),	
+				),
+			)
 		)
 	);
 	//Content Alignment
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[content-alignment]', array(
-			'default'           => 'left',
+			'default'           => kemet_get_option( 'content-alignment' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[content-alignment]', array(
-			'type'     => 'select',
+		new Kemet_Control_Icon_Select(
+			$wp_customize, KEMET_THEME_SETTINGS . '[content-alignment]', array(
+				'priority'       => 17,
+				'section' => 'section-blog-single',
+				'label'   => __( 'Content Alignment', 'kemet-addons' ),
+				'choices'  => array(
+					'left' => array(
+						'icon' => 'dashicons-editor-alignleft'
+					),
+					'center' => array(
+						'icon' => 'dashicons-editor-aligncenter'
+					),
+					'right' => array(
+						'icon' => 'dashicons-editor-alignright'
+					),	
+				),
+			)
+		)
+	);
+		/**
+		 * Option: Page Title Text Transform
+		*/
+		$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[page-header-title]', array(
+			'default'           => kemet_get_option( 'page-header-title' ),
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[page-header-title]', array(
 			'section'  => 'section-blog-single',
-			'priority' => 17,
-			'label'    => __( 'Content Alignment', 'kemet-addons' ),
+			'label'    => __( 'Page Header Title', 'kemet-addons' ),
+			'type'     => 'select',
+			'priority' => 20,
 			'choices'  => array(
-				'left'    => __( 'Left', 'kemet-addons' ),
-				'right'   => __( 'Right', 'kemet-addons' ),
-				'center'   => __( 'Center', 'kemet-addons' ),
+				'blog' => __( 'Blog', 'kemet-addons' ),
+				'post-title'  => __( 'Post Title', 'kemet-addons' ),
 			),
 		)
 	);

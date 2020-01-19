@@ -63,9 +63,12 @@
     .kmt-page-title-wrap{
         border-right: 3px solid;
     }
+    .kemet-page-title{
+        text-align: center;
+    }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .page-title-layout-3{
         .kmt-page-title-wrap{
             justify-content: center;

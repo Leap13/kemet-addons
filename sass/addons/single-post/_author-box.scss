@@ -1,4 +1,38 @@
-.kmt-archive-description{
-    padding-top: 1.3333em;
+.kmt-author-box-info{
     border-top: 1px solid #eee;
+    padding: 2em 0;
+    .author-title{
+        margin-bottom: 10px;
+    }
+    .kmt-author-info{
+        display: flex;
+        align-items: center;
+        p{
+            margin-left: 10px;
+        }
+    }
+    .kmt-author-avatar{
+        img{
+            border-radius: 50%;
+        }
+    }
+}
+.kmt-separate-container{
+    .kmt-author-box-info{
+        background-color: #fff;
+        border-top: 0;
+        padding: 4em 6.67em;
+    }
+}
+
+@media (min-width: 545px){
+.single{
+    &.kmt-page-builder-template{
+            .kmt-author-box-info{
+                max-width: 1180px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
 }
