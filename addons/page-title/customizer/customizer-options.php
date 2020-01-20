@@ -484,8 +484,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		KEMET_THEME_SETTINGS . '[show-item-title]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Show Item Title', 'kemet-addons' ),
-            'priority'        => 10,
+			'label'           => __( 'Show Current Location', 'kemet-addons' ),
+            'priority'        => 5,
             
 		)
 	);
@@ -505,7 +505,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'type'     => 'text',
 			'section'  => 'section-breadcrumbs',
 			'priority' => 10,
-			'label'    => __( 'Custom Text / HTML', 'kemet-addons' ),
+			'label'    => __( 'Custom Levels Divider', 'kemet-addons' ),
 		)
 	);
 
@@ -524,7 +524,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
 				'type'     => 'select',
 				'section'  => 'section-breadcrumbs',
-				'priority' => 20,
+				'priority' => 15,
 				'label'    => __( 'Posts Taxonomy', 'kemet-addons' ),
 				'choices'  => array(
 					'category' 	=> esc_html__( 'Category', 'kemet-addons' ),
@@ -550,7 +550,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-space]', array(
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-breadcrumbs',
-				'priority'       => 50,
+				'priority'       => 20,
 				'label'          => __( 'Breadcrumbs Spacing', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
@@ -564,7 +564,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 		)
 	);
 
-
+	/**
+	 * Option: Title
+	 */
+	$wp_customize->add_control(
+		new Kemet_Control_Title(
+			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-title]', array(
+				'type'     => 'kmt-title',
+				'label'    => __( 'Breadcrumbs Style', 'kemet' ),
+				'section'  => 'section-breadcrumbs',
+				'priority' => 25,
+				'settings' => array(),
+			)
+		)
+	);
 	  /**
       * Option: Breadcrumbs Color
       */
@@ -579,8 +592,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-				'label'   => __( 'Breadcrumbs Text Color', 'kemet-addons' ),
-				'priority'       => 57,
+				'label'   => __( 'Text Color', 'kemet-addons' ),
+				'priority'       => 30,
 				'section' => 'section-breadcrumbs',
 			)
 		)
@@ -600,8 +613,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-				'label'   => __( 'Breadcrumbs Link Color', 'kemet-addons' ),
-				'priority'       => 57,
+				'label'   => __( 'Link Color', 'kemet-addons' ),
+				'priority'       => 35,
 				'section' => 'section-breadcrumbs',
 			)
 		)
@@ -621,8 +634,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-				'label'   => __( 'Breadcrumbs Link Hover Color', 'kemet-addons' ),
-				'priority'       => 57,
+				'label'   => __( 'Link Hover Color', 'kemet-addons' ),
+				'priority'       => 40,
 				'section' => 'section-breadcrumbs',
 			)
 		)
