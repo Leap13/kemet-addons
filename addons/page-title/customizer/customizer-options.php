@@ -76,6 +76,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 		)
 	);
 	/**
+	 * Option: Page Title Divider Color
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
+			'default'           => kemet_get_option( 'page-title-border-right-color' ),
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
+			'section' => 'section-page-title-header',
+			'priority' => 10,
+			'label'   => __( 'Page Title Divider Color', 'kemet-addons' ),
+			'active_callback' => 'kemet_page_title_layout3_style',
+			)
+		)
+	); 
+	/**
 	 * Option: Page Title Background
 	 */
 		$wp_customize->add_setting(
@@ -91,12 +112,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$wp_customize, KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
 				'type'    => 'kmt-background',
 				'section' => 'section-page-title-header',
-				'priority' => 10,
+				'priority' => 15,
 				'label'   => __( 'Page Title Background', 'kemet-addons' ),
 				)
 			)
 		);
 
+		/**
+		 * Option: Title
+		 */
+		$wp_customize->add_control(
+			new Kemet_Control_Title(
+				$wp_customize, KEMET_THEME_SETTINGS . '[kmt-page-title-settings]', array(
+					'type'     => 'kmt-title',
+					'label'    => __( 'Page Title Settings', 'kemet-addons' ),
+					'section'  => 'section-page-title-header',
+					'priority' => 20,
+					'settings' => array(),
+				)
+			)
+		);
 		/**
 		 * Option: Merge Page Title with the main header
 		 */
@@ -111,8 +146,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
 				'type'            => 'checkbox',
 				'section'         => 'section-page-title-header',
-				'label'           => __( 'Merge Page title with Main Header', 'kemet-addons' ),
-				'priority'        => 15,
+				'label'           => __( 'Merge/Combine Page Title With Main Header', 'kemet-addons' ),
+				'priority'        => 25,
 				
 			)
 		);
@@ -133,8 +168,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-space]', array(
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-page-title-header',
-				'priority'       => 20,
-				'label'          => __( 'Page Title Spacing', 'kemet-addons' ),
+				'priority'       => 30,
+				'label'          => __( 'Padding', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
@@ -146,7 +181,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 			)
 		)
 	);
-
+	/**
+	 * Option:Page Title Responsive
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[page-title-responsive]',array(
+				'default'           => kemet_get_option('page-title-responsive'),
+				'type'              => 'option',
+				'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[page-title-responsive]' ,array(
+			'priority'   => 35,
+			'section'    => 'section-page-title-header',
+			'type'     => 'select',
+			'label'    => __( 'Page Title Visibility', 'kemet-addons' ),
+			'choices'  => array(
+					'all-devices'        => __( 'Show on All Devices', 'kemet-addons' ),
+					'hide-tablet'        => __( 'Hide on Tablet', 'kemet-addons' ),
+					'hide-mobile'        => __( 'Hide on Mobile', 'kemet-addons' ),
+					'hide-tablet-mobile' => __( 'Hide on Tablet and Mobile', 'kemet-addons' ),
+			),
+		)
+	);
+		/**
+		 * Option: Title
+		 */
+		$wp_customize->add_control(
+			new Kemet_Control_Title(
+				$wp_customize, KEMET_THEME_SETTINGS . '[kmt-page-title-style]', array(
+					'type'     => 'kmt-title',
+					'label'    => __( 'Page Title Content Style', 'kemet-addons' ),
+					'section'  => 'section-page-title-header',
+					'priority' => 40,
+					'settings' => array(),
+				)
+			)
+		);
 	  /**
       * Option: Page Title Color
       */
@@ -161,8 +233,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-color]', array(
-				'label'   => __( 'Page Title Color', 'kemet-addons' ),
-				'priority'       => 25,
+				'label'   => __( 'Font Color', 'kemet-addons' ),
+				'priority'       => 45,
 				'section' => 'section-page-title-header',
 			)
 		)
@@ -183,8 +255,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-page-title-header',
-				'priority'       => 30,
-				'label'          => __( 'Page Title Font Size', 'kemet' ),
+				'priority'       => 50,
+				'label'          => __( 'Font Size', 'kemet' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 1,
@@ -217,7 +289,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                   'type'     => 'kmt-font-family',
                   'label'    => __( 'Font Family', 'kemet-addons' ),
                   'section'  => 'section-page-title-header',
-                  'priority' => 35,
+                  'priority' => 55,
                   'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-weight]',
               )
           )
@@ -239,7 +311,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                      'type'     => 'kmt-font-weight',
                      'label'    => __( 'Font Weight', 'kemet-addons' ),
                      'section'  => 'section-page-title-header',
-                     'priority' => 40,
+                     'priority' => 60,
                      'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-family]',
  
                  )
@@ -262,7 +334,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                  'section'  => 'section-page-title-header',
                  'label'    => __( 'Text Transform', 'kemet-addons' ),
                  'type'     => 'select',
-                 'priority' => 45,
+                 'priority' => 65,
                  'choices'  => array(
                      ''           => __( 'Inherit', 'kemet-addons' ),
                      'none'       => __( 'None', 'kemet-addons' ),
@@ -289,7 +361,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
-                     'priority'    => 50,
+                     'priority'    => 70,
                      'label'       => __( 'Line Height', 'kemet-addons' ),
                      'suffix'      => '',
                      'input_attrs' => array(
@@ -301,33 +373,29 @@ if ( ! defined( 'ABSPATH' ) ) {
              )
 		 );
 
-		 	/**
-     * Option:Page Title Responsive
-     */
-    $wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[page-title-responsive]',array(
-					'default'           => kemet_get_option('page-title-responsive'),
-					'type'              => 'option',
-					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+		 /**
+		 * Option: Page Title Bottom Line Color
+		*/
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
+				'default'           => kemet_get_option('pagetitle-bottomline-color'),
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
 			)
-	);
-	$wp_customize->add_control(
-			KEMET_THEME_SETTINGS . '[page-title-responsive]' ,array(
-					'priority'   => 55,
-					'section'    => 'section-page-title-header',
-					'type'     => 'select',
-					'label'    => __( 'Page Title Visibility', 'kemet-addons' ),
-					'choices'  => array(
-							'all-devices'        => __( 'Show On All Devices', 'kemet-addons' ),
-							'hide-tablet'        => __( 'Hide On Tablet', 'kemet-addons' ),
-							'hide-mobile'        => __( 'Hide On Mobile', 'kemet-addons' ),
-							'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet-addons' ),
-					),
+		);
+		$wp_customize->add_control(
+			new Kemet_Control_Color(
+				$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
+					'label'   => __( 'Separator Color', 'kemet-addons' ),
+					'priority'       => 75,
+					'section' => 'section-page-title-header',
+				)
 			)
-	);
+		);	
 
 		  /**
-          * Option: Page Title Bottom Line width
+          * Option: Separator Height
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
@@ -342,8 +410,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
-                     'priority'    => 60,
-                     'label'       => __( 'Bottom Line Height', 'kemet-addons' ),
+                     'priority'    => 80,
+                     'label'       => __( 'Separator Height', 'kemet-addons' ),
                      'suffix'      => '',
                      'input_attrs' => array(
                          'min'  => 0,
@@ -370,8 +438,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                  $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
                      'type'        => 'kmt-slider',
                      'section'     => 'section-page-title-header',
-                     'priority'    => 65,
-                     'label'       => __( 'Bottom Line width', 'kemet-addons' ),
+                     'priority'    => 85,
+                     'label'       => __( 'Separator Width', 'kemet-addons' ),
                      'suffix'      => '',
                      'input_attrs' => array(
                          'min'  => 0,
@@ -381,26 +449,7 @@ if ( ! defined( 'ABSPATH' ) ) {
              )
 		 );
 		 
-	 /**
-      * Option: Page Title Bottom Line Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
-			'default'           => kemet_get_option('pagetitle-bottomline-color'),
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
-				'label'   => __( 'Page Title Bottom Line Color', 'kemet-addons' ),
-				'priority'       => 70,
-				'section' => 'section-page-title-header',
-			)
-		)
-	);
+	 
 	
 	/**
 	 * Option: Show item title
@@ -590,27 +639,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  		)
 	 );
 	 
-	 /**
-	 * Option: Page Title Border Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
-			'default'           => kemet_get_option( 'page-title-border-right-color' ),
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
-			'section' => 'section-page-title-header',
-			'priority' => 5,
-			'label'   => __( 'Page Title Border Right Color', 'kemet-addons' ),
-			'active_callback' => 'kemet_page_title_layout3_style',
-			)
-		)
-	); 
+	 
 	
 
 
