@@ -525,6 +525,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'     => 'select',
 				'section'  => 'section-breadcrumbs',
 				'priority' => 15,
+				'description' => 'Choose the Taxonomy Item Parent.',
 				'label'    => __( 'Posts Taxonomy', 'kemet-addons' ),
 				'choices'  => array(
 					'category' 	=> esc_html__( 'Category', 'kemet-addons' ),
