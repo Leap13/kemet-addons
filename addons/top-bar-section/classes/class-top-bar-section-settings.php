@@ -64,7 +64,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-bg-color']    = '';
             $defaults['topbar-font-size']                  = '';
             $defaults['topbar-text-color']                  = '';
-            $defaults['top-bar-search-style']               = 'search-box';
+            $defaults['top-bar-search-style']               = 'search-icon';
             $defaults['topbar-link-color']           = '';
             $defaults['topbar-link-h-color']           = '';
             $defaults['topbar-border-size']           = '';

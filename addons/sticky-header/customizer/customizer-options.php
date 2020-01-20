@@ -313,7 +313,7 @@
 				'all-devices'        => __( 'Show on All Devices', 'kemet-addons' ),
                 'sticky-hide-tablet'        => __( 'Hide on Tablet', 'kemet-addons' ),
                 'sticky-hide-mobile'        => __( 'Hide on Mobile', 'kemet-addons' ),
-                'sticky-hide-tablet-mobile' => __( 'Hide on Tablet & Mobile', 'kemet-addons' ),
+                'sticky-hide-tablet-mobile' => __( 'Hide on Tablet and Mobile', 'kemet-addons' ),
             ),
         )
     );
