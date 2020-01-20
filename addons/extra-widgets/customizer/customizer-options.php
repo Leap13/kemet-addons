@@ -34,15 +34,15 @@ $wp_customize->add_control(
 * Option: Widget Style Color
 */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[widget-style-color]', array(
-        'default'           => kemet_get_option( 'widget-style-color' ),
+    KEMET_THEME_SETTINGS . '[kemet-widget-style-color]', array(
+        'default'           => kemet_get_option( 'kemet-widget-style-color' ),
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
     )
 );
 $wp_customize->add_control(
     new Kemet_Control_Color(
-        $wp_customize, KEMET_THEME_SETTINGS . '[widget-style-color]', array(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kemet-widget-style-color]', array(
             'section'  => 'section-widgets',
             'priority' => 3,
             'label'    => __( 'Widget Style Color', 'kemet' ),

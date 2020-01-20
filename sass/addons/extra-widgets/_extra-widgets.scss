@@ -92,19 +92,28 @@
         }
     }
 }
-
+/********************** widget style **********************/
+div.title {
+    width: 100%;
+    display: block;
+    clear: both;
+    position: relative;
+    overflow: hidden;
+}
+.widget-title, h4.widget-title{
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 0px;
+    float: left;
+}
+.widget-head {
+    .widget-title{
+        .dashicons{
+            line-height: inherit;
+        }
+    }
+}
 /********************** widget style 2 **********************/
-.kmt-widget-style2 .widget-head {
-    border-bottom: 2px solid rgb(129, 129, 129);
-}
-.kmt-widget-style2 .widget-head h4,
-.kmt-widget-style2 .widget-title,
-.kmt-widget-style5 .widget-title,
-.kmt-widget-style5 .widget-head h4,
-.kmt-widget-style6 .widget-title,
-.kmt-widget-style6 .widget-head h4 {
-    color: #ffffff;
-}
 .kmt-widget-style2 .widget-title {
     padding: 3px 10px;
 }
@@ -134,15 +143,12 @@
 .kmt-widget-style4 .counter-widget .widget-content ul li {
     width: 120px;
 }
-.kmt-widget-style4 div.title h1:after {
-    display: none;
+.kmt-widget-style4 .widget-head {
+    border-bottom: 0;
 }
 /********************** widget style 5**********************/
 .kmt-widget-style5 div.title h4:after {
     display: none;
-}
-.kmt-widget-style5 .widget-head {
-    background-color: rgb(129, 129, 129);
 }
 .kmt-widget-style5 .widget-head .widget-title {
     padding: 8px 15px;
@@ -153,9 +159,6 @@
 /********************** widget style 6 **********************/
 .kmt-widget-style6 div.title h4:after {
     display: none;
-}
-.kmt-widget-style6 .widget-head {
-    background-color: rgb(129, 129, 129);
 } 
 .kmt-widget-style6 .widget-head .widget-title {
     padding: 8px 15px;
@@ -183,9 +186,6 @@
 .kmt-widget-style7 div.title h4:after {
     display: none;
 }
-.kmt-widget-style7 .widget-head {
-    border-bottom: 2px solid rgb(129, 129, 129);
-}
 .kmt-widget-style7 .widget-content {
     padding: 0px 15px 15px;
 }
@@ -194,7 +194,6 @@
 }
 /********************** widget style 9 **********************/
 .kmt-widget-style8 .widget-head {
-    border-bottom: 1px solid #E3E3E3;
     text-align: center;
 }
 .kmt-widget-style8 div.title .widget-title {
