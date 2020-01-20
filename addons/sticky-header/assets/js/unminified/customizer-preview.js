@@ -2,7 +2,12 @@
     kemet_css('kemet-settings[sticky-menu-link-color]', 'color', '.kmt-is-sticky .main-header-menu a');
     kemet_css('kemet-settings[sticky-menu-link-h-color]', 'color', '.kmt-is-sticky .main-header-menu li:hover a,.kmt-is-sticky .main-header-menu li.current_page_item a');
     kemet_css('kemet-settings[sticky-submenu-bg-color]', 'background-color', '.kmt-is-sticky .main-header-menu ul.sub-menu');
-    kemet_css('kemet-settings[sticky-border-bottom-color]', 'border-bottom-color', '.kmt-is-sticky .main-header-bar');
+	kemet_css('kemet-settings[sticky-border-bottom-color]', 'border-bottom-color', '.kmt-is-sticky .main-header-bar');
+	/**
+	 * SubMenu Border color
+	 */
+	kemet_css('kemet-settings[sticky-submenu-border-color]', 'border-color', '.kmt-is-sticky .main-header-menu .sub-menu a');
+
     /**
 	 * Sticky Header background
 	 */
