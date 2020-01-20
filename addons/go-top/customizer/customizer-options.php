@@ -25,41 +25,24 @@
 		KEMET_THEME_SETTINGS . '[enable-go-top]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-go-top',
-			'label'           => __( 'Enable Go Top Link', 'kemet-addons' ),
+			'label'           => __( 'Enable Go to Top Button', 'kemet-addons' ),
             'priority'        => 1,
 		)
     );
-    
     /**
-	 * Option: Go Top Link Button Size
-	 */
-    $wp_customize->add_setting(
-        KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
-            'default'           => kemet_get_option( 'go-top-button-size' ),
-            'type'              => 'option',
-            'transport'         => 'postMessage',
-            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+    * Option: Title
+    */
+    $wp_customize->add_control(
+        new Kemet_Control_Title(
+            $wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-settings]', array(
+                'type'     => 'kmt-title',
+                'label'    => __( 'Button Settings', 'kemet' ),
+                'section'  => 'section-go-top',
+                'priority' => 5,
+                'settings' => array(),
+            )
         )
     );
-    $wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-go-top',
-				'priority'       => 3,
-				'label'          => __( 'Button Size', 'kemet' ),
-				'unit_choices'   => array(
-					 'px' => array(
-						 'min' => 1,
-						 'step' => 1,
-						 'max' => 200,
-					 ),
-                 ),
-                 'active_callback' => 'kmt_dep_go_top',
-			)
-		)
-	);
-
     /**
 	 * Option: Go Top Link Icon Size
 	 */
@@ -76,7 +59,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-icon-size]', array(
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-go-top',
-				'priority'       => 3,
+				'priority'       => 10,
 				'label'          => __( 'Icon Size', 'kemet' ),
 				'unit_choices'   => array(
                     'px' => array(
@@ -94,7 +77,36 @@
 			)
 		)
 	);
-    
+    /**
+	 * Option: Go Top Link Button Size
+	 */
+    $wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
+            'default'           => kemet_get_option( 'go-top-button-size' ),
+            'type'              => 'option',
+            'transport'         => 'postMessage',
+            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+        )
+    );
+    $wp_customize->add_control(
+		new Kemet_Control_Responsive_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-go-top',
+				'priority'       => 15,
+				'label'          => __( 'Background Size', 'kemet' ),
+				'unit_choices'   => array(
+					 'px' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' => 200,
+					 ),
+                 ),
+                 'active_callback' => 'kmt_dep_go_top',
+			)
+		)
+	);
+
     /**
      * Option: Go Top Link Border Radius
      */
@@ -111,7 +123,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-border-radius]', array(
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-go-top',
-				'priority'       => 4,
+				'priority'       => 20,
 				'label'          => __( 'Border Radius', 'kemet' ),
 				'unit_choices'   => array(
 					 'px' => array(
@@ -134,7 +146,45 @@
 			)
 		)
 	);
-
+    /**
+     * Option:Go Top Responsive
+     */
+    $wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[go-top-responsive]',array(
+            'default'           => kemet_get_option( 'go-top-responsive' ),
+            'type'              => 'option',
+            'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+        )
+    );
+    $wp_customize->add_control(
+        KEMET_THEME_SETTINGS . '[go-top-responsive]' ,array(
+            'priority'   => 25,
+            'section'    => 'section-go-top',
+            'type'     => 'select',
+            'label'    => __( 'Go to Top Button Visibility', 'kemet-addons' ),
+            'choices'  => array(
+                'all-devices'        => __( 'Show on All Devices', 'kemet-addons' ),
+                'hide-tablet'        => __( 'Hide on Tablet', 'kemet-addons' ),
+                'hide-mobile'        => __( 'Hide on Mobile', 'kemet-addons' ),
+                'hide-tablet-mobile' => __( 'Hide on Tablet and Mobile', 'kemet-addons' ),
+            ),
+            'active_callback' => 'kmt_dep_go_top',
+        )
+    );
+    /**
+    * Option: Title
+    */
+    $wp_customize->add_control(
+        new Kemet_Control_Title(
+            $wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-style]', array(
+                'type'     => 'kmt-title',
+                'label'    => __( 'Button Style', 'kemet' ),
+                'section'  => 'section-go-top',
+                'priority' => 30,
+                'settings' => array(),
+            )
+        )
+    );
     /**
      * Option: Icon color
      */
@@ -151,7 +201,7 @@
             $wp_customize, KEMET_THEME_SETTINGS . '[go-top-icon-color]', array(
                 'section' => 'section-go-top',
                 'label'   => __( 'Icon Color', 'kemet-addons' ),
-                'priority'=>5,
+                'priority'=>35,
                 'active_callback' => 'kmt_dep_go_top',
             )
         )
@@ -173,7 +223,7 @@
             $wp_customize, KEMET_THEME_SETTINGS . '[go-top-icon-h-color]', array(
                 'section' => 'section-go-top',
                 'label'   => __( 'Icon Hover Color', 'kemet-addons' ),
-                'priority'=>6,
+                'priority'=>40,
                 'active_callback' => 'kmt_dep_go_top',
             )
         )
@@ -193,7 +243,7 @@
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-bg-color]', array(
-                'priority'       => 7,
+                'priority'       => 40,
                 'section' => 'section-go-top',
                 'label'   => __( 'Background Color', 'kemet-addons' ),
                 'active_callback' => 'kmt_dep_go_top',
@@ -215,36 +265,10 @@
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-bg-h-color]', array(
-                'priority'       => 8,
+                'priority'       => 50,
                 'section' => 'section-go-top',
                 'label'   => __( 'Background Hover Color', 'kemet-addons' ),
                 'active_callback' => 'kmt_dep_go_top',
 			)
 		)
-    );
-    
-    /**
-     * Option:Go Top Responsive
-     */
-    $wp_customize->add_setting(
-        KEMET_THEME_SETTINGS . '[go-top-responsive]',array(
-            'default'           => kemet_get_option( 'go-top-responsive' ),
-            'type'              => 'option',
-            'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
-        )
-    );
-    $wp_customize->add_control(
-        KEMET_THEME_SETTINGS . '[go-top-responsive]' ,array(
-            'priority'   => 9,
-            'section'    => 'section-go-top',
-            'type'     => 'select',
-            'label'    => __( 'Go Top Link Visibility', 'kemet-addons' ),
-            'choices'  => array(
-                'all-devices'        => __( 'Show On All Devices', 'kemet-addons' ),
-                'hide-tablet'        => __( 'Hide On Tablet', 'kemet-addons' ),
-                'hide-mobile'        => __( 'Hide On Mobile', 'kemet-addons' ),
-                'hide-tablet-mobile' => __( 'Hide On Tablet & Mobile', 'kemet-addons' ),
-            ),
-            'active_callback' => 'kmt_dep_go_top',
-        )
     );
