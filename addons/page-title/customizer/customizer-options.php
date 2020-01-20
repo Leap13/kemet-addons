@@ -28,15 +28,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'     => 'kmt-radio-image',
 				'choices'  => array(
 					'page-title-layout-1' => array(
-						'label' => __( 'Logo Left', 'kemet-addons' ),
+						'label' => __( 'Page Title Layout 1', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-01.png',
 					),
 					'page-title-layout-2' => array(
-						'label' => __( 'Logo Center', 'kemet-addons' ),
+						'label' => __( 'Page Title Layout 2', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-02.png',
 					),
 					'page-title-layout-3' => array(
-						'label' => __( 'Logo Center', 'kemet-addons' ),
+						'label' => __( 'Page Title Layout 3', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-03.png',
 					),
 				),
