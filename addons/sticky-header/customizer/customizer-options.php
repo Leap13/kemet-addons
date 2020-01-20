@@ -33,7 +33,8 @@
             'type'            => 'checkbox',
             'section'         => 'section-sticky-header',
             'label'           => __( 'Enable Sticky Top Bar', 'kemet-addons' ),
-            'priority'        => 10,
+			'priority'        => 10,
+			'active_callback' => 'kemet_has_sticky_header',
         )
 	);
 	/**
