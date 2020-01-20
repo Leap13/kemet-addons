@@ -6,6 +6,8 @@
     kemet_css('kemet-settings[header-icon-bars-bg-color]', 'background-color', '.site-header .menu-icon-social .menu-icon');
     kemet_css('kemet-settings[header-icon-bars-bg-h-color]', 'background-color', '.site-header .menu-icon-social .menu-icon:hover,.site-header .menu-icon-social .menu-icon.open');
     kemet_css('kemet-settings[logo-icon-separator-color]', 'background-color', '.header-main-layout-9 .inline-logo-menu .site-branding:after');
+    kemet_css('kemet-settings[header-icon-label-color]', 'color', '.menu-icon-social .header-icon-label');
+    kemet_css('kemet-settings[header-icon-label-hover-color]', 'color', '.menu-icon-social .header-icon-label:hover');
     wp.customize('kemet-settings[header-icon-bars-border-radius]', function (setting) {
         setting.bind(function (border) {
 
@@ -33,14 +35,14 @@
 
 	wp.customize('kemet-settings[header-icon-label]', function (setting) {
 		setting.bind(function (label) {
-            if ($('.menu-icon-social .menu-icon .header-icon-label').length > 0) {
-                $('.menu-icon-social .menu-icon .header-icon-label').text(label);
+            if ($('.menu-icon-social .header-icon-label').length > 0) {
+                $('.menu-icon-social .header-icon-label').text(label);
             } else {
-				var html = $('.menu-icon-social .menu-icon').html();
+				var html = '';
 				if ('' != label) {
-					html += '<span class="header-icon-label">' + label + '</span>';
+					html = '<span class="header-icon-label">' + label + '</span>';
 				}
-				$('.menu-icon-social .menu-icon').html(html)
+				$('.menu-icon-social').prepend(html)
 			}
             
 		});

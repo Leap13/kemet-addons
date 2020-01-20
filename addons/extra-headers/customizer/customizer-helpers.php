@@ -13,7 +13,21 @@ function kemet_header_withicon_layout_style() {
 	}
 }
 function kemet_header_has_icon_label(){
-	if ( 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-9' == kemet_get_option( 'header-layouts', 'wide' )) {
+	if ( 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' )) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function kemet_header_transparent(){
+	if ( 'header-main-layout-1' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-2' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-3' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-4' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-9' == kemet_get_option( 'header-layouts', 'wide' )) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function kemet_headers_with_content_width(){
+	if ( 'header-main-layout-1' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-2' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-3' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-4' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-9' == kemet_get_option( 'header-layouts', 'wide' )) {
 		return true;
 	} else {
 		return false;

@@ -52,6 +52,8 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header-icon-bars-border-radius']  = '';
             $defaults['menu-icon-bars-space']            = '';
             $defaults['logo-icon-separator-color']       = '';
+            $defaults['enable-transparent']              = false;
+            $defaults['header-main-layout-width']        = 'content';
             // Vertical Headers
             $defaults['header6-position']                = '';
             $defaults['vertical-header-width']           = 300;

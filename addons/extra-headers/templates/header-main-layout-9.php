@@ -26,10 +26,7 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                                         <span></span>
                                         <span></span>
                                         <span></span>
-                                    </a>
-                                <?php if(!empty($icon_label)){ ?>
-                                    <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
-                                <?php } ?>    
+                                    </a>    
                                 </div>
                             </div>
                         

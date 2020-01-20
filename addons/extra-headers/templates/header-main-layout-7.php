@@ -8,16 +8,16 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
 <div class="main-header-bar-wrap">
     <?php kemet_site_branding_markup(); ?>
     <div class="menu-icon-social">
-    <div class="menu-icon">
+        <?php if(!empty($icon_label)){ ?>
+            <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
+        <?php } ?>
+        <div class="menu-icon">
             <a id="nav-icon" class="icon-bars-btn">
                 <span></span>
                 <span></span>
                 <span></span>
-            </a>
-            <?php if(!empty($icon_label)){ ?>
-                <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
-            <?php } ?>    
-        </div>
+            </a>   
+        </div> 
     </div>
 	<div class="main-header-bar ss-content">
         <div class="kmt-flex main-header-container">

@@ -3,6 +3,7 @@
 }
 
 .menu-icon-social {
+    cursor: pointer;
     float: right;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -81,8 +82,17 @@
     top: 13px;
     }
 }
-
+.header-icon-label{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
 .header-main-layout-5 { 
+    .icon-last-menu-items{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
     .kmt-navbar-collapse {
     display: none;
     width: 100%;

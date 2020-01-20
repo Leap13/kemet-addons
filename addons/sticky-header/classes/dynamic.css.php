@@ -25,7 +25,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color');	   
             $css_output = array(
             //Sticky Header
-				'.kmt-is-sticky .main-header-bar-wrap' => kemet_get_background_obj( $sticky_bg_obj ),
+				'.site-header.kmt-is-sticky .main-header-bar' => kemet_get_background_obj( $sticky_bg_obj ),
 				'.kmt-is-sticky .main-header-menu a' => array(
 					'color' => esc_attr($sticky_menu_link_color),
 				),

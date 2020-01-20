@@ -17,17 +17,19 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                  <div class="mobile-icon-logo">   
                 <?php kemet_site_branding_markup(); ?> 
                 <?php kemet_toggle_buttons_markup(); ?>
-                <div class="menu-icon-social">
+                <div class="icon-last-menu-items">
                     <?php echo kemet_header_custom_item_outside_menu(); ?>
-                        <div class="menu-icon">
-                            <a id="nav-icon" class="icon-bars-btn">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </a>
+                    <div class ="menu-icon-social">
                             <?php if(!empty($icon_label)){ ?>
                                 <span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>
                             <?php } ?> 
+                            <div class="menu-icon">
+                                <a id="nav-icon" class="icon-bars-btn">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                  </div>
