@@ -49,3 +49,23 @@ $wp_customize->add_control(
         )
     )
 );
+/**
+* Option: Footer Widget Style Color
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[kemet-footer-widget-style-color]', array(
+        'default'           => kemet_get_option( 'kemet-footer-widget-style-color' ),
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kemet-footer-widget-style-color]', array(
+            'section'  => 'section-kemet-footer',
+            'priority' => 27,
+            'label'    => __( 'Widget Style Color', 'kemet-addons' ),
+            'active_callback'      => 'kemet_widget_with_style_color',
+        )
+    )
+);

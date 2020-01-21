@@ -29,7 +29,7 @@ if ( !class_exists( 'kmt_Widget_Attributes' ) ) {
 
             $widget_id  = $params[ 0 ][ 'widget_id' ];
             $widget_obj = $wp_registered_widgets[ $widget_id ];
-            
+            //var_dump($widget_obj);
             if (
             !isset( $widget_obj[ 'callback' ][ 0 ] ) || !is_object( $widget_obj[ 'callback' ][ 0 ] )
             ) {
