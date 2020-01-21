@@ -25,8 +25,7 @@ $wp_customize->add_control(
             'style7'           => __( 'Style 7', 'kemet-addons' ),
             'style8'           => __( 'Style 8', 'kemet-addons' ),
             'style9'           => __( 'Style 9', 'kemet-addons' ),
-            'style10'           => __( 'Style 10', 'kemet-addons' ),
-        ),
+        ),  
     )
 );
 
@@ -46,6 +45,7 @@ $wp_customize->add_control(
             'section'  => 'section-widgets',
             'priority' => 3,
             'label'    => __( 'Widget Style Color', 'kemet' ),
+            'active_callback'      => 'kemet_widget_with_style_color',
         )
     )
 );
