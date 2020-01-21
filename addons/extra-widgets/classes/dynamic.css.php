@@ -19,6 +19,9 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
             $css_content = array(     
                 '.kmt-widget-style3 .widget-title ,.kmt-widget-style4 .widget-content,.kmt-widget-style8 div.title .widget-title,.kmt-widget-style8 div.title .widget-title:before' => array(
 					'border-bottom-color' => esc_attr( $widget_style_color ),
+                ),
+                '.kmt-widget-style4 .widget-content , .kmt-widget-style7 .widget' => array(
+					'border-color' => esc_attr( $widget_style_color ),
 				),
 				'.kmt-widget-style2 .widget-title ,.kmt-widget-style5 .widget-head ,.kmt-widget-style6 .widget-head,.kmt-widget-style9 div.title .widget-title:after' => array(
 					'background-color' => esc_attr( $widget_style_color ),

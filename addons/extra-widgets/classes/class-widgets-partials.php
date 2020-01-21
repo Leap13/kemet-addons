@@ -29,6 +29,39 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'widgets_init', array( $this, 'kemet_extra_widgets_markup'), 10 );
+            add_filter( 'dynamic_sidebar_params', array( $this, 'kemet_alter_sidebar_params') );
+        }
+
+        /**
+         * Alter sidebar params to add our custom styles
+         * http://wordpress.stackexchange.com/a/74744/28527
+         * @param array $params
+         * @return array
+         */
+        function kemet_alter_sidebar_params( $params ) {
+            global $wp_registered_widgets;
+
+            $settings_getter = $wp_registered_widgets[ $params[ 0 ][ 'widget_id' ] ][ 'callback' ][ 0 ];
+            $settings_get       = $settings_getter->get_settings();
+            $settings        = $settings_get[ $params[ 1 ][ 'number' ] ];
+
+            //pr($settings);
+
+            if ( isset( $settings[ 'title' ] ) && empty( $settings[ 'title' ] ) ) {
+                $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            } elseif ( isset( $settings[ 'rev_slider_title' ] ) && empty( $settings[ 'rev_slider_title' ] ) ) {
+                $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            } elseif ( isset( $settings[ 'title' ] ) && !empty( $settings[ 'title' ] ) ) {
+                $params[ 0 ][ 'after_title' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            } else {
+                $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            }
+
+            return $params;
         }
         
         public static function kemet_extra_widgets_markup() {
