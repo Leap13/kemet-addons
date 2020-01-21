@@ -36,7 +36,7 @@
         new Kemet_Control_Title(
             $wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-settings]', array(
                 'type'     => 'kmt-title',
-                'label'    => __( 'Button Settings', 'kemet' ),
+                'label'    => __( 'Button Settings', 'kemet-addons' ),
                 'section'  => 'section-go-top',
                 'priority' => 5,
                 'settings' => array(),
@@ -60,7 +60,7 @@
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-go-top',
 				'priority'       => 10,
-				'label'          => __( 'Icon Size', 'kemet' ),
+				'label'          => __( 'Icon Size', 'kemet-addons' ),
 				'unit_choices'   => array(
                     'px' => array(
                         'min' => 1,
@@ -94,7 +94,7 @@
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-go-top',
 				'priority'       => 15,
-				'label'          => __( 'Background Size', 'kemet' ),
+				'label'          => __( 'Background Size', 'kemet-addons' ),
 				'unit_choices'   => array(
 					 'px' => array(
 						 'min' => 1,
@@ -124,7 +124,7 @@
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-go-top',
 				'priority'       => 20,
-				'label'          => __( 'Border Radius', 'kemet' ),
+				'label'          => __( 'Border Radius', 'kemet-addons' ),
 				'unit_choices'   => array(
 					 'px' => array(
 						 'min' => 1,
@@ -178,7 +178,7 @@
         new Kemet_Control_Title(
             $wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-style]', array(
                 'type'     => 'kmt-title',
-                'label'    => __( 'Button Style', 'kemet' ),
+                'label'    => __( 'Button Style', 'kemet-addons' ),
                 'section'  => 'section-go-top',
                 'priority' => 30,
                 'settings' => array(),

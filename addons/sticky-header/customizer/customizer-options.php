@@ -44,7 +44,7 @@
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-sticky-header]', array(
 				'type'     => 'kmt-title',
-				'label'    => __( 'Sticky Header Logo Settings', 'kemet' ),
+				'label'    => __( 'Sticky Header Logo Settings', 'kemet-addons' ),
 				'section'  => 'section-sticky-header',
 				'priority' => 15,
 				'settings' => array(),
@@ -90,7 +90,7 @@
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-sticky-header',
 				'priority'       => 25,
-				'label'          => __( 'Logo Width', 'kemet' ),
+				'label'          => __( 'Logo Width', 'kemet-addons' ),
 				'unit_choices'   => array(
 					 'px' => array(
 						 'min' => 1,
@@ -140,7 +140,7 @@
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-sticky-header-style]', array(
 				'type'     => 'kmt-title',
-				'label'    => __( 'Sticky Header Style', 'kemet' ),
+				'label'    => __( 'Sticky Header Style', 'kemet-addons' ),
 				'section'  => 'section-sticky-header',
 				'priority' => 35,
 				'settings' => array(),
@@ -289,7 +289,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-submenu-border-color]', array(
 				'section'  => 'section-sticky-header',
 				'priority' => 70,
-				'label'    => __( 'Submenu Separator Color', 'kemet' ),
+				'label'    => __( 'Submenu Separator Color', 'kemet-addons' ),
 			)
 		)
 	);

@@ -256,7 +256,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-page-title-header',
 				'priority'       => 50,
-				'label'          => __( 'Font Size', 'kemet' ),
+				'label'          => __( 'Font Size', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 1,
@@ -572,7 +572,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-title]', array(
 				'type'     => 'kmt-title',
-				'label'    => __( 'Breadcrumbs Style', 'kemet' ),
+				'label'    => __( 'Breadcrumbs Style', 'kemet-addons' ),
 				'section'  => 'section-breadcrumbs',
 				'priority' => 25,
 				'settings' => array(),

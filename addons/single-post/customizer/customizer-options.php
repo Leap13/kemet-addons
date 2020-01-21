@@ -102,10 +102,10 @@
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
-					'top'    => __( 'Top', 'kemet' ),
-					'right'  => __( 'Right', 'kemet' ),
-					'bottom' => __( 'Bottom', 'kemet' ),
-					'left'   => __( 'Left', 'kemet' ),
+					'top'    => __( 'Top', 'kemet-addons' ),
+					'right'  => __( 'Right', 'kemet-addons' ),
+					'bottom' => __( 'Bottom', 'kemet-addons' ),
+					'left'   => __( 'Left', 'kemet-addons' ),
 				),
 			)
 		)

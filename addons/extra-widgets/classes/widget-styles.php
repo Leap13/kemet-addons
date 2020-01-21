@@ -18,7 +18,6 @@ if ( !class_exists( 'kmt_Widget_Attributes' ) ) {
         /**
          * Insert attributes into widget markup
          *
-         * @since 0.1
          * @filter dynamic_sidebar_params
          *
          * @param array $params Widget parameters

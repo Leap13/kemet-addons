@@ -70,7 +70,7 @@
 		KEMET_THEME_SETTINGS . '[enable-transparent]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-header',
-			'label'           => __( 'Enable Overlay Header', 'kemet' ),
+			'label'           => __( 'Enable Overlay Header', 'kemet-addons' ),
 			'priority'        => 10,
 			'active_callback' => 'kemet_header_transparent'	
 		)
@@ -90,10 +90,10 @@
 			'type'     => 'select',
 			'section'  => 'section-header',
 			'priority' => 20,
-			'label'    => __( 'Header Width', 'kemet' ),
+			'label'    => __( 'Header Width', 'kemet-addons' ),
 			'choices'  => array(
-				'full'    => __( 'Full Width', 'kemet' ),
-				'content' => __( 'Content Width', 'kemet' ),
+				'full'    => __( 'Full Width', 'kemet-addons' ),
+				'content' => __( 'Content Width', 'kemet-addons' ),
 			),
 			'active_callback' => 'kemet_headers_with_content_width'	
 		)
@@ -113,7 +113,7 @@
 		KEMET_THEME_SETTINGS . '[header-icon-label]', array(
 			'section'  => 'section-header',
 			'priority' => 10,
-			'label'    => __( 'Icon Label', 'kemet' ),
+			'label'    => __( 'Icon Label', 'kemet-addons' ),
 			'type'     => 'text',
 			'active_callback' => 'kemet_header_has_icon_label',
 		)
@@ -297,7 +297,7 @@
 				'type'        => 'kmt-slider',
 				'section'     => 'section-header',
 				'priority'    => 16,
-				'label'       => __( 'Icon Border Radius', 'kemet' ),
+				'label'       => __( 'Icon Border Radius', 'kemet-addons' ),
 				'suffix'      => '',
 				'input_attrs' => array(
 					'min'  => 0,

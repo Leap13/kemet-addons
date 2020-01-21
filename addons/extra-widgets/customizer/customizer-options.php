@@ -44,7 +44,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[kemet-widget-style-color]', array(
             'section'  => 'section-widgets',
             'priority' => 3,
-            'label'    => __( 'Widget Style Color', 'kemet' ),
+            'label'    => __( 'Widget Style Color', 'kemet-addons' ),
             'active_callback'      => 'kemet_widget_with_style_color',
         )
     )

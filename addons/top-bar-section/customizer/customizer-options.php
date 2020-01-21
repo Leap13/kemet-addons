@@ -181,7 +181,7 @@
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-top-bar-title]', array(
 				'type'     => 'kmt-title',
-				'label'    => __( 'Top Bar Settings', 'kemet' ),
+				'label'    => __( 'Top Bar Settings', 'kemet-addons' ),
 				'section'  => 'section-topbar-header',
 				'priority' => 30,
 				'settings' => array(),
@@ -262,7 +262,7 @@
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-topbar-header',
 				'priority'       => 45,
-				'label'          => __( 'Font Size', 'kemet' ),
+				'label'          => __( 'Font Size', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 1,
@@ -309,7 +309,7 @@
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-top-bar-style]', array(
 				'type'     => 'kmt-title',
-				'label'    => __( 'Top Bar Style', 'kemet' ),
+				'label'    => __( 'Top Bar Style', 'kemet-addons' ),
 				'section'  => 'section-topbar-header',
 				'priority' => 55,
 				'settings' => array(),
