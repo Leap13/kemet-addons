@@ -95,7 +95,7 @@ $wp_customize->add_control(
             'section'  => 'section-kemet-footer',
             'priority' => 142,
             'label'    => __( 'Widget Style Color', 'kemet-addons' ),
-            'active_callback'      => 'kemet_widget_with_style_color',
+            'active_callback'      => 'kemet_footer_widget_with_style_color',
         )
     )
 );
