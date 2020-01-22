@@ -33,8 +33,48 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
 		public function __construct() {
             add_action( 'kemet_sitehead_top' , array( $this, 'kemet_top_header_template' ), 9 );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+            add_action( 'widgets_init', array( $this,'kemet_addons_top_bar_widgets_init' ) );
         }
 
+        /**
+         * Register widget area.
+         *
+         * @see https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+         */
+        function kemet_addons_top_bar_widgets_init() {
+
+            /**
+             * Register Top Section1 Widget
+             */
+            register_sidebar(
+                apply_filters(
+                    'kemet_top_widget_sectio1', array(
+                    'name'          => esc_html__( 'Top Widget Section 1', 'kemet' ),
+                    'id'            => 'top-widget-section1',
+                    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                    'after_widget'  => '</div>',
+                    'before_title'  => '<div class="widget-head"><div class="title"><h4 class="widget-title">',
+                    'after_title'   => '</h4></div></div>',
+                )
+                )
+            );
+
+            /**
+             * Register Top Section2 Widget
+             */
+                register_sidebar(
+                    apply_filters(
+                        'kemet_top_widget_sectio2', array(
+                        'name'          => esc_html__( 'Top Widget Section 2', 'kemet' ),
+                        'id'            => 'top-widget-section2',
+                        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                        'after_widget'  => '</div>',
+                        'before_title'  => '<div class="widget-head"><div class="title"><h4 class="widget-title">',
+                        'after_title'   => '</h4></div></div>',
+                    )
+                    )
+                );
+        }
         public function kemet_top_header_template() {
             
 			if ( apply_filters( 'kemet_top_bar_enabled', true ) ) {

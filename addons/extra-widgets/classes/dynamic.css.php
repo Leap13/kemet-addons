@@ -26,13 +26,13 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 				'.kmt-widget-style2 .widget-title ,.kmt-widget-style5 .widget-head ,.kmt-widget-style6 .widget-head,.kmt-widget-style9 div.title .widget-title:after' => array(
 					'background-color' => esc_attr( $widget_style_color ),
                 ),
-                '.kemet-footer .kmt-widget-style3 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-content,.kemet-footer .kmt-widget-style8 div.title .widget-title,.kemet-footer .kmt-widget-style8 div.title .widget-title:before' => array(
+                '.kemet-footer .kmt-widget-style3 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-content,.kemet-footer .kmt-widget-style8 div.title .widget-title,.kemet-footer .kmt-widget-style8 div.title .widget-title:before  , .kmt-footer-copyright .kmt-widget-style3 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-content,.kmt-footer-copyright .kmt-widget-style8 div.title .widget-title,.kmt-footer-copyright .kmt-widget-style8 div.title .widget-title:before' => array(
 					'border-bottom-color' => esc_attr( $footer_widget_style_color ),
                 ),
-                '.kemet-footer .kmt-widget-style4 .widget-content ,.kemet-footer .kmt-widget-style7 .widget' => array(
+                '.kemet-footer .kmt-widget-style4 .widget-content ,.kemet-footer .kmt-widget-style7 .widget , .kmt-footer-copyright .kmt-widget-style4 .widget-content ,.kmt-footer-copyright .kmt-widget-style7 .widget' => array(
 					'border-color' => esc_attr( $footer_widget_style_color ),
 				),
-				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style5 .widget-head ,.kemet-footer .kmt-widget-style6 .widget-head,.kemet-footer .kmt-widget-style9 div.title .widget-title:after' => array(
+				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style5 .widget-head ,.kemet-footer .kmt-widget-style6 .widget-head,.kemet-footer .kmt-widget-style9 div.title .widget-title:after ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style5 .widget-head ,.kmt-footer-copyright .kmt-widget-style6 .widget-head,.kmt-footer-copyright .kmt-widget-style9 div.title .widget-title:after' => array(
 					'background-color' => esc_attr( $footer_widget_style_color ),
 				),
             );
