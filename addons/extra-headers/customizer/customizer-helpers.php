@@ -26,6 +26,13 @@ function kemet_header_transparent(){
 		return false;
 	}
 }
+function kemet_header_has_setting_label(){
+	if ( 'header-main-layout-7' == kemet_get_option( 'header-layouts', 'wide' )) {
+		return false;
+	} else {
+		return true;
+	}
+}
 function kemet_headers_with_content_width(){
 	if ( 'header-main-layout-1' == kemet_get_option( 'header-layouts', 'wide' )  || 'header-main-layout-2' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-3' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-4' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-5' == kemet_get_option( 'header-layouts', 'wide' ) || 'header-main-layout-9' == kemet_get_option( 'header-layouts', 'wide' )) {
 		return true;
