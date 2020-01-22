@@ -9,7 +9,7 @@
      * Top Bar Header Spacing
      */
     kemet_responsive_spacing('kemet-settings[topbar-padding]', '.kemet-top-header', 'padding', ['top', 'bottom', 'right', 'left']);
-
+    kemet_responsive_spacing('kemet-settings[topbar-item-padding]', '.kemet-top-header-section > div', 'padding', ['top', 'bottom', 'right', 'left']);
 	/**
 	 * Top Bar Header Link Color
 	 */
