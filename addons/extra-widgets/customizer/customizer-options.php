@@ -36,6 +36,7 @@ $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[kemet-widget-style-color]', array(
         'default'           => kemet_get_option( 'kemet-widget-style-color' ),
         'type'              => 'option',
+        'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
     )
 );
@@ -86,6 +87,7 @@ $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[kemet-footer-widget-style-color]', array(
         'default'           => kemet_get_option( 'kemet-footer-widget-style-color' ),
         'type'              => 'option',
+        'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
     )
 );
