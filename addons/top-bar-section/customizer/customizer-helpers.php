@@ -21,3 +21,19 @@ function kemet_top_bar_section2_has_html() {
 		return false;
 	}
 }
+function kemet_top_bar_section1() {
+    
+	if ( !empty(kemet_get_option('top-section-1')) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function kemet_top_bar_section2() {
+    
+	if ( !empty(kemet_get_option('top-section-2')) ) {
+		return true;
+	} else {
+		return false;
+	}
+}

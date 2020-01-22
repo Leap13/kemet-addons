@@ -86,6 +86,7 @@
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
+				'active_callback' => 'kemet_top_bar_section1',
 			)
 		)
 	);
@@ -171,6 +172,7 @@
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
+				'active_callback' => 'kemet_top_bar_section2',
 			)
 		)
 	);
