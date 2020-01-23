@@ -33,5 +33,6 @@
             jQuery('.kemet-top-header').css('border-color', border_color);
         });
     });
-
+    kemet_responsive_slider('kemet-settings[topbar-letter-spacing]', '.kemet-top-header', 'letter-spacing');
+    kemet_responsive_slider('kemet-settings[topbar-font-size]', '.kemet-top-header', 'font-size');
 })(jQuery);

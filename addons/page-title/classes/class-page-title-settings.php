@@ -75,6 +75,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['page-title-space']                   = '';
             $defaults['page-title-color']                   = '';
             $defaults['page-title-font-size']                   = '';
+            $defaults['page-title-letter-spacing']                   = '';
             $defaults['page-title-font-family']             = 'inherit';
             $defaults['page-title-font-weight']              = 'inherit';
             $defaults['pagetitle-text-transform']           = '';

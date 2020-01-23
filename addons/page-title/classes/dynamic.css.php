@@ -12,6 +12,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_space        = kemet_get_option( 'page-title-space' );
             $page_title_color        = kemet_get_option( 'page-title-color' );
             $page_title_font_size        = kemet_get_option( 'page-title-font-size' );
+            $page_title_letter_spacing     = kemet_get_option( 'page-title-letter-spacing' );
             $page_title_font_family        = kemet_get_option( 'page-title-font-family' );
             $page_title_font_weight        = kemet_get_option( 'page-title-font-weight' );
             $page_title_font_transform        = kemet_get_option( 'pagetitle-text-transform' );
@@ -39,6 +40,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                    'font-family'    => kemet_get_css_value( $page_title_font_family, 'font' ),
                     'font-weight'    => kemet_get_css_value( $page_title_font_weight, 'font' ),
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'desktop' ),
+                    'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'desktop' ),
                     'text-transform' => esc_attr( $page_title_font_transform ),
                     'line-height'     => esc_attr( $page_title_line_height),
                ),
@@ -79,6 +81,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                 ),
                  '.kemet-page-title'  => array(
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'tablet' ),
+                    'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'tabet' ),
                 ),
                 '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'tablet' ),
@@ -98,6 +101,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                 ),
                  '.kemet-page-title'  => array(
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'mobile' ),
+                    'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'mobile' ),
                 ),
                 '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'mobile' ),

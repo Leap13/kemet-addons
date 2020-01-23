@@ -272,7 +272,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			)
 		)
 	);
-	
 	   /**
        * Option: Page Title Font Family
        */
@@ -372,7 +371,34 @@ if ( ! defined( 'ABSPATH' ) ) {
                  )
              )
 		 );
-
+		 /**
+		 * Option: Page Title Letter Spacing
+		 */
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[page-title-letter-spacing]', array(
+				'default'           => kemet_get_option( 'page-title-letter-spacing' ),
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+			)
+		);
+		$wp_customize->add_control(
+			new Kemet_Control_Responsive_Slider(
+				$wp_customize, KEMET_THEME_SETTINGS . '[page-title-letter-spacing]', array(
+					'type'           => 'kmt-responsive-slider',
+					'section'        => 'section-page-title-header',
+					'priority'       => 73,
+					'label'          => __( 'Letter Spacing', 'kemet-addons' ),
+					'unit_choices'   => array(
+						'px' => array(
+							'min' => 0.1,
+							'step' => 0.1,
+							'max' => 10,
+						),
+					),
+				)
+			)
+		);
 		 /**
 		 * Option: Page Title Bottom Line Color
 		*/

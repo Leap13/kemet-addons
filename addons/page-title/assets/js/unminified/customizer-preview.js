@@ -20,6 +20,7 @@
     kemet_responsive_spacing('kemet-settings[page-title-space]', '.kmt-page-title-addon-content', 'padding', ['top', 'right', 'bottom', 'left']);
     kemet_css('kemet-settings[page-title-color]', 'color', '.kemet-page-title');
     kemet_responsive_slider('kemet-settings[page-title-font-size]', '.kemet-page-title' , 'font-size');
+    kemet_responsive_slider('kemet-settings[page-title-letter-spacing]', '.kemet-page-title' , 'letter-spacing');
     kemet_css('kemet-settings[page-title-border-right-color]', 'border-right-color', '.page-title-layout-3 .kmt-page-title-wrap');
     kemet_css('kemet-settings[pagetitle-text-transform]', 'text-transform', '.kemet-page-title');
     kemet_css('kemet-settings[pagetitle-line-height]', 'line-height', '.kemet-page-title');

@@ -32,7 +32,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
             $section1_content_align          = kemet_get_option( 'section1-content-align' );
             $section2_content_align          = kemet_get_option( 'section2-content-align' );
 			$topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
-            
+            $topbar_letter_spcaing                    = kemet_get_option( 'topbar-letter-spacing' );
             $css_content = array(     
                 '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
                     'justify-content' => $section1_content_align,
@@ -55,7 +55,8 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'border-bottom-width' => kemet_responsive_spacing( $topbar_border_size, 'bottom', 'desktop' ),
                     'border-left-width'   => kemet_responsive_spacing( $topbar_border_size, 'left', 'desktop' ), 
                     
-					'font-size'    => kemet_responsive_slider( $topbar_font_size, 'desktop' ),
+                    'font-size'    => kemet_responsive_slider( $topbar_font_size, 'desktop' ),
+                    'letter-spacing'    => kemet_responsive_slider( $topbar_letter_spcaing, 'desktop' ),
 					'color'          => esc_attr($topbar_text_color),
                 ),
                 '.kemet-top-header a'  => array(
@@ -92,6 +93,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'tablet' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'tablet' ),  
                     'font-size'    => kemet_responsive_slider( $topbar_font_size, 'tablet' ),
+                    'letter-spacing'    => kemet_responsive_slider( $topbar_letter_spcaing, 'tablet' ),
                 ),
                 '.kemet-top-header-section > div'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_item_spacing, 'top', 'tablet' ),
@@ -109,6 +111,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'mobile' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),
                     'font-size'    => kemet_responsive_slider( $topbar_font_size, 'mobile' ),
+                    'letter-spacing'    => kemet_responsive_slider( $topbar_letter_spcaing, 'mobile' ),
                 ),
                 '.kemet-top-header-section > div'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_item_spacing, 'top', 'mobile' ),
