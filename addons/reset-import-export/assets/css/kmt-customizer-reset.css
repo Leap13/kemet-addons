@@ -1,0 +1,24 @@
+.wp-full-overlay-sidebar .wp-full-overlay-sidebar-content {
+	bottom: 120px;
+}
+
+.expanded .wp-full-overlay-footer {
+	height: 105px;
+}
+
+/* Panel */
+.kmt-customizer-reset-footer {
+	align-items: center;
+    position: relative;
+    padding: 15px;
+    height: 30px;
+    background-color: #fff;
+}
+
+/* Button */
+.kmt-customizer-reset-footer .kmt-customizer-reset-button {
+	width: 168px;
+    padding: 10px;
+    line-height: 10px;
+    float: right;
+}
