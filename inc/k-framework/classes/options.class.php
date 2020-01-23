@@ -585,7 +585,8 @@ if( ! class_exists( 'KFW_Options' ) ) {
               $tab_key = 1;
 
               foreach( $this->pre_tabs as $tab ) {
-
+               
+                $reset_options = (isset($tab['reset_options']) && $tab['reset_options'] == false) ? 'false' : 'true';
                 $tab_error = $this->error_check( $tab );
                 $tab_icon  = ( ! empty( $tab['icon'] ) ) ? '<i class="'. $tab['icon'] .'"></i>' : '';
 
@@ -613,7 +614,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
 
                 } else {
 
-                  echo '<li class="kfw-tab-depth-0"><a id="kfw-tab-link-'. $tab_key .'" href="#tab='. $tab_key .'">'. $tab_icon . $tab['title'] . $tab_error .'</a></li>';
+                  echo '<li class="kfw-tab-depth-0" data-reset="'.$reset_options.'" ><a id="kfw-tab-link-'. $tab_key .'" href="#tab='. $tab_key .'">'. $tab_icon . $tab['title'] . $tab_error .'</a></li>';
 
                   $tab_key++;
                 }

@@ -104,6 +104,7 @@ if (class_exists('KFW')) {
       'id' => 'plugins_tab',
       'title' => __( 'Plugins', 'kemet-addons'),
       'priority' => '10',
+      'reset_options' => false,
       'fields' => array(
         // A Card field
         array(
@@ -121,6 +122,7 @@ if (class_exists('KFW')) {
     KFW::createSection($prefix, array(
     'id' => 'info_tab',
     'title' => __( 'System Info', 'kemet-addons'),
+    'reset_options' => false,
     'priority' => '15',
     'fields' => array(
       // A switcher field
