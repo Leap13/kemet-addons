@@ -55,7 +55,7 @@ if ( ! class_exists( 'KFW_Field_systeminfo' ) ) {
                 <td><?php  //echo "kok";
                     $memory_limit = wp_convert_hr_to_bytes( WP_MEMORY_LIMIT );
                     if ($memory_limit < 67108864) {
-                        echo '<mark>' . sprintf( __( '%1$s - We recommend setting wp memory at least 64MB. </mark>See:<a href="%s" target="_blank">Increasing wp memory</a>', 'kemet-addons' ), size_format($memory_limit), 'https://kemet.io/docs/increase-the-memory-limit-for-a-wordpress-site/' );
+                        echo '<mark>' . sprintf( __( '%1$s - We recommend setting wp memory at least 64MB. </mark>See:<a href="%2$s" target="_blank">Increasing wp memory</a>', 'kemet-addons' ), size_format($memory_limit), 'https://kemet.io/docs/increase-the-memory-limit-for-a-wordpress-site/' );
                         } else {
                         echo size_format( $memory_limit );
                     }
@@ -126,7 +126,7 @@ if ( ! class_exists( 'KFW_Field_systeminfo' ) ) {
                     <?php
                     $time_limit = ini_get('max_execution_time'); 
                     if ( $time_limit < 60 && $time_limit != 0 ) {
-                        echo '<mark>' . sprintf( __( '%s - We recommend setting max execution time at least 60. </mark> See:<a href="%s" target="_blank">Increasing max execution to PHP</a>', 'kemet-addonss' ), $time_limit, 'https://kemet.io/docs/increase-maximum-execution-time-on-wordpress/' );
+                        echo '<mark>' . sprintf( __( '%s - We recommend setting max execution time at least 60. </mark> See:<a href="%2$s" target="_blank">Increasing max execution to PHP</a>', 'kemet-addonss' ), $time_limit, 'https://kemet.io/docs/increase-maximum-execution-time-on-wordpress/' );
                     } else {
                         echo $time_limit;
                     }
