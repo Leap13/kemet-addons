@@ -32,6 +32,7 @@ module.exports = function (grunt) {
                         'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
+                        'addons/blog-layouts/assets/css/unminified/blog-layouts.css': 'sass/blog-layouts.scss',
                     },
 
                     {
@@ -80,6 +81,10 @@ module.exports = function (grunt) {
                         src: 'inc/k-framework/assets/css/kfw.css',
                         dest: 'inc/k-framework/assets/css/kfw.min.css',
                     },
+                    {
+                        src: 'addons/blog-layouts/assets/css/unminified/blog-layouts.css',
+                        dest: 'addons/blog-layouts/assets/css/minified/blog-layouts.min.css',
+                    },
                 ]
             }
         },
@@ -94,6 +99,7 @@ module.exports = function (grunt) {
                     'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',
                     'addons/sticky-header/assets/js/minified/customizer-preview.min.js': 'addons/sticky-header/assets/js/unminified/customizer-preview.js',
                     'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
+                    'addons/blog-layouts/assets/js/minified/customizer-preview.min.js': 'addons/blog-layouts/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
