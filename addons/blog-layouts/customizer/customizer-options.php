@@ -23,6 +23,18 @@ $wp_customize->add_control(
 					'label' => __( 'Blog Layout 2', 'kemet-addons' ),
 					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
 				),
+				'blog-layout-3' => array(
+					'label' => __( 'Blog Layout 3', 'kemet-addons' ),
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+				),
+				'blog-layout-4' => array(
+					'label' => __( 'Blog Layout 4', 'kemet-addons' ),
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+				),
+				'blog-layout-5' => array(
+					'label' => __( 'Blog Layout 5', 'kemet-addons' ),
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+				),
 			),
 		)
 	)

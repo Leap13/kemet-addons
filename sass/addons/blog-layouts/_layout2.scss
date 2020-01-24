@@ -1,18 +1,20 @@
 .blog-layout-2{
-    .content-area{
-        .post-content{
-            border: 1px solid #E3E3E3;
-            .post-thumb-img-content{
-                img{
-                    width: 100%;
+    .blog-post-layout-2{
+        .content-area{
+            .post-content{
+                border: 1px solid #E3E3E3;
+                .post-thumb-img-content{
+                    img{
+                        width: 100%;
+                    }
                 }
-            }
-            .entry-header{
-                padding-top:15px;
-            } 
-            .entry-header , .entry-content{
-                padding-right: 15px;
-                padding-left: 15px;
+                .entry-header{
+                    padding-top:15px;
+                } 
+                .entry-header , .entry-content{
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
             }
         }
     }

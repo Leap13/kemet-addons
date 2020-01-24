@@ -23,8 +23,13 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'post_class', array( $this, 'kemet_post_class_blog_grid' ) );
             add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
+            add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
         }
+        function kemet_blog_post_container($classes){
+            $classes[] = kemet_get_option( 'blog-layouts' );
 
+            return $classes;
+        }
         function kemet_custom_excerpt_length(){
             $excerpt_length = !empty(kemet_get_option('blog-excerpt-length')) ? kemet_get_option('blog-excerpt-length') : 50;
 

@@ -12,13 +12,13 @@
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
 
 ?>
-<div <?php kemet_blog_layout_class( 'blog-layout-1' ); ?>>
+<div <?php kemet_blog_layout_class('blog-post-layout-2'); ?>>
 
-	<div class="post-content kmt-col-md-12">
+	<div class="post-content">
 	<?php foreach($blog_post_order as $item){ ?>
 		<?php 
 		if($item == 'image'){
-			kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb kmt-col-md-12">', '</div>' ); 
+			kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb">', '</div>' ); 
 		}
 		?>
 

@@ -12,7 +12,7 @@
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
 
 ?>
-<div <?php kemet_blog_layout_class( 'blog-layout-1' ); ?>>
+<div <?php kemet_blog_layout_class('blog-post-layout-1'); ?>>
 
 	<div class="post-content kmt-col-md-12">
 	<?php foreach($blog_post_order as $item){ ?>

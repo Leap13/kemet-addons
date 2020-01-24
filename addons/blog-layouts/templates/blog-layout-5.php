@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog Layout 4
+ * Blog Layout 5
  *
  * @package     Kemet Addons
  * @author      Kemet Addons
@@ -12,7 +12,7 @@
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
 
 ?>
-<div <?php kemet_blog_layout_class('blog-post-layout-4'); ?>>
+<div <?php kemet_blog_layout_class('blog-post-layout-5'); ?>>
     <?php do_action( 'kemet_archive_entry_header_before' ); ?> 
     <header class="entry-header">
         <?php kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb">', '</div>' ); ?>

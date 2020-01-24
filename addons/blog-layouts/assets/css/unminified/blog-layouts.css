@@ -13,19 +13,106 @@
 /*--------------------------------------------------------------
 ## Blog Layout 2
 --------------------------------------------------------------*/
-.blog-layout-2 .content-area .post-content {
+.blog-layout-2 .blog-post-layout-2 .content-area .post-content {
   border: 1px solid #E3E3E3;
 }
 
-.blog-layout-2 .content-area .post-content .post-thumb-img-content img {
+.blog-layout-2 .blog-post-layout-2 .content-area .post-content .post-thumb-img-content img {
   width: 100%;
 }
 
-.blog-layout-2 .content-area .post-content .entry-header {
+.blog-layout-2 .blog-post-layout-2 .content-area .post-content .entry-header {
   padding-top: 15px;
 }
 
-.blog-layout-2 .content-area .post-content .entry-header, .blog-layout-2 .content-area .post-content .entry-content {
+.blog-layout-2 .blog-post-layout-2 .content-area .post-content .entry-header, .blog-layout-2 .blog-post-layout-2 .content-area .post-content .entry-content {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+/*--------------------------------------------------------------
+## Blog Layout 3
+--------------------------------------------------------------*/
+.blog-layout-3 .blog-post-layout-3 .kmt-blog-featured-section img {
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Blog Layout 4
+--------------------------------------------------------------*/
+.blog-layout-4 .kmt-article-post {
+  padding-bottom: 15px;
+}
+
+.blog-layout-4 .kmt-article-post.has-post-thumbnail .kmt-blog-featured-section img {
+  width: 100%;
+}
+
+.blog-layout-4 .kmt-article-post.has-post-thumbnail .post-content {
+  margin: -50px 30px 20px;
+  position: relative;
+}
+
+.blog-layout-4 .kmt-article-post .entry-content {
+  padding-top: 22px;
+  border-top: 1px solid #eee;
+}
+
+.blog-layout-4 .kmt-article-post .post-content {
+  background-color: #fff;
+  padding: 30px;
+  border: 1px solid #eee;
+}
+
+/* Blog Responsive */
+@media only screen and (max-width: 480px) {
+  .blog-layout-4 .kmt-article-post.has-post-thumbnail .post-content {
+    margin: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+## Blog Layout 5
+--------------------------------------------------------------*/
+.blog-layout-5 .blog-post-layout-5 .entry-header {
+  width: 50%;
+}
+
+.blog-layout-5 .blog-post-layout-5 .entry-header .kmt-blog-featured-section img {
+  width: 100%;
+}
+
+.blog-layout-5 .blog-post-layout-5 .post-content {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  padding: 15px 40px;
+}
+
+.blog-layout-5 .kmt-article-post .blog-post-layout-5 {
+  display: flex;
+}
+
+.blog-layout-5 .kmt-article-post:nth-of-type(odd) .blog-post-layout-5 {
+  flex-direction: row-reverse;
+}
+
+.blog-layout-5 .kmt-article-post:nth-of-type(even) .blog-post-layout-5 {
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 767px) {
+  .blog-layout-5 .kmt-article-post .blog-post-layout-5 {
+    display: block;
+  }
+  .blog-layout-5 .kmt-article-post .blog-post-layout-5 .entry-header {
+    width: 100%;
+  }
+  .blog-layout-5 .kmt-article-post .blog-post-layout-5 .post-content {
+    width: 100%;
+    padding: 0;
+    display: block;
+  }
 }
