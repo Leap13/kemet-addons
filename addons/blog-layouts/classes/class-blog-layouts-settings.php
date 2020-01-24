@@ -47,7 +47,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
 
         function theme_defaults( $defaults ) {
 			$defaults['blog-layouts']  = 'blog-layout-1';
-			
+			$defaults['blog-grids']  = '';
             return $defaults;
         }
 

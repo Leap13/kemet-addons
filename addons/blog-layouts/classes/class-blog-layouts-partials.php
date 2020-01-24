@@ -21,11 +21,34 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 		 */
 		public function __construct() {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
-            add_filter( 'body_class', array( $this, 'kemet_blog_body_classes') );
+            add_action( 'post_class', array( $this, 'kemet_post_class_blog_grid' ) );
+            add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
         }
+
+        function kemet_custom_excerpt_length(){
+            $excerpt_length = !empty(kemet_get_option('blog-excerpt-length')) ? kemet_get_option('blog-excerpt-length') : 50;
+
+            return $excerpt_length;
+        }
+        function kemet_post_class_blog_grid( $classes ) {
+            $blog_layout = kemet_get_option('blog-layouts');
+            $blog_grids = kemet_get_option('blog-grids');
+
+            if($blog_layout == 'blog-layout-2'){
+                if ( is_archive() || is_home() || is_search() ) {
+                    if(in_array('kmt-col-sm-12' , $classes)){
+                        $overlay_enabled = array_search('kmt-col-sm-12', $classes);
+                        unset($classes[$overlay_enabled]);
+                    }
+                    $desktop_columns = !empty($blog_grids['desktop']) ? ' kmt-col-md-' . strval(intval(12 / $blog_grids['desktop'])) : '';
+                    $tablet_columns = !empty($blog_grids['tablet']) ? ' kmt-col-sm-' . strval(intval(12 / $blog_grids['tablet'])) : 'kmt-col-sm-12';
+                    $mobile_columns = !empty($blog_grids['mobile']) ? ' kmt-col-xs-' . strval(intval(12 / $blog_grids['mobile'])) : 'kmt-col-xs-12';
+                    $classes[] = $desktop_columns . $tablet_columns . $mobile_columns;
+                }
+            }
     
-
-
+            return $classes;
+        }
 
         function add_styles() {
             Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/css/minified/blog-layouts.min.css');

@@ -27,4 +27,56 @@ $wp_customize->add_control(
 		)
 	)
 );
-
+/**
+* Option: Blog Columns
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[blog-grids]', array(
+        'default'           => kemet_get_option('blog-grids'),
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Responsive_Select(
+        $wp_customize, KEMET_THEME_SETTINGS . '[blog-grids]', array(
+            'type'           => 'kmt-responsive-select',
+            'section'        => 'section-blog',
+            'priority'       => 5,
+            'label'          => __( 'Blog Columns', 'kemet-addons' ),
+            'choices'   => array(
+                '1' => 'One',
+                '2' => 'Two',
+                '3' => 'Three',
+                '4' => 'Four',
+			),
+			'active_callback' => 'kemet_blog_has_grids',
+        )
+    )
+);
+/**
+* Option: Excerpt Length
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
+        'default'           => kemet_get_option( 'blog-excerpt-length' ),
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+    )
+);
+$wp_customize->add_control(
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-blog',
+				'priority'    => 5,
+				'label'       => __( 'Excerpt Length', 'kemet-addons' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 500,
+				),
+			)
+		)
+	);
