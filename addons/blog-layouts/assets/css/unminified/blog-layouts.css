@@ -13,21 +13,33 @@
 /*--------------------------------------------------------------
 ## Blog Layout 2
 --------------------------------------------------------------*/
-.blog-layout-2 .blog-post-layout-2 .content-area .post-content {
+.blog-layout-2 .kmt-article-post {
+  border-bottom: 0;
+}
+
+.blog-layout-2 .blog-post-layout-2 {
   border: 1px solid #E3E3E3;
 }
 
-.blog-layout-2 .blog-post-layout-2 .content-area .post-content .post-thumb-img-content img {
+.blog-layout-2 .blog-post-layout-2 .post-content img {
   width: 100%;
 }
 
-.blog-layout-2 .blog-post-layout-2 .content-area .post-content .entry-header {
+.blog-layout-2 .blog-post-layout-2 .post-content .entry-header {
   padding-top: 15px;
 }
 
-.blog-layout-2 .blog-post-layout-2 .content-area .post-content .entry-header, .blog-layout-2 .blog-post-layout-2 .content-area .post-content .entry-content {
+.blog-layout-2 .blog-post-layout-2 .post-content .kmt-blog-featured-section {
+  margin-bottom: 0;
+}
+
+.blog-layout-2 .blog-post-layout-2 .post-content .entry-header, .blog-layout-2 .blog-post-layout-2 .post-content .entry-content {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.kmt-separate-container .blog-layout-2 .kmt-article-post {
+  padding: 0px 10px 20px;
 }
 
 /*--------------------------------------------------------------
@@ -76,10 +88,26 @@
 --------------------------------------------------------------*/
 .blog-layout-5 .blog-post-layout-5 .entry-header {
   width: 50%;
+  margin-bottom: 0;
+  background-color: #dadada;
+}
+
+.blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb {
+  height: 570px;
+}
+
+.blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb a {
+  display: block;
+  height: 100%;
+}
+
+.blog-layout-5 .blog-post-layout-5 .entry-header .kmt-blog-featured-section {
+  margin-bottom: 0;
 }
 
 .blog-layout-5 .blog-post-layout-5 .entry-header .kmt-blog-featured-section img {
   width: 100%;
+  height: 100%;
 }
 
 .blog-layout-5 .blog-post-layout-5 .post-content {
@@ -103,7 +131,16 @@
   flex-direction: row;
 }
 
+.blog-layout-5 .kmt-article-post {
+  padding: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
 @media only screen and (max-width: 767px) {
+  .blog-layout-5 .kmt-article-post {
+    padding: 0 15px 15px 15px;
+  }
   .blog-layout-5 .kmt-article-post .blog-post-layout-5 {
     display: block;
   }
@@ -112,7 +149,7 @@
   }
   .blog-layout-5 .kmt-article-post .blog-post-layout-5 .post-content {
     width: 100%;
-    padding: 0;
+    padding: 20px 10px 20px 10px;
     display: block;
   }
 }

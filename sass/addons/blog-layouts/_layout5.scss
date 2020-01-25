@@ -2,9 +2,20 @@
     .blog-post-layout-5{
         .entry-header{
             width: 50%;
+            margin-bottom: 0;
+            background-color: #dadada;
+            .post-thumb{
+                height: 570px;
+                a{
+                    display: block;
+                    height: 100%;
+                }
+            }
             .kmt-blog-featured-section{
+                margin-bottom: 0;
                 img{
                     width: 100%;
+                    height: 100%;
                 }
             }
         }
@@ -33,9 +44,17 @@
         }
     }
 }
+.blog-layout-5{
+    .kmt-article-post{
+        padding: 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+}
 @media only screen and (max-width: 767px) {
     .blog-layout-5{
         .kmt-article-post{
+            padding: 0 15px 15px 15px;
             .blog-post-layout-5{
                 display: block;
             }
@@ -45,7 +64,7 @@
                 }
                 .post-content{
                     width: 100%;
-                    padding: 0;
+                    padding: 20px 10px 20px 10px;
                     display: block;
                 }
             }
