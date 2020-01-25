@@ -95,6 +95,7 @@
 
 .blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb {
   height: 570px;
+  min-height: 100%;
 }
 
 .blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb a {

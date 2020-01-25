@@ -16,5 +16,6 @@
 
 			kemet_add_dynamic_css('blog-title-meta-border-size', dynamicStyle);
 		});
-	});
+    });
+    kemet_responsive_slider('kemet-settings[post-image-height]', '.blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb', 'height');
 })(jQuery);

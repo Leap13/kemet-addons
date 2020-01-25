@@ -116,6 +116,7 @@ $wp_customize->add_control(
 						'step' => 1,
 						'max'  => 100,
 					),
+					'active_callback' => 'kemet_blog_has_border'
 				)
 			)
 		);
@@ -136,6 +137,7 @@ $wp_customize->add_control(
 			'label'   => __( 'Posts Border Color', 'kemet-addons' ),
 			'section' => 'section-blog',
 			'priority' => 5,
+			'active_callback' => 'kemet_blog_has_border'
 		  )
 		)
 	);
@@ -163,6 +165,7 @@ $wp_customize->add_control(
 						'step' => 1,
 						'max'  => 100,
 					),
+					'active_callback' => 'kemet_blog_has_title_meta_border'
 				)
 			)
 		);
@@ -183,6 +186,46 @@ $wp_customize->add_control(
 			'label'   => __( 'Title & Meta Border Color', 'kemet-addons' ),
 			'section' => 'section-blog',
 			'priority' => 5,
+			'active_callback' => 'kemet_blog_has_title_meta_border'
 		  )
 		)
 	);
+	/**
+* Option: Post Image Height
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[post-image-height]', array(
+        'default'           => kemet_get_option( 'post-image-height' ),
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Responsive_Slider(
+        $wp_customize, KEMET_THEME_SETTINGS . '[post-image-height]', array(
+            'type'           => 'kmt-responsive-slider',
+            'section'        => 'section-blog',
+            'priority'       => 5,
+            'label'          => __( 'Post Image Height', 'kemet' ),
+            'unit_choices'   => array(
+                'px' => array(
+                    'min' => 100,
+                    'step' => 1,
+                    'max' => 600,
+				),
+				'em' => array(
+                    'min' => 1,
+                    'step' => 1,
+                    'max' => 50,
+				),
+				'%' => array(
+                    'min' => 1,
+                    'step' => 1,
+                    'max' => 100,
+                ),
+			),
+			'active_callback' => 'kemet_blog_layout5'
+        )
+    )
+);
