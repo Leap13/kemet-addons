@@ -47,7 +47,11 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
 
         function theme_defaults( $defaults ) {
 			$defaults['blog-layouts']  = 'blog-layout-1';
-			$defaults['blog-grids']  = '';
+            $defaults['blog-grids']  = '';
+            $defaults['blog-posts-border-color']  = '';
+            $defaults['blog-posts-border-size']   = '';
+            $defaults['blog-title-meta-border-color']   = '';
+            $defaults['blog-title-meta-border-size']   = '';
             return $defaults;
         }
 
@@ -71,9 +75,9 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
         
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_BLOG_LAYOUTS_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
+				wp_enqueue_script( 'kemet-extra-blogs-customize-preview-js', KEMET_BLOG_LAYOUTS_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);
 			} else {
-                wp_enqueue_script( 'kemet-extra-headers-customize-preview-js', KEMET_BLOG_LAYOUTS_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
+                wp_enqueue_script( 'kemet-extra-blogs-customize-preview-js', KEMET_BLOG_LAYOUTS_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true);			}
         }
     
     }

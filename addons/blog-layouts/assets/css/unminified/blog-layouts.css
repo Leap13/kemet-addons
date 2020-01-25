@@ -14,6 +14,7 @@
 ## Blog Layout 2
 --------------------------------------------------------------*/
 .blog-layout-2 .kmt-article-post {
+  padding-right: 0;
   border-bottom: 0;
 }
 
