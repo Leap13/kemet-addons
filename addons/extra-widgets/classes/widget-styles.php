@@ -26,25 +26,8 @@ if ( !class_exists( 'kmt_Widget_Attributes' ) ) {
          */
         public static function _insert_attributes( $params ) {
             global $wp_registered_widgets;
-
+            
             $widget_id  = $params[ 0 ][ 'widget_id' ];
-            $widget_obj = $wp_registered_widgets[ $widget_id ];
-            //var_dump($widget_obj);
-            if (
-            !isset( $widget_obj[ 'callback' ][ 0 ] ) || !is_object( $widget_obj[ 'callback' ][ 0 ] )
-            ) {
-                return $params;
-            }
-
-            $widget_options = get_option( $widget_obj[ 'callback' ][ 0 ]->option_name );
-            if ( empty( $widget_options ) )
-                return $params;
-
-            $widget_num = $widget_obj[ 'params' ][ 0 ][ 'number' ];
-            if ( empty( $widget_options[ $widget_num ] ) )
-                return $params;
-
-            $instance = $widget_options[ $widget_num ];
 
             $widget_style = kemet_get_option( 'widgets-style' );
 
@@ -61,13 +44,10 @@ if ( !class_exists( 'kmt_Widget_Attributes' ) ) {
             if ( (!empty( $footer_widget_style )) && (strpos($params[ 0 ]['id'], 'main-footer-widget') !== false || strpos($params[ 0 ]['id'], 'copyright-widget') !== false)) {
                 $kmt_widget_class = 'kmt-widget-' . $footer_widget_style;
             }
-
-            if ( !empty( $kmt_widget_class )) {
-                $params[ 0 ][ 'before_widget' ] = '<div id="kmt-' . $widget_id . '" class ="' . $kmt_widget_class . '">' . $params[ 0 ][ 'before_widget' ];
-                $params[ 0 ][ 'after_widget' ]  = $params[ 0 ][ 'after_widget' ] . '</div>';
-            }
-
             
+            if ( !empty( $kmt_widget_class )) {
+                $params[0] = array_replace($params[0], array('before_widget' => str_replace("widget ", "widget " . $kmt_widget_class . ' ', $params[0]['before_widget'])));
+            }
 
             return $params;
         }

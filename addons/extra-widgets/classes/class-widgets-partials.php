@@ -50,9 +50,6 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             if ( isset( $settings[ 'title' ] ) && empty( $settings[ 'title' ] ) ) {
                 $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
                 $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
-            } elseif ( isset( $settings[ 'rev_slider_title' ] ) && empty( $settings[ 'rev_slider_title' ] ) ) {
-                $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
-                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
             } elseif ( isset( $settings[ 'title' ] ) && !empty( $settings[ 'title' ] ) ) {
                 $params[ 0 ][ 'after_title' ] .= '<div class="widget-content">';
                 $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
