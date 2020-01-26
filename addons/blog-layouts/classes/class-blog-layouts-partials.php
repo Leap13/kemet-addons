@@ -28,7 +28,11 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
         }
         function kemet_blog_post_container($classes){
             $classes[] = kemet_get_option( 'blog-layouts' );
-            $classes [] = !empty(kemet_get_option( 'blog-layout-mode' )) ? kemet_get_option( 'blog-layout-mode' ) : 'fitRows';
+            $blog_layout = kemet_get_option('blog-layouts');
+
+            if($blog_layout == 'blog-layout-2'){
+                $classes [] = !empty(kemet_get_option( 'blog-layout-mode' )) ? kemet_get_option( 'blog-layout-mode' ) : 'fitRows';
+            }
             return $classes;
         }
         function kemet_custom_excerpt_length(){

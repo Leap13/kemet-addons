@@ -1,9 +1,37 @@
 .blog-layout-3{
-    .blog-post-layout-3{
-        .kmt-blog-featured-section{
-            img{
-                width: 100%;
+    .kmt-article-post{
+        padding-bottom: 15px;
+        &.has-post-thumbnail{
+            .kmt-blog-featured-section{
+                img{
+                    width: 100%;
+                }
             }
+            .post-content{
+                margin: -50px 30px 20px;
+                position: relative;
+            }   
+        }
+        .entry-content{
+            padding-top: 22px;
+            border-top: 1px solid #eee;
+        }
+        .post-content{
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #eee;
         }
     }
 }
+/* Blog Responsive */
+@media only screen and (max-width: 480px) {
+    .blog-layout-3{
+        .kmt-article-post{
+            &.has-post-thumbnail{
+                .post-content{
+                    margin: 0;
+                }
+            } 
+        }
+    }
+  }
