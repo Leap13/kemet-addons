@@ -36,3 +36,11 @@ function kemet_blog_layout5() {
 		return false;
 	}
 }
+function kemet_blog_layout2() {
+    
+	if ('blog-layout-2' == kemet_get_option( 'blog-layouts') ) {
+		return true;
+	} else {
+		return false;
+	}
+}

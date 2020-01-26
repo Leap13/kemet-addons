@@ -52,7 +52,8 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-posts-border-size']   = '';
             $defaults['blog-title-meta-border-color']   = '';
             $defaults['blog-title-meta-border-size']   = '';
-            $defaults['post-image-height']   = '';
+            //$defaults['post-image-height']   = '';
+            $defaults['blog-layout-mode']   = 'masonry';
             return $defaults;
         }
 

@@ -24,10 +24,11 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             add_action( 'post_class', array( $this, 'kemet_post_class_blog_grid' ) );
             add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
             add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
+            add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
         }
         function kemet_blog_post_container($classes){
             $classes[] = kemet_get_option( 'blog-layouts' );
-
+            $classes [] = !empty(kemet_get_option( 'blog-layout-mode' )) ? kemet_get_option( 'blog-layout-mode' ) : 'fitRows';
             return $classes;
         }
         function kemet_custom_excerpt_length(){
@@ -58,7 +59,11 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
         function add_styles() {
             Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/css/minified/blog-layouts.min.css');
 
-	    }
+        }
+        public function add_scripts() {
+            Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/kemet-grid.min.js');
+            Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/blog-layouts.min.js');
+       }
     }
 }
 Kemet_Blog_Layouts_Partials::get_instance();
