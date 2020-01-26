@@ -31,13 +31,13 @@ if (class_exists('KFW')) {
       array(
         'id' => 'metabox',
         'type' => 'switcher',
-        'title' => __( 'Single page/post options', 'kemet-addons' ),
+        'title' => __( 'Single Page/Post Options', 'kemet-addons' ),
         'subtitle' => __('Enable/Disable the page options to customize your single page/post.', 'kemet-ddons'),
         'default' => true,
       ),array(
         'id' => 'extra-headers',
         'type' => 'switcher',
-        'title' => __( 'Advanced Headers', 'kemet-addons' ),
+        'title' => __( 'Kemet Advanced Headers', 'kemet-addons' ),
         'subtitle' => __('Enable/Disable Extra Kemet Headers which includes many options to design awesome headers.', 'kemet-ddons'),
         'default' => false,
       ),array(
@@ -61,7 +61,7 @@ if (class_exists('KFW')) {
       ),array(
         'id' => 'go-top',
         'type' => 'switcher',
-        'title' => __( 'Go to top icon', 'kemet-addons' ),
+        'title' => __( 'Go to Top Button', 'kemet-addons' ),
         'subtitle' => __('Enable/Disable Go To Top Icon and its customizer options.', 'kemet-ddons'),
         'default' => false,
       ),array(
@@ -79,7 +79,7 @@ if (class_exists('KFW')) {
       ),array(
         'id' => 'reset-import-export',
         'type' => 'switcher',
-        'title' => __('Customizer Reset and Import/Export Options', 'kemet-addons'),
+        'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
         'subtitle' => __('Enable/Disable Extra options to Rest the Customizer options and able to import & Export.', 'kemet-ddons'),
         'default' => false,
       ),

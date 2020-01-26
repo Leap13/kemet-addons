@@ -42,7 +42,7 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
                                 'title'    => __( 'Sticky Header', 'kemet-addons' ),
                                 'panel'    => 'panel-layout',
                                 'section'  => 'section-header-group',
-                                'priority' => 11,
+                                'priority' => 17,
                             )
                     )
                 );
