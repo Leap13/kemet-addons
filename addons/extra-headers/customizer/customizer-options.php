@@ -79,6 +79,7 @@
 			'default'           => kemet_get_option( 'v-headers-position' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'required'          =>    array( KEMET_THEME_SETTINGS . '[header-layouts]', '==', 'header-main-layout-6' ),
 		)
 	);
 	$wp_customize->add_control(

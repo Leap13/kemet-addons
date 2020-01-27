@@ -35,10 +35,9 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
+            //add_filter( 'customize_dynamic_setting_args', array($this , 'filter_dynamic_setting_args') ,10 , 2 );
 
         }
-        
-
         function theme_defaults( $defaults ) {
             $defaults['header-layouts']  = 'header-main-layout-1';
             $defaults['header-icon-label']  = '';
@@ -68,8 +67,8 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
         }
 
        function customize_register($wp_customize) {
-			require_once KEMET_EXTRA_HEADERS_DIR . 'customizer/customizer-options.php';  
-			
+            require_once KEMET_EXTRA_HEADERS_DIR . 'customizer/customizer-options.php';  
+            
         }
 
         public function controls_helpers() {
