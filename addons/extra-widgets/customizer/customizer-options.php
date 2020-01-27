@@ -23,8 +23,6 @@ $wp_customize->add_control(
             'style5'           => __( 'Style 5', 'kemet-addons' ),
             'style6'           => __( 'Style 6', 'kemet-addons' ),
             'style7'           => __( 'Style 7', 'kemet-addons' ),
-            'style8'           => __( 'Style 8', 'kemet-addons' ),
-            'style9'           => __( 'Style 9', 'kemet-addons' ),
         ),  
     )
 );
@@ -75,8 +73,6 @@ $wp_customize->add_control(
             'style5'           => __( 'Style 5', 'kemet-addons' ),
             'style6'           => __( 'Style 6', 'kemet-addons' ),
             'style7'           => __( 'Style 7', 'kemet-addons' ),
-            'style8'           => __( 'Style 8', 'kemet-addons' ),
-            'style9'           => __( 'Style 9', 'kemet-addons' ),
         ),  
     )
 );

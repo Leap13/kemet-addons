@@ -1,94 +1,94 @@
 <?php
 
 $Social_icons_widget = array(
-  'title'       => 'Kemet Social Icons',
+  'title'       => __('Kemet Social Icons', 'kemet-addons' ),
   'classname'   => 'kwf-widget-social-icon',
   'id'          => 'kemet-widget-social-icons',
-  'description' => 'Social Icons',
+  'description' => __('Social Icons', 'kemet-addons' ),
   'fields'      => array(
     array(
       'id'      => 'title',
       'type'    => 'text',
-      'title'   => 'Title',
+      'title'   => __('Title', 'kemet-addons' ),
     ),
     array(
       'id'     => 'social-profile',
       'type'   => 'group',
-      'title'  => 'Add Icon',
-      'button_title'  => 'Add Icon',
+      'title'  => __('Add Icon', 'kemet-addons' ),
+      'button_title'  => __('Add Icon', 'kemet-addons' ),
       'accordion_title_auto'  => true,
       'fields' => array(
     
         array(
           'id'    => 'profile-title',
           'type'  => 'text',
-          'title' => 'Title',
+          'title' => __('Title', 'kemet-addons' ),
         ),
         array(
           'id'    => 'link',
           'type'  => 'text',
-          'title' => 'Link',
+          'title' => __('Link', 'kemet-addons' ),
           'validate' => 'kfw_validate_url',
         ),
         array(
           'id'          => 'link-target',
           'type'        => 'select',
-          'title'       => 'Target',
+          'title'       => __('Target', 'kemet-addons' ),
           'options'     => array(
-            '_self'  => 'Same Page',
-            '_blank'  => 'New Page',
+            '_self'  => __('Same Page', 'kemet-addons' ),
+            '_blank'  => __('New Page', 'kemet-addons' ),
           ),
           'default'     => 'new-page'
         ),
         array(
           'id'    => 'social-icon',
-          'type'  => 'icon',
-          'title' => 'Icon',
+          'type'  => 'icon', 
+          'title' => __('Icon','kemet-addons' ),
         ),
         array(
           'id'    => 'icon-color',
           'type'  => 'color',
-          'title' => 'Icon Color',
+          'title' => __('Icon Color', 'kemet-addons' ),
         ),
         array(
           'id'    => 'icon-hover-color',
           'type'  => 'color',
-          'title' => 'Icon Hover Color',
+          'title' => __('Icon Hover Color', 'kemet-addons' ),
         ),
       ),
     ),
     array(
       'id'    => 'enable-title',
       'type'  => 'switcher',
-      'title' => 'Display Icon Title',
+      'title' => __('Display Icon Title', 'kemet-addons' ),
     ),
     array(
       'id'          => 'alignment',
       'type'        => 'select',
-      'title'       => 'Alignment',
+      'title'       => __('Alignment', 'kemet-addons' ),
       'options'     => array(
-        'row'  => 'Inline',
-        'column'  => 'Stack',
+        'row'  => __('Inline', 'kemet-addons' ),
+        'column'  => __('Stack', 'kemet-addons' ),
       ),
       'default'     => 'inline'
     ),
     array(
       'id'          => 'icon-style',
       'type'        => 'select',
-      'title'       => 'Icon Style',
+      'title'       => __('Icon Style', 'kemet-addons' ),
       'options'     => array(
-        'simple'  => 'Simple',
-        'circle'  => 'Circle',
-        'square'  => 'Square',
-        'circle-outline'  => 'Circle Outline',
-        'square-outline'  => 'Square Outline',
+        'simple'  => __('Simple', 'kemet-addons' ),
+        'circle'  => __('Circle', 'kemet-addons' ),
+        'square'  => __('Square', 'kemet-addons' ),
+        'circle-outline'  => __('Circle Outline', 'kemet-addons' ),
+        'square-outline'  => __('Square Outline', 'kemet-addons' ),
       ),
       'default'     => 'simple'
     ),
     array(
       'id'    => 'icon-bg-color',
       'type'  => 'color',
-      'title' => 'Background Color',
+      'title' => __('Background Color', 'kemet-addons' ),
       'dependency' => array(
         array( 'icon-style', '!=', 'simple' ),
         array( 'icon-style',   '!=', 'circle-outline' ),
@@ -98,7 +98,7 @@ $Social_icons_widget = array(
     array(
       'id'    => 'icon-hover-bg-color',
       'type'  => 'color',
-      'title' => 'Background Hover Color',
+      'title' => __('Background Hover Color', 'kemet-addons' ),
       'dependency' => array(
         array( 'icon-style', '!=', 'simple' ),
         array( 'icon-style',   '!=', 'circle-outline' ),
@@ -108,7 +108,7 @@ $Social_icons_widget = array(
     array(
       'id'    => 'icon-border-color',
       'type'  => 'color',
-      'title' => 'Border Color',
+      'title' => __('Border Color', 'kemet-addons' ),
       'dependency' => array(
         array( 'icon-style', '!=', 'simple' ),
         array( 'icon-style',   '!=', 'circle' ),
@@ -118,7 +118,7 @@ $Social_icons_widget = array(
     array(
       'id'    => 'icon-hover-border-color',
       'type'  => 'color',
-      'title' => 'Border Hover Color',
+      'title' => __('Border Hover Color', 'kemet-addons' ),
       'dependency' => array(
         array( 'icon-style', '!=', 'simple' ),
         array( 'icon-style',   '!=', 'circle' ),
@@ -128,13 +128,13 @@ $Social_icons_widget = array(
     array(
       'id'    => 'icon-width',
       'type'  => 'number',
-      'title' => 'Icon Width',
+      'title' => __('Icon Width', 'kemet-addons' ),
       'unit'  => 'px',
     ),
     array(
       'id'    => 'space-between-icon-text',
       'type'  => 'number',
-      'title' => 'Space Between Icon & Text:',
+      'title' => __('Space Between Icon & Text:', 'kemet-addons' ),
       'unit'  => 'px',
       'output_mode' => 'padding',
       'dependency' => array( 'enable-title', '==', 'true' ),
@@ -142,7 +142,7 @@ $Social_icons_widget = array(
     array(
       'id'    => 'space-between-profiles',
       'type'  => 'number',
-      'title' => 'Space Between Social Icons:',
+      'title' => __('Space Between Social Icons:', 'kemet-addons' ),
       'unit'  => 'px',
       'output_mode' => 'padding'
     ),

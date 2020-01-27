@@ -557,7 +557,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'post_tag' 	=> esc_html__( 'Tag', 'kemet-addons' ),
 					'blog' 		=> esc_html__( 'Blog Page', 'kemet-addons' ),
 				),
-				'description' => 'Choose the Taxonomy Item Parent.',
+				'description' => esc_html__( 'Choose the Taxonomy Item Parent.', 'kemet-addons' ),
 			)
 		);
 

@@ -49,7 +49,7 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
             register_sidebar(
                 apply_filters(
                     'kemet_top_widget_sectio1', array(
-                    'name'          => esc_html__( 'Top Widget Section 1', 'kemet' ),
+                    'name'          => esc_html__( 'Top Widget Section 1', 'kemet-addons' ),
                     'id'            => 'top-widget-section1',
                     'before_widget' => '<div id="%1$s" class="widget %2$s">',
                     'after_widget'  => '</div>',
@@ -65,7 +65,7 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
                 register_sidebar(
                     apply_filters(
                         'kemet_top_widget_sectio2', array(
-                        'name'          => esc_html__( 'Top Widget Section 2', 'kemet' ),
+                        'name'          => esc_html__( 'Top Widget Section 2', 'kemet-addons' ),
                         'id'            => 'top-widget-section2',
                         'before_widget' => '<div id="%1$s" class="widget %2$s">',
                         'after_widget'  => '</div>',

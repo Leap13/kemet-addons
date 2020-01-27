@@ -29,9 +29,52 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
             add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
+            add_filter( 'dynamic_sidebar_params', array( $this, '_insert_attributes' ) );
         }
 
+        public static function _insert_attributes( $params ) {
+            global $wp_registered_widgets;
 
+            $settings_getter = $wp_registered_widgets[ $params[ 0 ][ 'widget_id' ] ][ 'callback' ][ 0 ];
+            $settings_get       = $settings_getter->get_settings();
+            $settings        = $settings_get[ $params[ 1 ][ 'number' ] ];
+
+            if ( isset( $settings[ 'title' ] ) && empty( $settings[ 'title' ] ) ) {
+                $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            } elseif ( isset( $settings[ 'title' ] ) && !empty( $settings[ 'title' ] ) ) {
+                $params[ 0 ][ 'after_title' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            } else {
+                $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
+                $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
+            }
+            
+            $widget_id  = $params[ 0 ][ 'widget_id' ];
+
+            $widget_style = kemet_get_option( 'widgets-style' );
+
+            
+            $kmt_widget_class = '';
+            if ( !empty( $widget_style ) ) {
+                $kmt_widget_class = 'kmt-widget-' . $widget_style;
+            }
+
+            //Footer Custom Style
+            $kmt_footet_widget_class = '';
+            $footer_widget_style = kemet_get_option( 'footer-widgets-style' );
+
+            if ( (!empty( $footer_widget_style )) && (strpos($params[ 0 ]['id'], 'main-footer-widget') !== false || strpos($params[ 0 ]['id'], 'copyright-widget') !== false)) {
+                $kmt_widget_class = 'kmt-widget-' . $footer_widget_style;
+            }
+            
+            if ( !empty( $kmt_widget_class )) {
+                $params[0] = array_replace($params[0], array('before_widget' => str_replace("widget ", "widget " . $kmt_widget_class . ' ', $params[0]['before_widget'])));
+            }
+
+            return $params;
+        }
+        
         public function customize_register( $wp_customize ) {
 
             require_once KEMET_WIDGETS_DIR . 'customizer/customizer-options.php';  
