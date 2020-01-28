@@ -33,7 +33,6 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_register', array( $this, 'customize_register' ) );
-            add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
             //add_filter( 'customize_dynamic_setting_args', array($this , 'filter_dynamic_setting_args') ,10 , 2 );
 
@@ -70,10 +69,6 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             require_once KEMET_EXTRA_HEADERS_DIR . 'customizer/customizer-options.php';  
             
         }
-
-        public function controls_helpers() {
-			require_once( KEMET_EXTRA_HEADERS_DIR .'customizer/customizer-helpers.php' );
-		}
         
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {

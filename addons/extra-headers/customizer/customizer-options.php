@@ -57,6 +57,18 @@
 		)
 	);
 	/**
+	 * Option: Title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[kmt-header-title-title]', array(
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '!=', 
+				'values' => 'header-main-layout-7',
+			), 
+		)
+	);
+	/**
 	* Option: Title
 	*/
 	$wp_customize->add_control(
@@ -66,11 +78,10 @@
 				'label'    => __( 'Header Layout Settings', 'kemet-addons' ),
 				'section'  => 'section-header',
 				'priority' => 20,
-				'settings' => array(),
-				'active_callback' => 'kemet_header_has_setting_label'
 			)
 		)
 	);
+
 	/**
 	 * Option: Vertical Header Position
 	 */
@@ -79,7 +90,12 @@
 			'default'           => kemet_get_option( 'v-headers-position' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-			'required'          =>    array( KEMET_THEME_SETTINGS . '[header-layouts]', '==', 'header-main-layout-6' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==', 
+				'values' => 'header-main-layout-8/header-main-layout-6',
+				'operators' => "||",
+			), 
 		)
 	);
 	$wp_customize->add_control(
@@ -92,7 +108,6 @@
 				'left'    => __( 'Left', 'kemet-addons' ),
 				'right'   => __( 'Right', 'kemet-addons' ),
 			),
-            'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);	
     
@@ -105,6 +120,11 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==', 
+				'values' => 'header-main-layout-6',
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -120,7 +140,6 @@
 					'step' => 1,
 					'max'  => 400,
 				),
-                'active_callback' => 'kemet_header_layout6_style',
 			)
 		)
 	);
@@ -133,6 +152,11 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==', 
+				'values' => 'header-main-layout-8',
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -148,7 +172,6 @@
 					'step' => 1,
 					'max'  => 100,
 				),
-                'active_callback' => 'kemet_header_layout8_style',
 			)
 		)
 	);
@@ -161,6 +184,12 @@
 			'default'           => kemet_get_option( 'vheader-box-shadow' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==', 
+				'values' => 'header-main-layout-8/header-main-layout-6',
+				'operators' => "||",
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -169,7 +198,6 @@
 			'section'         => 'section-header',
 			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
             'priority'        => 23,
-            'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);
 	/**
@@ -180,6 +208,12 @@
 			'default'           => kemet_get_option( 'header-main-layout-width' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '!=/!=/!=', 
+				'values' => 'header-main-layout-7/header-main-layout-6/header-main-layout-8',
+				'operators' => "&&/&&",
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -191,8 +225,7 @@
 			'choices'  => array(
 				'full'    => __( 'Full Width', 'kemet-addons' ),
 				'content' => __( 'Content Width', 'kemet-addons' ),
-			),
-			'active_callback' => 'kemet_headers_with_content_width'	
+			),	
 		)
 	);
 	/**
@@ -203,6 +236,12 @@
 			'default'           => kemet_get_option( 'enable-transparent' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '!=/!=/!=', 
+				'values' => 'header-main-layout-7/header-main-layout-6/header-main-layout-8',
+				'operators' => "&&/&&",
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -210,8 +249,20 @@
 			'type'            => 'checkbox',
 			'section'         => 'section-header',
 			'label'           => __( 'Enable Overlay Header', 'kemet-addons' ),
-			'priority'        => 40,
-			'active_callback' => 'kemet_header_transparent'	
+			'priority'        => 40,	
+		)
+	);
+	/**
+	* Option: Title
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[kmt-header-hamburger-style]', array(
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==/==/==', 
+				'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+				'operators' => "||/||/||",
+			),
 		)
 	);
 	/**
@@ -224,8 +275,6 @@
 				'label'    => __( 'Hamburger Menu Style', 'kemet-addons' ),
 				'section'  => 'section-header',
 				'priority' => 41,
-				'settings' => array(),
-				'active_callback' => 'kemet_header_withicon_layout_style',
 			)
 		)
 	);
@@ -239,6 +288,11 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==', 
+			'values' => 'header-main-layout-9',
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -247,7 +301,6 @@
 			'label'   => __( 'Logo Icon Separator Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 42,
-            'active_callback' => 'kemet_header_layout9_style',
 		  )
 		)
 	);
@@ -260,6 +313,11 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_text_field',
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==', 
+				'values' => 'header-main-layout-5/header-main-layout-7',
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -268,7 +326,6 @@
 			'priority' => 42,
 			'label'    => __( 'Menu Icon Label', 'kemet-addons' ),
 			'type'     => 'text',
-			'active_callback' => 'kemet_header_has_icon_label',
 		)
 	);
 	 /**
@@ -280,6 +337,11 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==/==', 
+			'values' => 'header-main-layout-5/header-main-layout-7',
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -288,7 +350,6 @@
 			'label'   => __( 'Menu Icon Label Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 43,
-			'active_callback' => 'kemet_header_has_icon_label',
 		  )
 		)
 	);
@@ -301,6 +362,11 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==/==', 
+			'values' => 'header-main-layout-5/header-main-layout-7',
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -309,7 +375,6 @@
 			'label'   => __( 'Menu Icon Label Hover Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 44,
-			'active_callback' => 'kemet_header_has_icon_label',
 		  )
 		)
 	);
@@ -322,6 +387,12 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==/==/==/==', 
+			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'operators' => "||/||/||",
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -330,7 +401,6 @@
 			'label'   => __( 'Menu Icon Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 45,
-            'active_callback' => 'kemet_header_withicon_layout_style',
 		  )
 		)
 	);
@@ -343,6 +413,12 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==/==/==/==', 
+			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'operators' => "||/||/||",
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -351,7 +427,6 @@
 			'label'   => __( 'Menu Icon Background Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 46,
-            'active_callback' => 'kemet_header_withicon_layout_style',
 		  )
 		)
 	);
@@ -364,6 +439,12 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==/==/==/==', 
+			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'operators' => "||/||/||",
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -372,7 +453,6 @@
 			'label'   => __( 'Menu Icon Hover Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 47,
-            'active_callback' => 'kemet_header_withicon_layout_style',
 		  )
 		)
 	);
@@ -386,6 +466,12 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==/==/==/==', 
+			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'operators' => "||/||/||",
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -394,7 +480,6 @@
 			'label'   => __( 'Menu Icon Background Hover Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 48,
-            'active_callback' => 'kemet_header_withicon_layout_style',
 		  )
 		)
 	);
@@ -407,6 +492,12 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==/==/==', 
+				'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+				'operators' => "||/||/||",
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -422,7 +513,6 @@
 					'step' => 1,
 					'max'  => 100,
 				),
-				'active_callback' => 'kemet_header_withicon_layout_style',
 			)
 		)
 	);
@@ -436,6 +526,12 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==/==/==', 
+				'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+				'operators' => "||/||/||",
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -446,7 +542,6 @@
 				'priority'       => 49,
 				'label'          => __( 'Menu Icon Spacing', 'kemet-addons' ),
 				'linked_choices' => true,
-                'active_callback' => 'kemet_header_withicon_layout_style',
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
 					'top'    => __( 'Top', 'kemet-addons' ),
@@ -466,6 +561,11 @@
 		  'type'              => 'option',
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
+			'conditions' => '==', 
+			'values' => 'header-main-layout-5',
+		),
 		)
 	);
 	$wp_customize->add_control(
@@ -474,7 +574,6 @@
 			'label'   => __( 'Logo and Menu Icon Background Color', 'kemet-addons' ),
 			'section' => 'section-header',
 			'priority' => 55,
-			'active_callback' => 'has_menu_icon_bg_color',
 		  )
 		)
 	);
@@ -497,6 +596,12 @@
 			'default'           => kemet_get_option( 'vheader-border-style' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==/==', 
+				'values' => 'header-main-layout-8/header-main-layout-6',
+				'operators' => "||",
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -516,7 +621,6 @@
 				'inset'     => __( 'Inset', 'kemet-addons' ),
 				'outset'    => __( 'Outset', 'kemet-addons' ),
 			),
-            'active_callback' => 'kemet_header_layout_vertical_style',
 		)
 	);	
 
