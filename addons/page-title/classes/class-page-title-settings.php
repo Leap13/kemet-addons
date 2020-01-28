@@ -56,7 +56,6 @@ if (! class_exists('Kemet_Page_Title_settings')) {
                 )
             );
             require_once KEMET_PAGE_TITLE_DIR . 'customizer/customizer-options.php';  
-            require_once KEMET_PAGE_TITLE_DIR .'customizer/customizer-helpers.php';
         }
         
         function theme_defaults( $defaults ) {

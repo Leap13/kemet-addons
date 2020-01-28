@@ -51,7 +51,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			KEMET_THEME_SETTINGS . '[page_title_alignment]',array(
 					'default'           => kemet_get_option('page_title_alignment'),
 					'type'              => 'option',
-					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices'),
+					'dependency'  => array(
+						'controls' =>  KEMET_THEME_SETTINGS . '[page-title-layouts]', 
+						'conditions' => '==', 
+						'values' => 'page-title-layout-1',
+					), 
 			)
 	);
 	$wp_customize->add_control(
@@ -71,7 +76,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
-				'active_callback'	=> 'kemet_page_title_layout1_style'
 			)
 		)
 	);
@@ -84,6 +88,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[page-title-layouts]', 
+				'conditions' => '==', 
+				'values' => 'page-title-layout-3',
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -92,7 +101,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'section' => 'section-page-title-header',
 			'priority' => 10,
 			'label'   => __( 'Page Title Divider Color', 'kemet-addons' ),
-			'active_callback' => 'kemet_page_title_layout3_style',
 			)
 		)
 	); 
