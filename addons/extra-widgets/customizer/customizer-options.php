@@ -60,6 +60,11 @@ $wp_customize->add_setting(
         'default'           => kemet_get_option( 'footer-widgets-style' ),
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[kemet-footer]', 
+            'conditions' => '!=', 
+            'values' => 'disabled',
+        ),
     )
 );
 $wp_customize->add_control(
@@ -90,9 +95,10 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
         'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]', 
-            'conditions' => '!=', 
-            'values' => 'style1',
+            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[kemet-footer]', 
+            'conditions' => '!=/!=', 
+            'values' => 'style1/disabled',
+            'operators' => '&&'
         ),
     )
 );
