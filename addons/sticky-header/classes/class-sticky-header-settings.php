@@ -47,7 +47,6 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
                     )
                 );
             require_once KEMET_STICKY_HEADER_DIR . 'customizer/customizer-options.php';  
-            require_once KEMET_STICKY_HEADER_DIR .'customizer/customizer-helpers.php';
         }
 
 

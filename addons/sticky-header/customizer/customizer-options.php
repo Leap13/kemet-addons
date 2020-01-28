@@ -25,7 +25,12 @@
         KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
             'default'           => kemet_get_option( 'sticky-top-bar' ),
             'type'              => 'option',
-            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+				'conditions' => '==', 
+				'values' => true,
+			), 
         )
     );
     $wp_customize->add_control(
@@ -34,7 +39,6 @@
             'section'         => 'section-sticky-header',
             'label'           => __( 'Enable Sticky Top Bar', 'kemet-addons' ),
 			'priority'        => 10,
-			'active_callback' => 'kemet_has_sticky_header',
         )
 	);
 	/**
