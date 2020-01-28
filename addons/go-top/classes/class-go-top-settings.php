@@ -51,7 +51,6 @@ if (! class_exists('Kemet_Go_Top_Settings')) {
                 )
             );
             require_once KEMET_GOTOP_DIR . 'customizer/customizer-options.php';  
-            require_once KEMET_GOTOP_DIR .'customizer/function-helper.php';
         }
 
 
