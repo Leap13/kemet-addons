@@ -68,9 +68,6 @@
 			), 
 		)
 	);
-	/**
-	* Option: Title
-	*/
 	$wp_customize->add_control(
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-header-title-title]', array(
@@ -265,9 +262,6 @@
 			),
 		)
 	);
-	/**
-	* Option: Title
-	*/
 	$wp_customize->add_control(
 		new Kemet_Control_Title(
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-header-hamburger-style]', array(

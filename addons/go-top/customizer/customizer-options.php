@@ -30,8 +30,17 @@
 		)
     );
     /**
-    * Option: Title
-    */
+     * Option:Title
+     */
+    $wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[kmt-go-top-settings]',array(
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
+        )
+    );
     $wp_customize->add_control(
         new Kemet_Control_Title(
             $wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-settings]', array(
@@ -51,7 +60,12 @@
 			'default'           => kemet_get_option( 'go-top-icon-size' ),
             'type'              => 'option',
             'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
 		)
     );
     $wp_customize->add_control(
@@ -73,7 +87,6 @@
                         'max' => 10,
                     ),
                  ),
-                 'active_callback' => 'kmt_dep_go_top',
 			)
 		)
 	);
@@ -86,6 +99,11 @@
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
         )
     );
     $wp_customize->add_control(
@@ -102,7 +120,6 @@
 						 'max' => 200,
 					 ),
                  ),
-                 'active_callback' => 'kmt_dep_go_top',
 			)
 		)
 	);
@@ -116,6 +133,11 @@
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
         )
     );
     $wp_customize->add_control(
@@ -142,7 +164,6 @@
                         'max' => 100,
                     ),
                  ),
-                 'active_callback' => 'kmt_dep_go_top',
 			)
 		)
 	);
@@ -153,7 +174,12 @@
         KEMET_THEME_SETTINGS . '[go-top-responsive]',array(
             'default'           => kemet_get_option( 'go-top-responsive' ),
             'type'              => 'option',
-            'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
+            'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices'),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
         )
     );
     $wp_customize->add_control(
@@ -168,12 +194,20 @@
                 'hide-mobile'        => __( 'Hide on Mobile', 'kemet-addons' ),
                 'hide-tablet-mobile' => __( 'Hide on Tablet and Mobile', 'kemet-addons' ),
             ),
-            'active_callback' => 'kmt_dep_go_top',
         )
     );
     /**
-    * Option: Title
-    */
+     * Option:Title
+     */
+    $wp_customize->add_setting(
+        KEMET_THEME_SETTINGS . '[kmt-go-top-style]',array(
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
+        )
+    );
     $wp_customize->add_control(
         new Kemet_Control_Title(
             $wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-style]', array(
@@ -194,6 +228,11 @@
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
         )
     );
     $wp_customize->add_control(
@@ -202,7 +241,6 @@
                 'section' => 'section-go-top',
                 'label'   => __( 'Icon Color', 'kemet-addons' ),
                 'priority'=>35,
-                'active_callback' => 'kmt_dep_go_top',
             )
         )
     );
@@ -216,6 +254,11 @@
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
         )
     );
     $wp_customize->add_control(
@@ -224,7 +267,6 @@
                 'section' => 'section-go-top',
                 'label'   => __( 'Icon Hover Color', 'kemet-addons' ),
                 'priority'=>40,
-                'active_callback' => 'kmt_dep_go_top',
             )
         )
     );
@@ -237,7 +279,12 @@
 			'default'           => kemet_get_option( 'go-top-bg-color' ),
             'type'              => 'option',
             'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -246,7 +293,6 @@
                 'priority'       => 40,
                 'section' => 'section-go-top',
                 'label'   => __( 'Background Color', 'kemet-addons' ),
-                'active_callback' => 'kmt_dep_go_top',
 			)
 		)
     );
@@ -259,7 +305,12 @@
 			'default'           => kemet_get_option( 'go-top-bg-color' ),
             'type'              => 'option',
             'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+            'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+				'conditions' => '==', 
+				'values' => true,
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -268,7 +319,6 @@
                 'priority'       => 50,
                 'section' => 'section-go-top',
                 'label'   => __( 'Background Hover Color', 'kemet-addons' ),
-                'active_callback' => 'kmt_dep_go_top',
 			)
 		)
     );
