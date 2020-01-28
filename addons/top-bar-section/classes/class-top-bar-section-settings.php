@@ -27,14 +27,10 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
 		 */
 		public function __construct() {
             add_action( 'customize_register', array( $this, 'customize_register' ) );
-            add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
         }
 
-        public function controls_helpers() {
-			require_once( KEMET_TOPBAR_DIR .'customizer/customizer-helpers.php' );
-		}
 		public function customize_register( $wp_customize ) {
 
 			// Update the Customizer Sections under Layout.

@@ -38,6 +38,11 @@
 			'default'           => kemet_get_option( 'top-section-1-html' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[top-section-1]', 
+				'conditions' => 'inarray', 
+				'values' => 'text-html',
+			), 
 		)
 	);
 	$wp_customize->add_control(
@@ -46,7 +51,6 @@
 			'section'  => 'section-topbar-header',
 			'priority' => 10,
 			'label'    => __( 'Custom Text/HTML', 'kemet-addons' ),
-			'active_callback' => 'kemet_top_bar_section1_has_html',
 		)
 	);
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -67,6 +71,11 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[top-section-1]', 
+				'conditions' => 'notEmpty', 
+				'values' => '',
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -86,7 +95,6 @@
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
-				'active_callback' => 'kemet_top_bar_section1',
 			)
 		)
 	);
@@ -126,6 +134,11 @@
 			'default'           => kemet_get_option( 'top-section-2-html' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[top-section-2]', 
+				'conditions' => 'inarray', 
+				'values' => 'text-html',
+			), 
 		)
 	);
 	$wp_customize->add_control(
@@ -134,7 +147,6 @@
 			'section'  => 'section-topbar-header',
 			'priority' => 25,
 			'label'    => __( 'Custom Text/HTML', 'kemet-addons' ),
-			'active_callback' => 'kemet_top_bar_section2_has_html',
 		)
 	);
 
@@ -153,6 +165,11 @@
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[top-section-2]', 
+				'conditions' => 'notEmpty', 
+				'values' => '',
+			),
 		)
 	);
 	$wp_customize->add_control(
@@ -172,7 +189,6 @@
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),
-				'active_callback' => 'kemet_top_bar_section2',
 			)
 		)
 	);
