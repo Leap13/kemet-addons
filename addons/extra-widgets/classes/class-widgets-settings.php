@@ -78,7 +78,6 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
         public function customize_register( $wp_customize ) {
 
             require_once KEMET_WIDGETS_DIR . 'customizer/customizer-options.php';  
-            require_once KEMET_WIDGETS_DIR . 'customizer/customizer-helpers.php';  
         }
 
         function preview_scripts() {
