@@ -68,5 +68,6 @@
   //Header 9
   $('.header-main-layout-9 .menu-icon-social .menu-icon').click(function () {
       $('.header-main-layout-9 .main-header-container').toggleClass('side-header');
+      $(this).toggleClass('open');
   });
 })(jQuery);
