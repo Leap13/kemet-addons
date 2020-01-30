@@ -26,7 +26,9 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 		 *  Constructor
 		 */
 		public function __construct() {
-            add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'customize_register' ) );
+			add_action( 'customize_register', array( $this, 'export' ) );
+			add_action( 'customize_register', array( $this, 'import' ) );
             add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
             add_action( 'customize_controls_print_scripts', array( $this, 'controls_print_scripts' ) );
             add_action( 'wp_ajax_customizer_reset', array( $this, 'handle_ajax' ) );
@@ -49,6 +51,10 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 		// JS.
 		wp_enqueue_script( 'kmt-customizer-reset', KEMET_RESET_URL . 'assets/js/kmt-customizer-reset.js', array( 'jquery' ), KEMET_ADDONS_VERSION, true );
 
+		// Require the customizer import form.
+		require KEMET_RESET_DIR . 'templates/import-form.php';
+
+		//require KEMET_RESET_DIR . 'templates/import-form.php';
 		wp_localize_script(
 			'kmt-customizer-reset',
 			'kmtResetCustomizerObj',
@@ -57,12 +63,25 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 					'reset'  => array(
 						'text' => __( 'Reset Customizer Options', 'kemet-addons' ),
 					),
+					'export'  => array(
+						'text' => __( 'Export', 'kemet-addons' ),
+					),
+					'import'  => array(
+						'text' => __( 'Import', 'kemet-addons' ),
+					)
 				),
+				'customizerUrl' => admin_url( 'customize.php' ),
 				'message'       => array(
 					'resetWarning'  => __( "WARNING! By clicking ok you will remove all Kemet theme customizer options!", 'kemet-addons' ),
+					'importWarning' => __( 'WARNING! By running the import tool, your existing customizer data will be replaced. If you want to backup your current data, please export your data first.', 'customizer-reset' ),
+					'emptyImport'   => __( 'Please select a file to import.', 'customizer-reset' ),
+				),
+				'importForm'    => array(
+					'templates' => $customizer_import_form,
 				),
 				'nonces'        => array(
 					'reset'  => wp_create_nonce( 'kmt-customizer-reset' ),
+					'export' => wp_create_nonce( 'customizer-export' ),
 				),
 			)
 		);
@@ -83,6 +102,55 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 		$this->reset_customizer();
 		wp_send_json_success();
 	}
+
+	/**
+	 * Setup customizer export.
+	 */
+public function export() {
+			
+		if ( ! is_customize_preview() ) {
+			return;
+		}
+
+		if ( ! isset( $_GET['action'] ) || 'customizer_export' !== $_GET['action'] ) {
+			return;
+		}
+
+		if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( $_GET['nonce'], 'customizer-export' ) ) {
+			return;
+		}
+
+		$exporter = new Export( $this->wp_customize );
+
+		$exporter->export();
+		}
+/**
+	 * Setup customizer import.
+	 */
+	public function import() {
+		if ( ! is_customize_preview() ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['action'] ) || 'customizer_import' !== $_POST['action'] ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'customizer-import' ) ) {
+			return;
+		}
+
+		//require_once __DIR__ . '/helpers/class-customizer-setting.php';
+
+		$importer = new Import();
+
+		$importer->import();
+		$this->update( $value );
+	}
+
+	/* public function import( $value ) {
+		$this->update( $value );
+	} */
 
 	/**
 	 * Reset customizer.
