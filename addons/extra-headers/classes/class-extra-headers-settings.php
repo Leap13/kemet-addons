@@ -190,7 +190,23 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		 */
 		function add_styles() {
 
-			Kemet_Style_Generator::kmt_add_css(KEMET_EXTRA_HEADERS_DIR.'assets/css/minified/extra-header-layouts.min.css');
+			$js_prefix  = '.min.js';
+			$css_prefix = '.min.css';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$js_prefix  = '.js';
+				$css_prefix = '.css';
+				$dir        = 'unminified';
+			}
+
+			if ( is_rtl() ) {
+				$css_prefix = '-rtl.min.css';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '-rtl.css';
+				}
+			}
+			
+			Kemet_Style_Generator::kmt_add_css(KEMET_EXTRA_HEADERS_DIR.'assets/css/'. $dir .'/extra-header-layouts' . $css_prefix );
 			Kemet_Style_Generator::kmt_add_css(KEMET_EXTRA_HEADERS_DIR.'assets/css/minified/simple-scrollbar.min.css');
 		}
 

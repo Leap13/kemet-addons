@@ -29,33 +29,33 @@ KFW::createMetabox( $prefix_page_opts, array(
 $fields = array(
   array(
     'id'    => 'kemet-main-header-display',
-    'type'  => 'checkbox',
+    'type'  => 'switcher',
     'title' =>  __('Disable Primary Header', 'kemet-addons'),
     'label' => __('Disable Main Header In Current Post/Page.', 'kemet-addons'),
   ),
    array(
     'id'    => 'site-post-title',
-    'type'  => 'checkbox',
+    'type'  => 'switcher',
     'title' =>  __('Disable Page Title', 'kemet-addons'),
     'label' => __('Disable Post/Page Title', 'kemet-addons'),
   ),
   array(
     'id'    => 'kmt-featured-img',
-    'type'  => 'checkbox',
+    'type'  => 'switcher',
     'title' =>  __('Disable Featured Image', 'kemet-addons'),
     'label' => __('Disable Post/Page Featured Image', 'kemet-addons'),
   ),
       
   array(
     'id'    => 'kemet-footer-display',
-    'type'  => 'checkbox',
+    'type'  => 'switcher',
     'title' =>  __('Disable Main Footer', 'kemet-addons'),
     'label' => __('Disable Post/Page Footer Widgets Area', 'kemet-addons'),
   ),
     
    array(
     'id'    => 'copyright-footer-layout',
-    'type'  => 'checkbox',
+    'type'  => 'switcher',
     'title' =>  __('Disable Copyright Area', 'kemet-addons'),
     'label' => __('Disable Post/Page Copyright', 'kemet-addons'),
   ),
@@ -63,7 +63,7 @@ $fields = array(
     array(
     'id'    => 'kemet-meta-enable-header-transparent',
     'type'  => 'select',
-    'title' =>  __('Header Transparent', 'kemet-addons'),
+    'title' =>  __('Overlay Header', 'kemet-addons'),
     'options'     => array(
       'default'     => __('Default', 'kemet-addons'),
       'enabled'     => __('Enable', 'kemet-addons'),
@@ -101,7 +101,7 @@ $options = get_option( 'kmt_framework' );
 if($options['top-bar-section']){
     $top_bar = array(
       'id'    => 'kemet-top-bar-display',
-      'type'  => 'checkbox',
+      'type'  => 'switcher',
       'title' =>  __('Disable Top Bar', 'kemet-addons'),
       'label' => __('Disable Top Bar In Current Post/Page.', 'kemet-addons'),
     );

@@ -1,0 +1,256 @@
+/*--------------------------------------------------------------
+## Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Extra Widgets
+--------------------------------------------------------------*/
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div:first-child {
+  margin: 20px 0;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form input[name=email] {
+  width: 100%;
+  padding: 16px 15px 16px 45px;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form input[name=email]:focus {
+  outline: none;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span {
+  color: #dd3333;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert {
+  display: none;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert.visible {
+  display: block;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert {
+  display: none;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.success {
+  color: #28a745;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.error {
+  color: #dd3333;
+}
+
+.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.visible {
+  display: block;
+}
+
+.kmt-social-profiles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.kmt-social-profiles.simple .kmt-profile-link {
+  line-height: 1;
+}
+
+.kmt-social-profiles.simple .kmt-profile-link .profile-icon {
+  height: 1em;
+  width: 1em;
+}
+
+.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon, .kmt-social-profiles.square-outline .kmt-profile-link .profile-icon {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #00000033;
+  background: transparent;
+}
+
+.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon, .kmt-social-profiles.circle .kmt-profile-link .profile-icon {
+  border-radius: 50%;
+}
+
+.kmt-social-profiles .kmt-profile-link {
+  display: block;
+  line-height: 2;
+  margin-bottom: 5px;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-title {
+  display: inline-block;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon {
+  height: 2em;
+  width: 2em;
+  display: inline-block;
+  color: #fff;
+  background-color: inherit;
+  font-size: 15px;
+  text-align: center;
+}
+
+.kmt-social-profiles .kmt-profile-link .dashicons, .kmt-social-profiles .kmt-profile-link .dashicons-before:before {
+  width: unset;
+  height: unset;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/********************** widget style **********************/
+div.title {
+  width: 100%;
+  display: block;
+  clear: both;
+  position: relative;
+  overflow: hidden;
+}
+
+.widget-title, h4.widget-title {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  float: right;
+}
+
+.widget-head .widget-title .dashicons {
+  line-height: inherit;
+}
+
+/********************** widget style 2 **********************/
+.kmt-widget-style2 .widget-title {
+  padding: 3px 10px;
+  background-color: #E3E3E3;
+}
+
+.kmt-widget-style2 div.title h4:after {
+  display: none;
+}
+
+/********************** widget style 3 **********************/
+.kmt-widget-style3 .widget-content {
+  padding: 10px 15px 10px;
+  border: 1px solid #E3E3E3;
+  border-bottom: 2px solid #818181;
+}
+
+.kmt-widget-style3 .counter-widget .widget-content {
+  padding: 10px 7px 10px;
+}
+
+.kmt-widget-style3 .counter-widget .widget-content ul li {
+  width: 120px;
+}
+
+/********************** widget style 4**********************/
+.kmt-widget-style4 .widget-head {
+  background-color: #E3E3E3;
+}
+
+.kmt-widget-style4 div.title h4:after {
+  display: none;
+}
+
+.kmt-widget-style4 .widget-head .widget-title {
+  padding: 8px 15px;
+}
+
+.kmt-widget-style4 .widget-title {
+  margin: 0px;
+}
+
+/********************** widget style 5 **********************/
+.kmt-widget-style5.widget {
+  border: 1px solid #E3E3E3;
+}
+
+.kmt-widget-style5 div.title h4:after {
+  display: none;
+}
+
+.kmt-widget-style5 .widget-content {
+  padding: 0px 15px 15px;
+}
+
+.kmt-widget-style5 .widget-title {
+  padding: 8px 15px;
+}
+
+/********************** widget style 6 **********************/
+.kmt-widget-style6 .widget-head {
+  text-align: center;
+}
+
+.kmt-widget-style6 div.title .widget-title {
+  border-bottom: 2px solid #818181;
+  padding-bottom: 10px;
+  position: relative;
+  display: inline-block;
+  float: none;
+  margin-left: 0px;
+}
+
+.kmt-widget-style6 .widget-title:before {
+  content: '';
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  margin-right: -2px;
+  border: 3px solid transparent;
+  border-bottom-color: #818181;
+}
+
+.kmt-widget-style6 div.title h4:after {
+  display: none;
+}
+
+.kmt-widget-style6 > * {
+  text-align: center;
+}
+
+/********************** widget style 7 **********************/
+.kmt-widget-style7.widget {
+  border: 1px solid transparent;
+}
+
+.kmt-widget-style7 div.title .widget-title {
+  float: none;
+  text-align: center;
+}
+
+.kmt-widget-style7 div.title .widget-title:after {
+  content: '';
+  position: relative;
+  background-color: #333;
+  width: 30px;
+  height: 2px;
+  margin-top: 8px;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+  display: block;
+  background-image: none;
+}
+
+.kmt-widget-style7 .loginform .button-primary {
+  margin: 0px auto;
+}
+
+.kmt-widget-style7 .widget_search form {
+  text-align: center;
+}
+
+.kmt-widget-style7 .widget_kmt_mailchimp form {
+  text-align: center;
+}
+
+.kmt-widget-style7 > * {
+  text-align: center;
+}
