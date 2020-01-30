@@ -10,29 +10,23 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 ob_start();
 ?>
 
-<form action = '' method = 'post' class = 'customizer-import-form border-box' enctype = 'multipart/form-data'>
-<input type = 'hidden' name = 'action' value = 'customizer_import'>
-<?php wp_nonce_field( 'customizer-import', 'nonce' );
-?>
-<div class = 'fields'>
-<div class = 'field left-field'>
-<label class = 'label' for = 'customizer_import_file'>
-<?php _e( 'Select JSON file to import.', 'customizer-reset' );
-?>
-</label>
-<div class = 'control'>
-<input type = 'file' id = 'customizer_import_file' name = 'customizer_import_file' class = 'customizer-import-file' accept = 'application/json'>
-</div>
-</div>
-<div class = 'field right-field'>
-<div class = 'control'>
-<button class = 'button button-primary'><?php _e( 'Import', 'customizer-reset' );
-?></button>
-</div>
-</div>
-</div>
-<span class = 'close dashicons dashicons-no-alt'></span>
-</form>
+<div class="postbox" id="kemet-ie">
+				<h2 class="hndle kmt-normal-cusror"><span class="dashicons dashicons-upload"></span><?php esc_html_e( 'Import Settings', 'kemet-import-export' ); ?></h2>
+				<div class="inside">
+					<p><?php esc_html_e( 'Import your Kemet Customizer settings.', 'kemet-import-export' ); ?></p>
+					<form method="post" enctype="multipart/form-data">
+						<p>
+							<input type="file" name="import_file"/>
+						</p>
+						<p style="margin-bottom:0">
+							<input type="hidden" name="kemet_ie_action" value="import_settings" />
+							<?php wp_nonce_field( 'kemet_import_nonce', 'kemet_import_nonce' ); ?>
+							<?php submit_button( __( 'Import', 'kemet-import-export' ), 'button', 'submit', false, array( 'id' => '' ) ); ?>
+						</p>
+					</form>
+
+				</div>
+			</div>
 
 <?php
 $customizer_import_form = ob_get_clean();

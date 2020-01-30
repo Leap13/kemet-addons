@@ -1,7 +1,7 @@
 === Kemet Addons ===
 Contributors: Leap13
 Tags: metabox, Kemet, addons
-Requires at least: 4.7
+Requires at lekmt: 4.7
 Tested up to: 5.2
 Requires PHP: 5.4
 Stable tag: 0.1.0

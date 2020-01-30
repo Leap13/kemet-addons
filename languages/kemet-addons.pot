@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Lkmt-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1186,7 +1186,7 @@ msgstr ""
 
 #: inc/k-framework/fields/systeminfo/systeminfo.php:58
 msgid ""
-"%1$s - We recommend setting wp memory at least 64MB. </mark>See:<a "
+"%1$s - We recommend setting wp memory at lekmt 64MB. </mark>See:<a "
 "href=\"%2$s\" target=\"_blank\">Increasing wp memory</a>"
 msgstr ""
 
@@ -1236,7 +1236,7 @@ msgstr ""
 
 #: inc/k-framework/fields/systeminfo/systeminfo.php:129
 msgid ""
-"%s - We recommend setting max execution time at least 60. </mark> See:<a "
+"%s - We recommend setting max execution time at lekmt 60. </mark> See:<a "
 "href=\"%2$s\" target=\"_blank\">Increasing max execution to PHP</a>"
 msgstr ""
 
