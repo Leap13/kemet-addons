@@ -51,6 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			KEMET_THEME_SETTINGS . '[page_title_alignment]',array(
 					'default'           => kemet_get_option('page_title_alignment'),
 					'type'              => 'option',
+					'transport'         => 'postMessage',
 					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices'),
 					'dependency'  => array(
 						'controls' =>  KEMET_THEME_SETTINGS . '[page-title-layouts]', 
@@ -66,13 +67,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'section' => 'section-page-title-header',
 				'label'   => __( 'Page Title Alignment', 'kemet-addons' ),
 				'choices'  => array(
-					'align-left' => array(
+					'left' => array(
 						'icon' => 'dashicons-editor-alignleft'
 					),
-					'align-center' => array(
+					'center' => array(
 						'icon' => 'dashicons-editor-aligncenter'
 					),
-					'align-right' => array(
+					'right' => array(
 						'icon' => 'dashicons-editor-alignright'
 					),	
 				),

@@ -17,6 +17,12 @@
             $('.kemet-breadcrumbs-trail ul li .breadcrumb-sep').text(newval);
         });
     });
+    wp.customize('kemet-settings[page_title_alignment]', function (value) {
+        value.bind(function (align) {
+            $('.kmt-page-title.page-title-layout-1').css('text-align' , align);
+        });
+    });
+
     kemet_responsive_spacing('kemet-settings[page-title-space]', '.kmt-page-title-addon-content', 'padding', ['top', 'right', 'bottom', 'left']);
     kemet_css('kemet-settings[page-title-color]', 'color', '.kemet-page-title');
     kemet_responsive_slider('kemet-settings[page-title-font-size]', '.kemet-page-title' , 'font-size');

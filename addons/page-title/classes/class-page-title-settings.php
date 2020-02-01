@@ -61,7 +61,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
         function theme_defaults( $defaults ) {
             // Page title Options
             $defaults['page-title-layouts']                 = 'page-title-layout-1';
-            $defaults['page_title_alignment']              = 'align-center';
+            $defaults['page_title_alignment']              = 'center';
             $defaults['page-title-bg-obj']                  = array(
 				'background-color'      => '#eaeaea',
 				'background-image'      => '',

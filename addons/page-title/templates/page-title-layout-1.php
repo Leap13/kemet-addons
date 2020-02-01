@@ -16,9 +16,6 @@ if(is_singular()){
 $description           = get_the_archive_description();
 $classes []= kemet_get_option( 'page-title-layouts' );
 $classes_responsive = kemet_get_option( 'page-title-responsive' );
-if ( "page-title-layout-1" === kemet_get_option( 'page-title-layouts' )) {
-	$classes []= kemet_get_option( 'page_title_alignment' );
-}
 
 $classes   = implode( ' ', $classes );
 
