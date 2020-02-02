@@ -31,13 +31,16 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 			$topbar_submenu_items_h_color   = kemet_get_option( 'topbar-submenu-items-h-color' );
             $section1_content_align          = kemet_get_option( 'section1-content-align' );
             $section2_content_align          = kemet_get_option( 'section2-content-align' );
+            $top_bar_direction              = is_rtl() ? 'row-reverse' : 'row'; 
 			$topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
             $css_content = array(     
                 '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
                     'justify-content' => $section1_content_align,
+                    'flex-direction' => $top_bar_direction 
                 ),
                 '.kemet-top-header-section-wrap .kemet-top-header-section-2' => array(
                     'justify-content' => $section2_content_align,
+                    'flex-direction' => $top_bar_direction 
                 ),
                 // Top Bar Header   topbar-bg-color
                 '.kemet-top-header'  => array(

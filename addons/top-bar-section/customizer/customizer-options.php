@@ -5,7 +5,7 @@
  * @package Kemet Addons
  */
 	/**
-	 * Option: Top Bar Left Item/s
+	 * Option: Top Bar Section 1 Item/s
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-section-1]', array(
@@ -20,7 +20,7 @@
 			'type'     => 'kmt-sortable',
 			'section'  => 'section-topbar-header',
 			'priority' => 5,
-			'label'    => __( 'Top Bar Left Item/s', 'kemet-addons' ),
+			'label'    => __( 'Top Bar Section 1 Item/s', 'kemet-addons' ),
 			'choices'  => array(
 					'search'    => __( 'Search', 'kemet-addons' ),
 					'menu' => __( 'Menu', 'kemet-addons' ),
@@ -63,7 +63,7 @@
 		);
 	}
 	/**
-	 * Option: Left Item/s Alignment
+	 * Option: Top Bar Section 1 Item/s Alignment
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[section1-content-align]', array(
@@ -83,7 +83,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[section1-content-align]', array(
 				'priority'       => 15,
 				'section' => 'section-topbar-header',
-				'label'   => __( 'Left Item/s Alignment', 'kemet-addons' ),
+				'label'   => __( 'Section 1 Item/s Alignment', 'kemet-addons' ),
 				'choices'  => array(
 					'flex-start' => array(
 						'icon' => 'dashicons-editor-alignleft'
@@ -99,7 +99,7 @@
 		)
 	);
 	/**
-	 * Option: Top Bar Right Item/s
+	 * Option: Top Bar Section 2 Item/s
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-section-2]', array(
@@ -114,7 +114,7 @@
 			'type'     => 'kmt-sortable',
 			'section'  => 'section-topbar-header',
 			'priority' => 20,
-			'label'    => __( 'Top Bar Right Item/s', 'kemet-addons' ),
+			'label'    => __( 'Top Bar Section 2 Item/s', 'kemet-addons' ),
 			'choices'  => 
 				array(
 					'search'    => __( 'Search', 'kemet-addons' ),
@@ -160,7 +160,7 @@
 		);
 	}
 	/**
-	 * Option: Right Item/s Alignment
+	 * Option: Top Bar Section 2 Item/s Alignment
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[section2-content-align]', array(
@@ -180,7 +180,7 @@
 			$wp_customize, KEMET_THEME_SETTINGS . '[section2-content-align]', array(
 				'priority'       => 28,
 				'section' => 'section-topbar-header',
-				'label'   => __( 'Right Item/s Alignment', 'kemet-addons' ),
+				'label'   => __( 'Section 2 Item/s Alignment', 'kemet-addons' ),
 				'choices'  => array(
 					'flex-start' => array(
 						'icon' => 'dashicons-editor-alignleft'
