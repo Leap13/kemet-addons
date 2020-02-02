@@ -31,7 +31,7 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
             add_filter( 'dynamic_sidebar_params', array( $this, '_insert_attributes' ) );
         }
-
+        
         public static function _insert_attributes( $params ) {
             global $wp_registered_widgets;
 

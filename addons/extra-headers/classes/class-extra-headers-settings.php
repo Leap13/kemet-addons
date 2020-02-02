@@ -190,29 +190,34 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		 */
 		function add_styles() {
 
-			$js_prefix  = '.min.js';
 			$css_prefix = '.min.css';
 			$dir        = 'minified';
 			if ( SCRIPT_DEBUG ) {
-				$js_prefix  = '.js';
 				$css_prefix = '.css';
 				$dir        = 'unminified';
 			}
-
 			if ( is_rtl() ) {
 				$css_prefix = '-rtl.min.css';
 				if ( SCRIPT_DEBUG ) {
 					$css_prefix = '-rtl.css';
 				}
 			}
-			
+ 
 			Kemet_Style_Generator::kmt_add_css(KEMET_EXTRA_HEADERS_DIR.'assets/css/'. $dir .'/extra-header-layouts' . $css_prefix );
 			Kemet_Style_Generator::kmt_add_css(KEMET_EXTRA_HEADERS_DIR.'assets/css/minified/simple-scrollbar.min.css');
 		}
 
 		public function add_scripts() {
-			 Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/minified/extra-header-layouts.min.js');
-			 Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/minified/simple-scrollbar.min.js');
+
+			$js_prefix  = '.min.js';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$js_prefix  = '.js';
+				$dir        = 'unminified';
+			}
+
+			Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/'. $dir .'/extra-header-layouts' . $js_prefix);
+			Kemet_Style_Generator::kmt_add_js(KEMET_EXTRA_HEADERS_DIR.'assets/js/minified/simple-scrollbar.min.js');
 
 		}
     }
