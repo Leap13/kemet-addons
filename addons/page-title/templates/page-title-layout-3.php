@@ -1,4 +1,10 @@
 <?php
+/**
+ * Page Title
+ *
+ * @package Kemet Addon
+ */
+
 $title                 = kemet_get_the_title();
 if(is_singular()){
 	$header_title = kemet_get_option('page-header-title');

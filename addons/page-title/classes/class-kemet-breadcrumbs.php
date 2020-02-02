@@ -373,9 +373,7 @@ class Kemet_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_network_home_link() {
-//		if ( is_multisite() && ! is_main_site() && true === $this->args['network'] )
-//			$this->items[] = sprintf( '<a href="%s" rel="home">%s</a>', esc_url( network_home_url() ), $this->labels['home'] );
-        		// Home item
+        // Home item
 		$setting = kemet_get_option( 'kemet_breadcrumbs_home', 'icon' );
 
 		// Icon
@@ -409,11 +407,7 @@ class Kemet_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_site_home_link() {
-//		$network = is_multisite() && ! is_main_site() && true === $this->args['network'];
-//		$label   = $network ? get_bloginfo( 'name' ) : $this->labels['home'];
-//		$rel     = $network ? '' : ' rel="home"';
-//		$this->items[] = sprintf( '<a href="%s"%s>%s</a>', esc_url( user_trailingslashit( home_url() ) ), $rel, $label );
-        		// Home item
+        // Home item
 		$setting = kemet_get_option( 'kemet_breadcrumbs_home', 'icon' );
 
 		// Icon
