@@ -65,6 +65,7 @@
 		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
 			'default'           => kemet_get_option( 'title-meta-position' ),
 			'type'              => 'option',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
@@ -123,7 +124,7 @@
 		)
 	);
 	/**
-	 * Option: Page Title Text Transform
+	 * Option: Page Title Format
 	*/
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-header-title]', array(
@@ -149,6 +150,7 @@
 		KEMET_THEME_SETTINGS . '[content-alignment]', array(
 			'default'           => kemet_get_option( 'content-alignment' ),
 			'type'              => 'option',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
