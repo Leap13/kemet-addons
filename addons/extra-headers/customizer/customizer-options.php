@@ -1,5 +1,7 @@
 <?php
-
+	/**
+	* Option: Header Layout
+	*/
     $wp_customize->add_setting(
  		KEMET_THEME_SETTINGS . '[header-layouts]', array(
  			'default'           => kemet_get_option( 'header-layouts' ),
@@ -140,7 +142,7 @@
 			)
 		)
 	);
-		/**
+	/**
 	 * Option: Enter Width
 	 */
 	$wp_customize->add_setting(
