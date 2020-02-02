@@ -54,7 +54,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                    'width'  => kemet_get_css_value( $Page_title_bottomline_width, 'px' ),
                ),
                '.page-title-layout-3 .kmt-page-title-wrap' => array(
-                    'border-right-color'  => esc_attr( $layout3_border_right_color ),
+                    'border-color'  => esc_attr( $layout3_border_right_color ),
                 ),
                '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'desktop' ),
