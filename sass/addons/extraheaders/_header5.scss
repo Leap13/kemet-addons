@@ -87,7 +87,7 @@
     align-items: center;
     margin-right: 10px;
 }
-.header-main-layout-5 { 
+.header-main-layout-4 { 
     .icon-last-menu-items{
         display: flex;
         justify-content: flex-end;
@@ -113,11 +113,11 @@
     border: none !important;
     padding-top: 0;
     }
-    .header-main-layout-5.kmt-header-transparent {
+    .header-main-layout-4.kmt-header-transparent {
         position: relative;
     }
     
-    .header-main-layout-5.kmt-header-transparent .main-header-container {
+    .header-main-layout-4.kmt-header-transparent .main-header-container {
     position: absolute;
     }
     .main-header-container {
@@ -130,7 +130,7 @@
     }
 }
 .kmt-header-break-point{
-    .header-main-layout-5{
+    .header-main-layout-4{
         .mobile-icon-logo{
             display: flex;
             flex-wrap: wrap;

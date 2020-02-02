@@ -42,7 +42,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),
-                '.header-main-layout-9 .inline-logo-menu .site-branding:after' => array(
+                '.header-main-layout-8 .inline-logo-menu .site-branding:after' => array(
                     'background-color' => esc_attr($logo_icon_separator),
                 ),
                 '.site-header .menu-icon-social' => array(
@@ -64,18 +64,18 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.site-header .menu-icon-social .menu-icon:hover, .menu-icon-social .menu-icon.open' => array(
 					'background-color' => esc_attr($header_icon_bars_bg_h_color),
                 ),
-                '.header-main-layout-6 .main-header-bar-wrap' => array(
+                '.header-main-layout-5 .main-header-bar-wrap' => array(
                     'width' => kemet_get_css_value( $vertical_header_width, 'px' ),
                     'border-color' => esc_attr( $vheader_border_color ),
                 ),
-                '.header-main-layout-8 .main-header-bar-wrap' => array(
+                '.header-main-layout-7 .main-header-bar-wrap' => array(
                     'width' => kemet_get_css_value( $mini_vheader_width, 'px' ),
                     'border-color' => esc_attr( $vheader_border_color ),
                 ),
-                '.kemet-main-v-header-align-right.header-main-layout-8' => array(
+                '.kemet-main-v-header-align-right.header-main-layout-7' => array(
                     'padding-right' => kemet_get_css_value( $mini_vheader_width , 'px'),
                 ),
-                '.kemet-main-v-header-align-left.header-main-layout-8' => array(
+                '.kemet-main-v-header-align-left.header-main-layout-7' => array(
                     'padding-left' => kemet_get_css_value( $mini_vheader_width , 'px'),
                 ),
                 '.kemet-main-v-header-align-right .main-header-bar-wrap' => array(
@@ -86,10 +86,10 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'border-right-style' => esc_attr( $vheader_border_style ),
                     'border-right-width' => kemet_responsive_slider( $vertical_border_width , 'desktop' ),
                 ),
-                '.kemet-main-v-header-align-right.header-main-layout-6' => array(
+                '.kemet-main-v-header-align-right.header-main-layout-5' => array(
                     'padding-right' => kemet_get_css_value( $vertical_header_width , 'px'),
                 ),
-                '.kemet-main-v-header-align-left.header-main-layout-6' => array(
+                '.kemet-main-v-header-align-left.header-main-layout-5' => array(
                     'padding-left' => kemet_get_css_value( $vertical_header_width , 'px'),
                 ),     
             );

@@ -25,21 +25,21 @@
 					'header-main-layout-2' => array(
 						'label' => __( 'Header 2', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-02.png',
-					),
-					'header-main-layout-3' => array(
+					), 
+                    'header-main-layout-3' => array(
 						'label' => __( 'Header 3', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-03.png',
 					), 
                     'header-main-layout-4' => array(
 						'label' => __( 'Header 4', 'kemet-addons' ),
-						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-04.png',
+						'path'  =>  KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-04.png',
 					), 
                     'header-main-layout-5' => array(
 						'label' => __( 'Header 5', 'kemet-addons' ),
-						'path'  =>  KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-05.png',
-					), 
-                    'header-main-layout-6' => array(
-						'label' => __( 'Header 7', 'kemet-addons' ),
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-05.png',
+					),
+					'header-main-layout-6' => array(
+						'label' => __( 'Header 6', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-06.png',
 					),
 					'header-main-layout-7' => array(
@@ -49,10 +49,6 @@
 					'header-main-layout-8' => array(
 						'label' => __( 'Header 8', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-08.png',
-					),
-					'header-main-layout-9' => array(
-						'label' => __( 'Header 9', 'kemet-addons' ),
-						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-09.png',
 					),
 				),
 			)
@@ -66,7 +62,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '!=', 
-				'values' => 'header-main-layout-7',
+				'values' => 'header-main-layout-6',
 			), 
 		)
 	);
@@ -92,7 +88,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==', 
-				'values' => 'header-main-layout-8/header-main-layout-6',
+				'values' => 'header-main-layout-7/header-main-layout-5',
 				'operators' => "||",
 			), 
 		)
@@ -122,7 +118,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==', 
-				'values' => 'header-main-layout-6',
+				'values' => 'header-main-layout-5',
 			),
 		)
 	);
@@ -154,7 +150,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==', 
-				'values' => 'header-main-layout-8',
+				'values' => 'header-main-layout-7',
 			),
 		)
 	);
@@ -186,7 +182,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==', 
-				'values' => 'header-main-layout-8/header-main-layout-6',
+				'values' => 'header-main-layout-7/header-main-layout-5',
 				'operators' => "||",
 			),
 		)
@@ -210,7 +206,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '!=/!=/!=', 
-				'values' => 'header-main-layout-7/header-main-layout-6/header-main-layout-8',
+				'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7',
 				'operators' => "&&/&&",
 			),
 		)
@@ -238,7 +234,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '!=/!=/!=', 
-				'values' => 'header-main-layout-7/header-main-layout-6/header-main-layout-8',
+				'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7',
 				'operators' => "&&/&&",
 			),
 		)
@@ -259,7 +255,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==/==/==', 
-				'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+				'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 				'operators' => "||/||/||",
 			),
 		)
@@ -287,7 +283,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==', 
-			'values' => 'header-main-layout-9',
+			'values' => 'header-main-layout-8',
 		),
 		)
 	);
@@ -312,7 +308,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==', 
-				'values' => 'header-main-layout-5/header-main-layout-7',
+				'values' => 'header-main-layout-4/header-main-layout-6',
 			),
 		)
 	);
@@ -336,7 +332,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==', 
-			'values' => 'header-main-layout-5/header-main-layout-7',
+			'values' => 'header-main-layout-4/header-main-layout-6',
 		),
 		)
 	);
@@ -361,7 +357,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==', 
-			'values' => 'header-main-layout-5/header-main-layout-7',
+			'values' => 'header-main-layout-4/header-main-layout-6',
 		),
 		)
 	);
@@ -386,7 +382,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 			'operators' => "||/||/||",
 		),
 		)
@@ -412,7 +408,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 			'operators' => "||/||/||",
 		),
 		)
@@ -438,7 +434,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 			'operators' => "||/||/||",
 		),
 		)
@@ -465,7 +461,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 			'operators' => "||/||/||",
 		),
 		)
@@ -491,7 +487,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==/==/==', 
-				'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+				'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 				'operators' => "||/||/||",
 			),
 		)
@@ -525,7 +521,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==/==/==', 
-				'values' => 'header-main-layout-5/header-main-layout-7/header-main-layout-8/header-main-layout-9',
+				'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 				'operators' => "||/||/||",
 			),
 		)
@@ -560,7 +556,7 @@
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==', 
-			'values' => 'header-main-layout-5',
+			'values' => 'header-main-layout-4',
 		),
 		)
 	);
@@ -595,7 +591,7 @@
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 				'conditions' => '==/==', 
-				'values' => 'header-main-layout-8/header-main-layout-6',
+				'values' => 'header-main-layout-7/header-main-layout-5',
 				'operators' => "||",
 			),
 		)
