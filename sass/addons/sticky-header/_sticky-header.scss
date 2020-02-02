@@ -74,22 +74,19 @@
 @media only screen and (max-width: 480px) {
   .sticky-hide-mobile.kmt-is-sticky
   {
-    position: relative !important;
+    display: none !important;
   }
-  .kmt-is-sticky{
-    top: 0px;
-  } 
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .sticky-hide-tablet.kmt-is-sticky
   {
-    position: relative !important;
+    display: none !important;
   }
 }
 @media only screen and (max-width: 767px) {
   .sticky-hide-tablet-mobile.kmt-is-sticky
   {
-    position: relative !important;
+    display: none !important;
   }
 }
