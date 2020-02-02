@@ -159,6 +159,9 @@
 			)
 		);
 	}
+	/**
+	 * Option: Right Item/s Alignment
+	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[section2-content-align]', array(
 			'default'           => kemet_get_option( 'section2-content-align' ),
