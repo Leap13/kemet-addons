@@ -30,8 +30,9 @@ $fields = array(
   array(
     'id'    => 'kemet-main-header-display',
     'type'  => 'switcher',
-    'title' =>  __('Disable Primary Header', 'kemet-addons'),
-    'label' => __('Disable Main Header In Current Post/Page.', 'kemet-addons'),
+    'title' =>  __('Display Primary Header', 'kemet-addons'),
+    'label' => __('Display Main Header In Current Post/Page.', 'kemet-addons'),
+    'default' => true
   ),
    array(
     'id'    => 'site-post-title',

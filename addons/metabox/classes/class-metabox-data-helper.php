@@ -85,9 +85,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
             
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
 			 
-			$display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] ) ? $meta['kemet-main-header-display'] : 'default';
-	
-				if ( '1' == $display_header ) {
+			$display_header = ( isset( $meta['kemet-main-header-display'] ) ) ? $meta['kemet-main-header-display'] : true;
+			
+				if ( '0' == $display_header ) {
 					$defaults = false;
 				}
 				return $defaults;
