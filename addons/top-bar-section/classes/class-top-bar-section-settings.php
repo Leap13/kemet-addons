@@ -68,6 +68,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-submenu-bg-color']           = '';
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';
+            $defaults['sticky-top-bar']           = false;
             return $defaults;
         }
         

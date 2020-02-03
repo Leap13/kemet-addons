@@ -58,10 +58,6 @@
   display: none;
 }
 
-.kmt-is-sticky.kmt-sticky-header.kmt-sticky-top-bar .kemet-top-header-wrap {
-  display: block;
-}
-
 .sticky-custom-logo {
   display: none;
 }

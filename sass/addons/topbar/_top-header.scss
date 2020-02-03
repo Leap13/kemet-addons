@@ -134,6 +134,13 @@
           }
       }
   }
+  .kmt-sticky-header{
+    &.kmt-sticky-top-bar{
+      .kemet-top-header-wrap{
+        display: block;
+      }
+    }
+  }
     /* Top Header Responsive */
 @media only screen and (max-width: 480px) {
     .kemet-top-header{

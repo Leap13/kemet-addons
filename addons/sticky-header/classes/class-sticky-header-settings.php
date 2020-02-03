@@ -61,7 +61,6 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
                 'background-size'       => 'auto',
                 'background-attachment' => 'scroll',
             );
-            $defaults['sticky-top-bar']           = false;
             $defaults['sticky-logo-width']     = '';
             $defaults['sticky-menu-link-color']  = '';
             $defaults['sticky-menu-link-h-color']  = '';

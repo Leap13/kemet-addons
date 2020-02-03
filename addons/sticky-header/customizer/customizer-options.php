@@ -17,30 +17,7 @@
             'priority'        => 5,
         )
 	);
-	
-	/**
-     * Option: Enable Sticky Top Bar 
-     */
-	$wp_customize->add_setting(
-        KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
-            'default'           => kemet_get_option( 'sticky-top-bar' ),
-            'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-        )
-    );
-    $wp_customize->add_control(
-        KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
-            'type'            => 'checkbox',
-            'section'         => 'section-sticky-header',
-            'label'           => __( 'Enable Sticky Top Bar', 'kemet-addons' ),
-			'priority'        => 10,
-        )
-	);
+
 	/**
 	 * Option: Title
 	 */
