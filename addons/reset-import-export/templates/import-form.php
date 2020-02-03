@@ -23,7 +23,7 @@ ob_start();
 							<?php wp_nonce_field( 'kemet_import_nonce', 'kemet_import_nonce' ); ?>
 							<?php submit_button( __( 'Import', 'kemet-import-export' ), 'button', 'submit', false, array( 'id' => '' ) ); ?>
 						</p>
-					</form>
+					</form>	
 
 				</div>
 			</div>
