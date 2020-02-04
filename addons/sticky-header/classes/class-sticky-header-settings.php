@@ -53,6 +53,7 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
 
         public function theme_defaults( $defaults ) {
             $defaults['enable-sticky']           = '1';
+            $defaults['sticky-top-bar']           = false;
             $defaults['sticky-bg-obj']           = array(
                 'background-color'      => '',
                 'background-image'      => '',

@@ -103,6 +103,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
             $sticky_logo              = kemet_get_option( 'sticky-logo' );
             $sticky_style             = kemet_get_option( 'sticky-style' );
+            $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
             $sticky_responsive        = kemet_get_option('sticky-responsive');
             if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
@@ -116,6 +117,12 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
                         $classes[] = 'kmt-sticky-logo';
                     }
                 }
+                if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
+                    if($enable_top_bar){
+                        $classes[] = 'kmt-sticky-top-bar';
+                    }
+    
+                }    
 
             }
             

@@ -34,22 +34,6 @@ if (! class_exists('Kemet_Top_Bar_Partials')) {
             add_action( 'kemet_sitehead_top' , array( $this, 'kemet_top_header_template' ), 9 );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'widgets_init', array( $this,'kemet_addons_top_bar_widgets_init' ) );
-            add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
-        }
-
-        public function header_classes($classes) {
-            $enabled_sticky           = kemet_get_option( 'enable-sticky' );
-            $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );
-            $kemet_header_layout = kemet_get_option( 'header-layouts' );
-            if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
-                if($enable_top_bar){
-                    $classes[] = 'kmt-sticky-top-bar';
-                }
-
-            }
-            
-            return $classes;
-            
         }
 
         /**
