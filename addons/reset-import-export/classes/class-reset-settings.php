@@ -14,8 +14,7 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
          * Initiator
          */
 
-        public static function get_instance()
-        {
+        public static function get_instance() {
             if (! isset(self::$instance)) {
                 self::$instance = new self();
             }
@@ -28,9 +27,9 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 		public function __construct() {
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
 			add_action( 'customize_register', array( $this, 'export' ) );
-			add_action( 'admin_init', array( $this, 'import' ) );
+			//add_action( 'admin_init', array( $this, 'import' ) );
             add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-            add_action( 'customize_controls_print_scripts', array( $this, 'controls_print_scripts' ) );
+           // add_action( 'customize_controls_print_scripts', array( $this, 'controls_print_scripts' ) );
             add_action( 'wp_ajax_customizer_reset', array( $this, 'handle_ajax' ) );
         }
 
@@ -197,16 +196,6 @@ public function export() {
         }
 	}
 
-	/**
-	 * Prints scripts for the control.
-	 */
-	public function controls_print_scripts() {
-		global $customizer_reset_error;
-
-		if ( $customizer_reset_error ) {
-			echo '<script> alert("' . $customizer_reset_error . '"); </script>';
-		}
-	}
     }
 }
 Kemet_Customizer_Reset_ImportExport::get_instance();
