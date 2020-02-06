@@ -19,13 +19,12 @@
 			'<button name="kmt-customizer-reset" class="button kmt-customizer-reset-button">' + kmtResetCustomizerObj.buttons.reset.text + '</button>'
 		);
 
-
 		var $exportButton = $(
-			'<a href="' + kmtResetCustomizerObj.customizerUrl + '?action=customizer_export&nonce=' + kmtResetCustomizerObj.nonces.export + '" class="customizer-export-import customizer-export-link"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.export.text + '</span></a>'
+			'<button href="' + kmtResetCustomizerObj.customizerUrl + '?action=customizer_export&nonce=' + kmtResetCustomizerObj.nonces.export + '" class="button customizer-export-import customizer-export-link"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.export.text + '</span></button>'
 		);
 
 		var $importButton = $(
-			'<a href="" class="customizer-export-import customizer-import-trigger"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.import.text + '</span></a>'
+			'<button href="" class="button customizer-export-import customizer-import-trigger"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.import.text + '</span></button>'
 		);
 
 		$resetButton.on('click', resetCustomizer);

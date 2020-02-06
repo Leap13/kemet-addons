@@ -15,7 +15,7 @@ class Export {
 	/**
 	 * Class constructor
 	 *
-	 * @param object $wp_customize `WP_Customize_Manager` instance.
+	 * @param object
 	 */
 	public function __construct( $wp_customize = null ) {
 		$this->wp_customize = $wp_customize;
@@ -42,14 +42,13 @@ class Export {
 		}
 
 		nocache_headers();
-		// Set the download headers.
+
 		header( 'Content-disposition: attachment; filename=customizer-export-of-' . $theme . '.json' );
 		header( 'Content-Type: application/octet-stream; charset=utf-8' );
 
-		// Output the export data.
 		echo wp_json_encode( $theme_options );
 
 		// Start the download.
-		exit;
+		die();
             }
         }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Kemet Reset
+ * Kemet Reset Import Export Customizer Options
  *
  * @package Kemet Addons
  */
@@ -39,13 +39,9 @@ if ( ! class_exists( 'Kemet_Reset' ) ) {
 		 */
 
 		public function __construct() {
-
 			require_once KEMET_RESET_DIR . 'classes/class-reset-settings.php';
-			// require_once KEMET_RESET_DIR . 'classes/class-kemet-sites-helper.php';
-			 //require_once KEMET_RESET_DIR . 'classes/class-import.php';
-			require_once KEMET_RESET_DIR . 'classes/class-export.php';
-			
-			
+			require_once KEMET_RESET_DIR . 'classes/class-import.php';
+			require_once KEMET_RESET_DIR . 'classes/class-export.php';		
 		}
 
 	}
