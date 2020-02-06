@@ -22,3 +22,7 @@
     line-height: 10px;
     float: right;
 }
+.customizer-import-form.border-box .fields {
+    position: absolute;
+    top: -200px;
+}

@@ -28,7 +28,7 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 		public function __construct() {
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
 			add_action( 'customize_register', array( $this, 'export' ) );
-			add_action( 'customize_register', array( $this, 'import' ) );
+			add_action( 'admin_init', array( $this, 'import' ) );
             add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
             add_action( 'customize_controls_print_scripts', array( $this, 'controls_print_scripts' ) );
             add_action( 'wp_ajax_customizer_reset', array( $this, 'handle_ajax' ) );
@@ -61,7 +61,7 @@ if (! class_exists('Kemet_Customizer_Reset_ImportExport')) {
 			array(
 				'buttons'       => array(
 					'reset'  => array(
-						'text' => __( 'Reset Customizer Options', 'kemet-addons' ),
+						'text' => __( 'Reset Customizer Optionsssss', 'kemet-addons' ),
 					),
 					'export'  => array(
 						'text' => __( 'Export', 'kemet-addons' ),
@@ -128,24 +128,51 @@ public function export() {
 	 * Setup customizer import.
 	 */
 	public function import() {
-		if ( ! is_customize_preview() ) {
-			return;
-		}
+		if ( ! isset( $_POST['kemet_import_nonce'] ) || ! wp_verify_nonce( $_POST['kemet_import_nonce'], 'kemet_import_nonce' ) ) {
+				return;
+			}
+			if ( empty( $_POST['kemet_ie_action'] ) || 'import_settings' !== $_POST['kemet_ie_action'] ) {
+				return;
+			}
 
-		if ( ! isset( $_POST['action'] ) || 'customizer_import' !== $_POST['action'] ) {
-			return;
-		}
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
 
-		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'customizer-import' ) ) {
-			return;
-		}
+			$filename = $_FILES['import_file']['name'];
 
-		//require_once __DIR__ . '/helpers/class-customizer-setting.php';
+			if ( empty( $filename ) ) {
+				return;
+			}
+			$file_ext  = explode( '.', $filename );
+			$extension = end( $file_ext );
 
-		$importer = new Import();
+			if ( 'json' !== $extension ) {
+				wp_die( esc_html__( 'Please upload a valid .json file', 'kemet-addons' ) );
+			}
 
-		$importer->import();
-		$this->update( $value );
+			$import_file = $_FILES['import_file']['tmp_name'];
+
+			if ( empty( $import_file ) ) {
+				wp_die( esc_html__( 'Please upload a file to import', 'kemet-addons' ) );
+			}
+
+			global $wp_filesystem;
+			if ( empty( $wp_filesystem ) ) {
+				require_once ABSPATH . '/wp-admin/includes/file.php';
+				WP_Filesystem();
+			}
+			// Retrieve the settings from the file and convert the json object to an array.
+			$file_contants = $wp_filesystem->get_contents( $import_file );
+			$settings      = json_decode( $file_contants, 1 );
+
+			// Astra addons activation.
+			
+
+			// Delete existing dynamic CSS cache.
+			delete_option( 'kemet-settings' );
+
+			update_option( 'kemet-settings', $settings['customizer-settings'] );
 	}
 
 	/* public function import( $value ) {
