@@ -147,7 +147,7 @@ class Kemet_Breadcrumb_Trail {
 	public function get_trail() {
 		// Set up variables that we'll need.
         $breadcrumb    = '';
-        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'kemet-breadcrumb-separator', '»' ) );
+        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'breadcrumb-separator', '»' ) );
 		$separator      = '<span class="breadcrumb-sep">' . $separator . '</span>';
 		$item_count    = count( $this->items );
 		$item_position = 0;
@@ -489,7 +489,7 @@ class Kemet_Breadcrumb_Trail {
 		// Get the queried post.
 		$post    = get_queried_object();
 		$post_id = get_queried_object_id();
-		$posts_taxonomy 		= kemet_get_option( 'kemet-breadcrumb-posts-taxonomy', 'category' );
+		$posts_taxonomy 		= kemet_get_option( 'breadcrumb-posts-taxonomy', 'category' );
 		// If the post has a parent, follow the parent trail.
 		if ( 0 < $post->post_parent )
 			$this->add_post_parents( $post->post_parent );

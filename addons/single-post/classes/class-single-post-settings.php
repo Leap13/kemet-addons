@@ -42,7 +42,6 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
 			$defaults['title-meta-position'] = 'left';
 			$defaults['content-alignment'] = 'left';
 			$defaults['featured-image-header'] = false;
-			$defaults['kemet-related-posts-taxonomy'] = '';
 			$defaults['page-header-title'] = 'blog';
             return $defaults;
         }

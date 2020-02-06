@@ -89,8 +89,8 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
     
         function theme_defaults( $defaults ) {
             $defaults['widgets-style']              = 'style1';
-            $defaults['kemet-widget-style-color']   = '';
-            $defaults['kemet-footer-widget-style-color']   = '';
+            $defaults['widget-style-color']   = '';
+            $defaults['footer-widget-style-color']   = '';
             return $defaults;
         }
 

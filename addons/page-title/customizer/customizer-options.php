@@ -529,14 +529,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 
 		$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[kemet-breadcrumb-separator]', array(
-			'default'           => kemet_get_option( 'kemet-breadcrumb-separator' ),
+		KEMET_THEME_SETTINGS . '[breadcrumb-separator]', array(
+			'default'           => kemet_get_option( 'breadcrumb-separator' ),
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[kemet-breadcrumb-separator]', array(
+		KEMET_THEME_SETTINGS . '[breadcrumb-separator]', array(
 			'type'     => 'text',
 			'section'  => 'section-breadcrumbs',
 			'priority' => 10,
@@ -549,14 +549,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 
 		$wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
-				'default'           => kemet_get_option( 'kemet-breadcrumb-posts-taxonomy' ),
+			KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]', array(
+				'default'           => kemet_get_option( 'breadcrumb-posts-taxonomy' ),
 				'type'              => 'option',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 			)
 		);
 		$wp_customize->add_control(
-			KEMET_THEME_SETTINGS . '[kemet-breadcrumb-posts-taxonomy]', array(
+			KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]', array(
 				'type'     => 'select',
 				'section'  => 'section-breadcrumbs',
 				'priority' => 15,

@@ -31,8 +31,8 @@ $wp_customize->add_control(
 * Option: Widget Style Color
 */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[kemet-widget-style-color]', array(
-        'default'           => kemet_get_option( 'kemet-widget-style-color' ),
+    KEMET_THEME_SETTINGS . '[widget-style-color]', array(
+        'default'           => kemet_get_option( 'widget-style-color' ),
         'type'              => 'option',
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -45,7 +45,7 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
     new Kemet_Control_Color(
-        $wp_customize, KEMET_THEME_SETTINGS . '[kemet-widget-style-color]', array(
+        $wp_customize, KEMET_THEME_SETTINGS . '[widget-style-color]', array(
             'section'  => 'section-widgets',
             'priority' => 3,
             'label'    => __( 'Widget Style Color', 'kemet-addons' ),
@@ -61,7 +61,7 @@ $wp_customize->add_setting(
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
         'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[kemet-footer]', 
+            'controls' =>  KEMET_THEME_SETTINGS . '[footer-layout]', 
             'conditions' => '!=', 
             'values' => 'disabled',
         ),
@@ -89,13 +89,13 @@ $wp_customize->add_control(
 * Option: Footer Widget Style Color
 */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[kemet-footer-widget-style-color]', array(
-        'default'           => kemet_get_option( 'kemet-footer-widget-style-color' ),
+    KEMET_THEME_SETTINGS . '[footer-widget-style-color]', array(
+        'default'           => kemet_get_option( 'footer-widget-style-color' ),
         'type'              => 'option',
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
         'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[kemet-footer]', 
+            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[footer-layout]', 
             'conditions' => '!=/!=', 
             'values' => 'style1/disabled',
             'operators' => '&&'
@@ -104,7 +104,7 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
     new Kemet_Control_Color(
-        $wp_customize, KEMET_THEME_SETTINGS . '[kemet-footer-widget-style-color]', array(
+        $wp_customize, KEMET_THEME_SETTINGS . '[footer-widget-style-color]', array(
             'section'  => 'section-kemet-footer',
             'priority' => 142,
             'label'    => __( 'Widget Style Color', 'kemet-addons' ),

@@ -86,8 +86,8 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             // Breadcrumbs Defaults
             $defaults['kemet_has_breadcrumbs']              = '';
             $defaults['show-item-title']                    = true;
-            $defaults['kemet-breadcrumb-separator']         = '»';
-            $defaults['kemet-breadcrumb-posts-taxonomy']    = 'category';
+            $defaults['breadcrumb-separator']         = '»';
+            $defaults['breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
             $defaults['breadcrumbs-color']                  = '';
             $defaults['breadcrumbs-link-color']             = '';

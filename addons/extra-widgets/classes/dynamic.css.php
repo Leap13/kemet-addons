@@ -14,8 +14,8 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_widgets_dynamic_css');
  * @return string
  */
 function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
-            $widget_style_color         = kemet_get_option( 'kemet-widget-style-color' );
-            $footer_widget_style_color         = kemet_get_option( 'kemet-footer-widget-style-color' );
+            $widget_style_color         = kemet_get_option( 'widget-style-color' );
+            $footer_widget_style_color         = kemet_get_option( 'footer-widget-style-color' );
             $css_content = array(     
                 '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before' => array(
 					'border-bottom-color' => esc_attr( $widget_style_color ),
