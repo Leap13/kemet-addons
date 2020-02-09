@@ -104,7 +104,6 @@ div.title {
     font-size: 22px;
     font-weight: normal;
     margin-bottom: 0px;
-    float: left;
 }
 .widget-head {
     .widget-title{
@@ -117,6 +116,7 @@ div.title {
 .kmt-widget-style2 .widget-title {
     padding: 3px 10px;
     background-color: #E3E3E3;
+    float: left;
 }
 .kmt-widget-style2 div.title h4:after  {
     display: none;

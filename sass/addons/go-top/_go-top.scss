@@ -17,6 +17,9 @@
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
+    width: auto;
+    height: auto;
+    line-height: normal;
     &:before {
         content: "\e911";
         font-family: 'kemet-font';
