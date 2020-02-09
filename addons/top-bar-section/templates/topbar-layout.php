@@ -84,13 +84,16 @@ if(in_array('search' , (array)kemet_get_option( 'top-section-1' )) || in_array('
 	<div class="kemet-top-header  <?php echo esc_attr( $classes ); ?>" >
 		<div class="kmt-container">
 			<div class="kmt-row kmt-flex kemet-top-header-section-wrap">
+				<?php if(!empty( $section_1 )){ ?>
 					<div class="kemet-top-header-section kemet-top-header-section-1 kmt-flex kmt-justify-content-flex-start mt-topbar-section-equally <?php echo $section1_class; ?> kmt-col-xs-12" >
 							<?php echo $section_1; ?>
 					</div>
-
+				<?php } ?>
+				<?php if(!empty( $section_2 )){ ?>
 					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally <?php echo $section2_class; ?> kmt-col-xs-12<" >
 							<?php echo $section_2; ?>
 					</div>
+				<?php } ?>
 			</div>
 		</div><!-- .kmt-container -->
 	</div><!-- .kemet-top-header -->
