@@ -1,7 +1,7 @@
   
 <?php
 /* 
- * Header 5 Layout
+ * Header 4 Layout
  */
 $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 ?>
@@ -35,7 +35,7 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                  </div>
                 </div>
             </div>
-        </div><!-- Header Layout 5 -->
+        </div><!-- Header Layout 4 -->
         <?php kemet_main_header_bar_bottom(); ?>
     </div> 
 </div> 

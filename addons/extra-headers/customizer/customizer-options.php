@@ -498,7 +498,7 @@
 				'type'        => 'kmt-slider',
 				'section'     => 'section-header',
 				'priority'    => 49,
-				'label'       => __( 'Menu Icon Border Radius', 'kemet-addons' ),
+				'label'       => __( 'Menu Icon Border Radius[PX]', 'kemet-addons' ),
 				'suffix'      => '',
 				'input_attrs' => array(
 					'min'  => 0,

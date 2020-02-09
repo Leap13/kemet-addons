@@ -1,6 +1,6 @@
 <?php
 /* 
- * Header 9 Layout
+ * Header 8 Layout
  */
 $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 ?>
@@ -10,8 +10,8 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
         <?php kemet_main_header_bar_top(); ?>
     
         <div class="kmt-container">
-            <div id="header-layout-9" class="header inline-icon-menu-header">
-                <div class="menu-icon-header-9">
+            <div id="header-layout-8" class="header inline-icon-menu-header">
+                <div class="menu-icon-header-8">
                     <div class="inline-logo-menu"> 
                         <?php kemet_site_branding_markup(); ?>
                             <?php if(wp_is_mobile()){

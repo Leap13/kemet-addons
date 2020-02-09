@@ -1,6 +1,6 @@
 <?php
 /* 
- * Header 7 Layout
+ * Header 6 Layout
  */
 $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 ?>
