@@ -15,24 +15,25 @@
 	function customizerKmtButtons() {
 		var $buttonsContainer = $('<div class="kmt-customizer-reset-footer"></div>');
 
-		var $resetButton = $(
-			'<button name="kmt-customizer-reset" class="button kmt-customizer-reset-button">' + kmtResetCustomizerObj.buttons.reset.text + '</button>'
-		);
-
 		var $exportButton = $(
-			'<button href="' + kmtResetCustomizerObj.customizerUrl + '?action=customizer_export&nonce=' + kmtResetCustomizerObj.nonces.export + '" class="button customizer-export-import customizer-export-link"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.export.text + '</span></button>'
+			'<a href="' + kmtResetCustomizerObj.customizerUrl + '?action=customizer_export&nonce=' + kmtResetCustomizerObj.nonces.export + '" class="button customizer-export-import customizer-export-link"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.export.text + '</span></a>'
 		);
 
 		var $importButton = $(
 			'<button href="" class="button customizer-export-import customizer-import-trigger"><span class="customizer-export-import-hint">' + kmtResetCustomizerObj.buttons.import.text + '</span></button>'
 		);
 
+		var $resetButton = $(
+			'<button name="kmt-customizer-reset" class="button kmt-customizer-reset-button">' + kmtResetCustomizerObj.buttons.reset.text + '</button>'
+		);
+
 		$resetButton.on('click', resetCustomizer);
 		$importButton.on('click', openImportForm);
 
-		$buttonsContainer.append($resetButton);
+
 		$buttonsContainer.append($exportButton);
 		$buttonsContainer.append($importButton);
+		$buttonsContainer.append($resetButton);
 
 		$('#customize-footer-actions').prepend($buttonsContainer);
 

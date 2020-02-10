@@ -3,34 +3,36 @@
 }
 
 .expanded .wp-full-overlay-footer {
-	height: 105px;
+	height: 120px;
 }
 
 /* Panel */
 .kmt-customizer-reset-footer {
-	align-items: center;
+	display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    padding: 15px;
-    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 75px;
     background-color: #fff;
 }
-
+.customizer-import-form.is-expanded .postbox {
+	height: 143px;
+}
 /* Button */
 .kmt-customizer-reset-footer .kmt-customizer-reset-button {
-	width: 120px;
     padding: 10px;
     line-height: 10px;
-    float: right;
 }
 .customizer-import-form.border-box .fields {
     position: absolute;
     top: -200px;
 }
 .wp-core-ui .button.customizer-import-trigger{
-    margin-left:10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
-
 /* Import */
 .customizer-import-form {
 	padding: 10px;
@@ -49,7 +51,37 @@
 }
 
 .customizer-import-form.is-expanded {
-	padding: 10px;
-	max-height: 500px;
-
+	overflow: visible;
+    background-color: #ffffff;
+    z-index: 99;
+    display: block;
+    max-height: 150px;
+    height: 100px;
+}
+.customizer-import-form.is-expanded h3 {
+	padding: 0px 10px;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+form.customizer-import-form .inside {
+	 display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+.customizer-import-form .right-content {
+	width: 65%;
+    overflow: hidden;
+}
+.customizer-import-form .left-content {
+    width: 33%;
+    text-align: right;
+    align-self: flex-end;
+}
+.customizer-import-form .close.dashicons {
+    position: absolute;
+    right: 15px;
+    top: -25px;
+    cursor: pointer;
 }
