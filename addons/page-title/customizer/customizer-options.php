@@ -81,6 +81,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 		)
 	);
 	/**
+		 * Option: Merge Page Title with the main header
+		 */
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
+				'default'           => kemet_get_option( 'merge-with-header' ),
+				'type'              => 'option',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			)
+		);
+		$wp_customize->add_control(
+			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
+				'type'            => 'checkbox',
+				'section'         => 'section-page-title-header',
+				'label'           => __( 'Merge/Combine Page Title With Main Header', 'kemet-addons' ),
+				'priority'        => 6,
+				
+			)
+		);
+	/**
 	 * Option: Page Title Divider Color
 	 */
 	$wp_customize->add_setting(
@@ -139,25 +158,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'priority' => 20,
 					'settings' => array(),
 				)
-			)
-		);
-		/**
-		 * Option: Merge Page Title with the main header
-		 */
-		$wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
-				'default'           => kemet_get_option( 'merge-with-header' ),
-				'type'              => 'option',
-				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-			)
-		);
-		$wp_customize->add_control(
-			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
-				'type'            => 'checkbox',
-				'section'         => 'section-page-title-header',
-				'label'           => __( 'Merge/Combine Page Title With Main Header', 'kemet-addons' ),
-				'priority'        => 25,
-				
 			)
 		);
 
