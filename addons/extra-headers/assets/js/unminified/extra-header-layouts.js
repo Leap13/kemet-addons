@@ -1,4 +1,9 @@
 (function ($) {
+  //Header Merged With Page Title
+  var header = $('header');
+  if(header.hasClass('kmt-header-transparent')){
+    header.parent().addClass('overlay');
+  }
   //Header 5
   $('.header-main-layout-4 .menu-icon-social').on('click', function () {
     var header_5 = $('.header-main-layout-4 .kmt-navbar-collapse');

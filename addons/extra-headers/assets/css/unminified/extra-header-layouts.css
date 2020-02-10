@@ -10,6 +10,25 @@
 /*--------------------------------------------------------------
 ## Header 4
 --------------------------------------------------------------*/
+.kemet-merged-header-title.overlay {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+
+.kemet-merged-header-title .site-header.kmt-header-transparent {
+  position: relative;
+}
+
+.kemet-merged-header-title .site-header.kmt-header-transparent.kmt-is-sticky {
+  position: fixed;
+}
+
+.kemet-merged-header-title .site-header.kmt-header-transparent .main-header-bar {
+  background-image: none;
+  background-color: transparent;
+}
+
 .logo-menu-icon .site-branding {
   float: left;
 }

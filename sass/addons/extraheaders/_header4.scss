@@ -1,3 +1,22 @@
+.kemet-merged-header-title{
+    &.overlay{
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+    }
+    .site-header{
+        &.kmt-header-transparent{
+            position: relative;
+        &.kmt-is-sticky{
+            position: fixed;
+        }    
+        .main-header-bar{
+            background-image: none;
+            background-color: transparent;
+        }
+        }
+    }
+}
 .logo-menu-icon .site-branding {
     float: left;
 }
