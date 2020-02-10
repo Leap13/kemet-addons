@@ -31,34 +31,34 @@ $fields = array(
     'id'    => 'kemet-main-header-display',
     'type'  => 'switcher',
     'title' =>  __('Display Primary Header', 'kemet-addons'),
-    'label' => __('Display Main Header In Current Post/Page.', 'kemet-addons'),
+    'label' => __('Display Main Header in The Current Page/Post.', 'kemet-addons'),
     'default' => true
   ),
    array(
     'id'    => 'site-post-title',
     'type'  => 'switcher',
-    'title' =>  __('Disable Page Title', 'kemet-addons'),
-    'label' => __('Disable Post/Page Title', 'kemet-addons'),
+    'title' =>  __('Display Page Title', 'kemet-addons'),
+    'label' => __('Display Page/Post Title', 'kemet-addons'),
   ),
   array(
     'id'    => 'kmt-featured-img',
     'type'  => 'switcher',
-    'title' =>  __('Disable Featured Image', 'kemet-addons'),
-    'label' => __('Disable Post/Page Featured Image', 'kemet-addons'),
+    'title' =>  __('Display Featured Image', 'kemet-addons'),
+    'label' => __('Display Page/Post Featured Image', 'kemet-addons'),
   ),
       
   array(
     'id'    => 'kemet-footer-display',
     'type'  => 'switcher',
-    'title' =>  __('Disable Main Footer', 'kemet-addons'),
-    'label' => __('Disable Post/Page Footer Widgets Area', 'kemet-addons'),
+    'title' =>  __('Display Main Footer', 'kemet-addons'),
+    'label' => __('Display Page/Post Footer Widgets Area', 'kemet-addons'),
   ),
     
    array(
     'id'    => 'copyright-footer-layout',
     'type'  => 'switcher',
-    'title' =>  __('Disable Copyright Area', 'kemet-addons'),
-    'label' => __('Disable Post/Page Copyright', 'kemet-addons'),
+    'title' =>  __('Display Copyright Area', 'kemet-addons'),
+    'label' => __('Display The Copyright Area in The Page/Post', 'kemet-addons'),
   ),
   
     array(
@@ -103,8 +103,8 @@ if($options['top-bar-section']){
     $top_bar = array(
       'id'    => 'kemet-top-bar-display',
       'type'  => 'switcher',
-      'title' =>  __('Disable Top Bar', 'kemet-addons'),
-      'label' => __('Disable Top Bar In Current Post/Page.', 'kemet-addons'),
+      'title' =>  __('Display Top Bar', 'kemet-addons'),
+      'label' => __('Display The Top Bar in The Current Page/Post.', 'kemet-addons'),
     );
     $fields[] = $top_bar;
 }
