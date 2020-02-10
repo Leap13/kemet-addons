@@ -36,7 +36,6 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				),
 				'.kmt-is-sticky .main-header-menu .sub-menu li a' => array(
 					'color'               => esc_attr($sticky_submenu_link_color),
-					'border-bottom-color' => esc_attr( $sticky_submenu_link_color ),
 				),
 				'.kmt-is-sticky .main-header-menu .sub-menu li:hover > a' => array(
 					'color' => esc_attr($sticky_submenu_link_h_color)

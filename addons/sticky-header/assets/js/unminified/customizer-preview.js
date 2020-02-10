@@ -6,7 +6,7 @@
 	/**
 	 * SubMenu Border color
 	 */
-	kemet_css('kemet-settings[sticky-submenu-border-color]', 'border-color', '.kmt-is-sticky .main-header-menu .sub-menu a');
+	kemet_css('kemet-settings[sticky-submenu-border-color]', 'border-bottom-color', '.kmt-is-sticky .main-header-menu .sub-menu a');
 
     /**
 	 * Sticky Header background
