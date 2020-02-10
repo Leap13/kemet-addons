@@ -100,9 +100,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
             
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
 				
-			$display_top_bar = ( isset( $meta['kemet-top-bar-display'] ) && $meta['kemet-top-bar-display'] ) ? $meta['kemet-top-bar-display'] : 'default';
+			$display_top_bar = ( isset( $meta['kemet-top-bar-display'] ) ) ? $meta['kemet-top-bar-display'] : true;
 
-				if ( '1' == $display_top_bar ) {
+				if ( '0' == $display_top_bar ) {
 					$defaults = false;
 				}
 
@@ -115,9 +115,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
 		function post_title( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $title = ( isset( $meta['site-post-title'] ) && $meta['site-post-title'] ) ? $meta['site-post-title'] : 'default';
+            $title = ( isset( $meta['site-post-title'] ) ) ? $meta['site-post-title'] : true;
 
-			if ( '1' == $title ) {
+			if ( '0' == $title ) {
 			$defaults = false;
 			}
 
@@ -130,9 +130,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
 		function featured_img( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $featured_img = ( isset( $meta['kmt-featured-img'] ) && $meta['kmt-featured-img'] ) ? $meta['kmt-featured-img'] : 'default';
+            $featured_img = ( isset( $meta['kmt-featured-img'] ) ) ? $meta['kmt-featured-img'] : true;
 
-			if ( '1' == $featured_img ) {
+			if ( '0' == $featured_img ) {
 				$defaults = false;
 			}
 
@@ -145,9 +145,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
         function kemet_footer_display( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $footer_display =  ( isset( $meta['kemet-footer-display'] ) && $meta['kemet-footer-display'] ) ? $meta['kemet-footer-display'] : 'default';
+            $footer_display =  ( isset( $meta['kemet-footer-display'] ) ) ? $meta['kemet-footer-display'] : true;
             
-			if ( '1' == $footer_display ) {
+			if ( '0' == $footer_display ) {
                 return;
             }
 
@@ -160,9 +160,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
         function kemet_copyright_display( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $copyright_display =  ( isset( $meta['copyright-footer-layout'] ) && $meta['copyright-footer-layout'] ) ? $meta['copyright-footer-layout'] : 'default';
+            $copyright_display =  ( isset( $meta['copyright-footer-layout'] ) ) ? $meta['copyright-footer-layout'] : true;
 
-			if ( '1' == $copyright_display ) {
+			if ( '0' == $copyright_display ) {
 				$defaults = true;
 			}
 

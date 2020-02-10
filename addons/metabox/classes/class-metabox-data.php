@@ -39,12 +39,14 @@ $fields = array(
     'type'  => 'switcher',
     'title' =>  __('Display Page Title', 'kemet-addons'),
     'label' => __('Display Page/Post Title', 'kemet-addons'),
+    'default' => true
   ),
   array(
     'id'    => 'kmt-featured-img',
     'type'  => 'switcher',
     'title' =>  __('Display Featured Image', 'kemet-addons'),
     'label' => __('Display Page/Post Featured Image', 'kemet-addons'),
+    'default' => true
   ),
       
   array(
@@ -52,6 +54,7 @@ $fields = array(
     'type'  => 'switcher',
     'title' =>  __('Display Main Footer', 'kemet-addons'),
     'label' => __('Display Page/Post Footer Widgets Area', 'kemet-addons'),
+    'default' => true
   ),
     
    array(
@@ -59,6 +62,7 @@ $fields = array(
     'type'  => 'switcher',
     'title' =>  __('Display Copyright Area', 'kemet-addons'),
     'label' => __('Display The Copyright Area in The Page/Post', 'kemet-addons'),
+    'default' => true
   ),
   
     array(
@@ -105,6 +109,7 @@ if($options['top-bar-section']){
       'type'  => 'switcher',
       'title' =>  __('Display Top Bar', 'kemet-addons'),
       'label' => __('Display The Top Bar in The Current Page/Post.', 'kemet-addons'),
+      'default' => true
     );
     $fields[] = $top_bar;
 }
