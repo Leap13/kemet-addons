@@ -1,10 +1,13 @@
 <?php
+
+$defaults = Kemet_Theme_Options::defaults();
+
 /**
  * Option: Widgets Style
  */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[widgets-style]', array(
-        'default'           => kemet_get_option( 'widgets-style' ),
+        'default'           => $defaults[ 'widgets-style' ],
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
     )
@@ -32,7 +35,7 @@ $wp_customize->add_control(
 */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[widget-style-color]', array(
-        'default'           => kemet_get_option( 'widget-style-color' ),
+        'default'           => $defaults[ 'widget-style-color' ],
         'type'              => 'option',
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -57,7 +60,7 @@ $wp_customize->add_control(
  */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[footer-widgets-style]', array(
-        'default'           => kemet_get_option( 'footer-widgets-style' ),
+        'default'           => $defaults[ 'footer-widgets-style' ],
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
         'dependency'  => array(
@@ -90,7 +93,7 @@ $wp_customize->add_control(
 */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[footer-widget-style-color]', array(
-        'default'           => kemet_get_option( 'footer-widget-style-color' ),
+        'default'           => $defaults[ 'footer-widget-style-color' ],
         'type'              => 'option',
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
