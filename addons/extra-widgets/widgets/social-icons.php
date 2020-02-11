@@ -210,7 +210,7 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
       if(!empty($profile['social-icon'])){
       $icon_class = explode('-', $profile['social-icon'],2)[1];
       ?>
-      .kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?> {
+      <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?> {
         <?php if ( $profile['icon-color'] ){ echo 'color: '.esc_attr($profile['icon-color']); } ?>;
       }
       <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>:hover {
