@@ -4,13 +4,13 @@
  * 
  * @package Kemet Addons
  */
-
+$defaults = Kemet_Theme_Options::defaults();
 	/**
 	 * Option: Top Bar Section 1 Item/s
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-section-1]', array(
-			'default'           => kemet_get_option( 'top-section-1' ),
+			'default'           => $defaults[ 'top-section-1' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
 		)
@@ -36,7 +36,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-section-1-html]', array(
-			'default'           => kemet_get_option( 'top-section-1-html' ),
+			'default'           => $defaults[ 'top-section-1-html' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 			'dependency'  => array(
@@ -68,7 +68,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[section1-content-align]', array(
-			'default'           => kemet_get_option( 'section1-content-align' ),
+			'default'           => $defaults[ 'section1-content-align' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -104,7 +104,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-section-2]', array(
-			'default'           => kemet_get_option( 'top-section-2' ),
+			'default'           => $defaults[ 'top-section-2' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
 		)
@@ -132,7 +132,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-section-2-html]', array(
-			'default'           => kemet_get_option( 'top-section-2-html' ),
+			'default'           => $defaults[ 'top-section-2-html' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 			'dependency'  => array(
@@ -165,7 +165,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[section2-content-align]', array(
-			'default'           => kemet_get_option( 'section2-content-align' ),
+			'default'           => $defaults[ 'section2-content-align' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -215,7 +215,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-item-padding]', array(
-			'default'           => kemet_get_option( 'topbar-item-padding' ),
+			'default'           => $defaults[ 'topbar-item-padding' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -244,7 +244,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-padding]', array(
-			'default'           => kemet_get_option( 'topbar-padding' ),
+			'default'           => $defaults[ 'topbar-padding' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -273,7 +273,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-border-size]', array(
-			'default'           => kemet_get_option( 'topbar-border-size' ),
+			'default'           => $defaults[ 'topbar-border-size' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
 		)
@@ -302,7 +302,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-font-size]', array(
-			'default'           => kemet_get_option( 'topbar-font-size' ),
+			'default'           => $defaults[ 'topbar-font-size' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -335,7 +335,7 @@
      */
     $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-responsive]',array(
-				'default'           => kemet_get_option('topbar-responsive'),
+				'default'           => $defaults['topbar-responsive'],
 				'type'              => 'option',
 				'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
 			)
@@ -373,7 +373,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-bg-color]', array(
-			'default'           => kemet_get_option( 'topbar-bg-color' ),
+			'default'           => $defaults[ 'topbar-bg-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -394,7 +394,7 @@
 	*/
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-text-color]', array(
-			'default'           => kemet_get_option('topbar-text-color'),
+			'default'           => $defaults['topbar-text-color'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -415,7 +415,7 @@
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-link-color]', array(
-			'default'           => kemet_get_option('topbar-link-color'),
+			'default'           => $defaults['topbar-link-color'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -436,7 +436,7 @@
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-link-h-color]', array(
-			'default'           => kemet_get_option('topbar-link-h-color'),
+			'default'           => $defaults['topbar-link-h-color'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -457,7 +457,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-border-bottom-color]', array(
-			'default'           => kemet_get_option( 'topbar-border-bottom-color' ),
+			'default'           => $defaults[ 'topbar-border-bottom-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -477,7 +477,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-bg-color]', array(
-			'default'           => kemet_get_option( 'topbar-submenu-bg-color' ),
+			'default'           => $defaults[ 'topbar-submenu-bg-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -497,7 +497,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-items-color]', array(
-			'default'           => kemet_get_option( 'topbar-submenu-items-color' ),
+			'default'           => $defaults[ 'topbar-submenu-items-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -517,7 +517,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[topbar-submenu-items-h-color]', array(
-			'default'           => kemet_get_option( 'topbar-submenu-items-h-color' ),
+			'default'           => $defaults[ 'topbar-submenu-items-h-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -538,7 +538,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
-			'default'           => kemet_get_option( 'top-bar-search-style' ),
+			'default'           => $defaults[ 'top-bar-search-style' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
