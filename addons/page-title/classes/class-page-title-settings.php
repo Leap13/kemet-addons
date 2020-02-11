@@ -94,6 +94,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['breadcrumbs-link-h-color']           = '';
             $defaults['page-title-border-right-color']      = '';
             $defaults['breadcrumbs-enabled']                = true; 
+            $defaults['kemet_breadcrumbs_home']                = true; 
             return $defaults;
         }
         

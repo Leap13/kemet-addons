@@ -8,12 +8,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+$defaults = Kemet_Theme_Options::defaults();
 	/**
      * Option: Page Title Layouts
      */
     $wp_customize->add_setting(
  		KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
- 			'default'           => kemet_get_option( 'page-title-layouts' ),
+ 			'default'           => $defaults[ 'page-title-layouts' ],
  			'type'              => 'option',
  			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
  		)
@@ -49,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      */
     $wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[page_title_alignment]',array(
-					'default'           => kemet_get_option('page_title_alignment'),
+					'default'           => $defaults['page_title_alignment'],
 					'type'              => 'option',
 					'transport'         => 'postMessage',
 					'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices'),
@@ -85,7 +86,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[merge-with-header]', array(
-				'default'           => kemet_get_option( 'merge-with-header' ),
+				'default'           => $defaults[ 'merge-with-header' ],
 				'type'              => 'option',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 			)
@@ -104,7 +105,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
-			'default'           => kemet_get_option( 'page-title-border-right-color' ),
+			'default'           => $defaults[ 'page-title-border-right-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -129,7 +130,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
-				'default'           => kemet_get_option( 'page-title-bg-obj' ),
+				'default'           => $defaults[ 'page-title-bg-obj' ],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_background_obj' ),
@@ -166,7 +167,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-space]', array(
-			'default'           => kemet_get_option( 'page-title-space' ),
+			'default'           => $defaults[ 'page-title-space' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -195,7 +196,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-responsive]',array(
-				'default'           => kemet_get_option('page-title-responsive'),
+				'default'           => $defaults['page-title-responsive'],
 				'type'              => 'option',
 				'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices')
 		)
@@ -233,7 +234,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-color]', array(
-			'default'           => kemet_get_option( 'page-title-color' ),
+			'default'           => $defaults[ 'page-title-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -253,7 +254,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
-			'default'           => kemet_get_option( 'page-title-font-size' ),
+			'default'           => $defaults[ 'page-title-font-size' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -286,7 +287,7 @@ if ( ! defined( 'ABSPATH' ) ) {
        */
       $wp_customize->add_setting(
           KEMET_THEME_SETTINGS . '[page-title-font-family]', array(
-              'default'           => kemet_get_option( 'page-title-font-family' ),
+              'default'           => $defaults[ 'page-title-font-family' ],
               'type'              => 'option',
               'sanitize_callback' => 'sanitize_text_field',
           )
@@ -308,7 +309,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[page-title-font-weight]', array(
-                 'default'           => kemet_get_option( 'page-title-font-weight' ),
+                 'default'           => $defaults[ 'page-title-font-weight' ],
                  'type'              => 'option',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
              )
@@ -331,7 +332,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-text-transform]', array(
-                 'default'           => kemet_get_option( 'pagetitle-text-transform' ),
+                 'default'           => $defaults[ 'pagetitle-text-transform' ],
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -358,7 +359,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
-                 'default'           => kemet_get_option( 'pagetitle-line-height' ),
+                 'default'           => $defaults[ 'pagetitle-line-height' ],
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -385,7 +386,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[page-title-letter-spacing]', array(
-				'default'           => kemet_get_option( 'page-title-letter-spacing' ),
+				'default'           => $defaults[ 'page-title-letter-spacing' ],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -413,7 +414,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		*/
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
-				'default'           => kemet_get_option('pagetitle-bottomline-color'),
+				'default'           => $defaults['pagetitle-bottomline-color'],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -434,7 +435,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
-                 'default'           => kemet_get_option('pagetitle-bottomline-height'),
+                 'default'           => $defaults['pagetitle-bottomline-height'],
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -462,7 +463,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           */
          $wp_customize->add_setting(
              KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
-                 'default'           => kemet_get_option('pagetitle-bottomline-width'),
+                 'default'           => $defaults['pagetitle-bottomline-width'],
                  'type'              => 'option',
                  'transport'         => 'postMessage',
                  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
@@ -491,7 +492,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
-			'default'           => kemet_get_option('breadcrumbs-enabled'),
+			'default'           => $defaults['breadcrumbs-enabled'],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -510,7 +511,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[show-item-title]', array(
-			'default'           => kemet_get_option('show-item-title'),
+			'default'           => $defaults['show-item-title'],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -530,7 +531,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumb-separator]', array(
-			'default'           => kemet_get_option( 'breadcrumb-separator' ),
+			'default'           => $defaults[ 'breadcrumb-separator' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 		)
@@ -550,7 +551,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]', array(
-				'default'           => kemet_get_option( 'breadcrumb-posts-taxonomy' ),
+				'default'           => $defaults[ 'breadcrumb-posts-taxonomy' ],
 				'type'              => 'option',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 			)
@@ -575,7 +576,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-space]', array(
-			'default'           => kemet_get_option( 'breadcrumbs-space' ),
+			'default'           => $defaults[ 'breadcrumbs-space' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -619,7 +620,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-			'default'           => kemet_get_option( 'breadcrumbs-color' ),
+			'default'           => $defaults[ 'breadcrumbs-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -640,7 +641,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-			'default'           => kemet_get_option( 'breadcrumbs-link-color' ),
+			'default'           => $defaults[ 'breadcrumbs-link-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -661,7 +662,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
 	  $wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-			'default'           => kemet_get_option( 'breadcrumbs-link-h-color' ),
+			'default'           => $defaults[ 'breadcrumbs-link-h-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -682,7 +683,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       */
         $wp_customize->add_setting(
  		KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_home]', array(
- 			'default'           => kemet_get_option( 'kemet_breadcrumbs_home' ),
+ 			'default'           => $defaults[ 'kemet_breadcrumbs_home' ],
  			'type'              => 'option',
  			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
  		)
