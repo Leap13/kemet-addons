@@ -7,7 +7,7 @@
  */
 
 $title                 = kemet_get_the_title();
-if(is_singular()){
+if(is_singular( 'post' )){
 	$header_title = kemet_get_option('page-header-title');
 	if($header_title == 'blog'){
 		$title  = esc_html__( 'Blog', 'kemet-addons' );
