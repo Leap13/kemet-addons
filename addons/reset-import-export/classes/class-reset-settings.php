@@ -144,6 +144,10 @@ if ( ! class_exists( 'Kemet_Customizer_Reset_ImportExport' ) ) {
                 return;
             }
 
+            //require_once __DIR__ . '/helpers/class-customizer-setting.php';
+
+           // update( $value );
+
             $importer = new Import();
 
             $importer->import();
@@ -165,6 +169,12 @@ if ( ! class_exists( 'Kemet_Customizer_Reset_ImportExport' ) ) {
                     delete_option( KEMET_THEME_SETTINGS );
                 }
             }
+            $settings = $this->wp_customize->settings();
+            foreach ( $settings as $setting ) {
+				if ( 'theme_mod' == $setting->type ) {
+					remove_theme_mod( $setting->id );
+				}
+			}
         }
 
     }
