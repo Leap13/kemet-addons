@@ -17,7 +17,6 @@
 .kmt-is-sticky {
   position: fixed;
   width: 100%;
-  background-color: #fff;
   animation-duration: 0.5s;
 }
 
@@ -43,7 +42,7 @@
 
 .kmt-is-sticky .main-header-bar {
   transition: none;
-  background-color: transparent;
+  background-color: #fff;
 }
 
 .kmt-is-sticky.kmt-sticky-logo .custom-logo-link {

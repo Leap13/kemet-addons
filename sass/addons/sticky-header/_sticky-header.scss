@@ -4,7 +4,6 @@
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
-    background-color: #fff;
     animation-duration: 0.5s; 
     &.sticky-fade{
       animation-name: fadeIn;
@@ -28,7 +27,7 @@
     }
     .main-header-bar {
       transition: none;
-      background-color: transparent;
+      background-color: #fff;
     }
     &.kmt-sticky-logo{
       .custom-logo-link {
