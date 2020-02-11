@@ -10,13 +10,13 @@
  */
 
 
-
+$defaults = Kemet_Theme_Options::defaults();
     /**
 	 * Option: Enable Go Top Link
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[enable-go-top]', array(
-			'default'           => kemet_get_option( 'enable-go-top' ),
+			'default'           => $defaults[ 'enable-go-top' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -57,7 +57,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[go-top-icon-size]', array(
-			'default'           => kemet_get_option( 'go-top-icon-size' ),
+			'default'           => $defaults[ 'go-top-icon-size' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -95,7 +95,7 @@
 	 */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
-            'default'           => kemet_get_option( 'go-top-button-size' ),
+            'default'           => $defaults[ 'go-top-button-size' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -129,7 +129,7 @@
      */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[go-top-border-radius]', array(
-            'default'           => kemet_get_option( 'go-top-border-radius' ),
+            'default'           => $defaults[ 'go-top-border-radius' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
@@ -172,7 +172,7 @@
      */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[go-top-responsive]',array(
-            'default'           => kemet_get_option( 'go-top-responsive' ),
+            'default'           => $defaults[ 'go-top-responsive' ],
             'type'              => 'option',
             'sanitize_callback' => array('Kemet_Customizer_Sanitizes','sanitize_choices'),
             'dependency'  => array(
@@ -224,7 +224,7 @@
      */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[go-top-icon-color]', array(
-            'default'           => kemet_get_option( 'go-top-icon-color' ),
+            'default'           => $defaults[ 'go-top-icon-color' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -250,7 +250,7 @@
      */
     $wp_customize->add_setting(
         KEMET_THEME_SETTINGS . '[go-top-icon-h-color]', array(
-            'default'           => kemet_get_option( 'go-top-icon-h-color' ),
+            'default'           => $defaults[ 'go-top-icon-h-color' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -276,7 +276,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[go-top-bg-color]', array(
-			'default'           => kemet_get_option( 'go-top-bg-color' ),
+			'default'           => $defaults[ 'go-top-bg-color' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
@@ -302,7 +302,7 @@
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[go-top-bg-h-color]', array(
-			'default'           => kemet_get_option( 'go-top-bg-color' ),
+			'default'           => $defaults[ 'go-top-bg-color' ],
             'type'              => 'option',
             'transport'         => 'postMessage',
             'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
