@@ -128,7 +128,7 @@
 				'type'        => 'kmt-slider',
 				'section'     => 'section-header',
 				'priority'    => 22,
-				'label'       => __( 'Vertical Header Width', 'kemet-addons' ),
+				'label'       => __( 'Vertical Header Width [PX]', 'kemet-addons' ),
 				'suffix'      => '',
 				'input_attrs' => array(
 					'min'  => 100,
@@ -160,10 +160,10 @@
 				'type'        => 'kmt-slider',
 				'section'     => 'section-header',
 				'priority'    => 22,
-				'label'       => __( 'Vertical Header Width', 'kemet-addons' ),
+				'label'       => __( 'Vertical Header Width [PX]', 'kemet-addons' ),
 				'suffix'      => '',
 				'input_attrs' => array(
-					'min'  => 60,
+					'min'  => 50,
 					'step' => 1,
 					'max'  => 100,
 				),
