@@ -1,10 +1,11 @@
 <?php
+$defaults = Kemet_Theme_Options::defaults();
 			/**
    	* Option: Page Title In Content
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[enable-page-title-content-area]', array(
-		  'default'           => kemet_get_option( 'enable-page-title-content-area' ),
+		  'default'           => $defaults[ 'enable-page-title-content-area' ],
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -24,7 +25,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[prev-next-links]', array(
-		  'default'           => kemet_get_option( 'prev-next-links' ),
+		  'default'           => $defaults[ 'prev-next-links' ],
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -45,7 +46,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[enable-author-box]', array(
-		  'default'           => kemet_get_option( 'enable-author-box' ),
+		  'default'           => $defaults[ 'enable-author-box' ],
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -63,7 +64,7 @@
 	//Title and meta position
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[title-meta-position]', array(
-			'default'           => kemet_get_option( 'title-meta-position' ),
+			'default'           => $defaults[ 'title-meta-position' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -108,7 +109,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[featured-image-header]', array(
-		  'default'           => kemet_get_option( 'featured-image-header' ),
+		  'default'           => $defaults[ 'featured-image-header' ],
 		  'type'              => 'option',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 		)
@@ -128,7 +129,7 @@
 	*/
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[page-header-title]', array(
-			'default'           => kemet_get_option( 'page-header-title' ),
+			'default'           => $defaults[ 'page-header-title' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
@@ -148,7 +149,7 @@
 		//Content Alignment
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[content-alignment]', array(
-			'default'           => kemet_get_option( 'content-alignment' ),
+			'default'           => $defaults[ 'content-alignment' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -179,7 +180,7 @@
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[padding-inside-container]', array(
-			'default'           => kemet_get_option( 'padding-inside-container' ),
+			'default'           => $defaults[ 'padding-inside-container' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
