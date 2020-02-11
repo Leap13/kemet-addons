@@ -526,6 +526,39 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
+	 * Option: Breadcrumbs Font Size
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[breadcrumbs-font-size]', array(
+			'default'           => $defaults[ 'breadcrumbs-font-size' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Responsive_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-size]', array(
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-breadcrumbs',
+				'priority'       => 6,
+				'label'          => __( 'Font Size', 'kemet-addons' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 1,
+						'step' => 1,
+						'max' =>200,
+					),
+					'em' => array(
+						'min' => 0.1,
+						'step' => 0.1,
+						'max' => 10,
+					),
+				 ),
+			)
+		)
+	);
+	/**
 	 * Option: Breadcrumbs Separator
 	 */
 
