@@ -8,8 +8,27 @@
 # Normalize
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Header 5
+## Header 4
 --------------------------------------------------------------*/
+.kemet-merged-header-title.overlay {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+
+.kemet-merged-header-title .site-header.kmt-header-transparent {
+  position: relative;
+}
+
+.kemet-merged-header-title .site-header.kmt-header-transparent.kmt-is-sticky {
+  position: fixed;
+}
+
+.kemet-merged-header-title .site-header.kmt-header-transparent .main-header-bar {
+  background-image: none;
+  background-color: transparent;
+}
+
 .logo-menu-icon .site-branding {
   float: right;
 }
@@ -189,7 +208,7 @@
 }
 
 /*--------------------------------------------------------------
-## Header 6
+## Header 5
 --------------------------------------------------------------*/
 .admin-bar.header-main-layout-5 .main-header-bar-wrap {
   margin-top: 33px;
@@ -389,7 +408,7 @@
 }
 
 /*--------------------------------------------------------------
-## Header 7
+## Header 6
 --------------------------------------------------------------*/
 .header-main-layout-6 .top-navigation .nav-menu {
   z-index: 99;
@@ -562,7 +581,7 @@
 }
 
 /*--------------------------------------------------------------
-## Header 8
+## Header 7
 --------------------------------------------------------------*/
 .admin-bar.header-main-layout-7 .main-header-bar-wrap {
   margin-top: 33px;
@@ -694,7 +713,7 @@
 .header-main-layout-7 .main-header-container {
   justify-content: center;
   flex-direction: column;
-  width: 100%;
+  width: 300px;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s ease-in-out;
@@ -771,7 +790,7 @@
 }
 
 /*--------------------------------------------------------------
-## Header 9
+## Header 8
 --------------------------------------------------------------*/
 .header-main-layout-8 .header9-logo-menu {
   display: flex;

@@ -17,9 +17,7 @@
 .kmt-is-sticky {
   position: fixed;
   width: 100%;
-  background-color: #fff;
-  animation-duration: 1s;
-  animation-fill-mode: both;
+  animation-duration: 0.5s;
 }
 
 .kmt-is-sticky.sticky-fade {
@@ -43,7 +41,8 @@
 }
 
 .kmt-is-sticky .main-header-bar {
-  background-color: transparent;
+  transition: none;
+  background-color: #fff;
 }
 
 .kmt-is-sticky.kmt-sticky-logo .custom-logo-link {
@@ -68,10 +67,10 @@
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
+    visibility: hidden;
   }
   100% {
-    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -82,6 +81,7 @@
   }
   100% {
     transform: translate3d(0, 0, 0);
+    visibility: hidden;
   }
 }
 
