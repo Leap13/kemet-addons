@@ -59,7 +59,7 @@ if ( ! class_exists( 'Kemet_Customizer_Reset_ImportExport' ) ) {
                 array(
                     'buttons'       => array(
                         'reset'  => array(
-                            'text' => __( 'Reset Customizer Options', 'kemet-addons' ),
+                            'text' => __( 'Reset Options', 'kemet-addons' ),
                         ),
                         'export'  => array(
                             'text' => __( 'Export', 'kemet-addons' ),
