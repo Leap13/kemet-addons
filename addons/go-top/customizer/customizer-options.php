@@ -38,7 +38,8 @@ $defaults = Kemet_Theme_Options::defaults();
 				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
 				'conditions' => '==', 
 				'values' => true,
-			),
+            ),
+            'sanitize_callback' => false    
         )
     );
     $wp_customize->add_control(
@@ -48,7 +49,6 @@ $defaults = Kemet_Theme_Options::defaults();
                 'label'    => __( 'Button Settings', 'kemet-addons' ),
                 'section'  => 'section-go-top',
                 'priority' => 5,
-                'settings' => array(),
             )
         )
     );
@@ -205,7 +205,8 @@ $defaults = Kemet_Theme_Options::defaults();
 				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
 				'conditions' => '==', 
 				'values' => true,
-			),
+            ),
+            'sanitize_callback' => false
         )
     );
     $wp_customize->add_control(
@@ -215,7 +216,6 @@ $defaults = Kemet_Theme_Options::defaults();
                 'label'    => __( 'Button Style', 'kemet-addons' ),
                 'section'  => 'section-go-top',
                 'priority' => 30,
-                'settings' => array(),
             )
         )
     );
