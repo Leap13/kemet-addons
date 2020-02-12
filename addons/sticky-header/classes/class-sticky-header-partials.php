@@ -22,7 +22,6 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
         */
 
         public function __construct() {
-            //add_filter( 'kemet_has_custom_logo', '__return_true' );
             add_action ( 'kemet_header', array( $this, 'sticky_header_logo' ), 1 );
             add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
@@ -107,7 +106,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
             $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
             $sticky_responsive        = kemet_get_option('sticky-responsive');
-            if( ($enabled_sticky) && ('header-main-layout-6' != $kemet_header_layout && 'header-main-layout-8' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout)) {
+            if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
                 $classes[] = 'kmt-sticky-header';
                 $classes[] =  $sticky_responsive;
                 if( $enabled_sticky ) {
@@ -118,11 +117,12 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
                         $classes[] = 'kmt-sticky-logo';
                     }
                 }
-                if($enable_top_bar){
-                    $classes[] = 'kmt-sticky-header';
-                    $classes[] = 'kmt-sticky-top-bar';
-                    $classes[] = $sticky_style;
-                }
+                if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
+                    if($enable_top_bar){
+                        $classes[] = 'kmt-sticky-top-bar';
+                    }
+    
+                }    
 
             }
             
@@ -131,11 +131,31 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
         }
 
         public function add_styles() {
-            Kemet_Style_Generator::kmt_add_css( KEMET_STICKY_HEADER_DIR.'assets/css/minified/style.min.css' );
+
+            $css_prefix = '.min.css';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$css_prefix = '.css';
+				$dir        = 'unminified';
+			}
+			if ( is_rtl() ) {
+				$css_prefix = '-rtl.min.css';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '-rtl.css';
+				}
+			}
+            Kemet_Style_Generator::kmt_add_css( KEMET_STICKY_HEADER_DIR.'assets/css/'. $dir  .'/style' . $css_prefix);
         }
 
         public function add_scripts() {
-            Kemet_Style_Generator::kmt_add_js( KEMET_STICKY_HEADER_DIR.'assets/js/minified/sticky-header.min.js' );
+
+            $js_prefix  = '.min.js';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$js_prefix  = '.js';
+				$dir        = 'unminified';
+			}
+            Kemet_Style_Generator::kmt_add_js( KEMET_STICKY_HEADER_DIR.'assets/js/'. $dir  .'/sticky-header' . $js_prefix);
         }
     }
 }

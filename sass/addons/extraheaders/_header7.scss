@@ -1,49 +1,70 @@
-.header-main-layout-7{
-    .top-navigation{
-        .nav-menu{
-            z-index: 99;
+.admin-bar {
+    &.header-main-layout-7{
+        .main-header-bar-wrap {
+        margin-top: 33px;
         }
     }
-    .kmt-sitehead-custom-menu-items {
+}
+.kemet-main-v-header-align-right.header-main-layout-7{
+    padding-right: 60px;
+}
+.kemet-main-v-header-align-left.header-main-layout-7{
+    padding-left: 60px;
+}
+.header-main-layout-7{
+    position: relative;
+    .main-header-bar{
+        border-bottom-width: 0 !important;
+    }
+    &.has-box-shadow.v-header-align-right {
+        .main-header-bar-wrap {
+            box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);
+        }
+    }
+    &.has-box-shadow.v-header-align-left{
+        .main-header-bar-wrap {
+            box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
+        }
+    }
+    .header-main-layout-7 .kmt-sitehead-custom-menu-items {
         display: block;
         text-align: center;
     }    
-    .site-branding{
-        position: absolute;
-    }
     .main-header-bar-wrap {
         text-align: center;
-        width: 100%;
-        .main-header-bar{
-            border-width: 0;
-            z-index: 999;
-            padding-top: 150px;
-            position: fixed;
-            top: 0;
-            height: 100%;
-            -webkit-transition: all 0.4s ease-in-out;
-            -moz-transition: all 0.4s ease-in-out;
-            -o-transition: all 0.4s ease-in-out;
-            transition: all 0.4s ease-in-out;
-            opacity: 0;
-            visibility: hidden;
-            &.side-header{
-                opacity: 0.8;
-                visibility: visible;
-            }
-        }  
-    }
-    .menu-icon-social{
+        width: 60px;
         position: fixed;
         top: 0;
-        right: 50px;
-        z-index: 9999;
-        .menu-icon{
-            border-radius: 50%;
+        max-width: 100%;
+        height: 100%;
+        border-bottom: none;
+        z-index: 100;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &.side-header{
+            width: 300px;
+            .main-header-container{
+                opacity: 1;
+                visibility: visible;
+            }    
         }
+    }
+    .kmt-site-identity {
+        padding-top: 60px;
+    }
+    .menu-icon-social{
+        position: absolute;
+        top: 0;
+        left: 2px;
+        z-index: 999;
     }
     .site-title{
         display: block;
+    }
+    .site-branding{
+        text-align: center;
     }
     #site-navigation {
         display: block;
@@ -97,14 +118,17 @@
         display: block;
         text-align: center;
     }
+    
     .main-header-container {
         justify-content: center;
         flex-direction: column;
-        width: 100%;
-        -webkit-transition: all 0.4s ease-in-out;
-        -moz-transition: all 0.4s ease-in-out;
-        -o-transition: all 0.4s ease-in-out;
-        transition: all 0.4s ease-in-out;
+        width: 300px;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
     .henavigation,
     .kmt-main-header-bar-alignment {
@@ -114,38 +138,28 @@
 }
 .kmt-header-break-point{
     .header-main-layout-7{
-        .top-navigation{
-            .nav-menu{
-                z-index: 999999;
-            }
-        }
-        position: relative;
         .main-header-container{
-            padding-top: unset;
-        } 
-        .main-header-bar{
-            opacity: 1;
-            visibility: visible;
-            position: static;
-            padding: 1.5em 0 0;
-            display: flex;
-        }
-        .site-branding{
-            margin: 0;
-            position: static;
+            display: flex !important;
         }
         .menu-icon-social{
             display: none !important;
         }
         .main-header-container{
             flex-direction: row;
-            display: flex;  
+            display: flex;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         .kmt-site-identity{
             padding: 0;
         }
+        .ss-content{
+            overflow: hidden;
+            width: auto;
+        }
         .site-branding{
             padding-left: 20px;
+            text-align: left;
         }
         .kmt-mobile-menu-buttons{
             padding-right: 20px;
@@ -154,6 +168,33 @@
             .kmt-sitehead-custom-menu-items {
                 display: flex;
             }
-        }
+        }  
     }
+    .header-main-layout-7 , .header-main-layout-5{
+        .kmt-sitehead-custom-menu-items{
+            .search-icon{
+                .kmt-search-container{
+                    width: fit-content;
+                    margin: auto;
+                .kmt-search-menu-icon{
+                    left: unset;
+                }
+                .kmt-dropdown-active{
+                    left: unset;
+                 }
+                    }
+            }
+        }
+     }
+     .header-main-layout-7 , .header-main-layout-5 ,.header-main-layout-6 {
+        .main-header-bar-wrap {
+            width: 100%;
+            border: 0px !important; 
+            }
+            .ss-wrapper {
+            position: initial;
+            margin: 0px;
+            height: auto;
+            }
+     }
 }

@@ -38,7 +38,7 @@ function kemet_single_post_dynamic_css( $dynamic_css ) {
             
             $css_content = array(
                 '.single .entry-header' => array(
-                        'text-align' => esc_attr($title_meta_poistion),
+                    'text-align' => esc_attr($title_meta_poistion),
                 ), 
                 '.single-post .kmt-article-single, .single-post .comments-area .comment-respond , .single-post .kmt-author-box-info , .single-post .kmt-comment-list li' => array(
                 'padding-top'    => kemet_responsive_spacing( $padding_inside_container, 'top', 'desktop' ),

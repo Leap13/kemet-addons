@@ -1,151 +1,211 @@
-.logo-menu-icon .site-branding {
-    float: left;
-}
-
-.menu-icon-social {
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    .menu-icon {
-        padding: 5px;
-        height: 56px;
-        float: right;
-        min-width: 56px;
-        text-align: center;
-        line-height: initial;
-    }
-    .social-icons {
-        display: inline-block;
-    }
-}
-.open .icon-bars-btn {
-    top: 8px;
-}
-.icon-bars-btn {
-    width: 28px;
-    height: 28px;
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    top: 5px;
-    span {
-        background-color: #4a4a4a;
-        position: absolute;
-        border-radius: 2px;
-        transition: all .5s cubic-bezier(.8,.5,.2,1.4) , background-color 0s;
-        width:100%;
-        height: 2px;
-    }
-}
-.kemet-top-header-section-wrap .kmt-col-md-6 {
-    min-height: 0px;
-}
-.icon-bars-btn {
-    span:nth-child(1) {
-        top: 8px;
-        left: 0px;
-    }
-    span:nth-child(2) {
-        top: 16px;  
-        left: 0px;
-        opacity: 1;
-    }
-    span:nth-child(3) {
-        top: 24px;
-        left: 0px;
-    }
-}
-
-.menu-icon:not(.open) {
-    .icon-bars-btn:hover span:nth-child(1){
-        transform: rotate(-3deg) scaleY(1.1);
-    }
-    .icon-bars-btn:hover span:nth-child(2){
-        transform: rotate(3deg) scaleY(1.1);
-    }
-    .icon-bars-btn:hover span:nth-child(3){
-     transform: rotate(-4deg) scaleY(1.1);
-    }
-}
-.menu-icon.open {
- .icon-bars-btn span:nth-child(1){
-  transform: rotate(45deg);
-  top: 13px;
-    }
-   .icon-bars-btn span:nth-child(2){
-   opacity:0;
-    }
-    .icon-bars-btn span:nth-child(3){
-    transform: rotate(-45deg);
-    top: 13px;
-    }
-}
-
-.header-main-layout-5 { 
-    .kmt-navbar-collapse {
-    display: none;
-    width: 100%;
-    position: relative;
-    }
-    .main-navigation {
-    display: block;
-    }
-    .main-header-menu {
-    display: flex;
-    flex-wrap: nowrap;
-        li {
-        flex-grow: 1;
-        text-align: center;
+.admin-bar {
+    &.header-main-layout-5 {
+        .main-header-bar-wrap {
+        margin-top: 33px;
         }
     }
-    .main-header-bar {
-    border: none !important;
-    padding-top: 0;
+}
+.v-header-align-right{
+    .main-header-bar-wrap {
+        right: 0;
+        border-left: 1px solid #eee;
     }
-    .header-main-layout-5.kmt-header-transparent {
-        position: relative;
+}
+.v-header-align-left{
+    .main-header-bar-wrap {
+        left: 0;
+        border-right: 1px solid #eee;
+    }
+}
+.ss-wrapper{
+    overflow-x: hidden;
+}
+.header-main-layout-5 {
+    .main-header-bar{
+        border-bottom-width: 0 !important;
+    }
+    .main-header-bar-navigation{
+        width: 100%;
+    }
+    .main-header-bar-wrap {
+        text-align: center;
+        position: fixed;
+        top: 0;
+        max-width: 100%;
+        height: 100%;
+        border-bottom: none;
+        z-index: 100;
+    }
+    .kmt-site-identity {
+        padding: 60px 0px;
+    }
+    .site-branding{
+        text-align: center;
+    }
+    .site-title {
+        display: block;
+    }
+    #site-navigation {
+        display: block;
+        li{
+            width: 100%;
+            display: block;
+            float: none;
+            position: relative;
+            &:hover{
+                > .sub-menu{            
+                    position: static;
+                }
+                >a{
+                    &:after{
+                        transform: rotateX(180deg) !important;
+                    }
+                }
+            } 
+            ul{
+                li{
+                    &:hover{
+                        >a{
+                            &:after{
+                                transform: rotateX(180deg) !important;
+                            }
+                        }
+                    }
+                    &.menu-item-has-children{
+                        width: 80%;
+                        margin: auto;
+                        >a{
+                            position: static;
+                            &:after{
+                                top: inherit;
+                                transform: translate(0,0%);
+                            }
+                        }
+                    }
+                }
+            }       
+        }
+        li:last-child {
+            border-bottom: 0px;
+        }
+        .sub-menu {
+            width: 100%;
+        }
+        
+    }
+    .kmt-sitehead-custom-menu-items {
+        display: block;
+        text-align: center;
+    }
+    &.has-box-shadow.v-header-align-right{
+        .main-header-bar-wrap {
+            box-shadow: -2px 0 4px 2px rgba(0,0,0,.15);
+        }
+    }
+    &.has-box-shadow.v-header-align-left{
+        .main-header-bar-wrap {
+            box-shadow: 2px 0 4px 2px rgba(0,0,0,.15);
+        }
     }
     
-    .header-main-layout-5.kmt-header-transparent .main-header-container {
-    position: absolute;
-    }
     .main-header-container {
-    position: relative;
-    width: 100%;
-    border-style: solid;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
     }
-    .main-header-menu ul.sub-menu {
-    width: 100%;
+    .main-navigation,
+    .kmt-main-header-bar-alignment {
+        width: 100%;
+        text-align: center;
     }
 }
 .kmt-header-break-point{
+    &.kemet-main-v-header-align-left.header-main-layout-5, &.kemet-main-v-header-align-right.header-main-layout-5 ,&.kemet-main-v-header-align-left.header-main-layout-7, &.kemet-main-v-header-align-right.header-main-layout-7{
+        padding: 0 ;
+    }
     .header-main-layout-5{
-        .mobile-icon-logo{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+        .main-header-bar-wrap {
+            width: 100% ;
+            border: 0px; 
+            .main-header-bar-navigation{
+                width: auto;
+            }
+            }
+            
+        }
+        .kmt-sitehead-custom-menu-items{
+            .kmt-search-container{
+                width: inherit;
+            }
+        }
+        .ss-wrapper {
+        position: initial;
+        margin: 0px;
+        height: auto;
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,.15) !important;
+        }
+        
+        .main-header-container{
+            display: flex !important;
+        }
+        .menu-icon-social{
+            display: none !important;
         }
         .main-header-container{
-            &.logo-menu-icon{
-                border-width: 0;
-            }
-        }
-        .header-logo-menu-icon{
+            flex-direction: row;
             display: flex;
-            flex-direction: column-reverse;
-            .kmt-container{
-                width: 100%;
-            }
+            
         }
-        .kmt-navbar-collapse{
-            display: block !important;;
+        .kmt-site-identity{
+            padding: 0;
         }
-        .main-header-menu{
-            display: block;
+        .ss-content{
+            width: 100%;
+            overflow: hidden;
         }
-        .kmt-mobile-menu-buttons{
-            align-items: center;
+        .site-branding{
+            padding-left: 20px;
+            text-align: left;
         }
-    } 
+     
+    .kmt-mobile-menu-buttons{
+        padding-right: 20px;
+    }
+    .kmt-outside-menu{
+        .kmt-sitehead-custom-menu-items {
+            display: flex;
+        }
+    }
+}
+
+.header-main-layout-7{
+    .main-header-bar{
+        .kmt-sitehead-custom-menu-items{
+            .search-icon{          
+                .kmt-search-menu-icon{ 
+                    left: 30px;
+                }
+                .kmt-dropdown-active{
+                    left: 0;
+                }
+            } 
+        }
+    }
+}
+.header-main-layout-5{
+    .main-header-bar{
+        .kmt-sitehead-custom-menu-items{
+            .search-icon{ 
+                &.kmt-search-container{
+                    width: 250px;
+                }
+                .kmt-search-menu-icon{
+                    left: 30px;
+                }
+                .kmt-dropdown-active{
+                    left: 0px;
+                }
+            } 
+        }
+    }
 }

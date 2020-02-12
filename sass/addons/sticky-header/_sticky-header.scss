@@ -4,9 +4,7 @@
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
-    background-color: #fff;
-    animation-duration: 1s; 
-    animation-fill-mode: both; 
+    animation-duration: 0.5s; 
     &.sticky-fade{
       animation-name: fadeIn;
     }
@@ -28,7 +26,8 @@
       display: inline-block;
     }
     .main-header-bar {
-      background-color: transparent;
+      transition: none;
+      background-color: #fff;
     }
     &.kmt-sticky-logo{
       .custom-logo-link {
@@ -41,13 +40,6 @@
     .kemet-top-header-wrap {
       display: none;
     }
-    &.kmt-sticky-header{
-      &.kmt-sticky-top-bar{
-        .kemet-top-header-wrap{
-          display: block;
-        }
-      }
-    }
 }
 .sticky-custom-logo {
   display: none;
@@ -58,8 +50,8 @@
   }
 }
 @keyframes fadeIn { 
-  0% {opacity: 0;} 
-  100% {opacity: 1;} 
+  0% {visibility: hidden;} 
+  100% {visibility: visible;} 
 }
 @keyframes slideInDown { 
   0% { 
@@ -67,29 +59,27 @@
       visibility: visible; 
   } 
   100% { 
-      transform: translate3d(0, 0, 0); 
+      transform: translate3d(0, 0, 0);
+      visibility: hidden; 
   } 
 }
 /* Sticky Header Responsive */
 @media only screen and (max-width: 480px) {
   .sticky-hide-mobile.kmt-is-sticky
   {
-    position: relative !important;
+    display: none !important;
   }
-  .kmt-is-sticky{
-    top: 0px;
-  } 
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .sticky-hide-tablet.kmt-is-sticky
   {
-    position: relative !important;
+    display: none !important;
   }
 }
 @media only screen and (max-width: 767px) {
   .sticky-hide-tablet-mobile.kmt-is-sticky
   {
-    position: relative !important;
+    display: none !important;
   }
 }

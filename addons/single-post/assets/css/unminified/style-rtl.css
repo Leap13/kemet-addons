@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------
+## Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Single Post
+--------------------------------------------------------------*/
+.single.hide-nav-links .post-navigation {
+  display: none;
+}
+
+.kmt-separate-container .kmt-author-box {
+  background-color: #ffffff;
+}
+
+/*--------------------------------------------------------------
+## Author Box
+--------------------------------------------------------------*/
+.kmt-author-box-info {
+  border-top: 1px solid #eee;
+  padding: 2em 0;
+}
+
+.kmt-author-box-info .author-title {
+  margin-bottom: 10px;
+}
+
+.kmt-author-box-info .kmt-author-info {
+  display: flex;
+  align-items: center;
+}
+
+.kmt-author-box-info .kmt-author-info p {
+  margin-right: 10px;
+}
+
+.kmt-author-box-info .kmt-author-avatar img {
+  border-radius: 50%;
+}
+
+.kmt-separate-container .kmt-author-box-info {
+  background-color: #fff;
+  border-top: 0;
+  padding: 4em 6.67em;
+}
+
+@media (min-width: 545px) {
+  .single.kmt-page-builder-template .kmt-author-box-info {
+    max-width: 1180px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

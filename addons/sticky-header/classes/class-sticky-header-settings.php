@@ -42,7 +42,7 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
                                 'title'    => __( 'Sticky Header', 'kemet-addons' ),
                                 'panel'    => 'panel-layout',
                                 'section'  => 'section-header-group',
-                                'priority' => 11,
+                                'priority' => 17,
                             )
                     )
                 );
@@ -53,24 +53,26 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
 
         public function theme_defaults( $defaults ) {
             $defaults['enable-sticky']           = '1';
+            $defaults['sticky-top-bar']           = false;
             $defaults['sticky-bg-obj']           = array(
-                'background-color'      => '',
+                'background-color'      => '#ffffff',
                 'background-image'      => '',
                 'background-repeat'     => 'repeat',
                 'background-position'   => 'center center',
                 'background-size'       => 'auto',
                 'background-attachment' => 'scroll',
             );
-            $defaults['sticky-top-bar']           = false;
             $defaults['sticky-logo-width']     = '';
+            $defaults['sticky-logo']     = '';
             $defaults['sticky-menu-link-color']  = '';
             $defaults['sticky-menu-link-h-color']  = '';
             $defaults['sticky-submenu-bg-color']  = '';
             $defaults['sticky-submenu-link-color']  = '';
             $defaults['sticky-submenu-link-h-color']  = '';
             $defaults['sticky-border-bottom-color']  = '';
+            $defaults['sticky-submenu-border-color']  = '';
             $defaults['sticky-responsive']  = 'all-devices';
-            $defaults['sticky-style']  = 'sticky-slide';
+            $defaults['sticky-style']  = 'sticky-fade';
             return $defaults;
         }
 

@@ -15,7 +15,7 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   BreadcrumbTrail
- * @version   0.9.2
+ * @version   1.0.0
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2017, Justin Tadlock
  * @link      https://themehybrid.com/plugins/breadcrumb-trail
@@ -147,7 +147,7 @@ class Kemet_Breadcrumb_Trail {
 	public function get_trail() {
 		// Set up variables that we'll need.
         $breadcrumb    = '';
-        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'kemet-breadcrumb-separator', '»' ) );
+        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'breadcrumb-separator', '»' ) );
 		$separator      = '<span class="breadcrumb-sep">' . $separator . '</span>';
 		$item_count    = count( $this->items );
 		$item_position = 0;
@@ -373,9 +373,7 @@ class Kemet_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_network_home_link() {
-//		if ( is_multisite() && ! is_main_site() && true === $this->args['network'] )
-//			$this->items[] = sprintf( '<a href="%s" rel="home">%s</a>', esc_url( network_home_url() ), $this->labels['home'] );
-        		// Home item
+        // Home item
 		$setting = kemet_get_option( 'kemet_breadcrumbs_home', 'icon' );
 
 		// Icon
@@ -409,11 +407,7 @@ class Kemet_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_site_home_link() {
-//		$network = is_multisite() && ! is_main_site() && true === $this->args['network'];
-//		$label   = $network ? get_bloginfo( 'name' ) : $this->labels['home'];
-//		$rel     = $network ? '' : ' rel="home"';
-//		$this->items[] = sprintf( '<a href="%s"%s>%s</a>', esc_url( user_trailingslashit( home_url() ) ), $rel, $label );
-        		// Home item
+        // Home item
 		$setting = kemet_get_option( 'kemet_breadcrumbs_home', 'icon' );
 
 		// Icon
@@ -495,7 +489,7 @@ class Kemet_Breadcrumb_Trail {
 		// Get the queried post.
 		$post    = get_queried_object();
 		$post_id = get_queried_object_id();
-		$posts_taxonomy 		= kemet_get_option( 'kemet-breadcrumb-posts-taxonomy', 'category' );
+		$posts_taxonomy 		= kemet_get_option( 'breadcrumb-posts-taxonomy', 'category' );
 		// If the post has a parent, follow the parent trail.
 		if ( 0 < $post->post_parent )
 			$this->add_post_parents( $post->post_parent );

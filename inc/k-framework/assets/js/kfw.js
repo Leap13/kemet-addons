@@ -219,7 +219,15 @@
         var $link = $('#kfw-tab-link-'+ slug);
 
         if( $link.length > 0 ) {
-
+          var resetOptions = $link.closest('.kfw-tab-depth-0').attr('data-reset');
+            $nav.parent().parent().parent('.kfw-container').find('.kfw-buttons').each(function(){
+              if(resetOptions == 'false'){
+                  $(this).hide();
+              }else{
+                  $(this).show();
+              }
+            });
+          
           $link.closest('.kfw-tab-depth-0').addClass('kfw-tab-active').siblings().removeClass('kfw-tab-active');
           $links.removeClass('kfw-section-active');
           $link.addClass('kfw-section-active');

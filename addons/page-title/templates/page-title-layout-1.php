@@ -7,7 +7,7 @@
  */
 
 $title                 = kemet_get_the_title();
-if(is_singular()){
+if(is_singular( 'post' )){
 	$header_title = kemet_get_option('page-header-title');
 	if($header_title == 'blog'){
 		$title  = esc_html__( 'Blog', 'kemet-addons' );
@@ -16,9 +16,6 @@ if(is_singular()){
 $description           = get_the_archive_description();
 $classes []= kemet_get_option( 'page-title-layouts' );
 $classes_responsive = kemet_get_option( 'page-title-responsive' );
-if ( "page-title-layout-1" === kemet_get_option( 'page-title-layouts' )) {
-	$classes []= kemet_get_option( 'page_title_alignment' );
-}
 
 $classes   = implode( ' ', $classes );
 

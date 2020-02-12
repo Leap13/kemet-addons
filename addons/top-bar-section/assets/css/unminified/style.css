@@ -99,6 +99,7 @@
 .kemet-top-header {
   padding: 10px 0px;
   border-bottom-width: 1px;
+  border-bottom-color: #dddddd;
 }
 
 .top-bar-search-box .kemet-top-header-section .kmt-search-icon {
@@ -147,12 +148,28 @@
   left: 0;
 }
 
+.kemet-top-header-section > * {
+  padding: 0 10px;
+}
+
+.kemet-top-header-section .widget {
+  margin-bottom: 0;
+}
+
+.kemet-top-header-section .widget p {
+  margin-bottom: 0;
+}
+
 .kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon {
   right: 30px;
 }
 
 .kemet-top-header-section.kemet-top-header-section-2 .kmt-dropdown-active {
   right: 0;
+}
+
+.kmt-sticky-header.kmt-sticky-top-bar .kemet-top-header-wrap {
+  display: block;
 }
 
 /* Top Header Responsive */

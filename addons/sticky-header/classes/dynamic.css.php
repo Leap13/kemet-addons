@@ -23,9 +23,11 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			$sticky_submenu_link_color             = kemet_get_option( 'sticky-submenu-link-color' );
 			$sticky_submenu_link_h_color             = kemet_get_option( 'sticky-submenu-link-h-color' ); 
 			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color');	   
-            $css_output = array(
+			$submenu_border_color			  = kemet_get_option('sticky-submenu-border-color');
+
+			$css_output = array(
             //Sticky Header
-				'.kmt-is-sticky .main-header-bar-wrap' => kemet_get_background_obj( $sticky_bg_obj ),
+				'.site-header.kmt-is-sticky .main-header-bar' => kemet_get_background_obj( $sticky_bg_obj ),
 				'.kmt-is-sticky .main-header-menu a' => array(
 					'color' => esc_attr($sticky_menu_link_color),
 				),
@@ -34,7 +36,6 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				),
 				'.kmt-is-sticky .main-header-menu .sub-menu li a' => array(
 					'color'               => esc_attr($sticky_submenu_link_color),
-					'border-bottom-color' => esc_attr( $sticky_submenu_link_color ),
 				),
 				'.kmt-is-sticky .main-header-menu .sub-menu li:hover > a' => array(
 					'color' => esc_attr($sticky_submenu_link_h_color)
@@ -47,6 +48,9 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				),
 				'.kmt-is-sticky .main-header-bar' => array(
 					'border-bottom-color' => esc_attr( $sticky_border_bottom_color),
+				),
+				'.kmt-is-sticky .main-header-menu .sub-menu a' => array(
+					'border-bottom-color'        => esc_attr( $submenu_border_color ),
 				),
 			);
 

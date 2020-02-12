@@ -56,13 +56,12 @@ if (! class_exists('Kemet_Page_Title_settings')) {
                 )
             );
             require_once KEMET_PAGE_TITLE_DIR . 'customizer/customizer-options.php';  
-            require_once KEMET_PAGE_TITLE_DIR .'customizer/customizer-helpers.php';
         }
         
         function theme_defaults( $defaults ) {
             // Page title Options
             $defaults['page-title-layouts']                 = 'page-title-layout-1';
-            $defaults['page_title_alignment']              = 'align-center';
+            $defaults['page_title_alignment']              = 'center';
             $defaults['page-title-bg-obj']                  = array(
 				'background-color'      => '#eaeaea',
 				'background-image'      => '',
@@ -75,6 +74,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['page-title-space']                   = '';
             $defaults['page-title-color']                   = '';
             $defaults['page-title-font-size']                   = '';
+            $defaults['page-title-letter-spacing']                   = '';
             $defaults['page-title-font-family']             = 'inherit';
             $defaults['page-title-font-weight']              = 'inherit';
             $defaults['pagetitle-text-transform']           = '';
@@ -84,16 +84,16 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['pagetitle-bottomline-width']         = 150;
             $defaults['pagetitle-bottomline-color']       = '';
             // Breadcrumbs Defaults
-            $defaults['kemet_has_breadcrumbs']              = '';
             $defaults['show-item-title']                    = true;
-            $defaults['kemet-breadcrumb-separator']         = '';
-            $defaults['kemet-breadcrumb-posts-taxonomy']    = 'category';
+            $defaults['breadcrumb-separator']         = '»';
+            $defaults['breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
             $defaults['breadcrumbs-color']                  = '';
             $defaults['breadcrumbs-link-color']             = '';
             $defaults['breadcrumbs-link-h-color']           = '';
             $defaults['page-title-border-right-color']      = '';
             $defaults['breadcrumbs-enabled']                = true; 
+            $defaults['breadcrumbs-font-size']                = ''; 
             return $defaults;
         }
         

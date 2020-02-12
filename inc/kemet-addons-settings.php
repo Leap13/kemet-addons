@@ -31,51 +31,57 @@ if (class_exists('KFW')) {
       array(
         'id' => 'metabox',
         'type' => 'switcher',
-        'title' => __( 'Single page/post options', 'kemet-addons' ),
-        'subtitle' => __('Enable/Disable the page options to customize your single page/post.', 'kemet-ddons'),
-        'default' => 'true',
+        'title' => __( 'Single Page/Post Options', 'kemet-addons' ),
+        'subtitle' => __('Enable/Disable the single page/post options that will allow you to individually customize your single page or post.', 'kemet-ddons'),
+        'default' => true,
       ),array(
         'id' => 'extra-headers',
         'type' => 'switcher',
-        'title' => __( 'Advanced Headers', 'kemet-addons' ),
-        'subtitle' => __('Enable/Disable Extra Kemet Headers which includes many options to design awesome headers.', 'kemet-ddons'),
-        'default' => 'false',
+        'title' => __( 'Kemet Advanced Headers', 'kemet-addons' ),
+        'subtitle' => __('Enable/Disable Kemet advanced headers that include extra header styles and customization options.', 'kemet-ddons'),
+        'default' => false,
       ),array(
         'id' => 'sticky-header',
         'type' => 'switcher',
         'title' => __( 'Sticky Header', 'kemet-addons'),
-        'subtitle' => __('Enable/Disable Sticky Header options.', 'kemet-ddons'),
-        'default' => 'false',
+        'subtitle' => __('Enable/Disable Kemet sticky header options.', 'kemet-ddons'),
+        'default' => false,
       ),array(
         'id' => 'top-bar-section',
         'type' => 'switcher',
         'title' => __('Top Bar Section', 'kemet-addons'),
-        'subtitle' => __('Enable/Disable Top bar Area includes two sections with content options (Search, widget, custom text, woocommerce icon.)', 'kemet-ddons'),
-        'default' => 'false',
+        'subtitle' => __('Enable/Disable the top bar area that includes right and left sections with unlimited content possibilities.', 'kemet-ddons'),
+        'default' => false,
         ),array(
         'id' => 'page-title',
         'type' => 'switcher',
-        'title' => __('Page Title Area', 'kemet-addons'),
-        'subtitle' => __('Enable/Disable page title area which includes title & Breadcrumbs and their customizer options.', 'kemet-ddons'),
-        'default' => 'false',
+        'title' => __('Page Title', 'kemet-addons'),
+        'subtitle' => __('Enable/Disable the page title area that includes page/post title and breadcrumbs.', 'kemet-ddons'),
+        'default' => false,
       ),array(
         'id' => 'go-top',
         'type' => 'switcher',
-        'title' => __( 'Go to top icon', 'kemet-addons' ),
-        'subtitle' => __('Enable/Disable Go To Top Icon and its customizer options.', 'kemet-ddons'),
-        'default' => 'false',
+        'title' => __( 'Go to Top Button', 'kemet-addons' ),
+        'subtitle' => __('Enable/Disable the Go to Top button including its customization options.', 'kemet-ddons'),
+        'default' => false,
       ),array(
         'id' => 'extra-widgets',
         'type' => 'switcher',
         'title' => __('Extra Widgets', 'kemet-addons'),
-        'subtitle' => __('Enable/Disable Extra Kemet Wordpress widgets to build your website', 'kemet-ddons'),
-        'default' => 'false',
+        'subtitle' => __('Enable/Disable Kemet extra widgets that have been built to enrich your WordPress website.', 'kemet-ddons'),
+        'default' => false,
       ),array(
         'id' => 'single-post',
         'type' => 'switcher',
         'title' => __('Single Post Options', 'kemet-addons'),
-        'subtitle' => __('Enable/Disable Extra option to customize single post content.', 'kemet-ddons'),
-        'default' => 'false',
+        'subtitle' => __('Enable/Disable the extra options that will allow you to customize your single post content.', 'kemet-ddons'),
+        'default' => false,
+      ),array(
+        'id' => 'reset-import-export',
+        'type' => 'switcher',
+        'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
+        'subtitle' => __('Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-ddons'),
+        'default' => false,
       ),
     ),
   ),
@@ -104,6 +110,7 @@ if (class_exists('KFW')) {
       'id' => 'plugins_tab',
       'title' => __( 'Plugins', 'kemet-addons'),
       'priority' => '10',
+      'reset_options' => false,
       'fields' => array(
         // A Card field
         array(
@@ -121,6 +128,7 @@ if (class_exists('KFW')) {
     KFW::createSection($prefix, array(
     'id' => 'info_tab',
     'title' => __( 'System Info', 'kemet-addons'),
+    'reset_options' => false,
     'priority' => '15',
     'fields' => array(
       // A switcher field

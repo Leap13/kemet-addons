@@ -60,7 +60,21 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
         }
 
         function add_styles() {
-            Kemet_Style_Generator::kmt_add_css( KEMET_PAGE_TITLE_DIR.'assets/css/minified/style.min.css');
+
+            $css_prefix = '.min.css';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$css_prefix = '.css';
+				$dir        = 'unminified';
+			}
+
+			if ( is_rtl() ) {
+				$css_prefix = '-rtl.min.css';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '-rtl.css';
+				}
+			}
+            Kemet_Style_Generator::kmt_add_css( KEMET_PAGE_TITLE_DIR.'assets/css/'. $dir .'/style' . $css_prefix);
 
 	    }
 

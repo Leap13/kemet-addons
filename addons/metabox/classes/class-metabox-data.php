@@ -29,41 +29,46 @@ KFW::createMetabox( $prefix_page_opts, array(
 $fields = array(
   array(
     'id'    => 'kemet-main-header-display',
-    'type'  => 'checkbox',
-    'title' =>  __('Disable Primary Header', 'kemet-addons'),
-    'label' => __('Disable Main Header In Current Post/Page.', 'kemet-addons'),
+    'type'  => 'switcher',
+    'title' =>  __('Display Primary Header', 'kemet-addons'),
+    'label' => __('Display Main Header in The Current Page/Post.', 'kemet-addons'),
+    'default' => true
   ),
    array(
     'id'    => 'site-post-title',
-    'type'  => 'checkbox',
-    'title' =>  __('Disable Page Title', 'kemet-addons'),
-    'label' => __('Disable Post/Page Title', 'kemet-addons'),
+    'type'  => 'switcher',
+    'title' =>  __('Display Page Title', 'kemet-addons'),
+    'label' => __('Display Page/Post Title', 'kemet-addons'),
+    'default' => true
   ),
   array(
     'id'    => 'kmt-featured-img',
-    'type'  => 'checkbox',
-    'title' =>  __('Disable Featured Image', 'kemet-addons'),
-    'label' => __('Disable Post/Page Featured Image', 'kemet-addons'),
+    'type'  => 'switcher',
+    'title' =>  __('Display Featured Image', 'kemet-addons'),
+    'label' => __('Display Page/Post Featured Image', 'kemet-addons'),
+    'default' => true
   ),
       
   array(
     'id'    => 'kemet-footer-display',
-    'type'  => 'checkbox',
-    'title' =>  __('Disable Main Footer', 'kemet-addons'),
-    'label' => __('Disable Post/Page Footer Widgets Area', 'kemet-addons'),
+    'type'  => 'switcher',
+    'title' =>  __('Display Main Footer', 'kemet-addons'),
+    'label' => __('Display Page/Post Footer Widgets Area', 'kemet-addons'),
+    'default' => true
   ),
     
    array(
     'id'    => 'copyright-footer-layout',
-    'type'  => 'checkbox',
-    'title' =>  __('Disable Copyright Area', 'kemet-addons'),
-    'label' => __('Disable Post/Page Copyright', 'kemet-addons'),
+    'type'  => 'switcher',
+    'title' =>  __('Display Copyright Area', 'kemet-addons'),
+    'label' => __('Display The Copyright Area in The Page/Post', 'kemet-addons'),
+    'default' => true
   ),
   
     array(
     'id'    => 'kemet-meta-enable-header-transparent',
     'type'  => 'select',
-    'title' =>  __('Header Transparent', 'kemet-addons'),
+    'title' =>  __('Overlay Header', 'kemet-addons'),
     'options'     => array(
       'default'     => __('Default', 'kemet-addons'),
       'enabled'     => __('Enable', 'kemet-addons'),
@@ -101,9 +106,10 @@ $options = get_option( 'kmt_framework' );
 if($options['top-bar-section']){
     $top_bar = array(
       'id'    => 'kemet-top-bar-display',
-      'type'  => 'checkbox',
-      'title' =>  __('Disable Top Bar', 'kemet-addons'),
-      'label' => __('Disable Top Bar In Current Post/Page.', 'kemet-addons'),
+      'type'  => 'switcher',
+      'title' =>  __('Display Top Bar', 'kemet-addons'),
+      'label' => __('Display The Top Bar in The Current Page/Post.', 'kemet-addons'),
+      'default' => true
     );
     $fields[] = $top_bar;
 }

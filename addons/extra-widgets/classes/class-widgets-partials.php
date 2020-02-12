@@ -51,10 +51,32 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
         }
         
         public function add_styles() {
-            Kemet_Style_Generator::kmt_add_css(KEMET_WIDGETS_DIR.'assets/css/minified/style.min.css');
+
+			$css_prefix = '.min.css';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$css_prefix = '.css';
+				$dir        = 'unminified';
+			}
+
+			if ( is_rtl() ) {
+				$css_prefix = '-rtl.min.css';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '-rtl.css';
+				}
+			}
+            Kemet_Style_Generator::kmt_add_css(KEMET_WIDGETS_DIR.'assets/css/'.$dir.'/style' . $css_prefix );
         }
         public function add_scripts() {
-             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/minified/mailchimp.min.js');
+
+            $js_prefix  = '.min.js';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$js_prefix  = '.js';
+				$dir        = 'unminified';
+            }
+            
+            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/mailchimp' . $js_prefix);
 		}
         
     }
