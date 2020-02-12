@@ -59,4 +59,4 @@ $blog_post_order = kemet_get_option( 'blog-post-structure' );
         </div><!-- .entry-content .clear -->
 	</div><!-- .post-content -->
 
-</div> <!-- .blog-layout-1 -->
+</div> <!-- .blog-layout-3 -->
