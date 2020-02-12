@@ -61,10 +61,12 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
         }
 
         function add_styles() {
+            Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/prettyphoto/css/prettyPhoto.css');
             Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/css/minified/blog-layouts.min.css');
 
         }
         public function add_scripts() {
+            Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/prettyphoto/js/jquery.prettyPhoto.js');
             Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/kemet-grid.min.js');
             Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/blog-layouts.min.js');
        }

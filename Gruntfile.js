@@ -213,6 +213,7 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
+                    'addons/blog-layouts/assets/js/minified/blog-layouts.min.js': 'addons/blog-layouts/assets/js/unminified/blog-layouts.js',
                     'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
                     'addons/extra-headers/assets/js/minified/customizer-preview.min.js': 'addons/extra-headers/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/customizer-preview.min.js': 'addons/extra-widgets/assets/js/unminified/customizer-preview.js',
