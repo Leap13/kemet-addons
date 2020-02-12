@@ -13,6 +13,17 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Kemet Addons plugin adds more features to Kemet WordPress Theme like metaboxes, activate/deactivate the customizer options. More options will be released soon.
 This plugin works only with: [Kemet WordPress Theme](https://kemet.io/) So you must install and activate it first.
 
+- **Single Page/Post Options** Get full control over each page/post design with single page/post options.
+- **Advanced Post Options**
+- **Advanced Headers** 5 Advanced horizontal and vertical headers with many of customization options.
+- **Sticky Header** Allows you to display a sticky header when user scrolls the page.
+- **Top bar Section** Adds top area on top of the header with many customization options.
+- **Page Title Area** Adds advanced management for page title and breadcrumbs area. 
+- **Extra Widgets** Adds Social media and Mailchimp widgets.
+- **Go to Top Button** Adds the option for go to top button.
+- **Customizer Features** Export, import  and reset customizer settings.
+
+
 == Installation ==
 
 1. Install using the WordPress built-in Plugin installer, or Extract the zip file and drop the contents in the `wp-content/plugins/` directory of your WordPress installation.
@@ -36,3 +47,14 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 
 0.1.1 version
 - Fixed: compatibility problems with PHP7
+
+1.0.0 version
+- Added: Five new advanced header layouts with extra header options including vertical headers and burger menu icon headers.
+- Added: Sticky header option.
+- Added: Top bar area includes right and left sections.
+- Added: Page title area that includes page/post title and breadcrumbs options.
+- Added: Go to top button with customization options.
+- Added: Social icons widget.
+- Added: Mailchimp widget.
+- Added: Single post options to customize the post content.
+- Added: Customizer settings reset, import and export options.
