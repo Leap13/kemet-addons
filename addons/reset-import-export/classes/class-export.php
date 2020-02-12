@@ -15,7 +15,7 @@ class Export {
 	/**
 	 * Class constructor
 	 *
-	 * @param object
+	 * @param object $wp_customize `WP_Customize_Manager` instance.
 	 */
 	public function __construct( $wp_customize = null ) {
 		$this->wp_customize = $wp_customize;
@@ -26,29 +26,29 @@ class Export {
 	 */
 	public function export() {
 		$theme    = get_stylesheet();
-        // Get options from the Customizer API.
+		$mods     = get_theme_mods();
+		$theme_options     = array(
+			'template' => $template,
+			'mods'     => $mods ? $mods : array(),
+			'options'  => array(),
+		);
+
         $theme_options['customizer-settings'] = Kemet_Theme_Options::get_options();
 
-		$theme_options = apply_filters( 'customizer_export_option_keys', $theme_options );
-
-		$option_keys = apply_filters( 'customizer_export_option_keys', array() );
-
-		foreach ( $option_keys as $option_key ) {
-			$data['options'][ $option_key ] = get_option( $option_key );
-		}
-
 		if ( function_exists( 'wp_get_custom_css_post' ) ) {
-			$data['wp_css'] = wp_get_custom_css();
+			$theme_options['wp_css'] = wp_get_custom_css();
 		}
 
 		nocache_headers();
-
+		// Set the download headers.
 		header( 'Content-disposition: attachment; filename=customizer-export-of-' . $theme . '.json' );
-		header( 'Content-Type: application/octet-stream; charset=utf-8' );
+		header( 'Content-Type: application/octet-stream; charset=' . $charset );
 
+		// Output the export data.
 		echo wp_json_encode( $theme_options );
 
 		// Start the download.
-		die();
+		exit;
+ 
             }
-        }
+}
