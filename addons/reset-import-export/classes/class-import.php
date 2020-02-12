@@ -2,273 +2,66 @@
 /**
 *  Kemet Customizer Export
 */
+
 class Import {
-	/**
-	 * An instance of WP_Customize_Manager.
-	 *
-	 * @access private
-	 * @var object $wp_customize
-	 */
-	private $wp_customize;
+    /**
+    *  WP_Customize_Manager.
+    *
+    * @access private
+    * @var object $wp_customize
+    */
+    private $wp_customize;
 
-	/**
-	 * Class constructor
-	 *
-	 * @param object $wp_customize `WP_Customize_Manager` instance.
-	 */
-	public function __construct( $wp_customize = null ) {
-		$this->wp_customize = $wp_customize;
-	}
+    /**
+    * Class constructor
+    *
+    * @param object
+    */
 
-	/**
-	 * Import the customizer.
-	 */
-	public function import() {
-		global $wp_customize;
-		global $customizer_reset_error;
-
-		// Make sure WordPress upload support is loaded.
-		if ( ! function_exists( 'wp_handle_upload' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-		}
-
-		$customizer_reset_error = false;
-
-		// Setup internal vars.
-		$template  = get_template();
-		$overrides = array(
-			'test_form' => false,
-			'test_type' => false,
-		);
-		$file      = wp_handle_upload( $_FILES['customizer_import_file'], $overrides );
-
-		// Make sure we have an uploaded file.
-		if ( isset( $file['error'] ) ) {
-			$customizer_reset_error = $file['error'];
-			return;
-		}
-
-		if ( ! file_exists( $file['file'] ) ) {
-			$customizer_reset_error = __( 'ERROR importing settings! Please try again.', 'customizer-reset' );
-			return;
-		}
-
-		// Get the upload data.
-		$raw  = file_get_contents( $file['file'] );
-		$data = json_decode( $raw, true );
-
-		// Remove the uploaded file.
-		unlink( $file['file'] );
-
-		// Data checks.
-		if ( ! is_array( $data ) ) {
-			$customizer_reset_error = __( 'ERROR importing settings! Please make sure that you uploaded a customizer export file.', 'customizer-reset' );
-			return;
-		}
-
-		if ( ! isset( $data['template'] ) || ! isset( $data['mods'] ) ) {
-			$customizer_reset_error = __( 'ERROR importing settings! Please make sure that you uploaded a customizer export file.', 'customizer-reset' );
-			return;
-		}
-
-		if ( $data['template'] !== $template ) {
-			$customizer_reset_error = __( 'ERROR importing settings! The settings you uploaded are not for the current theme.', 'customizer-reset' );
-			return;
-		}
-
-		// Import images.
-        $data['mods'] = $this->import_images( $data['mods'] );
-        $data['theme_options'] = $this->import_kmt_options( $data['theme_options'] );
-
-		// Import custom options.
-		if ( isset( $data['options'] ) ) {
-
-			foreach ( $data['options'] as $option_key => $option_value ) {
-
-				$option = new Customizer_Setting(
-					$wp_customize,
-					$option_key,
-					array(
-						'default'    => '',
-						'type'       => 'option',
-						'capability' => 'edit_theme_options',
-					)
-				);
-
-				$option->import( $option_value );
-			}
-		}
-
-		// If wp_css is set then import it.
-		if ( function_exists( 'wp_update_custom_css_post' ) && isset( $data['wp_css'] ) && '' !== $data['wp_css'] ) {
-			wp_update_custom_css_post( $data['wp_css'] );
-		}
-
-		// Call the customize_save action.
-		do_action( 'customize_save', $wp_customize );
-
-		// Loop through the mods.
-		foreach ( $data['mods'] as $key => $val ) {
-
-			// Call the customize_save_ dynamic action.
-			do_action( 'customize_save_' . $key, $wp_customize );
-
-			// Save the mod.
-			set_theme_mod( $key, $val );
-		}
-
-		// Call the customize_save_after action.
-		do_action( 'customize_save_after', $wp_customize );
-	}
-
-	/**
-	 * Imports images for settings saved as mods.
-	 *
-	 * @access private
-	 * @param array $mods An array of customizer mods.
-	 * @return array The mods array with any new import data.
-	 */
-	private function import_images( $mods ) {
-		foreach ( $mods as $key => $val ) {
-
-			if ( $this->is_image_url( $val ) ) {
-
-				$data = $this->sideload_image( $val );
-
-				if ( ! is_wp_error( $data ) ) {
-
-					$mods[ $key ] = $data->url;
-
-					// Handle header image controls.
-					if ( isset( $mods[ $key . '_data' ] ) ) {
-						$mods[ $key . '_data' ] = $data;
-						update_post_meta( $data->attachment_id, '_wp_attachment_is_custom_header', get_stylesheet() );
-					}
-				}
-			}
-		}
-
-		return $mods;
-	}
-
-	/**
-	 * Checks to see whether a string is an image url or not.
-	 *
-	 * @access private
-	 * @param string $string The string to check.
-	 * @return bool Whether the string is an image url or not.
-	 */
-	private function is_image_url( $string = '' ) {
-		if ( is_string( $string ) ) {
-
-			if ( preg_match( '/\.(jpg|jpeg|png|gif)/i', $string ) ) {
-				return true;
-			}
-		}
-
-		return false;
+    public function __construct( $wp_customize = null ) {
+        $this->wp_customize = $wp_customize;
     }
-    
-    public function import_kmt_options() {
-$filename = $_FILES['import_file']['name'];
 
-			if ( empty( $filename ) ) {
-				return;
-			}
-			$file_ext  = explode( '.', $filename );
-			$extension = end( $file_ext );
+    /**
+    * Setup customizer import.
+    */
 
-			if ( 'json' !== $extension ) {
-				wp_die( esc_html__( 'Please upload a valid .json file', 'kemet-import-export' ) );
-			}
+    public function import() {
 
-			$import_file = $_FILES['import_file']['tmp_name'];
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
 
-			if ( empty( $import_file ) ) {
-				wp_die( esc_html__( 'Please upload a file to import', 'kemet-import-export' ) );
-			}
+        $filename = $_FILES['import_file']['name'];
 
-			global $wp_filesystem;
-			if ( empty( $wp_filesystem ) ) {
-				require_once ABSPATH . '/wp-admin/includes/file.php';
-				WP_Filesystem();
-			}
-			// Retrieve the settings from the file and convert the json object to an array.
-			$file_contants = $wp_filesystem->get_contents( $import_file );
-			$settings      = json_decode( $file_contants, 1 );
+        if ( empty( $filename ) ) {
+            return;
+        }
+        $file_ext  = explode( '.', $filename );
+        $extension = end( $file_ext );
 
+        if ( 'json' !== $extension ) {
+            wp_die( esc_html__( 'Please upload a valid .json file', 'kemet-addons' ) );
+        }
 
-			// Delete existing dynamic CSS cache.
-			delete_option( 'kemet-settings' );
+        $import_file = $_FILES['import_file']['tmp_name'];
 
-			update_option( 'kemet-settings', $settings['customizer-settings'] );
+        if ( empty( $import_file ) ) {
+            wp_die( esc_html__( 'Please upload a file to import', 'kemet-addons' ) );
+        }
 
-			wp_safe_redirect(
-				wp_nonce_url(
-					add_query_arg(
-						array(
-							'page'   => 'kmt-framework',
-							'status' => 'imported',
-						),
-						admin_url( 'themes.php' )
-					),
-					'kemet-import-complete'
-				)
-			);
-			exit;
+        global $wp_filesystem;
+        if ( empty( $wp_filesystem ) ) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+            WP_Filesystem();
+        }
+        $file_contants = $wp_filesystem->get_contents( $import_file );
+        $settings      = json_decode( $file_contants, 1 );
+
+        delete_option( 'kemet-settings' );
+        update_option( 'kemet-settings', $settings['customizer-settings'] );
+
+        do_action( 'customize_save_after', $wp_customize );
+
     }
-    
-
-	/**
-	 * Taken from the core media_sideload_image function and
-	 * modified to return an array of data instead of html.
-	 *
-	 * @access private
-	 * @param string $file The image file path.
-	 * @return array An array of image data.
-	 */
-	private function sideload_image( $file ) {
-		$data = new \stdClass();
-
-		if ( ! function_exists( 'media_handle_sideload' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/media.php';
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-			require_once ABSPATH . 'wp-admin/includes/image.php';
-		}
-
-		if ( ! empty( $file ) ) {
-
-			// Set variables for storage, fix file filename for query strings.
-			preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $file, $matches );
-			$file_array         = array();
-			$file_array['name'] = basename( $matches[0] );
-
-			// Download file to temp location.
-			$file_array['tmp_name'] = download_url( $file );
-
-			// If error storing temporarily, return the error.
-			if ( is_wp_error( $file_array['tmp_name'] ) ) {
-				return $file_array['tmp_name'];
-			}
-
-			// Do the validation and storage stuff.
-			$id = media_handle_sideload( $file_array, 0 );
-
-			// If error storing permanently, unlink.
-			if ( is_wp_error( $id ) ) {
-				@unlink( $file_array['tmp_name'] );
-				return $id;
-			}
-
-			// Build the object to return.
-			$meta                = wp_get_attachment_metadata( $id );
-			$data->attachment_id = $id;
-			$data->url           = wp_get_attachment_url( $id );
-			$data->thumbnail_url = wp_get_attachment_thumb_url( $id );
-			$data->height        = $meta['height'];
-			$data->width         = $meta['width'];
-		}
-
-		return $data;
-	}
 }

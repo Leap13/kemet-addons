@@ -26,65 +26,29 @@ class Export {
 	 */
 	public function export() {
 		$theme    = get_stylesheet();
-		$template = get_template();
-		$charset  = get_option( 'blog_charset' );
-        $mods     = get_theme_mods();
-        $theme_options['customizer-settings'] = Kemet_Theme_Options::get_options();
-        $theme_options = apply_filters( 'customizer_export_option_keys', $theme_options );
-		$data     = array(
+		$mods     = get_theme_mods();
+		$theme_options     = array(
 			'template' => $template,
 			'mods'     => $mods ? $mods : array(),
-            'options'  => array(),
-            'theme_options' => $theme_options
+			'options'  => array(),
 		);
 
-		// Get options from the Customizer API.
-		$settings = $this->wp_customize->settings();
-
-		foreach ( $settings as $key => $setting ) {
-
-			if ( 'option' === $setting->type ) {
-
-				// Don't save widget data.
-				if ( 'widget_' === substr( strtolower( $key ), 0, 7 ) ) {
-					continue;
-				}
-
-				// Don't save sidebar data.
-				if ( 'sidebars_' === substr( strtolower( $key ), 0, 9 ) ) {
-					continue;
-				}
-
-				// Don't save core options.
-				if ( in_array( $key, $this->$core_options, true ) ) {
-					continue;
-				}
-
-				$data['options'][ $key ] = $setting->value();
-			}
-		}
-
-		// Plugin developers can specify additional option keys to export.
-		$option_keys = apply_filters( 'customizer_export_option_keys', array() );
-
-		foreach ( $option_keys as $option_key ) {
-			$data['options'][ $option_key ] = get_option( $option_key );
-		}
+        $theme_options['customizer-settings'] = Kemet_Theme_Options::get_options();
 
 		if ( function_exists( 'wp_get_custom_css_post' ) ) {
-			$data['wp_css'] = wp_get_custom_css();
+			$theme_options['wp_css'] = wp_get_custom_css();
 		}
 
+		nocache_headers();
 		// Set the download headers.
-		header( 'Content-disposition: attachment; filename=Customizer-Export-of-' . $theme . '.json' );
+		header( 'Content-disposition: attachment; filename=customizer-export-of-' . $theme . '.json' );
 		header( 'Content-Type: application/octet-stream; charset=' . $charset );
 
 		// Output the export data.
-		echo wp_json_encode( $data );
+		echo wp_json_encode( $theme_options );
 
 		// Start the download.
 		exit;
-
  
             }
-        }
+}
