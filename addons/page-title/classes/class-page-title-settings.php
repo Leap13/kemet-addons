@@ -84,7 +84,6 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['pagetitle-bottomline-width']         = 150;
             $defaults['pagetitle-bottomline-color']       = '';
             // Breadcrumbs Defaults
-            $defaults['kemet_has_breadcrumbs']              = '';
             $defaults['show-item-title']                    = true;
             $defaults['breadcrumb-separator']         = '»';
             $defaults['breadcrumb-posts-taxonomy']    = 'category';
@@ -94,7 +93,6 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['breadcrumbs-link-h-color']           = '';
             $defaults['page-title-border-right-color']      = '';
             $defaults['breadcrumbs-enabled']                = true; 
-            $defaults['kemet_breadcrumbs_home']                = '';
             $defaults['breadcrumbs-font-size']                = ''; 
             return $defaults;
         }

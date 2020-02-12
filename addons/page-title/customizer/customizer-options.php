@@ -711,16 +711,6 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
     
-    /**
-      * Option: Breadcrumbs Home Style
-      */
-        $wp_customize->add_setting(
- 		KEMET_THEME_SETTINGS . '[kemet_breadcrumbs_home]', array(
- 			'default'           => $defaults[ 'kemet_breadcrumbs_home' ],
- 			'type'              => 'option',
- 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
- 		)
-	 );
 	 
 	 
 	
