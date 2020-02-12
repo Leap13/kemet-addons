@@ -25,6 +25,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
             add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
+            add_action( 'wp_enqueue_scripts', array( $this, 'add_lightbox_scripts'), 10 );
         }
         function kemet_blog_post_container($classes){
             $classes[] = kemet_get_option( 'blog-layouts' );
@@ -61,12 +62,18 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
         }
 
         function add_styles() {
-            Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/prettyphoto/css/prettyPhoto.css');
+            //Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/lightbox/css/lightbox.css');
             Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/css/minified/blog-layouts.min.css');
 
         }
+        function add_lightbox_scripts() {
+            // Extended Customizer Assets - Panel extended.
+			wp_enqueue_style( 'prettyPhoto-css', KEMET_BLOG_LAYOUTS_URL . 'assets/prettyPhoto/css/prettyPhoto.css' , null, KEMET_ADDONS_VERSION );
+			wp_enqueue_script( 'prettyPhoto-js', KEMET_BLOG_LAYOUTS_URL . 'assets/prettyPhoto/js/jquery.prettyPhoto.js', array(), KEMET_ADDONS_VERSION, true );
+
+        }
         public function add_scripts() {
-            Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/prettyphoto/js/jquery.prettyPhoto.js');
+            //Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/lightbox/js/lightbox.js');
             Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/kemet-grid.min.js');
             Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/blog-layouts.min.js');
        }
