@@ -82,6 +82,12 @@ if (class_exists('KFW')) {
         'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
         'subtitle' => __('Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-ddons'),
         'default' => false,
+      ),array(
+        'id' => 'blog-layouts',
+        'type' => 'switcher',
+        'title' => __('Blog Layouts', 'kemet-addons'),
+        'subtitle' => __('Enable/Disable Extra Blog Layouts', 'kemet-ddons'),
+        'default' => 'false',
       ),
     ),
   ),

@@ -1,0 +1,32 @@
+.blog-layout-2{
+    .kmt-article-post{
+        padding: 0 10px 20px;
+        margin-bottom: 0;
+    }
+    .blog-post-layout-2{
+        border: 1px solid #E3E3E3;
+        .post-content{
+            img{
+                width: 100%;
+            }
+            .entry-header{
+                padding-top:15px;
+            }
+            .kmt-blog-featured-section{
+                margin-bottom: 0;
+            } 
+            .entry-header , .entry-content{
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+        }
+    }
+}
+.kmt-separate-container{
+    .blog-layout-2{
+        .kmt-article-post{
+            padding: 0 10px 20px;
+        }
+    }
+}
+

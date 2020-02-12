@@ -1,0 +1,168 @@
+/*--------------------------------------------------------------
+## Variables
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Blog Layout 1
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Blog Layout 2
+--------------------------------------------------------------*/
+.blog-layout-2 .kmt-article-post {
+  padding: 0 10px 20px;
+  margin-bottom: 0;
+}
+
+.blog-layout-2 .blog-post-layout-2 {
+  border: 1px solid #E3E3E3;
+}
+
+.blog-layout-2 .blog-post-layout-2 .post-content img {
+  width: 100%;
+}
+
+.blog-layout-2 .blog-post-layout-2 .post-content .entry-header {
+  padding-top: 15px;
+}
+
+.blog-layout-2 .blog-post-layout-2 .post-content .kmt-blog-featured-section {
+  margin-bottom: 0;
+}
+
+.blog-layout-2 .blog-post-layout-2 .post-content .entry-header, .blog-layout-2 .blog-post-layout-2 .post-content .entry-content {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.kmt-separate-container .blog-layout-2 .kmt-article-post {
+  padding: 0 10px 20px;
+}
+
+/*--------------------------------------------------------------
+## Blog Layout 3
+--------------------------------------------------------------*/
+.blog-layout-3 .kmt-article-post {
+  padding-bottom: 15px;
+}
+
+.blog-layout-3 .kmt-article-post.has-post-thumbnail .kmt-blog-featured-section img {
+  width: 100%;
+}
+
+.blog-layout-3 .kmt-article-post.has-post-thumbnail .post-content {
+  margin: -50px 30px 20px;
+  position: relative;
+}
+
+.blog-layout-3 .kmt-article-post .entry-content {
+  padding-top: 22px;
+  border-top: 1px solid #eee;
+}
+
+.blog-layout-3 .kmt-article-post .post-content {
+  background-color: #fff;
+  padding: 30px;
+  border: 1px solid #eee;
+}
+
+/* Blog Responsive */
+@media only screen and (max-width: 480px) {
+  .blog-layout-3 .kmt-article-post.has-post-thumbnail .post-content {
+    margin: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+## Blog Layout 4
+--------------------------------------------------------------*/
+.blog-layout-4 .blog-post-layout-4 .entry-header {
+  width: 50%;
+  margin-bottom: 0;
+  background-color: #dadada;
+}
+
+.blog-layout-4 .blog-post-layout-4 .entry-header .kmt-blog-featured-section, .blog-layout-4 .blog-post-layout-4 .entry-header .kmt-default-featured-section {
+  height: 570px;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.blog-layout-4 .blog-post-layout-4 .entry-header .kmt-blog-featured-section img, .blog-layout-4 .blog-post-layout-4 .entry-header .kmt-default-featured-section img {
+  width: 100%;
+  height: 100%;
+}
+
+.blog-layout-4 .blog-post-layout-4 .kmt-default-featured-section:before {
+  font-family: dashicons;
+  content: "\f109";
+  line-height: 120px;
+  width: 120px;
+  height: 120px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  background-color: #f7f7f7;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 68px;
+  color: #D3D3D3;
+}
+
+.blog-layout-4 .blog-post-layout-4 .post-content {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  padding: 15px 40px;
+}
+
+.blog-layout-4 .kmt-article-post .blog-post-layout-4 {
+  display: flex;
+}
+
+.blog-layout-4 .kmt-article-post:nth-of-type(odd) .blog-post-layout-4 {
+  flex-direction: row-reverse;
+}
+
+.blog-layout-4 .kmt-article-post:nth-of-type(even) .blog-post-layout-4 {
+  flex-direction: row;
+}
+
+.blog-layout-4 .kmt-article-post {
+  padding: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .blog-layout-4 .kmt-article-post {
+    padding: 0 15px 15px 15px;
+  }
+  .blog-layout-4 .kmt-article-post .blog-post-layout-4 {
+    display: block;
+  }
+  .blog-layout-4 .kmt-article-post .blog-post-layout-4 .entry-header {
+    width: 100%;
+  }
+  .blog-layout-4 .kmt-article-post .blog-post-layout-4 .post-content {
+    width: 100%;
+    padding: 20px 10px 20px 10px;
+    display: block;
+  }
+}
