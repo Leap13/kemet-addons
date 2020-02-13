@@ -65,6 +65,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'conditions' => '!=', 
 				'values' => 'header-main-layout-6',
 			), 
+			'sanitize_callback' 	=> 'wp_kses',
 		)
 	);
 	$wp_customize->add_control(
@@ -259,6 +260,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 				'operators' => "||/||/||",
 			),
+			'sanitize_callback' 	=> 'wp_kses',
 		)
 	);
 	$wp_customize->add_control(

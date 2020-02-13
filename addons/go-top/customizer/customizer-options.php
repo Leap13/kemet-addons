@@ -38,7 +38,8 @@ $defaults = Kemet_Theme_Options::defaults();
 				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
 				'conditions' => '==', 
 				'values' => true,
-			),
+            ),
+            'sanitize_callback' 	=> 'wp_kses',
         )
     );
     $wp_customize->add_control(
@@ -205,7 +206,8 @@ $defaults = Kemet_Theme_Options::defaults();
 				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
 				'conditions' => '==', 
 				'values' => true,
-			),
+            ),
+            'sanitize_callback' 	=> 'wp_kses',
         )
     );
     $wp_customize->add_control(
