@@ -42,7 +42,6 @@
 
 .kmt-is-sticky .main-header-bar {
   transition: none;
-  background-color: #fff;
 }
 
 .kmt-is-sticky.kmt-sticky-logo .custom-logo-link {
