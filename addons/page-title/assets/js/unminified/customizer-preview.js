@@ -37,7 +37,7 @@
     kemet_css('kemet-settings[pagetitle-bottomline-color]', 'background-color', '.kemet-page-title::after');
     // Breadcrumbs 
     kemet_responsive_spacing('kemet-settings[breadcrumbs-space]', '.kemet-breadcrumb-trail', 'padding', ['top', 'right', 'bottom', 'left']);
-    kemet_css('kemet-settings[breadcrumbs-color]', 'color', '.kemet-breadcrumb-trail span');
+    kemet_css('kemet-settings[breadcrumbs-color]', 'color', '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span');
     kemet_css('kemet-settings[breadcrumbs-link-color]', 'color', '.kemet-breadcrumb-trail a span');
     kemet_css('kemet-settings[breadcrumbs-link-h-color]', 'color', '.kemet-breadcrumb-trail a:hover span');
 

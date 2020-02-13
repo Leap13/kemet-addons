@@ -64,7 +64,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'desktop' ), 
                     'font-size'      => kemet_responsive_slider( $breadcrumbs_font_size, 'desktop' ),
                ),
-               '.kemet-breadcrumb-trail span'  => array(
+               '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span'  => array(
                    'color'  => esc_attr( $breadcrumbs_color ),
                ),
                '.kemet-breadcrumb-trail a span'  => array(
