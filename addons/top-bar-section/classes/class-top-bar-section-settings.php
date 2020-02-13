@@ -64,7 +64,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-link-color']           = '';
             $defaults['topbar-link-h-color']           = '';
             $defaults['topbar-border-size']           = '';
-            $defaults['topbar-border-bottom-color']           = '#dddddd';
+            $defaults['topbar-border-bottom-color']           = '#3a3a3a';
             $defaults['topbar-submenu-bg-color']           = '';
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';

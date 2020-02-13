@@ -88,7 +88,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['breadcrumb-separator']         = '»';
             $defaults['breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
-            $defaults['breadcrumbs-color']                  = '';
+            $defaults['breadcrumbs-color']                  = '#5b5b5b';
             $defaults['breadcrumbs-link-color']             = '';
             $defaults['breadcrumbs-link-h-color']           = '';
             $defaults['page-title-border-right-color']      = '';
