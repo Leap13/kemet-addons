@@ -4,11 +4,18 @@
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
-    animation-duration: 0.5s; 
+    -webkit-box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
     &.sticky-fade{
+      animation-duration: 1s; 
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
       animation-name: fadeIn;
     }
     &.sticky-slide{
+      animation-duration: 1s; 
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
       animation-name: slideInDown;
     }
     &.kmt-sticky-header{
@@ -50,17 +57,15 @@
   }
 }
 @keyframes fadeIn { 
-  0% {visibility: hidden;} 
-  100% {visibility: visible;} 
+  0% {opacity: 0;} 
+  100% {opacity: 1;} 
 }
 @keyframes slideInDown { 
   0% { 
       transform: translate3d(0, -100%, 0); 
-      visibility: visible; 
   } 
   100% { 
-      transform: translate3d(0, 0, 0);
-      visibility: hidden; 
+      transform: translate3d(0, 0, 0); 
   } 
 }
 /* Sticky Header Responsive */
