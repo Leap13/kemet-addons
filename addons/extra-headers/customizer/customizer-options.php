@@ -271,9 +271,9 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
-	//Header9
+	//Header8
 	/**
-   	* Option: Header9 Logo Icon Separator Color 
+   	* Option: Header8 Logo Icon Separator Color 
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
