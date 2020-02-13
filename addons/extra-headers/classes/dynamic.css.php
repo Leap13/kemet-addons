@@ -72,7 +72,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.site-header .menu-icon-social .icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_icon_bars_color),
                 ),
-                '.site-header .icon-bars-btn:hover span,.site-header .open .icon-bars-btn span' => array(
+                '.site-header .menu-icon-social .menu-icon:hover span,.site-header .open .icon-bars-btn span' => array(
 					'background-color' => esc_attr($header_icon_bars_h_color),
                 ),
                 '.site-header .menu-icon-social .menu-icon' => array(

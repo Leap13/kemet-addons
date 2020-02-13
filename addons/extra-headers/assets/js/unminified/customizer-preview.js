@@ -2,7 +2,7 @@
     kemet_css('kemet-settings[header-icon-bars-logo-bg-color]', 'background-color', '.site-header .logo-menu-icon');
     kemet_css('kemet-settings[header-main-sep-color]', 'border-color', '.kemet-main-v-header-align-right .main-header-bar-wrap , .kemet-main-v-header-align-left .main-header-bar-wrap');
     kemet_css('kemet-settings[header-icon-bars-color]', 'background-color', '.site-header .menu-icon-social .icon-bars-btn span');
-    kemet_css('kemet-settings[header-icon-bars-h-color]', 'background-color', '.site-header .menu-icon-social .icon-bars-btn:hover span, .site-header .menu-icon-social .open .icon-bars-btn span');
+    kemet_css('kemet-settings[header-icon-bars-h-color]', 'background-color', '.site-header .menu-icon-social .menu-icon:hover span, .site-header .menu-icon-social .open .icon-bars-btn span');
     kemet_css('kemet-settings[header-icon-bars-bg-color]', 'background-color', '.site-header .menu-icon-social .menu-icon');
     kemet_css('kemet-settings[header-icon-bars-bg-h-color]', 'background-color', '.site-header .menu-icon-social .menu-icon:hover,.site-header .menu-icon-social .menu-icon.open');
     kemet_css('kemet-settings[logo-icon-separator-color]', 'background-color', '.header-main-layout-8 .inline-logo-menu .site-branding:after');
