@@ -32,7 +32,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
                 '.kemet-footer .kmt-widget-style3 .widget-content ,.kemet-footer .kmt-widget-style5.widget , .kmt-footer-copyright .kmt-widget-style3 .widget-content ,.kmt-footer-copyright .kmt-widget-style5.widget' => array(
 					'border-color' => esc_attr( $footer_widget_style_color ),
 				),
-				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head  .widget-head,.kemet-footer .kmt-widget-style7 div.title .widget-title:after ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ,.kmt-footer-copyright .kmt-widget-style7 div.title .widget-title:after' => array(
+				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head,.kemet-footer .kmt-widget-style7 div.title .widget-title:after ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ,.kmt-footer-copyright .kmt-widget-style7 div.title .widget-title:after' => array(
 					'background-color' => esc_attr( $footer_widget_style_color ),
 				),
             );

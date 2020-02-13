@@ -125,7 +125,6 @@ div.title {
 /********************** widget style 2 **********************/
 .kmt-widget-style2 .widget-title {
   padding: 3px 10px;
-  background-color: #E3E3E3;
   float: left;
 }
 
@@ -136,8 +135,8 @@ div.title {
 /********************** widget style 3 **********************/
 .kmt-widget-style3 .widget-content {
   padding: 10px 15px 10px;
-  border: 1px solid #E3E3E3;
-  border-bottom: 2px solid #818181;
+  border: 1px solid;
+  border-bottom: 2px solid;
 }
 
 .kmt-widget-style3 .counter-widget .widget-content {
@@ -149,10 +148,6 @@ div.title {
 }
 
 /********************** widget style 4**********************/
-.kmt-widget-style4 .widget-head {
-  background-color: #E3E3E3;
-}
-
 .kmt-widget-style4 div.title h4:after {
   display: none;
 }
@@ -167,7 +162,7 @@ div.title {
 
 /********************** widget style 5 **********************/
 .kmt-widget-style5.widget {
-  border: 1px solid #E3E3E3;
+  border: 1px solid;
 }
 
 .kmt-widget-style5 div.title h4:after {
@@ -188,7 +183,7 @@ div.title {
 }
 
 .kmt-widget-style6 div.title .widget-title {
-  border-bottom: 2px solid #818181;
+  border-bottom: 2px solid;
   padding-bottom: 10px;
   position: relative;
   display: inline-block;
@@ -203,7 +198,6 @@ div.title {
   bottom: 0;
   margin-left: -2px;
   border: 3px solid transparent;
-  border-bottom-color: #818181;
 }
 
 .kmt-widget-style6 div.title h4:after {
@@ -227,7 +221,6 @@ div.title {
 .kmt-widget-style7 div.title .widget-title:after {
   content: '';
   position: relative;
-  background-color: #333;
   width: 30px;
   height: 2px;
   margin-top: 8px;
