@@ -49,7 +49,7 @@
   height: 35px;
   display: inline-block;
   margin: 5px;
-  transition: background-color 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
 }
 
 .post-thumb-img-content .overlay-image .enlarge {
