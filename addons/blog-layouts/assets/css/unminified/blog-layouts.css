@@ -157,10 +157,6 @@
 /*--------------------------------------------------------------
 ## Blog Layout 3
 --------------------------------------------------------------*/
-.blog-layout-3 .kmt-article-post {
-  padding-bottom: 15px;
-}
-
 .blog-layout-3 .kmt-article-post.has-post-thumbnail .kmt-blog-featured-section img {
   width: 100%;
 }

@@ -39,7 +39,6 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ), 1 );
-            add_action( 'customize_register', array( $this, 'controls_helpers' ) );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
 
         }
@@ -47,7 +46,8 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
 
         function theme_defaults( $defaults ) {
 			$defaults['blog-layouts']  = 'blog-layout-1';
-            $defaults['blog-grids']  = '2';
+            $defaults['blog-grids']  = 2;
+            $defaults['blog-excerpt-length']  = 50;
             $defaults['blog-posts-border-color']  = '';
             $defaults['blog-posts-border-size']   = '';
             $defaults['blog-title-meta-border-color']   = '';
@@ -75,10 +75,6 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
 			require_once KEMET_BLOG_LAYOUTS_DIR . 'customizer/customizer-options.php';  
 			
         }
-
-        public function controls_helpers() {
-			require_once( KEMET_BLOG_LAYOUTS_DIR .'customizer/customizer-helpers.php' );
-		}
         
         function preview_scripts() {
                 if ( SCRIPT_DEBUG ) {

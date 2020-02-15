@@ -38,9 +38,8 @@ if ( ! class_exists( 'Kemet_Blog_Layouts' ) ) {
 		public function __construct() {
             
 			require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-blog-layouts-partials.php';
-			require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-blog-layouts-helpers.php';
             require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-blog-layouts-settings.php';
-            
+            require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-blog-layouts-helpers.php';
             if ( ! is_admin() ) {
 				require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/dynamic.css.php';
 			}
