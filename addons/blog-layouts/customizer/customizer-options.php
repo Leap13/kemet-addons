@@ -1,4 +1,7 @@
 <?php
+
+$defaults = Kemet_Theme_Options::defaults();
+
 $wp_customize->add_setting(
 	KEMET_THEME_SETTINGS . '[blog-layouts]', array(
 		'default'           => kemet_get_option( 'blog-layouts' ),
@@ -40,7 +43,7 @@ $wp_customize->add_control(
 */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[blog-grids]', array(
-        'default'           => kemet_get_option('blog-grids'),
+        'default'           => '2',
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
     )
@@ -209,42 +212,173 @@ $wp_customize->add_control(
 		  )
 		)
 	);
+
 	/**
-* Option: Post Image Height
+	 * Option: Enable Overlay Image
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[enable-overlay-image]', array(
+			'default'           => $defaults[ 'enable-overlay-image' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[enable-overlay-image]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-blog',
+			'label'           => __( 'Enable Overlay Image', 'kemet-addons' ),
+            'priority'        => 119,
+		)
+	);
+/**
+* Option: Title
 */
-// $wp_customize->add_setting(
-//     KEMET_THEME_SETTINGS . '[post-image-height]', array(
-//         'default'           => kemet_get_option( 'post-image-height' ),
-//         'type'              => 'option',
-//         'transport'         => 'postMessage',
-//         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-//     )
-// );
-// $wp_customize->add_control(
-//     new Kemet_Control_Responsive_Slider(
-//         $wp_customize, KEMET_THEME_SETTINGS . '[post-image-height]', array(
-//             'type'           => 'kmt-responsive-slider',
-//             'section'        => 'section-blog',
-//             'priority'       => 5,
-//             'label'          => __( 'Post Image Height', 'kemet' ),
-//             'unit_choices'   => array(
-//                 'px' => array(
-//                     'min' => 100,
-//                     'step' => 1,
-//                     'max' => 600,
-// 				),
-// 				'em' => array(
-//                     'min' => 1,
-//                     'step' => 1,
-//                     'max' => 50,
-// 				),
-// 				'%' => array(
-//                     'min' => 1,
-//                     'step' => 1,
-//                     'max' => 100,
-//                 ),
-// 			),
-// 			'active_callback' => 'kemet_blog_layout4'
-//         )
-//     )
-// );
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]', array(
+		'sanitize_callback' => false,
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
+			'conditions' => '==', 
+			'values' => true,
+		),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Overlay Image Style', 'kemet-addons' ),
+            'section'  => 'section-blog',
+            'priority' => 120,
+            'settings' => array(),
+        )
+    )
+);
+/**
+* Option: Overlay Image Background Color
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[overlay-image-bg-color]', array(
+        'default'           => $defaults[ 'overlay-image-bg-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
+			'conditions' => '==', 
+			'values' => true,
+		),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[overlay-image-bg-color]', array(
+            'section'  => 'section-blog',
+            'priority' => 125,
+            'label'    => __( 'Overlay Image Background Color', 'kemet-addons' ),
+        )
+    )
+);
+/**
+* Option:Post Overlay Icon Color
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[overlay-icon-color]', array(
+        'default'           => $defaults[ 'overlay-icon-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
+			'conditions' => '==', 
+			'values' => true,
+		),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[overlay-icon-color]', array(
+            'label'   => __( 'Overlay Icon Color', 'kemet-addons' ),
+            'priority'       => 130,
+            'section' => 'section-blog',
+        )
+    )
+);
+
+/**
+* Option:Post Overlay Icon Color Hover
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[overlay-icon-h-color]', array(
+        'default'           => $defaults[ 'overlay-icon-h-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
+			'conditions' => '==', 
+			'values' => true,
+		),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[overlay-icon-h-color]', array(
+            'label'   => __( 'Overlay Icon Hover Color', 'kemet-addons' ),
+            'priority'       => 135,
+            'section' => 'section-blog',
+        )
+    )
+);
+
+/**
+* Option: Overlay Icon Background Color
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[overlay-icon-bg-color]', array(
+        'default'           => $defaults[ 'overlay-icon-bg-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
+			'conditions' => '==', 
+			'values' => true,
+		),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[overlay-icon-bg-color]', array(
+            'section'  => 'section-blog',
+            'priority' => 140,
+            'label'    => __( 'Overlay Icon Background Color', 'kemet-addons' ),
+        )
+    )
+);
+/**
+* Option: Overlay Icon Background Color Hover
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[overlay-icon-bg-h-color]', array(
+        'default'           => $defaults[ 'overlay-icon-bg-h-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
+			'conditions' => '==', 
+			'values' => true,
+		),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[overlay-icon-bg-h-color]', array(
+            'section'  => 'section-blog',
+            'priority' => 145,
+            'label'    => __( 'Overlay Icon Background Hover Color', 'kemet-addons' ),
+        )
+    )
+);

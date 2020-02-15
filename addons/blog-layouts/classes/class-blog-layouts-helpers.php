@@ -41,19 +41,106 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
      */
     function kemet_get_the_post_thumbnail_background( $post_id, $size ) {
         $thumbnail_format = kemet_get_post_thumbnail_format( $post_id, $size );
+        $enable_overlay = kemet_get_option( 'enable-overlay-image' );
+        $output = '';
+    
         if ( kemet_is_valid_url( $thumbnail_format ) ) {
-            return '<div class="kmt-blog-featured-section post-thumb" style="background-image:url(' . $thumbnail_format . ');"></div>';
+            $output .= '<div class="kmt-blog-featured-section post-thumb" style="background-image:url(' . $thumbnail_format . ');">';
+            if($enable_overlay){
+                $output .= '<div class="overlay-image">';
+                $output .= '<div class="overlay-color"></div>';
+                $output .= '<div class="post-details">';
+                $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
+                $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';
+                $output .= '</div></div>';
+            }
+            $output .= '</div>';
+            return $output;
         } else {
-            return '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '"></div>';
+            $output .= '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '">';
+            if($enable_overlay){
+                $output .= '<div class="overlay-image">';
+                $output .= '<div class="overlay-color"></div>';
+                $output .= '<div class="post-details">';
+                $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
+                $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']" href=""></a>';
+                $output .= '</div></div>';
+            }
+            $output .= '</div>';
+            return $output;
         }
     }
 
 }
 /**
+ * Kemet Addons get post thumbnail image.
+ */
+if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
+
+	/**
+	 * Kemet Addons get post thumbnail image
+	 *
+	 * @param string  $before Markup before thumbnail image.
+	 * @param string  $after  Markup after thumbnail image.
+	 * @param boolean $echo   Output print or return.
+	 * @return string|void
+	 */
+	function kemet_addons_get_thumbnail_with_overlay( $before = '', $after = '', $echo = true ) {
+
+		$output = '';
+
+		$check_is_singular = is_singular();
+
+		$featured_image = true;
+
+		$featured_image = apply_filters( 'kemet_featured_image_enabled', $featured_image );
+
+		$blog_post_thumb   = kemet_get_option( 'blog-post-structure' );
+
+		if ( ( ( ! $check_is_singular && in_array( 'image', $blog_post_thumb ) ) || is_page() ) && has_post_thumbnail() ) {
+
+			if ( $featured_image && ( ! ( $check_is_singular ) || ( ! post_password_required() && ! is_attachment() && has_post_thumbnail() ) ) ) {
+
+				$post_thumb = get_the_post_thumbnail(
+					get_the_ID(),
+					apply_filters( 'kemet_post_thumbnail_default_size', 'full' ),
+					array(
+						'itemprop' => 'image',
+					)
+				);
+
+				if ( '' != $post_thumb && !is_singular('post')) {
+					$output .= '<div class="post-thumb-img-content post-thumb">';
+					$output .= $post_thumb;
+					$output .= '<div class="overlay-image">';
+					$output .= '<div class="overlay-color"></div>';
+					$output .= '<div class="post-details">';
+					$output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
+					$output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';
+					$output .= '</div></div>';
+					$output .= '</div>';
+				}
+			}
+		}
+
+		if ( ! $check_is_singular ) {
+			$output = apply_filters( 'kemet_blog_post_featured_image_after', $output );
+		}
+
+		$output = apply_filters( 'kemet_get_post_thumbnail', $output, $before, $after );
+
+		if ( $echo ) {
+			echo $before . $output . $after; // WPCS: XSS OK.
+		} else {
+			return $before . $output . $after;
+		}
+	}
+}
+/**
  * Set theme images sizes
  */
-function leap_theme_image_sizes() {
+function kemet_image_sizes() {
     add_image_size( '570x570', 200, 200, true );
 }
 
-add_action( 'after_setup_theme', 'leap_theme_image_sizes' );
+add_action( 'after_setup_theme', 'kemet_image_sizes' );

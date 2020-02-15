@@ -10,6 +10,7 @@
  */
 
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
+$enable_overlay = kemet_get_option( 'enable-overlay-image' );
 
 ?>
 <div <?php kemet_blog_layout_class( 'blog-post-layout-1' ); ?>>
@@ -19,7 +20,7 @@ $blog_post_order = kemet_get_option( 'blog-post-structure' );
 		<?php 
 		switch($item){
 			case 'image':
-				kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb kmt-col-md-12">', '</div>' );
+			$overlay_image = $enable_overlay ? kemet_addons_get_thumbnail_with_overlay( '<div class="kmt-blog-featured-section post-thumb kmt-col-md-12">', '</div>' ) : kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb kmt-col-md-12">', '</div>' );
 				
 				break;
 		?>

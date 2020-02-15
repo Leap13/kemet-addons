@@ -47,13 +47,18 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
 
         function theme_defaults( $defaults ) {
 			$defaults['blog-layouts']  = 'blog-layout-1';
-            $defaults['blog-grids']  = '';
+            $defaults['blog-grids']  = '2';
             $defaults['blog-posts-border-color']  = '';
             $defaults['blog-posts-border-size']   = '';
             $defaults['blog-title-meta-border-color']   = '';
             $defaults['blog-title-meta-border-size']   = '';
-            //$defaults['post-image-height']   = '';
             $defaults['blog-layout-mode']   = 'masonry';
+            $defaults['enable-overlay-image']   = false;
+            $defaults['overlay-image-bg-color']   = '#f67207';
+            $defaults['overlay-icon-color']   = '#000';
+            $defaults['overlay-icon-h-color']   = '#f67207';
+            $defaults['overlay-icon-bg-color']   = '#fff';
+            $defaults['overlay-icon-bg-h-color']   = '';
             return $defaults;
         }
 
