@@ -57,7 +57,8 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
                     $classes[] = $desktop_columns . $tablet_columns . $mobile_columns;
                 }
             }
-    
+            $classes[] = 'squares';
+
             return $classes;
         }
 

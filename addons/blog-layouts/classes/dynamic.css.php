@@ -29,12 +29,14 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
                 '.blog-layout-2 .blog-post-layout-2 , .blog-layout-4 .blog-post-layout-4 .post-content' => array(
                     'border-width' => kemet_get_css_value( $posts_border_size , 'px' ),
                     'border-color' => esc_attr($posts_border_color),
+                    'border-style' => 'solid',
                 ), 
                 '.blog-layout-4 .blog-post-layout-4 .entry-content' => array(
                     'border-color' => esc_attr($title_meta_border_color),
                     'border-width' => kemet_get_css_value( $title_meta_border_size , 'px' ),
+                    'border-style' => 'solid',
                 ), 
-                '.overlay-image .overlay-color' =>  array(
+                '.overlay-image .overlay-color .section-1:before , .overlay-image .overlay-color .section-1:after , .overlay-image .overlay-color .section-2:before , .overlay-image .overlay-color .section-2:after' =>  array(
 					'background-color'  => esc_attr ( $overlay_bg_color ),
 				),
 				'.overlay-image .post-details a' =>  array(

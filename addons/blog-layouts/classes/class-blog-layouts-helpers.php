@@ -48,7 +48,7 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
             $output .= '<div class="kmt-blog-featured-section post-thumb" style="background-image:url(' . $thumbnail_format . ');">';
             if($enable_overlay){
                 $output .= '<div class="overlay-image">';
-                $output .= '<div class="overlay-color"></div>';
+                $output .= '<div class="overlay-color"><div class="section-1"></div><div class="section-2"></div></div>';
                 $output .= '<div class="post-details">';
                 $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
                 $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';
@@ -60,7 +60,7 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
             $output .= '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '">';
             if($enable_overlay){
                 $output .= '<div class="overlay-image">';
-                $output .= '<div class="overlay-color"></div>';
+                $output .= '<div class="overlay-color"><div class="section-1"></div><div class="section-2"></div></div>';
                 $output .= '<div class="post-details">';
                 $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
                 $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']" href=""></a>';
@@ -113,7 +113,7 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
 					$output .= '<div class="post-thumb-img-content post-thumb">';
 					$output .= $post_thumb;
 					$output .= '<div class="overlay-image">';
-					$output .= '<div class="overlay-color"></div>';
+					$output .= '<div class="overlay-color"><div class="section-1"></div><div class="section-2"></div></div>';
 					$output .= '<div class="post-details">';
 					$output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
 					$output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';
