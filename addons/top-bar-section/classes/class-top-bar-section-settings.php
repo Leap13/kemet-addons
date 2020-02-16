@@ -63,8 +63,30 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['top-bar-search-style']               = 'search-icon';
             $defaults['topbar-link-color']           = '';
             $defaults['topbar-link-h-color']           = '';
-            $defaults['topbar-border-size']           = '';
-            $defaults['topbar-border-bottom-color']           = '#3a3a3a';
+            $defaults['topbar-border-size']           = array(
+                                            'desktop'      => array(
+                                                'top'    => 2,
+                                                'right'  => 2,
+                                                'bottom' => 2,
+                                                'left'   => 2,
+                                            ),
+                                            'tablet'       => array(
+                                                'top'    => '',
+                                                'right'  => '',
+                                                'bottom' => '',
+                                                'left'   => '',
+                                            ),
+                                            'mobile'       => array(
+                                                'top'    => '',
+                                                'right'  => '',
+                                                'bottom' => '',
+                                                'left'   => '',
+                                            ),
+                                            'desktop-unit' => 'px',
+                                            'tablet-unit'  => 'px',
+                                            'mobile-unit'  => 'px',
+                                        );
+            $defaults['topbar-border-bottom-color']           = '';
             $defaults['topbar-submenu-bg-color']           = '';
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';

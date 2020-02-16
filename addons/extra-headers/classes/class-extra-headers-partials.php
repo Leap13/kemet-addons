@@ -41,7 +41,7 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header-icon-label']  = '';
             $defaults['vheader-box-shadow']  = false;
             $defaults['vheader-border-style']  = 'solid';
-            $defaults['header-icon-bars-logo-bg-color']  = '#ffffff';
+            $defaults['header-icon-bars-logo-bg-color']  = '';
             $defaults['header-icon-bars-color']          = '';
             $defaults['header-icon-bars-h-color']        = '';
             $defaults['header-icon-bars-bg-color']       = '';

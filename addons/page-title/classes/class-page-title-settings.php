@@ -63,7 +63,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['page-title-layouts']                 = 'page-title-layout-1';
             $defaults['page_title_alignment']              = 'center';
             $defaults['page-title-bg-obj']                  = array(
-				'background-color'      => '#eaeaea',
+				'background-color'      => '',
 				'background-image'      => '',
 				'background-repeat'     => 'repeat',
 				'background-position'   => 'center center',
@@ -88,7 +88,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['breadcrumb-separator']         = '»';
             $defaults['breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
-            $defaults['breadcrumbs-color']                  = '#5b5b5b';
+            $defaults['breadcrumbs-color']                  = '';
             $defaults['breadcrumbs-link-color']             = '';
             $defaults['breadcrumbs-link-h-color']           = '';
             $defaults['page-title-border-right-color']      = '';
