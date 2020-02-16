@@ -149,13 +149,10 @@
             display: flex;
             visibility: visible !important;
             opacity: 1 !important;
+            width: 100%;
         }
         .kmt-site-identity{
             padding: 0;
-        }
-        .ss-content{
-            overflow: hidden;
-            width: auto;
         }
         .site-branding{
             padding-left: 20px;
