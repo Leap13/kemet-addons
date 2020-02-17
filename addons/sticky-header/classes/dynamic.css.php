@@ -14,7 +14,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_sticky_header_dynamic_css');
  * @return string
  */
 function kemet_sticky_header_dynamic_css( $dynamic_css ) {
-
+			$t2_color      = kemet_get_option( 't2-color' );
 			$sticky_bg_obj                    = kemet_get_option( 'sticky-bg-obj' );
 			$sticky_logo_width                = kemet_get_option( 'sticky-logo-width' );
 			$sticky_menu_link_color           = kemet_get_option('sticky-menu-link-color');
@@ -22,7 +22,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			$sticky_submenu_bg_color             = kemet_get_option( 'sticky-submenu-bg-color' );
 			$sticky_submenu_link_color             = kemet_get_option( 'sticky-submenu-link-color' );
 			$sticky_submenu_link_h_color             = kemet_get_option( 'sticky-submenu-link-h-color' ); 
-			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color');	   
+			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color' , $t2_color);	   
 			$submenu_border_color			  = kemet_get_option('sticky-submenu-border-color');
 
 			$css_output = array(
