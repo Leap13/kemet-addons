@@ -50,7 +50,7 @@
     .site-title {
         display: block;
     }
-    #site-navigation {
+    #site-navigation{
         display: block;
         li{
             width: 100%;
@@ -58,7 +58,7 @@
             float: none;
             position: relative;
             &:hover{
-                > .sub-menu{            
+                > .sub-menu , .children{            
                     position: static;
                 }
                 >a{
@@ -93,7 +93,7 @@
         li:last-child {
             border-bottom: 0px;
         }
-        .sub-menu {
+        .sub-menu , .children{
             width: 100%;
         }
         

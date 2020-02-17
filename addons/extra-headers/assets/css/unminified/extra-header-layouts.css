@@ -272,7 +272,7 @@
   position: relative;
 }
 
-.header-main-layout-5 #site-navigation li:hover > .sub-menu {
+.header-main-layout-5 #site-navigation li:hover > .sub-menu, .header-main-layout-5 #site-navigation li:hover .children {
   position: static;
 }
 
@@ -302,7 +302,7 @@
   border-bottom: 0px;
 }
 
-.header-main-layout-5 #site-navigation .sub-menu {
+.header-main-layout-5 #site-navigation .sub-menu, .header-main-layout-5 #site-navigation .children {
   width: 100%;
 }
 

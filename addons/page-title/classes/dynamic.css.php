@@ -9,7 +9,8 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_page_title_dynamic_css');
 
 function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $t2_color      = kemet_get_option( 't2-color' );
-            $page_title_bg        = kemet_get_option( 'page-title-bg-obj' );
+            $b1_color      = kemet_get_option( 'b1-color' );
+            $page_title_bg        = kemet_get_option( 'page-title-bg-obj' , array('background-color' => kemet_color_brightness($b1_color , 0.97 , 'dark')));
             $page_title_space        = kemet_get_option( 'page-title-space' );
             $page_title_color        = kemet_get_option( 'page-title-color' );
             $page_title_font_size        = kemet_get_option( 'page-title-font-size' );

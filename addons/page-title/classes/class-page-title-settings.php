@@ -62,14 +62,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             // Page title Options
             $defaults['page-title-layouts']                 = 'page-title-layout-1';
             $defaults['page_title_alignment']              = 'center';
-            $defaults['page-title-bg-obj']                  = array(
-				'background-color'      => '',
-				'background-image'      => '',
-				'background-repeat'     => 'repeat',
-				'background-position'   => 'center center',
-				'background-size'       => 'auto',
-				'background-attachment' => 'scroll',
-            );
+            $defaults['page-title-bg-obj']                  = '';
             $defaults['merge-with-header']                  = false;
             $defaults['page-title-space']                   = '';
             $defaults['page-title-color']                   = '';
