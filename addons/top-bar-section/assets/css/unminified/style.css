@@ -151,6 +151,14 @@
   padding: 0 10px;
 }
 
+.kemet-top-header-section > *:first-child {
+  padding-left: 0;
+}
+
+.kemet-top-header-section > *:last-child {
+  padding-right: 0;
+}
+
 .kemet-top-header-section .widget {
   margin-bottom: 0;
 }

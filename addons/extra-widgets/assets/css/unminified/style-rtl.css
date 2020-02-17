@@ -68,7 +68,6 @@
 .kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon, .kmt-social-profiles.square-outline .kmt-profile-link .profile-icon {
   border-width: 1px;
   border-style: solid;
-  border-color: #00000033;
   background: transparent;
 }
 
@@ -90,7 +89,6 @@
   height: 2em;
   width: 2em;
   display: inline-block;
-  color: #fff;
   background-color: inherit;
   font-size: 15px;
   text-align: center;
