@@ -86,7 +86,7 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
                                             'tablet-unit'  => 'px',
                                             'mobile-unit'  => 'px',
                                         );
-            $defaults['topbar-border-bottom-color']           = '';
+            $defaults['topbar-border-color']           = '';
             $defaults['topbar-submenu-bg-color']           = '';
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';

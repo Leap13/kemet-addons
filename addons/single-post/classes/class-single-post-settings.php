@@ -42,7 +42,7 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
 			$defaults['title-meta-position'] = 'left';
 			$defaults['content-alignment'] = 'left';
 			$defaults['featured-image-header'] = false;
-			$defaults['page-header-title'] = 'blog';
+			$defaults['page-header-title'] = 'post-title';
             return $defaults;
         }
 		function customize_register($wp_customize) {

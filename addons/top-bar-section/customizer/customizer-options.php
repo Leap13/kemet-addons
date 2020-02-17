@@ -456,8 +456,8 @@ $defaults = Kemet_Theme_Options::defaults();
 	 * Option: Top Bar Border Bottom Color
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[topbar-border-bottom-color]', array(
-			'default'           => $defaults[ 'topbar-border-bottom-color' ],
+		KEMET_THEME_SETTINGS . '[topbar-border-color]', array(
+			'default'           => $defaults[ 'topbar-border-color' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
@@ -465,7 +465,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	);
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-border-bottom-color]', array(
+			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-border-color]', array(
 				'section'  => 'section-topbar-header',
 				'priority' => 80,
 				'label'    => __( 'Border Color', 'kemet-addons' ),
