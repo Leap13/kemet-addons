@@ -17,14 +17,14 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
             
             //Top Bar Header
             $b1_color      = kemet_get_option( 'b1-color' );
-            $t2_color      = kemet_get_option( 't2-color' );
+            $global_border_color      = kemet_get_option( 'global-border-color' );
             $topbar_spacing              = kemet_get_option( 'topbar-padding' );
             $topbar_item_spacing         = kemet_get_option( 'topbar-item-padding' );
             $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' , kemet_color_brightness($b1_color , 0.99 , 'dark'));
             $topbar_link_color         = kemet_get_option( 'topbar-link-color' );
 			$topbar_link_h_color       = kemet_get_option( 'topbar-link-h-color' );
 			$topbar_text_color         = kemet_get_option( 'topbar-text-color' );
-			$topbar_border_color       = kemet_get_option( 'topbar-border-color' , $t2_color);
+			$topbar_border_color       = kemet_get_option( 'topbar-border-color' , $global_border_color);
 			$topbar_border_size        = kemet_get_option( 'topbar-border-size' );
 
 			//Top Bar Header SubMenu

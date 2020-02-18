@@ -16,7 +16,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_headers_dynamic_css');
 function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             //Defaults Colors
             $theme_color      = kemet_get_option( 'theme-color' );
-            $t2_color      = kemet_get_option( 't2-color' );
+            $global_border_color      = kemet_get_option( 'global-border-color' );
             $btn_bg_color       = kemet_get_option( 'button-bg-color', $theme_color );
             $btn_text_color = kemet_get_option( 'button-color' );
 			if ( empty( $btn_text_color ) ) {
@@ -38,12 +38,12 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $vertical_header_width        = kemet_get_option( 'vertical-header-width' );
             $vertical_border_width         = kemet_get_option( 'header-main-sep' );
             $vheader_border_style         = kemet_get_option( 'vheader-border-style' );
-            $vheader_border_color         = kemet_get_option( 'header-main-sep-color' , $t2_color);
+            $vheader_border_color         = kemet_get_option( 'header-main-sep-color' , $global_border_color);
             
             $mini_vheader_width         = kemet_get_option( 'mini-vheader-width' );
 
             //Header8
-            $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $t2_color);
+            $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $global_border_color);
             $css_content = array(
                 '.site-header .menu-icon' => array(
 					'border-radius'    => kemet_responsive_slider( $btn_border_radius, 'desktop' ),
