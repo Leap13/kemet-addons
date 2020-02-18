@@ -48,7 +48,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 				add_filter( 'kemet_page_breadcrumbs_enabled', array( $this, 'breadcrumbs_display' ) );
 				add_filter( 'kemet_featured_image_enabled', array( $this, 'featured_img' ) );
                 add_filter( 'kemet_main_footer_disable', array($this, 'kemet_footer_display') );  
-                add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display'));
+                add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display') , 1);
               
 			}
            
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 * Transparent Header Option
 		 */
         
-        function add_header_class($classes, $default='') {
+        function add_header_class($classes, $default = '') {
 			
 			$enable_trans_header = kemet_get_option( 'enable-transparent' );
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
@@ -85,9 +85,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
             
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
 			 
-			$display_header = ( isset( $meta['kemet-main-header-display'] ) ) ? $meta['kemet-main-header-display'] : true;
+			$display_header = ( isset( $meta['kemet-main-header-display'] ) ) ? $meta['kemet-main-header-display'] : $defaults;
 			
-				if ( '0' == $display_header ) {
+				if ( 'disable' === $display_header ) {
 					$defaults = false;
 				}
 				return $defaults;
@@ -100,9 +100,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
             
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true); 
 				
-			$display_top_bar = ( isset( $meta['kemet-top-bar-display'] ) ) ? $meta['kemet-top-bar-display'] : true;
+			$display_top_bar = ( isset( $meta['kemet-top-bar-display'] ) ) ? $meta['kemet-top-bar-display'] : $defaults;
 
-				if ( '0' == $display_top_bar ) {
+				if ( 'disable' === $display_top_bar ) {
 					$defaults = false;
 				}
 
@@ -115,10 +115,10 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
 		function post_title( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $title = ( isset( $meta['site-post-title'] ) ) ? $meta['site-post-title'] : true;
+            $title = ( isset( $meta['site-post-title'] ) ) ? $meta['site-post-title'] : $defaults;
 
-			if ( '0' == $title ) {
-			$defaults = false;
+			if ( 'disable' === $title ) {
+				$defaults = false;
 			}
 
 			return $defaults;
@@ -130,9 +130,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
 		function featured_img( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $featured_img = ( isset( $meta['kmt-featured-img'] ) ) ? $meta['kmt-featured-img'] : true;
-
-			if ( '0' == $featured_img ) {
+            $featured_img = ( isset( $meta['kmt-featured-img'] ) && $meta['kmt-featured-img'] != 'default') ? $meta['kmt-featured-img'] : $defaults;
+			
+			if ( 'disable' === $featured_img ) {
 				$defaults = false;
 			}
 
@@ -145,13 +145,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
         function kemet_footer_display( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $footer_display =  ( isset( $meta['kemet-footer-display'] ) ) ? $meta['kemet-footer-display'] : true;
-            
-			if ( '0' == $footer_display ) {
-                return;
-            }
-
-			return $defaults;
+            $footer_display =  ( isset( $meta['kemet-footer-display'] ) && $meta['kemet-footer-display'] != 'default' ) ? $meta['kemet-footer-display'] : $defaults;
+	
+			return $footer_display;
         }
         
         /**
@@ -160,13 +156,9 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
         function kemet_copyright_display( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $copyright_display =  ( isset( $meta['copyright-footer-layout'] ) ) ? $meta['copyright-footer-layout'] : true;
-
-			if ( '0' == $copyright_display ) {
-				$defaults = true;
-			}
-
-			return $defaults;
+            $copyright_display =  ( isset( $meta['copyright-footer-layout'] ) && $meta['copyright-footer-layout'] != 'default') ? $meta['copyright-footer-layout'] : $defaults;
+			
+			return $copyright_display;
         }
         
         /**

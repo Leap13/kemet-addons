@@ -1302,14 +1302,19 @@
   transition: opacity .2s;
 }
 .kfw-field-image_select .kfw--active {
-  border-color: #222;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-.kfw-field-image_select .kfw--active:before {
-  opacity: 1;
+  -webkit-box-shadow: 0 0 3px 1px rgba(195,195,195,.5);
+    box-shadow: 0 0 3px 1px rgba(195,195,195,.5);  
 }
 .kfw-field-image_select img {
   vertical-align: top;
+}
+.kfw-field-image_select .kfw--active img{
+    border: 1px solid #0085ba;
+    background-color: #0085ba;
+}
+.kfw-field-image_select img{
+    border: 1px solid #f1f1f1;
+    background-color: #ccc;
 }
 .kfw-field-image_select input {
   display: none;

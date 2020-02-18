@@ -19,7 +19,7 @@ KFW::createMetabox( $prefix_page_opts, array(
                     'post',
                     'product',
   ),
-  //'show_restore' => true,
+  
     'data_type'      => 'serialize',
     'theme'   => 'light',
 ) );
@@ -249,26 +249,32 @@ KFW::createSection( $prefix_page_opts, array(
   'icon'   => 'fa fa-pencil',
   'fields' => array(
       array(
-        'id'         => 'kemet-footer-display',
-        'type'       => 'button_set',
-        'title'      => 'Display Main Footer',
-        'options'    => array(
-          'default'  => 'Default',
-          'enabled'  => 'Enabled',
-          'disabled' => 'Disabled',
+        'id'          => 'kemet-footer-display',
+        'type'        => 'image_select',
+        'title'       => 'Kemet Footer Layout',
+        'options'     => array(
+          'default'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
+          'disabled'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
+          'layout-1'  => KEMET_METABOX_URL . '/assets/images/footer-layout-1.png',
+          'layout-2'  => KEMET_METABOX_URL . '/assets/images/footer-layout-2.png',
+          'layout-3'  => KEMET_METABOX_URL . '/assets/images/footer-layout-3.png',
+          'layout-4'  => KEMET_METABOX_URL . '/assets/images/footer-layout-4.png',
+          'layout-5'  => KEMET_METABOX_URL . '/assets/images/footer-layout-5.png',
+          'layout-6'  => KEMET_METABOX_URL . '/assets/images/footer-layout-6.png',
         ),
-        'default'    => 'default'
-      ),   
+        'default'   => 'default'
+      ),    
       array(
         'id'         => 'copyright-footer-layout',
-        'type'       => 'button_set',
+        'type'       => 'image_select',
         'title'      => 'Display Copyright Area',
-        'options'    => array(
-          'default'  => 'Default',
-          'enabled'  => 'Enabled',
-          'disabled' => 'Disabled',
+        'options'     => array(
+          'default'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
+          'disabled'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
+          'copyright-footer-layout-1'  => KEMET_METABOX_URL . '/assets/images/footer-layout-1.png',
+          'copyright-footer-layout-2'  => KEMET_METABOX_URL . '/assets/images/footer-layout-2.png',
         ),
-        'default'    => 'default'
+        'default'   => 'default'
       ),         
     )
   ) 
