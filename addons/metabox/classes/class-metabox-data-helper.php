@@ -64,10 +64,10 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
 		    $trans_meta_option = (isset( $meta['kemet-meta-enable-header-transparent'] ) ) ? $meta['kemet-meta-enable-header-transparent'] : $default;
 
-			if ( ('enabled' === $trans_meta_option && $enable_trans_header) || 'enabled' === $trans_meta_option  ) {
+			if ( ('enable' === $trans_meta_option && $enable_trans_header) || 'enable' === $trans_meta_option  ) {
 				
 				$classes[] = 'kmt-header-transparent';
-			} elseif ( 'disabled' === $trans_meta_option && $enable_trans_header ) {
+			} elseif ( 'disable' === $trans_meta_option && $enable_trans_header ) {
 				if (in_array('kmt-header-transparent', $classes)) {
                     unset( $classes[array_search('kmt-header-transparent', $classes)] );
                   }
@@ -115,7 +115,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 */
 		function post_title( $defaults ) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $title = ( isset( $meta['site-post-title'] ) ) ? $meta['site-post-title'] : $defaults;
+            $title = ( isset( $meta['kemet-page-title-display'] ) ) ? $meta['kemet-page-title-display'] : $defaults;
 
 			if ( 'disable' === $title ) {
 				$defaults = false;

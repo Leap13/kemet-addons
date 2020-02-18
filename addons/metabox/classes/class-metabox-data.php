@@ -174,8 +174,8 @@ KFW::createSection( $prefix_page_opts, array(
         'title'      => 'Display Top Bar',
         'options'    => array(
           'default'  => 'Default',
-          'enabled'  => 'Enabled',
-          'disabled' => 'Disabled',
+          'enable'  => 'Enable',
+          'disable' => 'Disable',
         ),
         'default'    => 'default'
       ),
@@ -185,8 +185,8 @@ KFW::createSection( $prefix_page_opts, array(
         'title'      => 'Display Primary Header',
         'options'    => array(
           'default'  => 'Default',
-          'enabled'  => 'Enabled',
-          'disabled' => 'Disabled',
+          'enable'  => 'Enable',
+          'disable' => 'Disable',
         ),
         'default'    => 'default'
       ),
@@ -196,10 +196,11 @@ KFW::createSection( $prefix_page_opts, array(
         'title' =>  __('Overlay Header', 'kemet-addons'),
         'options'     => array(
           'default'     => __('Default', 'kemet-addons'),
-          'enabled'     => __('Enable', 'kemet-addons'),
-          'disabled'     => __('Disabled', 'kemet-addons'),
+          'enable'     => __('Enable', 'kemet-addons'),
+          'disable'     => __('Disable', 'kemet-addons'),
         ),
-        'default'    => 'default'
+        'default'    => 'default',
+        'dependency' => array( 'kemet-main-header-display', '!=', 'disable' ),
       ),
       array(
         'id'          => 'header-layout',
@@ -226,21 +227,10 @@ KFW::createSection( $prefix_page_opts, array(
         'options'    => array(
           'default'  => 'Default',
           'enabled'  => 'Enabled',
-          'disabled' => 'Disabled',
+          'disable' => 'Disable',
         ),
         'default'    => 'default'
-      ),
-      array(
-        'id'          => 'page-title-layout',
-        'type'        => 'select',
-        'title'       => 'Page Title Layout',
-        'options'     => array(
-          'page-title-1'  => 'Page Title 1',
-          'page-title-2'  => 'Page Title 2',
-          'page-title-3'  => 'Page Title 3',
-        ),
-        'default'     => 'page-title-1'
-      ),           
+      ),          
     )
   ) 
 );
@@ -269,10 +259,10 @@ KFW::createSection( $prefix_page_opts, array(
         'type'       => 'image_select',
         'title'      => 'Display Copyright Area',
         'options'     => array(
-          'default'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
-          'disabled'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
-          'copyright-footer-layout-1'  => KEMET_METABOX_URL . '/assets/images/footer-layout-1.png',
-          'copyright-footer-layout-2'  => KEMET_METABOX_URL . '/assets/images/footer-layout-2.png',
+          'default'  => KEMET_METABOX_URL . '/assets/images/disable-copyright-area.png',
+          'disabled'  => KEMET_METABOX_URL . '/assets/images/disable-copyright-area.png',
+          'copyright-footer-layout-1'  => KEMET_METABOX_URL . '/assets/images/copyright-area-layout-1.png',
+          'copyright-footer-layout-2'  => KEMET_METABOX_URL . '/assets/images/copyright-area-layout-2.png',
         ),
         'default'   => 'default'
       ),         
