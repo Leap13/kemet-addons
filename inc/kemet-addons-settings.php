@@ -29,12 +29,6 @@ if (class_exists('KFW')) {
     'fields' => array(
       // A switcher field
       array(
-        'id' => 'metabox',
-        'type' => 'switcher',
-        'title' => __( 'Single Page/Post Options', 'kemet-addons' ),
-        'subtitle' => __('Enable/Disable the single page/post options that will allow you to individually customize your single page or post.', 'kemet-ddons'),
-        'default' => true,
-      ),array(
         'id' => 'extra-headers',
         'type' => 'switcher',
         'title' => __( 'Kemet Advanced Headers', 'kemet-addons' ),
@@ -82,6 +76,13 @@ if (class_exists('KFW')) {
         'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
         'subtitle' => __('Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-ddons'),
         'default' => false,
+      ),
+      array(
+        'id' => 'metabox',
+        'type' => 'switcher',
+        'title' => __( 'Single Page/Post Options', 'kemet-addons' ),
+        'subtitle' => __('Enable/Disable the single page/post options that will allow you to individually customize your single page or post.', 'kemet-ddons'),
+        'default' => true,
       ),
     ),
   ),

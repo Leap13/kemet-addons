@@ -167,7 +167,7 @@ KFW::createSection( $prefix_page_opts, array(
 KFW::createSection( $prefix_page_opts, array(
   'title'  => 'Header',
   'icon'   => 'fa fa-thumb-tack',
-  'fields' => array(
+  'fields' => apply_filters( 'kemet_header_page_meta' , array(
       array(
         'id'         => 'kemet-top-bar-display',
         'type'       => 'button_set',
@@ -181,12 +181,11 @@ KFW::createSection( $prefix_page_opts, array(
       ),
       array(
         'id'         => 'kemet-main-header-display',
-        'type'       => 'button_set',
+        'type'       => 'image_select',
         'title'      => 'Display Primary Header',
         'options'    => array(
-          'default'  => 'Default',
-          'enable'  => 'Enable',
-          'disable' => 'Disable',
+          'default'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
+          'disable'  => KEMET_METABOX_URL . '/assets/images/disable-footer.png',
         ),
         'default'    => 'default'
       ),
@@ -201,20 +200,10 @@ KFW::createSection( $prefix_page_opts, array(
         ),
         'default'    => 'default',
         'dependency' => array( 'kemet-main-header-display', '!=', 'disable' ),
-      ),
-      array(
-        'id'          => 'header-layout',
-        'type'        => 'select',
-        'title'       => 'Header Layout',
-        'options'     => array(
-          'header-1'  => 'Header 1',
-          'header-2'  => 'Header 2',
-          'header-3'  => 'Header 3',
-        ),
-        'default'     => 'header-2'
-      ),           
+      ),          
     )
   ) 
+)
 );
 KFW::createSection( $prefix_page_opts, array(
   'title'  => 'Page Title',

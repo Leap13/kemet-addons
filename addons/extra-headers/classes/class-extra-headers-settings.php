@@ -35,9 +35,30 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'kemet_header_breakpoint_style' ) );
+			add_filter( 'kemet_header_page_meta' , array( $this, 'header_meta') );
         } 
         
-		
+		function header_meta($fields){
+			$fields[1] = array(
+				'id'         => 'kemet-main-header-display',
+				'type'       => 'image_select',
+				'title'      => 'Display Primary Header',
+				'options'    => array(
+				  'default'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/disable.png',
+				  'disable'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/disable.png',
+				  'header-main-layout-1' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-01.png',
+				  'header-main-layout-2' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-02.png',
+				  'header-main-layout-3' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-03.png',
+				  'header-main-layout-4' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-04.png',
+				  'header-main-layout-5' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-05.png',
+				  'header-main-layout-6' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-06.png',
+				  'header-main-layout-7' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-07.png',
+				  'header-main-layout-8' => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-08.png',
+				),
+				'default'    => 'default'
+			  );
+			return $fields;
+		}
 		/**
 		 * Function to Add Header Breakpoint Style
 		 *
@@ -103,9 +124,10 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
        function sitehead_markup_loader() {
             
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', $kemet_header_layout );
 			$options = get_option( 'kmt_framework' );
-
-			if ( apply_filters( 'kemet_primary_header_enabled', true ) ) {
+			
+			if ( $kemet_header_layout !== 'disable' ) {
 				if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout) {
 					add_action( 'kemet_header', array( $this,'html_markup_loader'));	
 					remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
@@ -118,7 +140,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		}
 
         function kemet_body_classes($classes) {
-            $kemet_header_layout = kemet_get_option( 'header-layouts' );
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
 
             if('header-main-layout-5' == $kemet_header_layout) {
@@ -150,7 +172,8 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			}
 			
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
-			$kemet_header_layout = kemet_get_option( 'header-layouts' );
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
+			
 			$vheader_has_box_shadow   = kemet_get_option('vheader-box-shadow');
 			if('header-main-layout-7' == $kemet_header_layout || 'header-main-layout-5' == $kemet_header_layout || 'header-main-layout-6' == $kemet_header_layout){
 				if(in_array('kmt-header-transparent' , $classes)){
