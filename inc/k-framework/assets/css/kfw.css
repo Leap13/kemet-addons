@@ -3495,7 +3495,7 @@
     display: none !important;
   }
 
-  .kfw-content {
+  .kemet-addons-options .kfw-content {
     margin-left: 0;
   }
 
@@ -3967,14 +3967,14 @@
 .kfw-theme-light .kfw-nav-background {
   display: none;
 }
-.kfw-nav ul li {
+.kemet-addons-options .kfw-nav ul li {
   display: inline-block;
 }
-.kfw-nav {
+.kemet-addons-options .kfw-nav {
   float: none;
   width: 100%;
 }
-.kfw-content {
+.kemet-addons-options .kfw-content {
   margin-left: 0px;
 }
 .kfw-theme-light .kfw-nav ul li .kfw-section-active,

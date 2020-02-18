@@ -49,7 +49,7 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
       add_action( 'save_post', array( &$this, 'save_meta_box' ) );
       add_action( 'edit_attachment', array( &$this, 'save_meta_box' ) );
 
-      if( ! empty( $this->page_templates ) || ! empty( $this->post_formats ) ) {
+      if( ! empty( $this->page_templates ) || ! empty( $this->post_formats ) || ! empty( $this->args['class'] ) ) {
         foreach( $this->post_type as $post_type ) {
           add_filter( 'postbox_classes_'. $post_type .'_'. $this->unique, array( &$this, 'add_metabox_classes' ) );
         }
@@ -126,6 +126,10 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
       }
 
+      if( ! empty( $this->args['class'] ) ) {
+        $classes[] = $this->args['class'];
+      }
+
       return $classes;
 
     }
@@ -142,7 +146,7 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
     // get default value
     public function get_default( $field ) {
 
-      $default = ( isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : '';
+      $default = ( isset( $field['id'] ) && isset( $this->args['defaults'][$field['id']] ) ) ? $this->args['defaults'][$field['id']] : null;
       $default = ( isset( $field['default'] ) ) ? $field['default'] : $default;
 
       return $default;
@@ -154,16 +158,22 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
       global $post;
 
-      $value = '';
+      $value = null;
 
       if( is_object( $post ) && ! empty( $field['id'] ) ) {
-       
-        $meta    = get_post_meta( $post->ID, $this->unique, true );
-        $value   = ( isset( $meta[$field['id']] ) ) ? $meta[$field['id']] : null;
-        $default = $this->get_default( $field );
-        $value   = ( isset( $value ) ) ? $value : $default;
+
+        if( $this->args['data_type'] !== 'serialize' ) {
+          $meta  = get_post_meta( $post->ID, $field['id'] );
+          $value = ( isset( $meta[0] ) ) ? $meta[0] : null;
+        } else {
+          $meta  = get_post_meta( $post->ID, $this->unique, true );
+          $value = ( isset( $meta[$field['id']] ) ) ? $meta[$field['id']] : null;
+        }
 
       }
+
+      $default = $this->get_default( $field );
+      $value   = ( isset( $value ) ) ? $value : $default;
 
       return $value;
 
@@ -174,29 +184,70 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
       global $post;
 
+      $has_nav  = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
+      $show_all = ( ! $has_nav ) ? ' kfw-show-all' : '';
+      $errors   = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_kfw_errors', true ) : array();
+      $errors   = ( ! empty( $errors ) ) ? $errors : array();
+      $theme    = ( $this->args['theme'] ) ? ' kfw-theme-'. $this->args['theme'] : '';
+
+      if( is_object ( $post ) && ! empty( $errors ) ) {
+        delete_post_meta( $post->ID, '_kfw_errors' );
+      }
+
       wp_nonce_field( 'kfw_metabox_nonce', 'kfw_metabox_nonce'. $this->unique );
 
-      echo '<div class="kfw kfw-metabox kfw-theme-light">';
+      echo '<div class="kfw kfw-metabox'. $theme .'">';
 
-        echo '<div class="kfw-wrapper kfw-show-all">';
+        echo '<div class="kfw-wrapper'. $show_all .'">';
+
+          if( $has_nav ) {
+
+            echo '<div class="kfw-nav kfw-nav-metabox" data-unique="'. $this->unique .'">';
+
+              echo '<ul>';
+              $tab_key = 1;
+              foreach( $this->sections as $section ) {
+
+                $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="kfw-label-error kfw-error">!</i>' : '';
+                $tab_icon = ( ! empty( $section['icon'] ) ) ? '<i class="kfw-icon '. $section['icon'] .'"></i>' : '';
+
+                echo '<li><a href="#" data-section="'. $this->unique .'_'. $tab_key .'">'. $tab_icon . $section['title'] . $tab_error .'</a></li>';
+
+                $tab_key++;
+              }
+              echo '</ul>';
+
+            echo '</div>';
+
+          }
 
           echo '<div class="kfw-content">';
 
             echo '<div class="kfw-sections">';
 
+            $section_key = 1;
+
             foreach( $this->sections as $section ) {
 
-              echo '<div class="kfw-section kfw-onload">';
+              $onload = ( ! $has_nav ) ? ' kfw-onload' : '';
 
-              $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="kfw-icon '. esc_attr( $section['icon'] ) .'"></i>' : '';
-              $section_title = ( ! empty( $section['title'] ) ) ? esc_attr( $section['title'] ) : '';
+              echo '<div id="kfw-section-'. $this->unique .'_'. $section_key .'" class="kfw-section'. $onload .'">';
 
-              echo ( $section_title || $section_icon ) ? '<div class="kfw-section-title"><h3>'. ( $section_icon ) . ( $section_title ) .'</h3></div>' : '';
+              $section_icon  = ( ! empty( $section['icon'] ) ) ? '<i class="kfw-icon '. $section['icon'] .'"></i>' : '';
+              $section_title = ( ! empty( $section['title'] ) ) ? $section['title'] : '';
+
+              echo ( $section_title || $section_icon ) ? '<div class="kfw-section-title"><h3>'. $section_icon . $section_title .'</h3></div>' : '';
 
               if( ! empty( $section['fields'] ) ) {
 
                 foreach ( $section['fields'] as $field ) {
-                  KFW::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
+
+                  if( ! empty( $field['id'] ) && ! empty( $errors['fields'][$field['id']] ) ) {
+                    $field['_error'] = $errors['fields'][$field['id']];
+                  }
+
+                  kfw::field( $field, $this->get_meta_value( $field ), $this->unique, 'metabox' );
+
                 }
 
               } else {
@@ -207,13 +258,28 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
               echo '</div>';
 
+              $section_key++;
             }
 
             echo '</div>';
 
             echo '<div class="clear"></div>';
 
+            if( ! empty( $this->args['show_restore'] ) ) {
+
+              echo '<div class="kfw-restore-wrapper">';
+              echo '<label>';
+              echo '<input type="checkbox" name="'. $this->unique .'[_restore]" />';
+              echo '<span class="button kfw-button-restore">'. esc_html__( 'Restore', 'kfw' ) .'</span>';
+              echo '<span class="button kfw-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post for restore ', 'kfw' ), esc_html__( 'Cancel', 'kfw' ) ) .'</span>';
+              echo '</label>';
+              echo '</div>';
+
+            }
+
           echo '</div>';
+
+          echo ( $has_nav ) ? '<div class="kfw-nav-background"></div>' : '';
 
           echo '<div class="clear"></div>';
 
@@ -223,23 +289,7 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
     }
 
-    // // save metabox
-    // public function save_meta_box( $post_id ) {
-
-    //   $nonce = 'kfw_metabox_nonce'. $this->unique;
-
-    //   if( ! isset( $_POST[$nonce] ) && ! wp_verify_nonce( $_POST[$nonce], 'kfw_metabox_nonce' ) ) {
-    //     return $post_id;
-    //   }
-
-    //   if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-    //     return $post_id;
-    //   }
-
-    //   update_post_meta( $post_id, $this->unique, wp_unslash( (array) $_POST[$this->unique] ) );
-
-    // }
-        // save metabox
+    // save metabox
     public function save_meta_box( $post_id ) {
 
       if( ! wp_verify_nonce( kfw_get_var( 'kfw_metabox_nonce'. $this->unique ), 'kfw_metabox_nonce' ) ) {
