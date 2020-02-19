@@ -36,7 +36,7 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
                     'border-width' => kemet_get_css_value( $title_meta_border_size , 'px' ),
                     'border-style' => 'solid',
                 ), 
-                '.overlay-image .overlay-color .section-1:before , .overlay-image .overlay-color .section-1:after , .overlay-image .overlay-color .section-2:before , .overlay-image .overlay-color .section-2:after' =>  array(
+                '.squares .overlay-image .overlay-color .section-1:before ,.squares .overlay-image .overlay-color .section-1:after ,.squares .overlay-image .overlay-color .section-2:before ,.squares .overlay-image .overlay-color .section-2:after , .bordered .overlay-color ,.framed .overlay-color' =>  array(
 					'background-color'  => esc_attr ( $overlay_bg_color ),
 				),
 				'.overlay-image .post-details a' =>  array(

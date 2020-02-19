@@ -43,12 +43,18 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
         $thumbnail_format = kemet_get_post_thumbnail_format( $post_id, $size );
         $enable_overlay = kemet_get_option( 'enable-overlay-image' );
         $output = '';
-    
+        $overlay_style = 'framed';
         if ( kemet_is_valid_url( $thumbnail_format ) ) {
             $output .= '<div class="kmt-blog-featured-section post-thumb" style="background-image:url(' . $thumbnail_format . ');">';
             if($enable_overlay){
                 $output .= '<div class="overlay-image">';
-                $output .= '<div class="overlay-color"><div class="section-1"></div><div class="section-2"></div></div>';
+                $output .= '<div class="overlay-color">';
+                if($overlay_style == 'bordered'){
+                    $output .= '<div class="color-section-1"><div class="color-section-2"></div></div>';
+                }else if($overlay_style == 'squares'){
+                    $output .= '<div class="section-1"></div><div class="section-2"></div>';
+                }
+                $output .= '</div>';
                 $output .= '<div class="post-details">';
                 $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
                 $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';
@@ -60,7 +66,13 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
             $output .= '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '">';
             if($enable_overlay){
                 $output .= '<div class="overlay-image">';
-                $output .= '<div class="overlay-color"><div class="section-1"></div><div class="section-2"></div></div>';
+                $output .= '<div class="overlay-color">';
+                if($overlay_style == 'bordered'){
+                    $output .= '<div class="color-section-1"><div class="color-section-2"></div></div>';
+                }else if($overlay_style == 'squares'){
+                    $output .= '<div class="section-1"></div><div class="section-2"></div>';
+                }
+                $output .= '</div>';
                 $output .= '<div class="post-details">';
                 $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
                 $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']" href=""></a>';
@@ -97,6 +109,8 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
 
 		$blog_post_thumb   = kemet_get_option( 'blog-post-structure' );
 
+        $overlay_style = 'framed';
+
 		if ( ( ( ! $check_is_singular && in_array( 'image', $blog_post_thumb ) ) || is_page() ) && has_post_thumbnail() ) {
 
 			if ( $featured_image && ( ! ( $check_is_singular ) || ( ! post_password_required() && ! is_attachment() && has_post_thumbnail() ) ) ) {
@@ -113,7 +127,13 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
 					$output .= '<div class="post-thumb-img-content post-thumb">';
 					$output .= $post_thumb;
 					$output .= '<div class="overlay-image">';
-					$output .= '<div class="overlay-color"><div class="section-1"></div><div class="section-2"></div></div>';
+                    $output .= '<div class="overlay-color">';
+                    if($overlay_style == 'bordered'){
+                        $output .= '<div class="color-section-1"><div class="color-section-2"></div></div>';
+                    }else if($overlay_style == 'squares'){
+                        $output .= '<div class="section-1"></div><div class="section-2"></div>';
+                    }
+                    $output .= '</div>';
 					$output .= '<div class="post-details">';
 					$output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
 					$output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';

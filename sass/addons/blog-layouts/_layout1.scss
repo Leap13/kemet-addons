@@ -27,6 +27,7 @@
         }
     }
     .overlay-color{
+        opacity: 1;
         .section-1 , .section-2{
             width: 100%;
             height: 100%;
@@ -113,6 +114,211 @@
         }
     }
 }
+.bordered{
+    .post-thumb-img-content , .blog-post-layout-4 .kmt-default-featured-section , .blog-post-layout-4 .kmt-blog-featured-section{
+        overflow: hidden;
+        img{
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        &:hover{
+            img{
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                -o-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+            .overlay-color{
+                .color-section-2{
+                    &::before , &::after{
+                        -webkit-transition-delay: 0.15s;
+                        transition-delay: 0.15s;
+                        opacity: 1;
+                        -webkit-transform: scale(1);
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+    .overlay-color{
+        background-color: #ff0000;
+        opacity: 0.5;
+        .color-section-1{
+            padding: 15px;
+            width: 100%;
+            height: 100%;
+            .color-section-2{
+                width: 100%;
+                height: 100%;
+                position: relative;
+                &:before , &:after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    -webkit-transition: all 0.3s linear 0s;
+                    -moz-transition: all 0.3s linear 0s;
+                    -ms-transition: all 0.3s linear 0s;
+                    -o-transition: all 0.3s linear 0s;
+                    transition: all 0.3s linear 0s;
+                    border-color: rgba(28,28,28,0.5);
+                }
+                &:before{
+                    border-right: 2px solid;
+                    border-left: 2px solid;
+                    -webkit-transform: scale(1, 0);
+                    transform: scale(1, 0);
+                    -webkit-transform-origin: 100% 0;
+                    transform-origin: 100% 0;
+                }
+                &:after{
+                    border-top: 2px solid;
+                    border-bottom: 2px solid;
+                    -webkit-transform: scale(0, 1);
+                    transform: scale(0, 1);
+                    -webkit-transform-origin: 0 0;
+                    transform-origin: 0 0;
+                }
+            }
+        }
+    }
+}
+.diagonal{
+    .post-thumb-img-content , .blog-post-layout-4 .kmt-default-featured-section , .blog-post-layout-4 .kmt-blog-featured-section{
+        overflow: hidden;
+        img{
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        &:hover{
+            img{
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                -o-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+            .overlay-color{
+                &::before{
+                    transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,150%,0);
+                    -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,150%,0);
+                    -moz-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,150%,0);
+                    -o-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,150%,0);
+                    -ms-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,150%,0);
+                }
+                &::after{
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+    .overlay-color{
+        background: transparent;
+        opacity: 0.5;
+        position: relative;
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: rgba(255,255,255,0.5);
+            transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-150%,0);
+            -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-150%,0);
+            -moz-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-150%,0);
+            -o-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-150%,0);
+            -ms-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-150%,0);
+            -webkit-transition: all 0.3s linear 0s;
+            -moz-transition: all 0.3s linear 0s;
+            -ms-transition: all 0.3s linear 0s;
+            -o-transition: all 0.3s linear 0s;
+            transition: all 0.3s linear 0s;
+        }
+        &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            background-color: rgba(255,255,255,0.15);
+            -webkit-transition: all 0.3s linear 0s;
+            -moz-transition: all 0.3s linear 0s;
+            -ms-transition: all 0.3s linear 0s;
+            -o-transition: all 0.3s linear 0s;
+            transition: all 0.3s linear 0s;
+        }
+    }
+}
+.framed{
+    .post-thumb-img-content , .blog-post-layout-4 .kmt-default-featured-section , .blog-post-layout-4 .kmt-blog-featured-section{
+        overflow: hidden;
+        img{
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        &:hover{
+            img{
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                -o-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+            .overlay-image{
+                .overlay-color{
+                    -webkit-transition: all 0.3s linear 0s;
+                    -moz-transition: all 0.3s linear 0s;
+                    -ms-transition: all 0.3s linear 0s;
+                    -o-transition: all 0.3s linear 0s;
+                    transition: all 0.3s linear 0s;
+                    -webkit-transform: scale(1);
+                    -moz-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+        }
+        .overlay-image{
+            .overlay-color{
+                opacity: 0.5;
+                top: 15px;
+                width: calc(100% - 30px);
+                height: calc(100% - 30px);
+                left: 15px;
+                -webkit-transform: scale(.3);
+                -moz-transform: scale(.3);
+                transform: scale(.3);
+                -webkit-transition: all 0.3s linear 0s;
+                -moz-transition: all 0.3s linear 0s;
+                -ms-transition: all 0.3s linear 0s;
+                -o-transition: all 0.3s linear 0s;
+                transition: all 0.3s linear 0s;
+            }
+        }     
+    }
+}
 .post-thumb-img-content , .blog-post-layout-4 .kmt-default-featured-section , .blog-post-layout-4 .kmt-blog-featured-section{
     position: relative;
     .overlay-image{
@@ -130,7 +336,6 @@
         .overlay-color{
             width: 100%;
             height: 100%;
-            opacity: 1;
             position: absolute;
             top: 0;
             width: 100%;
