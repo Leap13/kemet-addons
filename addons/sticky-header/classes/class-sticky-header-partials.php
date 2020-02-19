@@ -100,7 +100,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
         }
 
         public function header_classes($classes) {
-            $enabled_sticky           = kemet_get_option( 'enable-sticky' );
+            $enabled_sticky           = apply_filters('kemet_disable_sticky_header' , kemet_get_option( 'enable-sticky' ));
             $sticky_logo              = kemet_get_option( 'sticky-logo' );
             $sticky_style             = kemet_get_option( 'sticky-style' );
             $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );

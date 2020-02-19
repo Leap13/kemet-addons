@@ -42,7 +42,8 @@ if ( ! class_exists( 'Kemet_Topbar' ) ) {
 
             require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-section-settings.php';
 			require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-section-partials.php';
-		
+			require_once KEMET_TOPBAR_DIR . 'classes/class-top-bar-meta.php';
+
             if ( ! is_admin() ) {
 				require_once KEMET_TOPBAR_DIR . 'classes/dynamic.css.php';
 			}
