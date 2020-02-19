@@ -1,3 +1,10 @@
+.site-header{
+    .kemet-merged-top-bar-header{
+        .main-header-bar{
+            background: transparent;
+        }
+    }
+}
 .kemet-merged-header-title{
     &.overlay{
         position: absolute;
@@ -13,6 +20,9 @@
         .main-header-bar{
             background-image: none;
             background-color: transparent;
+        }
+        .kemet-merged-top-bar-header{
+            background: transparent;
         }
         }
     }

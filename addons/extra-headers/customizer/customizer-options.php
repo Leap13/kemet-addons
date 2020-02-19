@@ -55,6 +55,24 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
+		/**
+	 * Option: Vertical Headers Enable Box Shadow
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[merge-top-bar-header]', array(
+			'default'           => $defaults[ 'merge-top-bar-header' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[merge-top-bar-header]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-header',
+			'label'           => __( 'Merge/Combine Top Bar With Main Header', 'kemet-addons' ),
+            'priority'        => 19,
+		)
+	);
 	/**
 	 * Option: Title
 	 */

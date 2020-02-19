@@ -35,6 +35,8 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'kemet_header_breakpoint_style' ) );
+			add_action( 'kemet_before_top_bar', array( $this, 'header_with_top_bar' ) );
+			add_action( 'kemet_after_main_header', array( $this, 'after_main_header' ) );
         } 
         
 		
@@ -95,7 +97,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
                 <?php kemet_sitehead(); ?>
     
                 <?php kemet_sitehead_bottom(); ?>
-    
+
 			</header><!-- #sitehead -->
             <?php
 		}
@@ -108,15 +110,33 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			if ( apply_filters( 'kemet_primary_header_enabled', true ) ) {
 				if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout) {
 					add_action( 'kemet_header', array( $this,'html_markup_loader'));	
-					remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
+					remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' ); 
 					kemetaddons_get_template( 'extra-headers/templates/'. esc_attr( $kemet_header_layout ) . '.php' );
 					
 				} else if ( 1 !== ( $options['extra-headers'] ) ) {
 					add_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' );
-					}  
+				}		  
 			}        
 		}
+		function header_with_top_bar(){
+			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );	
+			
+			if($merge_top_bar_with_header && (!empty(kemet_get_option( 'top-section-1' )) || !empty(kemet_get_option( 'top-section-2' )))){
+				$combined = 'kemet-merged-top-bar-header';
+				printf(
+					'<div class="%1$s">',
+					$combined
+				);
+			}
+		}
+		function after_main_header(){
 
+			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );
+			if( $merge_top_bar_with_header && (!empty(kemet_get_option( 'top-section-1' )) || !empty(kemet_get_option( 'top-section-2' )))) {
+				echo '</div><!-- .kemet-merged-top-bar-header -->';
+			}
+
+		}
         function kemet_body_classes($classes) {
             $kemet_header_layout = kemet_get_option( 'header-layouts' );
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);

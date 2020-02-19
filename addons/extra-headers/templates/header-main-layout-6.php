@@ -4,6 +4,7 @@
  */
 $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 ?>
+<?php do_action('kemet_before_main_header'); ?>
 <?php kemet_main_header_bar_top(); ?>
 <div class="main-header-bar-wrap">
     <?php kemet_site_branding_markup(); ?>
@@ -28,3 +29,4 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
     </div>    
     <?php kemet_main_header_bar_bottom(); ?>
 </div>
+<?php do_action('kemet_after_main_header'); ?>

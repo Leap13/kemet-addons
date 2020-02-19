@@ -3,7 +3,7 @@
  * Header 5 Layout
  */
 ?>
-
+<?php do_action('kemet_before_main_header'); ?>
 <div class="main-header-bar-wrap ss-wrapper">
 	<div class="main-header-bar ss-content">
 		<?php kemet_main_header_bar_top(); ?>
@@ -15,3 +15,4 @@
 		<?php kemet_main_header_bar_bottom(); ?>
 	</div> 
 </div>
+<?php do_action('kemet_after_main_header'); ?>
