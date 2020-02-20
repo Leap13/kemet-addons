@@ -46,14 +46,14 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Meta_Box' ) ) {
         function add_top_bar_meta_box(){
 
             KFW::createSection( 'kemet_page_options', array(
-                'title'  => 'Top Bar',
+                'title'  => __('Top Bar', 'kemet-addons'),
                 'icon'   => 'fa fa-thumb-tack',
                 'fields' => array(
                     array(
                       'id'         => 'kemet-top-bar-display',
                       'type'       => 'checkbox',
-                      'title'      => 'Disable Top Bar',
-                      'label'   => 'Disable The Top Bar in The Current Page/Post.',
+                      'title'      => __('Disable Top Bar', 'kemet-addons'),
+                      'label'   => __('Disable The Top Bar in The Current Page/Post.', 'kemet-addons'),
                       'default'    => false
                     ),         
                   ) 

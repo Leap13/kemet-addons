@@ -10,7 +10,7 @@ if( class_exists( 'KFW' ) ) {
 $prefix_page_opts = 'kemet_page_options';
 
 KFW::createMetabox( $prefix_page_opts, array(
-  'title'        => 'Kemet Page Options',
+  'title'        => __('Kemet Page Options', 'kemet-addons'),
   'post_type'    =>  array( 
                     'page', 
                     'post',
@@ -24,7 +24,7 @@ KFW::createMetabox( $prefix_page_opts, array(
 // Create a section
 //
 KFW::createSection( $prefix_page_opts, array(
-  'title'  => 'Main',
+  'title'  => __('Main', 'kemet-addons'),
   'icon'   => 'fa fa-cog',
   'fields' => array(
       array(
@@ -54,8 +54,8 @@ KFW::createSection( $prefix_page_opts, array(
       array(
         'id'         => 'kemet-featured-img',
         'type'       => 'checkbox',
-        'title'      => 'Disable Featured Image',
-        'label'   => 'Disable The Featured Image in The Current Page/Post.',
+        'title'      => __( 'Disable Featured Image', 'kemet-addons'),
+        'label'   => __( 'Disable The Featured Image in The Current Page/Post.', 'kemet-addons'),
         'default'    => false
        ),           
     )
@@ -63,21 +63,21 @@ KFW::createSection( $prefix_page_opts, array(
 );
 
 KFW::createSection( $prefix_page_opts, array(
-  'title'  => 'Footer',
+  'title'  => __('Footer', 'kemet-addons'),
   'icon'   => 'fa fa-pencil',
   'fields' => array(
       array(
         'id'         => 'kemet-disable-footer',
         'type'       => 'checkbox',
-        'title'      => 'Disable Footer Area',
-        'label'   => 'Disable The Footer Area in The Current Page/Post.',
+        'title'      => __( 'Disable Footer Area', 'kemet-addons'),
+        'label'   => __( 'Disable The Footer Area in The Current Page/Post.', 'kemet-addons'),
         'default'    => false
        ), 
        array(
         'id'         => 'kemet-disable-copyright-footer',
         'type'       => 'checkbox',
-        'title'      => 'Disable Copyright Area',
-        'label'   => 'Disable The Copyright Area in The Current Page/Post.',
+        'title'      => __( 'Disable Copyright Area', 'kemet-addons'),
+        'label'   => __( 'Disable The Copyright Area in The Current Page/Post.', 'kemet-addons'),
         'default'    => false
        ),             
     )

@@ -47,13 +47,13 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
         function add_page_title_meta_box(){
 
         KFW::createSection( 'kemet_page_options', array(
-                'title'  => 'Page Title',
+                'title'  => __( 'Page Title', 'kemet-addons'),
                 'icon'   => 'fa fa-wrench',
                 'fields' => array(
                     array(
                         'id'         => 'kemet-page-title-display',
                         'type'       => 'image_select',
-                        'title'      => 'Display Page Title',
+                        'title'      => __( 'Display Page Title', 'kemet-addons'),
                         'options'    => array(
                         'default'  => KEMET_PAGE_TITLE_URL . '/assets/images/default.png',
                         'page-title-layout-1'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-01.png',
@@ -67,14 +67,14 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
                 ) 
             );
             KFW::createSection( 'kemet_page_options', array(
-                'title'  => 'Breadcrumbs',
+                'title'  => __('Breadcrumbs', 'kemet-addons'),
                 'icon'   => 'fa fa-thumb-tack',
                 'fields' => array(
                     array(
                         'id'         => 'kemet-disable-breadcrumbs',
                         'type'       => 'checkbox',
-                        'title'      => 'Disable Breadcrumbs',
-                        'label'   => 'Disable The Breadcrumbs in The Current Page/Post.',
+                        'title'      => __( 'Disable Breadcrumbs', 'kemet-addons'),
+                        'label'   => __( 'Disable The Breadcrumbs in The Current Page/Post.', 'kemet-addons'),
                         'default'    => false
                     ),          
                   ) 

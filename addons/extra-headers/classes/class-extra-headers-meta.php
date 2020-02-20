@@ -47,13 +47,13 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
         function add_extra_headers_meta_box(){
     
             KFW::createSection( 'kemet_page_options', array(
-                'title'  => 'Header',
+                'title'  => __( 'Header', 'kemet-addons' ),
                 'icon'   => 'fa fa-thumb-tack',
                 'fields' => array(
                     array(
                         'id'         => 'kemet-main-header-display',
                         'type'       => 'image_select',
-                        'title'      => 'Display Primary Header',
+                        'title'      => __( 'Display Primary Header', 'kemet-addons' ),
                         'options'    => array(
                         'default'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/default.png',
                         'header-main-layout-1'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-01.png',

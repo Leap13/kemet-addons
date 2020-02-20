@@ -45,19 +45,19 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Headers_Meta_Box' ) ) {
         function add_sticky_headers_meta_box(){
     
             KFW::createSection( 'kemet_page_options', array(
-                'title'  => 'Sticky Header',
+                'title'  => __('Sticky Header', 'kemet-addons'),
                 'icon'   => 'fa fa-thumb-tack',
                 'fields' => array(
                     array(
                         'id'         => 'kemet-disable-sticky-header',
                         'type'       => 'button_set',
-                        'title'      => 'Disable Sticky Header',
+                        'title'      => __('Disable Sticky Header', 'kemet-addons'),
                         'options'     => array(
                             'default'     => __('Default', 'kemet-addons'),
                             'enable'     => __('Enable', 'kemet-addons'),
                             'disable'    => __('Disable', 'kemet-addons'),
                         ),
-                        'label'   => 'Disable The Sticky Header in The Current Page/Post.',
+                        'label'   => __('Disable The Sticky Header in The Current Page/Post.', 'kemet-addons'),
                         'default'    => 'default'
                     ),          
                   ) 
