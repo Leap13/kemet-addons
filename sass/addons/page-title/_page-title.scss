@@ -40,7 +40,12 @@
     &::after {
     content: "";
     display: block;
-    margin: auto;
+    margin: 10px auto 10px;
+    }
+}
+.has-breadcrumb{
+    .trail-items{
+        margin: 6px 0;
     }
 }
 .align-center {

@@ -15,6 +15,9 @@ if(is_singular()){
 $description           = get_the_archive_description();
 $classes [] = kemet_get_option( 'page-title-layouts' );
 $classes_responsive = kemet_get_option( 'page-title-responsive' );
+if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) {
+	$classes [] = 'has-breadcrumb';
+} 
 $classes   = implode( ' ', $classes );
 ?>
 

@@ -10,6 +10,10 @@
 /*--------------------------------------------------------------
 ## Header 4
 --------------------------------------------------------------*/
+.site-header .kemet-merged-top-bar-header .main-header-bar {
+  background: transparent;
+}
+
 .kemet-merged-header-title.overlay {
   position: absolute;
   z-index: 999;
@@ -29,6 +33,10 @@
   background-color: transparent;
 }
 
+.kemet-merged-header-title .site-header.kmt-header-transparent .kemet-merged-top-bar-header {
+  background: transparent;
+}
+
 .logo-menu-icon .site-branding {
   float: right;
 }
@@ -36,8 +44,8 @@
 .menu-icon-social {
   cursor: pointer;
   float: left;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 14px;
   display: flex;
 }
 
@@ -215,16 +223,20 @@
 
 .v-header-align-right .main-header-bar-wrap {
   right: 0;
-  border-right: 1px solid #eee;
+  border-right: 1px solid;
 }
 
 .v-header-align-left .main-header-bar-wrap {
   left: 0;
-  border-left: 1px solid #eee;
+  border-left: 1px solid;
 }
 
 .ss-wrapper {
   overflow-x: hidden;
+}
+
+.ss-content .kmt-outside-menu {
+  width: 100%;
 }
 
 .header-main-layout-5 .main-header-bar {
@@ -268,7 +280,7 @@
   position: relative;
 }
 
-.header-main-layout-5 #site-navigation li:hover > .sub-menu {
+.header-main-layout-5 #site-navigation li:hover > .sub-menu, .header-main-layout-5 #site-navigation li:hover .children {
   position: static;
 }
 
@@ -298,7 +310,7 @@
   border-bottom: 0px;
 }
 
-.header-main-layout-5 #site-navigation .sub-menu {
+.header-main-layout-5 #site-navigation .sub-menu, .header-main-layout-5 #site-navigation .children {
   width: 100%;
 }
 
@@ -327,6 +339,10 @@
   text-align: center;
 }
 
+.kmt-header-break-point .ss-wrapper {
+  overflow: visible;
+}
+
 .kmt-header-break-point.kemet-main-v-header-align-left.header-main-layout-5, .kmt-header-break-point.kemet-main-v-header-align-right.header-main-layout-5, .kmt-header-break-point.kemet-main-v-header-align-left.header-main-layout-7, .kmt-header-break-point.kemet-main-v-header-align-right.header-main-layout-7 {
   padding: 0;
 }
@@ -340,6 +356,14 @@
   width: auto;
 }
 
+.kmt-header-break-point .ss-content {
+  overflow: visible;
+}
+
+.kmt-header-break-point .ss-content .kmt-outside-menu {
+  width: auto;
+}
+
 .kmt-header-break-point .kmt-sitehead-custom-menu-items .kmt-search-container {
   width: inherit;
 }
@@ -349,10 +373,6 @@
   margin: 0px;
   height: auto;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15) !important;
-}
-
-.kmt-header-break-point .main-header-container {
-  display: flex !important;
 }
 
 .kmt-header-break-point .menu-icon-social {
@@ -368,11 +388,6 @@
   padding: 0;
 }
 
-.kmt-header-break-point .ss-content {
-  width: 100%;
-  overflow: hidden;
-}
-
 .kmt-header-break-point .site-branding {
   padding-right: 20px;
   text-align: right;
@@ -386,24 +401,9 @@
   display: flex;
 }
 
-.header-main-layout-7 .main-header-bar .kmt-sitehead-custom-menu-items .search-icon .kmt-search-menu-icon {
-  right: 30px;
-}
-
-.header-main-layout-7 .main-header-bar .kmt-sitehead-custom-menu-items .search-icon .kmt-dropdown-active {
-  right: 0;
-}
-
-.header-main-layout-5 .main-header-bar .kmt-sitehead-custom-menu-items .search-icon.kmt-search-container {
-  width: 250px;
-}
-
-.header-main-layout-5 .main-header-bar .kmt-sitehead-custom-menu-items .search-icon .kmt-search-menu-icon {
-  right: 30px;
-}
-
-.header-main-layout-5 .main-header-bar .kmt-sitehead-custom-menu-items .search-icon .kmt-dropdown-active {
-  right: 0px;
+.header-main-layout-7 .main-header-bar .kmt-sitehead-custom-menu-items.search-icon .kmt-dropdown-active, .header-main-layout-5 .main-header-bar .kmt-sitehead-custom-menu-items.search-icon .kmt-dropdown-active, .header-main-layout-6 .main-header-bar .kmt-sitehead-custom-menu-items.search-icon .kmt-dropdown-active {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /*--------------------------------------------------------------
@@ -640,7 +640,7 @@
 }
 
 .header-main-layout-7 .kmt-site-identity {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 .header-main-layout-7 .menu-icon-social {
@@ -740,15 +740,11 @@
   display: flex;
   visibility: visible !important;
   opacity: 1 !important;
+  width: 100%;
 }
 
 .kmt-header-break-point .header-main-layout-7 .kmt-site-identity {
   padding: 0;
-}
-
-.kmt-header-break-point .header-main-layout-7 .ss-content {
-  overflow: hidden;
-  width: auto;
 }
 
 .kmt-header-break-point .header-main-layout-7 .site-branding {
