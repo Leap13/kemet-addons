@@ -41,12 +41,11 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
      */
     function kemet_get_the_post_thumbnail_background( $post_id, $size ) {
         $thumbnail_format = kemet_get_post_thumbnail_format( $post_id, $size );
-        $enable_overlay = kemet_get_option( 'enable-overlay-image' );
+        $overlay_style = kemet_get_option( 'overlay-image-style' );
         $output = '';
-        $overlay_style = 'framed';
         if ( kemet_is_valid_url( $thumbnail_format ) ) {
             $output .= '<div class="kmt-blog-featured-section post-thumb" style="background-image:url(' . $thumbnail_format . ');">';
-            if($enable_overlay){
+            if($overlay_style != 'none'){
                 $output .= '<div class="overlay-image">';
                 $output .= '<div class="overlay-color">';
                 if($overlay_style == 'bordered'){
@@ -64,7 +63,7 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
             return $output;
         } else {
             $output .= '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '">';
-            if($enable_overlay){
+            if($overlay_style){
                 $output .= '<div class="overlay-image">';
                 $output .= '<div class="overlay-color">';
                 if($overlay_style == 'bordered'){
@@ -109,7 +108,7 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
 
 		$blog_post_thumb   = kemet_get_option( 'blog-post-structure' );
 
-        $overlay_style = 'framed';
+        $overlay_style = kemet_get_option('');
 
 		if ( ( ( ! $check_is_singular && in_array( 'image', $blog_post_thumb ) ) || is_page() ) && has_post_thumbnail() ) {
 

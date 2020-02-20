@@ -57,7 +57,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
                     $classes[] = $desktop_columns . $tablet_columns . $mobile_columns;
                 }
             }
-            $classes[] = 'framed';
+            $classes[] = kemet_get_option( 'overlay-image-style' ) != 'none' ? kemet_get_option( 'overlay-image-style' ) : '';
 
             return $classes;
         }

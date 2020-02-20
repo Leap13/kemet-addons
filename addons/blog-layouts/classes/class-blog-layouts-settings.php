@@ -53,7 +53,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-title-meta-border-color']   = '';
             $defaults['blog-title-meta-border-size']   = '';
             $defaults['blog-layout-mode']   = 'masonry';
-            $defaults['enable-overlay-image']   = false;
+            $defaults['overlay-image-style']   = 'none';
             $defaults['overlay-image-bg-color']   = '#f67207';
             $defaults['overlay-icon-color']   = '#000';
             $defaults['overlay-icon-h-color']   = '#f67207';

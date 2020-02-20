@@ -238,21 +238,28 @@ $wp_customize->add_control(
 	);
 
 	/**
-	 * Option: Enable Overlay Image
+	 * Option: Overlay Image
 	 */
 	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[enable-overlay-image]', array(
-			'default'           => $defaults[ 'enable-overlay-image' ],
+		KEMET_THEME_SETTINGS . '[overlay-image-style]', array(
+			'default'           => $defaults[ 'overlay-image-style' ],
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 		)
 	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[enable-overlay-image]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-blog',
-			'label'           => __( 'Enable Overlay Image', 'kemet-addons' ),
-            'priority'        => 119,
+		KEMET_THEME_SETTINGS . '[overlay-image-style]', array(
+			'type'     => 'select',
+			'section'  => 'section-blog',
+			'priority' => 119,
+			'label'    => __( 'Overlay Image', 'kemet-addons' ),
+			'choices'  => array(
+				'none'    => __( 'None', 'kemet-addons' ),
+				'framed' => __( 'Framed', 'kemet-addons' ),
+				'diagonal' => __( 'Diagonal', 'kemet-addons' ),
+				'bordered' => __( 'Bordered', 'kemet-addons' ),
+				'squares' => __( 'Squares', 'kemet-addons' ),
+			),
 		)
 	);
 	/**
@@ -292,9 +299,9 @@ $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]', array(
 		'sanitize_callback' => false,
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
-			'conditions' => '==', 
-			'values' => true,
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=', 
+			'values' => 'none',
 		),
     )
 );
@@ -319,9 +326,9 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
-			'conditions' => '==', 
-			'values' => true,
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=', 
+			'values' => 'none',
 		),
     )
 );
@@ -344,9 +351,9 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
-			'conditions' => '==', 
-			'values' => true,
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=', 
+			'values' => 'none',
 		),
     )
 );
@@ -370,9 +377,9 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
-			'conditions' => '==', 
-			'values' => true,
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=', 
+			'values' => 'none',
 		),
     )
 );
@@ -396,9 +403,9 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
-			'conditions' => '==', 
-			'values' => true,
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=', 
+			'values' => 'none',
 		),
     )
 );
@@ -421,9 +428,9 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-overlay-image]', 
-			'conditions' => '==', 
-			'values' => true,
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=', 
+			'values' => 'none',
 		),
     )
 );

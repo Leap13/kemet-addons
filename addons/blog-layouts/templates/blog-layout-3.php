@@ -10,13 +10,13 @@
  */
 
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
-$enable_overlay = kemet_get_option( 'enable-overlay-image' );
+$enable_overlay = kemet_get_option( 'overlay-image-style' );
 
 ?>
 <div <?php kemet_blog_layout_class('blog-post-layout-3'); ?>>
     <?php do_action( 'kemet_archive_entry_header_before' ); ?> 
     <header class="entry-header">
-        <?php $overlay_image = $enable_overlay ? kemet_addons_get_thumbnail_with_overlay( '<div class="kmt-blog-featured-section post-thumb">', '</div>' ) : kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb">', '</div>' ); ?>
+        <?php $overlay_image = $enable_overlay != 'none' ? kemet_addons_get_thumbnail_with_overlay( '<div class="kmt-blog-featured-section post-thumb">', '</div>' ) : kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb">', '</div>' ); ?>
     </header><!-- .entry-header -->
     <?php do_action( 'kemet_archive_entry_header_after' ); ?>
         <div class="post-content">
