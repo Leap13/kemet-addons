@@ -20,7 +20,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $topbar_spacing              = kemet_get_option( 'topbar-padding' );
             $topbar_item_spacing         = kemet_get_option( 'topbar-item-padding' );
-            $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' , kemet_color_brightness($b1_color , 0.99 , 'dark'));
+            $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' , $b1_color);
             $topbar_link_color         = kemet_get_option( 'topbar-link-color' );
 			$topbar_link_h_color       = kemet_get_option( 'topbar-link-h-color' );
 			$topbar_text_color         = kemet_get_option( 'topbar-text-color' );
