@@ -17,20 +17,15 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             //Defaults Colors
             $theme_color      = kemet_get_option( 'theme-color' );
             $global_border_color      = kemet_get_option( 'global-border-color' );
-            $btn_bg_color       = kemet_get_option( 'button-bg-color', $theme_color );
-            $btn_text_color = kemet_get_option( 'button-color' );
-			if ( empty( $btn_text_color ) ) {
-				$btn_text_color = kemet_get_foreground_color( $theme_color );
-            }
-            $btn_text_hover_color = kemet_get_option( 'button-h-color' );
-            $btn_bg_hover_color = kemet_get_option( 'button-bg-h-color' );
+            $t1_color      = kemet_get_option( 't1-color' );
+            
             $btn_border_radius      = kemet_get_option( 'button-radius' );
             //Icon
             $header_icon_bars_logo_bg_color         = kemet_get_option( 'header-icon-bars-logo-bg-color' );
-            $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' , $btn_text_color);
-            $header_icon_bars_h_color       = kemet_get_option( 'header-icon-bars-h-color' ,$btn_text_hover_color);
-            $header_icon_bars_bg_color      = kemet_get_option( 'header-icon-bars-bg-color' , $btn_bg_color);
-            $header_icon_bars_bg_h_color    = kemet_get_option( 'header-icon-bars-bg-h-color' ,$btn_bg_hover_color);
+            $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' , $t1_color );
+            $header_icon_bars_h_color       = kemet_get_option( 'header-icon-bars-h-color' , $theme_color );
+            $header_icon_bars_bg_color      = kemet_get_option( 'header-icon-bars-bg-color');
+            $header_icon_bars_bg_h_color    = kemet_get_option( 'header-icon-bars-bg-h-color');
             $header_icon_bars_borderradius  =  kemet_get_option( 'header-icon-bars-border-radius' );
             $space_icon_bars                = kemet_get_option( 'menu-icon-bars-space' );
             $icon_label_color              = kemet_get_option( 'header-icon-label-color' );

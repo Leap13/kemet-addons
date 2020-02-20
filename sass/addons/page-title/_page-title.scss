@@ -12,11 +12,6 @@
         padding: 0 0.4em;
     }
 }
-.page-title-layout-1{
-    .kemet-page-title{
-        display: inline-block;
-    }
-}
 .page-title-layout-2{
     .kmt-container {
         display: flex;
@@ -41,9 +36,11 @@
 }
 
 .kemet-page-title {
+    display: inline-block;
     &::after {
     content: "";
     display: block;
+    margin: auto;
     }
 }
 .align-center {
