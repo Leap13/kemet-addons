@@ -17,13 +17,15 @@
         &.kmt-is-sticky{
             position: fixed;
         }    
+        }
+    }
+    .site-header{
         .main-header-bar{
             background-image: none;
             background-color: transparent;
         }
         .kemet-merged-top-bar-header{
             background: transparent;
-        }
         }
     }
 }
