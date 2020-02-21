@@ -31,7 +31,7 @@ KFW::createSection( $prefix_page_opts, array(
         'id'          => 'site-sidebar-layout',
         'type'        => 'select',
         'title'       => __('Sidebar Layout', 'kemet-addons'),
-        'placeholder' => 'Select an option',
+        'placeholder' => __('Select an option', 'kemet-addons'),
         'default'     => '',
         'options'     => array(
           'no-sidebar'     => __('No Sidebar', 'kemet-addons'),
@@ -43,7 +43,7 @@ KFW::createSection( $prefix_page_opts, array(
         'id'          => 'site-content-layout',
         'type'        => 'select',
         'title'       => __('Page Layout', 'kemet-addons'),
-        'placeholder' => 'Select an option',
+        'placeholder' => __('Select an option', 'kemet-addons'),
         'options'     => array(
           'boxed-container'            => __('Boxed Layout', 'kemet-addons'),
           'content-boxed-container'    => __('Boxed Content', 'kemet-addons'),
@@ -78,6 +78,13 @@ KFW::createSection( $prefix_page_opts, array(
         'type'       => 'checkbox',
         'title'      => __( 'Disable Copyright Area', 'kemet-addons'),
         'label'   => __( 'Disable The Copyright Area in The Current Page/Post.', 'kemet-addons'),
+        'default'    => false
+       ),
+       array(
+        'id'         => 'kemet-disable-go-top',
+        'type'       => 'checkbox',
+        'title'      => __( 'Disable Go Top Icon', 'kemet-addons'),
+        'label'   => __( 'Disable The Go Top Icon in The Current Page/Post.', 'kemet-addons'),
         'default'    => false
        ),             
     )

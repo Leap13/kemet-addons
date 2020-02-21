@@ -42,7 +42,8 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 			if ( is_singular() ) {
 				add_filter( 'kemet_featured_image_enabled', array( $this, 'featured_img' ) );
                 add_filter( 'kemet_main_footer_disable', array($this, 'kemet_footer_display') );  
-                add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display') , 1);
+				add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display') , 1);
+				add_filter( 'display_go_top_icon', array($this, 'kemet_go_top_display') , 1);
               
 			}
            
@@ -92,8 +93,21 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 			}
 
 			return $defaults;
+		}
+		/**
+		 * Disable Post / Page Go Top Icon
+		 *
+		 */
+        function kemet_go_top_display( $defaults ) {
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+            $go_top_display =  ( isset( $meta['kemet-disable-go-top'] ) ) ? $meta['kemet-disable-go-top'] : false;
+			
+			if ( $go_top_display ) {
+				$defaults = false;
+			}
+
+			return $defaults;
         }
-        
         /**
 		 * Post / Page Sidebar Display
 		 *
