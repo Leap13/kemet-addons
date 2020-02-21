@@ -201,6 +201,9 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 					}
 				}	
 			}
+
+			$kemet_header_content_width = kemet_get_option('header-main-layout-width');
+			$classes[] = 'header-' . $kemet_header_content_width . '-width';
 			return $classes;
          }
         

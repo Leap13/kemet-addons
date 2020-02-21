@@ -10,7 +10,7 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
         <?php kemet_main_header_bar_top(); ?>
     
         <div class="kmt-container">
-            <div id="header-layout-8" class="header inline-icon-menu-header">
+            <div id="header-layout-8" class="header inline-icon-menu-header main-header-content">
                 <div class="menu-icon-header-8">
                     <div class="inline-logo-menu"> 
                         <?php kemet_site_branding_markup(); ?>

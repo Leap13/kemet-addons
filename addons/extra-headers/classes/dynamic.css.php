@@ -18,7 +18,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $theme_color      = kemet_get_option( 'theme-color' );
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $t1_color      = kemet_get_option( 't1-color' );
-            
+            $header_content_bg_color = kemet_get_option( 'header-content-bg-color' );
             $btn_border_radius      = kemet_get_option( 'button-radius' );
             //Icon
             $header_icon_bars_logo_bg_color         = kemet_get_option( 'header-icon-bars-logo-bg-color' );
@@ -40,6 +40,12 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             //Header8
             $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $global_border_color);
             $css_content = array(
+                '.header-content-width .main-header-content' => array(
+                    'background-color' => esc_attr($header_content_bg_color),
+                ), 
+                '.menu-icon-social .header-icon-label' => array(
+                    'color' => esc_attr($icon_label_color),
+                ), 
                 '.site-header .menu-icon' => array(
 					'border-radius'    => kemet_responsive_slider( $btn_border_radius, 'desktop' ),
 				), 
