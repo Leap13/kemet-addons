@@ -10,6 +10,7 @@
 /*--------------------------------------------------------------
 ## Extra Widgets
 --------------------------------------------------------------*/
+/********************** mailchimp widget **********************/
 .widget_mailchimp .mailchimp-form .kmt-mailchimp-form div:first-child {
   margin: 20px 0;
 }
@@ -51,6 +52,7 @@
   display: block;
 }
 
+/********************** social widget **********************/
 .kmt-social-profiles {
   display: flex;
   flex-wrap: wrap;
@@ -99,6 +101,22 @@
   height: unset;
   font-size: inherit;
   line-height: inherit;
+}
+
+/********************** posts in images widget **********************/
+.kmt-posts-images {
+  display: flex;
+}
+
+.kmt-posts-images a {
+  display: inline-block;
+  float: left;
+}
+
+.kmt-posts-images a img {
+  margin: 0px 9px 9px 0px;
+  padding: 0px;
+  max-width: 100%;
 }
 
 /********************** widget style **********************/

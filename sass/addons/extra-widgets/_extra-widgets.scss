@@ -1,3 +1,4 @@
+/********************** mailchimp widget **********************/
 .widget_mailchimp{
     .mailchimp-form{
         .kmt-mailchimp-form{
@@ -38,7 +39,7 @@
         } 
     }
 }
-
+/********************** social widget **********************/
 .kmt-social-profiles{
     display: flex;
     flex-wrap: wrap;
@@ -87,6 +88,20 @@
             height: unset;
             font-size: inherit;
             line-height: inherit;
+        }
+    }
+}
+/********************** posts in images widget **********************/
+.kmt-posts-images{
+    display: flex;
+    overflow: hidden;
+    a{
+        display: inline-block;
+        float: left;
+        img{
+            margin: 0px 9px 9px 0px;
+            padding: 0px;
+            max-width: 100%;
         }
     }
 }

@@ -29,14 +29,24 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'widgets_init', array( $this, 'kemet_extra_widgets_markup'), 10 );
+            add_action( 'after_setup_theme', array( $this,'kemet_theme_image_sizes' ), 1 );
         }
         
+        /**
+         * Set theme images sizes
+         */
+        function kemet_theme_image_sizes() {
+            set_post_thumbnail_size( 50, 50, true );
+            add_image_size( 'kemet-thumbnail', 50, 50, true );
+        }
+
         public static function kemet_extra_widgets_markup() {
 
             // Define array of custom widgets for the theme
             $widgets = apply_filters( 'kemet_custom_widgets', array(
                 'mailchimp',
                 'social-icons',
+                'posts-in-images',
             ) );
 
             // Loop through widgets and load their files
