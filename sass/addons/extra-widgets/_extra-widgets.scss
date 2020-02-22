@@ -95,15 +95,7 @@
 .kmt-posts-images{
     display: flex;
     overflow: hidden;
-    a{
-        display: inline-block;
-        float: left;
-        img{
-            margin: 0px 9px 9px 0px;
-            padding: 0px;
-            max-width: 100%;
-        }
-    }
+    height: 300px;
 }
 /********************** widget style **********************/
 div.title {
