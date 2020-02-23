@@ -31,7 +31,8 @@ if (! class_exists('Kemet_Go_Top_Partials')) {
         }
 
         public function kemet_go_top_markup() {
-            if( kemet_get_option( 'enable-go-top' ) ){
+            $display_go_top = apply_filters('display_go_top_icon' , kemet_get_option( 'enable-go-top' ));
+            if( $display_go_top ){
             require_once KEMET_GOTOP_DIR . 'templates/go-top.php';
             }
         }

@@ -41,7 +41,8 @@ if ( ! class_exists( 'Kemet_Extra_Headers' ) ) {
 		public function __construct() {
             
             require_once KEMET_EXTRA_HEADERS_DIR . 'classes/class-extra-headers-partials.php';
-            require_once KEMET_EXTRA_HEADERS_DIR . 'classes/class-extra-headers-settings.php';
+			require_once KEMET_EXTRA_HEADERS_DIR . 'classes/class-extra-headers-settings.php';
+			require_once KEMET_EXTRA_HEADERS_DIR . 'classes/class-extra-headers-meta.php';
             
             if ( ! is_admin() ) {
 				require_once KEMET_EXTRA_HEADERS_DIR . 'classes/dynamic.css.php';

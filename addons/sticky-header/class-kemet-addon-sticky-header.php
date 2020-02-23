@@ -33,6 +33,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header' ) ) {
             
 			require_once KEMET_STICKY_HEADER_DIR . 'classes/class-sticky-header-settings.php';
 			require_once KEMET_STICKY_HEADER_DIR . 'classes/class-sticky-header-partials.php';
+			require_once KEMET_STICKY_HEADER_DIR . 'classes/class-sticky-headers-meta.php';
             
             if ( ! is_admin() ) {
 				require_once KEMET_STICKY_HEADER_DIR . 'classes/dynamic.css.php';
