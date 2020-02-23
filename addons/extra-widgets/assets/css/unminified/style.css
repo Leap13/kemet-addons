@@ -104,10 +104,28 @@
 }
 
 /********************** posts in images widget **********************/
-.kmt-posts-images {
-  display: flex;
-  overflow: hidden;
-  height: 300px;
+.wdg-post {
+  margin: 0px 9px 9px 0px;
+  padding: 0px;
+  float: left;
+}
+
+.wdg-post img {
+  border: 1px solid #E3E3E3;
+  padding: 2px;
+  height: 50px;
+  width: 50px;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  opacity: inherit;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /********************** widget style **********************/

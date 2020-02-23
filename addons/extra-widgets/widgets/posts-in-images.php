@@ -64,17 +64,18 @@ if( ! function_exists( 'kemet_widget_posts_in_widgets' ) ) {
       case 'most-recent':
           $cat_posts	 = get_posts( array( 'numberposts' => $posts_number, 'category' => $category ) );
       
-          break;    
-    }?>
-    <div class="kmt-posts-images">
+          break;   
+    }
+    ?>
     <?php foreach ( $cat_posts as $post ): setup_postdata( $post );
 			
 			if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() ) : ?>
-					<a class="post-image" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail('kemet-thumbnail'); ?></a>
+					<div class="wdg-post">
+					      <a class="ttip" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail( 'small-thumb' ); ?></a>
+				  </div><!-- wdg-post /-->
 			<?php endif;
         endforeach; 
       ?>
-    </div>
     <?php
     $post = $orig_post;
     echo $args['after_widget']; 
