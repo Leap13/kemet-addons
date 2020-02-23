@@ -55,11 +55,11 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
                         'type'       => 'image_select',
                         'title'      => __( 'Display Page Title', 'kemet-addons'),
                         'options'    => array(
-                        'default'  => KEMET_PAGE_TITLE_URL . '/assets/images/default.png',
+                        'default'  => KEMET_PAGE_TITLE_URL . '/assets/images/default-page-title.png',
                         'page-title-layout-1'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-01.png',
                         'page-title-layout-2'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-02.png',
                         'page-title-layout-3'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-03.png',
-                        'disable' => KEMET_PAGE_TITLE_URL . '/assets/images/disable.png',
+                        'disable' => KEMET_PAGE_TITLE_URL . '/assets/images/disable-page-title.png',
                         ),
                         'default'    => 'default'
                     ),          
