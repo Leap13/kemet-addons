@@ -8,7 +8,9 @@
 add_filter( 'kemet_dynamic_css', 'kemet_ext_page_title_dynamic_css');
 
 function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
-            $page_title_bg        = kemet_get_option( 'page-title-bg-obj' );
+            $theme_color      = kemet_get_option( 'theme-color' );
+            $b1_color      = kemet_get_option( 'b1-color' );
+            $page_title_bg        = kemet_get_option( 'page-title-bg-obj' , array('background-color' => kemet_color_brightness($b1_color , 0.97 , 'dark')));
             $page_title_space        = kemet_get_option( 'page-title-space' );
             $page_title_color        = kemet_get_option( 'page-title-color' );
             $page_title_font_size        = kemet_get_option( 'page-title-font-size' );
@@ -18,7 +20,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_font_transform        = kemet_get_option( 'pagetitle-text-transform' );
             $page_title_line_height        = kemet_get_option( 'pagetitle-line-height' );
             $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
-            $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' );
+            $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' , $theme_color);
             $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
             $layout3_border_right_color         =  kemet_get_option( 'page-title-border-right-color' );
             $page_title_algin           =  kemet_get_option( 'page_title_alignment' );
@@ -64,7 +66,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'desktop' ), 
                     'font-size'      => kemet_responsive_slider( $breadcrumbs_font_size, 'desktop' ),
                ),
-               '.kemet-breadcrumb-trail span'  => array(
+               '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span'  => array(
                    'color'  => esc_attr( $breadcrumbs_color ),
                ),
                '.kemet-breadcrumb-trail a span'  => array(

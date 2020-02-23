@@ -78,7 +78,6 @@
   .kemet-top-header {
       padding: 10px 0px;
       border-bottom-width: 1px;
-      border-bottom-color: #dddddd;
   }
   .top-bar-search-box{
       .kemet-top-header-section{
@@ -128,6 +127,12 @@
   .kemet-top-header-section{
       > *{
         padding: 0 10px;
+        &:first-child{
+            padding-left: 0;
+          }
+        &:last-child{
+            padding-right: 0;
+        } 
       }
       .widget{
           margin-bottom: 0;
@@ -195,3 +200,10 @@
         }
     }
   }
+  .site-header{
+    .kemet-merged-top-bar-header{
+        .kemet-top-header{
+            background: transparent;
+        }
+    }
+}

@@ -79,7 +79,7 @@ if(in_array('search' , (array)kemet_get_option( 'top-section-1' )) || in_array('
 	$classes .= ' top-bar-' . $search_style;
 }
 ?>
-
+<?php do_action('kemet_before_top_bar'); ?>
 <div class="kemet-top-header-wrap" >
 	<div class="kemet-top-header  <?php echo esc_attr( $classes ); ?>" >
 		<div class="kmt-container">
@@ -98,3 +98,4 @@ if(in_array('search' , (array)kemet_get_option( 'top-section-1' )) || in_array('
 		</div><!-- .kmt-container -->
 	</div><!-- .kemet-top-header -->
 </div><!-- .kemet-top-header-wrap -->
+<?php do_action('kemet_after_top_bar'); ?>

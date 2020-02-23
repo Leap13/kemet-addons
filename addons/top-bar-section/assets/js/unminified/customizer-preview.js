@@ -28,7 +28,7 @@
         });
     });
 
-    wp.customize('kemet-settings[topbar-border-bottom-color]', function (value) {
+    wp.customize('kemet-settings[topbar-border-color]', function (value) {
         value.bind(function (border_color) {
             jQuery('.kemet-top-header').css('border-color', border_color);
         });

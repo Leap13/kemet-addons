@@ -37,12 +37,12 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
             
 			$defaults['prev-next-links'] = false;
 			$defaults['enable-author-box'] = false;
-			$defaults['enable-page-title-content-area'] = false;
+			$defaults['enable-page-title-content-area'] = true;
 			$defaults['padding-inside-container'] = '';
 			$defaults['title-meta-position'] = 'left';
 			$defaults['content-alignment'] = 'left';
 			$defaults['featured-image-header'] = false;
-			$defaults['page-header-title'] = 'blog';
+			$defaults['page-header-title'] = 'post-title';
             return $defaults;
         }
 		function customize_register($wp_customize) {

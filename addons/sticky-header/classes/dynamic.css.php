@@ -14,15 +14,16 @@ add_filter( 'kemet_dynamic_css', 'kemet_sticky_header_dynamic_css');
  * @return string
  */
 function kemet_sticky_header_dynamic_css( $dynamic_css ) {
-
-			$sticky_bg_obj                    = kemet_get_option( 'sticky-bg-obj' );
+			$global_border_color      = kemet_get_option( 'global-border-color' );
+			$b1_color      = kemet_get_option( 'b1-color' );
+			$sticky_bg_obj                    = kemet_get_option( 'sticky-bg-obj' , array('background-color' => kemet_color_brightness($b1_color , 0.99 , 'dark')) );
 			$sticky_logo_width                = kemet_get_option( 'sticky-logo-width' );
 			$sticky_menu_link_color           = kemet_get_option('sticky-menu-link-color');
 			$sticky_menu_link_h_color           = kemet_get_option('sticky-menu-link-h-color');
 			$sticky_submenu_bg_color             = kemet_get_option( 'sticky-submenu-bg-color' );
 			$sticky_submenu_link_color             = kemet_get_option( 'sticky-submenu-link-color' );
 			$sticky_submenu_link_h_color             = kemet_get_option( 'sticky-submenu-link-h-color' ); 
-			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color');	   
+			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color' , $global_border_color);	   
 			$submenu_border_color			  = kemet_get_option('sticky-submenu-border-color');
 
 			$css_output = array(

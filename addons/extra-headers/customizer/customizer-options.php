@@ -226,6 +226,32 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
+   	* Option: Header8 Logo Icon Separator Color 
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[header-content-bg-color]', array(
+		  'default'           => $defaults[ 'header-content-bg-color' ],
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/' . KEMET_THEME_SETTINGS . '[header-main-layout-width]', 
+			'conditions' => '!=/!=/!=/==', 
+			'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7/content',
+			'operators' => "&&/&&/&&",
+		),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[header-content-bg-color]', array(
+			'label'   => __( 'Header Content Background Color', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 31,
+		  )
+		)
+	);
+	/**
 	* Option: Transparent header
 	*/
 	$wp_customize->add_setting(
@@ -247,6 +273,24 @@ $defaults = Kemet_Theme_Options::defaults();
 			'section'         => 'section-header',
 			'label'           => __( 'Enable Overlay Header', 'kemet-addons' ),
 			'priority'        => 40,	
+		)
+	);
+	/**
+	 * Option: Merge/Combine Top Bar With Main Header
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[merge-top-bar-header]', array(
+			'default'           => $defaults[ 'merge-top-bar-header' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[merge-top-bar-header]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-header',
+			'label'           => __( 'Merge/Combine Top Bar With Main Header', 'kemet-addons' ),
+            'priority'        => 41,
 		)
 	);
 	/**
@@ -273,9 +317,9 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
-	//Header9
+	//Header8
 	/**
-   	* Option: Header9 Logo Icon Separator Color 
+   	* Option: Header8 Logo Icon Separator Color 
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(

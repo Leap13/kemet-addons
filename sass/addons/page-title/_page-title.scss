@@ -1,6 +1,5 @@
 .kmt-page-title-addon-content {
     padding: 50px 0px;
-    background-color: $color-background-page-title;
 }
 .kemet-breadcrumb-trail {
     .trail-items, li {
@@ -11,11 +10,6 @@
     }
     .breadcrumb-sep {
         padding: 0 0.4em;
-    }
-}
-.page-title-layout-1{
-    .kemet-page-title{
-        display: inline-block;
     }
 }
 .page-title-layout-2{
@@ -42,9 +36,16 @@
 }
 
 .kemet-page-title {
+    display: inline-block;
     &::after {
     content: "";
     display: block;
+    margin: 10px auto 10px;
+    }
+}
+.has-breadcrumb{
+    .trail-items{
+        margin: 6px 0;
     }
 }
 .align-center {

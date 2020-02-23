@@ -12,7 +12,6 @@
 --------------------------------------------------------------*/
 .kmt-page-title-addon-content {
   padding: 50px 0px;
-  background-color: #ccc;
 }
 
 .kemet-breadcrumb-trail .trail-items, .kemet-breadcrumb-trail li {
@@ -24,10 +23,6 @@
 
 .kemet-breadcrumb-trail .breadcrumb-sep {
   padding: 0 0.4em;
-}
-
-.page-title-layout-1 .kemet-page-title {
-  display: inline-block;
 }
 
 .page-title-layout-2 .kmt-container {
@@ -51,9 +46,18 @@
   background-image: none;
 }
 
+.kemet-page-title {
+  display: inline-block;
+}
+
 .kemet-page-title::after {
   content: "";
   display: block;
+  margin: 10px auto 10px;
+}
+
+.has-breadcrumb .trail-items {
+  margin: 6px 0;
 }
 
 .align-center .kemet-page-title::after {

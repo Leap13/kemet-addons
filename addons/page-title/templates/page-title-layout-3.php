@@ -15,6 +15,9 @@ if(is_singular()){
 $description           = get_the_archive_description();
 $classes [] = kemet_get_option( 'page-title-layouts' );
 $classes_responsive = kemet_get_option( 'page-title-responsive' );
+if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) {
+	$classes [] = 'has-breadcrumb';
+} 
 $classes   = implode( ' ', $classes );
 ?>
 
@@ -34,7 +37,7 @@ $classes   = implode( ' ', $classes );
                 </div>
         <?php } ?>
         </div>
-        <div class = 'kmt-flex kmt-justify-content-flex-start kmt-col-md-6 kmt-col-xs-12<'>
+        <div class = 'kmt-flex kmt-justify-content-flex-start kmt-col-md-6 kmt-col-xs-12'>
         <?php if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) { ?>
             <?php kemet_breadcrumb_trail() ?>
         <?php }  ?>

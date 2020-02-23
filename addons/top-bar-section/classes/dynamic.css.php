@@ -16,13 +16,15 @@ add_filter( 'kemet_dynamic_css', 'kemet_topbar_dynamic_css');
 function kemet_topbar_dynamic_css( $dynamic_css ) {
             
             //Top Bar Header
+            $b1_color      = kemet_get_option( 'b1-color' );
+            $global_border_color      = kemet_get_option( 'global-border-color' );
             $topbar_spacing              = kemet_get_option( 'topbar-padding' );
             $topbar_item_spacing         = kemet_get_option( 'topbar-item-padding' );
-            $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' );
+            $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' , $b1_color);
             $topbar_link_color         = kemet_get_option( 'topbar-link-color' );
 			$topbar_link_h_color       = kemet_get_option( 'topbar-link-h-color' );
 			$topbar_text_color         = kemet_get_option( 'topbar-text-color' );
-			$topbar_border_color       = kemet_get_option( 'topbar-border-color' );
+			$topbar_border_color       = kemet_get_option( 'topbar-border-color' , $global_border_color);
 			$topbar_border_size        = kemet_get_option( 'topbar-border-size' );
 
 			//Top Bar Header SubMenu
@@ -50,8 +52,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'desktop' ),  
                     'background-color' => esc_attr($topbar_bg_color),
                     'border-style' => 'solid',
-					'border-bottom-color'     => esc_attr( $topbar_border_color),
-				    //'border-bottom-width' => kemet_get_css_value( $topbar_border_bottom_size , 'px' ),
+					'border-color'     => esc_attr( $topbar_border_color),
                     'border-top-width'    => kemet_responsive_spacing( $topbar_border_size, 'top', 'desktop' ),
                     'border-right-width'  => kemet_responsive_spacing( $topbar_border_size, 'right', 'desktop' ),
                     'border-bottom-width' => kemet_responsive_spacing( $topbar_border_size, 'bottom', 'desktop' ),

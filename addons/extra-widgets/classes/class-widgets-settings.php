@@ -39,10 +39,10 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
             $settings_get       = $settings_getter->get_settings();
             $settings        = $settings_get[ $params[ 1 ][ 'number' ] ];
 
-            if ( isset( $settings[ 'title' ] ) && empty( $settings[ 'title' ] ) ) {
+            if ( empty( $settings[ 'title' ] ) ) {
                 $params[ 0 ][ 'before_widget' ] .= '<div class="widget-content">';
                 $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
-            } elseif ( isset( $settings[ 'title' ] ) && !empty( $settings[ 'title' ] ) ) {
+            } elseif ( isset( $settings[ 'title' ] ) ) {
                 $params[ 0 ][ 'after_title' ] .= '<div class="widget-content">';
                 $params[ 0 ][ 'after_widget' ] = '</div>' . $params[ 0 ][ 'after_widget' ];
             } else {
@@ -89,8 +89,8 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
     
         function theme_defaults( $defaults ) {
             $defaults['widgets-style']              = 'style1';
-            $defaults['widget-style-color']   = '#e3e3e3';
-            $defaults['footer-widget-style-color']   = '#e3e3e3';
+            $defaults['widget-style-color']   = '';
+            $defaults['footer-widget-style-color']   = '';
             $defaults['footer-widgets-style']   = '';
             return $defaults;
         }

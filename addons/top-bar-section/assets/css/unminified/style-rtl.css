@@ -99,7 +99,6 @@
 .kemet-top-header {
   padding: 10px 0px;
   border-bottom-width: 1px;
-  border-bottom-color: #dddddd;
 }
 
 .top-bar-search-box .kemet-top-header-section .kmt-search-icon {
@@ -152,6 +151,14 @@
   padding: 0 10px;
 }
 
+.kemet-top-header-section > *:first-child {
+  padding-right: 0;
+}
+
+.kemet-top-header-section > *:last-child {
+  padding-left: 0;
+}
+
 .kemet-top-header-section .widget {
   margin-bottom: 0;
 }
@@ -201,4 +208,8 @@
     right: 0;
     left: auto;
   }
+}
+
+.site-header .kemet-merged-top-bar-header .kemet-top-header {
+  background: transparent;
 }

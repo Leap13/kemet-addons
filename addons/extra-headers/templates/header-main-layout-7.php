@@ -3,7 +3,7 @@
  * Header 7 Layout
  */
 ?>
-
+<?php do_action('kemet_before_main_header'); ?>
 <div class="main-header-bar-wrap ss-wrapper">
     <div class="menu-icon-social">
         <div class="menu-icon">
@@ -23,3 +23,4 @@
 		<?php kemet_main_header_bar_bottom(); ?>
 	</div> 
 </div>
+<?php do_action('kemet_after_main_header'); ?>

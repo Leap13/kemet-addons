@@ -1,3 +1,10 @@
+.site-header{
+    .kemet-merged-top-bar-header{
+        .main-header-bar{
+            background: transparent;
+        }
+    }
+}
 .kemet-merged-header-title{
     &.overlay{
         position: absolute;
@@ -10,10 +17,15 @@
         &.kmt-is-sticky{
             position: fixed;
         }    
+        }
+    }
+    .site-header{
         .main-header-bar{
             background-image: none;
             background-color: transparent;
         }
+        .kemet-merged-top-bar-header{
+            background: transparent;
         }
     }
 }
@@ -24,8 +36,8 @@
 .menu-icon-social {
     cursor: pointer;
     float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 14px;
     display: flex;
     .menu-icon {
         padding: 5px;
@@ -50,7 +62,6 @@
     display: inline-block;
     top: 5px;
     span {
-        background-color: #4a4a4a;
         position: absolute;
         border-radius: 2px;
         transition: all .5s cubic-bezier(.8,.5,.2,1.4) , background-color 0s;

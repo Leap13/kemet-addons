@@ -240,11 +240,20 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     .kmt-social-profiles .kmt-profile-link .profile-icon.facebook{
       color: #3b5998;
     }
+    .kmt-social-profiles .kmt-profile-link .profile-icon.facebook-alt{
+      color: #3b5998;
+    }
     .kmt-social-profiles .kmt-profile-link .profile-icon.twitter{
-      color: #00aced;
+      color: #1da1f2;
     }
     .kmt-social-profiles .kmt-profile-link .profile-icon.googleplus{
-      color: #dd4b39;
+      color: #db4437;
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-icon.wordpress-alt{
+      color: #21759b;
+    }
+    .kmt-social-profiles .kmt-profile-link .profile-icon.wordpress{
+      color: #21759b;
     }
   </style>
 <?php echo $args['after_widget']; 

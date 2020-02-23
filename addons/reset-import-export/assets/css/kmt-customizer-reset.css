@@ -22,7 +22,6 @@
 }
 /* Button */
 .kmt-customizer-reset-footer .kmt-customizer-reset-button {
-    padding: 10px;
     line-height: 10px;
 }
 .customizer-import-form.border-box .fields {
@@ -84,4 +83,7 @@ form.customizer-import-form .inside {
     right: 15px;
     top: -25px;
     cursor: pointer;
+}
+.kmt-customizer-reset-footer .customizer-export-import,.kmt-customizer-reset-footer .kmt-customizer-reset-button{
+    padding: 0 22px;
 }

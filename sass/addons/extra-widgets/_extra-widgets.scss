@@ -56,7 +56,6 @@
             .profile-icon{
                 border-width: 1px;
                 border-style: solid;
-                border-color: #00000033;
                 background: transparent;
             }
         }   
@@ -79,7 +78,6 @@
             height: 2em;
             width: 2em;
             display: inline-block;
-            color: #fff;
             background-color: inherit;
             font-size: 15px;
             text-align: center;
@@ -115,7 +113,6 @@ div.title {
 /********************** widget style 2 **********************/
 .kmt-widget-style2 .widget-title {
     padding: 3px 10px;
-    background-color: #E3E3E3;
     float: left;
 }
 .kmt-widget-style2 div.title h4:after  {
@@ -124,8 +121,8 @@ div.title {
 /********************** widget style 3 **********************/
 .kmt-widget-style3 .widget-content {
     padding: 10px 15px 10px;
-    border: 1px solid #E3E3E3;
-    border-bottom: 2px solid rgb(129, 129, 129);
+    border: 1px solid;
+    border-bottom: 2px solid;
 }
 .kmt-widget-style3 .counter-widget .widget-content {
     padding: 10px 7px 10px;
@@ -134,9 +131,6 @@ div.title {
     width: 120px;
 }
 /********************** widget style 4**********************/
-.kmt-widget-style4 .widget-head {
-    background-color: #E3E3E3;
-}
 .kmt-widget-style4 div.title h4:after {
     display: none;
 }
@@ -148,23 +142,23 @@ div.title {
 }
 /********************** widget style 5 **********************/
 .kmt-widget-style5.widget {
-    border: 1px solid #E3E3E3;
+    border: 1px solid;
 }
 .kmt-widget-style5 div.title h4:after {
     display: none;
 }
 .kmt-widget-style5 .widget-content {
-    padding: 0px 15px 15px;
+    padding: 15px;
 }
 .kmt-widget-style5 .widget-title {
-    padding: 8px 15px;
+    padding: 15px;
 }
 /********************** widget style 6 **********************/
 .kmt-widget-style6 .widget-head {
     text-align: center;
 }
 .kmt-widget-style6 div.title .widget-title {
-    border-bottom: 2px solid rgb(129, 129, 129);
+    border-bottom: 2px solid;
     padding-bottom: 10px;
     position: relative;
     display: inline-block;
@@ -178,7 +172,6 @@ div.title {
     bottom: 0;
     margin-left: -2px;
     border: 3px solid transparent;
-    border-bottom-color: rgb(129, 129, 129);
 }
 .kmt-widget-style6 div.title h4:after {
     display: none;
@@ -197,7 +190,6 @@ div.title {
 .kmt-widget-style7 div.title .widget-title:after {
     content: '';
     position: relative;
-    background-color: #333;
     width: 30px;
     height: 2px;
     margin-top: 8px;
