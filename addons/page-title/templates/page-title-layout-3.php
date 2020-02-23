@@ -6,6 +6,7 @@
  */
 
 $title                 = kemet_get_the_title();
+$page_title_layout = apply_filters( 'kemet_the_page_title_layout' , kemet_get_option( 'page-title-layouts' ));
 if(is_singular()){
 	$header_title = kemet_get_option('page-header-title');
 	if($header_title == 'blog'){
@@ -13,9 +14,9 @@ if(is_singular()){
 	}
 }
 $description           = get_the_archive_description();
-$classes [] = kemet_get_option( 'page-title-layouts' );
+$classes [] = $page_title_layout;
 $classes_responsive = kemet_get_option( 'page-title-responsive' );
-if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) {
+if ( $page_title_layout != 'disable' && apply_filters('kemet_disable_breadcrumbs' , true )) {
 	$classes [] = 'has-breadcrumb';
 } 
 $classes   = implode( ' ', $classes );
@@ -38,7 +39,7 @@ $classes   = implode( ' ', $classes );
         <?php } ?>
         </div>
         <div class = 'kmt-flex kmt-justify-content-flex-start kmt-col-md-6 kmt-col-xs-12'>
-        <?php if ( apply_filters( 'kemet_the_page_title_enabled', true ) ) { ?>
+        <?php if ( $page_title_layout != 'disable' && apply_filters('kemet_disable_breadcrumbs' , true ) ) { ?>
             <?php kemet_breadcrumb_trail() ?>
         <?php }  ?>
     </div>

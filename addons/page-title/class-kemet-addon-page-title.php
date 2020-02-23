@@ -38,6 +38,7 @@ if ( ! class_exists( 'Kemet_Page_Title' ) ) {
             require_once KEMET_PAGE_TITLE_DIR . 'classes/class-page-title-settings.php';
 			require_once KEMET_PAGE_TITLE_DIR . 'classes/class-page-title-partials.php';
 			require_once KEMET_PAGE_TITLE_DIR . 'classes/class-kemet-breadcrumbs.php';
+			require_once KEMET_PAGE_TITLE_DIR . 'classes/class-page-title-meta.php';
             
             if ( ! is_admin() ) {
 				require_once KEMET_PAGE_TITLE_DIR . 'classes/dynamic.css.php';

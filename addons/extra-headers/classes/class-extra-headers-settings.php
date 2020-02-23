@@ -105,9 +105,10 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
        function sitehead_markup_loader() {
             
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', $kemet_header_layout );
 			$options = get_option( 'kmt_framework' );
 
-			if ( apply_filters( 'kemet_primary_header_enabled', true ) ) {
+			if ( $kemet_header_layout !== 'disable' ) {
 				if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout) {
 					add_action( 'kemet_header', array( $this,'html_markup_loader'));	
 					remove_action( 'kemet_sitehead', 'kemet_sitehead_primary_template' ); 
@@ -138,7 +139,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 
 		}
         function kemet_body_classes($classes) {
-            $kemet_header_layout = kemet_get_option( 'header-layouts' );
+            $kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
 
             if('header-main-layout-5' == $kemet_header_layout) {
@@ -170,7 +171,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			}
 			
 			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true);
-			$kemet_header_layout = kemet_get_option( 'header-layouts' );
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
 			$vheader_has_box_shadow   = kemet_get_option('vheader-box-shadow');
 			if('header-main-layout-7' == $kemet_header_layout || 'header-main-layout-5' == $kemet_header_layout || 'header-main-layout-6' == $kemet_header_layout){
 				if(in_array('kmt-header-transparent' , $classes)){
