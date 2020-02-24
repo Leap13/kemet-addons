@@ -126,6 +126,15 @@
   box-sizing: content-box;
 }
 
+.wdg-post:hover img {
+  opacity: .6;
+  -webkit-box-shadow: 0 0 2px #666666;
+  -moz-box-shadow: 0 0 2px #666666;
+  -ms-box-shadow: 0 0 2px #666666;
+  -o-box-shadow: 0 0 2px #666666;
+  box-shadow: 0 0 2px #666666;
+}
+
 /********************** widget style **********************/
 div.title {
   width: 100%;
