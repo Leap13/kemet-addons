@@ -18,7 +18,7 @@ $posts_in_widgets_widget = array(
       'default'   => __('Posts In Images', 'kemet-addons' ),
     ),
     array(
-      'id'    => __('posts-number', 'kemet-addons' ),
+      'id'    => 'posts-number',
       'type'  => 'number',
       'title' => __('Number of posts to show', 'kemet-addons' ),
       'default'     => 12

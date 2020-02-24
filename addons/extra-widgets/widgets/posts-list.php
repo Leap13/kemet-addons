@@ -12,7 +12,7 @@ $posts_list_widgets_widget = array(
       'default'   => __('Posts List', 'kemet-addons' ),
     ),
     array(
-      'id'    => __('posts-number', 'kemet-addons' ),
+      'id'    => 'posts-number',
       'type'  => 'number',
       'title' => __('Number of posts to show', 'kemet-addons' ),
       'default'     => 5
