@@ -104,13 +104,13 @@
 }
 
 /********************** posts in images widget **********************/
-.wdg-post {
+.wgt-img {
   margin: 0px 9px 9px 0px;
   padding: 0px;
   float: left;
 }
 
-.wdg-post img {
+.wgt-img img {
   border: 1px solid #E3E3E3;
   padding: 2px;
   -webkit-transition: all 0.4s ease 0s;
@@ -126,13 +126,38 @@
   box-sizing: content-box;
 }
 
-.wdg-post:hover img {
+.wgt-img:hover img {
   opacity: .6;
   -webkit-box-shadow: 0 0 2px #666666;
   -moz-box-shadow: 0 0 2px #666666;
   -ms-box-shadow: 0 0 2px #666666;
   -o-box-shadow: 0 0 2px #666666;
   box-shadow: 0 0 2px #666666;
+}
+
+.kfw-widget-posts-images .wgt-img {
+  margin: 0 10px 0 0;
+}
+
+.kfw-widget-posts-list .kmt-wdg-posts-list {
+  margin: 0px;
+  list-style: none;
+}
+
+.kfw-widget-posts-list .kmt-wdg-posts-list li {
+  border-bottom: 1px solid #E3E3E3;
+  padding: 10px 0px 10px 0;
+  overflow: hidden;
+  list-style: none;
+  margin-bottom: 0px !important;
+}
+
+.kfw-widget-posts-list .kmt-wdg-posts-list li .wgt-img {
+  margin: 0 10px 0 0;
+}
+
+.kfw-widget-posts-list .kmt-wdg-posts-list li .wdg-posttitle {
+  line-height: 1;
 }
 
 /********************** widget style **********************/

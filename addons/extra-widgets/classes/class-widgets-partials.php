@@ -29,15 +29,6 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'widgets_init', array( $this, 'kemet_extra_widgets_markup'), 10 );
-            //add_action( 'after_setup_theme', array( $this,'kemet_theme_image_sizes' ), 1 );
-        }
-        
-        /**
-         * Set theme images sizes
-         */
-        function kemet_theme_image_sizes() {
-            add_theme_support( 'post-thumbnails' );
-            add_image_size( 'small-thumb', 25 , 50, true );
         }
         
         public static function kemet_extra_widgets_markup() {
@@ -47,6 +38,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'mailchimp',
                 'social-icons',
                 'posts-in-images',
+                'posts-list',
             ) );
 
             // Loop through widgets and load their files

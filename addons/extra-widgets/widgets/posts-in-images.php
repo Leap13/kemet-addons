@@ -7,7 +7,7 @@ foreach($categories_obj as $category){
 }
 $posts_in_widgets_widget = array(
   'title'       => __('Kemet Posts In Images', 'kemet-addons' ),
-  'classname'   => 'kwf-widget-posts-images',
+  'classname'   => 'kfw-widget-posts-images',
   'id'          => 'kemet-widget-posts-in-images',
   'description' => __('Posts In Images', 'kemet-addons' ),
   'fields'      => array(
@@ -35,8 +35,8 @@ $posts_in_widgets_widget = array(
       'type'        => 'select',
       'title'       => __('Posts Order', 'kemet-addons' ),
       'options'     => array(
-            'most-recent' => 'Most Recent',
-            'random' => 'Random',
+            'most-recent' => __('Most Recent', 'kemet-addons' ),
+            'random' => __('Random', 'kemet-addons' ),
       ),
       'default'     => 'most-recent'
     ),
@@ -71,9 +71,9 @@ if( ! function_exists( 'kemet_widget_posts_in_widgets' ) ) {
 			setup_postdata( $post );
 			if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() ) { 
         ?>
-					<div class="wdg-post">
-					      <a class="ttip" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail( array('50', '50') ) ?></a>
-				  </div><!-- wdg-post /-->
+					<div class="wgt-img">
+					      <a class="ttip" title="<?php esc_attr(the_title(), 'kemet-addons' ); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail( array('50', '50') ) ?></a>
+				  </div><!-- wgt-img /-->
 			<?php }
         } 
       ?>

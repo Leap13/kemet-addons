@@ -92,7 +92,7 @@
     }
 }
 /********************** posts in images widget **********************/
-.wdg-post {
+.wgt-img {
     margin: 0px 9px 9px 0px;
     padding: 0px;
     float: left;
@@ -119,6 +119,30 @@
             -ms-box-shadow: 0 0 2px rgb(102, 102, 102);
             -o-box-shadow: 0 0 2px rgb(102, 102, 102);
             box-shadow: 0 0 2px rgb(102, 102, 102);
+        }
+    }
+}
+.kfw-widget-posts-images{
+    .wgt-img{
+        margin: 0 10px 0 0;
+    }
+}
+.kfw-widget-posts-list{
+    .kmt-wdg-posts-list{
+        margin: 0px;
+        list-style: none;
+        li{
+            border-bottom: 1px solid #E3E3E3;
+            padding: 10px 0px 10px 0;
+            overflow: hidden;
+            list-style: none;
+            margin-bottom: 0px !important;
+            .wgt-img{
+                margin: 0 10px 0 0;
+            }
+            .wdg-posttitle{
+                line-height: 1;
+            }
         }
     }
 }

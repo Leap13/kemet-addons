@@ -1,7 +1,7 @@
 <?php
 $posts_list_widgets_widget = array(
   'title'       => __('Kemet Posts List', 'kemet-addons' ),
-  'classname'   => 'kwf-widget-posts-list',
+  'classname'   => 'kfw-widget-posts-list',
   'id'          => 'kemet-widget-posts-list',
   'description' => __('Posts List', 'kemet-addons' ),
   'fields'      => array(
@@ -15,7 +15,7 @@ $posts_list_widgets_widget = array(
       'id'    => __('posts-number', 'kemet-addons' ),
       'type'  => 'number',
       'title' => __('Number of posts to show', 'kemet-addons' ),
-      'default'     => 12
+      'default'     => 5
     ),
     array(
       'id'          => 'posts-order',
@@ -47,27 +47,37 @@ if( ! function_exists( 'kemet_widget_posts_list' ) ) {
     $orig_post = $post;
 
     $order = isset($instance['posts-order']) ? $instance['posts-order'] : 'random';
-    $posts_number = isset($instance['posts-number']) ? $instance['posts-number'] : 12;
-    
+    $posts_number = isset($instance['posts-number']) ? $instance['posts-number'] : 5;
+    $display_thumbnail = isset($instance['display-thumbinals']) ? $instance['display-thumbinals'] : true;
     switch($order){
       case 'random':
-          $cat_posts	 = get_posts( array( 'numberposts' => $posts_number, 'orderby' => 'rand', 'category' => $category ) );
+          $all_posts	 = get_posts( array( 'numberposts' => $posts_number, 'orderby' => 'rand' ) );
 
           break;
       case 'most-recent':
-          $cat_posts	 = get_posts( array( 'numberposts' => $posts_number, 'category' => $category ) );
+          $all_posts	 = get_posts( array( 'numberposts' => $posts_number ) );
       
-          break;    
+          break; 
+      case 'popular':
+          $all_posts	 = get_posts( array( 'numberposts' => $posts_number, 'orderby' => 'comment_count' ) );
+  
+          break;        
     }?>
-    <div class="kmt-posts-images">
-    <?php foreach ( $cat_posts as $post ): setup_postdata( $post );
-			
-			if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() ) : ?>
-					<a class="post-image" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail('kemet-thumbnail'); ?></a>
-			<?php endif;
-        endforeach; 
+    <ul class="kmt-wdg-posts-list">
+    <?php foreach ( $all_posts as $post ){
+          setup_postdata( $post );
+      echo '<li>';
+      if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() && $display_thumbnail) { ?>
+          <div class="wgt-img">
+					      <a class="ttip" title="<?php esc_attr(the_title(), 'kemet-addons' ); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail( array('50', '50') ) ?></a>
+				  </div><!-- wgt-img /-->
+      <?php } ?>
+        <div class="wdg-posttitle"><a href="<?php the_permalink(); ?>"><?php esc_attr(the_title(), 'kemet-addons' ); ?></a></div>
+        <small class="small"><?php echo esc_attr(get_the_date(), 'kemet-addons' ); ?></small>
+      </li>
+        <?php } 
       ?>
-    </div>
+    </ul>
     <?php
     $post = $orig_post;
     echo $args['after_widget']; 
