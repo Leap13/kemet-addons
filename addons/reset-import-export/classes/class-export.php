@@ -27,8 +27,9 @@ class Export {
 	public function export() {
 		$theme    = get_stylesheet();
 		$mods     = get_theme_mods();
+		$charset  = get_option( 'blog_charset' );
 		$theme_options     = array(
-			'template' => $template,
+			'template' => $theme,
 			'mods'     => $mods ? $mods : array(),
 			'options'  => array(),
 		);

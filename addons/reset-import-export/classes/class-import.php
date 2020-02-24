@@ -27,6 +27,7 @@ class Import {
     */
 
     public function import() {
+        global $wp_customize;
 
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
@@ -61,7 +62,8 @@ class Import {
         delete_option( 'kemet-settings' );
         update_option( 'kemet-settings', $settings['customizer-settings'] );
 
-        do_action( 'customize_save_after', $wp_customize );
-
+        // Call the customize_save action.
+		do_action( 'customize_save_after', $wp_customize );
+       // die();
     }
 }

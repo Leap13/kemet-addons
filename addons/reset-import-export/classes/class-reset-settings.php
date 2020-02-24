@@ -28,7 +28,7 @@ if ( ! class_exists( 'Kemet_Customizer_Reset_ImportExport' ) ) {
         public function __construct() {
             add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_action( 'customize_register', array( $this, 'export' ) );
-            add_action( 'admin_init', array( $this, 'import' ) );
+            add_action( 'customize_register', array( $this, 'import' ) );
             add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
             add_action( 'wp_ajax_customizer_reset', array( $this, 'handle_ajax' ) );
         }
