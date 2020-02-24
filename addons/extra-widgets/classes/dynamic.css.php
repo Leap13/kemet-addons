@@ -14,6 +14,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_widgets_dynamic_css');
  * @return string
  */
 function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
+            $global_border_color      = kemet_get_option( 'global-border-color' );
             $widget_style_color         = kemet_get_option( 'widget-style-color' );
             $footer_widget_style_color         = kemet_get_option( 'footer-widget-style-color' );
             $css_content = array(     
@@ -34,7 +35,10 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 				),
 				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head,.kemet-footer .kmt-widget-style7 div.title .widget-title:after ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ,.kmt-footer-copyright .kmt-widget-style7 div.title .widget-title:after' => array(
 					'background-color' => esc_attr( $footer_widget_style_color ),
-				),
+                ),
+                '.kfw-widget-posts-list .kmt-wdg-posts-list li' => array(
+					'border-bottom-color' => esc_attr( $global_border_color ),
+                ),
             );
 
             $parse_css = kemet_parse_css( $css_content );

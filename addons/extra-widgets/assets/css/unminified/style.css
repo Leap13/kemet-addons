@@ -145,7 +145,8 @@
 }
 
 .kfw-widget-posts-list .kmt-wdg-posts-list li {
-  border-bottom: 1px solid #E3E3E3;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   padding: 10px 0px 10px 0;
   overflow: hidden;
   list-style: none;
