@@ -58,3 +58,4 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 - Added: Mailchimp widget.
 - Added: Single post options to customize the post content.
 - Added: Customizer settings reset, import and export options.
+- Tweak: All addons are compatibile with Kemet global colors.
