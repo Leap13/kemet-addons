@@ -34,24 +34,51 @@ $wp_customize->add_control(
 * Option: Widget Style Color
 */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[widget-style-color]', array(
-        'default'           => $defaults[ 'widget-style-color' ],
+    KEMET_THEME_SETTINGS . '[widget-border-color]', array(
+        'default'           => $defaults[ 'widget-border-color' ],
         'type'              => 'option',
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
         'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[widgets-style]', 
-            'conditions' => '!=', 
-            'values' => 'style1',
+            'controls' =>  KEMET_THEME_SETTINGS . '[widgets-style]/' . KEMET_THEME_SETTINGS . '[widgets-style]/' . KEMET_THEME_SETTINGS . '[widgets-style]', 
+            'conditions' => '!=/!=/!=', 
+            'values' => 'style1/style2/style4',
+            'operators' => '&&/&&'
         ),
     )
 );
 $wp_customize->add_control(
     new Kemet_Control_Color(
-        $wp_customize, KEMET_THEME_SETTINGS . '[widget-style-color]', array(
+        $wp_customize, KEMET_THEME_SETTINGS . '[widget-border-color]', array(
             'section'  => 'section-widgets',
             'priority' => 3,
-            'label'    => __( 'Widget Style Color', 'kemet-addons' ),
+            'label'    => __( 'Widget Border Color', 'kemet-addons' ),
+        )
+    )
+);
+/**
+* Option: Widget Style Color
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[widget-style-bg-color]', array(
+        'default'           => $defaults[ 'widget-style-bg-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[widgets-style]/' . KEMET_THEME_SETTINGS . '[widgets-style]/' . KEMET_THEME_SETTINGS . '[widgets-style]', 
+            'conditions' => '!=/==/==', 
+            'values' => 'style1/style2/style4',
+            'operators' => '&&/||'
+        ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[widget-style-bg-color]', array(
+            'section'  => 'section-widgets',
+            'priority' => 3,
+            'label'    => __( 'Widget Title Background Color', 'kemet-addons' ),
         )
     )
 );
@@ -92,25 +119,52 @@ $wp_customize->add_control(
 * Option: Footer Widget Style Color
 */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[footer-widget-style-color]', array(
-        'default'           => $defaults[ 'footer-widget-style-color' ],
+    KEMET_THEME_SETTINGS . '[footer-widget-border-color]', array(
+        'default'           => $defaults[ 'footer-widget-border-color' ],
         'type'              => 'option',
         'transport'         => 'postMessage',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
         'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[footer-layout]', 
-            'conditions' => '!=/!=', 
-            'values' => 'style1/disabled',
-            'operators' => '&&'
+            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[footer-layout]/' . KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[footer-widgets-style]', 
+            'conditions' => '!=/!=/!=/!=', 
+            'values' => 'style1/disabled/style2/style4',
+            'operators' => '&&/&&/&&'
         ),
     )
 );
 $wp_customize->add_control(
     new Kemet_Control_Color(
-        $wp_customize, KEMET_THEME_SETTINGS . '[footer-widget-style-color]', array(
+        $wp_customize, KEMET_THEME_SETTINGS . '[footer-widget-border-color]', array(
             'section'  => 'section-kemet-footer',
             'priority' => 142,
-            'label'    => __( 'Widget Style Color', 'kemet-addons' ),
+            'label'    => __( 'Widget Border Color', 'kemet-addons' ),
+        )
+    )
+);
+
+/**
+* Option: Footer Widget Style Color
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[footer-widget-title-bg-color]', array(
+        'default'           => $defaults[ 'footer-widget-title-bg-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[footer-layout]/' . KEMET_THEME_SETTINGS . '[footer-widgets-style]/' . KEMET_THEME_SETTINGS . '[footer-widgets-style]', 
+            'conditions' => '!=/!=/==/==', 
+            'values' => 'style1/disabled/style2/style4',
+            'operators' => '&&/&&/||'
+        ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[footer-widget-title-bg-color]', array(
+            'section'  => 'section-kemet-footer',
+            'priority' => 142,
+            'label'    => __( 'Widget Title Background Color', 'kemet-addons' ),
         )
     )
 );

@@ -17,12 +17,12 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             //Defaults Colors
             $theme_color      = kemet_get_option( 'theme-color' );
             $global_border_color      = kemet_get_option( 'global-border-color' );
-            $t1_color      = kemet_get_option( 't1-color' );
+            $headings_links_color      = kemet_get_option( 'headings-links-color' );
             $header_content_bg_color = kemet_get_option( 'header-content-bg-color' );
             $btn_border_radius      = kemet_get_option( 'button-radius' );
             //Icon
             $header_icon_bars_logo_bg_color         = kemet_get_option( 'header-icon-bars-logo-bg-color' );
-            $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' , $t1_color );
+            $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' , $headings_links_color );
             $header_icon_bars_h_color       = kemet_get_option( 'header-icon-bars-h-color' , $theme_color );
             $header_icon_bars_bg_color      = kemet_get_option( 'header-icon-bars-bg-color');
             $header_icon_bars_bg_h_color    = kemet_get_option( 'header-icon-bars-bg-h-color');

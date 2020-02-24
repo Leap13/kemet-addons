@@ -1,14 +1,14 @@
 .kmt-author-box-info{
-    border-top: 1px solid #eee;
+    border-top: 1px solid;
     padding: 25px 0;
-    .author-title{
-        margin-bottom: 10px;
-    }
     .kmt-author-info{
         display: flex;
         align-items: center;
+        .author-information{
+            margin-left: 15px;
+        }
         p{
-            margin-left: 10px;
+            margin-bottom: 0;
         }
     }
     .kmt-author-avatar{

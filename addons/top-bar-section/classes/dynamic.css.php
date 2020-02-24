@@ -16,11 +16,11 @@ add_filter( 'kemet_dynamic_css', 'kemet_topbar_dynamic_css');
 function kemet_topbar_dynamic_css( $dynamic_css ) {
             
             //Top Bar Header
-            $b1_color      = kemet_get_option( 'b1-color' );
+            $global_bg_color      = kemet_get_option( 'global-background-color' );
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $topbar_spacing              = kemet_get_option( 'topbar-padding' );
             $topbar_item_spacing         = kemet_get_option( 'topbar-item-padding' );
-            $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' , $b1_color);
+            $topbar_bg_color             = kemet_get_option( 'topbar-bg-color' , $global_bg_color);
             $topbar_link_color         = kemet_get_option( 'topbar-link-color' );
 			$topbar_link_h_color       = kemet_get_option( 'topbar-link-h-color' );
 			$topbar_text_color         = kemet_get_option( 'topbar-text-color' );

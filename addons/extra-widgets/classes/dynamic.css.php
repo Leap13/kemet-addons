@@ -13,27 +13,46 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_widgets_dynamic_css');
  * @param  string $dynamic_css
  * @return string
  */
+
 function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
-            $widget_style_color         = kemet_get_option( 'widget-style-color' );
-            $footer_widget_style_color         = kemet_get_option( 'footer-widget-style-color' );
-            $css_content = array(     
+            //Global Colors
+            $global_bg_color      = kemet_get_option( 'global-background-color' );
+            $global_border_color      = kemet_get_option( 'global-border-color' );
+            $global_footer_text_color      = kemet_get_option( 'global-footer-text-color' );
+			$global_footer_bg_color      = kemet_get_option( 'global-footer-bg-color' );
+            //Widget Styles Colors
+            $widget_bg_color         = kemet_get_option( 'widget-style-bg-color' ,  kemet_color_brightness($global_bg_color , 0.94 , 'dark') );
+            $widget_border_color         = kemet_get_option( 'widget-border-color' , $global_border_color );
+            //Footer Widget Styles Colors
+            $footer_widget_bg_color         = kemet_get_option( 'footer-widget-title-bg-color' , kemet_color_brightness($global_footer_bg_color , 0.8 , 'dark') );
+            $footer_widget_border_color         = kemet_get_option( 'footer-widget-border-color' , kemet_color_brightness($global_footer_text_color , 0.4 , 'dark'));
+
+            $css_content = array(
+                //Widget Styles Css     
                 '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before' => array(
-					'border-bottom-color' => esc_attr( $widget_style_color ),
+					'border-bottom-color' => esc_attr( $widget_border_color ),
                 ),
                 '.kmt-widget-style3 .widget-content , .kmt-widget-style5.widget' => array(
-					'border-color' => esc_attr( $widget_style_color ),
-				),
-				'.kmt-widget-style2 .widget-title ,.kmt-widget-style4 .widget-head ,.kmt-widget-style7 div.title .widget-title:after' => array(
-					'background-color' => esc_attr( $widget_style_color ),
+					'border-color' => esc_attr( $widget_border_color ),
                 ),
+                '.kmt-widget-style7 div.title .widget-title:after' => array(
+                    'background-color' => esc_attr( $widget_border_color ),
+                ),
+				'.kmt-widget-style2 .widget-title ,.kmt-widget-style4 .widget-head' => array(
+					'background-color' => esc_attr( $widget_bg_color ),
+                ),
+                //Footer Widget Styles Css
                 '.kemet-footer .kmt-widget-style3 .widget-content,.kemet-footer .kmt-widget-style6 div.title .widget-title,.kemet-footer .kmt-widget-style6 div.title .widget-title:before  ,.kmt-footer-copyright .kmt-widget-style3 .widget-content,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title:before' => array(
-					'border-bottom-color' => esc_attr( $footer_widget_style_color ),
+					'border-bottom-color' => esc_attr( $footer_widget_border_color ),
                 ),
                 '.kemet-footer .kmt-widget-style3 .widget-content ,.kemet-footer .kmt-widget-style5.widget , .kmt-footer-copyright .kmt-widget-style3 .widget-content ,.kmt-footer-copyright .kmt-widget-style5.widget' => array(
-					'border-color' => esc_attr( $footer_widget_style_color ),
-				),
-				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head,.kemet-footer .kmt-widget-style7 div.title .widget-title:after ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ,.kmt-footer-copyright .kmt-widget-style7 div.title .widget-title:after' => array(
-					'background-color' => esc_attr( $footer_widget_style_color ),
+					'border-color' => esc_attr( $footer_widget_border_color ),
+                ),
+                '.kemet-footer .kmt-widget-style7 div.title .widget-title:after ,.kmt-footer-copyright .kmt-widget-style7 div.title .widget-title:after ' => array(
+                    'background-color' => esc_attr( $footer_widget_border_color ),
+                ),
+				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ' => array(
+					'background-color' => esc_attr( $footer_widget_bg_color ),
 				),
             );
 
