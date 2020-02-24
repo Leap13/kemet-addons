@@ -67,14 +67,14 @@ if( ! function_exists( 'kemet_widget_posts_in_widgets' ) ) {
           break;   
     }
     ?>
-    <?php foreach ( $cat_posts as $post ): setup_postdata( $post );
-			
-			if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() ) : ?>
+    <?php foreach ( $cat_posts as $post ){
+			setup_postdata( $post );
+			if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() ) { ?>
 					<div class="wdg-post">
-					      <a class="ttip" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail( 'small-thumb' ); ?></a>
+					      <a class="ttip" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>" ><?php echo get_the_post_thumbnail( $post->ID, 'leap-thumbnail' ) ?></a>
 				  </div><!-- wdg-post /-->
-			<?php endif;
-        endforeach; 
+			<?php }
+        } 
       ?>
     <?php
     $post = $orig_post;
