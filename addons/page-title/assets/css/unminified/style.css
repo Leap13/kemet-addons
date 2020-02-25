@@ -65,6 +65,10 @@
   margin-right: auto;
 }
 
+.kemet-breadcrumb-trail > .prefix {
+  margin-right: 2px;
+}
+
 .align-right .kemet-page-title::after {
   margin-left: auto;
 }

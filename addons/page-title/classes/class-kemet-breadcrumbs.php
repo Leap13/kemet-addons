@@ -154,7 +154,7 @@ class Kemet_Breadcrumb_Trail {
 		$item_position = 0;
 
 		if(!empty($breadcrumb_prefix)){
-			$breadcrumb .= sprintf( '<span>%s:</span>', $breadcrumb_prefix );
+			$breadcrumb .= sprintf( '<span class="%s">%s:</span>', 'prefix', $breadcrumb_prefix );
 		}
 		// Connect the breadcrumb trail if there are items in the trail.
 		if ( 0 < $item_count ) {
