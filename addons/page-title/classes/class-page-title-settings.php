@@ -79,6 +79,15 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             // Breadcrumbs Defaults
             $defaults['show-item-title']                    = true;
             $defaults['breadcrumb-separator']         = '»';
+            $defaults['breadcrumb-home-item']         = 'text';
+            $defaults['disable-breadcrumbs-in-home']         = false;
+            $defaults['disable-breadcrumbs-in-blog']         = false;
+            $defaults['disable-breadcrumbs-in-search']         = false;
+            $defaults['disable-breadcrumbs-in-archive']         = false;
+            $defaults['disable-breadcrumbs-in-single-page']         = false;
+            $defaults['disable-breadcrumbs-in-single-post']         = false;
+            $defaults['disable-breadcrumbs-in-singular']         = false;
+            $defaults['disable-breadcrumbs-in-404-page']         = false;
             $defaults['breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
             $defaults['breadcrumbs-color']                  = '';

@@ -526,6 +526,180 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
+	 * Option: Home Item
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[breadcrumb-home-item]', array(
+			'default'           => $defaults[ 'breadcrumb-home-item' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[breadcrumb-home-item]', array(
+			'type'     => 'select',
+			'section'  => 'section-breadcrumbs',
+			'priority' => 5,
+			'label'    => __( 'Home Item', 'kemet-addons' ),
+			'choices'  => array(
+				'text' 	=> esc_html__( 'Text', 'kemet-addons' ),
+				'icon' 	=> esc_html__( 'Icon', 'kemet-addons' ),
+			),
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-home]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-home'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-home]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Home Page?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-blog]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-blog'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-blog]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Blog / Posts Page?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-search]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-search'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-search]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Search?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-archive'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Archive?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-single-page'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Single Page?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-single-post'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Single Post?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-singular]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-singular'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-singular]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on Singular?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
+	 * Option: Show item title
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]', array(
+			'default'           => $defaults['disable-breadcrumbs-in-404-page'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-breadcrumbs',
+			'label'           => __( 'Disable on 404 Page?', 'kemet-addons' ),
+            'priority'        => 5,
+            
+		)
+	);
+	/**
 	 * Option: Breadcrumbs Font Size
 	 */
 	$wp_customize->add_setting(
