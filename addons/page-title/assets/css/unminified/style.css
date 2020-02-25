@@ -69,6 +69,10 @@
   margin-right: 2px;
 }
 
+.kemet-breadcrumb-trail .dashicons {
+  vertical-align: text-bottom;
+}
+
 .align-right .kemet-page-title::after {
   margin-left: auto;
 }
