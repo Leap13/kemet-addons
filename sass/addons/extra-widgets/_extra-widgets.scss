@@ -97,7 +97,8 @@
     padding: 0px;
     float: left;
     img {
-        border: 1px solid #E3E3E3;
+        border-width: 1px;
+        border-style: solid;
         padding: 2px;
         -webkit-transition: all 0.4s ease 0s;
         -moz-transition: all 0.4s ease 0s;
@@ -127,6 +128,7 @@
         margin: 0 10px 0 0;
     }
 }
+/********************** posts list widget **********************/
 .kfw-widget-posts-list{
     .kmt-wdg-posts-list{
         margin: 0px;
@@ -145,6 +147,33 @@
                 line-height: 1;
             }
         }
+    }
+}
+/********************** tags widget **********************/
+.post-tags {
+    .label{
+        background-color: transparent;
+        background: none;
+        border-width: 1px;
+        border-style: solid;
+        float: left;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 22px;
+        margin: 0 10px 10px 0;
+        display: block;
+        padding: .2em .6em .3em;
+        text-align: center;
+    }
+}
+/********************** login form widget **********************/
+.kfw-widget-login-form{
+    input[type=text] , input[type=password]{
+        width: 100%;
+    }
+    p{
+        margin-bottom: 1em;
     }
 }
 /********************** widget style **********************/

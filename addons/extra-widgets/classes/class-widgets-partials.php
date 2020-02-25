@@ -39,6 +39,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'social-icons',
                 'posts-in-images',
                 'posts-list',
+                'tags',
+                'login-form'
             ) );
 
             // Loop through widgets and load their files

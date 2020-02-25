@@ -153,7 +153,7 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
   function kemet_widget_social_profiles( $args, $instance ,$id) {
     echo $args['before_widget'];
     if ( ! empty( $instance['title'] ) ) {
-      echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+      echo $args['before_title'] . apply_filters( 'widget_title', esc_attr($instance['title'], 'kemet-addons' )) . $args['after_title'];
     } 
     if(! empty($instance['social-profile'])){
     ?>

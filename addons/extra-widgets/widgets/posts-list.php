@@ -1,5 +1,5 @@
 <?php
-$posts_list_widgets_widget = array(
+$posts_list_widget = array(
   'title'       => __('Kemet Posts List', 'kemet-addons' ),
   'classname'   => 'kfw-widget-posts-list',
   'id'          => 'kemet-widget-posts-list',
@@ -41,7 +41,7 @@ if( ! function_exists( 'kemet_widget_posts_list' ) ) {
   function kemet_widget_posts_list( $args, $instance ,$id) {
     echo $args['before_widget'];
     if ( ! empty( $instance['title'] ) ) {
-      echo $args['before_title'] . apply_filters( 'widget_title', __($instance['title'], 'kemet-addons' ) ) . $args['after_title'];
+      echo $args['before_title'] . apply_filters( 'widget_title', esc_attr($instance['title'], 'kemet-addons' ) ) . $args['after_title'];
     }
     global $post;
     $orig_post = $post;
@@ -84,4 +84,4 @@ if( ! function_exists( 'kemet_widget_posts_list' ) ) {
   } 
 }
 
-register_widget( Kemet_Create_Widget::instance( "kemet_widget_posts_list" , $posts_list_widgets_widget) );
+register_widget( Kemet_Create_Widget::instance( "kemet_widget_posts_list" , $posts_list_widget) );

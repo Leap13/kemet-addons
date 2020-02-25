@@ -5,7 +5,7 @@ $categories= array();
 foreach($categories_obj as $category){
     $categories[$category->term_id] = __($category->name, 'kemet-addons' );
 }
-$posts_in_widgets_widget = array(
+$posts_in_images_widget = array(
   'title'       => __('Kemet Posts In Images', 'kemet-addons' ),
   'classname'   => 'kfw-widget-posts-images',
   'id'          => 'kemet-widget-posts-in-images',
@@ -43,11 +43,11 @@ $posts_in_widgets_widget = array(
   )
 );
 
-if( ! function_exists( 'kemet_widget_posts_in_widgets' ) ) {
-  function kemet_widget_posts_in_widgets( $args, $instance ,$id) {
+if( ! function_exists( 'kemet_widget_posts_in_images' ) ) {
+  function kemet_widget_posts_in_images( $args, $instance ,$id) {
     echo $args['before_widget'];
     if ( ! empty( $instance['title'] ) ) {
-      echo $args['before_title'] . apply_filters( 'widget_title', __($instance['title'], 'kemet-addons' ) ) . $args['after_title'];
+      echo $args['before_title'] . apply_filters( 'widget_title', esc_attr($instance['title'], 'kemet-addons' ) ) . $args['after_title'];
     }
     global $post;
     $orig_post = $post;
@@ -83,4 +83,4 @@ if( ! function_exists( 'kemet_widget_posts_in_widgets' ) ) {
   } 
 }
 
-register_widget( Kemet_Create_Widget::instance( "kemet_widget_posts_in_widgets" , $posts_in_widgets_widget) );
+register_widget( Kemet_Create_Widget::instance( "kemet_widget_posts_in_images" , $posts_in_images_widget) );
