@@ -30,7 +30,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             add_action( 'kemet_after_header_block' , array( $this, 'kemet_page_title_markup' ), 9 );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_before_header_block', array( $this, 'header_merged_with_title' ) );
-            add_filter( 'kemet_post_title_enabled', array( $this, 'page_title_display' ) );
+            add_filter( 'kemet_the_title_enabled', array( $this, 'page_title_display' ) );
         }
 
         public function kemet_page_title_markup() {
