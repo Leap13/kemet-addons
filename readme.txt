@@ -4,7 +4,7 @@ Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.2
 Requires PHP: 5.4
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,11 +42,8 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 
 == Changelog ==
 
-0.1.0 version
-- Initial Release
-
-0.1.1 version
-- Fixed: compatibility problems with PHP7
+1.0.1 version
+- Fixed: Display Page Title in pages issue.
 
 1.0.0 version
 - Added: Five new advanced header layouts with extra header options including vertical headers and burger menu icon headers.
@@ -59,3 +56,9 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 - Added: Single post options to customize the post content.
 - Added: Customizer settings reset, import and export options.
 - Tweak: All addons are compatibile with Kemet global colors.
+
+0.1.1 version
+- Fixed: compatibility problems with PHP7
+
+0.1.0 version
+- Initial Release
