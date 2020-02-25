@@ -526,6 +526,25 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
+	 * Option: Breadcrumbs Separator
+	 */
+
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[breadcrumb-prefix]', array(
+			'default'           => $defaults[ 'breadcrumb-prefix' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[breadcrumb-prefix]', array(
+			'type'     => 'text',
+			'section'  => 'section-breadcrumbs',
+			'priority' => 5,
+			'label'    => __( 'Breadcrumbs Prefix Text', 'kemet-addons' ),
+		)
+	);
+	/**
 	 * Option: Home Item
 	 */
 	$wp_customize->add_setting(

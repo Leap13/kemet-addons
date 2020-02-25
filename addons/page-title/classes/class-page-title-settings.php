@@ -79,6 +79,7 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             // Breadcrumbs Defaults
             $defaults['show-item-title']                    = true;
             $defaults['breadcrumb-separator']         = '»';
+            $defaults['breadcrumb-prefix']         = '';
             $defaults['breadcrumb-home-item']         = 'text';
             $defaults['disable-breadcrumbs-in-home']         = false;
             $defaults['disable-breadcrumbs-in-blog']         = false;

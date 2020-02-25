@@ -146,11 +146,16 @@ class Kemet_Breadcrumb_Trail {
 	 */
 	public function get_trail() {
 		// Set up variables that we'll need.
-        $breadcrumb    = '';
+		$breadcrumb    = '';
+		$breadcrumb_prefix = kemet_get_option( 'breadcrumb-prefix' );
         $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'breadcrumb-separator', '»' ) );
 		$separator      = '<span class="breadcrumb-sep">' . $separator . '</span>';
 		$item_count    = count( $this->items );
 		$item_position = 0;
+
+		if(!empty($breadcrumb_prefix)){
+			$breadcrumb .= sprintf( '<span>%s:</span>', $breadcrumb_prefix );
+		}
 		// Connect the breadcrumb trail if there are items in the trail.
 		if ( 0 < $item_count ) {
 			// Open the unordered list.
