@@ -80,6 +80,12 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['show-item-title']                    = true;
             $defaults['breadcrumb-separator']         = '»';
             $defaults['breadcrumb-prefix']         = '';
+            $defaults['breadcrumbs-font-size']         = '';
+            $defaults['breadcrumbs-letter-spacing']         = '';
+            $defaults['breadcrumbs-font-family']         = 'inherit';
+            $defaults['breadcrumbs-font-weight']         = 'inherit';
+            $defaults['breadcrumbs-text-transform']         = '';
+            $defaults['breadcrumbs-line-height']         = '';
             $defaults['breadcrumb-home-item']         = 'text';
             $defaults['disable-breadcrumbs-in-home']         = false;
             $defaults['disable-breadcrumbs-in-blog']         = false;
@@ -96,7 +102,6 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['breadcrumbs-link-h-color']           = '';
             $defaults['page-title-border-right-color']      = '';
             $defaults['breadcrumbs-enabled']                = true; 
-            $defaults['breadcrumbs-font-size']                = ''; 
             return $defaults;
         }
         
