@@ -34,6 +34,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             if($blog_layout == 'blog-layout-2'){
                 $classes [] = !empty(kemet_get_option( 'blog-layout-mode' )) ? kemet_get_option( 'blog-layout-mode' ) : 'fitRows';
             }
+            $classes[] = kemet_get_option( 'overlay-image-style' ) != 'none' ? kemet_get_option( 'overlay-image-style' ) : '';
             return $classes;
         }
         function kemet_custom_excerpt_length(){
@@ -57,7 +58,6 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
                     $classes[] = $desktop_columns . $tablet_columns . $mobile_columns;
                 }
             }
-            $classes[] = kemet_get_option( 'overlay-image-style' ) != 'none' ? kemet_get_option( 'overlay-image-style' ) : '';
 
             return $classes;
         }
