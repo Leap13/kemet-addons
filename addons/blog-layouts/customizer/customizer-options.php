@@ -326,9 +326,10 @@ $wp_customize->add_setting(
         'transport'         => 'postMessage',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]', 
-			'conditions' => '!=', 
-			'values' => 'none',
+			'controls' =>  KEMET_THEME_SETTINGS . '[overlay-image-style]/' . KEMET_THEME_SETTINGS . '[overlay-image-style]', 
+			'conditions' => '!=/!=', 
+			'values' => 'none/diagonal',
+			'operators' => '&&'
 		),
     )
 );

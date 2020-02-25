@@ -108,7 +108,7 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
 
 		$blog_post_thumb   = kemet_get_option( 'blog-post-structure' );
 
-        $overlay_style = kemet_get_option('');
+        $overlay_style = kemet_get_option( 'overlay-image-style' );
 
 		if ( ( ( ! $check_is_singular && in_array( 'image', $blog_post_thumb ) ) || is_page() ) && has_post_thumbnail() ) {
 
