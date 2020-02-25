@@ -99,7 +99,7 @@ if ( ! class_exists( 'KFW_Field_plugins' ) ) {
 					    $status = 'deactivate';
                         $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.'  data-url-deactivate = '.$deactivate_url.' onclick="plugin_action(event)" >' . $button_label . '</a>';
                     }else{
-                        $button_label = __( 'Active', 'kemet-addons' );
+                        $button_label = __( 'Activate', 'kemet-addons' );
 					    $status = 'activate';
                         $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.'  data-url-activate = '.$activate_url.' onclick="plugin_action(event)" >' . $button_label . '</a>';
                     }
