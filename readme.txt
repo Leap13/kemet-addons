@@ -42,6 +42,9 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 
 == Changelog ==
 
+1.0.1 version
+- Fixed: Display Page Title in pages issue.
+
 1.0.0 version
 - Added: Five new advanced header layouts with extra header options including vertical headers and burger menu icon headers.
 - Added: Sticky header option.
