@@ -24,12 +24,18 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
 			$overlay_icon_hover_color  = kemet_get_option( 'overlay-icon-h-color' );
 			$overlay_icon_bg_color = kemet_get_option( 'overlay-icon-bg-color' );
             $overlay_icon_bg_hover_color = kemet_get_option( 'overlay-icon-bg-h-color' );
-            
+            $post_inner_spacing = kemet_get_option( 'blog-container-inner-spacing' );
             $css_content = array( 
                 '.blog-layout-2 .blog-post-layout-2 , .blog-layout-4 .blog-post-layout-4 .post-content' => array(
                     'border-width' => kemet_get_css_value( $posts_border_size , 'px' ),
                     'border-color' => esc_attr($posts_border_color),
                     'border-style' => 'solid',
+                ),
+                '.blog .blog-posts-container:not(.blog-layout-2) .kmt-article-post , .blog-layout-2 .kmt-article-post > div' => array(
+                    'padding-top'    => kemet_responsive_spacing( $post_inner_spacing, 'top', 'desktop' ),
+                    'padding-right' => kemet_responsive_spacing( $post_inner_spacing, 'right', 'desktop' ),
+                    'padding-left'  => kemet_responsive_spacing( $post_inner_spacing, 'left', 'desktop' ),
+                    'padding-bottom' => kemet_responsive_spacing( $post_inner_spacing, 'bottom', 'desktop' ),
                 ), 
                 '.blog-layout-4 .blog-post-layout-4 .entry-content' => array(
                     'border-color' => esc_attr($title_meta_border_color),
@@ -51,15 +57,25 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
 
             $parse_css = kemet_parse_css( $css_content );
             
-        //     $css_tablet = array(
-
-        //      );
-        //    $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
+            $css_tablet = array(
+                '.blog .blog-posts-container:not(.blog-layout-2) .kmt-article-post , .blog-layout-2 .kmt-article-post > div' => array(
+                    'padding-top'    => kemet_responsive_spacing( $post_inner_spacing, 'top', 'tablet' ),
+                    'padding-right' => kemet_responsive_spacing( $post_inner_spacing, 'right', 'tablet' ),
+                    'padding-left'  => kemet_responsive_spacing( $post_inner_spacing, 'left', 'tablet' ),
+                    'padding-bottom' => kemet_responsive_spacing( $post_inner_spacing, 'bottom', 'tablet' ),
+                ), 
+             );
+           $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
-        //     $css_mobile = array(
-               
-        //      );
-        //    $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
+            $css_mobile = array(
+                '.blog .blog-posts-container:not(.blog-layout-2) .kmt-article-post , .blog-layout-2 .kmt-article-post > div' => array(
+                    'padding-top'    => kemet_responsive_spacing( $post_inner_spacing, 'top', 'mobile' ),
+                    'padding-right' => kemet_responsive_spacing( $post_inner_spacing, 'right', 'mobile' ),
+                    'padding-left'  => kemet_responsive_spacing( $post_inner_spacing, 'left', 'mobile' ),
+                    'padding-bottom' => kemet_responsive_spacing( $post_inner_spacing, 'bottom', 'mobile' ),
+                ), 
+             );
+           $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             
             return $dynamic_css . $parse_css;
 }

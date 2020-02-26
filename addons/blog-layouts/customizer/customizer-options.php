@@ -266,35 +266,6 @@ $wp_customize->add_control(
         )
     )
 );
-  /**
-    * Option - Container Inner Spacing
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]', array(
-			'default'           => $defaults[ 'blog-container-inner-spacing' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Spacing(
-			$wp_customize, KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]', array(
-				'type'           => 'kmt-responsive-spacing',
-				'section'        => 'section-blog',
-				'priority'       => 118,
-				'label'          => __( 'Spacing', 'kemet' ),
-				'linked_choices' => true,
-				'unit_choices'   => array( 'px', 'em', '%' ),
-				'choices'        => array(
-					'top'    => __( 'Top', 'kemet' ),
-					'right'  => __( 'Right', 'kemet' ),
-					'bottom' => __( 'Bottom', 'kemet' ),
-					'left'   => __( 'Left', 'kemet' ),
-				),
-			)
-		)
-	);
 	/**
 	 * Option: Overlay Image
 	 */
@@ -472,4 +443,33 @@ $wp_customize->add_control(
             'label'    => __( 'Overlay Icon Background Hover Color', 'kemet-addons' ),
         )
     )
+);
+/**
+* Option - Container Inner Spacing
+*/
+$wp_customize->add_setting(
+	KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]', array(
+		'default'           => $defaults[ 'blog-container-inner-spacing' ],
+		'type'              => 'option',
+		'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
+	)
+);
+$wp_customize->add_control(
+	new Kemet_Control_Responsive_Spacing(
+		$wp_customize, KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]', array(
+			'type'           => 'kmt-responsive-spacing',
+			'section'        => 'section-blog',
+			'priority'       => 150,
+			'label'          => __( 'Spacing', 'kemet' ),
+			'linked_choices' => true,
+			'unit_choices'   => array( 'px', 'em', '%' ),
+			'choices'        => array(
+				'top'    => __( 'Top', 'kemet' ),
+				'right'  => __( 'Right', 'kemet' ),
+				'bottom' => __( 'Bottom', 'kemet' ),
+				'left'   => __( 'Left', 'kemet' ),
+			),
+		)
+	)
 );
