@@ -8,7 +8,6 @@
         itemSelector: '.kmt-article-post',
         layoutMode: Mode,
       });
-      
       $("a[rel^='prettyPhoto']").prettyPhoto({
         hook: 'data-rel',
         animation_speed: 'fast', /* fast/slow/normal */

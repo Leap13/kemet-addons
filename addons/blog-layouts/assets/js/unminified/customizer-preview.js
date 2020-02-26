@@ -16,11 +16,24 @@
 
 			kemet_add_dynamic_css('blog-title-meta-border-size', dynamicStyle);
 		});
-    });
+	});
+	wp.customize('kemet-settings[container-inner-spacing]', function (value) {
+		value.bind(function () {
+			resizeGridContiner();
+		});
+	});
 	kemet_responsive_slider('kemet-settings[post-image-height]', '.blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb', 'height');
 	kemet_css('kemet-settings[overlay-icon-color]', 'color', '.overlay-image .post-details a');
 	kemet_css('kemet-settings[overlay-icon-h-color]', 'color', '.overlay-image .post-details a:hover');
 	kemet_css('kemet-settings[overlay-image-bg-color]', 'background-color', '.squares .overlay-image .overlay-color .section-1:before ,.squares .overlay-image .overlay-color .section-1:after ,.squares .overlay-image .overlay-color .section-2:before ,.squares .overlay-image .overlay-color .section-2:after , .bordered .overlay-color ,.framed .overlay-color');
 	kemet_css('kemet-settings[overlay-icon-bg-color]', 'background-color', '.overlay-image .post-details a');
 	kemet_css('kemet-settings[overlay-icon-bg-h-color]', 'background-color', '.overlay-image .post-details a:hover');
+
+	function resizeGridContiner(){
+		var conatiner = $('.blog-posts-container.blog-layout-2');
+
+		if('undefined' != typeof conatiner){
+			conatiner.isotope( 'layout');
+		}
+	}
 })(jQuery);

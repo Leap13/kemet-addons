@@ -59,6 +59,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['overlay-icon-h-color']   = '#f67207';
             $defaults['overlay-icon-bg-color']   = '#fff';
             $defaults['overlay-icon-bg-h-color']   = '';
+            $defaults['blog-container-inner-spacing']   = '';
             return $defaults;
         }
 
