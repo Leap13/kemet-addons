@@ -57,7 +57,14 @@ KFW::createSection( $prefix_page_opts, array(
         'title'      => __( 'Disable Featured Image', 'kemet-addons'),
         'label'   => __( 'Disable The Featured Image in The Current Page/Post.', 'kemet-addons'),
         'default'    => false
-       ),           
+       ),  
+       array(
+        'id'    => 'kemet-content-padding',
+        'type'  => 'spacing',
+        'title' => 'Content Padding',
+        'left' => false,
+        'right' => false,
+      ),         
     )
   ) 
 );
