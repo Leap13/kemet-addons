@@ -4,7 +4,12 @@
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
-    animation-duration: 0.5s; 
+    animation-duration: 0.5s;
+    &.header-content-width{
+      .main-header-content{
+        background-color: transparent;
+      } 
+    }
     &.sticky-fade{
       animation-name: fadeIn;
     }

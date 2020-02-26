@@ -20,6 +20,10 @@
   animation-duration: 0.5s;
 }
 
+.kmt-is-sticky.header-content-width .main-header-content {
+  background-color: transparent;
+}
+
 .kmt-is-sticky.sticky-fade {
   animation-name: fadeIn;
 }

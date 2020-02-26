@@ -22,12 +22,8 @@
 ## Author Box
 --------------------------------------------------------------*/
 .kmt-author-box-info {
-  border-top: 1px solid #eee;
+  border-top: 1px solid;
   padding: 25px 0;
-}
-
-.kmt-author-box-info .author-title {
-  margin-bottom: 10px;
 }
 
 .kmt-author-box-info .kmt-author-info {
@@ -35,8 +31,12 @@
   align-items: center;
 }
 
+.kmt-author-box-info .kmt-author-info .author-information {
+  margin-right: 15px;
+}
+
 .kmt-author-box-info .kmt-author-info p {
-  margin-right: 10px;
+  margin-bottom: 0;
 }
 
 .kmt-author-box-info .kmt-author-avatar img {
