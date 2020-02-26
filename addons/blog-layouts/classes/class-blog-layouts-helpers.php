@@ -44,7 +44,9 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
         $overlay_style = kemet_get_option( 'overlay-image-style' );
         $output = '';
         if ( kemet_is_valid_url( $thumbnail_format ) ) {
-            $output .= '<div class="kmt-blog-featured-section post-thumb" style="background-image:url(' . $thumbnail_format . ');">';
+            $output .= '<div class="kmt-blog-featured-section post-thumb">';
+            $output .= '<div class="kmt-blog-featured-bg" style="background-image:url(' . $thumbnail_format . ');">';
+            $output .= '</div>';
             if($overlay_style != 'none'){
                 $output .= '<div class="overlay-image">';
                 $output .= '<div class="overlay-color">';
@@ -63,7 +65,7 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
             return $output;
         } else {
             $output .= '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '">';
-            if($overlay_style){
+            if($overlay_style != 'none'){
                 $output .= '<div class="overlay-image">';
                 $output .= '<div class="overlay-color">';
                 if($overlay_style == 'bordered'){
@@ -74,7 +76,6 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
                 $output .= '</div>';
                 $output .= '<div class="post-details">';
                 $output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
-                $output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']" href=""></a>';
                 $output .= '</div></div>';
             }
             $output .= '</div>';
@@ -135,7 +136,6 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
                     $output .= '</div>';
 					$output .= '<div class="post-details">';
 					$output .= '<a class="post-link" href='. esc_url( get_permalink() ) .'></a>';
-					$output .= '<a class="enlarge" rel="prettyPhoto[post-'. get_the_ID() .']"  href="'. get_the_post_thumbnail_url(get_the_ID()) .'"></a>';
 					$output .= '</div></div>';
 					$output .= '</div>';
 				}
@@ -159,7 +159,7 @@ if ( ! function_exists( 'kemet_addons_get_thumbnail_with_overlay' ) ) {
  * Set theme images sizes
  */
 function kemet_image_sizes() {
-    add_image_size( '570x570', 200, 200, true );
+    add_image_size( '570x570', 570, 570, true );
 }
 
 add_action( 'after_setup_theme', 'kemet_image_sizes' );

@@ -55,10 +55,8 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-layout-mode']   = 'masonry';
             $defaults['overlay-image-style']   = 'none';
             $defaults['overlay-image-bg-color']   = '#f67207';
-            $defaults['overlay-icon-color']   = '#000';
-            $defaults['overlay-icon-h-color']   = '#f67207';
-            $defaults['overlay-icon-bg-color']   = '#fff';
-            $defaults['overlay-icon-bg-h-color']   = '';
+            $defaults['overlay-icon-color']   = '#fff';
+            $defaults['hover-image-effect']   = 'none';
             $defaults['blog-container-inner-spacing']   = '';
             return $defaults;
         }

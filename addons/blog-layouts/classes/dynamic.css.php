@@ -21,9 +21,6 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
             $post_image_height         = kemet_get_option( 'post-image-height' );
             $overlay_bg_color     = kemet_get_option( 'overlay-image-bg-color' );
 			$overlay_icon_color    = kemet_get_option( 'overlay-icon-color' );
-			$overlay_icon_hover_color  = kemet_get_option( 'overlay-icon-h-color' );
-			$overlay_icon_bg_color = kemet_get_option( 'overlay-icon-bg-color' );
-            $overlay_icon_bg_hover_color = kemet_get_option( 'overlay-icon-bg-h-color' );
             $post_inner_spacing = kemet_get_option( 'blog-container-inner-spacing' );
             $css_content = array( 
                 '.blog-layout-2 .blog-post-layout-2 , .blog-layout-4 .blog-post-layout-4 .post-content' => array(
@@ -45,13 +42,8 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
                 '.squares .overlay-image .overlay-color .section-1:before ,.squares .overlay-image .overlay-color .section-1:after ,.squares .overlay-image .overlay-color .section-2:before ,.squares .overlay-image .overlay-color .section-2:after , .bordered .overlay-color ,.framed .overlay-color' =>  array(
 					'background-color'  => esc_attr ( $overlay_bg_color ),
 				),
-				'.overlay-image .post-details a' =>  array(
-					'color'  => esc_attr ( $overlay_icon_color ),
-					'background-color'  => esc_attr ( $overlay_icon_bg_color ),
-				),
-				'.overlay-image .post-details a:hover' =>  array(
-					'color'  => esc_attr ( $overlay_icon_hover_color ),
-					'background-color'  => esc_attr ( $overlay_icon_bg_hover_color ),
+				'.overlay-image .post-details a:before , .overlay-image .post-details a:after' =>  array(
+					'background-color'  => esc_attr ( $overlay_icon_color ),
 				),
             );
 
