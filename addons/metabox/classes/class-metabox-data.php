@@ -25,7 +25,7 @@ KFW::createMetabox( $prefix_page_opts, array(
 //
 KFW::createSection( $prefix_page_opts, array(
   'title'  => __('Main', 'kemet-addons'),
-  'icon'   => 'fa fa-cog',
+  'icon'   => 'dashicons dashicons-admin-home',
   'fields' => array(
       array(
         'id'          => 'site-sidebar-layout',
@@ -71,7 +71,7 @@ KFW::createSection( $prefix_page_opts, array(
 
 KFW::createSection( $prefix_page_opts, array(
   'title'  => __('Footer', 'kemet-addons'),
-  'icon'   => 'fa fa-pencil',
+  'icon'   => 'dashicons dashicons-admin-generic',
   'fields' => array(
       array(
         'id'         => 'kemet-disable-footer',

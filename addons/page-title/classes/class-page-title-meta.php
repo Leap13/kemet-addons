@@ -48,7 +48,7 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
 
         KFW::createSection( 'kemet_page_options', array(
                 'title'  => __( 'Page Title', 'kemet-addons'),
-                'icon'   => 'fa fa-wrench',
+                'icon'   => 'dashicons dashicons-format-quote',
                 'fields' => array(
                     array(
                         'id'         => 'kemet-page-title-display',
