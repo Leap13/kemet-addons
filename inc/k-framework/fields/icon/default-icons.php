@@ -2,7 +2,7 @@
 //
 //
 // Default Icons
-// We are using Font-awesome icons as default
+// We are using Dashicons icons as default
 //
 //
 function kfw_get_default_icons() {
