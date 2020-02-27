@@ -283,6 +283,12 @@ $defaults = Kemet_Theme_Options::defaults();
 			'default'           => $defaults[ 'merge-top-bar-header' ],
 			'type'              => 'option',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[top-section-1]/'.KEMET_THEME_SETTINGS . '[top-section-2]', 
+				'conditions' => '!=/!=/!=/notEmpty/notEmpty', 
+				'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7//',
+				'operators' => "&&/&&/&&/||",
+			),
 		)
 	);
 	$wp_customize->add_control(
