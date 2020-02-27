@@ -46,6 +46,7 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
         if ( kemet_is_valid_url( $thumbnail_format ) ) {
             $output .= '<div class="kmt-blog-featured-section post-thumb">';
             $output .= '<div class="kmt-blog-featured-bg" style="background-image:url(' . $thumbnail_format . ');">';
+            $output .= '<a class="link-post" href='. esc_url( get_permalink() ) .'></a>';
             $output .= '</div>';
             if($overlay_style != 'none'){
                 $output .= '<div class="overlay-image">';
@@ -65,6 +66,7 @@ if ( !function_exists( 'kemet_get_the_post_thumbnail_background' ) ) {
             return $output;
         } else {
             $output .= '<div class="kmt-default-featured-section post-thumb' . $thumbnail_format . '">';
+            $output .= '<a class="link-post" href='. esc_url( get_permalink() ) .'></a>';
             if($overlay_style != 'none'){
                 $output .= '<div class="overlay-image">';
                 $output .= '<div class="overlay-color">';
