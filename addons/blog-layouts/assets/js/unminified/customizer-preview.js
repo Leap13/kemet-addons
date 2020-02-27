@@ -17,16 +17,7 @@
 			kemet_add_dynamic_css('blog-title-meta-border-size', dynamicStyle);
 		});
 	});
-	wp.customize('kemet-settings[container-inner-spacing]', function (value) {
-		value.bind(function () {
-			resizeGridContiner();
-		});
-	});
-	wp.customize('kemet-settings[blog-container-inner-spacing]', function (value) {
-		value.bind(function () {
-			resizeGridContiner();
-		});
-	});
+	
 	kemet_responsive_spacing('kemet-settings[blog-container-inner-spacing]', '.blog .blog-posts-container:not(.blog-layout-2) .kmt-article-post , .blog-layout-2 .kmt-article-post > div', 'padding', ['top', 'right', 'bottom', 'left']);
 	kemet_responsive_slider('kemet-settings[post-image-height]', '.blog-layout-5 .blog-post-layout-5 .entry-header .post-thumb', 'height');
 	kemet_css('kemet-settings[overlay-icon-color]', 'background-color', '.overlay-image .post-details a:before , .overlay-image .post-details a:after');
@@ -39,4 +30,13 @@
 			conatiner.isotope( 'layout');
 		}
 	}
+	var options = ['kemet-settings[container-inner-spacing]','kemet-settings[blog-container-inner-spacing]','kemet-settings[read-more-border-size]','kemet-settings[readmore-padding]'];
+
+	$.each(options , function(index , id){
+		wp.customize(id, function (value) {
+			value.bind(function () {
+				resizeGridContiner();
+			});
+		});
+	});
 })(jQuery);
