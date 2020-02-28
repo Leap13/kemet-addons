@@ -14,7 +14,7 @@ $posts_in_images_widget = array(
     array(
       'id'      => 'title',
       'type'    => 'text',
-      'title'   => __('Title', 'kemet-addons' ),
+      'title'   => __('Title:', 'kemet-addons' ),
       'default'   => __('Posts In Images', 'kemet-addons' ),
     ),
     array(

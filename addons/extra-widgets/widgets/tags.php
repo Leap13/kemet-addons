@@ -8,7 +8,7 @@ $tags_widget = array(
     array(
       'id'      => 'title',
       'type'    => 'text',
-      'title'   => __('Tags', 'kemet-addons' ),
+      'title'   => __('Title:', 'kemet-addons' ),
       'default'   => __('Tags', 'kemet-addons' ),
     ),
     array(

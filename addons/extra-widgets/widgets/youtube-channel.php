@@ -8,7 +8,7 @@ $youtube_channel_widgets = array(
     array(
       'id'      => 'title',
       'type'    => 'text',
-      'title'   => __('Youtube Channel', 'kemet-addons' ),
+      'title'   => __('Title:', 'kemet-addons' ),
       'default'   => __('Youtube Channel', 'kemet-addons' ),
     ),
     array(

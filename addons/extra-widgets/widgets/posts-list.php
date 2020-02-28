@@ -8,7 +8,7 @@ $posts_list_widget = array(
     array(
       'id'      => 'title',
       'type'    => 'text',
-      'title'   => __('Title', 'kemet-addons' ),
+      'title'   => __('Title:', 'kemet-addons' ),
       'default'   => __('Posts List', 'kemet-addons' ),
     ),
     array(

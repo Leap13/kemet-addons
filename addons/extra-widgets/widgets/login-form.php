@@ -8,7 +8,7 @@ $login_form_widgets = array(
     array(
       'id'      => 'title',
       'type'    => 'text',
-      'title'   => __('Login Form', 'kemet-addons' ),
+      'title'   => __('Title:', 'kemet-addons' ),
       'default'   => __('Login Form', 'kemet-addons' ),
     ),
   )
