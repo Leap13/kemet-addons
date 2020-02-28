@@ -24,7 +24,7 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
             $title_meta_border_size         = kemet_get_option( 'blog-title-meta-border-size' );
             $post_image_height         = kemet_get_option( 'post-image-height' );
             $overlay_bg_color     = kemet_get_option( 'overlay-image-bg-color' , $theme_color );
-			$overlay_icon_color    = kemet_get_option( 'overlay-icon-color' );
+			$overlay_icon_color    = kemet_get_option( 'overlay-icon-color' , $global_border_color );
             $post_inner_spacing = kemet_get_option( 'blog-container-inner-spacing' );
             $css_content = array( 
                 '.blog-layout-2 .blog-post-layout-2 , .blog-layout-4 .blog-post-layout-4 .post-content' => array(
