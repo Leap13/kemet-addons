@@ -27,7 +27,7 @@ if( ! function_exists( 'kemet_widget_youtube_channel' ) ) {
     }
     $channel_name = isset($instance['channel-name']) ? $instance['channel-name'] : '';
     
-    //Youtube Widget
+            //Youtube Widget
 			if( ! empty( $channel_name ) ){
 
 				wp_enqueue_script( 'leap-google-platform-js', '//apis.google.com/js/platform.js' );

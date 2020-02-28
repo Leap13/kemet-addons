@@ -42,7 +42,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'tags',
                 'login-form',
                 'youtube-channel',
-                'facebook'
+                'facebook',
+                'soundcloud'
             ) );
 
             // Loop through widgets and load their files

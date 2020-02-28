@@ -97,7 +97,7 @@ if( ! function_exists( 'kemet_widget_facecook_box' ) ) {
     $hide_cta      = $instance[ 'hide-call-action' ] ? 'true' : 'false';
     $language = isset($instance['lang']) ? $instance['lang'] : '';
     
-    if ( $page_url ):
+    if ( !empty($page_url) ):
         ?>
 
         <div id="fb-root"></div>
