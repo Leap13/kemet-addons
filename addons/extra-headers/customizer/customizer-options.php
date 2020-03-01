@@ -238,7 +238,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/' . KEMET_THEME_SETTINGS . '[header-main-layout-width]', 
 			'conditions' => '!=/!=/!=/==', 
-			'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7/content',
+			'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7/boxed',
 			'operators' => "&&/&&/&&",
 		),
 		)
