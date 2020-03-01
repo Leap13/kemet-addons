@@ -20,7 +20,7 @@
   animation-duration: 0.5s;
 }
 
-.kmt-is-sticky.header-content-width .main-header-content {
+.kmt-is-sticky.header-boxed-width .main-header-content {
   background-color: transparent;
 }
 
