@@ -14,6 +14,18 @@
   padding: 50px 0px;
 }
 
+.kemet-page-sub-title {
+  font-size: 14px;
+}
+
+.page-title-layout-1 .kemet-page-sub-title {
+  margin-top: 10px;
+}
+
+.page-title-layout-3 .kemet-page-sub-title {
+  width: 100%;
+}
+
 .kemet-breadcrumb-trail .trail-items, .kemet-breadcrumb-trail li {
   list-style: none;
   display: inline-block;
@@ -92,5 +104,11 @@
   }
   .page-title-layout-3 .kemet-breadcrumb-trail {
     display: none;
+  }
+  .page-title-layout-3 .subtitle-breadcrumbs {
+    justify-content: center;
+  }
+  .page-title-layout-3 .kemet-page-sub-title {
+    width: auto;
   }
 }
