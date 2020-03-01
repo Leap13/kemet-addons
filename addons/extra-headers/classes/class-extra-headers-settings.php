@@ -37,9 +37,21 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'kemet_header_breakpoint_style' ) );
 			add_action( 'kemet_before_top_bar', array( $this, 'header_with_top_bar' ) );
 			add_action( 'kemet_after_main_header', array( $this, 'after_main_header' ) );
+			add_filter( 'header_container_classes', array( $this,'kemet_header_container' ));
         } 
         
-		
+		/**
+		  * Kemet Header Container Classes
+		 */
+		function kemet_header_container($classes){
+			$header_width = kemet_get_option('header-main-layout-width');
+
+			if($header_width == 'boxed'){
+				$classes[] = 'main-header-content'; 
+			}
+
+			return $classes;
+		}
 		/**
 		 * Function to Add Header Breakpoint Style
 		 *
@@ -65,7 +77,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			$kemet_header_width = kemet_get_option( 'header-main-layout-width' );
 
 			/* Width for Header */
-			if ( 'content' != $kemet_header_width ) {
+			if ( 'full' == $kemet_header_width ) {
 				$genral_global_responsive = array(
 					'#sitehead .kmt-container' => array(
 						'max-width'     => '100%',

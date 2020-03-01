@@ -15,7 +15,7 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
                 </div>
                 <div class="main-header-container logo-menu-icon">
                 <div class="kmt-container">   
-                 <div class="mobile-icon-logo main-header-content">   
+                 <div class="mobile-icon-logo <?php echo implode(" ",$classes); ?>">   
                 <?php kemet_site_branding_markup(); ?> 
                 <?php kemet_toggle_buttons_markup(); ?>
                 <div class="icon-last-menu-items">
