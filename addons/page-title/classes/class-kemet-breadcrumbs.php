@@ -146,11 +146,16 @@ class Kemet_Breadcrumb_Trail {
 	 */
 	public function get_trail() {
 		// Set up variables that we'll need.
-        $breadcrumb    = '';
+		$breadcrumb    = '';
+		$breadcrumb_prefix = kemet_get_option( 'breadcrumb-prefix' );
         $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'breadcrumb-separator', '»' ) );
 		$separator      = '<span class="breadcrumb-sep">' . $separator . '</span>';
 		$item_count    = count( $this->items );
 		$item_position = 0;
+
+		if(!empty($breadcrumb_prefix)){
+			$breadcrumb .= sprintf( '<span class="%s">%s:</span>', 'prefix', __( $breadcrumb_prefix, 'kemet-addons' ) );
+		}
 		// Connect the breadcrumb trail if there are items in the trail.
 		if ( 0 < $item_count ) {
 			// Open the unordered list.
@@ -408,33 +413,21 @@ class Kemet_Breadcrumb_Trail {
 	 */
 	protected function add_site_home_link() {
         // Home item
-		$setting = kemet_get_option( 'kemet_breadcrumbs_home', 'icon' );
+		$home_item = kemet_get_option( 'breadcrumb-home-item', 'icon' );
 
-		// Icon
-		$icon_class = '';
-		if ( 'text' == $setting ) {
-			$icon_class = ' has-text';
+		$html = '';
+		if ( 'icon' == $home_item ) {
+			$html = '<span class="dashicons dashicons-admin-home"></span>';
+		}else{
+			$html = '<span class="breadcrumb-home">'. $this->labels['home'] .'</span>';
 		}
-
-		$icon = '';
-		if ( is_customize_preview()
-			|| 'icon' == $setting ) {
-			$icon = '<span class="icon-home'. $icon_class .'"></span>';
-		}
-
-		// Text
-		$text_class = '';
-		if ( 'icon' == $setting ) {
-			$text_class = ' has-icon';
-		}
-		$text = '<span class="breadcrumb-home'. $text_class .'">'. $this->labels['home'] .'</span>';
 
 		// Vars
 		$network = is_multisite() && ! is_main_site() && true === $this->args['network'];
-		$label   = $network ? get_bloginfo( 'name' ) : $text;
+		$label   = $network ? get_bloginfo( 'name' ) : $html;
 		$rel     = $network ? '' : ' rel="home"';
 
-		$this->items[] = sprintf( '<a href="%s"%s aria-label="' .$this->labels['home']. '">%s%s</a>', esc_url( home_url() ), $rel, $icon, $label );
+		$this->items[] = sprintf( '<a href="%s"%s aria-label="' .$this->labels['home']. '">%s</a>', esc_url( home_url() ), $rel, $html );
 	}
 	/**
 	 * Adds items for the front page to the items array.

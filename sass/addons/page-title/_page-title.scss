@@ -56,7 +56,14 @@
     }
 }
 }
-
+.kemet-breadcrumb-trail{
+    > .prefix{
+        margin-right: 2px;
+    }
+    .dashicons{
+        vertical-align: text-bottom;
+    }
+}
 .align-right {
     .kemet-page-title {
     &::after {

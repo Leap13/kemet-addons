@@ -37,9 +37,12 @@
     kemet_css('kemet-settings[pagetitle-bottomline-color]', 'background-color', '.kemet-page-title::after');
     // Breadcrumbs 
     kemet_responsive_spacing('kemet-settings[breadcrumbs-space]', '.kemet-breadcrumb-trail', 'padding', ['top', 'right', 'bottom', 'left']);
-    kemet_css('kemet-settings[breadcrumbs-color]', 'color', '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span');
+    kemet_css('kemet-settings[breadcrumbs-color]', 'color', '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span , .kemet-breadcrumb-trail > span');
     kemet_css('kemet-settings[breadcrumbs-link-color]', 'color', '.kemet-breadcrumb-trail a span');
     kemet_css('kemet-settings[breadcrumbs-link-h-color]', 'color', '.kemet-breadcrumb-trail a:hover span');
 
-
+    kemet_responsive_slider('kemet-settings[breadcrumbs-letter-spacing]', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)', 'letter-spacing');
+    kemet_responsive_slider('kemet-settings[breadcrumbs-font-size]', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)', 'font-size');
+    kemet_css('kemet-settings[breadcrumbs-text-transform]', 'text-transform', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)');
+    kemet_css('kemet-settings[breadcrumbs-line-height]', 'line-height', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)');
 })(jQuery);
