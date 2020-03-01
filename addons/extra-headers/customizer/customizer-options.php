@@ -222,7 +222,7 @@ $defaults = Kemet_Theme_Options::defaults();
 			'choices'  => array(
 				'full'    => __( 'Full Width', 'kemet-addons' ),
 				'content' => __( 'Content Width', 'kemet-addons' ),
-				'boxed' => __( 'Boxed', 'kemet-addons' ),
+				'boxed' => __( 'Boxed Content', 'kemet-addons' ),
 			),	
 		)
 	);
