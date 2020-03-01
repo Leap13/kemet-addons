@@ -800,6 +800,13 @@
   max-width: 100%;
   text-align: center;
 }
+.kfw-field-spacing .kfw--input{
+  margin-right: 15px;
+}
+.kfw-field-spacing .kfw--input input::placeholder{
+  font-style: italic;
+  font-size: 12px;
+}
 .kfw-field-border .kfw--label,
 .kfw-field-spacing .kfw--label,
 .kfw-field-dimensions .kfw--label {

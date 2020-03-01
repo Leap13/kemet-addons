@@ -64,6 +64,8 @@ KFW::createSection( $prefix_page_opts, array(
         'title' => 'Content Padding',
         'left' => false,
         'right' => false,
+        'top_icon' => false,
+        'bottom_icon' => false
       ),         
     )
   ) 
