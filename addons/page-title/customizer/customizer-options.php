@@ -728,64 +728,21 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
-	 * Option: Show item title
+	 * Option: Title
 	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-home]', array(
-			'default'           => $defaults['disable-breadcrumbs-in-home'],
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-		)
-	);
 	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-home]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Home Page?', 'kemet-addons' ),
-            'priority'        => 50,
-            
+		new Kemet_Control_Title(
+			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-display-title]', array(
+				'type'     => 'kmt-title',
+				'label'    => __( 'Breadcrumbs Display', 'kemet-addons' ),
+				'section'  => 'section-breadcrumbs',
+				'priority' => 50,
+				'settings' => array(),
+			)
 		)
 	);
 	/**
-	 * Option: Show item title
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-blog]', array(
-			'default'           => $defaults['disable-breadcrumbs-in-blog'],
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-blog]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Blog / Posts Page?', 'kemet-addons' ),
-            'priority'        => 55,
-            
-		)
-	);
-	/**
-	 * Option: Show item title
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-search]', array(
-			'default'           => $defaults['disable-breadcrumbs-in-search'],
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-search]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Search?', 'kemet-addons' ),
-            'priority'        => 60,
-            
-		)
-	);
-	/**
-	 * Option: Show item title
+	 * Option: Disable on Archive
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]', array(
@@ -804,7 +761,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
-	 * Option: Show item title
+	 * Option: Disable on Single Page
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]', array(
@@ -823,7 +780,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
-	 * Option: Show item title
+	 * Option: Disable on Single Post
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]', array(
@@ -842,26 +799,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
-	 * Option: Show item title
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-singular]', array(
-			'default'           => $defaults['disable-breadcrumbs-in-singular'],
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-singular]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Singular?', 'kemet-addons' ),
-            'priority'        => 80,
-            
-		)
-	);
-	/**
-	 * Option: Show item title
+	 * Option: Disable on 404 Page
 	 */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]', array(

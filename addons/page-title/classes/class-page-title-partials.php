@@ -61,17 +61,6 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
         }
         function breadcrumbs_display($default){
             $display = true;
-            if ( is_front_page() && kemet_get_option( 'disable-breadcrumbs-in-home' ) ) {
-				$display = false;
-			}
-
-			if ( is_home() && kemet_get_option( 'disable-breadcrumbs-in-blog' ) ) {
-				$display = false;
-			}
-
-			if ( is_search() && kemet_get_option( 'disable-breadcrumbs-in-search' ) ) {
-				$display = false;
-			}
 
 			if ( ( is_archive() ) && kemet_get_option( 'disable-breadcrumbs-in-archive' ) ) {
 				$display = false;
@@ -82,10 +71,6 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
 			}
 
 			if ( is_single() && kemet_get_option( 'disable-breadcrumbs-in-single-post' ) ) {
-				$display = false;
-			}
-
-			if ( is_singular() && kemet_get_option( 'disable-breadcrumbs-in-singular' ) ) {
 				$display = false;
 			}
 
