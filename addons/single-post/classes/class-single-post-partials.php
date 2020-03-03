@@ -34,6 +34,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_entry_content_single', array( $this, 'kemet_single_post_template_loader') , 1);
+            add_action( 'kemet_entry_after', array( $this, 'kemet_related_posts') , 10);
             add_filter( 'kemet_the_title_enabled', array( $this, 'enable_page_title_in_content' ) );
         }
         public function kemet_single_post_template_loader() {
@@ -56,7 +57,51 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             } 
             return $default;      
         }
-        
+        /**
+		  * Related Posts
+		 */
+        function kemet_related_posts(){
+            $term_tax = kemet_get_option('related-posts-taxonomy') ? kemet_get_option('related-posts-taxonomy') :'category';
+            $posts_number = kemet_get_option('related-posts-number');
+            $post_terms     = wp_get_post_terms( get_the_ID(), 'post_tag' );
+            $post_terms_ids = array();
+            foreach( $post_terms as $post_term ) {
+                $post_terms_ids[] = $post_term->term_id;
+            }
+            //var_dump($post_terms_ids);
+            // Query
+            $args = array(
+                'posts_per_page' => $posts_number,
+                'orderby'        => 'rand',
+                'post__not_in'   => array( get_the_ID() ),
+                'no_found_rows'  => true,
+                'tax_query'      => array (
+                    'relation'  => 'AND',
+                    array (
+                        'taxonomy' => 'post_format',
+                        'field'    => 'slug',
+                        'terms'    => array( 'post-format-quote', 'post-format-link' ),
+                        'operator' => 'NOT IN',
+                    ),
+                ),
+            );
+            switch($term_tax){
+                case 'tag':
+                    $args['tag__in'] = $post_terms_ids;
+                    break;
+                case 'category':
+                    $args['category__in'] = $post_terms_ids;
+                    break;    
+            }
+
+            $related_posts_query = new WP_Query( $args );
+            
+            if($related_posts_query->have_posts()){
+                foreach( $related_posts_query->posts as $post ) : setup_postdata( $post );
+                    the_title();
+                endforeach;
+            }
+        }
          /**
 		  * Enqueues scripts and styles for the header layouts
 		 */

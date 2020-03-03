@@ -205,9 +205,55 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 
-
+	/**
+	 * Option: Related Posts Taxonomy
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[related-posts-taxonomy]', array(
+			'default'           => $defaults[ 'related-posts-taxonomy' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+		);
+		$wp_customize->add_control(
+			KEMET_THEME_SETTINGS . '[related-posts-taxonomy]', array(
+				'section'  => 'section-blog-single',
+				'label'    => __( 'Related Posts Taxonomy', 'kemet-addons' ),
+				'type'     => 'select',
+				'priority' => 75,
+				'choices'  => array(
+					'post_tag' => __( 'Tag', 'kemet-addons' ),
+					'category'  => __( 'Category', 'kemet-addons' ),
+				),
+			)
+		);
 	
-
+		/**
+		* Option: Related Posts Number
+		*/
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[related-posts-number]', array(
+				'default'           => $defaults[ 'related-posts-number' ],
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+			)
+		);
+		$wp_customize->add_control(
+				new Kemet_Control_Slider(
+					$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-number]', array(
+						'type'        => 'kmt-slider',
+						'section'     => 'section-blog-single',
+						'priority'    => 80,
+						'label'       => __( 'Related Posts Number', 'kemet' ),
+						'input_attrs' => array(
+							'min'  => 0,
+							'step' => 1,
+							'max'  => 6,
+						),
+					)
+				)
+			);
 	
 	
 		

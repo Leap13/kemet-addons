@@ -43,6 +43,8 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
 			$defaults['content-alignment'] = 'left';
 			$defaults['featured-image-header'] = false;
 			$defaults['page-header-title'] = 'post-title';
+			$defaults['related-posts-taxonomy'] = 'category';
+			$defaults['related-posts-number'] = 3;
             return $defaults;
         }
 		function customize_register($wp_customize) {
