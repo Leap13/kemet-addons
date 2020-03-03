@@ -240,20 +240,46 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		);
 		$wp_customize->add_control(
-				new Kemet_Control_Slider(
-					$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-number]', array(
-						'type'        => 'kmt-slider',
-						'section'     => 'section-blog-single',
-						'priority'    => 80,
-						'label'       => __( 'Related Posts Number', 'kemet' ),
-						'input_attrs' => array(
-							'min'  => 0,
-							'step' => 1,
-							'max'  => 6,
-						),
-					)
+			new Kemet_Control_Slider(
+				$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-number]', array(
+					'type'        => 'kmt-slider',
+					'section'     => 'section-blog-single',
+					'priority'    => 80,
+					'label'       => __( 'Related Posts Number', 'kemet' ),
+					'input_attrs' => array(
+						'min'  => 0,
+						'step' => 1,
+						'max'  => 6,
+					),
 				)
-			);
+			)
+		);
+		/**
+		* Option: Related Posts Row Number
+		*/
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[related-posts-row-num]', array(
+				'default'           => $defaults[ 'related-posts-row-num' ],
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+			)
+		);
+		$wp_customize->add_control(
+			new Kemet_Control_Slider(
+				$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-row-num]', array(
+					'type'        => 'kmt-slider',
+					'section'     => 'section-blog-single',
+					'priority'    => 85,
+					'label'       => __( 'Related Posts Row Number', 'kemet' ),
+					'input_attrs' => array(
+						'min'  => 0,
+						'step' => 1,
+						'max'  => 6,
+					),
+				)
+			)
+		);
 	
 	
 		
