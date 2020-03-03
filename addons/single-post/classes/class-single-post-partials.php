@@ -74,7 +74,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             foreach( $post_terms as $post_term ) {
                 $post_terms_ids[] = $post_term->term_id;
             }
-            $grid_classes = kemet_get_option('related-posts-row-num');
+            $grid_classes = kemet_get_option('related-posts-columns-num');
             // Query
             $args = array(
                 'posts_per_page' => $posts_number,

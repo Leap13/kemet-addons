@@ -257,15 +257,15 @@ $defaults = Kemet_Theme_Options::defaults();
 		* Option: Related Posts Row Number
 		*/
 		$wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[related-posts-row-num]', array(
-				'default'           => $defaults['related-posts-row-num'],
+			KEMET_THEME_SETTINGS . '[related-posts-columns-num]', array(
+				'default'           => $defaults['related-posts-columns-num'],
 				'type'              => 'option',
 				//'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
 			)
 		);
 		$wp_customize->add_control(
 			new Kemet_Control_Responsive_Select(
-				$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-row-num]', array(
+				$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-columns-num]', array(
 					'type'           => 'kmt-responsive-select',
 					'section'        => 'section-blog-single',
 					'priority'       => 85,

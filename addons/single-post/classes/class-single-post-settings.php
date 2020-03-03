@@ -45,7 +45,7 @@ if ( !class_exists( 'Kemet_Single_Post_Setting' )) {
 			$defaults['page-header-title'] = 'post-title';
 			$defaults['related-posts-taxonomy'] = 'category';
 			$defaults['related-posts-number'] = 3;
-			$defaults['related-posts-row-num'] = array(
+			$defaults['related-posts-columns-num'] = array(
 				'desktop'      => 3,
 				'tablet'       => 2,
 				'mobile'       => 1,
