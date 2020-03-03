@@ -49,24 +49,32 @@
   flex-direction: column;
 }
 
+.kmt-related-posts .related-post > a {
+  height: 200px;
+  position: relative;
+}
+
+.kmt-related-posts .related-post > a img {
+  height: 100%;
+}
+
 .kmt-related-posts a {
   display: block;
 }
 
 .kmt-related-posts .default-image {
   width: 100%;
-  flex: 1 0 auto;
 }
 
 .kmt-related-posts .default-image:before {
   font-family: dashicons;
   content: "\f109";
-  line-height: 120px;
-  width: 120px;
-  height: 120px;
+  line-height: 60px;
+  width: 60px;
+  height: 60px;
   font-style: normal;
   font-weight: normal;
-  font-size: 50px;
+  font-size: 30px;
   text-align: center;
   display: inline-block;
   position: absolute;
@@ -76,7 +84,7 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  border-radius: 68px;
+  border-radius: 50%;
 }
 
 /*--------------------------------------------------------------

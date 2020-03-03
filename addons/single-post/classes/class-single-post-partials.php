@@ -34,7 +34,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             add_filter( 'body_class', array( $this,'kemet_body_classes' ));
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_entry_content_single', array( $this, 'kemet_single_post_template_loader') , 1);
-            add_action( 'kemet_entry_after', array( $this, 'kemet_related_posts') , 10);
+            add_action( 'kemet_entry_after', array( $this, 'kemet_related_posts') );
             add_filter( 'kemet_the_title_enabled', array( $this, 'enable_page_title_in_content' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'add_carousel_scripts'), 1 );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
@@ -77,7 +77,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             $grid_classes = kemet_get_option('related-posts-row-num');
             // Query
             $args = array(
-                'posts_per_page' => 16,
+                'posts_per_page' => $posts_number,
                 'orderby'        => 'rand',
                 'post__not_in'   => array( get_the_ID() ),
                 'no_found_rows'  => true,
@@ -104,7 +104,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             
             if($related_posts_query->have_posts()){
                 echo '<h4 class="kmt-related-title">Related Posts</h4>';
-                echo '<div class="kmt-related-posts owl-carousel owl-theme">';
+                echo '<div class="kmt-related-posts owl-carousel owl-theme"  data-desktop="'.$grid_classes['desktop'].'" data-tablet="'.$grid_classes['tablet'].'" data-mobile="'.$grid_classes['mobile'].'">';
                 foreach( $related_posts_query->posts as $post ) : setup_postdata( $post );
                     $related_posts_query->the_post(); ?>
                         <div class="related-post">
@@ -120,8 +120,8 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
                             </h3>   
                         </div>
             <?php endforeach;
-            }
             echo '</div>';
+            }
         }
 
         // Owl Carousel.

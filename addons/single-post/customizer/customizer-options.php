@@ -235,7 +235,6 @@ $defaults = Kemet_Theme_Options::defaults();
 			KEMET_THEME_SETTINGS . '[related-posts-number]', array(
 				'default'           => $defaults[ 'related-posts-number' ],
 				'type'              => 'option',
-				'transport'         => 'postMessage',
 				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
 			)
 		);
@@ -249,7 +248,7 @@ $defaults = Kemet_Theme_Options::defaults();
 					'input_attrs' => array(
 						'min'  => 0,
 						'step' => 1,
-						'max'  => 6,
+						'max'  => 16,
 					),
 				)
 			)
@@ -259,23 +258,25 @@ $defaults = Kemet_Theme_Options::defaults();
 		*/
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[related-posts-row-num]', array(
-				'default'           => $defaults[ 'related-posts-row-num' ],
+				'default'           => $defaults['related-posts-row-num'],
 				'type'              => 'option',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+				//'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
 			)
 		);
 		$wp_customize->add_control(
-			new Kemet_Control_Slider(
+			new Kemet_Control_Responsive_Select(
 				$wp_customize, KEMET_THEME_SETTINGS . '[related-posts-row-num]', array(
-					'type'        => 'kmt-slider',
-					'section'     => 'section-blog-single',
-					'priority'    => 85,
-					'label'       => __( 'Related Posts Row Number', 'kemet' ),
-					'input_attrs' => array(
-						'min'  => 0,
-						'step' => 1,
-						'max'  => 6,
+					'type'           => 'kmt-responsive-select',
+					'section'        => 'section-blog-single',
+					'priority'       => 85,
+					'label'          => __( 'Related Posts Row Number', 'kemet-addons' ),
+					'choices'   => array(
+						1 => 'One',
+						2 => 'Two',
+						3 => 'Three',
+						4 => 'Four',
+						5 => 'Five',
+						6 => 'Six',
 					),
 				)
 			)
