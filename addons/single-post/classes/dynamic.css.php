@@ -19,6 +19,8 @@ function kemet_single_post_dynamic_css( $dynamic_css ) {
             $title_meta_poistion = kemet_get_option('title-meta-position');
             $content_alignment = kemet_get_option('content-alignment');
             $padding_inside_container = kemet_get_option('padding-inside-container');
+            $global_bg_color      = kemet_get_option( 'global-background-color' );
+            $theme_color      = kemet_get_option( 'theme-color' );
             $parse_css = '';
              
             if(kemet_get_option('featured-image-header') == true){
@@ -48,6 +50,21 @@ function kemet_single_post_dynamic_css( $dynamic_css ) {
                 ),
                 '.single .entry-content , .single .comments-area , .single .comments-area .comment-form-textarea textarea' => array(
                     'text-align' => esc_attr($content_alignment),
+                ),
+                '.default-image' => array(
+                    'background-color' => esc_attr(kemet_color_brightness($global_bg_color , 0.94 , 'dark')),
+                ),
+                '.default-image:before' => array(
+                    'color' => esc_attr(kemet_color_brightness($global_bg_color , 0.94 , 'dark')),
+                ),
+                '.related-post .default-image:before' => array(
+                    'background-color' => esc_attr($global_bg_color),
+                ),
+                '.related-overlay' => array(
+                    'background-color' => esc_attr($theme_color),
+                ),
+                '.single .entry-header' => array(
+                    'text-align' => esc_attr($title_meta_poistion),
                 ),
             );
 

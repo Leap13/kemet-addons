@@ -115,7 +115,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
                             <?php }else{ ?>
                                 <a class="default-image" href="<?php echo get_permalink(); ?>" title="<?php __(the_title() , 'kemet-addons'); ?>"></a>
                             <?php } ?> 
-                            <h3 class="related-post-title">
+                            <h3 class="related-post-title"> 
                             <a href="<?php echo get_permalink(); ?>" title="<?php __(the_title() , 'kemet-addons'); ?>"><?php __(the_title() , 'kemet-addons'); ?></a>
                             </h3>   
                         </div>
