@@ -108,12 +108,16 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
                 foreach( $related_posts_query->posts as $post ) : setup_postdata( $post );
                     $related_posts_query->the_post(); ?>
                         <div class="related-post">
+                            <?php if( function_exists( "has_post_thumbnail" ) && has_post_thumbnail()){ ?>
+                                <a href="<?php echo get_permalink(); ?>" title="<?php __(the_title() , 'kemet-addons'); ?>">
+                                <?php the_post_thumbnail( array('200', '200') ); ?>
+                                </a>
+                            <?php }else{ ?>
+                                <a class="default-image" href="<?php echo get_permalink(); ?>" title="<?php __(the_title() , 'kemet-addons'); ?>"></a>
+                            <?php } ?> 
                             <h3 class="related-post-title">
-                            <a href="<?php get_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-                            </h3>
-                            <?php if(has_post_thumbnail()){ ?>
-                                <?php the_post_thumbnail( array('190','145')); ?>
-                            <?php } ?>    
+                            <a href="<?php echo get_permalink(); ?>" title="<?php __(the_title() , 'kemet-addons'); ?>"><?php __(the_title() , 'kemet-addons'); ?></a>
+                            </h3>   
                         </div>
             <?php endforeach;
             }
