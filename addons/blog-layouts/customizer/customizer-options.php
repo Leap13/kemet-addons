@@ -144,7 +144,7 @@ $wp_customize->add_control(
 					'type'        => 'kmt-slider',
 					'section'     => 'section-blog',
 					'priority'    => 5,
-					'label'       => __( 'Border Size', 'kemet-addons' ),
+					'label'       => __( 'Posts Border Size', 'kemet-addons' ),
 					'suffix'      => '',
 					'input_attrs' => array(
 						'min'  => 0,
@@ -201,7 +201,7 @@ $wp_customize->add_control(
 					'type'        => 'kmt-slider',
 					'section'     => 'section-blog',
 					'priority'    => 5,
-					'label'       => __( 'Border Size', 'kemet-addons' ),
+					'label'       => __( 'Title & Meta Border Size', 'kemet-addons' ),
 					'suffix'      => '',
 					'input_attrs' => array(
 						'min'  => 0,

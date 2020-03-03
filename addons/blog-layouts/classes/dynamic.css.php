@@ -27,10 +27,9 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
 			$overlay_icon_color    = kemet_get_option( 'overlay-icon-color' , $global_border_color );
             $post_inner_spacing = kemet_get_option( 'blog-container-inner-spacing' );
             $css_content = array( 
-                '.blog-layout-2 .blog-post-layout-2 , .blog-layout-4 .blog-post-layout-4 .post-content' => array(
+                '.blog-layout-2 .blog-post-layout-2 , body:not(.kmt-separate-container) .blog-layout-2 .kmt-article-post .blog-post-layout-2 , .blog-layout-3 .kmt-article-post .post-content' => array(
                     'border-width' => kemet_get_css_value( $posts_border_size , 'px' ),
                     'border-color' => esc_attr($posts_border_color),
-                    'border-style' => 'solid',
                 ),
                 '.blog .blog-posts-container:not(.blog-layout-2) .kmt-article-post , .blog-layout-2 .kmt-article-post > div' => array(
                     'padding-top'    => kemet_responsive_spacing( $post_inner_spacing, 'top', 'desktop' ),
@@ -38,10 +37,9 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
                     'padding-left'  => kemet_responsive_spacing( $post_inner_spacing, 'left', 'desktop' ),
                     'padding-bottom' => kemet_responsive_spacing( $post_inner_spacing, 'bottom', 'desktop' ),
                 ), 
-                '.blog-layout-4 .blog-post-layout-4 .entry-content , .blog-layout-3 .kmt-article-post .post-content , .blog-layout-3 .kmt-article-post .entry-content' => array(
-                    'border-color' => esc_attr($title_meta_border_color),
-                    'border-width' => kemet_get_css_value( $title_meta_border_size , 'px' ),
-                    'border-style' => 'solid',
+                '.blog-layout-3 .kmt-article-post .entry-content' => array(
+                    'border-top-color' => esc_attr($title_meta_border_color),
+                    'border-top-width' => kemet_get_css_value( $title_meta_border_size , 'px' ),
                 ), 
                 '.squares .overlay-image .overlay-color .section-1:before ,.squares .overlay-image .overlay-color .section-1:after ,.squares .overlay-image .overlay-color .section-2:before ,.squares .overlay-image .overlay-color .section-2:after , .bordered .overlay-color ,.framed .overlay-color' =>  array(
 					'background-color'  => esc_attr ( $overlay_bg_color ),
