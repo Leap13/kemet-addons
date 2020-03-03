@@ -121,11 +121,13 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
 		 * Post / Page SubTitle Color
 		 *
 		 */
-		function post_sub_title_color() {
+		function post_sub_title_color($default) {
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $sub_title_color = ( isset( $meta['sub-title-color'] )) ? $meta['sub-title-color'] : 'inherit';
-
-			return $sub_title_color;
+            $sub_title_color = ( isset( $meta['sub-title-color'] )) ? $meta['sub-title-color'] : '';
+            if(!empty($sub_title_color)){
+                $default = $sub_title_color;
+            }
+			return $default;
         }
 
          /**

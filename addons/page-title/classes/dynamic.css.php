@@ -24,7 +24,13 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
             $layout3_border_right_color         =  kemet_get_option( 'page-title-border-right-color' );
             $page_title_algin           =  kemet_get_option( 'page_title_alignment' );
-            $sub_title_color           =  apply_filters('sub_title_color' , 'inherit');
+            $sub_title_color           =  apply_filters('sub_title_color' , kemet_get_option('sub-title-color'));
+            $sub_title_font_family        = kemet_get_option( 'sub-title-font-family' );
+            $sub_title_font_size         = kemet_get_option( 'sub-title-font-size' );
+            $sub_title_font_weight         = kemet_get_option( 'sub-title-font-weight' );
+            $sub_title_letter_spacing         = kemet_get_option( 'sub-title-letter-spacing' );
+            $sub_title_text_transform         =  kemet_get_option( 'sub-title-text-transform' );
+            $sub_title_line_height           =  kemet_get_option( 'sub-title-line-height' );
             // Breadcrumbs
             $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
             $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
@@ -39,9 +45,6 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
             
             $css_content = array(
-                '.kemet-page-sub-title'  => array(
-                    'color'  => esc_attr( $sub_title_color ),
-                ),
                '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
                '.kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'desktop' ),
@@ -68,6 +71,15 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                ),
                '.page-title-layout-3 .kmt-page-title-wrap' => array(
                     'border-color'  => esc_attr( $layout3_border_right_color ),
+                ),
+                '.kemet-page-sub-title'  => array(
+                    'color'  => esc_attr( $sub_title_color ),
+                    'font-family'    => kemet_get_css_value( $sub_title_font_family, 'font' ),
+                    'font-weight'    => kemet_get_css_value( $sub_title_font_weight, 'font' ),
+                    'font-size'      => kemet_responsive_slider( $sub_title_font_size, 'desktop' ),
+                    'letter-spacing' => kemet_responsive_slider( $sub_title_letter_spacing, 'desktop' ),
+                    'text-transform' => esc_attr( $sub_title_text_transform ),
+                    'line-height'     => esc_attr( $sub_title_line_height),
                 ),
                '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'desktop' ),

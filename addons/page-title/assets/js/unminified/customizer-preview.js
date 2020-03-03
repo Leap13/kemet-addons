@@ -45,4 +45,10 @@
     kemet_responsive_slider('kemet-settings[breadcrumbs-font-size]', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)', 'font-size');
     kemet_css('kemet-settings[breadcrumbs-text-transform]', 'text-transform', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)');
     kemet_css('kemet-settings[breadcrumbs-line-height]', 'line-height', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)');
+
+    kemet_css('kemet-settings[sub-title-color]', 'color', '.kemet-page-sub-title');
+    kemet_responsive_slider('kemet-settings[sub-title-letter-spacing]', '.kemet-page-sub-title', 'letter-spacing');
+    kemet_responsive_slider('kemet-settings[sub-title-font-size]', '.kemet-page-sub-title', 'font-size');
+    kemet_css('kemet-settings[sub-title-text-transform]', 'text-transform', '.kemet-page-sub-title');
+    kemet_css('kemet-settings[sub-title-line-height]', 'line-height', '.kemet-page-sub-title');
 })(jQuery);

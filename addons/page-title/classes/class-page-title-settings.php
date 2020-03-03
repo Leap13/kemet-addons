@@ -76,6 +76,13 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['pagetitle-bottomline-height']        = '';
             $defaults['pagetitle-bottomline-width']         = 150;
             $defaults['pagetitle-bottomline-color']       = '';
+            $defaults['sub-title-color']              = '';
+            $defaults['sub-title-font-size']              = '';
+            $defaults['sub-title-letter-spacing']        = '';
+            $defaults['sub-title-font-family']         = '';
+            $defaults['sub-title-font-weight']       = '';
+            $defaults['sub-title-text-transform']        = '';
+            $defaults['sub-title-line-height']         = '';
             // Breadcrumbs Defaults
             $defaults['show-item-title']                    = true;
             $defaults['breadcrumb-separator']         = '»';
