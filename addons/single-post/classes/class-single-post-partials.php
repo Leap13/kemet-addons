@@ -103,11 +103,18 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             $related_posts_query = new WP_Query( $args );
             
             if($related_posts_query->have_posts()){
+                echo '<h4 class="kmt-related-title">Related Posts</h4>';
                 echo '<div class="kmt-related-posts owl-carousel owl-theme">';
                 foreach( $related_posts_query->posts as $post ) : setup_postdata( $post );
                     $related_posts_query->the_post(); ?>
-                        <div class="post"><?php the_title(); ?></div>
-                    
+                        <div class="related-post">
+                            <h3 class="related-post-title">
+                            <a href="<?php get_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                            </h3>
+                            <?php if(has_post_thumbnail()){ ?>
+                                <?php the_post_thumbnail( array('190','145')); ?>
+                            <?php } ?>    
+                        </div>
             <?php endforeach;
             }
             echo '</div>';
