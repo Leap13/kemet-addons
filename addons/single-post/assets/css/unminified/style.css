@@ -22,6 +22,10 @@
   position: relative;
 }
 
+.kmt-related-posts .owl-item {
+  width: 200px;
+}
+
 .kmt-related-posts .related-post-title {
   text-align: center;
   font-size: 16px;
@@ -50,7 +54,9 @@
 }
 
 .kmt-related-posts .related-post > a {
-  height: 200px;
+  width: 100%;
+  max-width: 253px;
+  margin: 0 auto;
   position: relative;
 }
 
