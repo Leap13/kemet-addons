@@ -79,8 +79,8 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['sub-title-color']              = '';
             $defaults['sub-title-font-size']              = '';
             $defaults['sub-title-letter-spacing']        = '';
-            $defaults['sub-title-font-family']         = '';
-            $defaults['sub-title-font-weight']       = '';
+            $defaults['sub-title-font-family']         = 'inherit';
+            $defaults['sub-title-font-weight']       = 'inherit';
             $defaults['sub-title-text-transform']        = '';
             $defaults['sub-title-line-height']         = '';
             // Breadcrumbs Defaults
@@ -94,13 +94,9 @@ if (! class_exists('Kemet_Page_Title_settings')) {
             $defaults['breadcrumbs-text-transform']         = '';
             $defaults['breadcrumbs-line-height']         = '';
             $defaults['breadcrumb-home-item']         = 'text';
-            $defaults['disable-breadcrumbs-in-home']         = false;
-            $defaults['disable-breadcrumbs-in-blog']         = false;
-            $defaults['disable-breadcrumbs-in-search']         = false;
             $defaults['disable-breadcrumbs-in-archive']         = false;
             $defaults['disable-breadcrumbs-in-single-page']         = false;
             $defaults['disable-breadcrumbs-in-single-post']         = false;
-            $defaults['disable-breadcrumbs-in-singular']         = false;
             $defaults['disable-breadcrumbs-in-404-page']         = false;
             $defaults['breadcrumb-posts-taxonomy']    = 'category';
             $defaults['breadcrumbs-space']                  = '';
