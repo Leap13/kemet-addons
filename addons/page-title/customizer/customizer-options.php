@@ -552,34 +552,6 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
-	* Option: Sub Title Letter Spacing
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-letter-spacing]', array(
-			'default'           => $defaults[ 'sub-title-letter-spacing' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-letter-spacing]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-page-title-header',
-				'priority'       => 115,
-				'label'          => __( 'Letter Spacing', 'kemet' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
-				),
-			)
-		)
-	);
-	/**
 	* Option: Sub Title Font Family
 	*/
 	$wp_customize->add_setting(
@@ -675,6 +647,34 @@ $defaults = Kemet_Theme_Options::defaults();
 					'min'  => 1,
 					'step' => 0.01,
 					'max'  => 5,
+				),
+			)
+		)
+	);
+	/**
+	* Option: Sub Title Letter Spacing
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[sub-title-letter-spacing]', array(
+			'default'           => $defaults[ 'sub-title-letter-spacing' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Responsive_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-letter-spacing]', array(
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-page-title-header',
+				'priority'       => 145,
+				'label'          => __( 'Letter Spacing', 'kemet' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 0.1,
+						'step' => 0.1,
+						'max' => 10,
+					),
 				),
 			)
 		)

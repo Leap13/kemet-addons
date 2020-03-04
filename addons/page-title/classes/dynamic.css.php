@@ -9,6 +9,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_page_title_dynamic_css');
 
 function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $theme_color      = kemet_get_option( 'theme-color' );
+            $text_meta_color      = kemet_get_option( 'text-meta-color' );
             $global_bg_color      = kemet_get_option( 'global-background-color' );
             $page_title_bg        = kemet_get_option( 'page-title-bg-obj' , array('background-color' => kemet_color_brightness($global_bg_color , 0.94 , 'dark')));
             $page_title_space        = kemet_get_option( 'page-title-space' );
@@ -24,7 +25,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
             $layout3_border_right_color         =  kemet_get_option( 'page-title-border-right-color' );
             $page_title_algin           =  kemet_get_option( 'page_title_alignment' );
-            $sub_title_color           =  apply_filters('sub_title_color' , kemet_get_option('sub-title-color'));
+            $sub_title_color           =  apply_filters('sub_title_color' , kemet_get_option('sub-title-color' , $text_meta_color ));
             $sub_title_font_family        = kemet_get_option( 'sub-title-font-family' );
             $sub_title_font_size         = kemet_get_option( 'sub-title-font-size' );
             $sub_title_font_weight         = kemet_get_option( 'sub-title-font-weight' );

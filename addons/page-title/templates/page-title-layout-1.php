@@ -30,13 +30,10 @@ $classes   = implode( ' ', $classes );
 		<div class="kmt-container">
 			<div class="kmt-page-title-wrap">
 				<?php if ( $title ) { ?>
-				<h1 class="kemet-page-title">
-					<?php echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( $title ) ); ?>
-				</h1>
+
+				<h1 class="kemet-page-title"><?php echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( $title ) ); ?></h1>
 					<?php if ( $sub_title ) { ?>
-					<h5 class="kemet-page-sub-title">
-						<?php echo $sub_title; ?>
-					</h5>
+					<h5 class="kemet-page-sub-title"><?php echo $sub_title; ?></h5>
 					<?php } ?>
 				<?php } ?>
 				<?php if ( $description ) { ?>
