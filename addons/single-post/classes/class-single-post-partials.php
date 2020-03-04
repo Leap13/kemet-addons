@@ -76,7 +76,6 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             }
             $grid_classes = kemet_get_option('related-posts-columns-num');
             // Query
-            var_dump($posts_number);
             $args = array(
                 'posts_per_page' => ($posts_number-1),
                 'orderby'        => 'rand',

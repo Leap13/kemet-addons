@@ -9,7 +9,13 @@
     .kmt-related{
         padding: 100px;
         margin-bottom: 2em;
+        border: 0;
     }
+}
+.kmt-related{
+    border-top-width: 1px;
+    border-top-style: solid;
+    padding-top: 1em;
 }
 .kmt-related-title{
     margin-bottom: 20px;
