@@ -42,6 +42,7 @@
 .kmt-separate-container .kmt-author-box-info {
   border-top: 0;
   padding: 4em 6.67em;
+  margin-top: 2em;
 }
 
 @media (min-width: 545px) {
