@@ -53,6 +53,7 @@
             max-width: 253px;
             margin: 0 auto;
             position: relative;
+            transition: none;
             img{
                 height: 100%;
             }
@@ -82,6 +83,25 @@
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             border-radius: 50%;
+        }
+    }
+}
+@media (max-width: 544px){
+    .kmt-separate-container{
+        .kmt-related{
+            padding: 1.5em 1em;
+            margin-bottom: 2em;
+            border: 0;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .kmt-separate-container{
+        .kmt-related{
+            padding: 1.5em 2.14em;
+            margin-bottom: 2em;
+            border: 0;
         }
     }
 }

@@ -248,7 +248,7 @@ $defaults = Kemet_Theme_Options::defaults();
 					'input_attrs' => array(
 						'min'  => 0,
 						'step' => 1,
-						'max'  => 16,
+						'max'  => 50,
 					),
 				)
 			)

@@ -67,6 +67,8 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             if(!is_single()){
                 return;
             }
+            global $post;
+            $orig_post	 = $post;
             $term_tax = kemet_get_option('related-posts-taxonomy') ? kemet_get_option('related-posts-taxonomy') :'category';
             $posts_number = kemet_get_option('related-posts-number');
             $post_terms     = wp_get_post_terms( get_the_ID(), 'post_tag' );
@@ -106,7 +108,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
                 echo '<div class="kmt-related">';
                 echo '<h4 class="kmt-related-title">Related Posts</h4>';
                 echo '<div class="kmt-related-posts owl-carousel owl-theme"  data-desktop="'.$grid_classes['desktop'].'" data-tablet="'.$grid_classes['tablet'].'" data-mobile="'.$grid_classes['mobile'].'">';
-                foreach( $related_posts_query->posts as $post ) : setup_postdata( $post );
+                foreach( $related_posts_query->posts as $related_post ) : setup_postdata( $related_post );
                     $related_posts_query->the_post(); ?>
                         <div class="related-post">
                             <?php if( function_exists( "has_post_thumbnail" ) && has_post_thumbnail()){ ?>
@@ -124,6 +126,8 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             echo '</div>';
             echo '</div>';
             }
+            $post = $orig_post;
+            wp_reset_postdata();
         }
 
         // Owl Carousel.
