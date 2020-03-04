@@ -7,7 +7,7 @@
             tabletItems = relatedPostsContainer.data('tablet'),
             mobileItems = relatedPostsContainer.data('mobile');
         relatedPostsContainer.owlCarousel({
-            loop:true,
+            loop:false,
             margin:10,
             responsiveClass:true,
             autoHeight: true,

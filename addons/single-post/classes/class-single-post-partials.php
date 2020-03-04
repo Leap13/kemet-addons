@@ -76,8 +76,9 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             }
             $grid_classes = kemet_get_option('related-posts-columns-num');
             // Query
+            var_dump($posts_number);
             $args = array(
-                'posts_per_page' => $posts_number,
+                'posts_per_page' => ($posts_number-1),
                 'orderby'        => 'rand',
                 'post__not_in'   => array( get_the_ID() ),
                 'no_found_rows'  => true,
@@ -103,6 +104,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
             $related_posts_query = new WP_Query( $args );
             
             if($related_posts_query->have_posts()){
+                echo '<div class="kmt-related">';
                 echo '<h4 class="kmt-related-title">Related Posts</h4>';
                 echo '<div class="kmt-related-posts owl-carousel owl-theme"  data-desktop="'.$grid_classes['desktop'].'" data-tablet="'.$grid_classes['tablet'].'" data-mobile="'.$grid_classes['mobile'].'">';
                 foreach( $related_posts_query->posts as $post ) : setup_postdata( $post );
@@ -120,6 +122,7 @@ if (! class_exists('Kemet_Single_Post_Partials')) {
                             </h3>   
                         </div>
             <?php endforeach;
+            echo '</div>';
             echo '</div>';
             }
         }

@@ -14,6 +14,11 @@
   display: none;
 }
 
+.kmt-separate-container .kmt-related {
+  padding: 100px;
+  margin-bottom: 2em;
+}
+
 .kmt-related-title {
   margin-bottom: 20px;
 }
@@ -99,6 +104,7 @@
 .kmt-author-box-info {
   border-top: 1px solid;
   padding: 25px 0;
+  margin-top: 2em;
 }
 
 .kmt-author-box-info .kmt-author-info {

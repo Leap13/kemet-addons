@@ -61,7 +61,7 @@
 	</div><!-- .entry-content .clear -->
 </div>
 
-<?php if(kemet_get_option('enable-author-box') == true){ 
+<?php if(kemet_get_option('enable-author-box') && is_single()){ 
 	add_action('kemet_entry_after' , 'author_box_template' , 1);
 
 	function author_box_template(){

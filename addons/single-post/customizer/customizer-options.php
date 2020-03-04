@@ -254,13 +254,13 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		);
 		/**
-		* Option: Related Posts Row Number
+		* Option: Related Posts Columns Number
 		*/
 		$wp_customize->add_setting(
 			KEMET_THEME_SETTINGS . '[related-posts-columns-num]', array(
 				'default'           => $defaults['related-posts-columns-num'],
 				'type'              => 'option',
-				//'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
 			)
 		);
 		$wp_customize->add_control(
@@ -269,7 +269,7 @@ $defaults = Kemet_Theme_Options::defaults();
 					'type'           => 'kmt-responsive-select',
 					'section'        => 'section-blog-single',
 					'priority'       => 85,
-					'label'          => __( 'Related Posts Row Number', 'kemet-addons' ),
+					'label'          => __( 'Related Posts Columns Number', 'kemet-addons' ),
 					'choices'   => array(
 						1 => 'One',
 						2 => 'Two',
