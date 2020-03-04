@@ -947,7 +947,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Archive?', 'kemet-addons' ),
+			'label'           => __( 'Disable on Archive', 'kemet-addons' ),
             'priority'        => 65,
             
 		)
@@ -966,7 +966,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Single Page?', 'kemet-addons' ),
+			'label'           => __( 'Disable on Single Page', 'kemet-addons' ),
             'priority'        => 70,
             
 		)
@@ -985,7 +985,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on Single Post?', 'kemet-addons' ),
+			'label'           => __( 'Disable on Single Post', 'kemet-addons' ),
             'priority'        => 75,
             
 		)
@@ -1004,7 +1004,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]', array(
 			'type'            => 'checkbox',
 			'section'         => 'section-breadcrumbs',
-			'label'           => __( 'Disable on 404 Page?', 'kemet-addons' ),
+			'label'           => __( 'Disable on 404 Page', 'kemet-addons' ),
             'priority'        => 85,
             
 		)
