@@ -68,12 +68,12 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
                     array(
                         'id'      => 'sub-title',
                         'type'    => 'text',
-                        'title'   => 'Page Title Bar Subtitle Text',
+                        'title'   => __('Page Title Bar Subtitle Text', 'kemet-addons'),
                       ),
                       array(
                         'id'    => 'sub-title-color',
                         'type'  => 'color',
-                        'title' => 'Sub Title Color',
+                        'title' => __('Sub Title Color', 'kemet-addons'),
                         'dependency' => array('sub-title', '!=', ''),
                       ),          
                   )
