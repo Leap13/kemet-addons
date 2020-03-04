@@ -36,3 +36,22 @@
         }
     }
 }
+@media (max-width: 544px){
+    .kmt-separate-container{
+        .kmt-author-box-info{
+            padding: 1.5em 1em;
+            margin-bottom: 2em;
+            border: 0;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .kmt-separate-container{
+        .kmt-author-box-info{
+            padding: 1.5em 2.14em;
+            margin-bottom: 2em;
+            border: 0;
+        }
+    }
+}
