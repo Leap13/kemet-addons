@@ -83,6 +83,13 @@ if (class_exists('KFW')) {
         'subtitle' => __('Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons'),
         'default' => false,
       ),
+      array(
+        'id' => 'woocommerce',
+        'type' => 'switcher',
+        'title' => __('Woocommerce', 'kemet-addons'),
+        'subtitle' => __('Woocommerce', 'kemet-addons'),
+        'default' => true,
+      ),
     ),
   ),
     // Create a sub-tab
