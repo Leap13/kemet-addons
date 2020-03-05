@@ -42,6 +42,10 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 
 == Changelog ==
 
+1.0.2 version
+- Added: Display breadcrumbs options.
+- Added: Subtitle option and styles.
+
 1.0.1 version
 - Fixed: Display Page Title in pages issue.
 
