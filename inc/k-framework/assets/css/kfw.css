@@ -800,6 +800,13 @@
   max-width: 100%;
   text-align: center;
 }
+.kfw-field-spacing .kfw--input{
+  margin-right: 15px;
+}
+.kfw-field-spacing .kfw--input input::placeholder{
+  font-style: italic;
+  font-size: 12px;
+}
 .kfw-field-border .kfw--label,
 .kfw-field-spacing .kfw--label,
 .kfw-field-dimensions .kfw--label {
@@ -4106,4 +4113,11 @@ to {
   -o-transform: rotate(360deg);
   transform: rotate(360deg);
 } 
+}
+#kemet_page_options .kfw-nav ul{
+  padding-bottom: 100px;
+}
+.kfw-nav .kfw-icon.dashicons{
+  font-size: 17px;
+  margin-right: 5px;
 }

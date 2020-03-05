@@ -44,6 +44,7 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
                 add_filter( 'kemet_main_footer_disable', array($this, 'kemet_footer_display') );  
 				add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display') , 1);
 				add_filter( 'display_go_top_icon', array($this, 'kemet_go_top_display') , 1);
+				add_filter( 'kemet_content_padding', array($this, 'content_padding') );
               
 			}
            
@@ -118,6 +119,36 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 
 			if ( '1' == $sidebar_layout_meta ) {
 				$defaults = false;
+			}
+
+			return $defaults;
+		}
+		/**
+		 * Content Padding
+		 *
+		 */
+		function content_padding( $defaults ) {
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+			$padding = ( isset( $meta['kemet-content-padding'] ) ) ? $meta['kemet-content-padding'] : '';
+			
+			if ( $padding != '') {
+				$defaults = array(
+					'desktop'      => array(
+						'top'    => $padding['top'],
+						'bottom' => $padding['bottom'],
+					),
+					'tablet'       => array(
+						'top'    => '',
+						'bottom' => '',
+					),
+					'mobile'       => array(
+						'top'    => '',
+						'bottom' => '',
+					),
+					'desktop-unit' => $padding['unit'],
+					'tablet-unit'  => $padding['unit'],
+					'mobile-unit'  => $padding['unit'],
+				);
 			}
 
 			return $defaults;

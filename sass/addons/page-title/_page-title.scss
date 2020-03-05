@@ -1,6 +1,16 @@
 .kmt-page-title-addon-content {
     padding: 50px 0px;
 }
+.page-title-layout-1{
+    .kemet-page-sub-title{
+        margin-top: 10px;
+    }
+}
+.page-title-layout-3{
+    .kemet-page-sub-title{
+        width: 100%;
+    }
+}
 .kemet-breadcrumb-trail {
     .trail-items, li {
         list-style: none;
@@ -56,7 +66,14 @@
     }
 }
 }
-
+.kemet-breadcrumb-trail{
+    > .prefix{
+        margin-right: 2px;
+    }
+    .dashicons{
+        vertical-align: text-bottom;
+    }
+}
 .align-right {
     .kemet-page-title {
     &::after {
@@ -82,6 +99,12 @@
         }
         .kemet-breadcrumb-trail{
             display: none;
+        }
+        .subtitle-breadcrumbs{
+            justify-content: center;
+        }
+        .kemet-page-sub-title{
+            width: auto;
         }
     }
 }

@@ -9,6 +9,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_page_title_dynamic_css');
 
 function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $theme_color      = kemet_get_option( 'theme-color' );
+            $text_meta_color      = kemet_get_option( 'text-meta-color' );
             $global_bg_color      = kemet_get_option( 'global-background-color' );
             $page_title_bg        = kemet_get_option( 'page-title-bg-obj' , array('background-color' => kemet_color_brightness($global_bg_color , 0.94 , 'dark')));
             $page_title_space        = kemet_get_option( 'page-title-space' );
@@ -24,9 +25,22 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $Page_title_bottomline_width         = kemet_get_option( 'pagetitle-bottomline-width' );
             $layout3_border_right_color         =  kemet_get_option( 'page-title-border-right-color' );
             $page_title_algin           =  kemet_get_option( 'page_title_alignment' );
+            $sub_title_color           =  apply_filters('sub_title_color' , kemet_get_option('sub-title-color' , $text_meta_color ));
+            $sub_title_font_family        = kemet_get_option( 'sub-title-font-family' );
+            $sub_title_font_size         = kemet_get_option( 'sub-title-font-size' );
+            $sub_title_font_weight         = kemet_get_option( 'sub-title-font-weight' );
+            $sub_title_letter_spacing         = kemet_get_option( 'sub-title-letter-spacing' );
+            $sub_title_text_transform         =  kemet_get_option( 'sub-title-text-transform' );
+            $sub_title_line_height           =  kemet_get_option( 'sub-title-line-height' );
             // Breadcrumbs
             $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
             $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
+            $breadcrumbs_font_size        = kemet_get_option( 'breadcrumbs-font-size' );
+            $breadcrumbs_letter_spacing     = kemet_get_option( 'breadcrumbs-letter-spacing' );
+            $breadcrumbs_font_family        = kemet_get_option( 'breadcrumbs-font-family' );
+            $breadcrumbs_font_weight         = kemet_get_option( 'breadcrumbs-font-weight' );
+            $breadcrumbs_text_transform        = kemet_get_option( 'breadcrumbs-text-transform' );
+            $breadcrumbs_line_height        = kemet_get_option( 'breadcrumbs-line-height' );
             $breadcrumbs_font_size        = kemet_get_option( 'breadcrumbs-font-size' );
             $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color' );
             $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
@@ -59,14 +73,22 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                '.page-title-layout-3 .kmt-page-title-wrap' => array(
                     'border-color'  => esc_attr( $layout3_border_right_color ),
                 ),
+                '.kemet-page-sub-title'  => array(
+                    'color'  => esc_attr( $sub_title_color ),
+                    'font-family'    => kemet_get_css_value( $sub_title_font_family, 'font' ),
+                    'font-weight'    => kemet_get_css_value( $sub_title_font_weight, 'font' ),
+                    'font-size'      => kemet_responsive_slider( $sub_title_font_size, 'desktop' ),
+                    'letter-spacing' => kemet_responsive_slider( $sub_title_letter_spacing, 'desktop' ),
+                    'text-transform' => esc_attr( $sub_title_text_transform ),
+                    'line-height'     => esc_attr( $sub_title_line_height),
+                ),
                '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $breadcrumbs_spacing, 'right', 'desktop' ),
                     'padding-bottom' => kemet_responsive_spacing( $breadcrumbs_spacing, 'bottom', 'desktop' ),
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'desktop' ), 
-                    'font-size'      => kemet_responsive_slider( $breadcrumbs_font_size, 'desktop' ),
                ),
-               '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span'  => array(
+               '.kemet-breadcrumb-trail li > span , .kemet-breadcrumb-trail li > span > span , .kemet-breadcrumb-trail > span'  => array(
                    'color'  => esc_attr( $breadcrumbs_color ),
                ),
                '.kemet-breadcrumb-trail a span'  => array(
@@ -75,7 +97,14 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                '.kemet-breadcrumb-trail a:hover span'  => array(
                    'color'  => esc_attr( $breadcrumbs_link_h_color ),
                ),
- 
+               '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)'       => array(
+                    'font-size' => kemet_responsive_slider( $breadcrumbs_font_size , 'desktop' ),
+                    'line-height'    => esc_attr( $breadcrumbs_line_height ),
+                    'letter-spacing' => kemet_responsive_slider( $breadcrumbs_letter_spacing , 'desktop' ),
+                    'font-family'    => kemet_get_font_family( $breadcrumbs_font_family ),
+                    'font-weight'    => esc_attr( $breadcrumbs_font_weight ),
+                    'text-transform' => esc_attr( $breadcrumbs_text_transform ),
+                ),
             );
 
            $parse_css = kemet_parse_css( $css_content );

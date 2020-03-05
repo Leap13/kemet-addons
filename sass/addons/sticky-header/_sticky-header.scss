@@ -4,7 +4,12 @@
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
-    animation-duration: 0.5s; 
+    animation-duration: 0.5s;
+    &.header-boxed-width{
+      .main-header-content{
+        background-color: transparent;
+      } 
+    }
     &.sticky-fade{
       animation-name: fadeIn;
     }
@@ -49,8 +54,8 @@
   }
 }
 @keyframes fadeIn { 
-  0% {visibility: hidden;} 
-  100% {visibility: visible;} 
+  0% {opacity: 0; visibility: hidden;} 
+  100% {opacity: 1; visibility: visible;} 
 }
 @keyframes slideInDown { 
   0% { 

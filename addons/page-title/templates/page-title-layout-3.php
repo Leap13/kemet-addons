@@ -19,6 +19,8 @@ $classes_responsive = kemet_get_option( 'page-title-responsive' );
 if ( $page_title_layout != 'disable' && apply_filters('kemet_disable_breadcrumbs' , true )) {
 	$classes [] = 'has-breadcrumb';
 } 
+$sub_title = '';
+$sub_title = apply_filters( 'kemet_sub_title_addon', $sub_title );
 $classes   = implode( ' ', $classes );
 ?>
 
@@ -38,7 +40,12 @@ $classes   = implode( ' ', $classes );
                 </div>
         <?php } ?>
         </div>
-        <div class = 'kmt-flex kmt-justify-content-flex-start kmt-col-md-6 kmt-col-xs-12'>
+        <div class = 'kmt-flex kmt-justify-content-flex-start subtitle-breadcrumbs kmt-col-md-6 kmt-col-xs-12'>
+        <?php if ( $sub_title ) { ?>
+            <h5 class="kemet-page-sub-title">
+                <?php echo $sub_title; ?>
+            </h5>
+        <?php } ?>    
         <?php if ( $page_title_layout != 'disable' && apply_filters('kemet_disable_breadcrumbs' , true ) ) { ?>
             <?php kemet_breadcrumb_trail() ?>
         <?php }  ?>

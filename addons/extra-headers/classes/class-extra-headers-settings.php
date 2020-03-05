@@ -37,9 +37,21 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'kemet_header_breakpoint_style' ) );
 			add_action( 'kemet_before_top_bar', array( $this, 'header_with_top_bar' ) );
 			add_action( 'kemet_after_main_header', array( $this, 'after_main_header' ) );
+			add_filter( 'header_container_classes', array( $this,'kemet_header_container' ));
         } 
         
-		
+		/**
+		  * Kemet Header Container Classes
+		 */
+		function kemet_header_container($classes){
+			$header_width = kemet_get_option('header-main-layout-width');
+
+			if($header_width == 'boxed'){
+				$classes[] = 'main-header-content'; 
+			}
+
+			return $classes;
+		}
 		/**
 		 * Function to Add Header Breakpoint Style
 		 *
@@ -65,7 +77,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			$kemet_header_width = kemet_get_option( 'header-main-layout-width' );
 
 			/* Width for Header */
-			if ( 'content' != $kemet_header_width ) {
+			if ( 'full' == $kemet_header_width ) {
 				$genral_global_responsive = array(
 					'#sitehead .kmt-container' => array(
 						'max-width'     => '100%',
@@ -120,9 +132,10 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			}        
 		}
 		function header_with_top_bar(){
-			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );	
-			
-			if($merge_top_bar_with_header && (!empty(kemet_get_option( 'top-section-1' )) || !empty(kemet_get_option( 'top-section-2' )))){
+			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );	
+			$unsupported_headers = array('header-main-layout-5' , 'header-main-layout-6' , 'header-main-layout-7');
+			if($merge_top_bar_with_header && (!empty(kemet_get_option( 'top-section-1' )) || !empty(kemet_get_option( 'top-section-2' ))) && !in_array($kemet_header_layout , $unsupported_headers)){
 				$combined = 'kemet-merged-top-bar-header';
 				printf(
 					'<div class="%1$s">',
@@ -131,9 +144,10 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			}
 		}
 		function after_main_header(){
-
+			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );	
+			$unsupported_headers = array('header-main-layout-5' , 'header-main-layout-6' , 'header-main-layout-7');
 			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );
-			if( $merge_top_bar_with_header && (!empty(kemet_get_option( 'top-section-1' )) || !empty(kemet_get_option( 'top-section-2' )))) {
+			if( $merge_top_bar_with_header && (!empty(kemet_get_option( 'top-section-1' )) || !empty(kemet_get_option( 'top-section-2' ))) && !in_array($kemet_header_layout , $unsupported_headers)) {
 				echo '</div><!-- .kemet-merged-top-bar-header -->';
 			}
 

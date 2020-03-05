@@ -25,7 +25,7 @@ KFW::createMetabox( $prefix_page_opts, array(
 //
 KFW::createSection( $prefix_page_opts, array(
   'title'  => __('Main', 'kemet-addons'),
-  'icon'   => 'fa fa-cog',
+  'icon'   => 'dashicons dashicons-admin-home',
   'fields' => array(
       array(
         'id'          => 'site-sidebar-layout',
@@ -57,14 +57,23 @@ KFW::createSection( $prefix_page_opts, array(
         'title'      => __( 'Disable Featured Image', 'kemet-addons'),
         'label'   => __( 'Disable The Featured Image in The Current Page/Post.', 'kemet-addons'),
         'default'    => false
-       ),           
+       ),  
+       array(
+        'id'    => 'kemet-content-padding',
+        'type'  => 'spacing',
+        'title' => 'Content Padding',
+        'left' => false,
+        'right' => false,
+        'top_icon' => false,
+        'bottom_icon' => false
+      ),         
     )
   ) 
 );
 
 KFW::createSection( $prefix_page_opts, array(
   'title'  => __('Footer', 'kemet-addons'),
-  'icon'   => 'fa fa-pencil',
+  'icon'   => 'dashicons dashicons-admin-generic',
   'fields' => array(
       array(
         'id'         => 'kemet-disable-footer',

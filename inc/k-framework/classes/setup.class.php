@@ -260,7 +260,7 @@ if( ! class_exists( 'KFW' ) ) {
 
       // cdn styles
       wp_enqueue_style( 'kfw-fa', KFW::include_plugin_url( 'assets/css/font-awesome'. $min .'.css' ), array(), '4.7.0', 'all' );
-
+      
       // framework core styles
       wp_enqueue_style( 'kfw', KFW::include_plugin_url( 'assets/css/kfw'. $min .'.css' ), array(), '1.0.0', 'all' );
 

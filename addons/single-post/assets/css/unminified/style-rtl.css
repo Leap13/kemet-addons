@@ -14,20 +14,12 @@
   display: none;
 }
 
-.kmt-separate-container .kmt-author-box {
-  background-color: #ffffff;
-}
-
 /*--------------------------------------------------------------
 ## Author Box
 --------------------------------------------------------------*/
 .kmt-author-box-info {
-  border-top: 1px solid #eee;
+  border-top: 1px solid;
   padding: 25px 0;
-}
-
-.kmt-author-box-info .author-title {
-  margin-bottom: 10px;
 }
 
 .kmt-author-box-info .kmt-author-info {
@@ -35,8 +27,12 @@
   align-items: center;
 }
 
+.kmt-author-box-info .kmt-author-info .author-information {
+  margin-right: 15px;
+}
+
 .kmt-author-box-info .kmt-author-info p {
-  margin-right: 10px;
+  margin-bottom: 0;
 }
 
 .kmt-author-box-info .kmt-author-avatar img {
@@ -44,15 +40,28 @@
 }
 
 .kmt-separate-container .kmt-author-box-info {
-  background-color: #fff;
   border-top: 0;
   padding: 4em 6.67em;
+  margin-top: 2em;
 }
 
-@media (min-width: 545px) {
+@media (max-width: 544px) {
+  .kmt-separate-container .kmt-author-box-info {
+    padding: 1.5em 1em;
+    margin-bottom: 2em;
+    border: 0;
+  }
   .single.kmt-page-builder-template .kmt-author-box-info {
     max-width: 1180px;
     margin-right: auto;
     margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .kmt-separate-container .kmt-author-box-info {
+    padding: 1.5em 2.14em;
+    margin-bottom: 2em;
+    border: 0;
   }
 }

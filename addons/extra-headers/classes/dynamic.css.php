@@ -17,9 +17,11 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             //Defaults Colors
             $theme_color      = kemet_get_option( 'theme-color' );
             $global_border_color      = kemet_get_option( 'global-border-color' );
+            $global_bg_color      = kemet_get_option( 'global-background-color' );
             $headings_links_color      = kemet_get_option( 'headings-links-color' );
             $header_content_bg_color = kemet_get_option( 'header-content-bg-color' );
             $btn_border_radius      = kemet_get_option( 'button-radius' );
+            $menu_bg_color            = kemet_get_option( 'menu-bg-color' , kemet_color_brightness($global_bg_color , 0.97 , 'dark'));
             //Icon
             $header_icon_bars_logo_bg_color         = kemet_get_option( 'header-icon-bars-logo-bg-color' );
             $header_icon_bars_color         = kemet_get_option( 'header-icon-bars-color' , $headings_links_color );
@@ -40,7 +42,10 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             //Header8
             $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $global_border_color);
             $css_content = array(
-                '.header-content-width .main-header-content' => array(
+                '.header-main-layout-4 .main-header-menu' => array(
+                    'background-color' => esc_attr($menu_bg_color),
+                ),
+                '.header-boxed-width .main-header-content' => array(
                     'background-color' => esc_attr($header_content_bg_color),
                 ), 
                 '.menu-icon-social .header-icon-label' => array(

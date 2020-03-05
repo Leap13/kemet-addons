@@ -14,10 +14,6 @@
   display: none;
 }
 
-.kmt-separate-container .kmt-author-box {
-  background-color: #ffffff;
-}
-
 /*--------------------------------------------------------------
 ## Author Box
 --------------------------------------------------------------*/
@@ -44,15 +40,28 @@
 }
 
 .kmt-separate-container .kmt-author-box-info {
-  background-color: #fff;
   border-top: 0;
   padding: 4em 6.67em;
+  margin-top: 2em;
 }
 
-@media (min-width: 545px) {
+@media (max-width: 544px) {
+  .kmt-separate-container .kmt-author-box-info {
+    padding: 1.5em 1em;
+    margin-bottom: 2em;
+    border: 0;
+  }
   .single.kmt-page-builder-template .kmt-author-box-info {
     max-width: 1180px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .kmt-separate-container .kmt-author-box-info {
+    padding: 1.5em 2.14em;
+    margin-bottom: 2em;
+    border: 0;
   }
 }

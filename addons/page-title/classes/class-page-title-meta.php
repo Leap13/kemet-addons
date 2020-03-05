@@ -40,6 +40,8 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
 			if ( is_singular() ) {
                 add_filter ( 'kemet_the_page_title_layout', array( $this, 'post_title' ));
                 add_filter( 'kemet_disable_breadcrumbs', array( $this, 'disable_breadcrumbs' ) );
+                add_filter( 'kemet_sub_title_addon', array( $this, 'post_sub_title' ) );
+                add_filter( 'sub_title_color', array( $this, 'post_sub_title_color' ) );
 			}
            
         }
@@ -48,7 +50,7 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
 
         KFW::createSection( 'kemet_page_options', array(
                 'title'  => __( 'Page Title', 'kemet-addons'),
-                'icon'   => 'fa fa-wrench',
+                'icon'   => 'dashicons dashicons-format-quote',
                 'fields' => array(
                     array(
                         'id'         => 'kemet-page-title-display',
@@ -62,7 +64,18 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
                         'disable' => KEMET_PAGE_TITLE_URL . '/assets/images/disable-page-title.png',
                         ),
                         'default'    => 'default'
-                    ),          
+                    ),
+                    array(
+                        'id'      => 'sub-title',
+                        'type'    => 'text',
+                        'title'   => __('Page Title Bar Subtitle Text', 'kemet-addons'),
+                      ),
+                      array(
+                        'id'    => 'sub-title-color',
+                        'type'  => 'color',
+                        'title' => __('Sub Title Color', 'kemet-addons'),
+                        'dependency' => array('sub-title', '!=', ''),
+                      ),          
                   )
                 ) 
             );
@@ -91,6 +104,30 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
             $title = ( isset( $meta['kemet-page-title-display'] )  && $meta['kemet-page-title-display'] != 'default') ? $meta['kemet-page-title-display'] : $defaults;
 
 			return $title;
+        }
+
+        /**
+		 * Post / Page SubTitle
+		 *
+		 */
+		function post_sub_title() {
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+            $sub_title = ( isset( $meta['sub-title'] )) ? $meta['sub-title'] : '';
+
+			return $sub_title;
+        }
+
+        /**
+		 * Post / Page SubTitle Color
+		 *
+		 */
+		function post_sub_title_color($default) {
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+            $sub_title_color = ( isset( $meta['sub-title-color'] )) ? $meta['sub-title-color'] : '';
+            if(!empty($sub_title_color)){
+                $default = $sub_title_color;
+            }
+			return $default;
         }
 
          /**
