@@ -227,8 +227,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
             echo '<div class="kfw-sections">';
 
             $section_key = 1;
-
-            foreach( $this->sections as $section ) {
+            $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+            foreach( $meta_sections as $section ) {
 
               $onload = ( ! $has_nav ) ? ' kfw-onload' : '';
 
@@ -313,7 +313,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
         // sanitize and validate
         $section_key = 1;
-        foreach( $this->sections as $section ) {
+        $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+        foreach( $meta_sections as $section ) {
 
           if( ! empty( $section['fields'] ) ) {
 
