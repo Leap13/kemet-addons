@@ -206,7 +206,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
               echo '<ul>';
               $tab_key = 1;
-              foreach( $this->sections as $section ) {
+              $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+              foreach( $meta_sections as $section ) {
 
                 $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="kfw-label-error kfw-error">!</i>' : '';
                 $tab_icon = ( ! empty( $section['icon'] ) ) ? '<i class="kfw-icon '. $section['icon'] .'"></i>' : '';
