@@ -10,29 +10,3 @@
 /*--------------------------------------------------------------
 ## Woocommerce
 --------------------------------------------------------------*/
-.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap {
-  text-align: center;
-}
-
-.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap > * {
-  padding: 8px 0px;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border-top: 1px solid #e3e3e3;
-}
-
-.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .add_to_cart_button {
-  display: block;
-  background-color: transparent;
-}
-
-.woocommerce ul.products li.product .star-rating {
-  width: 100%;
-}
-
-.woocommerce ul.products li.product .star-rating::before {
-  margin: 0 auto;
-  display: block;
-}
