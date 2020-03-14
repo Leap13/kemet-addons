@@ -32,8 +32,95 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 */
 		public function __construct() {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+            add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
+            add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
+			add_action( 'wp_ajax_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
+            add_action( 'wp_ajax_nopriv_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
+            add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
+            add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
         }
+        
+        
+        /**
+		 * Quick view html
+		 */
+		function quick_view_html() {
 
+			$this->quick_view_dependent_data();
+
+			kemetaddons_get_template( 'woocommerce/templates/quick-view-model.php' );
+        }
+        
+        /**
+		 * Quick view dependent data
+		 */
+		function quick_view_dependent_data() {
+
+			wp_enqueue_script( 'wc-add-to-cart-variation' );
+			wp_enqueue_script( 'flexslider' );
+        }
+        
+        /**
+		 * Quick view button
+		 */
+        function quick_view_button(){
+            global $product;
+
+			$product_id = $product->get_id();
+
+			// Get label.
+			$label = __( 'Quick View', 'kemet-addon' );
+
+			$button = '<a href="#" class="kmt-quick-view" data-product_id="' . $product_id . '">' . $label . '</a>';
+
+			echo $button;
+        }
+        /**
+		 * Theme Js Localize
+		 */
+        function wooCommerce_js_localize( $localize ) {
+            $localize['ajax_url'] = admin_url( 'admin-ajax.php' );
+
+            return $localize;
+        }
+        /**
+		 * Quick view ajax
+		 */
+		function kemet_quick_view_ajax() {
+
+			if ( ! isset( $_REQUEST['product_id'] ) ) {
+				die();
+			}
+
+            $product_id = intval( $_REQUEST['product_id'] );
+            
+            // remove product thumbnails gallery.
+            remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
+            
+			// wp_query for the product.
+			wp( 'p=' . $product_id . '&post_type=product' );
+            
+            ob_start();
+            
+            // load content template.
+            kemetaddons_get_template( 'woocommerce/templates/quick-view-product.php' );
+            
+			echo ob_get_clean();
+
+			die();
+        }
+        
+        public function add_scripts() {
+            $js_prefix  = '.min.js';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$js_prefix  = '.js';
+				$dir        = 'unminified';
+            }
+
+			 Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
+        }
+        
         function add_styles() {
 
             $css_prefix = '.min.css';
