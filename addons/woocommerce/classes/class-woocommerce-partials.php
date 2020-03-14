@@ -94,9 +94,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
             $product_id = intval( $_REQUEST['product_id'] );
             
-            // remove product thumbnails gallery.
-            remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
-            
 			// wp_query for the product.
 			wp( 'p=' . $product_id . '&post_type=product' );
             
