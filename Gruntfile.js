@@ -232,6 +232,7 @@ module.exports = function (grunt) {
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
                     'addons/woocommerce/assets/js/minified/customizer-preview.min.js': 'addons/woocommerce/assets/js/unminified/customizer-preview.js',
                     'addons/woocommerce/assets/js/minified/quick-view.min.js': 'addons/woocommerce/assets/js/unminified/quick-view.js',
+                    'addons/woocommerce/assets/js/minified/single-product-ajax-cart.min.js': 'addons/woocommerce/assets/js/unminified/single-product-ajax-cart.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
 

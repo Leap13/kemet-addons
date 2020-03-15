@@ -1,4 +1,17 @@
-<div id="quick-view-test">
-    <div class="quick-view-container">
-    </div>
+<?php 
+/**
+ * WooCommerce - Product Images
+ *
+ */
+?>
+<div id="kmt-qv-wrap">
+	<div class="kmt-qv-container">
+		<div class="kmt-qv-content-wrap">
+			<div class="kmt-qv-content-inner">
+				<a href="#" class="kmt-qv-close">×</a>
+				<div id="kmt-qv-content" class="woocommerce single-product"></div>
+			</div>
+		</div>
+	</div>
+	<div class="kmt-qv-overlay"></div>
 </div>

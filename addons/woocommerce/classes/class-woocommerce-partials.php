@@ -38,9 +38,31 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
             add_action( 'wp_ajax_nopriv_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
             add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
             add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
+			add_action( 'kemet_woo_qv_product_image', 'woocommerce_show_product_sale_flash', 10 );
+			add_action( 'kemet_woo_qv_product_image', array( $this, 'qv_product_images_markup' ), 20 );
+			add_action( 'wp_ajax_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
+			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
         }
-        
-        
+		
+		/**
+		 * Single Product add to cart ajax request
+		 */
+		function kemet_add_cart_single_product() {
+			add_action( 'wp_loaded', array( 'WC_Form_Handler', 'add_to_cart_action' ), 20 );
+
+			if ( is_callable( array( 'WC_AJAX', 'get_refreshed_fragments' ) ) ) {
+				WC_AJAX::get_refreshed_fragments();
+			}
+
+			die();
+		}
+        /**
+		 * Footer markup.
+		 */
+		function qv_product_images_markup() {
+
+			kemetaddons_get_template( 'woocommerce/templates/quick-view-product-image.php' );
+		}
         /**
 		 * Quick view html
 		 */
@@ -79,7 +101,11 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Theme Js Localize
 		 */
         function wooCommerce_js_localize( $localize ) {
-            $localize['ajax_url'] = admin_url( 'admin-ajax.php' );
+			$localize['ajax_url'] = admin_url( 'admin-ajax.php' );
+			$localize['is_cart']                         = is_cart();
+			$localize['is_single_product']               = is_product();
+			$localize['view_cart']                       = esc_attr__( 'View cart', 'kemet-addons' );
+			$localize['cart_url']                        = apply_filters( 'kemet_woocommerce_add_to_cart_redirect', wc_get_cart_url() );
 
             return $localize;
         }
@@ -116,6 +142,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
             }
 
 			 Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
+			 Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/single-product-ajax-cart' . $js_prefix);
         }
         
         function add_styles() {
