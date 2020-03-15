@@ -16,9 +16,11 @@
             var quickBtn = $(this),
                 productId = quickBtn.data('product_id'),
                 modal 		= $( '#kmt-qv-wrap' ),
-                content 		= $( '#kmt-qv-content' );   
+                overlay     = $('.kmt-qv-overlay'),
+                content 		= $( '#kmt-qv-content' );  
 
-                quickBtn.addClass( 'loading' );    
+                overlay.addClass( 'visible' );
+                overlay.addClass( 'loading' );    
             $.ajax({
                 url        : kemet.ajax_url,
                 type       : 'POST',
@@ -48,13 +50,14 @@
                     
                 },
             }).done( function() {
-                quickBtn.removeClass( 'loading' );
+                overlay.removeClass( 'loading' );
             });
         },
         closeModel: function( e ){
             e.preventDefault();
 
             var modal 		= $( '#kmt-qv-wrap' ),
+                overlay     = $('.kmt-qv-overlay'),
                 content 		= $( '#kmt-qv-content' );
 
             $( 'html' ).css( {
@@ -65,6 +68,7 @@
     
             modal.fadeOut();
             modal.removeClass( 'is-visible' );
+            overlay.removeClass( 'visible' );
     
             setTimeout( function() {
                 content.html( '' );

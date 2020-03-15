@@ -13,5 +13,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="kmt-qv-overlay"></div>
 </div>
+<div class="kmt-qv-overlay"></div>
