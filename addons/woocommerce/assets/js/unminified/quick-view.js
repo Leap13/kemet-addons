@@ -1,13 +1,16 @@
 (function ($) {
+    if ( typeof kemet === 'undefined' ) {
+		return false;
+	}
     KmtQuickView = {
         init: function(){
             this.bind();
         },
         bind:function(){
             // Open Quick View.
-            $(document).off( 'click', '.kmt-quick-view' ).on( 'click', '.kmt-quick-view', KmtQuickView.openModel);
+            $(document).off( 'click', '.kmt-quick-view ' ).on( 'click', '.kmt-quick-view', KmtQuickView.openModel);
             // Close Quick View.
-            $(document).off( 'click', '.kmt-qv-close' ).on( 'click', '.kmt-qv-close', KmtQuickView.closeModel);
+            $(document).off( 'click', '.kmt-qv-close , .kmt-close-qv' ).on( 'click', '.kmt-qv-close , .kmt-close-qv', KmtQuickView.closeModel);
             $(document).on( 'keyup', KmtQuickView.EscKeypress);
         },
         openModel:function( e ){

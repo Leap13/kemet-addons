@@ -1,4 +1,7 @@
 (function ($) {
+    if ( typeof kemet === 'undefined' ) {
+		return false;
+	}
     KmtSingleProductAjax = {
         init: function(){
             this._bind();

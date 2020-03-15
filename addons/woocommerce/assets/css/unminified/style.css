@@ -94,13 +94,17 @@ Woo Quick View
   text-decoration: underline;
 }
 
-#kmt-qv-wrap {
+#kmt-qv-wrap, #kmt-qv-wrap .kmt-close-qv {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 999;
+}
+
+#kmt-qv-wrap .kmt-close-qv {
+  cursor: pointer;
 }
 
 #kmt-qv-wrap span.price {
@@ -329,7 +333,6 @@ Woo Quick View
   height: 100%;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
   visibility: hidden;
 }
 

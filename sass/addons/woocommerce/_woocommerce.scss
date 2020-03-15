@@ -109,13 +109,16 @@ Woo Quick View
         padding: 2px 5px 2px 5px;
         text-decoration: underline;
     }
-    &{
+    & , .kmt-close-qv{
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         z-index: 999;
+    }
+    .kmt-close-qv{
+        cursor: pointer;
     }
     span.price{
         display: block;
@@ -329,7 +332,6 @@ Woo Quick View
     height: 100%;
     z-index: 99;
     background-color: rgba(0,0,0,0.5);
-    cursor: pointer;
     visibility: hidden;
     &.visible{
         visibility: visible;
