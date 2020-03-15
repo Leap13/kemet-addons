@@ -32,19 +32,34 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 */
 		public function __construct() {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
-            add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
-            add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
+			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_action( 'wp_ajax_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
-            add_action( 'wp_ajax_nopriv_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
-			add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
-			add_action( 'kemet_product_list_details_top', array( $this, 'quick_view_on_image' ) );
-            add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
+			add_action( 'wp_ajax_nopriv_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
+			add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
 			add_action( 'kemet_woo_qv_product_image', 'woocommerce_show_product_sale_flash', 10 );
 			add_action( 'kemet_woo_qv_product_image', array( $this, 'qv_product_images_markup' ), 20 );
+			add_action( 'woocommerce_shop_loop', array( $this, 'init_quick_view' ), 999 );
+			add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
 			add_action( 'wp_ajax_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
         }
 		
+
+		/**
+		 * Init Quick View
+		 */
+		function init_quick_view() {
+
+			$qv_enable = kemet_get_option('enable-quick-view');
+
+			if( $qv_enable != 'disabled' ){
+				if( $qv_enable === 'on-image' ){
+					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ) );
+				}else if( $qv_enable === 'after-add-to-cart' ){
+					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
+				}
+			}
+		}
 		/**
 		 * Single Product add to cart ajax request
 		 */
@@ -153,8 +168,9 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				$js_prefix  = '.js';
 				$dir        = 'unminified';
             }
-
-			 Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
+			if(kemet_get_option('enable-quick-view') != 'disabled'){
+				Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
+			}
 			 Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/single-product-ajax-cart' . $js_prefix);
         }
         

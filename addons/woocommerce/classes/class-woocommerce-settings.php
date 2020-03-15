@@ -37,6 +37,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
         }
 
         function theme_defaults( $defaults ) {
+            $defaults['enable-quick-view'] = 'disabled';
 
             return $defaults;
         }
