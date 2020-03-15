@@ -15,9 +15,11 @@ while ( have_posts() ) :
 		<div class="summary entry-summary">
 			<div class="summary-content">
 				<?php 
-	
+					
+					echo '<a href="'. esc_url( get_the_permalink() ) .'">';
 					kemet_woo_woocommerce_template_loop_product_title();
-
+					echo '</a>';
+					
 					woocommerce_template_loop_rating();
 
 					woocommerce_template_loop_price();

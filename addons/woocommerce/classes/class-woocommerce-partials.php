@@ -36,7 +36,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
             add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
 			add_action( 'wp_ajax_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
             add_action( 'wp_ajax_nopriv_kemet_load_quick_view', array( $this, 'kemet_quick_view_ajax' ) );
-            add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
+			add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
+			add_action( 'kemet_product_list_details_top', array( $this, 'quick_view_on_image' ) );
             add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
 			add_action( 'kemet_woo_qv_product_image', 'woocommerce_show_product_sale_flash', 10 );
 			add_action( 'kemet_woo_qv_product_image', array( $this, 'qv_product_images_markup' ), 20 );
@@ -94,6 +95,18 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$label = __( 'Quick View', 'kemet-addon' );
 
 			$button = '<a href="#" class="kmt-quick-view" data-product_id="' . $product_id . '">' . $label . '</a>';
+
+			echo $button;
+		}
+		/**
+		 * Quick view on image
+		 */
+        function quick_view_on_image(){
+            global $product;
+
+			$product_id = $product->get_id();
+
+			$button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '"></a>';
 
 			echo $button;
         }

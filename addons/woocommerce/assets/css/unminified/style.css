@@ -17,6 +17,14 @@ Woo Quick View
   display: block;
 }
 
+.kmt-qv-on-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 .woocommerce .products .product-inner:hover .kmt-quick-view {
   opacity: 1;
   visibility: visible;
