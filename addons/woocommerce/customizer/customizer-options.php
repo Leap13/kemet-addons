@@ -4,6 +4,7 @@ $defaults = Kemet_Theme_Options::defaults();
 /**
 * Option: Shop
 */
+
 /**
 * Option: Quick View
 */
@@ -29,11 +30,34 @@ $wp_customize->add_control(
 );
 
 /**
+* Option: Shop Layout
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[shop-layout]', array(
+        'default'           => $defaults['shop-layout'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[shop-layout]', array(
+        'type'     => 'select',
+        'section'  => 'section-woo-shop',
+        'priority' => 1,
+        'label'    => __( 'Shop Layout', 'kemet-addons' ),
+        'choices'  => array(
+            'shop-grid'   => __( 'Grid', 'kemet-addons' ),
+            'shop-list'   => __( 'List', 'kemet-addons' ),
+        ),
+    )
+);
+
+/**
 * Option: Single Product
 */
 
 /**
-* Option: Footer Content Align Center
+* Option: Ajax Add To Cart
 */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[enable-single-ajax-add-to-cart]', array(
@@ -46,7 +70,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[enable-single-ajax-add-to-cart]', array(
         'type'            => 'checkbox',
         'section'         => 'section-woo-shop-single',
-        'label'           => __( 'Enable Ajax Add To Cart', 'kemet' ),
+        'label'           => __( 'Enable Ajax Add To Cart', 'kemet-addons' ),
         'priority'        => 10,
     )
 );

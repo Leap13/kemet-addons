@@ -38,6 +38,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
 
         function theme_defaults( $defaults ) {
             $defaults['enable-quick-view'] = 'disabled';
+            $defaults['shop-layout'] = 'shop-grid';
             $defaults['enable-single-ajax-add-to-cart'] = false;
 
             return $defaults;

@@ -42,9 +42,20 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
 			add_action( 'wp_ajax_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
+			add_filter( 'body_class', array( $this, 'shop_layout' ) );
         }
 		
 
+		/**
+		 * Shop Layout
+		 */
+		function shop_layout($classes){
+			$layout_style = kemet_get_option('shop-layout');
+
+			$classes[] = $layout_style;
+
+			return $classes;
+		}
 		/**
 		 * Init Quick View
 		 */
