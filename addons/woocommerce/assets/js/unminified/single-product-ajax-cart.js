@@ -7,9 +7,12 @@
             this._bind();
         },
         _bind: function(){
-            $( document.body ).on( 'click', '#kmt-qv-content .product:not(.product-type-external) button.single_add_to_cart_button', KmtSingleProductAjax._addToCartRequest );
+			$( document.body ).on( 'click', '#kmt-qv-content .product:not(.product-type-external) button.single_add_to_cart_button', KmtSingleProductAjax._addToCartRequest );
+			if(kemet.single_ajax_add_to_cart){
+				$( document ).on( 'click', 'body.single-product .product:not(.product-type-external) button.single_add_to_cart_button', KmtSingleProductAjax._addToCartRequest );
+			}
             $( document.body ).on( 'added_to_cart', KmtSingleProductAjax._updateButton );
-        },
+		},
         _addToCartRequest: function( e ){
             e.preventDefault();
 

@@ -129,11 +129,21 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Theme Js Localize
 		 */
         function wooCommerce_js_localize( $localize ) {
-			$localize['ajax_url'] = admin_url( 'admin-ajax.php' );
+
+			$single_ajax_add_to_cart = kemet_get_option( 'enable-single-ajax-add-to-cart' );
+
+			if ( is_singular( 'product' ) ) {
+				$product = wc_get_product( get_the_id() );
+				if ( false !== $product && $product->is_type( 'external' ) ) {
+					$single_ajax_add_to_cart = false;
+				}
+			}
+			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
 			$localize['view_cart']                       = esc_attr__( 'View cart', 'kemet-addons' );
 			$localize['cart_url']                        = apply_filters( 'kemet_woocommerce_add_to_cart_redirect', wc_get_cart_url() );
+			$localize['single_ajax_add_to_cart'] 	     = $single_ajax_add_to_cart;
 
             return $localize;
         }
@@ -167,11 +177,14 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			if ( SCRIPT_DEBUG ) {
 				$js_prefix  = '.js';
 				$dir        = 'unminified';
-            }
+			}
+			$single_ajax_add_to_cart = kemet_get_option( 'enable-single-ajax-add-to-cart' );
 			if(kemet_get_option('enable-quick-view') != 'disabled'){
 				Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
 			}
-			 Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/single-product-ajax-cart' . $js_prefix);
+			if($single_ajax_add_to_cart || kemet_get_option('enable-quick-view') != 'disabled'){
+			 	Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/single-product-ajax-cart' . $js_prefix);
+			}
         }
         
         function add_styles() {
