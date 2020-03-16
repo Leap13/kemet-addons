@@ -38,7 +38,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
 			add_action( 'kemet_woo_qv_product_image', 'woocommerce_show_product_sale_flash', 10 );
 			add_action( 'kemet_woo_qv_product_image', array( $this, 'qv_product_images_markup' ), 20 );
-			add_action( 'woocommerce_shop_loop', array( $this, 'init_quick_view' ), 999 );
+			add_action( 'wp', array( $this, 'init_quick_view' ));
 			add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
 			add_action( 'wp_ajax_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
