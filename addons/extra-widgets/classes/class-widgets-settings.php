@@ -67,8 +67,7 @@ if (! class_exists('Kemet_Extra_Widgets_Settings')) {
             if ( (!empty( $footer_widget_style )) && (strpos($params[ 0 ]['id'], 'main-footer-widget') !== false || strpos($params[ 0 ]['id'], 'copyright-widget') !== false)) {
                 $kmt_widget_class = 'kmt-widget-' . $footer_widget_style;
             }
-            
-            if ( !empty( $kmt_widget_class )) {
+            if ( !empty( $kmt_widget_class ) && (strpos($params[ 0 ]['id'], 'header-widget') !== 0)) {
                 $params[0] = array_replace($params[0], array('before_widget' => str_replace("widget ", "widget " . $kmt_widget_class . ' ', $params[0]['before_widget'])));
             }
 
