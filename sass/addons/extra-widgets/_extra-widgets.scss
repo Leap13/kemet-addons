@@ -38,7 +38,11 @@
         } 
     }
 }
-
+.kemet-footer-align-center{
+    .kmt-social-profiles{
+        justify-content: center;
+    }
+}
 .kmt-social-profiles{
     display: flex;
     flex-wrap: wrap;
