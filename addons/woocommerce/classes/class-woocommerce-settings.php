@@ -40,6 +40,13 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['enable-quick-view'] = 'disabled';
             $defaults['shop-layout'] = 'shop-grid';
             $defaults['enable-single-ajax-add-to-cart'] = false;
+            $defaults['shop-list-product-structure'] = array(
+                'title',
+                'price',
+                'ratings',
+				'category',
+				'add_cart',
+			);
 
             return $defaults;
         }

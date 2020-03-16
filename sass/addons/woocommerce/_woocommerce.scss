@@ -358,3 +358,46 @@ Woo Quick View
         display: none;
     }
 }
+/************ Shop ************/
+.shop-list{
+    &.woocommerce{
+        ul.products{
+            li.product{
+                .kemet-shop-thumbnail-wrap{
+                    display: flex;
+                    border: 0;
+                    > *{
+                        flex: 1;
+                    }
+                    .product-list-details{
+                        position: relative;
+                    }
+                    a{
+                        img{
+                            margin: 0;
+                        }
+                    }
+                    .kemet-shop-summary-wrap{
+                        padding: 0 1.2em 0;
+                        align-self: center;
+                        >*{
+                            margin: .5em 0;
+                        }
+                    }
+                    .woocommerce-loop-product__title{
+                        text-align: left;
+                    }
+                    .star-rating{
+                        margin: 0;
+                    }
+                    .kmt-quick-view{
+                        display: inline-block;
+                    }
+                    .button{
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}

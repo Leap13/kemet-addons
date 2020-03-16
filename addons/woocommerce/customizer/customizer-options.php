@@ -51,7 +51,69 @@ $wp_customize->add_control(
         ),
     )
 );
-
+/**
+* Option: Shop Structure 
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
+        'default'           => kemet_get_option( 'shop-list-product-structure' ),
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
+            'conditions' => '==', 
+            'values' => 'shop-list',
+        ), 
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Sortable(
+        $wp_customize, KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
+            'type'     => 'kmt-sortable',
+            'section'  => 'section-woo-shop',
+            'priority' => 30,
+            'label'    => __( 'Shop Product Structure', 'kemet' ),
+            'choices'  => array(
+                'title'      => __( 'Title', 'kemet' ),
+                'price'      => __( 'Price', 'kemet' ),
+                'ratings'    => __( 'Ratings', 'kemet' ),
+                'short_desc' => __( 'Short Description', 'kemet' ),
+                'add_cart'   => __( 'Add To Cart', 'kemet' ),
+                'category'   => __( 'Category', 'kemet' ),
+            ),
+        )
+    )
+);
+/**
+* Option: Single Post Meta
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
+        'default'           => kemet_get_option( 'shop-product-structure' ),
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
+            'conditions' => '==', 
+            'values' => 'shop-grid',
+        ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Sortable(
+        $wp_customize, KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
+            'type'     => 'kmt-sortable',
+            'section'  => 'section-woo-shop',
+            'priority' => 30,
+            'label'    => __( 'Shop Product Structure', 'kemet' ),
+            'choices'  => array(
+                'short_desc' => __( 'Short Description', 'kemet' ),
+                'add_cart'   => __( 'Add To Cart', 'kemet' ),
+                'category'   => __( 'Category', 'kemet' ),
+            ),
+        )
+    )
+);
 /**
 * Option: Single Product
 */
