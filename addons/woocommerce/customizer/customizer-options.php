@@ -23,6 +23,7 @@ $wp_customize->add_control(
         'label'    => __( 'Quick View', 'kemet-addons' ),
         'choices'  => array(
             'disabled' => __( 'Disabled', 'kemet-addons' ),
+            'qv-icon'   => __( 'Icon', 'kemet-addons' ),
             'on-image'   => __( 'On Image Click', 'kemet-addons' ),
             'after-summary'   => __( 'After Summary', 'kemet-addons' ),
         ),

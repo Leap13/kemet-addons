@@ -25,6 +25,29 @@ Woo Quick View
   left: 0;
 }
 
+.kmt-qv-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 1em;
+  right: -5em;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center !important;
+  opacity: 0;
+  transition: 0.3s all;
+}
+
+.kmt-qv-icon > span {
+  line-height: 40px;
+  text-align: center !important;
+}
+
+.product-list-details:hover > .kmt-qv-icon {
+  right: 1em;
+  opacity: 1;
+}
+
 .woocommerce .products .product-inner:hover .kmt-quick-view {
   opacity: 1;
   visibility: visible;

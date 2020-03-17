@@ -8,7 +8,7 @@
         },
         bind:function(){
             // Open Quick View.
-            $(document).off( 'click', '.kmt-quick-view , .kmt-qv-on-image' ).on( 'click', '.kmt-quick-view, .kmt-qv-on-image', KmtQuickView.openModel);
+            $(document).off( 'click', '.kmt-quick-view , .kmt-qv-on-image, .kmt-qv-icon' ).on( 'click', '.kmt-quick-view, .kmt-qv-on-image , .kmt-qv-icon', KmtQuickView.openModel);
             // Close Quick View.
             $(document).off( 'click', '.kmt-qv-close , .kmt-close-qv' ).on( 'click', '.kmt-qv-close , .kmt-close-qv', KmtQuickView.closeModel);
             $(document).on( 'keyup', KmtQuickView.EscKeypress);

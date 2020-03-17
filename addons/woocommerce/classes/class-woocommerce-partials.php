@@ -210,6 +210,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ) , 1);
 				}else if( $qv_enable === 'after-summary' ){
 					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
+				}else if( $qv_enable === 'qv-icon' ){
+					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_icon' ), 1 );
 				}
 			}
 		}
@@ -276,6 +278,18 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$product_id = $product->get_id();
 
 			$button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '"></a>';
+
+			echo $button;
+		}
+		/**
+		 * Quick view Icon
+		 */
+        function quick_view_icon(){
+            global $product;
+
+			$product_id = $product->get_id();
+
+			$button = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="dashicons dashicons-visibility"></span></a>';
 
 			echo $button;
         }
