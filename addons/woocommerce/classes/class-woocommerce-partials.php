@@ -44,9 +44,44 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_filter( 'body_class', array( $this, 'shop_layout' ) );
 			add_action( 'wp', array( $this, 'shop_list_layout' ) );
+			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
+			add_action( 'wp', array( $this, 'disable_related_products' ) );
 			
         }
 		
+		/**
+		 * Disable Related Products.
+		 */
+		function disable_related_products(){
+			$disable_related_products = kemet_get_option('disable-related-products');
+
+			if($disable_related_products){
+				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+			}
+		}
+		/**
+		 * related product arguments.
+		 */
+		function related_product_args() {
+
+			global $product, $orderby, $related;
+
+			// Related posts per page
+			$products_per_page = kemet_get_option('related-products-count');
+			$products_per_page = $products_per_page ? $products_per_page : '3';
+
+			// Related columns
+			$columns = kemet_get_option('related-products-colunms');
+			$columns = $columns ? $columns : '3';
+
+			$args = array(
+				'posts_per_page' => $products_per_page,
+				'columns'        => $columns,
+			);
+
+			return $args;
+
+		}
 		function shop_list_layout(){
 			if(kemet_get_option( 'shop-layout' ) == 'shop-list'){
 			/**
@@ -151,7 +186,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 */
 		function shop_layout($classes){
 			$layout_style = kemet_get_option('shop-layout');
-
+			$content_alignment = kemet_get_option('product-content-alignment');
+			$classes[] = 'content-align-' .  $content_alignment;
 			if(in_array('shop-grid' , $classes)){
 				$layout_class = array_search('shop-grid', $classes);
 				unset($classes[$layout_class]);
@@ -172,7 +208,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			if( $qv_enable != 'disabled' ){
 				if( $qv_enable === 'on-image' ){
 					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ) , 1);
-				}else if( $qv_enable === 'after-add-to-cart' ){
+				}else if( $qv_enable === 'after-summary' ){
 					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
 				}
 			}
