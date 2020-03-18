@@ -172,6 +172,47 @@ $wp_customize->add_control(
     )
 );
 /**
+* Option: Enable Filter Button
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[enable-filter-button]', array(
+        'default'           => $defaults[ 'enable-filter-button' ],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[enable-filter-button]', array(
+        'type'            => 'checkbox',
+        'section'         => 'section-woo-shop',
+        'label'           => __( 'Enable Filter Button', 'kemet-addons' ),
+        'priority'        => 50,
+    )
+);
+/**
+ * Option: Filter Button Text
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[off-canvas-filter-label]', array(
+        'default'           => $defaults[ 'off-canvas-filter-label' ],
+        'type'              => 'option',
+        'sanitize_callback' => 'sanitize_text_field',
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[enable-filter-button]', 
+            'conditions' => '==', 
+            'values' => true,
+        ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[off-canvas-filter-label]', array(
+        'section'  => 'section-woo-shop',
+        'priority' => 55,
+        'label'    => __( 'Filter Button Text', 'kemet-addons' ),
+        'type'     => 'text',
+    )
+);
+/**
 * Option: Single Product
 */
 

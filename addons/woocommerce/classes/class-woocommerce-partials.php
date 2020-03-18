@@ -46,19 +46,64 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp', array( $this, 'shop_list_layout' ) );
 			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
 			add_action( 'wp', array( $this, 'disable_related_products' ) );
-			add_action( 'woocommerce_before_shop_loop', array( $this, 'off_canvas_filter_button' ), 10 );
-			
+			add_action( 'wp', array( $this, 'init_off_canvas' ) );
+			add_action( 'widgets_init', array( $this,'kemet_register_off_canvas' ) );
         }
 		
+		/**
+		 * Init Off Canvas Sidebar
+		 */
+		function init_off_canvas(){
+			$off_canvas_enable = kemet_get_option('enable-filter-button');
+
+			if($off_canvas_enable){
+				add_action( 'woocommerce_before_shop_loop', array( $this, 'off_canvas_filter_button' ), 10 );
+				add_action( 'wp_footer', array( $this, 'off_canvas_filter_sidebar' ) );
+			}
+			
+		}
+		/**
+		 * Register Off Canvas Filter
+		 */
+		function kemet_register_off_canvas(){
+			register_sidebar(
+				apply_filters(
+						'kemet_off_canvas_filter_widget', array(
+						'name'          => esc_html__( 'Off Canvas Filter', 'kemet-addons' ),
+						'id'            => 'off-canvas-filter-widget',
+						'description'   => 'This sidebar will show product filters on Shop page. Check "Enable Filter Button" option from `Customizer > Layout > Woocommerce > Shop` to enable this on Shop page.',
+						'before_widget' => '<div id="%1$s" class="widget %2$s">',
+						'after_widget'  => '</div>',
+						'before_title'  => '<div class="widget-head"><div class="title"><h4 class="widget-title">',
+						'after_title'   => '</h4></div></div>',
+					)
+				)
+			);
+		}
+
 		/**
 		 * Add off canvas filter button.
 		 */
 		function off_canvas_filter_button() {
 
-			$label = __('Filter' , 'kemet-addons');
+			$label = kemet_get_option('off-canvas-filter-label');
 			$button = '<a href="#" class="kmt-woo-filter">'. $label . '</a>';
 
 			echo $button;
+		}
+
+		/**
+		 * Add off canvas filter sidebar.
+		 */
+		function off_canvas_filter_sidebar() {
+
+			echo '<div id="kmt-off-canvas-wrap">';
+			echo '<div class="kmt-off-canvas-sidebar">';
+			echo '<a href="#" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
+			echo kemet_get_custom_widget( 'off-canvas-filter' );
+			echo '</div>';
+			echo '<div class="kmt-off-canvas-overlay"></div>';
+			echo '</div>';
 		}
 
 		/**
@@ -365,6 +410,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			if($single_ajax_add_to_cart || kemet_get_option('enable-quick-view') != 'disabled'){
 			 	Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/single-product-ajax-cart' . $js_prefix);
 			}
+			Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/woocommerce' . $js_prefix);
         }
         
         function add_styles() {

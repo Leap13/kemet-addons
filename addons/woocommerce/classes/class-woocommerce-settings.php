@@ -52,6 +52,8 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['related-products-count'] = 3;
             $defaults['related-products-colunms'] = 3;
             $defaults['disable-related-products'] = false;
+            $defaults['enable-filter-button'] = false;
+            $defaults['off-canvas-filter-label'] = 'Filter';
 
             return $defaults;
         }
