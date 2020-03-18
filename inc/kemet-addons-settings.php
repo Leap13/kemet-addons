@@ -117,8 +117,8 @@ if (class_exists('KFW')) {
           'id' => 'plugins',
           'type' => 'plugins',
           'plugins' => array(
-            'premium-addons-for-elementor',
             'elementor',
+            'premium-addons-for-elementor',
             'premium-blocks-for-gutenberg',
           ),
         ),
