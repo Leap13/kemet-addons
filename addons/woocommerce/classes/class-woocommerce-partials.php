@@ -46,9 +46,21 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp', array( $this, 'shop_list_layout' ) );
 			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
 			add_action( 'wp', array( $this, 'disable_related_products' ) );
+			add_action( 'woocommerce_before_shop_loop', array( $this, 'off_canvas_filter_button' ), 10 );
 			
         }
 		
+		/**
+		 * Add off canvas filter button.
+		 */
+		function off_canvas_filter_button() {
+
+			$label = __('Filter' , 'kemet-addons');
+			$button = '<a href="#" class="kmt-woo-filter">'. $label . '</a>';
+
+			echo $button;
+		}
+
 		/**
 		 * Disable Related Products.
 		 */
