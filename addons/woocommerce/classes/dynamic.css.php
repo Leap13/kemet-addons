@@ -14,6 +14,10 @@ add_filter( 'kemet_dynamic_css', 'kemet_woocommerce_dynamic_css');
  * @return string
  */
 function kemet_woocommerce_dynamic_css( $dynamic_css ) {
+
+            //Defaults Colors
+            $theme_color      = kemet_get_option( 'theme-color' );
+
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
             
@@ -24,6 +28,9 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             $css_content = array(
                 '.woocommerce ul.products li.product .onsale' => array(
                     'border-radius' => esc_attr( $sale_style ),
+                ),
+                '.kmt-infinite-scroll-loader .kmt-loader' => array(
+                    'background-color' => esc_attr( $theme_color ),
                 ),
                 '.woocommerce #content .kmt-woocommerce-container div.product div.images, .woocommerce .kmt-woocommerce-container div.product div.images, .woocommerce-page #content .kmt-woocommerce-container div.product div.images, .woocommerce-page .kmt-woocommerce-container div.product div.images' => array(
                     'width' => kemet_get_css_value( $image_width , '%' ),

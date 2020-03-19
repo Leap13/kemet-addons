@@ -61,6 +61,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['up-sells-products-count'] = 3;
             $defaults['up-sells-products-colunms'] = 3;
             $defaults['disable-up-sells-products'] = false;
+            $defaults['woo-pagination-style'] = 'standard';
 
             return $defaults;
         }

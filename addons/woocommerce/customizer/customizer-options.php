@@ -234,6 +234,28 @@ $wp_customize->add_control(
     )
 );
 /**
+* Option: Pagination Style
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
+        'default'           => $defaults['woo-pagination-style'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
+        'type'     => 'select',
+        'section'  => 'section-woo-shop',
+        'priority' => 60,
+        'label'    => __( 'Pagination Style', 'kemet-addons' ),
+        'choices'  => array(
+            'standard' => __( 'Standard', 'kemet-addons' ),
+            'infinite-scroll'   => __( 'Infinite Scroll', 'kemet-addons' ),
+        ),
+    )
+);
+/**
 * Option: Single Product
 */
 

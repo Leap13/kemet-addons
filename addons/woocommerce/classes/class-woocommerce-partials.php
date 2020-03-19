@@ -46,6 +46,12 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp', array( $this, 'init_woocommerce' ) );
 			add_action( 'widgets_init', array( $this,'kemet_register_off_canvas' ) );
 			add_filter( 'post_class', array( $this, 'product_classes' ) );
+			$kemet_woocommerce_instance = Kemet_Woocommerce::get_instance();
+			add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'shop_customization' ) );
+			add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
+			add_action( 'kemet_infinite_scroll', array( $this, 'init_woocommerce' ) );
+			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
+			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
         }
 		
 		/**
@@ -198,13 +204,81 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			/**
 			 * Sale badge content
 			 */
-			$sale_content = kemet_get_option('enable-filter-button');
+			$sale_content = kemet_get_option('sale-content');
 
 			if($sale_content == 'percent'){
 				add_filter( 'woocommerce_sale_flash', array( $this, 'kemet_sale_flash_content' ), 10, 3 );
 			}
+
+			/**
+			 * Infinite Scroll
+			 */
+			$pagination_style = kemet_get_option('woo-pagination-style');
+
+			if( $pagination_style == 'infinite-scroll'){
+				remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+				add_action( 'woocommerce_after_shop_loop', array( $this, 'infinite_pagination' ), 10 );
+			}
+			
 		}
 
+		/**
+		 * Infinite scroll pagination.
+		 */
+		function infinite_pagination() {
+			global $wp_query;
+
+			if ( $wp_query->max_num_pages <= 1 ) {
+				return;
+			}
+
+			$msg = esc_html__( 'No more products to show.', 'kemet-addons' );
+			?>
+
+			<div class="kmt-infinite-scroll-loader">
+				<div class="kmt-infinite-scroll-dots">
+					<span class="kmt-loader"></span>
+					<span class="kmt-loader"></span>
+					<span class="kmt-loader"></span>
+					<span class="kmt-loader"></span>
+				</div>
+				<p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
+			</div>
+		<?php
+		}
+		/**
+		 * Infinite Scroll.
+		 */
+		function kemet_infinite_scroll(){
+
+			check_ajax_referer( 'kmt-shop-load-more-nonce', 'nonce' );
+			do_action( 'kemet_infinite_scroll' );
+			$query_vars                   = json_decode( stripslashes( $_POST['query_vars'] ), true );
+			$query_vars['paged']          = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : 1;
+			$query_vars['post_status']    = 'publish';
+			$query_vars['posts_per_page'] = kemet_get_option( 'shop-no-of-products' );
+			$query_vars                   = array_merge( $query_vars, wc()->query->get_catalog_ordering_args() );
+
+			$posts = new WP_Query( $query_vars );
+
+			if ( $posts->have_posts() ) {
+				while ( $posts->have_posts() ) {
+					$posts->the_post();
+
+					/**
+					 * Woocommerce: woocommerce_shop_loop hook.
+					 *
+					 * @hooked WC_Structured_Data::generate_product_data() - 10
+					 */
+					do_action( 'woocommerce_shop_loop' );
+					wc_get_template_part( 'content', 'product' );
+				}
+			}
+
+			wp_reset_query();
+
+			wp_die();
+		}
 		/**
 		 * up-sell product arguments.
 		 */
@@ -447,21 +521,28 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Theme Js Localize
 		 */
         function wooCommerce_js_localize( $localize ) {
+			global $wp_query;
 
 			$single_ajax_add_to_cart = kemet_get_option( 'enable-single-ajax-add-to-cart' );
-
+			$pagination_style = kemet_get_option( 'woo-pagination-style' );
 			if ( is_singular( 'product' ) ) {
 				$product = wc_get_product( get_the_id() );
 				if ( false !== $product && $product->is_type( 'external' ) ) {
 					$single_ajax_add_to_cart = false;
 				}
 			}
+			//var_dump($all_products);
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
 			$localize['view_cart']                       = esc_attr__( 'View cart', 'kemet-addons' );
 			$localize['cart_url']                        = apply_filters( 'kemet_woocommerce_add_to_cart_redirect', wc_get_cart_url() );
 			$localize['single_ajax_add_to_cart'] 	     = $single_ajax_add_to_cart;
+			$localize['shop_infinite_count']        	 = 2;
+			$localize['shop_infinite_total']        	 = $wp_query->max_num_pages;
+			$localize['pagination_style']        	     = $pagination_style;
+			$localize['shop_infinite_nonce']        	 = wp_create_nonce( 'kmt-shop-load-more-nonce' );
+			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
 
             return $localize;
         }
