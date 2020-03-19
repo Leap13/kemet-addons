@@ -198,7 +198,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			/**
 			 * Sale badge content
 			 */
-			$sale_content = kemet_get_option('enable-filter-button');
+			$sale_content = kemet_get_option('sale-content');
 
 			if($sale_content == 'percent'){
 				add_filter( 'woocommerce_sale_flash', array( $this, 'kemet_sale_flash_content' ), 10, 3 );
