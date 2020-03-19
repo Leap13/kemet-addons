@@ -54,6 +54,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['disable-related-products'] = false;
             $defaults['enable-filter-button'] = false;
             $defaults['off-canvas-filter-label'] = 'Filter';
+            $defaults['sale-content'] = 'sale-text';
 
             return $defaults;
         }

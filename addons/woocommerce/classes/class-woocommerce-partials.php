@@ -38,108 +38,34 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp_footer', array( $this, 'quick_view_html' ) );
 			add_action( 'kemet_woo_qv_product_image', 'woocommerce_show_product_sale_flash', 10 );
 			add_action( 'kemet_woo_qv_product_image', array( $this, 'qv_product_images_markup' ), 20 );
-			add_action( 'wp', array( $this, 'init_quick_view' ));
 			add_filter( 'kemet_theme_js_localize', array( $this, 'wooCommerce_js_localize' ) );
 			add_action( 'wp_ajax_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_filter( 'body_class', array( $this, 'shop_layout' ) );
-			add_action( 'wp', array( $this, 'shop_list_layout' ) );
 			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
-			add_action( 'wp', array( $this, 'disable_related_products' ) );
-			add_action( 'wp', array( $this, 'init_off_canvas' ) );
+			add_action( 'wp', array( $this, 'init_woocommerce' ) );
 			add_action( 'widgets_init', array( $this,'kemet_register_off_canvas' ) );
         }
 		
 		/**
-		 * Init Off Canvas Sidebar
+		 * Init Woocommerce
 		 */
-		function init_off_canvas(){
-			$off_canvas_enable = kemet_get_option('enable-filter-button');
+		function init_woocommerce(){
+			/**
+			 * Init Quick View
+			 */
+			$qv_enable = kemet_get_option('enable-quick-view');
 
-			if($off_canvas_enable){
-				add_action( 'woocommerce_before_shop_loop', array( $this, 'off_canvas_filter_button' ), 10 );
-				add_action( 'wp_footer', array( $this, 'off_canvas_filter_sidebar' ) );
+			if( $qv_enable != 'disabled' ){
+				if( $qv_enable === 'on-image' ){
+					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ) , 1);
+				}else if( $qv_enable === 'after-summary' ){
+					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
+				}else if( $qv_enable === 'qv-icon' ){
+					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_icon' ), 1 );
+				}
 			}
-			
-		}
-		/**
-		 * Register Off Canvas Filter
-		 */
-		function kemet_register_off_canvas(){
-			register_sidebar(
-				apply_filters(
-						'kemet_off_canvas_filter_widget', array(
-						'name'          => esc_html__( 'Off Canvas Filter', 'kemet-addons' ),
-						'id'            => 'off-canvas-filter-widget',
-						'description'   => 'This sidebar will show product filters on Shop page. Check "Enable Filter Button" option from `Customizer > Layout > Woocommerce > Shop` to enable this on Shop page.',
-						'before_widget' => '<div id="%1$s" class="widget %2$s">',
-						'after_widget'  => '</div>',
-						'before_title'  => '<div class="widget-head"><div class="title"><h4 class="widget-title">',
-						'after_title'   => '</h4></div></div>',
-					)
-				)
-			);
-		}
 
-		/**
-		 * Add off canvas filter button.
-		 */
-		function off_canvas_filter_button() {
-
-			$label = kemet_get_option('off-canvas-filter-label');
-			$button = '<a href="#" class="kmt-woo-filter">'. $label . '</a>';
-
-			echo $button;
-		}
-
-		/**
-		 * Add off canvas filter sidebar.
-		 */
-		function off_canvas_filter_sidebar() {
-
-			echo '<div id="kmt-off-canvas-wrap">';
-			echo '<div class="kmt-off-canvas-sidebar">';
-			echo '<a href="#" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
-			echo kemet_get_custom_widget( 'off-canvas-filter' );
-			echo '</div>';
-			echo '<div class="kmt-off-canvas-overlay"></div>';
-			echo '</div>';
-		}
-
-		/**
-		 * Disable Related Products.
-		 */
-		function disable_related_products(){
-			$disable_related_products = kemet_get_option('disable-related-products');
-
-			if($disable_related_products){
-				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-			}
-		}
-		/**
-		 * related product arguments.
-		 */
-		function related_product_args() {
-
-			global $product, $orderby, $related;
-
-			// Related posts per page
-			$products_per_page = kemet_get_option('related-products-count');
-			$products_per_page = $products_per_page ? $products_per_page : '3';
-
-			// Related columns
-			$columns = kemet_get_option('related-products-colunms');
-			$columns = $columns ? $columns : '3';
-
-			$args = array(
-				'posts_per_page' => $products_per_page,
-				'columns'        => $columns,
-			);
-
-			return $args;
-
-		}
-		function shop_list_layout(){
 			if(kemet_get_option( 'shop-layout' ) == 'shop-list'){
 			/**
 			 * Woocommerce shop/product details div tag.
@@ -237,7 +163,150 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title' ,1);
 			remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content' ,2);
 			}
+			/**
+			 * Disable Related Products.
+			 */
+			$disable_related_products = kemet_get_option('disable-related-products');
+
+			if($disable_related_products){
+				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+			}
+
+			/**
+			 * Init Off Canvas Sidebar
+			 */
+			$off_canvas_enable = kemet_get_option('enable-filter-button');
+
+			if($off_canvas_enable){
+				add_action( 'woocommerce_before_shop_loop', array( $this, 'off_canvas_filter_button' ), 10 );
+				add_action( 'wp_footer', array( $this, 'off_canvas_filter_sidebar' ) );
+			}
+
+			/**
+			 * Sale badge content
+			 */
+			$sale_content = kemet_get_option('enable-filter-button');
+
+			if($sale_content == 'percent'){
+				add_filter( 'woocommerce_sale_flash', array( $this, 'kemet_sale_flash_content' ), 10, 3 );
+			}
 		}
+		
+		/**
+		 * Register Off Canvas Filter
+		 */
+		function kemet_register_off_canvas(){
+			register_sidebar(
+				apply_filters(
+						'kemet_off_canvas_filter_widget', array(
+						'name'          => esc_html__( 'Off Canvas Filter', 'kemet-addons' ),
+						'id'            => 'off-canvas-filter-widget',
+						'description'   => 'This sidebar will show product filters on Shop page. Check "Enable Filter Button" option from `Customizer > Layout > Woocommerce > Shop` to enable this on Shop page.',
+						'before_widget' => '<div id="%1$s" class="widget %2$s">',
+						'after_widget'  => '</div>',
+						'before_title'  => '<div class="widget-head"><div class="title"><h4 class="widget-title">',
+						'after_title'   => '</h4></div></div>',
+					)
+				)
+			);
+		}
+
+		/**
+		 * Sale badge content
+		 */
+		function kemet_sale_flash_content() {
+			global $product;
+
+			if ( $product->is_type( 'simple' ) || $product->is_type( 'external' ) ) {
+
+				$product_price 	= $product->get_regular_price();
+				$sale_price 	= $product->get_sale_price();
+				$percent 	= round( ( ( floatval( $product_price ) - floatval( $sale_price ) ) / floatval( $product_price ) ) * 100 );
+
+			} else if ( $product->is_type( 'variable' ) ) {
+
+				$available_variations = $product->get_available_variations();
+				$maximumper           = 0;
+
+				for ( $i = 0; $i < count( $available_variations ); ++ $i ) {
+					$variation_id     = $available_variations[ $i ]['variation_id'];
+					$variable_product = new WC_Product_Variation( $variation_id );
+
+					if ( ! $variable_product->is_on_sale() ) {
+						continue;
+					}
+
+					$product_price 	= $variable_product->get_regulaproduct_price();
+					$sale_price    = $variable_product->get_sale_price();
+					$percent 	= round( ( ( floatval( $product_price ) - floatval( $sale_price ) ) / floatval( $product_price ) ) * 100 );
+
+					if ( $percent > $maximumper ) {
+						$maximumper = $percent;
+					}
+				}
+
+				$percent = sprintf( __( '%s', 'kemet-addons' ), $maximumper );
+
+			} else {
+
+				$percent = '<span class="onsale">' . __( 'Sale!', 'kemet-addons' ) . '</span>';
+				return $percent;
+
+			}
+
+			$value = '-' . esc_html( $percent ) . '%';
+
+			return '<span class="onsale">' . esc_html( $value ) . '</span>';
+		}
+		/**
+		 * Add off canvas filter button.
+		 */
+		function off_canvas_filter_button() {
+
+			$label = kemet_get_option('off-canvas-filter-label');
+			$button = '<a href="#" class="kmt-woo-filter">'. $label . '</a>';
+
+			echo $button;
+		}
+
+		/**
+		 * Add off canvas filter sidebar.
+		 */
+		function off_canvas_filter_sidebar() {
+
+			echo '<div id="kmt-off-canvas-wrap">';
+			echo '<div class="kmt-off-canvas-sidebar">';
+			echo '<a href="#" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
+			echo kemet_get_custom_widget( 'off-canvas-filter' );
+			echo '</div>';
+			echo '<div class="kmt-off-canvas-overlay"></div>';
+			echo '</div>';
+		}
+
+		/**
+		 * related product arguments.
+		 */
+		function related_product_args() {
+
+			global $product, $orderby, $related;
+
+			// Related posts per page
+			$products_per_page = kemet_get_option('related-products-count');
+			$products_per_page = $products_per_page ? $products_per_page : '3';
+
+			// Related columns
+			$columns = kemet_get_option('related-products-colunms');
+			$columns = $columns ? $columns : '3';
+
+			$args = array(
+				'posts_per_page' => $products_per_page,
+				'columns'        => $columns,
+			);
+
+			return $args;
+
+		}
+
 		/**
 		 * Shop Layout
 		 */
@@ -254,23 +323,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			
 			
 			return $classes;
-		}
-		/**
-		 * Init Quick View
-		 */
-		function init_quick_view() {
-
-			$qv_enable = kemet_get_option('enable-quick-view');
-
-			if( $qv_enable != 'disabled' ){
-				if( $qv_enable === 'on-image' ){
-					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ) , 1);
-				}else if( $qv_enable === 'after-summary' ){
-					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
-				}else if( $qv_enable === 'qv-icon' ){
-					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_icon' ), 1 );
-				}
-			}
 		}
 		/**
 		 * Single Product add to cart ajax request

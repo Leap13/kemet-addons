@@ -139,7 +139,28 @@ $wp_customize->add_control(
         ),
     )
 );
-
+/**
+* Option: Sale Notification
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sale-content]', array(
+        'default'           => $defaults['sale-content'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[sale-content]', array(
+        'type'     => 'select',
+        'section'  => 'section-woo-shop',
+        'priority' => 35,
+        'label'    => __( 'Sale Notification Content', 'kemet-addons' ),
+        'choices'  => array(
+            'sale-text' => __( 'Text', 'kemet-addons' ),
+            'percent'   => __( 'Percentage', 'kemet-addons' ),
+        ),
+    )
+);
 /**
 * Option: Product Content Alignment
 */
