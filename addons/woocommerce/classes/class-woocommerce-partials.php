@@ -225,7 +225,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Product Classes
 		 */
 		function product_classes( $classes ){
-			$gallay_style = kemet_get_option('product-gallary-style');
+			$gallay_style = kemet_get_option('product-gallery-style');
 
 			if ( post_type_exists( 'product' ) ) {
 				$classes[] = 'kmt-gallary-' . $gallay_style; 
