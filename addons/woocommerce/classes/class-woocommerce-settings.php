@@ -55,6 +55,8 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['enable-filter-button'] = false;
             $defaults['off-canvas-filter-label'] = 'Filter';
             $defaults['sale-content'] = 'sale-text';
+            $defaults['product-image-width'] = '';
+            $defaults['product-summary-width'] = '';
 
             return $defaults;
         }
