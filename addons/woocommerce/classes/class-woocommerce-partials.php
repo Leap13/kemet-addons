@@ -49,18 +49,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
         }
 		
 		/**
-		 * Product Classes
-		 */
-		function product_classes( $classes ){
-			$gallay_style = kemet_get_option('product-gallary-style');
-
-			if ( post_type_exists( 'product' ) ) {
-				$classes[] = 'kmt-gallary-' . $gallay_style; 
-			}
-
-			return $classes;
-		}
-		/**
 		 * Init Woocommerce
 		 */
 		function init_woocommerce(){
@@ -186,6 +174,18 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			}
 
 			/**
+			 * Disable Up-Sells Products.
+			 */
+			$disable_up_sells_products = kemet_get_option('disable-up-sells-products');
+
+			if(!$disable_up_sells_products){
+				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+				add_action( 'woocommerce_after_single_product_summary', array( $this, 'up_sell_product' ), 15 );
+			}else{
+				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+			}
+
+			/**
 			 * Init Off Canvas Sidebar
 			 */
 			$off_canvas_enable = kemet_get_option('enable-filter-button');
@@ -204,7 +204,35 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				add_filter( 'woocommerce_sale_flash', array( $this, 'kemet_sale_flash_content' ), 10, 3 );
 			}
 		}
-		
+
+		/**
+		 * up-sell product arguments.
+		 */
+		function up_sell_product() {
+
+			// up-sell posts per page
+			$products_per_page = kemet_get_option('up-sells-products-count');
+			$products_per_page = $products_per_page ? $products_per_page : '3';
+
+			// up-sell columns
+			$columns = kemet_get_option('up-sells-products-colunms');
+			$columns = $columns ? $columns : '3';
+
+			woocommerce_upsell_display( $products_per_page, $columns );
+
+		}
+		/**
+		 * Product Classes
+		 */
+		function product_classes( $classes ){
+			$gallay_style = kemet_get_option('product-gallary-style');
+
+			if ( post_type_exists( 'product' ) ) {
+				$classes[] = 'kmt-gallary-' . $gallay_style; 
+			}
+
+			return $classes;
+		}
 		/**
 		 * Register Off Canvas Filter
 		 */

@@ -406,9 +406,89 @@ $wp_customize->add_control(
             'input_attrs' => array(
                 'min'  => 1,
                 'step' => 1,
-                'max'  => 7,
+                'max'  => 6,
             ),
         )
     )
 );
 
+/**
+* Option: Disable Up-Sells
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[disable-up-sells-products]', array(
+        'default'           => $defaults[ 'disable-up-sells-products' ],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[disable-up-sells-products]', array(
+        'type'            => 'checkbox',
+        'section'         => 'section-woo-shop-single',
+        'label'           => __( 'Disable Up-Sells Products', 'kemet-addons' ),
+        'priority'        => 45,
+    )
+);
+/**
+* Option: Up-Sells Count
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[up-sells-products-count]', array(
+        'default'           => $defaults['up-sells-products-count'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[disable-up-sells-products]', 
+            'conditions' => '==', 
+            'values' => false,
+        ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Slider(
+        $wp_customize, KEMET_THEME_SETTINGS . '[up-sells-products-count]', array(
+            'type'        => 'kmt-slider',
+            'section'     => 'section-woo-shop-single',
+            'priority'    => 50,
+            'label'       => __( 'Up-Sells Count', 'kemet' ),
+            'suffix'      => '',
+            'input_attrs' => array(
+                'min'  => 3,
+                'step' => 1,
+                'max'  => 100,
+            ),
+        )
+    )
+);
+/**
+* Option: Up-Sells Colunms
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[up-sells-products-colunms]', array(
+        'default'           => $defaults['up-sells-products-colunms'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[disable-up-sells-products]', 
+            'conditions' => '==', 
+            'values' => false,
+        ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Slider(
+        $wp_customize, KEMET_THEME_SETTINGS . '[up-sells-products-colunms]', array(
+            'type'        => 'kmt-slider',
+            'section'     => 'section-woo-shop-single',
+            'priority'    => 55,
+            'label'       => __( 'Up-Sells Columns', 'kemet' ),
+            'suffix'      => '',
+            'input_attrs' => array(
+                'min'  => 1,
+                'step' => 1,
+                'max'  => 6,
+            ),
+        )
+    )
+);
