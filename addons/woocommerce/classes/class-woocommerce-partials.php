@@ -45,8 +45,21 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
 			add_action( 'wp', array( $this, 'init_woocommerce' ) );
 			add_action( 'widgets_init', array( $this,'kemet_register_off_canvas' ) );
+			add_filter( 'post_class', array( $this, 'product_classes' ) );
         }
 		
+		/**
+		 * Product Classes
+		 */
+		function product_classes( $classes ){
+			$gallay_style = kemet_get_option('product-gallary-style');
+
+			if ( post_type_exists( 'product' ) ) {
+				$classes[] = 'kmt-gallary-' . $gallay_style; 
+			}
+
+			return $classes;
+		}
 		/**
 		 * Init Woocommerce
 		 */

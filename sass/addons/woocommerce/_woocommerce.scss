@@ -475,6 +475,32 @@ Woo Quick View
             }
         }
     }
+    .kmt-article-single{
+        &.kmt-gallary-vertical{
+            span.onsale{
+                left: 13%;
+            }
+            div.images.woocommerce-product-gallery{
+                .flex-viewport{
+                    overflow: hidden;
+                    position: relative;
+                    height: 281px;
+                    float: right;
+                    width: 75%;
+                }
+                .flex-control-thumbs{
+                    float: left;
+                    width: calc(25% - 1em);
+                    overflow-x: hidden;
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 .kmt-woo-filter{
     float: left;

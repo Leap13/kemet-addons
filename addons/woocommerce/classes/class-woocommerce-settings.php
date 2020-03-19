@@ -57,6 +57,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['sale-content'] = 'sale-text';
             $defaults['product-image-width'] = '';
             $defaults['product-summary-width'] = '';
+            $defaults['product-gallary-style'] = 'horizontal';
 
             return $defaults;
         }

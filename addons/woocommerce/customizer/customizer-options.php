@@ -256,6 +256,82 @@ $wp_customize->add_control(
     )
 );
 /**
+* Option: Gallary Style
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[product-gallary-style]', array(
+        'default'           => $defaults['product-gallary-style'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[product-gallary-style]', array(
+        'type'     => 'select',
+        'section'  => 'section-woo-shop-single',
+        'priority' => 15,
+        'label'    => __( 'Gallary Style', 'kemet-addons' ),
+        'choices'  => array(
+            'horizontal' => __( 'Horizontal', 'kemet-addons' ),
+            'vertical'   => __( 'Vertical', 'kemet-addons' ),
+        ),
+    )
+);
+/**
+* Option: Image Width
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[product-image-width]', array(
+        'default'           => $defaults['product-image-width'],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Slider(
+        $wp_customize, KEMET_THEME_SETTINGS . '[product-image-width]', array(
+            'type'        => 'kmt-slider',
+            'section'     => 'section-woo-shop-single',
+            'priority'    => 20,
+            'label'       => __( 'Image Width (%)', 'kemet' ),
+            'suffix'      => '',
+            'input_attrs' => array(
+                'min'  => 1,
+                'step' => 1,
+                'max'  => 100,
+            ),
+        )
+    )
+);
+/**
+* Option: Image Width
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[product-summary-width]', array(
+        'default'           => $defaults['product-summary-width'],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Slider(
+        $wp_customize, KEMET_THEME_SETTINGS . '[product-summary-width]', array(
+            'type'        => 'kmt-slider',
+            'section'     => 'section-woo-shop-single',
+            'priority'    => 25,
+            'label'       => __( 'Summary Width (%)', 'kemet' ),
+            'suffix'      => '',
+            'input_attrs' => array(
+                'min'  => 1,
+                'step' => 1,
+                'max'  => 100,
+            ),
+        )
+    )
+);
+/**
 * Option: Disable Related Products
 */
 $wp_customize->add_setting(
@@ -270,7 +346,7 @@ $wp_customize->add_control(
         'type'            => 'checkbox',
         'section'         => 'section-woo-shop-single',
         'label'           => __( 'Disable Related Products', 'kemet-addons' ),
-        'priority'        => 12,
+        'priority'        => 30,
     )
 );
 /**
@@ -293,7 +369,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[related-products-count]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 15,
+            'priority'    => 35,
             'label'       => __( 'Related Products Count', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -324,7 +400,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[related-products-colunms]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 20,
+            'priority'    => 40,
             'label'       => __( 'Related Products Columns', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -335,57 +411,4 @@ $wp_customize->add_control(
         )
     )
 );
-/**
-* Option: Image Width
-*/
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[product-image-width]', array(
-        'default'           => $defaults['product-image-width'],
-        'type'              => 'option',
-        'transport'         => 'postMessage',
-        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
-    )
-);
-$wp_customize->add_control(
-    new Kemet_Control_Slider(
-        $wp_customize, KEMET_THEME_SETTINGS . '[product-image-width]', array(
-            'type'        => 'kmt-slider',
-            'section'     => 'section-woo-shop-single',
-            'priority'    => 25,
-            'label'       => __( 'Image Width (%)', 'kemet' ),
-            'suffix'      => '',
-            'input_attrs' => array(
-                'min'  => 1,
-                'step' => 1,
-                'max'  => 100,
-            ),
-        )
-    )
-);
-/**
-* Option: Image Width
-*/
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[product-summary-width]', array(
-        'default'           => $defaults['product-summary-width'],
-        'type'              => 'option',
-        'transport'         => 'postMessage',
-        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
-    )
-);
-$wp_customize->add_control(
-    new Kemet_Control_Slider(
-        $wp_customize, KEMET_THEME_SETTINGS . '[product-summary-width]', array(
-            'type'        => 'kmt-slider',
-            'section'     => 'section-woo-shop-single',
-            'priority'    => 30,
-            'label'       => __( 'Summary Width (%)', 'kemet' ),
-            'suffix'      => '',
-            'input_attrs' => array(
-                'min'  => 1,
-                'step' => 1,
-                'max'  => 100,
-            ),
-        )
-    )
-);
+
