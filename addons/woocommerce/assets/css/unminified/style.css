@@ -116,6 +116,10 @@ Woo Quick View
   overflow-y: auto;
 }
 
+#kmt-qv-wrap div.product {
+  padding: 0 !important;
+}
+
 #kmt-qv-wrap div.product div.images {
   margin-bottom: 0;
 }
