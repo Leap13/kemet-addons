@@ -34,9 +34,10 @@ Woo Quick View
     -moz-box-shadow: $args;
     box-shadow: $args;
 }
-
-.kmt-quick-view {
-    display: block;
+.shop-grid{
+    .kmt-quick-view {
+        display: block;
+    }
 }
 .kmt-qv-on-image{
     position: absolute;
@@ -455,6 +456,7 @@ Woo Quick View
                     }
                     .star-rating{
                         margin-right: 0;
+                        margin-left: auto;
                     }
                 }
             }

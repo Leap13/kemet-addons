@@ -13,7 +13,7 @@
 /*------------------------------------------------------------------
 Woo Quick View
 -------------------------------------------------------------------*/
-.kmt-quick-view {
+.shop-grid .kmt-quick-view {
   display: block;
 }
 
@@ -454,6 +454,7 @@ Woo Quick View
 
 .woocommerce.content-align-right ul.products li.product .kemet-shop-thumbnail-wrap .star-rating {
   margin-right: 0;
+  margin-left: auto;
 }
 
 .woocommerce.content-align-center ul.products li.product .kemet-shop-thumbnail-wrap {

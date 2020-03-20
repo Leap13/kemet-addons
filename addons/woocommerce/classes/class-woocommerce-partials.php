@@ -352,16 +352,18 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Shop Layout
 		 */
 		function shop_layout($classes){
-			$layout_style = kemet_get_option('shop-layout');
-			$content_alignment = kemet_get_option('product-content-alignment');
-			$classes[] = 'content-align-' .  $content_alignment;
-			if(in_array('shop-grid' , $classes)){
-				$layout_class = array_search('shop-grid', $classes);
-				unset($classes[$layout_class]);
+
+			if(is_shop() || is_singular( 'product' )){
+				$layout_style = kemet_get_option('shop-layout');
+				$content_alignment = kemet_get_option('product-content-alignment');
+				$classes[] = 'content-align-' .  $content_alignment;
+				if(in_array('shop-grid' , $classes)){
+					$layout_class = array_search('shop-grid', $classes);
+					unset($classes[$layout_class]);
+				}
+				
+				$classes[] = $layout_style;
 			}
-			
-			$classes[] = $layout_style;
-			
 			
 			return $classes;
 		}

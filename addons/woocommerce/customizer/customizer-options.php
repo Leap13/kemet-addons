@@ -19,7 +19,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
         'type'     => 'select',
         'section'  => 'section-woo-shop',
-        'priority' => 1,
+        'priority' => 45,
         'label'    => __( 'Quick View', 'kemet-addons' ),
         'choices'  => array(
             'disabled' => __( 'Disabled', 'kemet-addons' ),
@@ -44,7 +44,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[shop-layout]', array(
         'type'     => 'select',
         'section'  => 'section-woo-shop',
-        'priority' => 1,
+        'priority' => 50,
         'label'    => __( 'Shop Layout', 'kemet-addons' ),
         'choices'  => array(
             'shop-grid'   => __( 'Grid', 'kemet-addons' ),
@@ -72,7 +72,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
             'type'     => 'kmt-sortable',
             'section'  => 'section-woo-shop',
-            'priority' => 30,
+            'priority' => 55,
             'label'    => __( 'Shop Product Structure', 'kemet' ),
             'choices'  => array(
                 'title'      => __( 'Title', 'kemet' ),
@@ -86,7 +86,7 @@ $wp_customize->add_control(
     )
 );
 /**
-* Option: Single Post Meta
+* Option: Shop Product Structure
 */
 $wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
@@ -105,7 +105,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
             'type'     => 'kmt-sortable',
             'section'  => 'section-woo-shop',
-            'priority' => 30,
+            'priority' => 60,
             'label'    => __( 'Shop Product Structure', 'kemet' ),
             'choices'  => array(
                 'short_desc' => __( 'Short Description', 'kemet' ),
@@ -131,7 +131,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[sale-style]', array(
         'type'     => 'select',
         'section'  => 'section-woo-shop',
-        'priority' => 35,
+        'priority' => 65,
         'label'    => __( 'Sale Notification', 'kemet-addons' ),
         'choices'  => array(
             '100%' => __( 'Circle', 'kemet-addons' ),
@@ -153,7 +153,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[sale-content]', array(
         'type'     => 'select',
         'section'  => 'section-woo-shop',
-        'priority' => 35,
+        'priority' => 70,
         'label'    => __( 'Sale Notification Content', 'kemet-addons' ),
         'choices'  => array(
             'sale-text' => __( 'Text', 'kemet-addons' ),
@@ -175,7 +175,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     new Kemet_Control_Icon_Select(
         $wp_customize, KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
-            'priority'       => 45,
+            'priority'       => 75,
             'section' => 'section-woo-shop',
             'label'   => __( 'Product Content Alignment', 'kemet-addons' ),
             'choices'  => array(
@@ -207,7 +207,7 @@ $wp_customize->add_control(
         'type'            => 'checkbox',
         'section'         => 'section-woo-shop',
         'label'           => __( 'Enable Filter Button', 'kemet-addons' ),
-        'priority'        => 50,
+        'priority'        => 80,
     )
 );
 /**
@@ -228,7 +228,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[off-canvas-filter-label]', array(
         'section'  => 'section-woo-shop',
-        'priority' => 55,
+        'priority' => 80,
         'label'    => __( 'Filter Button Text', 'kemet-addons' ),
         'type'     => 'text',
     )
@@ -252,7 +252,7 @@ $wp_customize->add_control(
         'type'            => 'checkbox',
         'section'         => 'section-woo-shop-single',
         'label'           => __( 'Enable Ajax Add To Cart', 'kemet-addons' ),
-        'priority'        => 10,
+        'priority'        => 15,
     )
 );
 /**
@@ -269,7 +269,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[product-gallery-style]', array(
         'type'     => 'select',
         'section'  => 'section-woo-shop-single',
-        'priority' => 15,
+        'priority' => 20,
         'label'    => __( 'Gallery Style', 'kemet-addons' ),
         'choices'  => array(
             'horizontal' => __( 'Horizontal', 'kemet-addons' ),
@@ -293,7 +293,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[product-image-width]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 20,
+            'priority'    => 25,
             'label'       => __( 'Image Width (%)', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -320,7 +320,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[product-summary-width]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 25,
+            'priority'    => 30,
             'label'       => __( 'Summary Width (%)', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -346,7 +346,7 @@ $wp_customize->add_control(
         'type'            => 'checkbox',
         'section'         => 'section-woo-shop-single',
         'label'           => __( 'Disable Related Products', 'kemet-addons' ),
-        'priority'        => 30,
+        'priority'        => 35,
     )
 );
 /**
@@ -369,7 +369,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[related-products-count]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 35,
+            'priority'    => 40,
             'label'       => __( 'Related Products Count', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -400,7 +400,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[related-products-colunms]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 40,
+            'priority'    => 45,
             'label'       => __( 'Related Products Columns', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -427,7 +427,7 @@ $wp_customize->add_control(
         'type'            => 'checkbox',
         'section'         => 'section-woo-shop-single',
         'label'           => __( 'Disable Up-Sells Products', 'kemet-addons' ),
-        'priority'        => 45,
+        'priority'        => 50,
     )
 );
 /**
@@ -450,7 +450,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[up-sells-products-count]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 50,
+            'priority'    => 55,
             'label'       => __( 'Up-Sells Count', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
@@ -481,7 +481,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[up-sells-products-colunms]', array(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
-            'priority'    => 55,
+            'priority'    => 60,
             'label'       => __( 'Up-Sells Columns', 'kemet' ),
             'suffix'      => '',
             'input_attrs' => array(
