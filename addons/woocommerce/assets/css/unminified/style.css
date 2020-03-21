@@ -386,6 +386,10 @@ Woo Quick View
 }
 
 /************ Shop ************/
+.shop-list.woocommerce ul.products li.product {
+  height: fit-content;
+}
+
 .shop-list.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap {
   display: flex;
   border: 0;
