@@ -37,6 +37,9 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             $widgets = apply_filters( 'kemet_custom_widgets', array(
                 'mailchimp',
                 'social-icons',
+                'posts-in-images',
+                'posts-list',
+                'login-form',
             ) );
 
             // Loop through widgets and load their files
