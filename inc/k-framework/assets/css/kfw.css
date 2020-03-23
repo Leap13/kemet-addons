@@ -883,6 +883,17 @@
 /**
  * 03. 07. Field: checkbox, radio
  */
+.kfw-field-checkbox{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.kfw-field-checkbox .kfw-title{
+  margin: 0;
+  margin-left: 5px;
+}
+.kfw-field-checkbox .kfw-title h4{
+  line-height: 1.5;
+}
 .kfw-field-checkbox ul,
 .kfw-field-radio ul {
   margin: 0;
