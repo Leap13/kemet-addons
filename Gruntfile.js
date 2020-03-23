@@ -19,17 +19,6 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: [
-                    {
-                        expand: true,
-                        cwd: 'addons/blog-layouts/assets/css/unminified/',
-                        src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
-                        dest: 'addons/blog-layouts/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
                      {
                         expand: true,
                         cwd: 'addons/extra-headers/assets/css/unminified/',
@@ -38,6 +27,17 @@ module.exports = function (grunt) {
                                 '!*-rtl.css',
                             ],
                         dest: 'addons/extra-headers/assets/css/unminified',
+                        ext: '-rtl.css'
+
+                    },
+                    {
+                        expand: true,
+                        cwd: 'addons/blog-layouts/assets/css/unminified/',
+                        src: [
+                                '*.css',
+                                '!*-rtl.css',
+                            ],
+                        dest: 'addons/blog-layouts/assets/css/unminified/',
                         ext: '-rtl.css'
 
                     },
