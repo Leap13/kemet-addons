@@ -34,6 +34,10 @@ $wp_customize->add_control(
 					'label' => __( 'Blog Layout 4', 'kemet-addons' ),
 					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
 				),
+				'blog-layout-5' => array(
+					'label' => __( 'Blog Layout 5', 'kemet-addons' ),
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+				),
 			),
 		)
 	)
@@ -70,7 +74,7 @@ $wp_customize->add_control(
     )
 );
 /**
-	* Option: Header Width
+	* Option: Grid Style
 	*/
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[blog-layout-mode]', array(
@@ -93,6 +97,34 @@ $wp_customize->add_control(
 			'choices'  => array(
 				'masonry'    => __( 'Masonry', 'kemet-addons' ),
 				'fit-rows' => __( 'Fit Rows', 'kemet-addons' ),
+			),
+		)
+	);
+
+	/**
+	* Option: Image Position
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[post-image-position]', array(
+			'default'           => $defaults[ 'post-image-position' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[blog-layouts]', 
+				'conditions' => '==', 
+				'values' => 'blog-layout-5',
+			),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[post-image-position]', array(
+			'type'     => 'select',
+			'section'  => 'section-blog',
+			'priority' => 5,
+			'label'    => __( 'Image Position', 'kemet-addons' ),
+			'choices'  => array(
+				'left'    => __( 'Left', 'kemet-addons' ),
+				'right' => __( 'Right', 'kemet-addons' ),
 			),
 		)
 	);

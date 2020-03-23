@@ -58,6 +58,8 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['overlay-icon-color']   = '';
             $defaults['hover-image-effect']   = 'none';
             $defaults['blog-container-inner-spacing']   = '';
+            $defaults['post-image-position']   = 'left';
+
             return $defaults;
         }
 

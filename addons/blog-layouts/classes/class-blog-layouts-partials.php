@@ -35,6 +35,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             }
             $classes[] = kemet_get_option( 'overlay-image-style' ) != 'none' ? kemet_get_option( 'overlay-image-style' ) : '';
             $classes[]  = kemet_get_option( 'hover-image-effect' )!= 'none' ? kemet_get_option( 'hover-image-effect' ) : '';
+            $classes[]  = kemet_get_option('post-image-position') == 'left' ? 'kmt-img-left' : 'kmt-img-right';
             return $classes;
         }
         function kemet_custom_excerpt_length(){
