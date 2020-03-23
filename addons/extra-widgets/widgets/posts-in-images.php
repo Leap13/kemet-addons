@@ -28,6 +28,7 @@ $posts_in_images_widget = array(
       'type'        => 'select',
       'title'       => __('Category', 'kemet-addons' ),
       'options'     => $categories,
+      'multiple'    => true,
       'default'     => 1
     ),
     array(
