@@ -25,6 +25,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			$sticky_submenu_link_h_color             = kemet_get_option( 'sticky-submenu-link-h-color' ); 
 			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color' , $global_border_color);	   
 			$submenu_border_color			  = kemet_get_option('sticky-submenu-border-color');
+			$space_sticky_header              = kemet_get_option( 'sticky-header-padding' );
 
 			$css_output = array(
             //Sticky Header
@@ -53,6 +54,12 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				'.kmt-is-sticky .main-header-menu .sub-menu a' => array(
 					'border-bottom-color'        => esc_attr( $submenu_border_color ),
 				),
+				'.kmt-is-sticky .main-header-bar' => array(
+					'padding-top'    => kemet_responsive_spacing( $space_sticky_header, 'top', 'desktop' ),
+					'padding-bottom' => kemet_responsive_spacing( $space_sticky_header, 'bottom', 'desktop' ),
+					'padding-right' => kemet_responsive_spacing( $space_sticky_header, 'right', 'desktop' ),
+					'padding-left'  => kemet_responsive_spacing( $space_sticky_header, 'left', 'desktop' ),
+				),
 			);
 
 			$parse_css = kemet_parse_css( $css_output );
@@ -61,12 +68,24 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(
 					'max-width' => kemet_responsive_slider( $sticky_logo_width, 'tablet' ),
 				),
+				'.kmt-is-sticky .main-header-bar' => array(
+					'padding-top'    => kemet_responsive_spacing( $space_sticky_header, 'top', 'tablet' ),
+					'padding-bottom' => kemet_responsive_spacing( $space_sticky_header, 'bottom', 'tablet' ),
+					'padding-right' => kemet_responsive_spacing( $space_sticky_header, 'right', 'tablet' ),
+					'padding-left'  => kemet_responsive_spacing( $space_sticky_header, 'left', 'tablet' ),
+				),
 			 );
 			$parse_css .= kemet_parse_css( $css_tablet, '', '768' );
 			
 			$css_mobile = array(
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(
 					'max-width' => kemet_responsive_slider( $sticky_logo_width, 'mobile' ),
+				),
+				'.kmt-is-sticky .main-header-bar' => array(
+					'padding-top'    => kemet_responsive_spacing( $space_sticky_header, 'top', 'mobile' ),
+					'padding-bottom' => kemet_responsive_spacing( $space_sticky_header, 'bottom', 'mobile' ),
+					'padding-right' => kemet_responsive_spacing( $space_sticky_header, 'right', 'mobile' ),
+					'padding-left'  => kemet_responsive_spacing( $space_sticky_header, 'left', 'mobile' ),
 				),
 			);
 

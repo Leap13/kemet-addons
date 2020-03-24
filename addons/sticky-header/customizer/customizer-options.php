@@ -347,4 +347,33 @@
                 'sticky-slide'        => __( 'Slide', 'kemet-addons' ),
             ),
         )
-    );
+	);
+	/**
+* Option - Sticky Header Spacing
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sticky-header-padding]', array(
+        'default'           => $defaults['sticky-header-padding'],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Responsive_Spacing(
+        $wp_customize, KEMET_THEME_SETTINGS . '[sticky-header-padding]', array(
+            'type'           => 'kmt-responsive-spacing',
+            'section'        => 'section-sticky-header',
+            'priority'       => 90,
+            'label'          => __( 'Padding', 'kemet' ),
+            'linked_choices' => true,
+            'unit_choices'   => array( 'px', 'em', '%' ),
+            'choices'        => array(
+                'top'    => __( 'Top', 'kemet' ),
+                'right'  => __( 'Right', 'kemet' ),
+                'bottom' => __( 'Bottom', 'kemet' ),
+                'left'   => __( 'Left', 'kemet' ),
+            ),
+        )
+    )
+);
