@@ -90,7 +90,17 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			);
 
 			$parse_css .= kemet_parse_css( $css_mobile, '', '544' );
-           
+		   
+			$sticky_header_box_shadow = kemet_get_option('sticky-header-box-shadow');
+
+			if($sticky_header_box_shadow){
+				$box_shadow_css = array(
+					'.site-header.kmt-is-sticky' => array(
+						'box-shadow' => esc_attr('0px 2px 5px rgba(0,0,0,0.1)'),
+					),
+				);
+				$parse_css .= kemet_parse_css( $box_shadow_css );
+			}
             
            return $dynamic_css . $parse_css;
 }
