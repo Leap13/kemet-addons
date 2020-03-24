@@ -1,42 +1,41 @@
 /********************** mailchimp widget **********************/
-.widget_mailchimp{
-    .mailchimp-form{
-        .kmt-mailchimp-form{
-            div:first-child{
-                margin: 20px 0;
+.mailchimp-form{
+    div:first-child{
+        margin: 20px 0;
+    }
+    input[type=submit].button{
+        display: block;
+    }
+    input[name=email]{
+        width: 100%;
+        padding: 16px 45px 16px 15px;
+        &:focus{
+            outline: none;
+        }
+    }
+    span{
+        color: $color-error;
+        &.alert{
+            display: none;
+        &.visible{
+            display: block;
+        }    
+        }
+    }
+    div{
+        &.alert{
+            &.success{
+                color: $color_success;
             }
-            input[name=email]{
-                width: 100%;
-                padding: 16px 45px 16px 15px;
-                &:focus{
-                    outline: none;
-                }
-            }
-            span{
+            &.error{
                 color: $color-error;
-                &.alert{
-                    display: none;
-                &.visible{
-                    display: block;
-                }    
-                }
             }
-            div{
-                &.alert{
-                    &.success{
-                        color: $color_success;
-                    }
-                    &.error{
-                        color: $color-error;
-                    }
-                    display: none;
-                &.visible{
-                    display: block;
-                } 
-                }
-
-            }
+            display: none;
+        &.visible{
+            display: block;
         } 
+        }
+
     }
 }
 /********************** social widget **********************/
