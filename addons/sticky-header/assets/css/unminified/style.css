@@ -20,7 +20,7 @@
   animation-duration: 0.5s;
 }
 
-.kmt-is-sticky.header-boxed-width .main-header-content {
+.kmt-is-sticky.header-boxed-width .main-header-content, .kmt-is-sticky.header-stretched-width .main-header-content {
   background-color: transparent;
 }
 
@@ -34,6 +34,10 @@
 
 .kmt-is-sticky.kmt-sticky-header.sticky-main-header .main-header-bar-wrap {
   display: block;
+}
+
+.kmt-is-sticky .main-navigation .main-header-bar-navigation > ul {
+  background-color: transparent;
 }
 
 .kmt-is-sticky .main-header-bar-wrap {

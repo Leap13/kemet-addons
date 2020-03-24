@@ -4,6 +4,7 @@
  * Header 4 Layout
  */
 $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
+$classes = apply_filters( 'header_container_classes', array());
 ?>
 <?php do_action('kemet_before_main_header'); ?>
 <div class="main-header-bar-wrap">
