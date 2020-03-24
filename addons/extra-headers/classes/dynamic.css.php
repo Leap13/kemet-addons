@@ -45,7 +45,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.header-main-layout-4 .main-header-menu' => array(
                     'background-color' => esc_attr($menu_bg_color),
                 ),
-                '.header-boxed-width .main-header-content' => array(
+                '.header-boxed-width .main-header-content , .header-stretched-width .main-header-content' => array(
                     'background-color' => esc_attr($header_content_bg_color),
                 ), 
                 '.menu-icon-social .header-icon-label' => array(

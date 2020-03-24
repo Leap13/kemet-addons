@@ -223,6 +223,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'full'    => __( 'Full Width', 'kemet-addons' ),
 				'content' => __( 'Content Width', 'kemet-addons' ),
 				'boxed' => __( 'Boxed Content', 'kemet-addons' ),
+				'stretched' => __( 'Stretched Content', 'kemet-addons' ),
 			),	
 		)
 	);
@@ -236,10 +237,10 @@ $defaults = Kemet_Theme_Options::defaults();
 		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/' . KEMET_THEME_SETTINGS . '[header-main-layout-width]', 
-			'conditions' => '!=/!=/!=/==', 
-			'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7/boxed',
-			'operators' => "&&/&&/&&",
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/' . KEMET_THEME_SETTINGS . '[header-main-layout-width]/' . KEMET_THEME_SETTINGS . '[header-main-layout-width]', 
+			'conditions' => '!=/!=/!=/==/==', 
+			'values' => 'header-main-layout-6/header-main-layout-5/header-main-layout-7/boxed/stretched',
+			'operators' => "&&/&&/&&/||",
 		),
 		)
 	);
