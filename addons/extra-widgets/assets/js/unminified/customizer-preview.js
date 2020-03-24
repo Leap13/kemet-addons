@@ -4,7 +4,7 @@
             if(color == ''){
                 wp.customize.preview.send('refresh');
             }else{
-                var dynamicStyle = '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before { border-bottom-color: '+ color +' } ';
+                var dynamicStyle = '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before, .kmt-widget-style8 .widget-title { border-bottom-color: '+ color +' } ';
                 dynamicStyle += '.kmt-widget-style3 .widget-content , .kmt-widget-style5.widget { border-color: '+ color +' } ';
                 dynamicStyle += '.kmt-widget-style7 div.title .widget-title:after { background-color: '+ color +' } ';
                 kemet_add_dynamic_css('widget-border-color', dynamicStyle);

@@ -29,7 +29,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 
             $css_content = array(
                 //Widget Styles Css     
-                '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before' => array(
+                '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before, .kmt-widget-style8 .widget-title' => array(
 					'border-bottom-color' => esc_attr( $widget_border_color ),
                 ),
                 '.kmt-widget-style3 .widget-content , .kmt-widget-style5.widget' => array(

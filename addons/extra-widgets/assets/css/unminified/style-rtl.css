@@ -11,44 +11,48 @@
 ## Extra Widgets
 --------------------------------------------------------------*/
 /********************** mailchimp widget **********************/
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div:first-child {
+.mailchimp-form div:first-child {
   margin: 20px 0;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form input[name=email] {
+.mailchimp-form input[type=submit].button {
+  display: block;
+}
+
+.mailchimp-form input[name=email] {
   width: 100%;
   padding: 16px 15px 16px 45px;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form input[name=email]:focus {
+.mailchimp-form input[name=email]:focus {
   outline: none;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span {
+.mailchimp-form span {
   color: #dd3333;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert {
+.mailchimp-form span.alert {
   display: none;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form span.alert.visible {
+.mailchimp-form span.alert.visible {
   display: block;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert {
+.mailchimp-form div.alert {
   display: none;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.success {
+.mailchimp-form div.alert.success {
   color: #28a745;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.error {
+.mailchimp-form div.alert.error {
   color: #dd3333;
 }
 
-.widget_mailchimp .mailchimp-form .kmt-mailchimp-form div.alert.visible {
+.mailchimp-form div.alert.visible {
   display: block;
 }
 
@@ -319,4 +323,12 @@ div.title {
 
 .kmt-widget-style7 > * {
   text-align: center;
+}
+
+/********************** widget style 8 **********************/
+.kmt-widget-style8 .widget-title {
+  margin-bottom: 0px;
+  float: right;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
