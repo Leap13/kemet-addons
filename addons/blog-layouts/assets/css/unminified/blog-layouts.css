@@ -539,6 +539,7 @@
 
 .blog-layout-2 .blog-post-layout-2 .post-content .entry-header {
   padding-top: 15px;
+  margin-bottom: 10px;
 }
 
 .blog-layout-2 .blog-post-layout-2 .post-content .kmt-blog-featured-section {
@@ -552,6 +553,7 @@
 
 .blog-layout-2 .blog-post-layout-2 .post-content .entry-content {
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 /*--------------------------------------------------------------
