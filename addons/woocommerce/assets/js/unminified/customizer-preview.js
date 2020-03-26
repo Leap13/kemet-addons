@@ -5,7 +5,7 @@
 	wp.customize('kemet-settings[sale-style]', function (setting) {
 		setting.bind(function (radius) {
 
-			var dynamicStyle = '.woocommerce ul.products li.product .onsale { border-radius: ' + (parseInt(radius)) + '% }';
+			var dynamicStyle = '.woocommerce .product .onsale { border-radius: ' + (parseInt(radius)) + '% }';
 
 				
 			kemet_add_dynamic_css('sale-style', dynamicStyle);
@@ -37,6 +37,18 @@
 
 				
 			kemet_add_dynamic_css('product-summary-width', dynamicStyle);
+
+		});
+	});
+	/**
+	 * DropDown Width
+	 */
+	wp.customize('kemet-settings[cart-dropdown-width]', function (setting) {
+		setting.bind(function (width) {
+
+			var dynamicStyle = '.woocommerce .site-header .kmt-site-header-cart .widget_shopping_cart, .woocommerce .site-header .kmt-site-header-cart .widget_shopping_cart { width: ' + (parseInt(width)) + 'px }';
+				
+			kemet_add_dynamic_css('cart-dropdown-width', dynamicStyle);
 
 		});
 	});

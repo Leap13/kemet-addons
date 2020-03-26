@@ -62,6 +62,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['up-sells-products-colunms'] = 3;
             $defaults['disable-up-sells-products'] = false;
             $defaults['enable-product-navigation'] = false;
+            $defaults['cart-dropdown-width'] = 350;
 
             return $defaults;
         }
