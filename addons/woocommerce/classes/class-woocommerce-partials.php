@@ -203,8 +203,36 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			if($sale_content == 'percent'){
 				add_filter( 'woocommerce_sale_flash', array( $this, 'kemet_sale_flash_content' ), 10, 3 );
 			}
+
+			/**
+			 * Enable Single Product Nav Links
+			 */
+			$enable_nav_links = kemet_get_option('enable-product-navigation');
+			if($enable_nav_links){
+				add_action( 'woocommerce_single_product_summary', array( $this, 'product_nav_links' ), 1, 0 );
+			}
 		}
 
+		/**
+		 * Single product next and previous links.
+		 */
+		function product_nav_links() {
+
+			if ( ! is_product() ) {
+				return;
+			}
+			?>
+			<div class="kmt-product-navigation">
+				<div class="kmt-product-links">
+					<?php
+					previous_post_link( '%link' , '<span class="prev"></span>' );
+					next_post_link( '%link' , '<span class="next"></span>' );
+					?>
+				</div>
+			</div>
+			<?php
+		}
+		
 		/**
 		 * up-sell product arguments.
 		 */

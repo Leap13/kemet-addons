@@ -256,6 +256,24 @@ $wp_customize->add_control(
     )
 );
 /**
+* Option: Enable Product Navigation
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[enable-product-navigation]', array(
+        'default'           => $defaults[ 'enable-product-navigation' ],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[enable-product-navigation]', array(
+        'type'            => 'checkbox',
+        'section'         => 'section-woo-shop-single',
+        'label'           => __( 'Enable Product Navigation', 'kemet-addons' ),
+        'priority'        => 16,
+    )
+);
+/**
 * Option: Gallary Style
 */
 $wp_customize->add_setting(
