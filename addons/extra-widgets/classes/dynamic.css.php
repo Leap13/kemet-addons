@@ -29,7 +29,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 
             $css_content = array(
                 //Widget Styles Css     
-                '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before' => array(
+                '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before, .kmt-widget-style8 .widget-title' => array(
 					'border-bottom-color' => esc_attr( $widget_border_color ),
                 ),
                 '.kmt-widget-style3 .widget-content , .kmt-widget-style5.widget' => array(
@@ -53,7 +53,16 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
                 ),
 				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ' => array(
 					'background-color' => esc_attr( $footer_widget_bg_color ),
-				),
+                ),
+                '.kfw-widget-posts-list .kmt-wdg-posts-list li' => array(
+					'border-bottom-color' => esc_attr( $global_border_color ),
+                ),
+                '.kfw-widget-tags .post-tags .label' => array(
+					'border-color' => esc_attr( $global_border_color ),
+                ),
+                '.wgt-img img' => array(
+					'border-color' => esc_attr( $global_border_color ),
+                ),
             );
 
             $parse_css = kemet_parse_css( $css_content );

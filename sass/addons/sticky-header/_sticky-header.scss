@@ -5,7 +5,7 @@
     position: fixed;
     width: 100%;
     animation-duration: 0.5s;
-    &.header-boxed-width{
+    &.header-boxed-width , &.header-stretched-width{
       .main-header-content{
         background-color: transparent;
       } 
@@ -20,6 +20,13 @@
       &.sticky-main-header{
         .main-header-bar-wrap{
           display: block;
+        }
+      }
+    }
+    .main-navigation{
+      .main-header-bar-navigation{
+        > ul {
+          background-color: transparent;
         }
       }
     }

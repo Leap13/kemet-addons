@@ -43,7 +43,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
       $this->post_type      = ( is_array( $this->args['post_type'] ) ) ? $this->args['post_type'] : array_filter( (array) $this->args['post_type'] );
       $this->post_formats   = ( is_array( $this->args['post_formats'] ) ) ? $this->args['post_formats'] : array_filter( (array) $this->args['post_formats'] );
       $this->page_templates = ( is_array( $this->args['page_templates'] ) ) ? $this->args['page_templates'] : array_filter( (array) $this->args['page_templates'] );
-      $this->pre_fields     = $this->pre_fields( $this->sections );
+      $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+      $this->pre_fields     = $this->pre_fields( $meta_sections );
 
       add_action( 'add_meta_boxes', array( &$this, 'add_meta_box' ) );
       add_action( 'save_post', array( &$this, 'save_meta_box' ) );
@@ -184,7 +185,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
       global $post;
 
-      $has_nav  = ( count( $this->sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
+      $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+      $has_nav  = ( count( $meta_sections ) > 1 && $this->args['context'] !== 'side' ) ? true : false;
       $show_all = ( ! $has_nav ) ? ' kfw-show-all' : '';
       $errors   = ( is_object ( $post ) ) ? get_post_meta( $post->ID, '_kfw_errors', true ) : array();
       $errors   = ( ! empty( $errors ) ) ? $errors : array();
@@ -206,7 +208,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
               echo '<ul>';
               $tab_key = 1;
-              foreach( $this->sections as $section ) {
+              $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+              foreach( $meta_sections as $section ) {
 
                 $tab_error = ( ! empty( $errors['sections'][$tab_key] ) ) ? '<i class="kfw-label-error kfw-error">!</i>' : '';
                 $tab_icon = ( ! empty( $section['icon'] ) ) ? '<i class="kfw-icon '. $section['icon'] .'"></i>' : '';
@@ -226,8 +229,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
             echo '<div class="kfw-sections">';
 
             $section_key = 1;
-
-            foreach( $this->sections as $section ) {
+            $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+            foreach( $meta_sections as $section ) {
 
               $onload = ( ! $has_nav ) ? ' kfw-onload' : '';
 
@@ -312,7 +315,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
         // sanitize and validate
         $section_key = 1;
-        foreach( $this->sections as $section ) {
+        $meta_sections = wp_list_sort( $this->sections , 'priority_num' );
+        foreach( $meta_sections as $section ) {
 
           if( ! empty( $section['fields'] ) ) {
 

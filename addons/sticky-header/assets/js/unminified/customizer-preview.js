@@ -41,5 +41,6 @@
     /*
 	 * Site Identity Logo Width
 	 */
+	kemet_responsive_spacing('kemet-settings[sticky-header-padding]', '.kmt-is-sticky .main-header-bar', 'padding', ['top', 'bottom', 'right', 'left']);
 	kemet_responsive_slider( 'kemet-settings[sticky-logo-width]', '#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img , kmt-is-sticky .kemet-logo-svg' , 'width');
 })(jQuery);

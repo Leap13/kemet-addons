@@ -10,12 +10,13 @@
 .kmt-customizer-reset-footer {
 	display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     padding-left: 10px;
     padding-right: 10px;
     height: 75px;
     background-color: #fff;
+    text-align: center;
 }
 .customizer-import-form.is-expanded .postbox {
 	height: 143px;
@@ -23,14 +24,14 @@
 /* Button */
 .kmt-customizer-reset-footer .kmt-customizer-reset-button {
     line-height: 10px;
+    width: 45%;
 }
 .customizer-import-form.border-box .fields {
     position: absolute;
     top: -200px;
 }
-.wp-core-ui .button.customizer-import-trigger{
-    margin-left: 10px;
-    margin-right: 10px;
+.customizer-export-import{
+    width: 25%;
 }
 /* Import */
 .customizer-import-form {
@@ -83,7 +84,4 @@ form.customizer-import-form .inside {
     right: 15px;
     top: -25px;
     cursor: pointer;
-}
-.kmt-customizer-reset-footer .customizer-export-import,.kmt-customizer-reset-footer .kmt-customizer-reset-button{
-    padding: 0 22px;
 }

@@ -48,6 +48,7 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Meta_Box' ) ) {
             KFW::createSection( 'kemet_page_options', array(
                 'title'  => __('Top Bar', 'kemet-addons'),
                 'icon'   => 'dashicons dashicons-admin-tools',
+                'priority_num' => 2,
                 'fields' => array(
                     array(
                       'id'         => 'kemet-top-bar-display',

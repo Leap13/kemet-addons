@@ -47,6 +47,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Headers_Meta_Box' ) ) {
             KFW::createSection( 'kemet_page_options', array(
                 'title'  => __('Sticky Header', 'kemet-addons'),
                 'icon'   => 'dashicons dashicons-admin-site-alt2',
+                'priority_num' => 4,
                 'fields' => array(
                     array(
                         'id'         => 'kemet-disable-sticky-header',

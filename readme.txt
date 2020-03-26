@@ -42,6 +42,13 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 
 == Changelog ==
 
+1.0.3 version
+- Added: Responsive menu options.
+- Added: Login form widget.
+- Added: Posts list widget.
+- Added: New widget style.
+- Added: Sticky footer option.
+
 1.0.2 version
 - Added: Display breadcrumbs options.
 - Added: Subtitle option and styles.

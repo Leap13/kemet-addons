@@ -10,6 +10,14 @@
 /*--------------------------------------------------------------
 ## Header 4
 --------------------------------------------------------------*/
+.site-header.kmt-header-transparent .kemet-merged-top-bar-header {
+  background: transparent;
+}
+
+.site-header.kmt-header-transparent .main-header-bar {
+  background: transparent;
+}
+
 .site-header .kemet-merged-top-bar-header .main-header-bar {
   background: transparent;
 }

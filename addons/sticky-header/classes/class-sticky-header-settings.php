@@ -66,6 +66,9 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
             $defaults['sticky-submenu-border-color']  = '';
             $defaults['sticky-responsive']  = 'all-devices';
             $defaults['sticky-style']  = 'sticky-fade';
+            $defaults['sticky-header-padding']  = '';
+            $defaults['sticky-header-box-shadow']  = true;
+
             return $defaults;
         }
 

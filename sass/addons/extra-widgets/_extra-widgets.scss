@@ -1,44 +1,44 @@
-.widget_mailchimp{
-    .mailchimp-form{
-        .kmt-mailchimp-form{
-            div:first-child{
-                margin: 20px 0;
+/********************** mailchimp widget **********************/
+.mailchimp-form{
+    div:first-child{
+        margin: 20px 0;
+    }
+    input[type=submit].button{
+        display: block;
+    }
+    input[name=email]{
+        width: 100%;
+        padding: 16px 45px 16px 15px;
+        &:focus{
+            outline: none;
+        }
+    }
+    span{
+        color: $color-error;
+        &.alert{
+            display: none;
+        &.visible{
+            display: block;
+        }    
+        }
+    }
+    div{
+        &.alert{
+            &.success{
+                color: $color_success;
             }
-            input[name=email]{
-                width: 100%;
-                padding: 16px 45px 16px 15px;
-                &:focus{
-                    outline: none;
-                }
-            }
-            span{
+            &.error{
                 color: $color-error;
-                &.alert{
-                    display: none;
-                &.visible{
-                    display: block;
-                }    
-                }
             }
-            div{
-                &.alert{
-                    &.success{
-                        color: $color_success;
-                    }
-                    &.error{
-                        color: $color-error;
-                    }
-                    display: none;
-                &.visible{
-                    display: block;
-                } 
-                }
-
-            }
+            display: none;
+        &.visible{
+            display: block;
         } 
+        }
+
     }
 }
-
+/********************** social widget **********************/
 .kmt-social-profiles{
     display: flex;
     flex-wrap: wrap;
@@ -90,7 +90,77 @@
         }
     }
 }
+/********************** posts in images widget **********************/
+.wgt-img {
+    margin: 0px 9px 9px 0px;
+    padding: 0px;
+    float: left;
+    img {
+        border-width: 1px;
+        border-style: solid;
+        padding: 2px;
+        -webkit-transition: all 0.4s ease 0s;
+        -moz-transition: all 0.4s ease 0s;
+        -o-transition: all 0.4s ease 0s;
+        -ms-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+        opacity: inherit;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        -ms-box-sizing: content-box;
+        -o-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+    &:hover{
+        img {
+            opacity: .6;
+            -webkit-box-shadow: 0 0 2px rgb(102, 102, 102);
+            -moz-box-shadow: 0 0 2px rgb(102, 102, 102);
+            -ms-box-shadow: 0 0 2px rgb(102, 102, 102);
+            -o-box-shadow: 0 0 2px rgb(102, 102, 102);
+            box-shadow: 0 0 2px rgb(102, 102, 102);
+        }
+    }
+}
+.kfw-widget-posts-images{
+    .wgt-img{
+        margin: 0 10px 0 0;
+    }
+}
+/********************** posts list widget **********************/
+.kfw-widget-posts-list{
+    .kmt-wdg-posts-list{
+        margin: 0px;
+        list-style: none;
+        li{
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            padding: 10px 0px 10px 0;
+            overflow: hidden;
+            list-style: none;
+            margin-bottom: 0px !important;
+            .wgt-img{
+                margin: 0 10px 0 0;
+            }
+            .wdg-posttitle{
+                line-height: 1;
+            }
+        }
+    }
+}
+/********************** login form widget **********************/
+.kfw-widget-login-form{
+    input[type=text] , input[type=password]{
+        width: 100%;
+    }
+    p{
+        margin-bottom: 1em;
+    }
+}
 /********************** widget style **********************/
+.widget{
+    overflow: hidden;
+}
 div.title {
     width: 100%;
     display: block;
@@ -211,4 +281,11 @@ div.title {
 }
 .kmt-widget-style7 > *{
     text-align: center;
+}
+/********************** widget style 8 **********************/
+.kmt-widget-style8 .widget-title {
+    margin-bottom: 0px;
+    float: left;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }

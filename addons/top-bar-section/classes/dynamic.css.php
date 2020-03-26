@@ -34,7 +34,12 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
             $section1_content_align          = kemet_get_option( 'section1-content-align' );
             $section2_content_align          = kemet_get_option( 'section2-content-align' );
             $top_bar_direction              = is_rtl() ? 'row-reverse' : 'row'; 
-			$topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
+            $topbar_font_size                    = kemet_get_option( 'topbar-font-size' );
+            $topbar_font_family                    = kemet_get_option( 'top-bar-font-family' );
+            $topbar_font_weight                    = kemet_get_option( 'top-bar-font-weight' );
+            $topbar_text_transform                    = kemet_get_option( 'top-bar-text-transform' );
+            $topbar_line_height                    = kemet_get_option( 'top-bar-line-height' );
+            $topbar_letter_spacing                    = kemet_get_option( 'top-bar-letter-spacing' );
             $css_content = array(     
                 '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
                     'justify-content' => $section1_content_align,
@@ -59,6 +64,11 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'border-left-width'   => kemet_responsive_spacing( $topbar_border_size, 'left', 'desktop' ), 
                     
                     'font-size'    => kemet_responsive_slider( $topbar_font_size, 'desktop' ),
+                    'font-family'    => kemet_get_font_family( $topbar_font_family ),
+					'font-weight'     => esc_attr( $topbar_font_weight ),
+					'text-transform'  => esc_attr( $topbar_text_transform ),
+                    'letter-spacing' => kemet_responsive_slider( $topbar_letter_spacing , 'desktop' ),
+                    'line-height' => esc_attr( $topbar_line_height ),
 					'color'          => esc_attr($topbar_text_color),
                 ),
                 '.kemet-top-header a'  => array(

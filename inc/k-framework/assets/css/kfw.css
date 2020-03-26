@@ -883,6 +883,17 @@
 /**
  * 03. 07. Field: checkbox, radio
  */
+.widget .kfw-field-checkbox{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.widget .kfw-field-checkbox .kfw-title{
+  margin: 0;
+  margin-left: 5px;
+}
+.widget .kfw-field-checkbox .kfw-title h4{
+  line-height: 1.5;
+}
 .kfw-field-checkbox ul,
 .kfw-field-radio ul {
   margin: 0;
@@ -4038,6 +4049,7 @@
 }
 .kmt-plugins-container h2{
   font-size: 24px;
+  line-height: 24px;
 }
 .kmt-plugins-container .kmt-card{
   width: 32%;
@@ -4046,6 +4058,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  height: max-content;
 }
 .kmt-plugins-container .kmt-card .button{
   cursor: pointer;

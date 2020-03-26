@@ -46,7 +46,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 		function kemet_header_container($classes){
 			$header_width = kemet_get_option('header-main-layout-width');
 
-			if($header_width == 'boxed'){
+			if($header_width == 'boxed' ||$header_width == 'stretched' ){
 				$classes[] = 'main-header-content'; 
 			}
 
@@ -83,6 +83,18 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 						'max-width'     => '100%',
 						'padding-left'  => '35px',
 						'padding-right' => '35px',
+					),
+				);
+
+				/* Parse CSS from array()*/
+				echo kemet_parse_css( $genral_global_responsive, $header_break_point );
+			}elseif ('stretched' == $kemet_header_width ){
+
+				$genral_global_responsive = array(
+					'#sitehead .kmt-container' => array(
+						'max-width'     => '100%',
+						'padding-left'  => '0',
+						'padding-right' => '0',
 					),
 				);
 
