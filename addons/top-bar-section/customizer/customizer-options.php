@@ -331,6 +331,132 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	/**
+	 * Option: Font Family
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-font-family]', array(
+			'default'           => $defaults[ 'top-bar-font-family' ],
+			'type'              => 'option',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+
+	$wp_customize->add_control(
+		new Kemet_Control_Typography(
+			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-font-family]', array(
+				'type'        => 'kmt-font-family',
+				'section'     => 'section-topbar-header',
+				'priority'    => 46,
+				'label'       => __( 'Font Family', 'kemet' ),
+				'connect'     => KEMET_THEME_SETTINGS . '[top-bar-font-weight]',
+			)
+		)
+	);
+
+	/**
+	 * Option: Font Weight
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-font-weight]', array(
+			'default'           => $defaults[ 'top-bar-font-weight' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Typography(
+			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-font-weight]', array(
+				'type'        => 'kmt-font-weight',
+				'section'     => 'section-topbar-header',
+				'priority'    => 46,
+				'label'       => __( 'Font Weight', 'kemet' ),
+				'connect'     => KEMET_THEME_SETTINGS . '[top-bar-font-family]',
+			)
+		)
+	);
+
+	/**
+	 * Option: Top Bar Text Transform
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-text-transform]', array(
+			'default'           => $defaults[ 'top-bar-text-transform' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[top-bar-text-transform]', array(
+			'type'     => 'select',
+			'section'  => 'section-topbar-header',
+			'priority' => 47,
+			'label'    => __( 'Text Transform', 'kemet' ),
+			'choices'  => array(
+				''           => __( 'Default', 'kemet' ),
+				'none'       => __( 'None', 'kemet' ),
+				'capitalize' => __( 'Capitalize', 'kemet' ),
+				'uppercase'  => __( 'Uppercase', 'kemet' ),
+				'lowercase'  => __( 'Lowercase', 'kemet' ),
+			),
+		)
+	);
+	/**
+	 * Option: Top Bar Line Height
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-line-height]', array(
+			'default'           => $defaults[ 'top-bar-line-height' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-line-height]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-topbar-header',
+				'priority'    => 48,
+				'label'       => __( 'Line Height', 'kemet' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 1,
+					'step' => 0.01,
+					'max'  => 5,
+				),
+			)
+		)
+	);
+	/**
+	* Option: Top Bar Letter Spacing
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[top-bar-letter-spacing]', array(
+			'default'           => $defaults[ 'top-bar-letter-spacing' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Responsive_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-letter-spacing]', array(
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-topbar-header',
+				'priority'       => 49,
+				'label'          => __( 'Letter Spacing', 'kemet' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 0.1,
+						'step' => 0.1,
+						'max' => 10,
+					),
+				),
+			)
+		)
+	);
+	/**
      * Option:Top Bar Responsive
      */
     $wp_customize->add_setting(

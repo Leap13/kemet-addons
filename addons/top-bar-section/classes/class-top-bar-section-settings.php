@@ -91,6 +91,11 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['topbar-submenu-items-color']           = '';
             $defaults['topbar-submenu-items-h-color']           = '';
             $defaults['topbar-item-padding']           = '';
+            $defaults['top-bar-font-family']           = 'inherit';
+            $defaults['top-bar-font-weight']           = 'inherit';
+            $defaults['top-bar-text-transform']           = '';
+            $defaults['top-bar-line-height']           = '';
+            $defaults['top-bar-letter-spacing']           = '';
             return $defaults;
         }
         
