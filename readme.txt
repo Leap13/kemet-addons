@@ -2,7 +2,7 @@
 Contributors: Leap13
 Tags: metabox, Kemet, addons
 Requires at least: 4.7
-Tested up to: 5.2
+Tested up to: 5.3.2
 Requires PHP: 5.4
 Stable tag: 1.0.3
 License: GPLv3
@@ -41,6 +41,13 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+
+1.0.3 version
+- Added: Responsive menu options.
+- Added: Login form widget.
+- Added: Posts list widget.
+- Added: New widget style.
+- Added: Sticky footer option.
 
 1.0.2 version
 - Added: Display breadcrumbs options.
