@@ -14,8 +14,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_woocommerce_dynamic_css');
  * @return string
  */
 function kemet_woocommerce_dynamic_css( $dynamic_css ) {
-            //General
-            $cart_dropdown_width = kemet_get_option( 'cart-dropdown-width' );
+
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
             
@@ -26,9 +25,6 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             $css_content = array(
                 '.woocommerce .product .onsale' => array(
                     'border-radius' => esc_attr( $sale_style ),
-                ),
-                '.woocommerce .site-header .kmt-site-header-cart .widget_shopping_cart, .woocommerce .site-header .kmt-site-header-cart .widget_shopping_cart' => array(
-                    'width' => kemet_get_css_value( $cart_dropdown_width , 'px' ),
                 ),
                 '.woocommerce #content .kmt-woocommerce-container div.product div.images, .woocommerce .kmt-woocommerce-container div.product div.images, .woocommerce-page #content .kmt-woocommerce-container div.product div.images, .woocommerce-page .kmt-woocommerce-container div.product div.images' => array(
                     'width' => kemet_get_css_value( $image_width , '%' ),

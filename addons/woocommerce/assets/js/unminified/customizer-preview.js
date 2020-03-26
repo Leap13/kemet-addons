@@ -40,16 +40,4 @@
 
 		});
 	});
-	/**
-	 * DropDown Width
-	 */
-	wp.customize('kemet-settings[cart-dropdown-width]', function (setting) {
-		setting.bind(function (width) {
-
-			var dynamicStyle = '.woocommerce .site-header .kmt-site-header-cart .widget_shopping_cart, .woocommerce .site-header .kmt-site-header-cart .widget_shopping_cart { width: ' + (parseInt(width)) + 'px }';
-				
-			kemet_add_dynamic_css('cart-dropdown-width', dynamicStyle);
-
-		});
-	});
 })(jQuery);
