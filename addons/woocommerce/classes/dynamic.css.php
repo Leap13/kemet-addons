@@ -20,7 +20,8 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
-            
+            $loader_color    = kemet_get_option('infinite-scroll-loader-color' , $theme_color);
+
             //Single Product
             $image_width = kemet_get_option('product-image-width');
             $summary_width = kemet_get_option('product-summary-width');
@@ -30,7 +31,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                     'border-radius' => esc_attr( $sale_style ),
                 ),
                 '.kmt-infinite-scroll-loader .kmt-loader' => array(
-                    'background-color' => esc_attr( $theme_color ),
+                    'background-color' => esc_attr( $loader_color ),
                 ),
                 '.woocommerce #content .kmt-woocommerce-container div.product div.images, .woocommerce .kmt-woocommerce-container div.product div.images, .woocommerce-page #content .kmt-woocommerce-container div.product div.images, .woocommerce-page .kmt-woocommerce-container div.product div.images' => array(
                     'width' => kemet_get_css_value( $image_width , '%' ),

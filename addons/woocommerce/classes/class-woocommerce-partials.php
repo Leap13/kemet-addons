@@ -232,7 +232,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				return;
 			}
 
-			$msg = esc_html__( 'No more products to show.', 'kemet-addons' );
+			$end_text = kemet_get_option('infinite-scroll-last-text');
+			$msg = esc_html__( $end_text , 'kemet-addons' );
 			?>
 
 			<div class="kmt-infinite-scroll-loader">

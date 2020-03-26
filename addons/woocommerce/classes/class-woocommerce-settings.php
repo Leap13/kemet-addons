@@ -62,6 +62,8 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['up-sells-products-colunms'] = 3;
             $defaults['disable-up-sells-products'] = false;
             $defaults['woo-pagination-style'] = 'standard';
+            $defaults['infinite-scroll-last-text'] = 'No more products to show.';
+            $defaults['infinite-scroll-loader-color'] = '';
 
             return $defaults;
         }

@@ -256,6 +256,54 @@ $wp_customize->add_control(
     )
 );
 /**
+ * Option: Infinite Scroll: Last Text
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
+        'default'           => $defaults[ 'infinite-scroll-last-text' ],
+        'type'              => 'option',
+        'sanitize_callback' => 'sanitize_text_field',
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]', 
+            'conditions' => '==', 
+            'values' => 'infinite-scroll',
+        ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
+        'section'  => 'section-woo-shop',
+        'priority' => 65,
+        'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
+        'type'     => 'text',
+    )
+);
+/**
+ * Option: Loader Color
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+        'default'           => $defaults[ 'infinite-scroll-loader-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]', 
+            'conditions' => '==', 
+            'values' => 'infinite-scroll',
+        ),
+    )
+);
+$wp_customize->add_control(
+    new WP_Customize_Color_Control(
+        $wp_customize, KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+            'section' => 'section-woo-shop',
+            'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
+            'priority'=>70,
+        )
+    )
+);
+/**
 * Option: Single Product
 */
 
