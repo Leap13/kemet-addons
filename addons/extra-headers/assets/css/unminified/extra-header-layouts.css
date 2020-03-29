@@ -414,6 +414,11 @@
   transform: translateX(50%);
 }
 
+/*Disable Separator In Vertical Header*/
+.ss-content .main-header-menu > li:not(:last-child):after {
+  display: none;
+}
+
 /*--------------------------------------------------------------
 ## Header 6
 --------------------------------------------------------------*/
