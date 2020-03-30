@@ -41,6 +41,9 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'posts-in-images',
                 'posts-list',
                 'login-form',
+                'youtube-channel',
+                'facebook',
+                'soundcloud',
             ) );
 
             // Loop through widgets and load their files
