@@ -46,7 +46,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'soundcloud',
                 'kemet-flickr',
                 'google-badge',
-                'google-map'
+                'google-map',
+                'posts-tabs'
             ) );
 
             // Loop through widgets and load their files

@@ -4134,3 +4134,6 @@ to {
   font-size: 17px;
   margin-right: 5px;
 }
+.kemet-widget-tabs .field-with-border:not(:last-child){
+  border-bottom: 1px solid #ccd0d4;
+}

@@ -1,6 +1,6 @@
 <?php
 $google_map_widgets = array(
-  'title'       => __('Kemet Google Maap', 'kemet-addons' ),
+  'title'       => __('Kemet Google Map', 'kemet-addons' ),
   'classname'   => 'kfw-widget-google-map',
   'id'          => 'kemet-widget-google-map',
   'description' => __('Google Map', 'kemet-addons' ),
