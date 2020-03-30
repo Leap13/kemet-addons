@@ -176,6 +176,18 @@
   margin-bottom: 1em;
 }
 
+/********************** flickr widget **********************/
+.flickr-images {
+  display: inline-block;
+}
+
+.flickr-images .flickr_badge_image {
+  margin: 0px 9px 9px 0px;
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+}
+
 /********************** widget style **********************/
 .widget {
   overflow: hidden;
