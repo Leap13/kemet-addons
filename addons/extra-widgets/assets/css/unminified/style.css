@@ -188,6 +188,68 @@
   height: 56px;
 }
 
+/********************** tags widget **********************/
+.post-tags {
+  overflow: hidden;
+}
+
+.post-tags .label {
+  background-color: transparent;
+  background: none;
+  border-width: 1px;
+  border-style: solid;
+  float: left;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 22px;
+  margin: 0 10px 10px 0;
+  display: block;
+  padding: .2em .6em .3em;
+  text-align: center;
+}
+
+/********************** tabs widget **********************/
+#secondary .kmt-tabs-titles li {
+  margin: 0px .2em 0 0;
+}
+
+.kmt-posts-tabs .kmt-tabs-titles {
+  overflow: hidden;
+}
+
+.kmt-posts-tabs .kmt-tabs-titles li {
+  float: left;
+  padding: .5em 1em;
+  text-decoration: none;
+  font-size: 17px;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.kmt-posts-tabs .kmt-tab {
+  display: none;
+  padding: 1em 1.4em;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.kmt-posts-tabs .kmt-tab li {
+  overflow: hidden;
+  padding: 10px 0px;
+}
+
+.kmt-posts-tabs .kmt-tab li:not(:last-child) {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.kmt-posts-tabs .kmt-tab.active {
+  display: block;
+}
+
 /********************** widget style **********************/
 .widget {
   overflow: hidden;

@@ -133,6 +133,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             }
             
             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/mailchimp' . $js_prefix);
+            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/extra-widgets' . $js_prefix);
 		}
         
     }

@@ -1,9 +1,9 @@
 <?php
 $posts_tabs_widget = array(
   'title'       => __('Kemet Posts Tabs', 'kemet-addons' ),
-  'classname'   => 'kfw-widget-posts-tabs',
+  'classname'   => 'kmt-posts-tabs',
   'id'          => 'kemet-widget-posts-tabs',
-  'class'       => 'kemet-widget-tabs',
+  'class'       => 'kemet-tabs-widget',
   'description' => __('Posts Tabs', 'kemet-addons' ),
   'fields'      => array(
     array(
@@ -216,18 +216,18 @@ if( ! function_exists( 'kemet_widget_posts_tabs' ) ) {
     $tabs_order = wp_list_sort( $tabs , 'order' );
     
     ?>
-		<div class="kmt-sc-tabs horizontal style-1">
+		<div class="kmt-sc-tabs">
 			<ul class="kmt-tabs-titles">
 				<?php
 				foreach ( $tabs_order as $tab ) {
-					echo '<li><a href="#">' . $tab[ 'label' ] . '</a></li>';
+					echo '<li data-tab="'. $tab[ 'type' ] .'">' . $tab[ 'label' ] . '</li>';
 				}
 				?>
 			</ul>
 
 			<?php
 			foreach ( $tabs_order as $tab ) {
-        echo '<div id="">';
+        echo '<div id="'. $tab[ 'type' ] .'" class="kmt-tab">';
 				switch( $tab['type'] ){
             case 'popular-posts':
               $popularposts = get_posts( 'orderby=comment_count&numberposts=' . $tab['num'] );
@@ -269,8 +269,8 @@ function wp_get_posts($query , $thumb = true ) {
   $orig_post = $post;
 
   $popularposts = get_posts( $query );
+  echo '<ul class="kmt-wdg-posts-list">';
   ?>
-    <ul class="kmt-wdg-posts-list">
     <?php foreach ( $popularposts as $post ){
           setup_postdata( $post );
       echo '<li>';
@@ -283,8 +283,8 @@ function wp_get_posts($query , $thumb = true ) {
         <small class="small"><?php echo esc_attr(get_the_date(), 'kemet-addons' ); ?></small>
       </li>
         <?php } 
+        echo '</ul>';
       ?>
-    </ul>
     <?php
   $post = $orig_post;
 }
@@ -293,18 +293,20 @@ function wp_get_posts($query , $thumb = true ) {
 	/* ----------------------------------------------------------------------------------- */
 
 	function get_recent_commented( $comment_posts = 5, $avatar_size = 50 ) {
-		$comments = get_comments( 'status=approve&post_type=post&number=' . $comment_posts );
+    $comments = get_comments( 'status=approve&post_type=post&number=' . $comment_posts );
+    echo '<ul class="kmt-wdg-posts-list">';
 		foreach ( $comments as $comment ) {
 			?>
 			<li>
-				<div class="wdg-post">
+				<div class="wgt-img">
 					<?php echo get_avatar( $comment, $avatar_size ); ?>
 				</div>
 				<a href="<?php echo get_permalink( $comment->comment_post_ID ); ?>#comment-<?php echo $comment->comment_ID; ?>">
 					<?php echo strip_tags( $comment->comment_author ); ?>: <?php echo wp_html_excerpt( $comment->comment_content, 60, '...' ); ?> </a>
 			</li>
 			<?php
-		}
+    }
+    echo '</ul>';
 	}
 /* ----------------------------------------------------------------------------------- */
 	# Get commented posts 
@@ -318,14 +320,14 @@ function wp_get_posts($query , $thumb = true ) {
 		);
 
 		$tags		 = get_tags( $tags_args );
-		$tags_cloud	 = '<div class="post_tags">';
+		$tags_cloud	 = '<div class="post-tags">';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
 
 			$tags_cloud .= "<a href='{$tag_link}' title='{$tag->count} post' class='tag-link-{$tag->term_id} label tag-{$tag->slug}'>";
 			$tags_cloud .= "{$tag->name}</a>";
 		}
-		$tags_cloud .= '</div>';
+    $tags_cloud .= '</div>';
 		echo $tags_cloud;
-	}
+  }
 register_widget( Kemet_Create_Widget::instance( "kemet_widget_posts_tabs" , $posts_tabs_widget) );
