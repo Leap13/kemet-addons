@@ -48,7 +48,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'google-badge',
                 'google-map',
                 'posts-tabs',
-                'recent-tweets'
+                'recent-tweets',
+                'social-counter'
             ) );
 
             // Loop through widgets and load their files
