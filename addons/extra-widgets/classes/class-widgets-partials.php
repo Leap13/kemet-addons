@@ -47,7 +47,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
                 'kemet-flickr',
                 'google-badge',
                 'google-map',
-                'posts-tabs'
+                'posts-tabs',
+                'recent-tweets'
             ) );
 
             // Loop through widgets and load their files
@@ -133,6 +134,9 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             }
             
             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/mailchimp' . $js_prefix);
+            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/doT' . $js_prefix);
+            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/codebird' . $js_prefix);
+            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/socialfeed' . $js_prefix);
             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/extra-widgets' . $js_prefix);
 		}
         

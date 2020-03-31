@@ -251,6 +251,122 @@
   display: block;
 }
 
+/**************** Twitter Feed *************/
+/***************************************************/
+.tweets-container > div:not(:last-child) {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.kmt-author-info {
+  overflow: hidden;
+}
+
+.kmt-author-info a {
+  float: left;
+}
+
+.kmt-author-info a img {
+  border-radius: 50%;
+}
+
+.kmt-author-info span {
+  float: left;
+  margin-left: 10px;
+}
+
+.kemet-social-feed {
+  padding: 15px 0;
+}
+
+.kemet-social-feed.hidden {
+  background-color: red !important;
+}
+
+.kemet-social-feed img {
+  width: auto;
+  width: auto\9;
+  height: auto;
+  border: 0;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+
+.kmt-feed-author-img img {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.kmt-social-content > *:not(:last-child) {
+  margin: 0 0 15px 0;
+}
+
+.kemet-social-feed {
+  overflow: hidden;
+}
+
+.kemet-social-feed .attachment {
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  width: 100%;
+}
+
+.kemet-social-feed .kmt-feed-read-more {
+  display: block;
+  margin-top: 5px;
+}
+
+.kemet-social-feed .kmt-feed-meta {
+  margin-bottom: 4px;
+  min-height: 20px;
+  overflow: hidden;
+}
+
+.kemet-social-feed .kmt-feed-meta .kmt-feed-date {
+  float: right;
+}
+
+.kemet-social-feed p.kmt-feed-text {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.kemet-social-feed .media-body {
+  overflow: hidden;
+}
+
+.kemet-social-feed .media-body .premium-social-network-icon {
+  margin-top: -3px;
+  margin-right: 5px;
+  width: 16px;
+}
+
+.kemet-social-feed .media-body .kmt-feed-content-wrap {
+  line-height: 20px;
+  clear: both;
+}
+
+.kemet-social-feed:first-child {
+  margin-top: 0;
+}
+
+.kemet-social-feed .media-object {
+  display: block;
+  width: 30px;
+}
+
+.kemet-social-feed .media-heading {
+  margin: 0 0 5px;
+}
+
+.kemet-social-feed .media-list {
+  margin-left: 0;
+  list-style: none;
+}
+
 /********************** widget style **********************/
 .widget {
   overflow: hidden;

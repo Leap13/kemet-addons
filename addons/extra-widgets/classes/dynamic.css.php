@@ -54,7 +54,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ' => array(
 					'background-color' => esc_attr( $footer_widget_bg_color ),
                 ),
-                '.kfw-widget-posts-list .kmt-wdg-posts-list li , .kmt-posts-tabs .kmt-tab li:not(:last-child)' => array(
+                '.kfw-widget-posts-list .kmt-wdg-posts-list li , .kmt-posts-tabs .kmt-tab li:not(:last-child) , .tweets-container>div:not(:last-child)' => array(
 					'border-bottom-color' => esc_attr( $global_border_color ),
                 ),
                 '.post-tags .label , .kmt-posts-tabs .kmt-tabs-titles li , .kmt-posts-tabs .kmt-tab' => array(
