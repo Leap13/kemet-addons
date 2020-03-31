@@ -169,7 +169,6 @@ if( ! function_exists( 'kemet_widget_posts_tabs' ) ) {
     }
     
     $tabs_ground = $instance['tabs-groubs'];
-    $popularposts = '';
     $tabs	 = array();
 
     if( $tabs_ground['popular-posts-display'] == 1 ){
@@ -230,16 +229,16 @@ if( ! function_exists( 'kemet_widget_posts_tabs' ) ) {
         echo '<div id="'. $tab[ 'type' ] .'" class="kmt-tab">';
 				switch( $tab['type'] ){
             case 'popular-posts':
-              $popularposts = get_posts( 'orderby=comment_count&numberposts=' . $tab['num'] );
+              $popularposts = 'orderby=comment_count&numberposts=' . $tab['num'];
               wp_get_posts($popularposts);
               break;
             case 'recent-posts':
-              $popularposts = get_posts( 'numberposts=' . $tab['num'] );
-              wp_get_posts($popularposts);
+              $recentposts = 'numberposts=' . $tab['num'];
+              wp_get_posts($recentposts);
               break;
             case 'random-posts':
-              $popularposts = get_posts( 'orderby=rand&numberposts=' . $tab['num'] );
-              wp_get_posts($popularposts);
+              $randomposts = 'orderby=rand&numberposts=' . $tab['num'] ;
+              wp_get_posts($randomposts);
               break;
             case 'recent-comments-posts':
               get_recent_commented( $tab[ 'num' ], 50 );
@@ -265,13 +264,13 @@ if( ! function_exists( 'kemet_widget_posts_tabs' ) ) {
 /* ----------------------------------------------------------------------------------- */
 
 function wp_get_posts($query , $thumb = true ) {
-  global $wpdb, $post;
+  global $post;
   $orig_post = $post;
 
-  $popularposts = get_posts( $query );
+  $posts = get_posts( $query );
   echo '<ul class="kmt-wdg-posts-list">';
   ?>
-    <?php foreach ( $popularposts as $post ){
+    <?php foreach ( $posts as $post ){
           setup_postdata( $post );
       echo '<li>';
       if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail()) { ?>
