@@ -16,6 +16,7 @@ add_filter( 'kemet_dynamic_css', 'kemet_ext_widgets_dynamic_css');
 
 function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
             //Global Colors
+            $theme_color      = kemet_get_option( 'theme-color' );
             $global_bg_color      = kemet_get_option( 'global-background-color' );
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $global_footer_text_color      = kemet_get_option( 'global-footer-text-color' );
@@ -65,6 +66,9 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
                 ),
                 '.kmt-posts-tabs .kmt-tabs-titles li.active' => array(
 					'background-color' => esc_attr( $global_bg_color ),
+                ),
+                '.kmt-social-counter ul li a:hover .count-icon' => array(
+					'border-color' => esc_attr( $theme_color ),
                 ),
                 '.wgt-img img' => array(
 					'border-color' => esc_attr( $global_border_color ),

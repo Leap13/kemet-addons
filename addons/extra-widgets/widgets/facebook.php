@@ -121,8 +121,6 @@ if( ! function_exists( 'kemet_widget_facecook_box' ) ) {
              data-hide-cover="<?php echo $hide_cover ?>"
              data-show-facepile="<?php echo $show_facepile ?>"
              data-hide-cta="<?php echo $hide_cta ?>"></div>
-
-
         <?php
     endif;
     echo $args['after_widget']; 

@@ -367,6 +367,53 @@
   list-style: none;
 }
 
+/**************** Social Counter *************/
+.kmt-social-counter ul li {
+  float: left;
+  line-height: 15px;
+  width: 111px;
+  overflow: hidden;
+  padding-bottom: 15px;
+  margin-bottom: 0px;
+}
+
+.kmt-social-counter ul li a {
+  transition: none;
+  text-align: center;
+  font-size: 13px;
+}
+
+.kmt-social-counter ul li a * {
+  transition: all 0.2s ease-in-out;
+}
+
+.kmt-social-counter ul li a span {
+  display: block;
+}
+
+.kmt-social-counter ul li a .count-icon {
+  float: left;
+  background-color: #F2F2F2;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+  display: block;
+  height: 43px;
+  line-height: 43px;
+  font-size: 26px;
+  margin: 5px auto;
+  width: 43px;
+  border: 2px solid transparent;
+  color: #cc181e;
+}
+
+.kmt-social-counter .subscriber {
+  display: block;
+  float: left;
+  line-height: 1.5;
+  margin: 6px 0px 6px 10px;
+}
+
 /********************** widget style **********************/
 .widget {
   overflow: hidden;
