@@ -15,7 +15,40 @@ $social_counter_widgets = array(
         'id'      => 'youtube-channel',
         'type'    => 'text',
         'title'   => __('YouTube Channel ID', 'kemet-addons' ),
-      ), 
+      ),
+      array(
+        'id'            => 'facebook-fields',
+        'type'          => 'accordion',
+        'accordions'    => array(
+          array(
+            'title'     => 'Facebook',
+            'fields'    => array(
+              array(
+                'type'    => 'content',
+                'content' => __('<span  class="button fb-login" style="background-color: #3b5998; color: #fff; border:0;">Log in with Facebook</span>'),
+              ),
+              array(
+                'id'      => 'access-token',
+                'type'    => 'textarea',
+                'title'   => 'Access Token',
+                'class'   => 'fb-access-token',
+              ),
+              array(
+                'id'      => 'fb-page-id',
+                'type'    => 'text',
+                'title'   => 'Page ID',
+                'class'   => 'fb-page-id',
+              ),
+              array(
+                'id'      => 'fb-page-name',
+                'type'    => 'text',
+                'title'   => 'Page Name',
+                'class'   => 'fb-page-name',
+              ),
+            ),
+          ),
+        ),
+      ),
   )
 );
 
@@ -27,6 +60,14 @@ if( ! function_exists( 'kemet_widget_social_counter' ) ) {
     }
 
     $youtube = isset($instance['youtube-channel']) ? $instance['youtube-channel'] : '';
+    $faceboo_access_token = isset($instance['access-token']) ? $instance['access-token'] : '';
+    $faceboo_page_id = isset($instance['fb-page-id']) ? $instance['fb-page-id'] : '';
+    $faceboo_name = isset($instance['fb-page-name']) ? $instance['fb-page-name'] : '';
+    var_dump($faceboo_name);
+    if(!empty($faceboo_access_token) && !empty($faceboo_page_id) && !empty($faceboo_name)){
+      $fb_count = facebook_count($faceboo_page_id , $faceboo_access_token);
+      var_dump($fb_count);
+    }
     $html = '<div class="kmt-social-counter">';
     $html .= '<ul>';
     if(!empty($youtube)):
@@ -71,5 +112,15 @@ function get_youtube_subs($url,$useragent='cURL',$headers=false, $follow_redirec
 
     curl_close($ch);
     return $result;
+}
+/**
+ * Gets JSON Data from Facebook
+ */
+function facebook_count( $page_id, $page_access_token ) { 
+    $api_url = 'https://graph.facebook.com/' . $page_id . "/?fields=fan_count&access_token=" . $page_access_token;
+    
+    $api_response = rplg_urlopen( $api_url );
+  
+    return $api_response;
 }
 register_widget( Kemet_Create_Widget::instance( "kemet_widget_social_counter" , $social_counter_widgets) );

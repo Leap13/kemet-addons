@@ -278,12 +278,14 @@ if( ! class_exists( 'KFW' ) ) {
       wp_enqueue_script( 'kfw', KFW::include_plugin_url( 'assets/js/kfw'. $min .'.js' ), array( 'kfw-plugins-field' ), '1.0.0', true );
 
       wp_localize_script( 'kfw', 'kfw_vars', array(
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
         'color_palette'  => apply_filters( 'kfw_color_palette', array() ),
         'i18n'           => array(
           'confirm'             => esc_html__( 'Are you sure?', 'kfw' ),
           'reset_notification'  => esc_html__( 'Restoring options.', 'kfw' ),
           'import_notification' => esc_html__( 'Importing options.', 'kfw' ),
         ),
+        
       ) );
 
       // load admin enqueue scripts and styles

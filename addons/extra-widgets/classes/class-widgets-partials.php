@@ -30,8 +30,30 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             add_action( 'widgets_init', array( $this, 'kemet_extra_widgets_markup'), 10 );
             add_action( 'wp_ajax_kmt_mailchimp', array( $this, 'mailchimp_action' ) );
             add_action( 'wp_ajax_nopriv_kmt_mailchimp', array( $this, 'mailchimp_action' ) );
+            add_action( 'wp_ajax_get_page_token', array( $this, 'get_page_token' ) );
+            add_action( 'wp_ajax_nopriv_get_page_token', array( $this, 'get_page_token' ) );
+            add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         }
         
+        /**
+         * Get Facebook page token for Facebook Reviews
+        */
+        public function get_page_token() {
+            
+            $api_url = 'https://appfb.premiumaddons.com/wp-json/fbapp/v2/pages';
+
+            $response = wp_remote_get( $api_url, array(
+                'timeout'   => 60,
+                'sslverify' => false
+            ) );
+            
+            $body = wp_remote_retrieve_body( $response );
+            $body = json_decode( $body, true );
+
+            wp_send_json_success( $body );
+
+        }
+
         public static function kemet_extra_widgets_markup() {
 
             // Define array of custom widgets for the theme
@@ -139,6 +161,10 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/codebird' . $js_prefix);
             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/socialfeed' . $js_prefix);
             Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/extra-widgets' . $js_prefix);
+        }
+        public function enqueue_scripts()  {
+            wp_enqueue_script( 'facebook-helper', KEMET_WIDGETS_URL . 'assets/js/minified/fb-helper-min.js', array(), KEMET_ADDONS_VERSION );
+            wp_enqueue_script( 'facebook-login', KEMET_WIDGETS_URL . 'assets/js/unminified/extra-widgets-admin.js', array(), KEMET_ADDONS_VERSION );
 		}
         
     }
