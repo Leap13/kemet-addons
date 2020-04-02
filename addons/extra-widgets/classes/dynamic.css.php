@@ -64,7 +64,10 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
                 '.kmt-posts-tabs .kmt-tabs-titles li' => array(
 					'background-color' => esc_attr( $global_border_color ),
                 ),
-                '.kmt-posts-tabs .kmt-tabs-titles li.active' => array(
+                '.kmt-social-counter ul li a .count-icon' => array(
+					'background-color' => esc_attr( kemet_color_brightness($global_bg_color , 0.94 , 'dark') ),
+                ),
+                '.kmt-posts-tabs .kmt-tabs-titles li.active , .kmt-social-counter ul li a:hover .count-icon' => array(
 					'background-color' => esc_attr( $global_bg_color ),
                 ),
                 '.kmt-social-counter ul li a:hover .count-icon' => array(

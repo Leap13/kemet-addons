@@ -414,6 +414,18 @@
   color: #39599f;
 }
 
+.kmt-social-counter ul li a .count-icon.dashicons-twitter {
+  color: #45b0e3;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-format-video {
+  color: #3fbfce;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-format-image {
+  color: #40639c;
+}
+
 .kmt-social-counter .subscriber {
   display: block;
   float: left;
