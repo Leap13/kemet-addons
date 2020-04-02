@@ -368,7 +368,12 @@
                     margin: 5px auto;
                     width: 43px;
                     border: 2px solid transparent;
-                    color: rgb(204,24,30);
+                    &.dashicons-video-alt3{
+                        color: rgb(204,24,30);
+                    }
+                    &.dashicons-facebook-alt{
+                        color: rgb(57, 89, 159);
+                    }
                 }
             }
         }
@@ -378,7 +383,10 @@
         display: block;
         float: left;
         line-height: 1.5;
-        margin: 6px 0px 6px 10px;
+        margin: 6px 0px 6px 6px;
+        small{
+            font-size: 85%;
+        }
     }
 }
 /********************** widget style **********************/
