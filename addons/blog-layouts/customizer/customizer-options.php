@@ -20,23 +20,23 @@ $wp_customize->add_control(
 			'choices'  => array(
 				'blog-layout-1' => array(
 					'label' => __( 'Blog Layout 1', 'kemet-addons' ),
-					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-01.png',
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/large-blog.png',
 				),
 				'blog-layout-2' => array(
 					'label' => __( 'Blog Layout 2', 'kemet-addons' ),
-					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/grid-blog.png',
 				),
 				'blog-layout-3' => array(
 					'label' => __( 'Blog Layout 3', 'kemet-addons' ),
-					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/large-modern-blog.png',
 				),
 				'blog-layout-4' => array(
 					'label' => __( 'Blog Layout 4', 'kemet-addons' ),
-					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/right-left-blog.png',
 				),
 				'blog-layout-5' => array(
 					'label' => __( 'Blog Layout 5', 'kemet-addons' ),
-					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/header-layout-02.png',
+					'path'  => KEMET_BLOG_LAYOUTS_URL . '/assets/images/classic-blog.png',
 				),
 			),
 		)
