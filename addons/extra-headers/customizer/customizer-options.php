@@ -51,6 +51,10 @@ $defaults = Kemet_Theme_Options::defaults();
 						'label' => __( 'Header 8', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-08.png',
 					),
+					'disable' => array(
+						'label' => __( 'Disable', 'kemet-addons' ),
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/disable.png',
+					),
 				),
 			)
 		)
