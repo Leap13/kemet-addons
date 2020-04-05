@@ -404,14 +404,37 @@
   margin: 5px auto;
   width: 43px;
   border: 2px solid transparent;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-video-alt3 {
   color: #cc181e;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-facebook-alt {
+  color: #39599f;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-twitter {
+  color: #45b0e3;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-format-video {
+  color: #3fbfce;
+}
+
+.kmt-social-counter ul li a .count-icon.dashicons-format-image {
+  color: #40639c;
 }
 
 .kmt-social-counter .subscriber {
   display: block;
   float: left;
   line-height: 1.5;
-  margin: 6px 0px 6px 10px;
+  margin: 6px 0px 6px 6px;
+}
+
+.kmt-social-counter .subscriber small {
+  font-size: 85%;
 }
 
 /********************** widget style **********************/

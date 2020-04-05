@@ -55,9 +55,9 @@ function openFbPopup(url, width, height, callBack) {
                                 name = res.data.name,
                                 id = res.data.id;
                                 
-                                accessTokenI.val(accessToken).trigger('change');
-                                pageIDI.val(id).trigger('change');
-                                nameI.val(name).trigger('change');
+                                accessTokenI.val(accessToken).trigger('input');
+                                pageIDI.val(id).trigger('input');
+                                nameI.val(name).trigger('input');
                                 
                             }
                         },
