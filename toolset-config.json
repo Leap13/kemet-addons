@@ -28,6 +28,60 @@
         "default_value": 0
         },
         {
+        "name": "kemet_primary_header_layout",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Header Settings",
+        "gui": {
+            "display_name": "Disable Primary Header",
+            "type": "select",
+            "values": [
+            {
+                "text": "Default",
+                "value": "default"
+            },
+            {
+                "text": "Disable",
+                "value": "disable"
+            }
+            ]
+        },
+        "trigger_value": "disable",
+        "default_value": "default"
+        },
+        {
+        "name": "kemet_top_bar_enabled",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Header Settings",
+        "gui": {
+            "display_name": "Disable Top Bar",
+            "type": "select",
+            "values": [
+            {
+                "text": "Enable",
+                "value": ""
+            },
+            {
+                "text": "Disable",
+                "value": 1
+            }
+            ]
+        },
+        "trigger_value": 1,
+        "default_value": 0
+        },
+        {
         "name": "kemet_main_footer_disable",
         "filter_method": "__return_false",
         "type": [
@@ -66,6 +120,33 @@
         "group": "Footer Settings",
         "gui": {
             "display_name": "Disable Copyright Area",
+            "type": "select",
+            "values": [
+            {
+                "text": "Enable",
+                "value": ""
+            },
+            {
+                "text": "Disable",
+                "value": 1
+            }
+            ]
+        },
+        "trigger_value": 1,
+        "default_value": 0
+        },
+        {
+        "name": "display_go_top_icon",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Footer Settings",
+        "gui": {
+            "display_name": "Disable Go Top Icon",
             "type": "select",
             "values": [
             {
