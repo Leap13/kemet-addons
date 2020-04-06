@@ -1,0 +1,85 @@
+{
+    "data": [
+        {
+        "name": "kemet_featured_image_enabled",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Main Settings",
+        "gui": {
+            "display_name": "Featured Image",
+            "type": "select",
+            "values": [
+            {
+                "text": "Enable",
+                "value": ""
+            },
+            {
+                "text": "Disable",
+                "value": 1
+            }
+            ]
+        },
+        "trigger_value": 1,
+        "default_value": 0
+        },
+        {
+        "name": "kemet_main_footer_disable",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Footer Settings",
+        "gui": {
+            "display_name": "Disable Footer Area",
+            "type": "select",
+            "values": [
+            {
+                "text": "Default",
+                "value": ""
+            },
+            {
+                "text": "Disable",
+                "value": 1
+            }
+            ]
+        },
+        "trigger_value": 1,
+        "default_value": 0
+        },
+        {
+        "name": "kmt_footer_copyright_layout_disable",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Footer Settings",
+        "gui": {
+            "display_name": "Disable Copyright Area",
+            "type": "select",
+            "values": [
+            {
+                "text": "Enable",
+                "value": ""
+            },
+            {
+                "text": "Disable",
+                "value": 1
+            }
+            ]
+        },
+        "trigger_value": 1,
+        "default_value": 0
+        }
+    ]
+}
