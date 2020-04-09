@@ -82,6 +82,37 @@
         "default_value": 0
         },
         {
+        "name": "kemet_disable_sticky_header",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Header Settings",
+        "gui": {
+            "display_name": "Sticky Header",
+            "type": "select",
+            "values": [
+            {
+                "text": "Default",
+                "value": "default"
+            },
+            {
+                "text": "Enable",
+                "value": "enable"
+            },
+            {
+                "text": "Disable",
+                "value": "disable"
+            }
+            ]
+        },
+        "trigger_value": "enable",
+        "default_value": "default"
+        },
+        {
         "name": "kemet_main_footer_disable",
         "filter_method": "__return_false",
         "type": [
