@@ -82,6 +82,60 @@
         "default_value": 0
         },
         {
+        "name": "kemet_the_page_title_layout",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Page Title Settings",
+        "gui": {
+            "display_name": "Disable Page Title",
+            "type": "select",
+            "values": [
+            {
+                "text": "Default",
+                "value": "default"
+            },
+            {
+                "text": "Disable",
+                "value": "disable"
+            }
+            ]
+        },
+        "trigger_value": "disable",
+        "default_value": "default"
+        },
+        {
+        "name": "kemet_disable_breadcrumbs",
+        "filter_method": "__return_false",
+        "type": [
+            "control_filters"
+        ],
+        "target": [
+            "single"
+        ],
+        "group": "Page Title Settings",
+        "gui": {
+            "display_name": "Disable Breadcrumbs",
+            "type": "select",
+            "values": [
+            {
+                "text": "Default",
+                "value": ""
+            },
+            {
+                "text": "Disable",
+                "value": 1
+            }
+            ]
+        },
+        "trigger_value": 1,
+        "default_value": ""
+        },
+        {
         "name": "kemet_disable_sticky_header",
         "filter_method": "__return_false",
         "type": [
