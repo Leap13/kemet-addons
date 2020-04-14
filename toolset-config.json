@@ -167,6 +167,95 @@
         "default_value": "default"
         },
         {
+        "name": "site-sidebar-layout",
+        "type": [
+            "local"
+        ],
+        "group": "Layout Settings",
+        "target": [
+            "single"
+        ],
+        "gui": {
+            "display_name": "Sidebar",
+            "type": "select",
+            "values": [
+            {
+                "text": "No Sidebar",
+                "value": "no-sidebar"
+            },
+            {
+                "text": "Left Sidebar",
+                "value": "left-sidebar"
+            },
+            {
+                "text": "Right Sidebar",
+                "value": "right-sidebar"
+            }
+            ]
+        },
+        "default_value": "toolset_use_theme_setting"
+        },
+        {
+        "name": "site-sidebar-layout",
+        "type": [
+            "global"
+        ],
+        "global_key" : "kemet-settings",
+        "group": "Archive Layout Settings",
+        "target": [
+            "archive"
+        ],
+        "gui": {
+            "display_name": "Sidebar",
+            "type": "select",
+            "values": [
+            {
+                "text": "No Sidebar",
+                "value": "no-sidebar"
+            },
+            {
+                "text": "Left Sidebar",
+                "value": "left-sidebar"
+            },
+            {
+                "text": "Right Sidebar",
+                "value": "right-sidebar"
+            }
+            ]
+        },
+        "default_value": "toolset_use_theme_setting"
+        },
+        {
+        "name": "archive-post-sidebar-layout",
+        "type": [
+            "global"
+        ],
+        "global_key" : "kemet-settings",
+        "group": "Archive Layout Settings on Blog and Search Results",
+        "target": [
+            "archive"
+        ],
+        "gui": {
+            "display_name": "Sidebar",
+            "type": "select",
+            "values": [
+            {
+                "text": "No Sidebar",
+                "value": "no-sidebar"
+            },
+            {
+                "text": "Left Sidebar",
+                "value": "left-sidebar"
+            },
+            {
+                "text": "Right Sidebar",
+                "value": "right-sidebar"
+            }
+            ]
+        },
+        "default_value": "toolset_use_theme_setting"
+        },
+        {
         "name": "kemet_main_footer_disable",
         "filter_method": "__return_false",
         "type": [
