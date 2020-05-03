@@ -2,9 +2,9 @@
 Contributors: Leap13
 Tags: metabox, Kemet, addons
 Requires at least: 4.7
-Tested up to: 5.3.2
+Tested up to: 5.4
 Requires PHP: 5.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,8 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.0.4 version
+- Fixed: Header Bottom Border in responsive issue.
 
 1.0.3 version
 - Added: Responsive menu options.
