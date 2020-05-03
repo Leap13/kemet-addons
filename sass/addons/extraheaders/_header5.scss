@@ -25,10 +25,16 @@
         width: 100%;
     }
 }
-.header-main-layout-5 {
-    .main-header-bar{
-        border-bottom-width: 0 !important;
+body{
+    &:not(.kmt-header-break-point){
+        .header-main-layout-5{
+            .main-header-bar{
+                border-bottom-width: 0 !important;
+            }
+        }
     }
+}
+.header-main-layout-5 {
     .main-header-bar-navigation{
         width: 100%;
     }
