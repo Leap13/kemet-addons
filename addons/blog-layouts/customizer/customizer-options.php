@@ -128,32 +128,7 @@ $wp_customize->add_control(
 			),
 		)
 	);
-/**
-* Option: Excerpt Length
-*/
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
-        'default'           => $defaults[ 'blog-excerpt-length' ],
-        'type'              => 'option',
-        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
-    )
-);
-$wp_customize->add_control(
-		new Kemet_Control_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
-				'type'        => 'kmt-slider',
-				'section'     => 'section-blog',
-				'priority'    => 5,
-				'label'       => __( 'Excerpt Length', 'kemet-addons' ),
-				'suffix'      => '',
-				'input_attrs' => array(
-					'min'  => 0,
-					'step' => 1,
-					'max'  => 500,
-				),
-			)
-		)
-	);
+
 	/**
 	* Option: Border Size
 	*/
@@ -298,6 +273,32 @@ $wp_customize->add_control(
         )
     )
 );
+	/**
+	* Option: Excerpt Length
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
+			'default'           => $defaults[ 'blog-excerpt-length' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-blog',
+				'priority'    => 26,
+				'label'       => __( 'Excerpt Length', 'kemet-addons' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 500,
+				),
+			)
+		)
+	);
 	/**
 	 * Option: Overlay Styles
 	 */
