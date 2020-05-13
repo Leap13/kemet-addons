@@ -300,6 +300,20 @@ $wp_customize->add_control(
 		)
 	);
 	/**
+	 * Option: Title
+	 */
+	$wp_customize->add_control(
+		new Kemet_Control_Title(
+			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-overlay-title]', array(
+				'type'     => 'kmt-title',
+				'label'    => __( 'Overlay Image Style', 'kemet-addons' ),
+				'section'  => 'section-blog',
+				'priority' => 118,
+				'settings' => array(),
+			)
+		)
+	);
+	/**
 	 * Option: Overlay Styles
 	 */
 	$wp_customize->add_setting(
@@ -453,3 +467,30 @@ $wp_customize->add_control(
 		)
 	)
 );
+/**
+	* Option: Post Margin Bottom
+	*/
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[post-margin-bottom]', array(
+			'default'           => $defaults[ 'post-margin-bottom' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[post-margin-bottom]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-blog',
+				'priority'    => 151,
+				'label'       => __( 'Post Margin Bottom', 'kemet-addons' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 500,
+				),
+			)
+		)
+	);

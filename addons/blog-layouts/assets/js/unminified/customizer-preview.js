@@ -39,4 +39,12 @@
 			});
 		});
 	});
+	wp.customize('kemet-settings[post-margin-bottom]', function (setting) {
+		setting.bind(function (margin) {
+
+			var dynamicStyle = '.blog-layout-1 .kmt-article-post, .blog-layout-3 .kmt-article-post, .blog-layout-5 .kmt-article-post { margin-bottom: ' + margin + 'px }';
+
+			kemet_add_dynamic_css('blog-title-meta-border-size', dynamicStyle);
+		});
+	});
 })(jQuery);
