@@ -27,7 +27,7 @@
 		var conatiner = $('.blog-posts-container.blog-layout-2');
 
 		if('undefined' != typeof conatiner){
-			conatiner.isotope( 'layout');
+			conatiner.masonry( 'layout');
 		}
 	}
 	var options = ['kemet-settings[blog-posts-border-size]','kemet-settings[container-inner-spacing]','kemet-settings[blog-container-inner-spacing]','kemet-settings[read-more-border-size]','kemet-settings[readmore-padding]'];

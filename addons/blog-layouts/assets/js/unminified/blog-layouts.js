@@ -4,7 +4,7 @@
       if($('.blog-posts-container.blog-layout-2').hasClass('fit-rows')){
         Mode = 'fitRows';
       }
-      $('.blog-posts-container.blog-layout-2').isotope({
+      $('.blog-posts-container.blog-layout-2').masonry({
         itemSelector: '.kmt-article-post',
         layoutMode: Mode,
       });
