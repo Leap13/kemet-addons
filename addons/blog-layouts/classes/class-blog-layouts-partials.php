@@ -25,6 +25,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
             add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
+            add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) , 1);
         }
         function kemet_blog_post_container($classes){
             $classes[] = kemet_get_option( 'blog-layouts' );
@@ -63,12 +64,17 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             return $classes;
         }
 
+        /**
+		 * Enqueue Scripts
+		 */
+		public function enqueue_scripts() {
+            wp_enqueue_script( 'kemet-isotope', KEMET_BLOG_LAYOUTS_URL . 'assets/js/unminified/isotope.pkgd.js', array( 'jquery' ), KEMET_ADDONS_VERSION, true );
+        }
         function add_styles() {
             Kemet_Style_Generator::kmt_add_css( KEMET_BLOG_LAYOUTS_DIR.'assets/css/minified/blog-layouts.min.css');
 
         }
         public function add_scripts() {
-            Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/kemet-grid.min.js');
             Kemet_Style_Generator::kmt_add_js(KEMET_BLOG_LAYOUTS_DIR.'assets/js/minified/blog-layouts.min.js');
        }
     }
