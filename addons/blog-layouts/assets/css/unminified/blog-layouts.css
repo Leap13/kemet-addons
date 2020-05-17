@@ -519,6 +519,20 @@
   width: fit-content;
 }
 
+.kmt-pagination.standard .nav-links > a {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.kmt-pagination.standard .nav-links > a > span {
+  vertical-align: middle;
+}
+
+.kmt-pagination.standard .page-numbers.prev, .kmt-pagination.standard .page-numbers.next {
+  width: 2.33333em;
+  height: 2.33333em;
+}
+
 /*--------------------------------------------------------------
 ## Blog Layout 2
 --------------------------------------------------------------*/

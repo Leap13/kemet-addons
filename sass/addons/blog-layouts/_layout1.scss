@@ -7,3 +7,22 @@
     }
 }
 
+.kmt-pagination{
+    &.standard{
+        .nav-links{
+            > a{
+                border-width: 1px;
+                border-style: solid;
+                > span{
+                    vertical-align: middle;
+                }
+            }
+        }
+        .page-numbers{
+            &.prev , &.next{
+                width: 2.33333em;
+                height: 2.33333em;
+            }
+        }
+    }
+}

@@ -21,6 +21,8 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 		 */
 		public function __construct() {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+            remove_action( 'kemet_pagination', 'kemet_number_pagination' );
+            add_action( 'kemet_pagination', array( $this,'kemet_addons_number_pagination') );
             add_action( 'post_class', array( $this, 'kemet_post_class_blog_grid' ) );
             add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
             add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
@@ -64,6 +66,33 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             return $classes;
         }
 
+        /**
+         * Kemet addons Pagination
+         *
+         */
+        function kemet_addons_number_pagination() {
+            global $numpages;
+            $enabled = apply_filters( 'kemet_pagination_enabled', true );
+            $pagination_style = kemet_get_option('blog-pagination-style');
+            $prev_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-previous', false ) : '<span class="dashicons dashicons-arrow-left-alt2"></span>';
+            $next_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-next', false ) : '<span class="dashicons dashicons-arrow-right-alt2"></span>';;
+            if ( isset( $numpages ) && $enabled ) {
+                ob_start();
+                echo "<div class='kmt-pagination ". $pagination_style ."'>";
+                the_posts_pagination(
+                    array(
+                        'prev_text'    => $prev_text,
+                        'next_text'    => $next_text,
+                        'taxonomy'     => 'category',
+                        'in_same_term' => true,
+                    )
+                );
+                echo '</div>';
+                $output = ob_get_clean();
+                echo apply_filters( 'kemet_pagination_markup', $output ); // WPCS: XSS OK.
+            }
+        }
+    
         /**
 		 * Enqueue Scripts
 		 */

@@ -494,3 +494,51 @@ $wp_customize->add_control(
 			)
 		)
 	);
+	/**
+	 * Option: Pagination
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[blog-pagination-style]', array(
+			'default'           => $defaults[ 'blog-pagination-style' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[blog-pagination-style]', array(
+			'type'     => 'select',
+			'section'  => 'section-blog',
+			'priority' => 155,
+			'label'    => __( 'Pagination', 'kemet-addons' ),
+			'choices'  => array(
+				'next-prev'    => __( 'Next/Prev', 'kemet-addons' ),
+				'standard' => __( 'Standard', 'kemet-addons' ),
+				'infinite-scroll' => __( 'Infinite', 'kemet-addons' ),
+			),
+		)
+	);
+	/**
+   	* Option: Pagination Border Color 
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[blog-pagination-border-color]', array(
+		  'default'           => $defaults[ 'blog-pagination-border-color' ],
+		  'type'              => 'option',
+		  //'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[blog-pagination-style]', 
+			'conditions' => '==', 
+			'values' => 'icons',
+		),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[blog-pagination-border-color]', array(
+			'label'   => __( 'Pagination Border Color', 'kemet-addons' ),
+			'section' => 'section-blog',
+			'priority' => 160,
+		  )
+		)
+	);
