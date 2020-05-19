@@ -28,6 +28,9 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'wp_enqueue_scripts', array( $this,'site_scripts') , 1);
+            add_filter( 'kemet_theme_js_localize', array( $this, 'blog_js_localize' ) );
+            add_action( 'wp_ajax_kemet_pagination_infinite', array( $this, 'kemet_pagination_infinite' ) );
+			add_action( 'wp_ajax_nopriv_kemet_pagination_infinite', array( $this, 'kemet_pagination_infinite' ) );
         }
         function kemet_blog_post_container($classes){
             $classes[] = kemet_get_option( 'blog-layouts' );
@@ -76,7 +79,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             $pagination_style = kemet_get_option('blog-pagination-style');
             $prev_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-previous', false ) : '<span class="dashicons dashicons-arrow-left-alt2"></span>';
             $next_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-next', false ) : '<span class="dashicons dashicons-arrow-right-alt2"></span>';;
-            if ( isset( $numpages ) && $enabled ) {
+            if ( isset( $numpages ) && $enabled && $pagination_style != 'infinite-scroll' ) {
                 ob_start();
                 echo "<div class='kmt-pagination ". $pagination_style ."'>";
                 the_posts_pagination(
@@ -90,9 +93,68 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
                 echo '</div>';
                 $output = ob_get_clean();
                 echo apply_filters( 'kemet_pagination_markup', $output ); // WPCS: XSS OK.
-            }
+
+            }else if($pagination_style == 'infinite-scroll'){ ?>
+
+                <div class="kmt-infinite-scroll-loader">
+				<div class="kmt-infinite-scroll-dots">
+					<span class="kmt-loader"></span>
+					<span class="kmt-loader"></span>
+					<span class="kmt-loader"></span>
+					<span class="kmt-loader"></span>
+				</div>
+				<p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
+			</div>
+
+           <?php }
         }
-    
+        
+        /**
+		 * Infinite Posts Show on scroll
+		 *
+		 * @since 1.0
+		 * @param array $localize   JS localize variables.
+		 * @return array
+		 */
+		function blog_js_localize( $localize ) {
+
+			global $wp_query;
+
+			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
+			$localize['blog_infinite_count']        	 = 2;
+			$localize['blog_infinite_total']        	 = $wp_query->max_num_pages;
+			$localize['pagination_style']        	     = 'infinite-scroll';
+			$localize['blog_infinite_nonce']        	 = wp_create_nonce( 'kmt-load-more-nonce' );
+			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
+
+			return $localize;
+		}
+
+
+        /**
+		 * Infinite Posts Show on scroll
+		 */
+		function kemet_pagination_infinite() {
+
+			check_ajax_referer( 'kmt-load-more-nonce', 'nonce' );
+
+			do_action( 'kemet_pagination_infinite' );
+
+			$query_vars                = json_decode( stripslashes( $_POST['query_vars'] ), true );
+			$query_vars['paged']       = ( isset( $_POST['page_no'] ) ) ? stripslashes( $_POST['page_no'] ) : 1;
+			$query_vars['post_status'] = 'publish';
+			$posts                     = new WP_Query( $query_vars );
+
+			if ( $posts->have_posts() ) {
+				while ( $posts->have_posts() ) {
+					$posts->the_post();
+				}
+			}
+			wp_reset_query();
+
+			wp_die();
+        }
+        
         /**
 		 * Enqueue Scripts
 		 */

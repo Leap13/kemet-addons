@@ -47,4 +47,5 @@
 			kemet_add_dynamic_css('blog-title-meta-border-size', dynamicStyle);
 		});
 	});
+	kemet_css('kemet-settings[blog-pagination-border-color]', 'border-color', '.kmt-pagination.standard .nav-links > a');
 })(jQuery);

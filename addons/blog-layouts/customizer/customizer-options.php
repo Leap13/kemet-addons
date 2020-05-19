@@ -524,12 +524,12 @@ $wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[blog-pagination-border-color]', array(
 		  'default'           => $defaults[ 'blog-pagination-border-color' ],
 		  'type'              => 'option',
-		  //'transport'         => 'postMessage',
+		  'transport'         => 'postMessage',
 		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
 		  'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[blog-pagination-style]', 
 			'conditions' => '==', 
-			'values' => 'icons',
+			'values' => 'standard',
 		),
 		)
 	);

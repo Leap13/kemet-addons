@@ -66,7 +66,7 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
                 '.blog-layout-1 .kmt-article-post, .blog-layout-3 .kmt-article-post, .blog-layout-5 .kmt-article-post' => array(
                     'margin-bottom'   => kemet_get_css_value( $post_margin_bottom , 'px' ),
                 ),
-                '.kmt-pagination.icons .nav-links > a' => array(
+                '.kmt-pagination.standard .nav-links > a' => array(
                     'border-color' => esc_attr($blog_pagination_border_color),
                 ),
             );
