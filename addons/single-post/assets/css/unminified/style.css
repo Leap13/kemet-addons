@@ -37,6 +37,8 @@
 
 .kmt-author-box-info .kmt-author-avatar img {
   border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 
 .kmt-separate-container .kmt-author-box-info {

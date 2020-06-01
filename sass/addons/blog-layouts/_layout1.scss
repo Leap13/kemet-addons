@@ -19,6 +19,9 @@
             }
         }
         .page-numbers{
+            width: 2.33333em;
+            height: 2.33333em;
+            line-height: calc(2.33333em - 3px);
             &.prev , &.next{
                 width: 2.33333em;
                 height: 2.33333em;

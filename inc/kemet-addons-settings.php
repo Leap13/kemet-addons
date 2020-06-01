@@ -24,7 +24,7 @@ if (class_exists('KFW')) {
     // Create a sub-tab
     KFW::createSection($prefix, array(
     'id' => 'primary_tab',
-    'title' => __( 'Customizer Options', 'kemet-addons' ),
+    'title' => __( 'Customizer & Page Options', 'kemet-addons' ),
     'priority' => '1',
     'fields' => array(
       // A switcher field
@@ -37,8 +37,8 @@ if (class_exists('KFW')) {
       ),array(
         'id' => 'extra-headers',
         'type' => 'switcher',
-        'title' => __( 'Kemet Advanced Headers', 'kemet-addons' ),
-        'subtitle' => __('Enable/Disable Kemet advanced headers that include extra header styles and customization options.', 'kemet-addons'),
+        'title' => __( 'Advanced Headers', 'kemet-addons' ),
+        'subtitle' => __('Enable/Disable more header layouts and no header option in both customizer and page/post options.', 'kemet-addons'),
         'default' => false,
       ),array(
         'id' => 'sticky-header',

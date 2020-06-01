@@ -123,7 +123,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['blog_infinite_count']        	 = 2;
 			$localize['blog_infinite_total']        	 = $wp_query->max_num_pages;
-			$localize['pagination_style']        	     = 'infinite-scroll';
+			$localize['pagination_style']        	     = 'infinite-scroll-555';
 			$localize['blog_infinite_nonce']        	 = wp_create_nonce( 'kmt-load-more-nonce' );
 			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
 
