@@ -20,7 +20,7 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 		 *  Constructor
 		 */
 		public function __construct() {
-            add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+            add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) , 5);
             remove_action( 'kemet_pagination', 'kemet_number_pagination' );
             add_action( 'kemet_pagination', array( $this,'kemet_addons_number_pagination') );
             add_action( 'post_class', array( $this, 'kemet_post_class_blog_grid' ) );
@@ -147,7 +147,8 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 
 			if ( $posts->have_posts() ) {
 				while ( $posts->have_posts() ) {
-					$posts->the_post();
+                    $posts->the_post();
+					get_template_part( 'templates/content', 'blog' );
 				}
 			}
 			wp_reset_query();

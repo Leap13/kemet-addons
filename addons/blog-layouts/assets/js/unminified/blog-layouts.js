@@ -22,7 +22,7 @@
     blog_infinite_nonce = kemet.blog_infinite_nonce || '';
     
     if( typeof paginationStyle != '' && paginationStyle == 'infinite-scroll' ){
-      
+    
         if( $('#main').find('.post:last').length > 0 ) {
             var windowHeight = jQuery(window).outerHeight() / 1.25;
             $(window).scroll(function () {
@@ -35,7 +35,6 @@
 
                         if( loadStatus == true ) {
                             ProducetsLoader(counter);
-                            console.log('work');
                             counter++;
                             loadStatus = false;
                         }
@@ -61,10 +60,11 @@
 
                 var posts = $(data),
                     postContainer = $('#main .blog-posts-container');
-                    console.log(posts);
-                    postContainer.append( posts );
-                
-                
+                    
+                postContainer.append( posts );
+
+                //postContainer.masonry('layout');
+
                 loader.hide();
                 //	Show no more msg
                 if( counter > totalPages ) {
@@ -73,5 +73,6 @@
                 loadStatus = true;
             });
         }
-    }
+    }       
+    
 })(jQuery);
