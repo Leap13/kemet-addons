@@ -59,11 +59,16 @@
             $.post( ajax_url, data, function( data ) {
 
                 var posts = $(data),
-                    postContainer = $('#main .blog-posts-container');
+                    postContainer = $('#main > div > .blog-posts-container');
                     
                 postContainer.append( posts );
 
-                //postContainer.masonry('layout');
+                // postContainer.masonry('appended', posts, true);
+
+                // postContainer.masonry('layout');
+                
+                // postContainer.trigger('masonryItemAdded');
+                
 
                 loader.hide();
                 //	Show no more msg

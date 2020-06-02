@@ -40,7 +40,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             add_action( 'customize_register', array( $this, 'customize_register' ) );
             add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ), 1 );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
-
+            add_action( 'kemet_pagination_infinite', array( $this, 'blog_template' ) );
         }
         
 
