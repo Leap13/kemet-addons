@@ -19,6 +19,10 @@ $defaults = Kemet_Theme_Options::defaults();
 				'label'    => __( 'Kemet Headers', 'kemet-addons' ),
 				'type'     => 'kmt-radio-image',
 				'choices'  => array(
+					'disable' => array(
+						'label' => __( 'Disable', 'kemet-addons' ),
+						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/disable.png',
+					),
 					'header-main-layout-1' => array(
 						'label' => __( 'Header 1', 'kemet-addons' ),
 						'path'  => KEMET_EXTRA_HEADERS_URL . '/assets/images/header-layout-01.png',
