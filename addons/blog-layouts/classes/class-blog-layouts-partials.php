@@ -23,41 +23,44 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) , 5);
             remove_action( 'kemet_pagination', 'kemet_number_pagination' );
             add_action( 'kemet_pagination', array( $this,'kemet_addons_number_pagination') );
-            add_action( 'wp', array( $this, 'testinit' ) );
+            add_filter( 'post_class', array( $this, 'kemet_post_class_blog_grid' ) );
             add_filter( 'excerpt_length', array( $this, 'kemet_custom_excerpt_length' ));
             add_filter( 'kemet_blog_post_container', array( $this, 'kemet_blog_post_container' ));
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'wp_enqueue_scripts', array( $this,'site_scripts') , 1);
             add_filter( 'kemet_theme_js_localize', array( $this, 'blog_js_localize' ) );
-            add_action( 'kemet_pagination_infinite', array( $this, 'testinit' ));
             add_action( 'wp_ajax_kemet_pagination_infinite', array( $this, 'kemet_pagination_infinite' ) );
 			add_action( 'wp_ajax_nopriv_kemet_pagination_infinite', array( $this, 'kemet_pagination_infinite' ) );
         }
 
-        function testinit(){
+        function kemet_post_class_blog_grid( $classes ) {
 
-            function kemet_post_class_blog_grid_t( $classes ) {
-                $blog_layout = kemet_get_option('blog-layouts');
-                $blog_grids = kemet_get_option('blog-grids');
-                
-                if($blog_layout == 'blog-layout-2'){
-                    if ( is_archive() || is_home() || is_search() ) {
-                        if(in_array('kmt-col-sm-12' , $classes)){
-                            $overlay_enabled = array_search('kmt-col-sm-12', $classes);
-                            unset($classes[$overlay_enabled]);
-                        }
-                        $desktop_columns = !empty($blog_grids['desktop']) ? ' kmt-col-md-' . strval(12 / $blog_grids['desktop']) : '';
-                        $tablet_columns = !empty($blog_grids['tablet']) ? ' kmt-col-sm-' . strval(12 / $blog_grids['tablet']) : ' kmt-col-sm-12';
-                        $mobile_columns = !empty($blog_grids['mobile']) ? ' kmt-col-xs-' . strval(12 / $blog_grids['mobile']) : ' kmt-col-xs-12';
-                        $classes[] = $desktop_columns . $tablet_columns . $mobile_columns;
-                    }
-                }
-    
-                return $classes;
+            $blog_layout = kemet_get_option('blog-layouts');
+            $blog_grids = kemet_get_option('blog-grids');
+            $is_ajax_pagination = $this->is_ajax_pagination();
+
+            if ( $is_ajax_pagination ) {
+                $classes[] = 'kmt-col-sm-12';
+                $classes[] = 'kmt-article-post';
             }
 
-            add_filter( 'post_class', 'kemet_post_class_blog_grid_t' );
+            if($blog_layout == 'blog-layout-2'){
+                if ( is_archive() || is_home() || is_search() || $is_ajax_pagination) {
+                    if(in_array('kmt-col-sm-12' , $classes)){
+                        $overlay_enabled = array_search('kmt-col-sm-12', $classes);
+                        unset($classes[$overlay_enabled]);
+                    }
+                    $desktop_columns = !empty($blog_grids['desktop']) ? ' kmt-col-md-' . strval(12 / $blog_grids['desktop']) : '';
+                    $tablet_columns = !empty($blog_grids['tablet']) ? ' kmt-col-sm-' . strval(12 / $blog_grids['tablet']) : ' kmt-col-sm-12';
+                    $mobile_columns = !empty($blog_grids['mobile']) ? ' kmt-col-xs-' . strval(12 / $blog_grids['mobile']) : ' kmt-col-xs-12';
+                    $classes[] = $desktop_columns . $tablet_columns . $mobile_columns;
+                }
+            }
+
+            return $classes;
+
         }
+        
         function kemet_blog_post_container($classes){
             $classes[] = kemet_get_option( 'blog-layouts' );
             $blog_layout = kemet_get_option('blog-layouts');
@@ -82,10 +85,12 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
          */
         function kemet_addons_number_pagination() {
             global $numpages;
+
             $enabled = apply_filters( 'kemet_pagination_enabled', true );
             $pagination_style = kemet_get_option('blog-pagination-style');
             $prev_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-previous', false ) : '<span class="dashicons dashicons-arrow-left-alt2"></span>';
-            $next_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-next', false ) : '<span class="dashicons dashicons-arrow-right-alt2"></span>';;
+            $next_text = $pagination_style == 'next-prev' ? kemet_theme_strings( 'string-blog-navigation-next', false ) : '<span class="dashicons dashicons-arrow-right-alt2"></span>';
+
             if ( isset( $numpages ) && $enabled && $pagination_style != 'infinite-scroll' ) {
                 ob_start();
                 echo "<div class='kmt-pagination ". $pagination_style ."'>";
@@ -101,7 +106,10 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
                 $output = ob_get_clean();
                 echo apply_filters( 'kemet_pagination_markup', $output ); // WPCS: XSS OK.
 
-            }else if($pagination_style == 'infinite-scroll'){ ?>
+            }else if($pagination_style == 'infinite-scroll'){ 
+                $end_text = kemet_get_option('blog-infinite-scroll-last-text');
+                $msg = esc_html__( $end_text , 'kemet-addons' );
+                ?>
 
                 <div class="kmt-infinite-scroll-loader">
 				<div class="kmt-infinite-scroll-dots">
@@ -126,11 +134,12 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 		function blog_js_localize( $localize ) {
 
 			global $wp_query;
+            $blog_pagination = kemet_get_option('blog-pagination-style');
 
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['blog_infinite_count']        	 = 2;
 			$localize['blog_infinite_total']        	 = $wp_query->max_num_pages;
-			$localize['pagination_style']        	     = 'infinite-scroll';
+			$localize['pagination_style']        	     = $blog_pagination;
 			$localize['blog_infinite_nonce']        	 = wp_create_nonce( 'kmt-load-more-nonce' );
 			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
 
@@ -163,6 +172,22 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 			wp_die();
         }
         
+        /**
+		 * Check if ajax pagination is calling.
+		 *
+		 * @return boolean classes
+		 */
+		function is_ajax_pagination() {
+
+			$pagination = false;
+
+			if ( isset( $_POST['kemet_infinite'] ) && wp_doing_ajax() && check_ajax_referer( 'kmt-load-more-nonce', 'nonce', false ) ) {
+				$pagination = true;
+			}
+
+			return $pagination;
+        }
+
         /**
 		 * Enqueue Scripts
 		 */

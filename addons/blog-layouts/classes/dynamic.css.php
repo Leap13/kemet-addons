@@ -28,6 +28,7 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
             $post_inner_spacing = kemet_get_option( 'blog-container-inner-spacing' );
             $post_margin_bottom = kemet_get_option( 'post-margin-bottom' );
             $blog_pagination_border_color = kemet_get_option( 'blog-pagination-border-color' ,  $global_border_color);
+            $inifinte_loader_color = kemet_get_option( 'blog-infinite-loader-color' ,  $theme_color);
 
             $css_content = array( 
                 '.blog-layout-2 .blog-post-layout-2 , body:not(.kmt-separate-container) .blog-layout-2 .kmt-article-post .blog-post-layout-2 , .blog-layout-3 .kmt-article-post .post-content' => array(
@@ -68,6 +69,9 @@ function kemet_blog_layouts_dynamic_css( $dynamic_css ) {
                 ),
                 '.kmt-pagination.standard .nav-links > a' => array(
                     'border-color' => esc_attr($blog_pagination_border_color),
+                ),
+                '.kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader' => array(
+                    'background-color' => esc_attr( $inifinte_loader_color ),
                 ),
             );
 

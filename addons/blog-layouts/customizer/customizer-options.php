@@ -542,3 +542,51 @@ $wp_customize->add_control(
 		  )
 		)
 	);
+	/**
+   	* Option: Pagination Border Color 
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]', array(
+		  'default'           => $defaults[ 'blog-infinite-loader-color' ],
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[blog-pagination-style]', 
+			'conditions' => '==', 
+			'values' => 'infinite-scroll',
+		),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]', array(
+			'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
+			'section' => 'section-blog',
+			'priority' => 165,
+		  )
+		)
+	);
+	/**
+	 * Option: Infinite Scroll: Last Text
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[blog-infinite-scroll-last-text]', array(
+			'default'           => $defaults[ 'blog-infinite-scroll-last-text' ],
+			'type'              => 'option',
+			'sanitize_callback' => 'sanitize_text_field',
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[blog-pagination-style]', 
+				'conditions' => '==', 
+				'values' => 'infinite-scroll',
+			),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[blog-infinite-scroll-last-text]', array(
+			'section'  => 'section-blog',
+			'priority' => 170,
+			'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
+			'type'     => 'text',
+		)
+	);

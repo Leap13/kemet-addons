@@ -22,7 +22,19 @@
     blog_infinite_nonce = kemet.blog_infinite_nonce || '';
     
     if( typeof paginationStyle != '' && paginationStyle == 'infinite-scroll' ){
-    
+        
+        var in_customizer = false;
+
+        // check for wp.customize return boolean
+		if ( typeof wp !== 'undefined' ) {
+
+			in_customizer =  typeof wp.customize !== 'undefined' ? true : false;
+
+			if ( in_customizer ) {
+				return;
+			}
+        }
+        
         if( $('#main').find('.post:last').length > 0 ) {
             var windowHeight = jQuery(window).outerHeight() / 1.25;
             $(window).scroll(function () {
@@ -54,6 +66,7 @@
                 page_no	: pageNumber,
                 nonce: blog_infinite_nonce,
                 query_vars: kemet.query_vars,
+                kemet_infinite: 'kemet_pagination_ajax',
             }
 
             $.post( ajax_url, data, function( data ) {
@@ -63,12 +76,12 @@
                     
                 postContainer.append( posts );
 
-                // postContainer.masonry('appended', posts, true);
+                postContainer.masonry('appended', posts, true);
 
-                // postContainer.masonry('layout');
-                
-                // postContainer.trigger('masonryItemAdded');
-                
+                postContainer.imagesLoaded(function () {
+                    postContainer.masonry('layout');
+                });
+                postContainer.trigger('masonryItemAdded');
 
                 loader.hide();
                 //	Show no more msg

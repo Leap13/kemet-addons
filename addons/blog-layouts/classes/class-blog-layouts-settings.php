@@ -38,9 +38,9 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             
             add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
             add_action( 'customize_register', array( $this, 'customize_register' ) );
-            add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ), 1 );
+            add_action( 'wp_head', array( $this, 'custom_template' ), 1 );
             add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
-            add_action( 'kemet_pagination_infinite', array( $this, 'blog_template' ) );
+            add_action( 'kemet_pagination_infinite', array( $this, 'custom_template' ) );
         }
         
 
@@ -61,16 +61,22 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['post-image-position']   = 'left';
             $defaults['blog-pagination-style']   = 'next-prev';
             $defaults['blog-pagination-border-color']   = '';
+            $defaults['blog-infinite-loader-color']   = '';
+            $defaults['blog-infinite-scroll-last-text']   = 'No more products to show.';
 
             return $defaults;
         }
 
         /**
 		* Blog 
-		*/
-        function blog_template() {
-            
+        */
+        function custom_template(){
+
             remove_action( 'kemet_entry_content_blog', 'kemet_entry_content_blog_template' );
+            add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ), 1 );
+        }
+        function blog_template() {
+
 			kemetaddons_get_template( 'blog-layouts/templates/' . esc_attr( kemet_get_option( 'blog-layouts' ) ) . '.php' );
         }
 

@@ -48,4 +48,5 @@
 		});
 	});
 	kemet_css('kemet-settings[blog-pagination-border-color]', 'border-color', '.kmt-pagination.standard .nav-links > a');
+	kemet_css('kemet-settings[blog-infinite-loader-color]', 'background-color', '.kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader');
 })(jQuery);
