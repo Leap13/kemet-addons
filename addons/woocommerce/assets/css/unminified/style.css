@@ -395,11 +395,10 @@ Woo Quick View
   border: 0;
 }
 
-.shop-list.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap > * {
-  flex: 1;
-}
-
 .shop-list.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details {
+  display: block;
+  width: 32%;
+  margin: 0 3% 0 0;
   position: relative;
 }
 
@@ -414,6 +413,7 @@ Woo Quick View
 .shop-list.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
   padding: 0 1.2em 0;
   align-self: center;
+  width: 65%;
 }
 
 .shop-list.woocommerce ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap > * {

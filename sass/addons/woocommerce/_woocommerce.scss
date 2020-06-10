@@ -393,10 +393,11 @@ Woo Quick View
                 .kemet-shop-thumbnail-wrap{
                     display: flex;
                     border: 0;
-                    > *{
-                        flex: 1;
-                    }
+
                     .product-list-details{
+                        display: block;
+                        width: 32%;
+                        margin: 0 3% 0 0;
                         position: relative;
                         .kmt-shop-product-out-of-stock{
                             padding: .5em .7em;
@@ -413,6 +414,7 @@ Woo Quick View
                         >*{
                             margin: .5em 0;
                         }
+                        width: 65%;
                     }
                     .woocommerce-loop-product__title{
                         text-align: left;

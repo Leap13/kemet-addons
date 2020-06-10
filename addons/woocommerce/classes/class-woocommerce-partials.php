@@ -389,6 +389,11 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					$layout_class = array_search('shop-grid', $classes);
 					unset($classes[$layout_class]);
 				}
+				if($layout_style == 'shop-list'){
+					$classes[] = 'columns-1';
+					$classes[] = 'tablet-columns-1';
+					$classes[] = 'mobile-columns-1';
+				}
 				
 				$classes[] = $layout_style;
 			}
