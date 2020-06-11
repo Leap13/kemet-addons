@@ -97,40 +97,8 @@ $wp_customize->add_control(
         'choices'  => array(
             'shop-grid'   => __( 'Grid', 'kemet-addons' ),
             'shop-list'   => __( 'List', 'kemet-addons' ),
+            'hover-style' => __( 'Hover Style', 'kemet-addons' ),
         ),
-    )
-);
-/**
-* Option: Shop Columns
-*/
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[shop-grids]', array(
-        'default'           => kemet_get_option('shop-grids'),
-        'type'              => 'option',
-        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
-        'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
-            'conditions' => '==', 
-            'values' => 'shop-grid',
-        ), 
-    )
-);
-$wp_customize->add_control(
-    new Kemet_Control_Responsive_Select(
-        $wp_customize, KEMET_THEME_SETTINGS . '[shop-grids]', array(
-            'type'           => 'kmt-responsive-select',
-            'section'        => 'section-woo-shop',
-            'priority'       => 52,
-            'label'          => __( 'Shop Columns', 'kemet' ),
-            'choices'   => array(
-                '1' => 'One',
-                '2' => 'Two',
-                '3' => 'Three',
-                '4' => 'Four',
-                '5' => 'Five',
-                '6' => 'Six',
-            ),
-        )
     )
 );
 /**
