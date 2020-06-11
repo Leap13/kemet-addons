@@ -96,7 +96,7 @@ $wp_customize->add_control(
         'label'    => __( 'Shop Layout', 'kemet-addons' ),
         'choices'  => array(
             'shop-grid'   => __( 'Grid', 'kemet-addons' ),
-            'shop-list'   => __( 'List', 'kemet-addons' ),
+            //'shop-list'   => __( 'List', 'kemet-addons' ),
             'hover-style' => __( 'Hover Style', 'kemet-addons' ),
         ),
     )

@@ -386,10 +386,55 @@ Woo Quick View
     }
 }
 /************ Shop ************/
-.shop-list{
-    &.woocommerce{
+.hover-style{
+    ul.products{
+        li.product{
+            .kemet-shop-thumbnail-wrap{
+                .product-top{
+                    position: relative;
+                    .product-btn-group{
+                        transition: all .3s ease-in-out 0s;
+                        text-align: center;
+                        width: 100%;
+                        padding: 10px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        margin: auto;
+                        max-width: 270px;
+                        right: 0;
+                        z-index: 8;
+                        opacity: 0;
+                        visibility: hidden;
+                        transform: translateY(50px) scale(.8);
+                        .kmt-quickview-icon{
+                            span{
+                                vertical-align: middle;
+                            }
+                        }
+                        .add_to_cart_button{
+                            margin: 0 1px;
+                        }
+                    }
+                }
+                &:hover{
+                    .product-top{
+                        .product-btn-group{
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(-10px) scale(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.woocommerce{
+    &.kmt-list-style{
         ul.products{
             li.product{
+                width: 100% !important;
                 .kemet-shop-thumbnail-wrap{
                     display: flex;
                     border: 0;
@@ -432,50 +477,39 @@ Woo Quick View
             }
         }
     }
-}
-.hover-style{
-    ul.products{
-        li.product{
-            .kemet-shop-thumbnail-wrap{
-                .product-top{
-                    position: relative;
-                    .product-btn-group{
-                        transition: all .3s ease-in-out 0s;
-                        text-align: center;
-                        width: 100%;
-                        padding: 10px;
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        margin: auto;
-                        max-width: 270px;
-                        right: 0;
-                        z-index: 8;
-                        opacity: 0;
-                        transform: translateY(50px) scale(.8);
-                        .kmt-quickview-icon{
-                            span{
-                                vertical-align: middle;
-                            }
-                        }
-                        .add_to_cart_button{
-                            margin: 0 1px;
-                        }
-                    }
-                }
-                &:hover{
-                    .product-top{
-                        .product-btn-group{
-                            opacity: 1;
-                            transform: translateY(-10px) scale(1);
-                        }
-                    }
+    .kmt-toolbar{
+        overflow: hidden;
+        margin-bottom: 2.5em;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        padding: 10px 0;
+        .woocommerce-ordering{
+            margin-bottom: 0;
+        }
+        .woocommerce-result-count{
+            line-height: 34px;
+            margin-bottom: 0;
+        }
+        .shop-list-style{
+            float: left;
+            line-height: 34px;
+            margin: 0 2em;
+            a{
+                margin: 0 5px;
+                line-height: 1;
+                padding: 7px;
+                cursor: pointer;
+                transition: none;
+                border-width: 1px;
+                border-style: solid;
+                span{
+                    vertical-align: middle;
                 }
             }
         }
     }
-}
-.woocommerce{
     &.content-align-left{
         ul.products{
             li.product{

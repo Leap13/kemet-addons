@@ -16,5 +16,32 @@
         offCanvasWrap.addClass('side-off-canvas-filter');
         offCanvas.addClass('side-off-canvas-filter');
     });
+    // Shop Style
+    var $body = $('body'),
+        $toolBar = $('.kmt-toolbar'),
+        removerClasses = '';
+    
+        $toolBar.find('a').click(function (e){
+            var $this = $(this),
+                bodyClass = $this.attr('class'),
+                prevClass = $this.siblings('a').attr('class').split(' ')[0];
+                
+            e.preventDefault();
+
+            $this.addClass('active');
+            $this.siblings().removeClass('active');
+
+            $body.addClass(bodyClass);
+            $body.removeClass(prevClass);
+
+            if(bodyClass == 'kmt-list-style' && $body.hasClass('shop-grid')){
+                $body.removeClass('shop-grid');
+                removerClasses = 'shop-grid';
+            }else if(bodyClass == 'kmt-list-style' && $body.hasClass('hover-style')){
+                removerClasses = '';
+            }else{
+                $body.addClass(removerClasses);
+            }
+        });    
 
 })(jQuery);

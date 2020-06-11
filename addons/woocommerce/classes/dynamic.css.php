@@ -14,7 +14,9 @@ add_filter( 'kemet_dynamic_css', 'kemet_woocommerce_dynamic_css');
  * @return string
  */
 function kemet_woocommerce_dynamic_css( $dynamic_css ) {
-
+            //Global
+            $global_border_color      = kemet_get_option( 'global-border-color' );
+            $theme_color  = kemet_get_option( 'theme-color' );
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
             
@@ -33,6 +35,17 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                 '.woocommerce #content .kmt-woocommerce-container div.product div.summary, .woocommerce .kmt-woocommerce-container div.product div.summary, .woocommerce-page #content .kmt-woocommerce-container div.product div.summary, .woocommerce-page .kmt-woocommerce-container div.product div.summary' => array(
                     'width' => kemet_get_css_value( $summary_width , '%' ),
                     'max-width' => kemet_get_css_value( $summary_width , '%' ),
+                ),
+                '.woocommerce .kmt-toolbar' => array(
+                    'border-top-color' => esc_attr( $global_border_color ),
+                    'border-bottom-color' => esc_attr( $global_border_color ),
+                ),
+                '.woocommerce .kmt-toolbar .shop-list-style a' => array(
+                    'border-color' => esc_attr( $global_border_color ),
+                ),
+                '.woocommerce .kmt-toolbar .shop-list-style a:hover , .woocommerce .kmt-toolbar .shop-list-style a.active' => array(
+                    'border-color' => esc_attr( $theme_color ),
+                    'color' => esc_attr( $theme_color ),
                 ),
             );
 
