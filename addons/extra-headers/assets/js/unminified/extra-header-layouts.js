@@ -75,4 +75,30 @@
       $('.header-main-layout-8 .main-header-container').toggleClass('side-header');
       $(this).toggleClass('open');
   });
+
+  var $stickFooter = $('.sticky-footer'),
+      $header5 = $('header.header-main-layout-5'),
+      $header7 = $('header.header-main-layout-7');
+
+      if( ($stickFooter.length > 0 && $header5.length > 0) || ($stickFooter.length > 0 && $header7.length > 0) ){
+          
+        var $body = $('body'),
+            $header_left = $('.kemet-main-v-header-align-left'),
+            $header_right= $('.kemet-main-v-header-align-right');
+
+        if( $header_left.length > 0 ){
+
+          var paddingLeft = $body.css('padding-left');
+
+          $stickFooter.css("padding-left", paddingLeft);
+
+        }else if( $header_right.length > 0 ){
+
+          var paddingRight = $body.css('padding-right');
+
+          $stickFooter.css("padding-right", paddingRight);
+
+        }
+      }
+      
 })(jQuery);
