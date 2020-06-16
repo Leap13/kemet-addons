@@ -173,11 +173,6 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-        .main-header-container{
-            &.logo-menu-icon{
-                border-width: 0;
-            }
-        }
         .header-logo-menu-icon{
             display: flex;
             flex-direction: column-reverse;
