@@ -28,6 +28,10 @@ $defaults = Kemet_Theme_Options::defaults();
 				'label'    => __( 'Page Title Layouts', 'kemet-addons' ),
 				'type'     => 'kmt-radio-image',
 				'choices'  => array(
+					'disable' => array(
+						'label' => __( 'Disable', 'kemet-addons' ),
+						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/disable-page-title.png',
+					),
 					'page-title-layout-1' => array(
 						'label' => __( 'Page Title Layout 1', 'kemet-addons' ),
 						'path'  => KEMET_PAGE_TITLE_URL . '/assets/images/page-title-layout-01.png',

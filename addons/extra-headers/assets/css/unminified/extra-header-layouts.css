@@ -410,6 +410,11 @@ body:not(.kmt-header-break-point) .header-main-layout-5 .main-header-bar {
   transform: translateX(50%);
 }
 
+/*Disable Separator In Vertical Header*/
+.ss-content .main-header-menu > li:not(:last-child):after {
+  display: none;
+}
+
 /*--------------------------------------------------------------
 ## Header 6
 --------------------------------------------------------------*/
