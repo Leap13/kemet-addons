@@ -35,17 +35,20 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 
         function kemet_post_class_blog_grid( $classes ) {
 
-            $blog_layout = kemet_get_option('blog-layouts');
-            $blog_grids = kemet_get_option('blog-grids');
             $is_ajax_pagination = $this->is_ajax_pagination();
 
-            if ( $is_ajax_pagination ) {
-                $classes[] = 'kmt-col-sm-12';
-                $classes[] = 'kmt-article-post';
-            }
+            if ( is_archive() || is_home() || is_search() || $is_ajax_pagination) {
 
-            if($blog_layout == 'blog-layout-2'){
-                if ( is_archive() || is_home() || is_search() || $is_ajax_pagination) {
+                $blog_layout = kemet_get_option('blog-layouts');
+                $blog_grids = kemet_get_option('blog-grids');
+    
+                if ( $is_ajax_pagination ) {
+                    $classes[] = 'kmt-col-sm-12';
+                    $classes[] = 'kmt-article-post';
+                }
+                
+                if($blog_layout == 'blog-layout-2'){
+
                     if(in_array('kmt-col-sm-12' , $classes)){
                         $overlay_enabled = array_search('kmt-col-sm-12', $classes);
                         unset($classes[$overlay_enabled]);

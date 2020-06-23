@@ -25,11 +25,11 @@
         
         
         if( $('#main').find('.post:last').length > 0 ) {
-            var windowHeight = $(window).outerHeight() / 1.25;
+            var windowHeight = $(window).outerHeight() / 2;
             $(window).scroll(function () {
 
-                if( ( $(window).scrollTop() + windowHeight ) >= ( $('#main').find('.post:last').offset().top ) ) {
-
+                if( ( $(window).scrollTop() + windowHeight ) >= ( $('#main').find('article:last').offset().top ) ) {
+                    
                     if (counter > totalPages) {
                         return false;
                     } else {
@@ -62,15 +62,21 @@
 
                 var posts = $(data),
                     postContainer = $('#main > div > .blog-posts-container');
-                    
+                
+                
                 postContainer.append( posts );
 
-                postContainer.masonry('appended', posts, true);
+                if(postContainer.hasClass('blog-layout-2')){
 
-                postContainer.imagesLoaded(function () {
-                    postContainer.masonry('layout');
-                });
-                postContainer.trigger('masonryItemAdded');
+                    postContainer.masonry('appended', posts, true);
+
+                    postContainer.imagesLoaded(function () {
+                        postContainer.masonry('layout');
+                    });
+                    postContainer.trigger('masonryItemAdded');
+
+                }
+                
 
                 loader.hide();
                 //	Show no more msg
