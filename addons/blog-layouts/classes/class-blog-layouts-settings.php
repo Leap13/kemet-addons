@@ -63,7 +63,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-pagination-border-color']   = '';
             $defaults['blog-infinite-loader-color']   = '';
             $defaults['blog-infinite-scroll-last-text']   = 'No more products to show.';
-            //$defaults['post-margin-bottom']   = '';
+            $defaults['post-margin-bottom']   = '';
 
             return $defaults;
         }
