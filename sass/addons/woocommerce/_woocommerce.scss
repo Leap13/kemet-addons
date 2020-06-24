@@ -39,12 +39,29 @@ Woo Quick View
         display: block;
     }
 }
-.kmt-qv-on-image{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+.kemet-shop-thumbnail-wrap{
+    .product-list-img{
+        position: relative;
+        .kmt-qv-on-image{
+            transition: 0.3s all linear;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            display: block;
+            text-align: center !important;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &:hover{
+        .product-list-img{
+            .kmt-qv-on-image{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
 }
 .kmt-qv-icon{
     position: absolute;
@@ -386,43 +403,65 @@ Woo Quick View
     }
 }
 /************ Shop ************/
-.hover-style{
-    ul.products{
-        li.product{
-            .kemet-shop-thumbnail-wrap{
-                .product-top{
-                    position: relative;
-                    .product-btn-group{
-                        transition: all .3s ease-in-out 0s;
-                        text-align: center;
-                        width: 100%;
-                        padding: 10px;
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        margin: auto;
-                        max-width: 270px;
-                        right: 0;
-                        z-index: 8;
-                        opacity: 0;
-                        visibility: hidden;
-                        transform: translateY(50px) scale(.8);
-                        .kmt-quickview-icon{
-                            span{
-                                vertical-align: middle;
+.woocommerce{
+    &.hover-style{
+        ul.products{
+            li.product{
+                .kemet-shop-thumbnail-wrap{
+                    .product-top{
+                        position: relative;
+                        .product-btn-group{
+                            transition: all .3s ease-in-out 0s;
+                            text-align: center;
+                            width: 100%;
+                            padding: 10px;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            margin: auto;
+                            max-width: 270px;
+                            right: 0;
+                            z-index: 8;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(50px) scale(.8);
+                            .kmt-quickview-icon{
+                                span{
+                                    vertical-align: middle;
+                                }
                             }
-                        }
-                        .add_to_cart_button{
-                            margin: 0 1px;
+                            .add_to_cart_button{
+                                margin: 0 1px;
+                            }
+                            .woo-wishlist-btn{
+                                display: inline-block;
+                                margin-top: 0;
+                                text-align: center;
+                                .tinv-wishlist{
+                                    .tinvwl_add_to_wishlist_button{
+                                        color: inherit;
+                                        &.tinvwl-icon-heart{
+                                            &:before{
+                                                margin-right: 0;
+                                                vertical-align: bottom;
+                                            }
+                                        }
+                                    }
+                                }
+                                .tinvwl_add_to_wishlist-text{
+                                    display: none;
+                                }
+                            }
+                            
                         }
                     }
-                }
-                &:hover{
-                    .product-top{
-                        .product-btn-group{
-                            opacity: 1;
-                            visibility: visible;
-                            transform: translateY(-10px) scale(1);
+                    &:hover{
+                        .product-top{
+                            .product-btn-group{
+                                opacity: 1;
+                                visibility: visible;
+                                transform: translateY(-10px) scale(1);
+                            }
                         }
                     }
                 }
@@ -430,6 +469,7 @@ Woo Quick View
         }
     }
 }
+
 .woocommerce{
     &.kmt-list-style{
         ul.products{

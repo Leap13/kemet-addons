@@ -17,6 +17,11 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             //Global
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $theme_color  = kemet_get_option( 'theme-color' );
+            $btn_color = kemet_get_option( 'button-color' );
+			$btn_h_color = kemet_get_option( 'button-h-color' , $btn_color );
+			$btn_bg_color   = kemet_get_option( 'button-bg-color' , $theme_color);
+			$btn_bg_h_color = kemet_get_option( 'button-bg-h-color' , kemet_color_brightness($theme_color , 0.8 , 'dark') );
+
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
             
@@ -46,6 +51,22 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                 '.woocommerce .kmt-toolbar .shop-list-style a:hover , .woocommerce .kmt-toolbar .shop-list-style a.active' => array(
                     'border-color' => esc_attr( $theme_color ),
                     'color' => esc_attr( $theme_color ),
+                ),
+                '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn' => array(
+                    'background-color' => esc_attr( $btn_bg_color ),
+                    'color' => esc_attr( $btn_color ),
+                ),
+                '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover' => array(
+                    'background-color' => esc_attr( $btn_bg_h_color ),
+                    'color' => esc_attr( $btn_h_color ),
+                ),
+                '.woocommerce .product-list-img a.kmt-qv-on-image' => array(
+                    'background-color' => esc_attr( $btn_bg_color ),
+                    'color' => esc_attr( $btn_color ),
+                ),
+                '.woocommerce .product-list-img a.kmt-qv-on-image:hover' => array(
+                    'background-color' => esc_attr( $btn_bg_h_color ),
+                    'color' => esc_attr( $btn_h_color ),
                 ),
             );
 

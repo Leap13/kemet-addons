@@ -62,13 +62,13 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
 			if( $qv_enable != 'disabled' && kemet_get_option( 'shop-layout' ) != 'hover-style'){
 				if( $qv_enable === 'on-image' ){
-					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ) , 1);
-				}else if( $qv_enable === 'after-summary' ){
+					add_action( 'kemet_product_list_image_bottom', array( $this, 'quick_view_on_image' ) , 1);
+				}elseif( $qv_enable === 'after-summary' ){
 					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
-				}else if( $qv_enable === 'qv-icon' ){
+				}elseif( $qv_enable === 'qv-icon' ){
 					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_icon' ), 1 );
 				}
-			}else if(kemet_get_option( 'shop-layout' ) == 'hover-style'){
+			}elseif(kemet_get_option( 'shop-layout' ) == 'hover-style'){
 				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_with_group' ), 1 );
 			}
 
@@ -188,9 +188,15 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				function kemet_addons_after_shop_loop_item_title() {
 					echo '</a>';
 					echo '<div class="product-btn-group">';
+
+					if ( class_exists( 'TInvWL_Wishlist' ) ) {
+						echo '<div class="button woo-wishlist-btn">'. do_shortcode( '[ti_wishlists_addtowishlist]' ) .'</div>';
+					}
+
 					do_action( 'kemet_woo_shop_add_to_cart_before' );
 					woocommerce_template_loop_add_to_cart();
 					do_action( 'kemet_woo_shop_add_to_cart_after' );
+					
 					echo "</div>";
 					do_action( 'kemet_product_list_details_bottom' );
 					echo '</div>';
@@ -584,7 +590,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '"></a>';
+			$button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '">Quick View</a>';
 
 			echo $button;
 		}
@@ -666,7 +672,9 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				$dir        = 'unminified';
 			}
 			$single_ajax_add_to_cart = kemet_get_option( 'enable-single-ajax-add-to-cart' );
-			if(kemet_get_option('enable-quick-view') != 'disabled'){
+			$shop_style = kemet_get_option( 'shop-layout' );
+
+			if(kemet_get_option('enable-quick-view') != 'disabled' || $shop_style == 'hover-style' ){
 				Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
 			}
 			if($single_ajax_add_to_cart || kemet_get_option('enable-quick-view') != 'disabled'){
