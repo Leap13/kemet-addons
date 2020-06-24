@@ -50,6 +50,25 @@ $wp_customize->add_control(
     )
 );
 /**
+ * Option: Vertical Headers Enable Box Shadow
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[wishlist-in-header]', array(
+        'default'           => $defaults[ 'wishlist-in-header' ],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+    ),
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[wishlist-in-header]', array(
+        'type'            => 'checkbox',
+        'section'         => 'section-woo-general',
+        'description'       => __( 'You need to activate the <a target="_blank" href="https://wordpress.org/plugins/ti-woocommerce-wishlist/">TI WooCommerce Wishlist</a> plugin to add a wishlist button and icon', 'kemet-addons' ),
+        'label'           => __( 'Add Wishlist Header', 'kemet-addons' ),
+        'priority'        => 15,
+    )
+);
+/**
 * Option: Shop
 */
 
