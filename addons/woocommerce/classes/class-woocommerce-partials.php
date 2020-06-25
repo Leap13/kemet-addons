@@ -49,8 +49,27 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'start_tool_bar_div' ) );
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'toolbar_buttons' ) , 20);
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'end_tool_bar_div' ), 40 );
+			add_filter( 'wp_nav_menu_items', array( $this,'menu_wishlist_icon' ), 10, 2 );
         }
 		
+		/**
+		 * Adds wishlist icon to menu
+		 *
+		 * @since 1.5.0
+		 */
+		function menu_wishlist_icon( $items, $args ) {
+
+			$wishlist_in_header = kemet_get_option('wishlist-in-header');
+
+			if ( class_exists( 'TInvWL_Wishlist' ) && $wishlist_in_header) {
+				// Add wishlist link to menu items
+				$items .= '<li class="woo-wishlist-link">'. do_shortcode( '[ti_wishlist_products_counter]' ) .'</li>';
+			}
+
+			// Return menu items
+			return $items;
+		}
+
 		/**
 		 * Init Woocommerce
 		 */
