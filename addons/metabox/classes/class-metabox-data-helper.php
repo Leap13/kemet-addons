@@ -45,10 +45,26 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 				add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display') , 1);
 				add_filter( 'display_go_top_icon', array($this, 'kemet_go_top_display') , 1);
 				add_filter( 'kemet_content_padding', array($this, 'content_padding') );
-              
+				add_filter( 'kemet_get_content_layout', array($this, 'content_layout') );
+
 			}
            
         }
+
+		/**
+		 * Content Layout
+		 *
+		 */
+		function content_layout( $defaults ) {
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+            $content_layout = ( isset( $meta['site-content-layout'] ) ) ? $meta['site-content-layout'] : '';
+			
+			if ( !empty($content_layout) ) {
+				$defaults = $content_layout;
+			}
+			
+			return $defaults;
+		}
 
 		/**
 		 * Disable Post / Page Featured Image

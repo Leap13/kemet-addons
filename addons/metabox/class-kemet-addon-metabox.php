@@ -42,6 +42,7 @@ if ( ! class_exists( 'Kemet_Metabox)' ) ) {
 		public function __construct() {
 			require_once KEMET_METABOX_DIR . 'classes/class-metabox-data.php';	
 			require_once KEMET_METABOX_DIR . 'classes/class-metabox-data-helper.php';	
+			require_once KEMET_METABOX_DIR . 'classes/class-kemet-elementor.php';
 		}		
 
 	}
