@@ -56,11 +56,27 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 		 *
 		 */
 		function content_layout( $defaults ) {
+			$default_content_meta = get_post_meta( get_the_ID(), 'kemet-content-layout', true ); 
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
             $content_layout = ( isset( $meta['site-content-layout'] ) ) ? $meta['site-content-layout'] : '';
 			
-			if ( !empty($content_layout) ) {
-				$defaults = $content_layout;
+			if ( !empty($content_layout) && isset($default_content_meta)) {
+				
+				update_post_meta( get_the_ID(), 'kemet-content-layout', $content_layout );
+			}else if( empty($content_layout) && !isset($default_content_meta) ){
+				
+				add_post_meta( get_the_ID(), 'kemet-content-layout', $defaults );
+			}else if( !empty($content_layout) && !isset($default_content_meta) ){
+				
+				add_post_meta( get_the_ID(), 'kemet-content-layout', $content_layout );
+			}else if( empty($content_layout) && isset($default_content_meta) ){
+				$old_meta = !empty($meta) ? $meta : array(); 
+				$old_meta['site-content-layout'] = $default_content_meta;
+				if(isset($meta)){
+					update_post_meta( get_the_ID(), 'kemet_page_options', $old_meta );
+				}else{
+					add_post_meta( get_the_ID(), 'kemet_page_options', $old_meta );
+				}
 			}
 			
 			return $defaults;
