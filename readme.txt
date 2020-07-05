@@ -41,6 +41,9 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.0.6 version
+- Fixed: Content Spacing with Elementor issue.
+
 1.0.5 version
 - Added: Disable page title option.
 - Fixed: Display Sticky header with vertical header issue.
