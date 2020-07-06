@@ -45,10 +45,42 @@ if ( ! class_exists( 'Kemet_Addon_Meta_Box_Helper' ) ) {
 				add_filter( 'kmt_footer_copyright_layout_disable', array($this, 'kemet_copyright_display') , 1);
 				add_filter( 'display_go_top_icon', array($this, 'kemet_go_top_display') , 1);
 				add_filter( 'kemet_content_padding', array($this, 'content_padding') );
-              
+				add_filter( 'kemet_get_content_layout', array($this, 'content_layout') );
+
 			}
            
         }
+
+		/**
+		 * Content Layout
+		 *
+		 */
+		function content_layout( $defaults ) {
+			$default_content_meta = get_post_meta( get_the_ID(), 'kemet-content-layout', true ); 
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+            $content_layout = ( isset( $meta['site-content-layout'] ) ) ? $meta['site-content-layout'] : '';
+			
+			if ( !empty($content_layout) && isset($default_content_meta)) {
+				
+				update_post_meta( get_the_ID(), 'kemet-content-layout', $content_layout );
+			}else if( empty($content_layout) && !isset($default_content_meta) ){
+				
+				add_post_meta( get_the_ID(), 'kemet-content-layout', $defaults );
+			}else if( !empty($content_layout) && !isset($default_content_meta) ){
+				
+				add_post_meta( get_the_ID(), 'kemet-content-layout', $content_layout );
+			}else if( empty($content_layout) && isset($default_content_meta) ){
+				$old_meta = !empty($meta) ? $meta : array(); 
+				$old_meta['site-content-layout'] = $default_content_meta;
+				if(isset($meta)){
+					update_post_meta( get_the_ID(), 'kemet_page_options', $old_meta );
+				}else{
+					add_post_meta( get_the_ID(), 'kemet_page_options', $old_meta );
+				}
+			}
+			
+			return $defaults;
+		}
 
 		/**
 		 * Disable Post / Page Featured Image
