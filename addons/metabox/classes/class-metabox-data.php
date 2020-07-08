@@ -15,6 +15,8 @@ KFW::createMetabox( $prefix_page_opts, array(
                     'page', 
                     'post',
                     'product',
+                    'elementor_library',
+				            'ae_global_templates',
   ),
   
     'data_type'      => 'serialize',
