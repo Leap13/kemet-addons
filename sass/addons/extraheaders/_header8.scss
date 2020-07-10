@@ -26,14 +26,21 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+        &.vertical-separator{
+            .site-branding{
+                display: flex;
+                align-items: center;
+                &:after{
+                    content: "";
+                    display: inline-block;
+                    height: 25px;
+                    width: 2px;
+                    margin: 0 35px;
+                }
+            }
+        }
         .site-branding{
             position: relative;
-        }
-        .logo-icon-separator{
-            display: inline-block;
-            height: 30px;
-            width: 2px;
-            margin: 0 35px;
         }
         .menu-icon-social{
             position: relative;
@@ -51,8 +58,12 @@
         .inline-icon-menu-header{
             display: block;
         }
-        .logo-icon-separator{
-            display: none;
+        .vertical-separator{
+            .site-branding{
+                &:after{
+                    display: none;
+                }
+            }
         }
         .mobile-icon-outside-menu{
             display: flex;

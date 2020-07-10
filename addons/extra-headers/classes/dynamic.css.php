@@ -64,7 +64,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),
-                '.header-main-layout-8 .inline-logo-menu .logo-icon-separator' => array(
+                '.header-main-layout-8 .inline-logo-menu.vertical-separator .site-branding:after' => array(
                     'background-color' => esc_attr($logo_icon_separator),
                     'height' => kemet_get_css_value( $menu_icon_separator_height, 'px' ),
                 ),
