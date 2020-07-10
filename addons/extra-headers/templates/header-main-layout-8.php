@@ -4,6 +4,7 @@
  */
 $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'header-icon-label' ) ) );
 $classes = apply_filters( 'header_container_classes', array());
+$disable_separator = kemet_get_option( 'disable-logo-icon-separator' );
 ?>
 <?php do_action('kemet_before_main_header'); ?>
 <div class="main-header-bar-wrap"> 
@@ -15,6 +16,9 @@ $classes = apply_filters( 'header_container_classes', array());
                 <div class="menu-icon-header-8">
                     <div class="inline-logo-menu"> 
                         <?php kemet_site_branding_markup(); ?>
+                        <?php if(!$disable_separator){ ?>
+                        <span class="logo-icon-separator"></span>
+                        <?php } ?>
                             <?php if(wp_is_mobile()){
                             echo '<div class="mobile-icon-outside-menu">' ;   
                             kemet_toggle_buttons_markup();

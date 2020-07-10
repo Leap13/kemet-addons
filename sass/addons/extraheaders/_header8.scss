@@ -28,18 +28,14 @@
         flex-wrap: wrap;
         .site-branding{
             position: relative;
-            padding-right: 20px;
-            &:after{
-                right: 0;
-                content: "";
-                position: absolute;
-                height: 30px;
-                top: 35%;
-                width: 2px;
-            }
+        }
+        .logo-icon-separator{
+            display: inline-block;
+            height: 30px;
+            width: 2px;
+            margin: 0 35px;
         }
         .menu-icon-social{
-            margin-left: 20px;
             position: relative;
             z-index: 99;
         }
@@ -55,11 +51,8 @@
         .inline-icon-menu-header{
             display: block;
         }
-        .site-branding{
-            &:after{
-                height: 0;
-                width: 0;
-            }
+        .logo-icon-separator{
+            display: none;
         }
         .mobile-icon-outside-menu{
             display: flex;

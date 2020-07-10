@@ -829,20 +829,16 @@ body:not(.kmt-header-break-point) .header-main-layout-7 .main-header-bar {
 
 .header-main-layout-8 .inline-logo-menu .site-branding {
   position: relative;
-  padding-right: 20px;
 }
 
-.header-main-layout-8 .inline-logo-menu .site-branding:after {
-  right: 0;
-  content: "";
-  position: absolute;
+.header-main-layout-8 .inline-logo-menu .logo-icon-separator {
+  display: inline-block;
   height: 30px;
-  top: 35%;
   width: 2px;
+  margin: 0 35px;
 }
 
 .header-main-layout-8 .inline-logo-menu .menu-icon-social {
-  margin-left: 20px;
   position: relative;
   z-index: 99;
 }
@@ -857,9 +853,8 @@ body:not(.kmt-header-break-point) .header-main-layout-7 .main-header-bar {
   display: block;
 }
 
-.kmt-header-break-point .header-main-layout-8 .site-branding:after {
-  height: 0;
-  width: 0;
+.kmt-header-break-point .header-main-layout-8 .logo-icon-separator {
+  display: none;
 }
 
 .kmt-header-break-point .header-main-layout-8 .mobile-icon-outside-menu {
