@@ -1,3 +1,8 @@
+;(function ( $, window, undefined ) {
+    var site_layout = kemetAddons.site_content_layout || '';
+    console.log(site_layout);
+}(jQuery, window));
+
 var Header = document.querySelector('.kmt-sticky-header');
 
 if (Header != null) {
