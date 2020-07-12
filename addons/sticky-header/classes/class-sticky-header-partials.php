@@ -24,10 +24,8 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
         public function __construct() {
             add_action ( 'kemet_header', array( $this, 'sticky_header_logo' ), 1 );
             add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
-            //add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
-            add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+            add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
-            add_filter( 'kemet_addons_js_localize', array( $this, 'localize_variables' ) );
         }
 
         function sticky_header_logo() {
@@ -159,28 +157,6 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
 			}
             Kemet_Style_Generator::kmt_add_js( KEMET_STICKY_HEADER_DIR.'assets/js/'. $dir  .'/sticky-header' . $js_prefix);
         }
-
-        public function enqueue_scripts() {
-
-            $js_prefix  = '.min.js';
-			$dir        = 'minified';
-			if ( SCRIPT_DEBUG ) {
-				$js_prefix  = '.js';
-				$dir        = 'unminified';
-			}
-            wp_enqueue_script( 'kemet-addon-js', KEMET_STICKY_HEADER_URL.'assets/js/'. $dir  .'/sticky-header' . $js_prefix,array(), KEMET_ADDONS_VERSION, true );
-			wp_localize_script( 'kemet-addon-js', 'kemetAddons', apply_filters( 'kemet_addons_js_localize', array() ) );
-        }
-        /**
-		 * Add Localize variables
-		 */
-		public function localize_variables( $localize_vars ) {
-
-
-			$localize_vars['site_content_layout'] = kemet_get_option( 'site-content-layout' );
-
-			return $localize_vars;
-		}
     }
 }
 Kemet_Sticky_Header_Partials::get_instance();
