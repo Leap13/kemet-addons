@@ -434,7 +434,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		KEMET_THEME_SETTINGS . '[header-icon-label]', array(
 			'section'  => 'section-menu-header',
 			'priority' => 56,
-			'label'    => __( 'Menu Icon Label', 'kemet-addons' ),
+			'label'    => __( 'Hamburger Menu Label', 'kemet-addons' ),
 			'type'     => 'text',
 		)
 	);
@@ -457,7 +457,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-label-color]', array(
-			'label'   => __( 'Menu Icon Label Color', 'kemet-addons' ),
+			'label'   => __( 'Hamburger Menu Label Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
@@ -482,7 +482,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-label-hover-color]', array(
-			'label'   => __( 'Menu Icon Label Hover Color', 'kemet-addons' ),
+			'label'   => __( 'Hamburger Menu Label Hover Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
@@ -508,7 +508,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-color]', array(
-			'label'   => __( 'Menu Icon Color', 'kemet-addons' ),
+			'label'   => __( 'Hamburger Menu Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
@@ -534,7 +534,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-bg-color]', array(
-			'label'   => __( 'Menu Icon Background Color', 'kemet-addons' ),
+			'label'   => __( 'Hamburger Menu Background Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
@@ -560,7 +560,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-h-color]', array(
-			'label'   => __( 'Menu Icon Hover Color', 'kemet-addons' ),
+			'label'   => __( 'Hamburger Menu Hover Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
@@ -587,7 +587,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-bg-h-color]', array(
-			'label'   => __( 'Menu Icon Background Hover Color', 'kemet-addons' ),
+			'label'   => __( 'Hamburger Menu Background Hover Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
@@ -616,7 +616,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'        => 'kmt-slider',
 				'section'     => 'section-menu-header',
 				'priority'    => 56,
-				'label'       => __( 'Menu Icon Border Radius[PX]', 'kemet-addons' ),
+				'label'       => __( 'Hamburger Menu Border Radius[PX]', 'kemet-addons' ),
 				'suffix'      => '',
 				'input_attrs' => array(
 					'min'  => 0,
@@ -650,7 +650,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-spacing',
 				'section'        => 'section-menu-header',
 				'priority'       => 56,
-				'label'          => __( 'Menu Icon Spacing', 'kemet-addons' ),
+				'label'          => __( 'Hamburger Menu Spacing', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
@@ -681,7 +681,7 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-logo-bg-color]', array(
-			'label'   => __( 'Logo and Menu Icon Background Color', 'kemet-addons' ),
+			'label'   => __( 'Logo and Hamburger Menu Background Color', 'kemet-addons' ),
 			'section' => 'section-menu-header',
 			'priority' => 56,
 		  )
