@@ -176,7 +176,7 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
 		 */
 		public function localize_variables( $localize_vars ) {
 
-
+            $localize_vars['enable_sticky'] = apply_filters('kemet_disable_sticky_header' , kemet_get_option( 'enable-sticky' ));
 			$localize_vars['site_content_layout'] = kemet_get_option( 'site-content-layout' );
 
 			return $localize_vars;
