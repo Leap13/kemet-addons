@@ -1,22 +1,29 @@
 .sticky-custom-logo-link {
   display: none;
 }
+#kmt-sticky-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 .kmt-is-sticky {
     position: fixed;
     width: 100%;
-    animation-duration: 0.5s;
+    //animation-duration: 0.5s;
+    transition: transform .3s linear,top .3s linear,visibility .3s linear;
     &.header-boxed-width , &.header-stretched-width{
       .main-header-content{
         background-color: transparent;
       } 
     }
-    &.sticky-fade{
-      animation-name: fadeIn;
-    }
-    &.sticky-slide{
-      animation-name: slideInDown;
-    }
-    &.kmt-sticky-header{
+    // &.sticky-fade{
+    //   animation-name: fadeIn;
+    // }
+    // &.sticky-slide{
+    //   animation-name: slideInDown;
+    // }
+    &#kmt-sticky-header{
       &.sticky-main-header{
         .main-header-bar-wrap{
           display: block;
@@ -30,9 +37,9 @@
         }
       }
     }
-    .main-header-bar-wrap{
-      display: none;
-    }
+    // .main-header-bar-wrap{
+    //   display: none;
+    // }
     .sticky-custom-logo-link
     {
       display: inline-block;

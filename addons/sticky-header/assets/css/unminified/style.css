@@ -14,34 +14,29 @@
   display: none;
 }
 
+#kmt-sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .kmt-is-sticky {
   position: fixed;
   width: 100%;
-  animation-duration: 0.5s;
+  transition: transform .3s linear,top .3s linear,visibility .3s linear;
 }
 
 .kmt-is-sticky.header-boxed-width .main-header-content, .kmt-is-sticky.header-stretched-width .main-header-content {
   background-color: transparent;
 }
 
-.kmt-is-sticky.sticky-fade {
-  animation-name: fadeIn;
-}
-
-.kmt-is-sticky.sticky-slide {
-  animation-name: slideInDown;
-}
-
-.kmt-is-sticky.kmt-sticky-header.sticky-main-header .main-header-bar-wrap {
+.kmt-is-sticky#kmt-sticky-header.sticky-main-header .main-header-bar-wrap {
   display: block;
 }
 
 .kmt-is-sticky .main-navigation .main-header-bar-navigation > ul {
   background-color: transparent;
-}
-
-.kmt-is-sticky .main-header-bar-wrap {
-  display: none;
 }
 
 .kmt-is-sticky .sticky-custom-logo-link {
