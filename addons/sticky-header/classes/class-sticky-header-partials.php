@@ -22,55 +22,21 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
         */
 
         public function __construct() {
-            //add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
+            add_action ( 'kemet_header', array( $this, 'sticky_header_logo' ), 1 );
             add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_filter( 'kemet_addons_js_localize', array( $this, 'localize_variables' ) );
-            add_action( 'kemet_header', array( $this, 'fixed_header_markup' ), 11 );
         }
-
-        /**
-		 * Site Header - <header>
-		 *
-		 * @since 1.0.0
-		 */
-		public function fixed_header_markup() {
-
-            ?>
-
-            <header id="kmt-sticky-header" <?php kemet_header_classes(); ?> style="visibility: hidden;" data-type="fixed-header">
-
-            <?php kemet_sitehead_top(); ?>
-
-            <?php kemet_sitehead(); ?>
-
-            <?php kemet_sitehead_bottom(); ?>
-
-            </header><!-- #kemet-fixed-header -->
-
-            <?php
-
+        
+        function sticky_header_logo() {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
             $sticky_logo          = kemet_get_option( 'sticky-logo' );
-           
             if ( '' !== $sticky_logo && '1' == $enabled_sticky ) {
-                
                 // Logo For None Effect.
                 add_filter( 'kemet_has_custom_logo', '__return_true' );
                 add_filter( 'get_custom_logo', array( $this, 'kemet_sticky_header_logo' ), 10, 2 );
             }
-
-        }   
-        
-        // function sticky_header_logo() {
-        //     $enabled_sticky           = kemet_get_option( 'enable-sticky' );
-        //     $sticky_logo          = kemet_get_option( 'sticky-logo' );
-        //     if ( '' !== $sticky_logo && '1' == $enabled_sticky ) {
-        //         // Logo For None Effect.
-        //         add_filter( 'kemet_has_custom_logo', '__return_true' );
-        //         add_filter( 'get_custom_logo', array( $this, 'kemet_sticky_header_logo' ), 10, 2 );
-        //     }
-        // }
+        }
 
         function kemet_sticky_header_logo( $html ) {
             $enabled_sticky           = kemet_get_option( 'enable-sticky' );
@@ -131,37 +97,6 @@ if ( ! class_exists( 'Kemet_Sticky_Header_Partials' ) ) {
                 $attr['srcset'] = $cutom_logo_url;
             }
             return $attr;
-        }
-
-        public function header_classes($classes) {
-            $enabled_sticky           = apply_filters('kemet_disable_sticky_header' , kemet_get_option( 'enable-sticky' ));
-            $sticky_logo              = kemet_get_option( 'sticky-logo' );
-            $sticky_style             = kemet_get_option( 'sticky-style' );
-            $enable_top_bar           = kemet_get_option( 'sticky-top-bar' );
-            $kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
-            $sticky_responsive        = kemet_get_option('sticky-responsive');
-            if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
-                $classes[] = 'kmt-sticky-header';
-                $classes[] =  $sticky_responsive;
-                if( $enabled_sticky ) {
-                    $classes[] = 'kmt-sticky-header';
-                    $classes[] = 'sticky-main-header';
-                    $classes[] = $sticky_style;
-                    if ( '' !== $sticky_logo ) {
-                        $classes[] = 'kmt-sticky-logo';
-                    }
-                }
-                if( ($enabled_sticky) && ('header-main-layout-5' != $kemet_header_layout && 'header-main-layout-7' != $kemet_header_layout && 'header-main-layout-6' != $kemet_header_layout)) {
-                    if($enable_top_bar){
-                        $classes[] = 'kmt-sticky-top-bar';
-                    }
-    
-                }    
-
-            }
-            
-            return $classes;
-            
         }
 
         public function add_styles() {

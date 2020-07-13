@@ -1,6 +1,6 @@
 ;(function ( $, window, undefined ) {
 
-    var pluginName    = 'kmtSticky',
+    var addonName    = 'kmtSticky',
         document      = window.document,
 		windowWidth   = jQuery( window ).outerWidth(),
 		viewPortWidth = jQuery( window ).width(),
@@ -28,7 +28,7 @@
 		this.element   = element;
 		this.options   = $.extend( {}, defaults, options );
         this._defaults = defaults;
-        this._name     = pluginName;
+        this._name     = addonName;
 
 		this.init();
 	}
@@ -36,51 +36,52 @@
     /**
 	 * Stick element
 	 *
-	 * @since  1.0.0
+	 * @since  1.0.7
 	 */
 	kmtSticky.prototype.stick_element = function( self, type ) {
 
 		var selector      	  = jQuery( self.element ),
-			windowWidth       = jQuery( window ).outerWidth();
 			stick_upto_scroll = parseInt( self.options.stick_upto_scroll ),
 			max_width         = parseInt( selector.parent().attr( 'data-stick-maxwidth' ) ), // parseInt( self.options.max_width ),
-			gutter            = parseInt( selector.parent().attr( 'data-stick-gutter' ) ); // parseInt( self.options.gutter ).
-			
+            gutter            = parseInt( selector.parent().attr( 'data-stick-gutter' ) ); // parseInt( self.options.gutter ).
+            
 		/**
 		 * Check window width
 		 */
-		if ( 'desktop' == self.options.sticky_responsive && jQuery( 'body' ).hasClass( 'kmt-header-break-point' ) ) {
+		if ( 'sticky-hide-tablet' == self.options.sticky_responsive && window.matchMedia('(min-width: 481px) and (max-width: 767px)').matches ) {
+            
 			self.endStick( self );
-		} else if ( 'mobile' == self.options.sticky_responsive && ! jQuery( 'body' ).hasClass( 'kmt-header-break-point' ) ) {
+		} else if ( 'sticky-hide-mobile' == self.options.sticky_responsive && window.matchMedia('(max-width: 480px)').matches ) {
 			self.endStick( self );
-		} else {
+        }
+        else if('sticky-hide-tablet-mobile' == self.options.sticky_responsive && window.matchMedia('(max-width: 767px)').matches){
+            self.endStick( self );
+        } else {
             
 			if ( jQuery( window ).scrollTop() > stick_upto_scroll ) {
                 
-				var fixed_header = selector;
+                var stickyHeader = selector;
+
+                
                 if ( 'sticky-slide' == self.options.header_style ) {
-					fixed_header.css({
-						'top' : gutter,
-					});
-					fixed_header.addClass('kmt-header-slide');
-					fixed_header.css( 'visibility', 'visible' );
-					fixed_header.addClass( 'kmt-is-sticky' ).stop().css({
-						'transform':'translateY(0)',
-					});
-					$('html').addClass('kmt-header-stick-slide-active');
+
+                    stickyHeader.css({
+                        'top' : gutter,
+                    });
+
+                    stickyHeader.addClass('kmt-sticky-header');
+                    stickyHeader.addClass('sticky-slide');
 					$( document ).trigger( "addStickyClasses" );
 
 
 				}else if( 'sticky-fade' == self.options.header_style ) {
-                    
-					fixed_header.css({
-						'top' : gutter,
-					});
-					fixed_header.addClass('kmt-header-fade');
-					fixed_header.css( 'visibility', 'visible' );
-					fixed_header.addClass( 'kmt-is-sticky' ).stop().css({
-						'opacity' : '1',
-					});
+
+                    stickyHeader.css({
+                        'top' : gutter,
+                    });
+
+                    stickyHeader.addClass('kmt-sticky-header');
+					stickyHeader.addClass( 'sticky-fade' );
 					$( document ).trigger( "addStickyClasses" );
 
 				}
@@ -90,7 +91,7 @@
 		}
     }
     
-    kmtSticky.prototype.update_attrs = function () {
+    kmtSticky.prototype.updateValues = function () {
 
 		var self  	          = this,
 			selector          = jQuery( self.element ),
@@ -170,29 +171,16 @@
 
     kmtSticky.prototype.endStick = function( self ) {
         var selector = jQuery( self.element );
-        var fixed_header = selector;
+        var stickyHeader = selector;
 
         if ( 'sticky-slide' == self.options.header_style ) {
-            fixed_header.removeClass( 'kmt-sticky-active' ).stop().css({
-                'transform':'translateY(-100%)',
-            });
-            fixed_header.css({ 
-                'visibility' : 'hidden',
-                'top' : '',
-            });
-
+            stickyHeader.removeClass( 'sticky-slide' );
             $( document ).trigger( "removeStickyClasses" );
-            fixed_header.removeClass('kmt-header-sticked');
 
 
         }else if( 'sticky-fade' == self.options.header_style ) {
-            fixed_header.removeClass( 'kmt-sticky-active' ).stop().css({
-                'opacity' : '0',
-            });
-            fixed_header.css({ 
-                'visibility' : 'hidden',
-            });
-            $( document ).trigger( "removeStickyClass" );
+            stickyHeader.removeClass( 'sticky-fade' );
+            $( document ).trigger( "removeStickyClasses" );
 
 
         }
@@ -201,7 +189,7 @@
     /**
      * Init Prototype
      *
-     * @since  1.0.0
+     * @since  1.0.7
      */
     kmtSticky.prototype.init = function () {
 
@@ -211,21 +199,18 @@
         if ( jQuery( this.element ) ) {
 
             var self                       	   = this,
-                selector                       = jQuery( self.element ),
-                gutter                         = parseInt( self.options.gutter ),
-                stick_upto_scroll              = selector.position().top || 0,
-                dependent_height               = 0;
+                selector                       = jQuery( self.element );
 
             selector.wrap( self.options.wrap )
             .attr( 'data-stick-support', 'on' )
             .attr( 'data-stick-maxwidth', parseInt( self.options.max_width ) );
-            self.update_attrs();
+            self.updateValues();
 
             // Stick me!.
             jQuery( window ).on('resize', function() {
 
                 self.endStick( self );
-                self.update_attrs();
+                self.updateValues();
                 self.stick_element( self );
             } );
 
@@ -234,7 +219,7 @@
                 self.stick_element( self, 'scroll' );
                 
                 if( jQuery( 'body' ).hasClass( 'kmt-sticky-toggled-off' ) ){
-                    self.update_attrs();
+                    self.updateValues();
                     self.stick_element( self, 'scroll' );
                 }
             } );
@@ -247,10 +232,10 @@
 
     };
 
-    $.fn[pluginName] = function ( options ) {
+    $.fn[addonName] = function ( options ) {
         return this.each(function () {
-            if ( ! $.data( this, 'plugin_' + pluginName )) {
-                $.data( this, 'plugin_' + pluginName, new kmtSticky( this, options ) );
+            if ( ! $.data( this, 'plugin_' + addonName )) {
+                $.data( this, 'plugin_' + addonName, new kmtSticky( this, options ) );
             }
         });
     }
@@ -259,10 +244,7 @@
         layout_width = $body.width(), 
         enable_sticky_header = kemetAddons.enable_sticky_header,
         enable_sticky_top_bar = kemetAddons.enable_sticky_top_bar,
-        site_content_layout = kemetAddons.site_content_layout,
         sticky_style = kemetAddons.sticky_style,
-        site_content_width = kemetAddons.site_content_width || 1200,
-        sticky_logo_width = kemetAddons.sticky_logo_width,
         sticky_responsive = kemetAddons.sticky_responsive,
         header_layout = kemetAddons.kemet_primary_header_layout,
         sticky_logo = kemetAddons.sticky_logo,
@@ -275,7 +257,7 @@
                 var classes = '';
                 
                 if ( enable_sticky_header && ( 'header-main-layout-5' != header_layout || 'header-main-layout-7' != header_layout || 'header-main-layout-6' != header_layout ) ) {
-                    classes = " kmt-sticky-header kmt-sticky-header";
+                    classes = " kmt-is-sticky";
                 }
                 if ( enable_sticky_top_bar && ( 'header-main-layout-5' != header_layout || 'header-main-layout-7' != header_layout || 'header-main-layout-6' != header_layout ) ) {
                     classes += " kmt-sticky-top-bar";
@@ -284,40 +266,33 @@
                     classes += " kmt-sticky-logo";
                 }
                 
-                $('body').addClass(classes);
+                $('#sitehead').addClass(classes);
             });
 
             $( document ).on( "removeStickyClasses", function() {
                 var classes = '';
                 
-                if ( enable_sticky_header && ( 'header-main-layout-5' != header_layout || 'header-main-layout-7' != header_layout || 'header-main-layout-6' != header_layout ) ) {
-                    classes = " kmt-sticky-header kmt-sticky-header";
+                if ( enable_sticky_header && ( 'header-main-layout-5' != header_layout && 'header-main-layout-7' != header_layout && 'header-main-layout-6' != header_layout ) ) {
+                    classes = " kmt-is-sticky";
                 }
-                if ( enable_sticky_top_bar && ( 'header-main-layout-5' != header_layout || 'header-main-layout-7' != header_layout || 'header-main-layout-6' != header_layout )  ) {
+                if ( enable_sticky_top_bar && ( 'header-main-layout-5' != header_layout && 'header-main-layout-7' != header_layout && 'header-main-layout-6' != header_layout )  ) {
                     classes += " kmt-sticky-top-bar";
                 }
-                $('body').removeClass(classes);
-            });
+                if( enable_sticky_header && sticky_logo != '' ){
+                    classes += " kmt-sticky-logo";
+                }
 
-            if ( '1' == enable_sticky_header ) {
-                jQuery( '#kmt-sticky-header' ).kmtSticky({
-                    max_width: layout_width,
-                    sticky_on_device: sticky_responsive,
-                    header_style: sticky_style,
-                });
+                $('#sitehead').removeClass(classes);
+            });
+            if('header-main-layout-5' != header_layout && 'header-main-layout-7' != header_layout && 'header-main-layout-6' != header_layout){
+
+                if ( '1' == enable_sticky_header ) {
+                    jQuery( '#sitehead' ).kmtSticky({
+                        max_width: layout_width,
+                        sticky_responsive: sticky_responsive,
+                        header_style: sticky_style,
+                    });
+                }
             }
         }
 }(jQuery, window));
-
-// var Header = document.querySelector('.kmt-sticky-header');
-
-// if (Header != null) {
-//     var sticky = Header.offsetHeight;
-//     window.onscroll = function () {
-//         if (window.pageYOffset > sticky) {
-//             Header.classList.add("kmt-is-sticky")
-//         } else {
-//             Header.classList.remove("kmt-is-sticky", 'swing' );
-//         }
-//     }
-// }
