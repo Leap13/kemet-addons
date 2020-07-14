@@ -114,6 +114,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.kemet-main-v-header-align-left.header-main-layout-5' => array(
                     'padding-left' => kemet_get_css_value( $vertical_header_width , 'px'),
+                ),
+                '.menu-icon-header-8 .menu-icon' => array(
+					'background-color' => esc_attr(kemet_color_brightness($global_bg_color , 0.94 , 'dark')),
                 ),     
             );
 
