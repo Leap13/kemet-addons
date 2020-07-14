@@ -234,8 +234,8 @@
 
     $.fn[addonName] = function ( options ) {
         return this.each(function () {
-            if ( ! $.data( this, 'plugin_' + addonName )) {
-                $.data( this, 'plugin_' + addonName, new kmtSticky( this, options ) );
+            if ( ! $.data( this, addonName )) {
+                $.data( this, addonName, new kmtSticky( this, options ) );
             }
         });
     }
