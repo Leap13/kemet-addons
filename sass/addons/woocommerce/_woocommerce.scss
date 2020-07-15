@@ -469,9 +469,55 @@ Woo Quick View
         }
     }
 }
-
 .woocommerce{
-    &.kmt-list-style{
+    ul.products{
+        &.load-ajax{
+            position:relative;
+            &:before{
+                content:"";
+                z-index:2;
+                position:absolute;
+                border:2px solid rgba(0,0,0,.1);
+                border-radius:100%;
+                height:40px;
+                width:40px;
+                top:200px;
+                left:50%;
+                margin-left:-20px;
+                -webkit-animation:circle-loading .35s linear infinite;
+                -o-animation:circle-loading .35s linear infinite;
+                animation:circle-loading .35s linear infinite;
+                border-top-color:#fff;
+            }
+            &:after {
+                content: '';
+                background-color: rgba(0,0,0,.15);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 100%;
+                visibility: visible;
+                display: block;
+                width: 100%;
+                z-index: 11;
+            }
+        }
+    }
+}
+@keyframes circle-loading{
+    0%{
+        -webkit-transform:rotate(0);
+        transform:rotate(0)
+    }
+    100%{
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg)
+    }
+}
+.woocommerce{
+    &.shop-list{
         ul.products{
             li.product{
                 width: 100% !important;

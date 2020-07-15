@@ -457,53 +457,100 @@ Woo Quick View
   transform: translateY(-10px) scale(1);
 }
 
-.woocommerce.kmt-list-style ul.products li.product {
+.woocommerce ul.products.load-ajax {
+  position: relative;
+}
+
+.woocommerce ul.products.load-ajax:before {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  top: 200px;
+  left: 50%;
+  margin-left: -20px;
+  -webkit-animation: circle-loading .35s linear infinite;
+  -o-animation: circle-loading .35s linear infinite;
+  animation: circle-loading .35s linear infinite;
+  border-top-color: #fff;
+}
+
+.woocommerce ul.products.load-ajax:after {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  visibility: visible;
+  display: block;
+  width: 100%;
+  z-index: 11;
+}
+
+@keyframes circle-loading {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.woocommerce.shop-list ul.products li.product {
   width: 100% !important;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap {
   display: flex;
   border: 0;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details {
   display: block;
   width: 32%;
   margin: 0 3% 0 0;
   position: relative;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details .kmt-shop-product-out-of-stock {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details .kmt-shop-product-out-of-stock {
   padding: .5em .7em;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap a img {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap a img {
   margin: 0;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
   padding: 0 1.2em 0;
   align-self: center;
   width: 65%;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap > * {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap > * {
   margin: .5em 0;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .woocommerce-loop-product__title {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woocommerce-loop-product__title {
   text-align: left;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .star-rating {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .star-rating {
   margin: 0;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .kmt-quick-view {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kmt-quick-view {
   display: inline-block;
 }
 
-.woocommerce.kmt-list-style ul.products li.product .kemet-shop-thumbnail-wrap .button {
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .button {
   white-space: nowrap;
 }
 
