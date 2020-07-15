@@ -43,5 +43,25 @@
                 $body.addClass(removerClasses);
             }
         });    
+    $('.kmt-list-style').click(function (e) {
 
+        e.preventDefault();
+        console.log(kemet.query_vars);
+        var event = $(this),
+            data = {
+            'action': 'kemet_list_post_ajax',
+            'query': kemet.query_vars
+        };
+        
+        $.ajax({
+            url: kemet.ajax_url,
+            data: data,
+            type: 'POST',
+            success: function (data) {
+            if (data) {
+                console.log(data);
+            }
+            }
+        });
+        });
 })(jQuery);

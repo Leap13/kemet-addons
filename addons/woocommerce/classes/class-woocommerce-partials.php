@@ -50,8 +50,33 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'toolbar_buttons' ) , 20);
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'end_tool_bar_div' ), 40 );
 			add_filter( 'wp_nav_menu_items', array( $this,'menu_wishlist_icon' ), 10, 2 );
+			add_action('wp_ajax_nopriv_kemet_list_post_ajax', array( $this, 'ajax_load_more_list_product'), 10);
+			add_action('wp_ajax_kemet_list_post_ajax', array( $this, 'ajax_load_more_list_product'), 10);
         }
+				
+		public function ajax_load_more_list_product() {
+			// prepare our arguments for the query
+		   $args = json_decode( stripslashes( $_POST['query'] ), true );
 		
+		   // it is always better to use WP_Query but not here
+		   query_posts( $args );
+
+		   $list = 'list'; 
+			
+		   $template = kemetaddons_get_template( 'woocommerce/templates/content-product.php' );
+
+		   if( have_posts() ) :
+		
+			   while( have_posts() ): the_post();
+		
+				   wc_get_template( 'content-product.php' , array('list' => $list));
+
+		
+			   endwhile;
+		
+		   endif;
+		   die; // here we exit the script and even no wp_reset_query() required!
+	   }
 		/**
 		 * Adds wishlist icon to menu
 		 *
@@ -641,7 +666,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Theme Js Localize
 		 */
         function wooCommerce_js_localize( $localize ) {
-
+			global $wp_query; 
 			$single_ajax_add_to_cart = kemet_get_option( 'enable-single-ajax-add-to-cart' );
 
 			if ( is_singular( 'product' ) ) {
@@ -656,7 +681,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['view_cart']                       = esc_attr__( 'View cart', 'kemet-addons' );
 			$localize['cart_url']                        = apply_filters( 'kemet_woocommerce_add_to_cart_redirect', wc_get_cart_url() );
 			$localize['single_ajax_add_to_cart'] 	     = $single_ajax_add_to_cart;
-
+			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
+			
             return $localize;
         }
         /**
