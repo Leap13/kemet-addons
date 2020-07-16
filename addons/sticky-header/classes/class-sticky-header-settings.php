@@ -68,6 +68,7 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
             $defaults['sticky-style']  = 'sticky-fade';
             $defaults['sticky-header-padding']  = '';
             $defaults['sticky-header-box-shadow']  = false;
+            $defaults['sticky-site-identity-spacing']  = '';
 
             return $defaults;
         }

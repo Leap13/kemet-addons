@@ -26,6 +26,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			$sticky_border_bottom_color 	  = kemet_get_option('sticky-border-bottom-color' , $global_border_color);	   
 			$submenu_border_color			  = kemet_get_option('sticky-submenu-border-color');
 			$space_sticky_header              = kemet_get_option( 'sticky-header-padding' );
+			$site_identity_spacing = kemet_get_option( 'sticky-site-identity-spacing' );
 
 			$css_output = array(
             //Sticky Header
@@ -60,6 +61,13 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 					'padding-right' => kemet_responsive_spacing( $space_sticky_header, 'right', 'desktop' ),
 					'padding-left'  => kemet_responsive_spacing( $space_sticky_header, 'left', 'desktop' ),
 				),
+				/* Site Identity Spacing */
+				'#sitehead.site-header.kmt-is-sticky .kmt-site-identity'  => array(
+					'padding-top'    => kemet_responsive_spacing( $site_identity_spacing, 'top', 'desktop' ),
+					'padding-right'  => kemet_responsive_spacing( $site_identity_spacing, 'right', 'desktop' ),
+					'padding-bottom' => kemet_responsive_spacing( $site_identity_spacing, 'bottom', 'desktop' ),
+					'padding-left'   => kemet_responsive_spacing( $site_identity_spacing, 'left', 'desktop' ),
+				),
 			);
 
 			$parse_css = kemet_parse_css( $css_output );
@@ -74,6 +82,13 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 					'padding-right' => kemet_responsive_spacing( $space_sticky_header, 'right', 'tablet' ),
 					'padding-left'  => kemet_responsive_spacing( $space_sticky_header, 'left', 'tablet' ),
 				),
+				/* Site Identity Spacing */
+				'#sitehead.site-header.kmt-is-sticky .kmt-site-identity'  => array(
+					'padding-top'    => kemet_responsive_spacing( $site_identity_spacing, 'top', 'tablet' ),
+					'padding-right'  => kemet_responsive_spacing( $site_identity_spacing, 'right', 'tablet' ),
+					'padding-bottom' => kemet_responsive_spacing( $site_identity_spacing, 'bottom', 'tablet' ),
+					'padding-left'   => kemet_responsive_spacing( $site_identity_spacing, 'left', 'tablet' ),
+				),
 			 );
 			$parse_css .= kemet_parse_css( $css_tablet, '', '768' );
 			
@@ -86,6 +101,13 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 					'padding-bottom' => kemet_responsive_spacing( $space_sticky_header, 'bottom', 'mobile' ),
 					'padding-right' => kemet_responsive_spacing( $space_sticky_header, 'right', 'mobile' ),
 					'padding-left'  => kemet_responsive_spacing( $space_sticky_header, 'left', 'mobile' ),
+				),
+				/* Site Identity Spacing */
+				'#sitehead.site-header.kmt-is-sticky .kmt-site-identity'  => array(
+					'padding-top'    => kemet_responsive_spacing( $site_identity_spacing, 'top', 'mobile' ),
+					'padding-right'  => kemet_responsive_spacing( $site_identity_spacing, 'right', 'mobile' ),
+					'padding-bottom' => kemet_responsive_spacing( $site_identity_spacing, 'bottom', 'mobile' ),
+					'padding-left'   => kemet_responsive_spacing( $site_identity_spacing, 'left', 'mobile' ),
 				),
 			);
 
