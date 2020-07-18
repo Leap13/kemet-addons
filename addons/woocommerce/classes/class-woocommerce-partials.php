@@ -70,9 +70,10 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		function kemet_get_shop_layout_cookie($default) {
 			
 			global $wp_customize;
-			if( isset($_COOKIE['kemet_te_shop_layout']) && !isset( $wp_customize ) ) {
+
+			if( isset($_COOKIE['kemet_shop_layout']) && !isset( $wp_customize ) ) {
 				
-				return $_COOKIE['kemet_te_shop_layout'];
+				return $_COOKIE['kemet_shop_layout'];
 
 			}
 			
@@ -89,14 +90,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					return 'shop-list';
 				}
 			);
-
-			add_filter(
-				'kemet_quick_view_style',
-				function () {
-					return 'qv-icon';
-				}
-			);
-
+			
 			do_action( 'ajax_product_layout_style' );
 
 			// prepare our arguments for the query
@@ -223,10 +217,9 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			 */
 			$qv_enable = kemet_get_option('enable-quick-view');
 			$qv_style = apply_filters('kemet_quick_view_style' , kemet_get_option('quick-view-style'));
-			$shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
+			$shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) , 2 );
 			
 			if( $qv_enable && $shop_style != 'hover-style'){
-				
 				if( $qv_style === 'on-image' ){
 					add_action( 'kemet_product_list_image_bottom', array( $this, 'quick_view_on_image' ) , 1);
 				}elseif( $qv_style === 'after-summary' ){
@@ -237,6 +230,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			}else if( $qv_enable && $shop_style == 'hover-style'){
 				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_with_group' ), 1 );
 			}
+			
 			
 			if($shop_style === 'shop-list'){
 				/**
@@ -694,7 +688,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		function shop_layout($classes){
 
 			if(is_shop() || is_singular( 'product' )){
-				$layout_style = $shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
+				$layout_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
 				$content_alignment = kemet_get_option('product-content-alignment');
 				$classes[] = 'content-align-' .  $content_alignment;
 				if(in_array('shop-grid' , $classes)){

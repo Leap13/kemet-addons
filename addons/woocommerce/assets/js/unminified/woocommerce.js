@@ -31,7 +31,7 @@ var Kemet_Shop_Layout = {
     init: function () {
 
         var $this = this,
-            cookie = $this.getCookie('kemet_te_shop_layout'),
+            cookie = $this.getCookie('kemet_shop_layout'),
             toolBar = $('.kmt-toolbar');
             
         if(cookie != '' && cookie != 'undefined' && !kemet.in_customizer){
@@ -96,7 +96,7 @@ var Kemet_Shop_Layout = {
 
                     container.removeClass('load-ajax');
                 }
-                Cookies.set('kemet_te_shop_layout', layoutStyle, {
+                Cookies.set('kemet_shop_layout', layoutStyle, {
                     expires: 0.1,
                     path: '/'
                 });
