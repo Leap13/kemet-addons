@@ -60,21 +60,25 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'shop_customization' ) );
 			add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
 			add_action( 'ajax_product_layout_style', array( $this, 'init_woocommerce' ) );
-			add_filter('kemet_shop_layout_style',array( $this,'kemet_get_shop_layout_cookie' ));
-        }
+			add_filter('kemet_shop_layout_style',array( $this,'kemet_get_shop_layout_cookie' ) );
+		}
+
+
 		/**
 		 * Get Shop Layout Cookie
 		 */
 		function kemet_get_shop_layout_cookie($default) {
-	
-			if( isset($_COOKIE['kemet_shop_layout'])) {
+			
+			global $wp_customize;
+			if( isset($_COOKIE['kemet_te_shop_layout']) && !isset( $wp_customize ) ) {
 				
-				$default = $_COOKIE['kemet_shop_layout'];
+				return $_COOKIE['kemet_te_shop_layout'];
+
 			}
-	
+			
 			return $default;
 		}
-						
+		
 		public function ajax_product_list_style() {
 
 			check_ajax_referer( 'shop-load-layout-style-nonce', 'nonce' );
@@ -89,7 +93,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_filter(
 				'kemet_quick_view_style',
 				function () {
-					return 'after-summary';
+					return 'qv-icon';
 				}
 			);
 
@@ -113,6 +117,9 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					wc_get_template_part( 'content', 'product' );
 				}
 			}
+			wp_reset_query();
+
+			wp_die();
 	   }
 
 	   public function ajax_product_hover_style() {
@@ -126,10 +133,39 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				}
 			);
 
+			do_action( 'ajax_product_layout_style' );
+
+			// prepare our arguments for the query
+		$args = json_decode( stripslashes( $_POST['query'] ), true );
+		
+		$posts = new WP_Query( $args );
+		
+			if ( $posts->have_posts() ) {
+				while ( $posts->have_posts() ) {
+					$posts->the_post();
+
+					/**
+					 * Woocommerce: woocommerce_shop_loop hook.
+					 *
+					 * @hooked WC_Structured_Data::generate_product_data() - 10
+					 */
+					do_action( 'woocommerce_shop_loop' );
+					wc_get_template_part( 'content', 'product' );
+				}
+			}
+			wp_reset_query();
+
+			wp_die();
+		}
+
+		public function ajax_product_default_style() {
+
+			check_ajax_referer( 'shop-load-layout-style-nonce', 'nonce' );
+
 			add_filter(
-				'kemet_quick_view_style',
+				'kemet_shop_layout_style',
 				function () {
-					return 'after-summary';
+					return 'shop-grid';
 				}
 			);
 
@@ -153,38 +189,16 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					wc_get_template_part( 'content', 'product' );
 				}
 			}
+
+			wp_reset_query();
+
+			wp_die();
 		}
-
-		public function ajax_product_default_style() {
-
-			check_ajax_referer( 'shop-load-layout-style-nonce', 'nonce' );
 		
-			do_action( 'ajax_product_layout_style' );
-
-			// prepare our arguments for the query
-		$args = json_decode( stripslashes( $_POST['query'] ), true );
-		
-		$posts = new WP_Query( $args );
-		
-			if ( $posts->have_posts() ) {
-				while ( $posts->have_posts() ) {
-					$posts->the_post();
-
-					/**
-					 * Woocommerce: woocommerce_shop_loop hook.
-					 *
-					 * @hooked WC_Structured_Data::generate_product_data() - 10
-					 */
-					do_action( 'woocommerce_shop_loop' );
-					wc_get_template_part( 'content', 'product' );
-				}
-			}
-		}
-
 		/**
 		 * Adds wishlist icon to menu
 		 *
-		 * @since 1.5.0
+		 * @since 1.0.6
 		 */
 		function menu_wishlist_icon( $items, $args ) {
 
@@ -207,24 +221,24 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			/**
 			 * Init Quick View
 			 */
-			$qv_enable = apply_filters('kemet_quick_view_style' , kemet_get_option('enable-quick-view'));
+			$qv_enable = kemet_get_option('enable-quick-view');
+			$qv_style = apply_filters('kemet_quick_view_style' , kemet_get_option('quick-view-style'));
 			$shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
 			
-			if( $qv_enable != 'disabled' && $shop_style != 'hover-style'){
-				if( $qv_enable === 'on-image' ){
+			if( $qv_enable && $shop_style != 'hover-style'){
+				
+				if( $qv_style === 'on-image' ){
 					add_action( 'kemet_product_list_image_bottom', array( $this, 'quick_view_on_image' ) , 1);
-				}elseif( $qv_enable === 'after-summary' ){
+				}elseif( $qv_style === 'after-summary' ){
 					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
-				}elseif( $qv_enable === 'qv-icon' ){
+				}elseif( $qv_style === 'qv-icon' ){
 					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_icon' ), 1 );
 				}
-			}elseif($shop_style == 'hover-style'){
+			}else if( $qv_enable && $shop_style == 'hover-style'){
 				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_with_group' ), 1 );
 			}
-
-			$shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
 			
-			if($shop_style == 'shop-list'){
+			if($shop_style === 'shop-list'){
 				/**
 				 * Woocommerce shop/product details div tag.
 				 */
@@ -234,7 +248,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					do_action( 'kemet_product_list_details_top' );
 					echo '<a href="' . esc_url( get_the_permalink() ) . '" class="kmt-loop-product__link">';
 				}
-				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details' , 8);
 				/**
 				 * Woocommerce shop/product details div close tag.
 				 */      
@@ -244,8 +257,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					echo '</div>';
 					
 				}
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title' ,1);
-	
+				
 				/**
 				 * Show the product title in the product loop. By default this is an H2.
 				 */
@@ -315,13 +327,15 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 						do_action( 'kemet_woo_shop_after_summary_wrap' );
 					}
 				}
+				
+				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details' , 8);
+				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title' ,1);
 				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content' , 2);
-	
+
 				remove_action( 'woocommerce_before_shop_loop_item', 'product_list_details' , 8);
 				remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title' ,1);
 				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content' ,2);
 			}else if($shop_style == 'hover-style'){
-	
 				/**
 				 * Woocommerce shop/product details div tag.
 				 */
@@ -332,7 +346,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					echo '<a href="' . esc_url( get_the_permalink() ) . '" class="kmt-loop-product__link">';
 					
 				}
-				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details' , 8);
 				/**
 				 * Woocommerce shop/product details div close tag.
 				 */      
@@ -353,7 +366,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					echo '</div>';
 					
 				}
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title' ,1);
 
 				/**
 				 * Show the product title in the product loop. By default this is an H2.
@@ -419,11 +431,24 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 						do_action( 'kemet_woo_shop_after_summary_wrap' );
 					}
 				}
+
+				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details' , 8);
+				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title' ,1);
 				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content' , 2);
 
 				remove_action( 'woocommerce_before_shop_loop_item', 'product_list_details' , 8);
 				remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title' ,1);
 				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content' ,2);
+
+			}elseif($shop_style == 'shop-grid'){
+				add_action( 'woocommerce_before_shop_loop_item', 'product_list_details' , 8);
+				add_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title' ,1);
+				add_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content' ,2);
+
+				remove_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details' , 8);
+				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title' ,1);
+				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content' , 2);
+
 			}
 			/**
 			 * Disable Related Products.
@@ -474,6 +499,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			}
 
 		}
+
 		/**
 		 * Start Tool bar
 		 */
@@ -668,7 +694,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		function shop_layout($classes){
 
 			if(is_shop() || is_singular( 'product' )){
-				$layout_style = kemet_get_option('shop-layout');
+				$layout_style = $shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
 				$content_alignment = kemet_get_option('product-content-alignment');
 				$classes[] = 'content-align-' .  $content_alignment;
 				if(in_array('shop-grid' , $classes)){
@@ -784,6 +810,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					$single_ajax_add_to_cart = false;
 				}
 			}
+
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
@@ -792,6 +819,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['single_ajax_add_to_cart'] 	     = $single_ajax_add_to_cart;
 			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
 			$localize['shop_load_layout_style']            = wp_create_nonce( 'shop-load-layout-style-nonce' );
+			$localize['in_customizer'] = is_customize_preview() ? true : false;
 
             return $localize;
         }
@@ -828,13 +856,14 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			}
 			$single_ajax_add_to_cart = kemet_get_option( 'enable-single-ajax-add-to-cart' );
 			$shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
-			$qv_enable = apply_filters('kemet_quick_view_style' , kemet_get_option('enable-quick-view'));
+			$qv_enable = kemet_get_option('enable-quick-view');
+			$qv_style = apply_filters('kemet_quick_view_style' , kemet_get_option('quick-view-style'));
 
-			if($qv_enable != 'disabled' || $shop_style == 'hover-style' ){
+			if( $qv_enable ){
 				
 				Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/quick-view' . $js_prefix);
 			}
-			if($single_ajax_add_to_cart || $qv_enable != 'disabled'){
+			if($single_ajax_add_to_cart || $qv_enable){
 			 	Kemet_Style_Generator::kmt_add_js(KEMET_WOOCOMMERCE_DIR.'assets/js/'. $dir .'/single-product-ajax-cart' . $js_prefix);
 			}
 

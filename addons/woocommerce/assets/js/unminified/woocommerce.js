@@ -31,22 +31,19 @@ var Kemet_Shop_Layout = {
     init: function () {
 
         var $this = this,
-            cookie = $this.getCookie('kemet_shop_layout');
+            cookie = $this.getCookie('kemet_te_shop_layout'),
+            toolBar = $('.kmt-toolbar');
             
-        if(cookie != 'cookie' && cookie != 'undefined'){
-            $this.defaultStyle(cookie)
+        if(cookie != '' && cookie != 'undefined' && !kemet.in_customizer){
+            $this.defaultStyle(cookie);
         }
-        $('a.kmt-grid-style').on('click' , function(e){
+        
+        toolBar.find('a').click(function(e){
             var $link = $(this);
-            $this.gridMode(e , $link);
+            $this.loadAjax(e , $link);
         });
-        $('a.kmt-list-style').on('click' ,function(e){
-            var $link = $(this);
-            $this.listMode(e , $link);
-        });
-
     },
-    gridMode: function(e , $this){
+    loadAjax: function(e , $this){
 
         e.preventDefault();
         if ($this.hasClass('active')) return;
@@ -57,7 +54,7 @@ var Kemet_Shop_Layout = {
             container = $('.kmt-woocommerce-container .products'),
             shop_load_template = kemet.shop_load_layout_style || '',
             action = '';
-            
+
             switch(layoutStyle) {
                 case 'hover-style':
                     action = 'kemet_hover_style_post_ajax';
@@ -65,8 +62,11 @@ var Kemet_Shop_Layout = {
                 case 'shop-grid':
                     action = 'kemet_product_default_style';
                   break;
+                case 'shop-list':
+                    action = 'kemet_list_post_ajax';
+                  break;  
               };
-
+              
         var data = {
             'action': action,
             'query': kemet.query_vars,
@@ -96,60 +96,12 @@ var Kemet_Shop_Layout = {
 
                     container.removeClass('load-ajax');
                 }
-                Cookies.set('kemet_shop_layout', layoutStyle, {
+                Cookies.set('kemet_te_shop_layout', layoutStyle, {
                     expires: 0.1,
                     path: '/'
                 });
             }
         });
-    },
-    listMode: function(e , $this){
-        
-        e.preventDefault();
-        if ($this.hasClass('active')) return;
-
-        var $body = $('body'),
-            layoutStyle = $this.data('layout'),
-            prevClass = $this.siblings('a').data('layout'),
-            container = $('.kmt-woocommerce-container .products'),
-            shop_load_template = kemet.shop_load_layout_style || '',
-            action = 'kemet_list_post_ajax',
-            data = {
-            'action': action,
-            'query': kemet.query_vars,
-            'nonce': shop_load_template,
-            };
-
-            $this.addClass('active');
-            $this.siblings().removeClass('active');
-            
-        $.ajax({
-            url: kemet.ajax_url,
-            data: data,
-            type: 'POST',
-
-            beforeSend: function (xhr) {
-                container.addClass('load-ajax');
-            },
-            success: function (data) {
-            if (data) {
-
-                    container.html(data);
-                    $this.addClass('active');
-                    $this.siblings().removeClass('active');
-
-                    $body.addClass(layoutStyle);
-                    $body.removeClass(prevClass);
-
-                    container.removeClass('load-ajax');
-                }
-
-                Cookies.set('kemet_shop_layout', 'shop-list', {
-                    expires: 0.1,
-                    path: '/'
-                });
-            }
-        }); 
     },
     getCookie: function(cname) {
         var name = cname + "=";
@@ -173,26 +125,26 @@ var Kemet_Shop_Layout = {
         
         toolBar.find('a').each(function(){
             var $this = $(this);
-            
+
             if($this.data('layout') == layout){
                 $this.addClass('active');
                 $this.siblings().removeClass('active');
             }
         });
-
-        $body.addClass(layout);
-        switch(cookie) {
+        switch(layout) {
             case 'hover-style':
                 $body.removeClass('grid-style shop-list');
               break;
-            case 'grid-style':
+            case 'shop-grid':
                 $body.removeClass('hover-style shop-list');
               break;
             case 'shop-list':
                 $body.removeClass('hover-style grid-style');
               break;
           };
-      }
+
+          $body.addClass(layout);   
+    }
 }
 
 $(function () { Kemet_Shop_Layout.init(); });

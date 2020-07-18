@@ -105,9 +105,27 @@ $wp_customize->add_control(
         'label'    => __( 'Shop Layout', 'kemet-addons' ),
         'choices'  => array(
             'shop-grid'   => __( 'Grid', 'kemet-addons' ),
-            //'shop-list'   => __( 'List', 'kemet-addons' ),
             'hover-style' => __( 'Hover Style', 'kemet-addons' ),
         ),
+    )
+);
+
+/**
+ * Option: Enable Sticky Header 
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
+        'default'           => $defaults[ 'enable-quick-view' ],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
+        'type'            => 'checkbox',
+        'section'         => 'section-woo-shop',
+        'label'           => __( 'Enable Quick View', 'kemet-addons' ),
+        'priority'        => 49,
     )
 );
 
@@ -115,25 +133,25 @@ $wp_customize->add_control(
 * Option: Quick View
 */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
-        'default'           => $defaults['enable-quick-view'],
+    KEMET_THEME_SETTINGS . '[quick-view-style]', array(
+        'default'           => $defaults['quick-view-style'],
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
         'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
-            'conditions' => '==', 
-            'values' => 'shop-grid',
+            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]/' . KEMET_THEME_SETTINGS . '[enable-quick-view]', 
+            'conditions' => '==/==', 
+            'values' => 'shop-grid/'.true,
+            'operators' => '&&',
         ),
     )
 );
 $wp_customize->add_control(
-    KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
+    KEMET_THEME_SETTINGS . '[quick-view-style]', array(
         'type'     => 'select',
         'section'  => 'section-woo-shop',
         'priority' => 50,
-        'label'    => __( 'Quick View', 'kemet-addons' ),
+        'label'    => __( 'Quick View Position', 'kemet-addons' ),
         'choices'  => array(
-            'disabled' => __( 'Disabled', 'kemet-addons' ),
             'qv-icon'   => __( 'Icon', 'kemet-addons' ),
             'on-image'   => __( 'On Image Click', 'kemet-addons' ),
             'after-summary'   => __( 'After Summary', 'kemet-addons' ),

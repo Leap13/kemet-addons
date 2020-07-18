@@ -37,7 +37,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
         }
 
         function theme_defaults( $defaults ) {
-            $defaults['enable-quick-view'] = 'disabled';
+            $defaults['quick-view-style'] = 'qv-icon';
             $defaults['shop-layout'] = 'shop-grid';
             $defaults['enable-single-ajax-add-to-cart'] = false;
             $defaults['shop-list-product-structure'] = array(
@@ -63,6 +63,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['disable-up-sells-products'] = false;
             $defaults['enable-product-navigation'] = false;
             $defaults['wishlist-in-header'] = false;
+            $defaults['enable-quick-view'] = false;
 
             return $defaults;
         }
