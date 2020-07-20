@@ -41,6 +41,10 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.0.8 version
+- Fixed: Separator height in header 8 issue.
+- Added: Default background color to hamburger menu in header 8.
+
 1.0.7 version
 - Added: Extra options for header layouts.
 - Tweak: Beaver Builder compatibility.
