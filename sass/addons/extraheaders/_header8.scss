@@ -65,8 +65,11 @@
                 }
             }
         }
-        .mobile-icon-outside-menu{
+        .outside-menu-mobile-icon-wrap{
             display: flex;
+            .kmt-button-wrap{
+                align-self: center;
+            }
         }
     }
 }

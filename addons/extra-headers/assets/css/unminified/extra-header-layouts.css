@@ -863,6 +863,10 @@ body:not(.kmt-header-break-point) .header-main-layout-7 .main-header-bar {
   display: none;
 }
 
-.kmt-header-break-point .header-main-layout-8 .mobile-icon-outside-menu {
+.kmt-header-break-point .header-main-layout-8 .outside-menu-mobile-icon-wrap {
   display: flex;
+}
+
+.kmt-header-break-point .header-main-layout-8 .outside-menu-mobile-icon-wrap .kmt-button-wrap {
+  align-self: center;
 }

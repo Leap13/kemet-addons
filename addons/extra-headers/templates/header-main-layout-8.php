@@ -16,12 +16,6 @@ $separator_class = kemet_get_option( 'disable-logo-icon-separator' ) ? '': ' ver
                 <div class="menu-icon-header-8">
                     <div class="inline-logo-menu <?php echo $separator_class; ?>"> 
                         <?php kemet_site_branding_markup(); ?>
-                            <?php if(wp_is_mobile()){
-                            echo '<div class="mobile-icon-outside-menu">' ;   
-                            kemet_toggle_buttons_markup();
-                            echo kemet_header_custom_item_outside_menu();
-                            echo '</div>' ;
-                            } ?>
                             <div class="menu-icon-social">
                                 <div class="menu-icon">
                                     <a id="nav-icon" class="icon-bars-btn">
@@ -37,10 +31,12 @@ $separator_class = kemet_get_option( 'disable-logo-icon-separator' ) ? '': ' ver
                         </div>
                     </div>
                 </div>
-                    <?php if(! wp_is_mobile()){
+                <div class="outside-menu-mobile-icon-wrap">
+                    <?php 
                         kemet_toggle_buttons_markup();
                         echo kemet_header_custom_item_outside_menu();
-                    } ?> 
+                    ?> 
+                </div>    
              <?php kemet_main_header_bar_bottom(); ?>
             </div> 
         </div> 
