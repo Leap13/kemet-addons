@@ -1,3 +1,14 @@
+body:not(.kmt-header-break-point){
+    .header-main-layout-8{
+        .kmt-outside-menu{
+            .kmt-sitehead-custom-menu-items{
+                >:first-child{
+                    padding-right: 0;
+                }		
+            }
+        }
+    }
+}
 .header-main-layout-8{
     .header9-logo-menu{
         display: flex;
@@ -67,6 +78,8 @@
         }
         .outside-menu-mobile-icon-wrap{
             display: flex;
+            flex: 1;
+            justify-content: flex-end;
             .kmt-button-wrap{
                 align-self: center;
             }

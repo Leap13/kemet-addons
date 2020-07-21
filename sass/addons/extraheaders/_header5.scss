@@ -149,9 +149,16 @@ body{
         }
         .ss-content{
             overflow: visible;
+            width: auto;
+            padding-left: 20px;
+            padding-right: 20px;
             .kmt-outside-menu{
                 width: auto;
             }
+            .site-branding{
+                text-align: left;
+            }
+
         }
         .kmt-sitehead-custom-menu-items{
             .kmt-search-container{
@@ -175,14 +182,6 @@ body{
         .kmt-site-identity{
             padding: 0;
         }
-        .site-branding{
-            padding-left: 20px;
-            text-align: left;
-        }
-     
-    .kmt-mobile-menu-buttons{
-        padding-right: 20px;
-    }
     .kmt-outside-menu{
         .kmt-sitehead-custom-menu-items {
             display: flex;
