@@ -43,6 +43,7 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 == Changelog ==
 1.0.8 version
 - Fixed: Separator height in header 8 issue.
+- Fixed: The position of Responsive menu icon with header 8.
 - Added: Default background color to hamburger menu in header 8.
 
 1.0.7 version
