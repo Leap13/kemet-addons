@@ -126,7 +126,7 @@
             opacity: 1;
             visibility: visible;
             position: static;
-            padding: 1.5em 0 0;
+            padding: 1.5em 15px 0 15px;
             display: flex;
         }
         .site-branding{
@@ -142,12 +142,6 @@
         }
         .kmt-site-identity{
             padding: 0;
-        }
-        .site-branding{
-            padding-left: 20px;
-        }
-        .kmt-mobile-menu-buttons{
-            padding-right: 20px;
         }
         .kmt-outside-menu{
             .kmt-sitehead-custom-menu-items {

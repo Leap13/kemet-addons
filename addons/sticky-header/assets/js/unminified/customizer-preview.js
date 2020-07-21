@@ -38,6 +38,10 @@
 
 		});
 	});
+	/**
+	 * Site Identity Spacing
+	 */
+	kemet_responsive_spacing('kemet-settings[sticky-site-identity-spacing]', '#sitehead.site-header.kmt-is-sticky .kmt-site-identity', 'padding', ['top', 'right', 'bottom', 'left']);
     /*
 	 * Site Identity Logo Width
 	 */

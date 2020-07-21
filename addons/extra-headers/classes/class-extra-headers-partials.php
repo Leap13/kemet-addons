@@ -65,6 +65,8 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header6-border-color']            = '';
             $defaults['header8-position']                = '';
             $defaults['header8-width']                   = '';
+            $defaults['disable-logo-icon-separator']     = false;
+            $defaults['header-separator-height']     = '';
             return $defaults;
         }
 

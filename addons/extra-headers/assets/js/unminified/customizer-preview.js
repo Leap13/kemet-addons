@@ -6,9 +6,17 @@
     kemet_css('kemet-settings[header-icon-bars-h-color]', 'background-color', '.site-header .menu-icon-social .menu-icon:hover span, .site-header .menu-icon-social .open .icon-bars-btn span');
     kemet_css('kemet-settings[header-icon-bars-bg-color]', 'background-color', '.site-header .menu-icon-social .menu-icon');
     kemet_css('kemet-settings[header-icon-bars-bg-h-color]', 'background-color', '.site-header .menu-icon-social .menu-icon:hover,.site-header .menu-icon-social .menu-icon.open');
-    kemet_css('kemet-settings[logo-icon-separator-color]', 'background-color', '.header-main-layout-8 .inline-logo-menu .site-branding:after');
+    kemet_css('kemet-settings[logo-icon-separator-color]', 'background-color', '.header-main-layout-8 .inline-logo-menu.vertical-separator .site-branding:after');
     kemet_css('kemet-settings[header-icon-label-color]', 'color', '.menu-icon-social .header-icon-label');
     kemet_css('kemet-settings[header-icon-label-hover-color]', 'color', '.menu-icon-social .header-icon-label:hover');
+    wp.customize('kemet-settings[header-separator-height]', function (setting) {
+        setting.bind(function (height) {
+
+            var dynamicStyle = '.header-main-layout-8 .inline-logo-menu.vertical-separator .site-branding:after { height: ' + (parseInt(height)) + 'px } ';
+            kemet_add_dynamic_css('header-separator-height', dynamicStyle);
+
+        });
+    });
     wp.customize('kemet-settings[header-icon-bars-border-radius]', function (setting) {
         setting.bind(function (border) {
 

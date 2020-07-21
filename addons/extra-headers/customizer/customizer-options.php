@@ -305,6 +305,90 @@ $defaults = Kemet_Theme_Options::defaults();
             'priority'        => 41,
 		)
 	);
+	//Header8
+	/**
+	 * Option: Disable Logo Icon Separator
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[disable-logo-icon-separator]', array(
+			'default'           => $defaults[ 'disable-logo-icon-separator' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
+				'conditions' => '==', 
+				'values' => 'header-main-layout-8',
+			),
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[disable-logo-icon-separator]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-header',
+			'label'           => __( 'Disable Logo Icon Separator', 'kemet-addons' ),
+            'priority'        => 42,
+		)
+	);
+	/**
+   	* Option: Header8 Logo Icon Separator Color 
+    */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
+		  'default'           => $defaults[ 'logo-icon-separator-color' ],
+		  'type'              => 'option',
+		  'transport'         => 'postMessage',
+		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+		  'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[disable-logo-icon-separator]', 
+			'conditions' => '==/!=', 
+			'values' => 'header-main-layout-8/'.true,
+			'operators' => "&&",
+		),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Color(
+		  $wp_customize, KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
+			'label'   => __( 'Logo Icon Separator Color', 'kemet-addons' ),
+			'section' => 'section-header',
+			'priority' => 43,
+		  )
+		)
+	);
+		/**
+	 * Option: Separator Height
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[header-separator-height]', array(
+			'default'           => $defaults[ 'header-separator-height' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[disable-logo-icon-separator]', 
+				'conditions' => '==/!=', 
+				'values' => 'header-main-layout-8/'.true,
+				'operators' => "&&",
+			),
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[header-separator-height]', array(
+				'type'        => 'kmt-slider',
+				'section'     => 'section-header',
+				'priority'    => 44,
+				'label'       => __( 'Logo Icon Separator Height', 'kemet-addons' ),
+				'suffix'      => '',
+				'input_attrs' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 50,
+				),
+			)
+		)
+	);
+	
 	/**
 	* Option: Title
 	*/
@@ -324,37 +408,12 @@ $defaults = Kemet_Theme_Options::defaults();
 			$wp_customize, KEMET_THEME_SETTINGS . '[kmt-header-hamburger-style]', array(
 				'type'     => 'kmt-title',
 				'label'    => __( 'Hamburger Menu Style', 'kemet-addons' ),
-				'section'  => 'section-header',
-				'priority' => 41,
+				'section'  => 'section-menu-header',
+				'priority' => 56,
 			)
 		)
 	);
-	//Header8
-	/**
-   	* Option: Header8 Logo Icon Separator Color 
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
-		  'default'           => $defaults[ 'logo-icon-separator-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]', 
-			'conditions' => '==', 
-			'values' => 'header-main-layout-8',
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[logo-icon-separator-color]', array(
-			'label'   => __( 'Logo Icon Separator Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 42,
-		  )
-		)
-	);
+
     /**
 	 * Option: Icon Label
 	 */
@@ -373,9 +432,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	);
 	$wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[header-icon-label]', array(
-			'section'  => 'section-header',
-			'priority' => 42,
-			'label'    => __( 'Menu Icon Label', 'kemet-addons' ),
+			'section'  => 'section-menu-header',
+			'priority' => 56,
+			'label'    => __( 'Hamburger Menu Label', 'kemet-addons' ),
 			'type'     => 'text',
 		)
 	);
@@ -398,9 +457,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-label-color]', array(
-			'label'   => __( 'Menu Icon Label Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 43,
+			'label'   => __( 'Hamburger Menu Label Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);
@@ -423,9 +482,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-label-hover-color]', array(
-			'label'   => __( 'Menu Icon Label Hover Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 44,
+			'label'   => __( 'Hamburger Menu Label Hover Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);
@@ -449,9 +508,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-color]', array(
-			'label'   => __( 'Menu Icon Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 45,
+			'label'   => __( 'Hamburger Menu Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);
@@ -475,9 +534,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-bg-color]', array(
-			'label'   => __( 'Menu Icon Background Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 46,
+			'label'   => __( 'Hamburger Menu Background Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);
@@ -501,9 +560,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-h-color]', array(
-			'label'   => __( 'Menu Icon Hover Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 47,
+			'label'   => __( 'Hamburger Menu Hover Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);
@@ -528,9 +587,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-bg-h-color]', array(
-			'label'   => __( 'Menu Icon Background Hover Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 48,
+			'label'   => __( 'Hamburger Menu Background Hover Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);
@@ -555,9 +614,9 @@ $defaults = Kemet_Theme_Options::defaults();
 		new Kemet_Control_Slider(
 			$wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-border-radius]', array(
 				'type'        => 'kmt-slider',
-				'section'     => 'section-header',
-				'priority'    => 49,
-				'label'       => __( 'Menu Icon Border Radius[PX]', 'kemet-addons' ),
+				'section'     => 'section-menu-header',
+				'priority'    => 56,
+				'label'       => __( 'Hamburger Menu Border Radius[PX]', 'kemet-addons' ),
 				'suffix'      => '',
 				'input_attrs' => array(
 					'min'  => 0,
@@ -589,9 +648,9 @@ $defaults = Kemet_Theme_Options::defaults();
 		new Kemet_Control_Responsive_Spacing(
 			$wp_customize, KEMET_THEME_SETTINGS . '[menu-icon-bars-space]', array(
 				'type'           => 'kmt-responsive-spacing',
-				'section'        => 'section-header',
-				'priority'       => 49,
-				'label'          => __( 'Menu Icon Spacing', 'kemet-addons' ),
+				'section'        => 'section-menu-header',
+				'priority'       => 56,
+				'label'          => __( 'Hamburger Menu Spacing', 'kemet-addons' ),
 				'linked_choices' => true,
 				'unit_choices'   => array( 'px', 'em', '%' ),
 				'choices'        => array(
@@ -622,9 +681,9 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-logo-bg-color]', array(
-			'label'   => __( 'Logo and Menu Icon Background Color', 'kemet-addons' ),
-			'section' => 'section-header',
-			'priority' => 55,
+			'label'   => __( 'Logo and Hamburger Menu Background Color', 'kemet-addons' ),
+			'section' => 'section-menu-header',
+			'priority' => 56,
 		  )
 		)
 	);

@@ -41,6 +41,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
 
             //Header8
             $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $global_border_color);
+            $menu_icon_separator_height = kemet_get_option('header-separator-height');
             $css_content = array(
                 '.header-main-layout-4 .main-header-menu' => array(
                     'background-color' => esc_attr($menu_bg_color),
@@ -63,8 +64,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 '.logo-menu-icon' => array(
 					'background-color' => esc_attr($header_icon_bars_logo_bg_color),
                 ),
-                '.header-main-layout-8 .inline-logo-menu .site-branding:after' => array(
+                '.header-main-layout-8 .inline-logo-menu.vertical-separator .site-branding:after' => array(
                     'background-color' => esc_attr($logo_icon_separator),
+                    'height' => kemet_get_css_value( $menu_icon_separator_height, 'px' ),
                 ),
                 '.site-header .menu-icon-social' => array(
                     'margin-top'    => kemet_responsive_spacing( $space_icon_bars, 'top', 'desktop' ),
@@ -112,6 +114,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.kemet-main-v-header-align-left.header-main-layout-5' => array(
                     'padding-left' => kemet_get_css_value( $vertical_header_width , 'px'),
+                ),
+                '.menu-icon-header-8 .menu-icon' => array(
+					'background-color' => esc_attr(kemet_color_brightness($global_bg_color , 0.94 , 'dark')),
                 ),     
             );
 
