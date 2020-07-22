@@ -36,5 +36,5 @@
     kemet_responsive_slider('kemet-settings[topbar-font-size]', '.kemet-top-header', 'font-size');
     kemet_responsive_slider('kemet-settings[top-bar-letter-spacing]', '.kemet-top-header', 'letter-spacing');
     kemet_css('kemet-settings[top-bar-text-transform]', 'text-transform', '.kemet-top-header');
-    kemet_css('kemet-settings[top-bar-line-height]', 'line-height', '.kemet-top-header');
+    kemet_responsive_slider('kemet-settings[top-bar-line-height]', '.kemet-top-header', 'line-height')
 })(jQuery);

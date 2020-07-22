@@ -68,7 +68,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 					'font-weight'     => esc_attr( $topbar_font_weight ),
 					'text-transform'  => esc_attr( $topbar_text_transform ),
                     'letter-spacing' => kemet_responsive_slider( $topbar_letter_spacing , 'desktop' ),
-                    'line-height' => esc_attr( $topbar_line_height ),
+                    'line-height' => kemet_responsive_slider( $topbar_line_height , 'desktop' ),
 					'color'          => esc_attr($topbar_text_color),
                 ),
                 '.kemet-top-header a'  => array(
@@ -105,6 +105,8 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'tablet' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'tablet' ),  
                     'font-size'    => kemet_responsive_slider( $topbar_font_size, 'tablet' ),
+                    'letter-spacing' => kemet_responsive_slider( $topbar_letter_spacing , 'tablet' ),
+                    'line-height' => kemet_responsive_slider( $topbar_line_height , 'tablet' ),
                 ),
                 '.kemet-top-header-section > div'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_item_spacing, 'top', 'tablet' ),
@@ -122,6 +124,8 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'mobile' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),
                     'font-size'    => kemet_responsive_slider( $topbar_font_size, 'mobile' ),
+                    'letter-spacing' => kemet_responsive_slider( $topbar_letter_spacing , 'tablet' ),
+                    'line-height' => kemet_responsive_slider( $topbar_line_height , 'tablet' ),
                 ),
                 '.kemet-top-header-section > div'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_item_spacing, 'top', 'mobile' ),
