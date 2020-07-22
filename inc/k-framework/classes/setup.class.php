@@ -264,6 +264,9 @@ if( ! class_exists( 'KFW' ) ) {
       // framework core styles
       wp_enqueue_style( 'kfw', KFW::include_plugin_url( 'assets/css/kfw'. $min .'.css' ), array(), '1.0.0', 'all' );
 
+      // admin styles
+      wp_enqueue_style( 'kfw', KFW::include_plugin_url( 'assets/css/style'. $min .'.css' ), array(), '1.0.0', 'all' );
+
       // rtl styles
       if ( is_rtl() ) {
         wp_enqueue_style( 'kfw-rtl', KFW::include_plugin_url( 'assets/css/kfw-rtl'. $min .'.css' ), array(), '1.0.0', 'all' );
