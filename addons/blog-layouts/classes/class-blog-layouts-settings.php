@@ -46,7 +46,11 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
 
         function theme_defaults( $defaults ) {
 			$defaults['blog-layouts']  = 'blog-layout-1';
-            $defaults['blog-grids']  = 2;
+            $defaults['blog-grids']  = array(
+				'desktop' => 3,
+				'tablet'  => 2,
+				'mobile'  => 2,
+			);
             $defaults['blog-excerpt-length']  = 50;
             $defaults['blog-posts-border-color']  = '';
             $defaults['blog-posts-border-size']   = '';
@@ -62,7 +66,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-pagination-style']   = 'next-prev';
             $defaults['blog-pagination-border-color']   = '';
             $defaults['blog-infinite-loader-color']   = '';
-            $defaults['blog-infinite-scroll-last-text']   = 'No more products to show.';
+            $defaults['blog-infinite-scroll-last-text']   = 'No more posts to show.';
             $defaults['post-margin-bottom']   = '';
 
             return $defaults;
