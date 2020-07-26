@@ -366,25 +366,36 @@ $defaults = Kemet_Theme_Options::defaults();
                  'default'           => $defaults[ 'pagetitle-line-height' ],
                  'type'              => 'option',
                  'transport'         => 'postMessage',
-                 'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+                 'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
              )
          );
          $wp_customize->add_control(
-             new Kemet_Control_Slider(
-                 $wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
-                     'type'        => 'kmt-slider',
-                     'section'     => 'section-page-title-header',
-                     'priority'    => 70,
-                     'label'       => __( 'Line Height', 'kemet-addons' ),
-					 'suffix'      => '',
-                     'input_attrs' => array(
-                         'min'  => 1,
-                         'step' => 0.01,
-                         'max'  => 5,
-                     ),
-                 )
-             )
-		 );
+			new Kemet_Control_Responsive_Slider(
+				$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
+					'type'           => 'kmt-responsive-slider',
+					'section'        => 'section-page-title-header',
+					'priority'       => 70,
+					'label'          => __( 'Line Height', 'kemet' ),
+					'unit_choices'   => array(
+						'px' => array(
+							'min' => 0,
+							'step' => 1,
+							'max' =>100,
+						),
+						'em' => array(
+							'min' => 0,
+							'step' => 1,
+							'max' => 10,
+						),
+						'%' => array(
+							'min' => 0,
+							'step' => 1,
+							'max' => 100,
+						),
+					),
+				)
+			)
+		);
 		 /**
 		 * Option: Page Title Letter Spacing
 		 */
@@ -636,21 +647,32 @@ $defaults = Kemet_Theme_Options::defaults();
 			'default'           => $defaults[ 'sub-title-line-height' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Slider(
+		new Kemet_Control_Responsive_Slider(
 			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-line-height]', array(
-				'type'        => 'kmt-slider',
-				'section'     => 'section-page-title-header',
-				'priority'    => 135,
-				'label'       => __( 'Line Height', 'kemet' ),
-				'suffix'      => '',
-				'input_attrs' => array(
-					'min'  => 1,
-					'step' => 0.01,
-					'max'  => 5,
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-page-title-header',
+				'priority'       => 135,
+				'label'          => __( 'Line Height', 'kemet' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' =>100,
+					),
+					'em' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' => 10,
+					),
+					'%' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' => 100,
+					),
 				),
 			)
 		)
@@ -854,21 +876,32 @@ $defaults = Kemet_Theme_Options::defaults();
 			'default'           => $defaults[ 'breadcrumbs-line-height' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Slider(
+		new Kemet_Control_Responsive_Slider(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-line-height]', array(
-				'type'        => 'kmt-slider',
-				'section'     => 'section-breadcrumbs',
-				'priority'    => 40,
-				'label'       => __( 'Line Height', 'kemet' ),
-				'suffix'      => '',
-				'input_attrs' => array(
-					'min'  => 1,
-					'step' => 0.01,
-					'max'  => 5,
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-breadcrumbs',
+				'priority'       => 40,
+				'label'          => __( 'Line Height', 'kemet' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' =>100,
+					),
+					'em' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' => 10,
+					),
+					'%' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' => 100,
+					),
 				),
 			)
 		)

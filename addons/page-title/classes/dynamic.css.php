@@ -60,7 +60,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'desktop' ),
                     'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'desktop' ),
                     'text-transform' => esc_attr( $page_title_font_transform ),
-                    'line-height'     => esc_attr( $page_title_line_height),
+                    'line-height'     => kemet_responsive_slider( $page_title_line_height, 'desktop' ),
                ),
                '.kmt-page-title.page-title-layout-1'  => array(
                 'text-align'  => esc_attr( $page_title_algin ),
@@ -80,7 +80,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'font-size'      => kemet_responsive_slider( $sub_title_font_size, 'desktop' ),
                     'letter-spacing' => kemet_responsive_slider( $sub_title_letter_spacing, 'desktop' ),
                     'text-transform' => esc_attr( $sub_title_text_transform ),
-                    'line-height'     => esc_attr( $sub_title_line_height),
+                    'line-height'     => kemet_responsive_slider( $sub_title_line_height, 'desktop' ),
                 ),
                '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'desktop' ),
@@ -99,7 +99,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                ),
                '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)'       => array(
                     'font-size' => kemet_responsive_slider( $breadcrumbs_font_size , 'desktop' ),
-                    'line-height'    => esc_attr( $breadcrumbs_line_height ),
+                    'line-height'    => kemet_responsive_slider( $breadcrumbs_line_height , 'desktop' ),
                     'letter-spacing' => kemet_responsive_slider( $breadcrumbs_letter_spacing , 'desktop' ),
                     'font-family'    => kemet_get_font_family( $breadcrumbs_font_family ),
                     'font-weight'    => esc_attr( $breadcrumbs_font_weight ),
@@ -118,7 +118,8 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                 ),
                  '.kemet-page-title'  => array(
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'tablet' ),
-                    'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'tabet' ),
+                    'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'tablet' ),
+                    'line-height'     => kemet_responsive_slider( $page_title_line_height, 'tablet' ),
                 ),
                 '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'tablet' ),
@@ -127,6 +128,16 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'tablet' ), 
                     'font-size'      => kemet_responsive_slider( $breadcrumbs_font_size, 'tablet' ),
                ),
+               '.kemet-page-sub-title'  => array(
+                    'font-size'      => kemet_responsive_slider( $sub_title_font_size, 'tablet' ),
+                    'letter-spacing' => kemet_responsive_slider( $sub_title_letter_spacing, 'tablet' ),
+                    'line-height'     => kemet_responsive_slider( $sub_title_line_height, 'tablet' ),
+                ),
+                '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)'       => array(
+                    'font-size' => kemet_responsive_slider( $breadcrumbs_font_size , 'tablet' ),
+                    'line-height'    => kemet_responsive_slider( $breadcrumbs_line_height , 'tablet' ),
+                    'letter-spacing' => kemet_responsive_slider( $breadcrumbs_letter_spacing , 'tablet' ),
+                ),
              );
             $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
@@ -140,6 +151,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                  '.kemet-page-title'  => array(
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'mobile' ),
                     'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'mobile' ),
+                    'line-height'     => kemet_responsive_slider( $page_title_line_height, 'mobile' ),
                 ),
                 '.kemet-breadcrumb-trail'  => array (
                     'padding-top'    => kemet_responsive_spacing( $breadcrumbs_spacing, 'top', 'mobile' ),
@@ -148,6 +160,16 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'padding-left'   => kemet_responsive_spacing( $breadcrumbs_spacing, 'left', 'mobile' ),
                     'font-size'      => kemet_responsive_slider( $breadcrumbs_font_size, 'mobile' ), 
                ),
+               '.kemet-page-sub-title'  => array(
+                    'font-size'      => kemet_responsive_slider( $sub_title_font_size, 'mobile' ),
+                    'letter-spacing' => kemet_responsive_slider( $sub_title_letter_spacing, 'mobile' ),
+                    'line-height'     => kemet_responsive_slider( $sub_title_line_height, 'mobile' ),
+                ),
+                '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)'       => array(
+                    'font-size' => kemet_responsive_slider( $breadcrumbs_font_size , 'mobile' ),
+                    'line-height'    => kemet_responsive_slider( $breadcrumbs_line_height , 'mobile' ),
+                    'letter-spacing' => kemet_responsive_slider( $breadcrumbs_letter_spacing , 'mobile' ),
+                ),
              );
             $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             

@@ -30,7 +30,7 @@
     kemet_responsive_slider('kemet-settings[breadcrumbs-font-size]', '.kemet-breadcrumb-trail' , 'font-size');
     kemet_css('kemet-settings[page-title-border-right-color]', 'border-color', '.page-title-layout-3 .kmt-page-title-wrap');
     kemet_css('kemet-settings[pagetitle-text-transform]', 'text-transform', '.kemet-page-title');
-    kemet_css('kemet-settings[pagetitle-line-height]', 'line-height', '.kemet-page-title');
+    kemet_responsive_slider('kemet-settings[pagetitle-line-height]', '.kemet-page-title' , 'line-height');
     //Page Title Bottom Title
     kemet_css('kemet-settings[pagetitle-bottomline-height]', 'height', '.kemet-page-title::after', 'px');
     kemet_css('kemet-settings[pagetitle-bottomline-width]', 'width', '.kemet-page-title::after', 'px');
@@ -44,11 +44,11 @@
     kemet_responsive_slider('kemet-settings[breadcrumbs-letter-spacing]', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)', 'letter-spacing');
     kemet_responsive_slider('kemet-settings[breadcrumbs-font-size]', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)', 'font-size');
     kemet_css('kemet-settings[breadcrumbs-text-transform]', 'text-transform', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)');
-    kemet_css('kemet-settings[breadcrumbs-line-height]', 'line-height', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)');
-
+    kemet_responsive_slider('kemet-settings[breadcrumbs-line-height]', '.kemet-breadcrumb-trail , .kemet-breadcrumb-trail *:not(.dashicons)' , 'line-height');
+    
     kemet_css('kemet-settings[sub-title-color]', 'color', '.kemet-page-sub-title');
     kemet_responsive_slider('kemet-settings[sub-title-letter-spacing]', '.kemet-page-sub-title', 'letter-spacing');
     kemet_responsive_slider('kemet-settings[sub-title-font-size]', '.kemet-page-sub-title', 'font-size');
     kemet_css('kemet-settings[sub-title-text-transform]', 'text-transform', '.kemet-page-sub-title');
-    kemet_css('kemet-settings[sub-title-line-height]', 'line-height', '.kemet-page-sub-title');
+    kemet_responsive_slider('kemet-settings[sub-title-line-height]', '.kemet-page-sub-title' , 'line-height');
 })(jQuery);

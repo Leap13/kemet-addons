@@ -4,7 +4,7 @@ Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.4
 Requires PHP: 5.4
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,11 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.0.9 version
+- Added: Five blog layouts.
+- Added: Responsive controls for page title line height.
+- Fixed: Logo spacing in responsive in Header6 issue.
+
 1.0.8 version
 - Added: Default background color to hamburger menu in header 8.
 - Added: Logo spacing, header background and header padding options for sticky header.
