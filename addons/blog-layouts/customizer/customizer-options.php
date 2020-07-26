@@ -139,9 +139,9 @@ $wp_customize->add_control(
 			'transport'         => 'postMessage',
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
 			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[blog-layouts]/'.KEMET_THEME_SETTINGS . '[blog-layouts]', 
-				'conditions' => '==/==', 
-				'values' => 'blog-layout-2/blog-layout-3',
+				'controls' =>  KEMET_THEME_SETTINGS . '[blog-layouts]', 
+				'conditions' => '==', 
+				'values' => 'blog-layout-3',
 			),
 		)
 	);
@@ -157,6 +157,40 @@ $wp_customize->add_control(
 						'min'  => 0,
 						'step' => 1,
 						'max'  => 100,
+					),
+				)
+			)
+		);
+
+		/**
+		* Option - Border Size
+		*/
+		$wp_customize->add_setting(
+			KEMET_THEME_SETTINGS . '[layout-2-post-border-size]', array(
+				'default'           => $defaults[ 'layout-2-post-border-size' ],
+				'type'              => 'option',
+				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
+				'dependency'  => array(
+					'controls' =>  KEMET_THEME_SETTINGS . '[blog-layouts]', 
+					'conditions' => '==', 
+					'values' => 'blog-layout-2',
+				),
+			)
+		);
+		$wp_customize->add_control(
+			new Kemet_Control_Responsive_Spacing(
+				$wp_customize, KEMET_THEME_SETTINGS . '[layout-2-post-border-size]', array(
+					'type'           => 'kmt-responsive-spacing',
+					'section'        => 'section-blog',
+					'priority'       => 5,
+					'label'          => __( 'Posts Border Size 2', 'kemet' ),
+					'linked_choices' => true,
+					'unit_choices'   => array( 'px', 'em', '%' ),
+					'choices'        => array(
+						'top'    => __( 'Top', 'kemet' ),
+						'right'  => __( 'Right', 'kemet' ),
+						'bottom' => __( 'Bottom', 'kemet' ),
+						'left'   => __( 'Left', 'kemet' ),
 					),
 				)
 			)

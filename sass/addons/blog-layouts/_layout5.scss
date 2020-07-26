@@ -36,11 +36,11 @@ body:not(.kmt-separate-container){
             }
         }
         .entry-content{
-            flex: 1;
+            flex: auto;
         }
         .kmt-blog-featured-section{
             margin-bottom: 20px;
-            flex: 0 0 auto;
+            flex: auto;
         }
     }
 }

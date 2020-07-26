@@ -4,7 +4,7 @@
     wp.customize('kemet-settings[blog-posts-border-size]', function (setting) {
 		setting.bind(function (border) {
 
-			var dynamicStyle = '.blog-layout-2 .blog-post-layout-2 , body:not(.kmt-separate-container) .blog-layout-2 .kmt-article-post .blog-post-layout-2 , .blog-layout-3 .kmt-article-post .post-content { border-width: ' + border + 'px }';
+			var dynamicStyle = '.blog-layout-3 .kmt-article-post .post-content { border-width: ' + border + 'px }';
 
 			kemet_add_dynamic_css('blog-posts-border-size', dynamicStyle);
 		});

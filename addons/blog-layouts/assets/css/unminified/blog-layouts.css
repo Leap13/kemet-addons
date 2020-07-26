@@ -817,10 +817,10 @@ body:not(.kmt-separate-container) .blog-post-layout-5 {
 }
 
 .blog-layout-5 .blog-post-layout-5 .entry-content {
-  flex: 1;
+  flex: auto;
 }
 
 .blog-layout-5 .blog-post-layout-5 .kmt-blog-featured-section {
   margin-bottom: 20px;
-  flex: 0 0 auto;
+  flex: auto;
 }

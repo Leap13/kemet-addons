@@ -11,16 +11,18 @@
 
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
 $enable_overlay = kemet_get_option( 'overlay-image-style' );
-
+$blog_layout = kemet_get_option( 'blog-layouts' );
+$container_class = $blog_layout == 'blog-layout-1' ? 'blog-post-layout-1' : 'blog-post-layout-2';
+$divs_class = $blog_layout == 'blog-layout-1' ? 'kmt-col-md-12' : '';
 ?>
-<div <?php kemet_blog_layout_class( 'blog-post-layout-1' ); ?>>
+<div <?php kemet_blog_layout_class( $container_class ); ?>>
 
-	<div class="post-content kmt-col-md-12">
+	<div class="post-content <?php echo $divs_class; ?>">
 	<?php foreach($blog_post_order as $item){ ?>
 		<?php 
 		switch($item){
 			case 'image':
-			$overlay_image = $enable_overlay != 'none' ? kemet_addons_get_thumbnail_with_overlay( '<div class="kmt-blog-featured-section post-thumb kmt-col-md-12">', '</div>' ) : kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb kmt-col-md-12">', '</div>' );
+			$overlay_image = $enable_overlay != 'none' ? kemet_addons_get_thumbnail_with_overlay( '<div class="kmt-blog-featured-section post-thumb '.$divs_class.'">', '</div>' ) : kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb '.$divs_class.'">', '</div>' );
 				
 				break;
 		?>

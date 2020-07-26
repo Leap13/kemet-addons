@@ -49,7 +49,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-grids']  = array(
 				'desktop' => 3,
 				'tablet'  => 2,
-				'mobile'  => 2,
+				'mobile'  => 1,
 			);
             $defaults['blog-excerpt-length']  = 50;
             $defaults['blog-posts-border-color']  = '';
@@ -81,8 +81,13 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             add_action( 'kemet_entry_content_blog', array( $this, 'blog_template' ), 1 );
         }
         function blog_template() {
-
-			kemetaddons_get_template( 'blog-layouts/templates/' . esc_attr( kemet_get_option( 'blog-layouts' ) ) . '.php' );
+            $blog_layout = kemet_get_option( 'blog-layouts' );
+            if($blog_layout == 'blog-layout-1' || $blog_layout == 'blog-layout-2'){
+                kemetaddons_get_template( 'blog-layouts/templates/blog-layout-1.php' );
+            }else{
+                kemetaddons_get_template( 'blog-layouts/templates/' . esc_attr( $blog_layout ) . '.php' );
+            }
+			
         }
 
        function customize_register($wp_customize) {
