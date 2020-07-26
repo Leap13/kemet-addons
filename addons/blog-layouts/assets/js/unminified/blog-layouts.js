@@ -23,6 +23,17 @@
     
     if( typeof paginationStyle != '' && paginationStyle == 'infinite-scroll' ){
         
+        var in_customizer = false;
+
+        // check for wp.customize return boolean
+		if ( typeof wp !== 'undefined' ) {
+
+			in_customizer =  typeof wp.customize !== 'undefined' ? true : false;
+
+			if ( in_customizer ) {
+				return;
+			}
+        }
         
         if( $('#main').find('.post:last').length > 0 ) {
             var windowHeight = $(window).outerHeight() / 2;
