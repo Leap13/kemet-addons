@@ -19,6 +19,17 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: [
+                    {
+                        expand: true,
+                        cwd: 'addons/blog-layouts/assets/css/unminified/',
+                        src: [
+                                '*.css',
+                                '!*-rtl.css',
+                            ],
+                        dest: 'addons/blog-layouts/assets/css/unminified/',
+                        ext: '-rtl.css'
+
+                    },
                      {
                         expand: true,
                         cwd: 'addons/extra-headers/assets/css/unminified/',
@@ -117,6 +128,7 @@ module.exports = function (grunt) {
 
                     /* Editor Style */
                     {
+                        'addons/blog-layouts/assets/css/unminified/blog-layouts.css': 'sass/blog-layouts.scss',
                         'addons/extra-headers/assets/css/unminified/extra-header-layouts.css': 'sass/extraheaders.scss',
                         'addons/extra-widgets/assets/css/unminified/style.css': 'sass/extra-widgets.scss',
                         'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
@@ -140,6 +152,14 @@ module.exports = function (grunt) {
         cssmin: {
             css: {
                 files: [
+                    {
+                        src: 'addons/blog-layouts/assets/css/unminified/blog-layouts.css',
+                        dest: 'addons/blog-layouts/assets/css/minified/blog-layouts.min.css',
+                    },
+                    {
+                        src: 'addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css',
+                        dest: 'addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css',
+                    },
                     {
                         src: 'addons/extra-headers/assets/css/unminified/extra-header-layouts.css',
                         dest: 'addons/extra-headers/assets/css/minified/extra-header-layouts.min.css',
@@ -213,6 +233,8 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
+                    'addons/blog-layouts/assets/js/minified/blog-layouts.min.js': 'addons/blog-layouts/assets/js/unminified/blog-layouts.js',
+                    'addons/blog-layouts/assets/js/minified/customizer-preview.min.js': 'addons/blog-layouts/assets/js/unminified/customizer-preview.js',
                     'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
                     'addons/extra-headers/assets/js/minified/customizer-preview.min.js': 'addons/extra-headers/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/customizer-preview.min.js': 'addons/extra-widgets/assets/js/unminified/customizer-preview.js',
