@@ -88,6 +88,12 @@ if (class_exists('KFW')) {
         'title' => __('Blog Layouts', 'kemet-addons'),
         'subtitle' => __('Enable/Disable Extra Blog Layouts', 'kemet-ddons'),
         'default' => 'false',
+      ),array(
+        'id' => 'custom-layout',
+        'type' => 'switcher',
+        'title' => __('Custom Layout', 'kemet-addons'),
+        'subtitle' => __('Custom Layout', 'kemet-ddons'),
+        'default' => 'false',
       ),
     ),
   ),
