@@ -245,6 +245,7 @@ module.exports = function (grunt) {
                     'addons/sticky-header/assets/js/minified/sticky-header.min.js': 'addons/sticky-header/assets/js/unminified/sticky-header.js',
                     'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
+                    'addons/custom-layout/assets/js/minified/custom-layout.min.js': 'addons/custom-layout/assets/js/unminified/custom-layout.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
 

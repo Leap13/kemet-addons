@@ -1,7 +1,51 @@
 <?php
 
 // Metabox of the PAGE
+$options = Kemet_Custom_Layout_Partials::get_locations();
+$rules_array = array();
 
+foreach($options as $key => $value){
+  foreach($value['value'] as $val => $label){
+    $rules_array[ __($value['label'], 'kemet-addons') ][$val] = __($label, 'kemet-addons');
+  }
+}
+
+$hooks = Kemet_Custom_Layout_Partials::get_hooks();
+$hooks_array = array();
+foreach($hooks as $key => $value){
+   foreach($value['value'] as $val => $decription){
+      $hooks_array[ __($value['title'], 'kemet-addons') ][$val] = __($val, 'kemet-addons');
+   }
+}
+
+function hooks_descriptions(){
+
+    $js_prefix  = '.min.js';
+    $dir        = 'minified';
+    if ( SCRIPT_DEBUG ) {
+      $js_prefix  = '.js';
+      $dir        = 'unminified';
+    }
+
+    $hooks = Kemet_Custom_Layout_Partials::get_hooks();
+    $description_array = array();
+    foreach($hooks as $key => $value){
+      foreach($value['value'] as $val => $decription){
+          $description_array[$val] = __( $decription , 'kemet-addons');
+      }
+    }
+    wp_enqueue_script( 'kemet-addons-custom-layout-js', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/' . $dir . '/custom-layout' . $js_prefix, array(), KEMET_ADDONS_VERSION, true );
+
+    wp_localize_script(
+      'kemet-addons-custom-layout-js', 'kemetAddons', apply_filters(
+        'kemet_addons_admin_js_localize', array(
+          'hooks_descriptions'      => $description_array,
+        )
+      )
+    );
+
+}
+add_action( 'admin_enqueue_scripts', 'hooks_descriptions' ,1 );
 //
 // Create a Metabox Options
 //
@@ -38,15 +82,12 @@ KFW::createSection( $prefix_page_opts, array(
       array(
         'id'          => 'hook-action',
         'type'        => 'select',
+        'class'       => 'kmt-hooks-select',
         'title'       => __('Layout', 'kemet-addons'),
+        'desc'        => __('Select an option', 'kemet-addons'),
         'placeholder' => __('Select an option', 'kemet-addons'),
         'default'     => '',
-        'options'     => array(
-          'kemet_head_top'     => __('Top Head', 'kemet-addons'),
-          'kemet_header'     => __('Header Content', 'kemet-addons'),
-          'kemet_before_header_block'    => __('Before Header', 'kemet-addons'),
-          'kemet_after_header_block'  => __('After Header', 'kemet-addons'),
-        ),
+        'options'     => $hooks_array,
         'dependency' => array(
           array( 'layout-position', '==', 'hooks' ),
         ),
@@ -72,17 +113,40 @@ KFW::createSection( $prefix_page_opts, array(
         'output_mode' => 'padding',
       ), 
       array(
-        'id'     => 'display-rule-repreater',
+        'id'     => 'display-on-rule-repreater',
         'type'   => 'repeater',
-        'title'  => 'Repeater',
+        'title'  => 'Display On',
+        'button_title' => 'Add new row',
+        'chosen'      => true,
         'fields' => array(
           array(
-            'id'    => 'display-rule',
-            'type'  => 'text',
-            'title' => 'Text'
+            'id'    => 'display-on-rule',
+            'type'  => 'select',
+            'placeholder' => __('Select an option', 'kemet-addons'),
+            'options'     => $rules_array,
           ),
-      
         ),
+        'default'   => array(
+          'display-on-rule'
+        )
+      ),
+      array(
+        'id'     => 'hide-on-rule-repreater',
+        'type'   => 'repeater',
+        'title'  => 'Hide On',
+        'button_title' => 'Add new row',
+        'chosen'      => true,
+        'fields' => array(
+          array(
+            'id'    => 'hide-on-rule',
+            'type'  => 'select',
+            'placeholder' => __('Select an option', 'kemet-addons'),
+            'options'     => $rules_array,
+          ),
+        ),
+        'default'   => array(
+          'hide-on-rule'
+        )
       ),
     )
   ) 
