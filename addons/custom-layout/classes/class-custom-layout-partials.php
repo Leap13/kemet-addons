@@ -32,7 +32,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		public function __construct() {
             add_action( 'do_meta_boxes', array( $this, 'remove_kemet_page_options' ) );
             add_filter( 'single_template', array( $this, 'get_custom_layout_template' ) );
-            add_filter( 'kemet_addons_custom_layout_template', array( $this, 'template_empty_content' ) );
+            add_filter( 'kemet_addons_custom_layout_template', array( $this, 'default_content' ) );
             add_filter( 'wp', array( $this, 'layout' ) );
         }
 
@@ -65,7 +65,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		 *
 		 * @return void
 		 */
-		public function template_empty_content() {
+		public function default_content() {
 			$post_id = get_the_id();
 			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
             $layout = ( isset( $meta['layout-position'] ) ) ? $meta['layout-position'] : '';
