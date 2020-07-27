@@ -47,7 +47,6 @@ if ( ! class_exists('Kemet_Addons' ) ) {
             require_once KEMET_ADDONS_DIR.'inc/kemet-addons-settings.php';
 
             add_action('after_setup_theme', array($this, 'setup'));
-            add_action( 'admin_enqueue_scripts', array($this, 'kmt_admin_styles'));
         }
 
         public function activation() {
