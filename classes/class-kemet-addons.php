@@ -84,10 +84,6 @@ if ( ! class_exists('Kemet_Addons' ) ) {
         public function load_plugin_textdomain() {
             load_plugin_textdomain('kemet-addons', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
         }
-        
-        public function kmt_admin_styles() {
-            wp_enqueue_style( 'kmt_admin_css', KEMET_ADDONS_URL .'assets/admin/css/style.css' );
-        }  
 
     }
 }
