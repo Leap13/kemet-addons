@@ -50,7 +50,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		public function __construct() {
             add_action( 'do_meta_boxes', array( $this, 'remove_kemet_page_options' ) );
             add_filter( 'kemet_addons_custom_layout_hook', array( $this, 'default_content' ) );
-            add_filter( 'the_content', array( $this, 'advanced_hook_content_markup' ) );
+            add_filter( 'the_content', array( $this, 'cutom_layout_hook_content' ) );
             add_filter( 'wp', array( $this, 'layout' ) );
             add_filter( 'wp', array( $this, 'get_markup' ) );
         }
@@ -124,12 +124,11 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		}
         
         /**
-		 * Filter content markup for Advanced Hook post type.
 		 *
 		 * @param  html $content the_content markup.
 		 * @return html
 		 */
-		public function advanced_hook_content_markup( $content ) {
+		public function cutom_layout_hook_content( $content ) {
 			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
 				$post_id = get_the_id();
                 $meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
@@ -332,7 +331,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
         }
         
         /**
-		 * @since  1.0.0
+		 * @since  1.1.0
 		 *
 		 * @param object $post_type post type parameter.
 		 * @param object $taxonomy taxonomy for creating the target rule markup.
@@ -555,7 +554,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
         /**
 		 * Get Posts
 		 *
-		 * @since  1.0.0
+		 * @since  1.1.0
 		 * @param  string $post_type Post Type.
 		 * @param  array  $options meta option name.
 		 *
