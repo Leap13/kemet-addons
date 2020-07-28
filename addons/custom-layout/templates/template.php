@@ -12,7 +12,7 @@ get_header();
 
 while ( have_posts() ) :
 	the_post();
-	do_action( 'kemet_addons_custom_layout_template' );
+	do_action( 'kemet_addons_custom_layout_hook' );
 	endwhile;
 
 get_footer();

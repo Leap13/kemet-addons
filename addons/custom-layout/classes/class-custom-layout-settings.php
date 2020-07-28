@@ -26,7 +26,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 		}
         public function __construct() {
 			add_action( 'init', array( $this, 'custom_post_type' ) );
-			//add_filter( 'single_template', array( $this, 'get_custom_layout_template' ) );
+			add_filter( 'single_template', array( $this, 'get_custom_layout_template' ) );
 			if ( is_admin() ) {
 				add_action( 'admin_menu', array( $this, 'add_custom_layout_item' ), 1 );
 			}
@@ -39,10 +39,31 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 		 * @return string
 		 */
 		public function get_custom_layout_template( $template ) {
-            var_dump($template);
-			$template = KEMET_CUSTOM_LAYOUT_DIR . '/template/template.php';
+			global $post;
 
-			return $template;
+			$post_id = get_the_id();
+			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
+			$layout = ( isset( $meta['layout-position'] ) ) ? $meta['layout-position'] : '';
+			$action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+
+			$woocommerce_hooks     = array( 'woo-global', 'woo-shop', 'woo-product', 'woo-cart', 'woo-checkout', 'woo-distraction-checkout', 'woo-account' );
+			$woocommerce_is_activated = false;
+
+			if ( KEMET_CUSTOM_LAYOUT_POST_TYPE == $post->post_type ) {
+				if ( 'hooks' === $layout ) {
+					foreach ( Kemet_Custom_Layout_Partials::get_hooks() as $key => $value ) {
+						if ( in_array( $key, $woocommerce_hooks ) && isset( Kemet_Custom_Layout_Partials::get_hooks()[ $key ]['hooks'][ $action ] ) ) {
+							$woocommerce_is_activated = true;
+						}
+					}
+				}
+
+				if ( ( 'hooks' === $layout && false == $woocommerce_is_activated ) ) {
+					$template = KEMET_CUSTOM_LAYOUT_DIR . 'templates/template.php';
+				}
+			}
+			
+			return $template;	
 		}
 
 		/**

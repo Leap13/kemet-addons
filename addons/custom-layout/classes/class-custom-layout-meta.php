@@ -18,6 +18,14 @@ foreach($hooks as $key => $value){
    }
 }
 
+$user_roles = Kemet_Custom_Layout_Partials::get_user_rules_list();
+$user_roles_array = array();
+foreach($user_roles as $key => $value){
+   foreach($value['value'] as $val => $label){
+      $user_roles_array[ __($value['title'], 'kemet-addons') ][$val] = __($label, 'kemet-addons');
+   }
+}
+
 function hooks_descriptions(){
 
     $js_prefix  = '.min.js';
@@ -70,20 +78,16 @@ KFW::createSection( $prefix_page_opts, array(
         'id'          => 'layout-position',
         'type'        => 'select',
         'title'       => __('Layout', 'kemet-addons'),
-        'placeholder' => __('Select an option', 'kemet-addons'),
-        'default'     => '',
         'options'     => array(
-          'header-layout'     => __('Header', 'kemet-addons'),
-          'footer-layout'     => __('Footer', 'kemet-addons'),
-          '404-layout'     => __('404 Page', 'kemet-addons'),
           'hooks'     => __('Hooks', 'kemet-addons'),
         ),
+        'default'     => 'hooks',
       ),      
       array(
         'id'          => 'hook-action',
         'type'        => 'select',
         'class'       => 'kmt-hooks-select',
-        'title'       => __('Layout', 'kemet-addons'),
+        'title'       => __('Action', 'kemet-addons'),
         'desc'        => __('Select an option', 'kemet-addons'),
         'placeholder' => __('Select an option', 'kemet-addons'),
         'default'     => '',
@@ -113,7 +117,7 @@ KFW::createSection( $prefix_page_opts, array(
         'output_mode' => 'padding',
       ), 
       array(
-        'id'     => 'display-on-rule-repreater',
+        'id'     => 'all-display-on-rules',
         'type'   => 'repeater',
         'title'  => 'Display On',
         'button_title' => 'Add new row',
@@ -131,7 +135,7 @@ KFW::createSection( $prefix_page_opts, array(
         )
       ),
       array(
-        'id'     => 'hide-on-rule-repreater',
+        'id'     => 'all-hide-on-rules',
         'type'   => 'repeater',
         'title'  => 'Hide On',
         'button_title' => 'Add new row',
@@ -146,6 +150,24 @@ KFW::createSection( $prefix_page_opts, array(
         ),
         'default'   => array(
           'hide-on-rule'
+        )
+      ),
+      array(
+        'id'     => 'all-user-rules',
+        'type'   => 'repeater',
+        'title'  => 'User Rules',
+        'button_title' => 'Add new row',
+        'chosen'      => true,
+        'fields' => array(
+          array(
+            'id'    => 'user-rules',
+            'type'  => 'select',
+            'placeholder' => __('Select an option', 'kemet-addons'),
+            'options'     => $user_roles_array,
+          ),
+        ),
+        'default'   => array(
+          'user-rules'
         )
       ),
     )
