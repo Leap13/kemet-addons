@@ -25,35 +25,6 @@ foreach($user_roles as $key => $value){
       $user_roles_array[ __($value['title'], 'kemet-addons') ][$val] = __($label, 'kemet-addons');
    }
 }
-
-function hooks_descriptions(){
-
-    $js_prefix  = '.min.js';
-    $dir        = 'minified';
-    if ( SCRIPT_DEBUG ) {
-      $js_prefix  = '.js';
-      $dir        = 'unminified';
-    }
-
-    $hooks = Kemet_Custom_Layout_Partials::get_hooks();
-    $description_array = array();
-    foreach($hooks as $key => $value){
-      foreach($value['value'] as $val => $decription){
-          $description_array[$val] = __( $decription , 'kemet-addons');
-      }
-    }
-    wp_enqueue_script( 'kemet-addons-custom-layout-js', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/' . $dir . '/custom-layout' . $js_prefix, array(), KEMET_ADDONS_VERSION, true );
-
-    wp_localize_script(
-      'kemet-addons-custom-layout-js', 'kemetAddons', apply_filters(
-        'kemet_addons_admin_js_localize', array(
-          'hooks_descriptions'      => $description_array,
-        )
-      )
-    );
-
-}
-add_action( 'admin_enqueue_scripts', 'hooks_descriptions' ,1 );
 //
 // Create a Metabox Options
 //
@@ -129,11 +100,23 @@ KFW::createSection( $prefix_page_opts, array(
             'placeholder' => __('Select an option', 'kemet-addons'),
             'options'     => $rules_array,
           ),
+          array(
+            'id'          => 'specifics-location',
+            'type'        => 'select',
+            'class'       => 'kmt-specifics-location-select',
+            'default'     => '',
+            'options'     => array(
+              '' => __('Select an option', 'kemet-addons'),
+            ),
+            'dependency' => array(
+              array( 'display-on-rule', '==', 'specifics-location' ),
+            ),
+          ),
         ),
         'default'   => array(
           'display-on-rule'
         )
-      ),
+      ), 
       array(
         'id'     => 'all-hide-on-rules',
         'type'   => 'repeater',
