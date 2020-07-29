@@ -42,7 +42,8 @@ if ( ! class_exists( 'Kemet_Custom_Layout' ) ) {
 		public function __construct() {
 
 			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-settings.php';
-            require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-partials.php';
+			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-partials.php';
+			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-page-builder-compatiblity.php';
 			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-meta.php';
             
 		}

@@ -52,16 +52,15 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
             add_filter( 'kemet_addons_custom_layout_hook', array( $this, 'default_content' ) );
             add_filter( 'the_content', array( $this, 'cutom_layout_hook_content' ) );
             add_filter( 'wp', array( $this, 'layout' ) );
-            add_filter( 'wp', array( $this, 'get_markup' ) );
+			add_filter( 'wp', array( $this, 'get_markup' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         }
 
-        
 		/**
 		 * Remove Kemet Meta Box
 		 */
 		public function remove_kemet_page_options() {
             remove_meta_box( 'kemet_page_options', KEMET_CUSTOM_LAYOUT_POST_TYPE , 'side' );
-            
         }        
         
 		/**
@@ -86,10 +85,10 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
             );
             
             $all_posts = self::kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE, $option );
-
+			
             foreach ( $all_posts as $post_id => $post_data ) {
                 $post_type = get_post_type();
-
+				
 				if ( KEMET_CUSTOM_LAYOUT_POST_TYPE != $post_type ) {
 
                     $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
@@ -118,11 +117,48 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		 */
 		public function render_content( $post_id ) {
 
-			// set post to glabal post.
-			$elementor_instance = Elementor\Plugin::instance();
-			echo $elementor_instance->frontend->get_builder_content_for_display( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
+			$action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+
+			$header_footer_hooks = array( 'kemet_head_top', 'wp_head', 'kemet_body_bottom', 'wp_footer' );
+			$enable_wrapper          = ! in_array( $action, $header_footer_hooks );
+
+			$spacing_top = ( isset( $meta['spacing-top'] ) && !empty($meta['spacing-top'])) ? 'padding-top:'.$meta['spacing-top'].'px;' : '';
+			$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && !empty($meta['spacing-bottom'])) ? 'padding-bottom:'.$meta['spacing-bottom'].'px;' : '';
+			$style = $spacing_top.$spacing_bottom;
+
+			if ( $enable_wrapper ) {
+				echo '<div class="kemet-addons-template-' . esc_attr( $post_id ) . '" style="'.$style.'">';
+			}
+			if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
+				$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
+				
+				$custom_layout_compat->render_content( $post_id );
+			}
+			if ( $enable_wrapper ) {
+				echo '</div>';
+			}
 		}
-        
+		
+		/**
+		 * Add Scripts
+		 */
+		public function enqueue_scripts() {
+
+			$option = array(
+				'location'  => 'kemet_custom_layout_options',
+			);
+
+			$all_posts = self::kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE, $option );
+
+			foreach ( $all_posts as $post_id => $post_data ) {
+				if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
+					$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
+					$custom_layout_compat->enqueue_scripts( $post_id );
+				}
+			}
+		}
+
         /**
 		 *
 		 * @param  html $content the_content markup.
@@ -136,8 +172,13 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
                 $header_footer_hooks = array( 'kemet_head_top', 'wp_head', 'kemet_body_bottom', 'wp_footer' );
 				$enable_wrapper          = ! in_array( $action, $header_footer_hooks );
+
+				$spacing_top = ( isset( $meta['spacing-top'] ) && !empty($meta['spacing-top'])) ? 'padding-top:'.$meta['spacing-top'].'px;' : '';
+				$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && !empty($meta['spacing-bottom'])) ? 'padding-bottom:'.$meta['spacing-bottom'].'px;' : '';
+				$style = $spacing_top.$spacing_bottom;
+
 				if ( $enable_wrapper ) {
-					$content = '<div class="kemet-advanced-hook-' . $post_id . '">' . $content . '</div>';
+					$content = '<div class="kemet-addons-template-' . $post_id . '" style="'.$style.'">' . $content . '</div>';
 				}
 			}
 			return $content;

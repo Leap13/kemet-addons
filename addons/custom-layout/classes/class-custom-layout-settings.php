@@ -89,7 +89,17 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 		 * @since 1.1.0
 		 */
 		public static function custom_post_type() {
-	
+			
+			$code_editor = true;
+
+			if ( isset( $_GET['code_editor'] ) || ( isset( $_GET['post'] ) && 'code_editor' === get_post_meta( $_GET['post'], 'editor_type', true ) ) ) { 
+				$code_editor = false;
+			}
+
+			if ( isset( $_GET['wordpress_editor'] ) ) {
+				$code_editor = true;
+			}
+
 			// Register the post type
 			register_post_type( KEMET_CUSTOM_LAYOUT_POST_TYPE , apply_filters( 'kemet_custon_layouts_args', array(
 					'labels' => array(
@@ -113,6 +123,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 					'exclude_from_search'   	=> true,
 					'capability_type' 			=> 'post',
 					'rewrite' 					=> false,
+					'show_in_rest'        		=> $code_editor,
 					'supports' 					=> array( 'title', 'editor', 'thumbnail', 'author', 'elementor' ),
 					) 
 				) 
