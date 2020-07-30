@@ -16,36 +16,87 @@
             }
             
     });
+	
+	//specific position select
 
-    //specific position select
-    var specificSelect = $('.kmt-specifics-location-select').find('select');
-    specificSelect.each(function(index, selector) {
-        $( selector ).kmtselect2({
+	//Selected Options
+	var specific_old_v = kemetAddons.test != '' ? kemetAddons.test : '';
+
+	if(typeof specific_old_v == 'object'){
+		
+		$.each(specific_old_v,function(index, post_id) {
+
+			var specificSelect =  $('.kmt-specifics-location-select').find('select');
+				postID = post_id.toString();
+			if(	postID.includes(',')){
+
+				var idsObj = postID.split(",");
+				
+				$.each(idsObj,function(x, id) {
+					
+					$.post( kemetAddons.ajax_url, {post_id:id, action: 'kemet_get_post_title', nonce: kemetAddons.ajax_title_nonce })
+					.done(function( data ) {
+						specificSelect[index].append(new Option(data, id , false, true));
+					});
+				});
+
+			}else{
+				$.post( kemetAddons.ajax_url, {post_id:postID, action: 'kemet_get_post_title', nonce: kemetAddons.ajax_title_nonce })
+				.done(function( data ) {
+					specificSelect[index].append(new Option(data, postID , false, true));
+				});
+			}
+				
+		});
+	}
+	
+	//Specific Select With Search Using Select2
+	var convertToSelect2 = function(selector){
+		$( selector ).select2({
 
 			placeholder: kemetAddons.search,
 
 			ajax: {
-			    url: kemetAddons.ajax_url,
-			    dataType: 'json',
-			    method: 'post',
-			    delay: 250,
-			    data: function (params) {
-			      	return {
-			        	query: params.term, // search term
-				        page: params.page,
+				url: kemetAddons.ajax_url,
+				dataType: 'json',
+				method: 'post',
+				delay: 250,
+				data: function (params) {
+					return {
+						query: params.term, // search term
+						page: params.page,
 						action: 'kemet_ajax_get_posts',
 						'nonce': kemetAddons.ajax_nonce,
-			    	};
+					};
 				},
 				processResults: function (data) {
-		            return {
-		                results: data
-		            };
-		        },
-			    cache: true
+					return {
+						results: data
+					};
+				},
+				cache: true
 			},
 			minimumInputLength: 2,
-			language: kemetAddons.lang
+			language: kemetAddons.lang,
+			width: '100%',
 		});
-    });
+	};
+
+	var specificSelect = $('.kmt-specifics-location-select').find('select');
+	specificSelect.each(function(index, selector) {
+		convertToSelect2( selector );
+	});
+
+	//convertToSelect2();
+	
+	// var addRow = $('.all-display-on-rules').find('.kfw-repeater-add');
+
+	// addRow.click(function(){
+	// 	var specificSelect = $('.kmt-specifics-location-select').find('select');
+		
+	// 	specificSelect.each(function(index, selector) {
+	// 		convertToSelect2( selector );
+	// 	});
+	// });
+
 })(jQuery);

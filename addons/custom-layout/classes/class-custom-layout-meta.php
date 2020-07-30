@@ -20,6 +20,7 @@ foreach($hooks as $key => $value){
 
 $user_roles = Kemet_Custom_Layout_Partials::get_user_rules_list();
 $user_roles_array = array();
+
 foreach($user_roles as $key => $value){
    foreach($value['value'] as $val => $label){
       $user_roles_array[ __($value['title'], 'kemet-addons') ][$val] = __($label, 'kemet-addons');
@@ -89,6 +90,7 @@ KFW::createSection( $prefix_page_opts, array(
       ), 
       array(
         'id'     => 'all-display-on-rules',
+        'class'  => 'all-display-on-rules',
         'type'   => 'repeater',
         'title'  => 'Display On',
         'button_title' => 'Add new row',
@@ -96,6 +98,7 @@ KFW::createSection( $prefix_page_opts, array(
         'fields' => array(
           array(
             'id'    => 'display-on-rule',
+            'class'    => 'display-on-rule',
             'type'  => 'select',
             'placeholder' => __('Select an option', 'kemet-addons'),
             'options'     => $rules_array,
@@ -105,6 +108,7 @@ KFW::createSection( $prefix_page_opts, array(
             'type'        => 'select',
             'class'       => 'kmt-specifics-location-select',
             'default'     => '',
+            'multiple'    => true,
             'options'     => array(
               '' => __('Select an option', 'kemet-addons'),
             ),
@@ -119,6 +123,7 @@ KFW::createSection( $prefix_page_opts, array(
       ), 
       array(
         'id'     => 'all-hide-on-rules',
+        'class'     => 'all-hide-on-rules',
         'type'   => 'repeater',
         'title'  => 'Hide On',
         'button_title' => 'Add new row',
@@ -127,8 +132,22 @@ KFW::createSection( $prefix_page_opts, array(
           array(
             'id'    => 'hide-on-rule',
             'type'  => 'select',
+            'class'    => 'hide-on-rule',
             'placeholder' => __('Select an option', 'kemet-addons'),
             'options'     => $rules_array,
+          ),
+          array(
+            'id'          => 'specifics-location',
+            'type'        => 'select',
+            'class'       => 'kmt-specifics-location-select',
+            'default'     => '',
+            'multiple'    => true,
+            'options'     => array(
+              '' => __('Select an option', 'kemet-addons'),
+            ),
+            'dependency' => array(
+              array( 'hide-on-rule', '==', 'specifics-location' ),
+            ),
           ),
         ),
         'default'   => array(

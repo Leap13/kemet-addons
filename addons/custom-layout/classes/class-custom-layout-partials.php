@@ -56,6 +56,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts',  array($this, 'admin_script' ) ,1 );
 			add_action( 'wp_ajax_kemet_ajax_get_posts', array( $this, 'kemet_ajax_get_posts' ) );
+			add_action( 'wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ) );
         }
 
 		/**
@@ -339,16 +340,11 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 			return apply_filters( 'kemet_display_on_rule', $display_options );
         }
-        
-        /**
-		 * Get user rules list.
-		 *
-		 * @return array
-		 */
+		
 		public static function get_user_rules_list() {
-
-
-			$list = array(
+			global $wp_roles;
+			
+			$options = array(
 				'global'    => array(
 					'title' => __( 'Global', 'kemet-addons' ),
 					'value' => array(
@@ -357,22 +353,22 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 						'logged-out' => __( 'Logged Out', 'kemet-addons' ),
 					),
 				),
-				'advanced' => array(
-					'title' => __( 'Advanced', 'kemet-addons' ),
+				'general' => array(
+					'title' => __( 'General', 'kemet-addons' ),
 					'value' => array(),
 				),
 			);
-
-            $advanced_roles = wp_roles()->roles;
-            
-			foreach ( $advanced_roles as $slug => $data ) {
-				$list['advanced']['value'][ $slug ] = __( $data['name'] , 'kemet-addons' );
+			$all_roles = $wp_roles->roles;
+			$editable_roles = apply_filters('editable_roles', $all_roles);
+			
+			foreach ( $editable_roles as $slug => $data ) {
+				$options['general']['value'][ $slug ] = __( $data['name'], 'kemet-addons' );
 			}
 
-			
-			return apply_filters( 'kemet_user_rules', $list );
-        }
-        
+			return $options;
+		}
+
+
         /**
 		 * @since  1.1.0
 		 *
@@ -425,6 +421,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 'header'    => array(
 					'title' => __( 'Header', 'kemet-addons' ),
 					'value' => array(
+						'kemet_body_top' => __( 'Top of <body> tag', 'kemet-addons' ),
                         'kemet_before_header_block' => __( 'Before <header> tag', 'kemet-addons' ),
                         'kemet_header' => __( 'Main Header', 'kemet-addons' ),
                         'kemet_main_header_bar_top' => __( 'Top of Header Content', 'kemet-addons' ),
@@ -442,7 +439,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					'value' => array(
                         'kemet_content_while_before' => __( 'Before Loop Start', 'kemet-addons' ),
                         'kemet_content_loop' => __( 'Top of Primary Content Loop', 'kemet-addons' ),
-                        'kemet_content_while_after' => __( 'After Loop Start', 'kemet-addons' ),
+						'kemet_content_while_after' => __( 'After Loop Start', 'kemet-addons' ),
+						'kemet_primary_content_top' => __( 'Top of Primary Content', 'kemet-addons' ),
                         'kemet_entry_before' => __( 'Before <article> Tag', 'kemet-addons' ),
                         'kemet_entry_after' => __( 'After <article> Tag', 'kemet-addons' ),
                         'kemet_entry_content_before' => __( 'Before Post Content', 'kemet-addons' ),
@@ -452,7 +450,15 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                         'kemet_single_header_before' => __( 'Before Post Content', 'kemet-addons' ),
                         'kemet_single_header_after' => __( 'After Post Content', 'kemet-addons' ),
                         'kemet_single_header_top' => __( 'Top of Single Post Header', 'kemet-addons' ),
-                        'kemet_single_header_bottom' => __( 'Bottom of Single Post Header', 'kemet-addons' ),
+						'kemet_single_header_bottom' => __( 'Bottom of Single Post Header', 'kemet-addons' ),
+						'kemet_primary_content_bottom' => __( 'Bottom of Primary Content', 'kemet-addons' ),
+					),
+				),
+				'comment'    => array(
+					'title' => __( 'Comment', 'kemet-addons' ),
+					'value' => array(
+                        'kemet_comments_before' => __( 'Before Opening of Comment Start', 'kemet-addons' ),
+                        'kemet_comments_after' => __( 'After Closing of Comment Wrapper', 'kemet-addons' ),
 					),
                 ),
                 'sidebar'    => array(
@@ -465,9 +471,11 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 'footer'    => array(
 					'title' => __( 'Footer', 'kemet-addons' ),
 					'value' => array(
+						'kemet_footer_before' => __( 'Before of <footer> tag', 'kemet-addons' ),
                         'kemet_footer_content_top' => __( 'Top of <footer> tag', 'kemet-addons' ),
                         'kemet_footer_content' => __( 'Top of Header Content', 'kemet-addons' ),
-                        'kemet_footer_content_bottom' => __( 'Bottom of Header Content', 'kemet-addons' ),
+						'kemet_footer_content_bottom' => __( 'Bottom of Header Content', 'kemet-addons' ),
+						'kemet_footer_after' => __( 'After of <footer> tag', 'kemet-addons' ),
 					),
                 ),
             );
@@ -723,7 +731,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
             $options['post_id'] = $post_id;
             
             $this->remove_hide_posts_list( $post_type, $options );
-            
+			$this->remove_hide_users_list( $post_type, $options );
+
 			return apply_filters( 'kemet_addons_get_display_posts', self::$page_data[ $post_type ], $post_type );
         }
         
@@ -799,35 +808,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
         }
         
         /**
-		 * Get Post Meta.
-		 *
-		 * @since  1.1.0
-		 * @param  string $post_type Post Type.
-		 * @param  array  $options meta option name.
-		 *
-		 * @return false | object
-		 */
-		public static function kemet_get_post_meta( $post_type, $options ) {
-			$page_meta = ( isset( $options['page_meta'] ) && '' != $options['page_meta'] ) ? $options['page_meta'] : false;
-            
-			if ( false !== $page_meta ) {
-				$post_id = isset( $options['post_id'] ) ? $options['post_id'] : false;
-				$meta_id         = get_post_meta( $post_id, $options['page_meta'], true );
-
-				if ( false !== $meta_id && '' != $meta_id ) {
-					self::$page_data[ $post_type ][ $meta_id ] = array(
-						'id'       => $meta_id,
-						'location' => '',
-					);
-
-					return self::$page_data[ $post_type ];
-				}
-			}
-
-			return false;
-        }
-        
-        /**
 		 * Check display
 		 *
 		 * @param  int   $post_id Current post ID.
@@ -844,7 +824,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 
 				foreach ( $rules['all-hide-on-rules'] as $key => $value ) {
                     
-                    $rule = $value['hide-on-rule'];
+                    $rule = isset($value['hide-on-rule']) ? $value['hide-on-rule'] : '';
+					$specifics = isset($value['specifics-location']) ? $value['specifics-location'] : '' ;
 					
 					if ( strrpos( $rule, 'all' ) !== false ) {
 						$rule_case = 'all';
@@ -951,8 +932,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 						case 'specifics-location':
 							
-							if ( isset( $rules['specifics-location'] ) && is_array( $rules['specifics-location'] ) ) {
-								foreach ( $rules['specifics-location'] as $specific_page ) {
+							if ( isset( $specifics ) && is_array( $specifics ) ) {
+								foreach ( $specifics as $specific_page ) {
 
 									$specific_data = explode( '-', $specific_page );
 
@@ -998,6 +979,92 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			return $display;
         }
 		
+		
+		/**
+		 * Remove user rule posts.
+		 *
+		 * @since  1.1.0
+		 * @param  int   $post_type Post Type.
+		 * @param  array $option meta option name.
+		 */
+		public function remove_hide_users_list( $post_type, $option ) {
+
+			$users           = isset( $option['users'] ) ? $option['users'] : '';
+			$post_id 		 = isset( $option['post_id'] ) ? $option['post_id'] : false;
+
+			foreach ( self::$page_data[ $post_type ] as $c_post_id => $c_data ) {
+
+				$rules_meta = get_post_meta( $c_post_id, 'kemet_custom_layout_options', true );
+				$rules		= isset($rules_meta['all-user-rules']) ? $rules_meta['all-user-rules'] : '';
+				$is_user      = $this->check_user_display( $post_id, $rules );
+
+				if ( ! $is_user ) {
+					unset( self::$page_data[ $post_type ][ $c_post_id ] );
+				}
+			}
+		}
+
+		/**
+		 * Check user role.
+		 *
+		 * @since  1.1.0
+		 * @param  int   $post_id Post ID.
+		 * @param  Array $rules   Current user rules.
+		 *
+		 * @return boolean
+		 */
+		public function check_user_display( $post_id, $rules_array ) {
+
+			$show = true;
+			
+			if ( is_array( $rules_array ) && ! empty( $rules_array ) ) {
+				$show = false;
+
+				foreach ( $rules_array as $i => $value ) {
+					$rule = isset($value['user-rules']) ? $value['user-rules'] : '';
+					switch ( $rule ) {
+						case '':
+						case 'all':
+							$show = true;
+							break;
+
+						case 'logged-in':
+							if ( is_user_logged_in() ) {
+								$show = true;
+							}
+							break;
+
+						case 'logged-out':
+							if ( ! is_user_logged_in() ) {
+								$show = true;
+							}
+							break;
+
+						default:
+							if ( is_user_logged_in() ) {
+
+								$current_user = wp_get_current_user();
+
+								if ( isset( $current_user->roles )
+										&& is_array( $current_user->roles )
+										&& in_array( $rule, $current_user->roles )
+									) {
+
+									$show = true;
+								}
+							}
+							break;
+					}
+
+					if ( $show ) {
+						break;
+					}
+				}
+			}
+
+			return $show;
+		}
+
 		/**
 		 * Ajax handeler to return the posts based on the search query.
 		 * When searching for the post/pages only titles are searched for.
@@ -1146,6 +1213,17 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			return $search;
 		}
 
+		function ajax_get_post_title(){
+
+			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
+			$post_id = isset( $_POST['post_id'] ) ? explode("-", $_POST['post_id'])[1] : ''; 
+			
+			if(!empty($post_id)){
+				echo get_the_title( $post_id );
+			}
+			wp_die();
+		}
+
 		function admin_script(){
 				wp_enqueue_script( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/unminified/select2.js', array( 'jquery' ), KEMET_ADDONS_VERSION, true );
 
@@ -1283,7 +1361,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					);
 				}
 
-				wp_enqueue_style( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/minified/select2.css', KEMET_ADDONS_VERSION );
+				wp_enqueue_style( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/unminified/select2.css', KEMET_ADDONS_VERSION );
 
 				$js_prefix  = '.min.js';
 				$dir        = 'minified';
@@ -1304,6 +1382,17 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					'kemet-addons-select2',
 				), KEMET_ADDONS_VERSION, true );
 
+				$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true );
+				$all_display = isset($meta['all-display-on-rules']) ? $meta['all-display-on-rules'] : '';
+				$s_position = array(); 
+				if(is_array($all_display)){
+					$i = 1; 
+					foreach($all_display as $key => $position){
+						$specific = isset($position['specifics-location']) ? $position['specifics-location'] : '';
+						$s_position[$i][] = $specific;
+						$i++;
+					}
+				}
 				wp_localize_script(
 				'kemet-addons-custom-layout-js', 'kemetAddons', apply_filters(
 					'kemet_addons_admin_js_localize', array(
@@ -1323,6 +1412,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 						'not_loader'    => __( 'The results could not be loaded.', 'kemet-addons' ),
 						'search'        => __( 'Search pages / post / categories', 'kemet-addons' ),
 						'ajax_nonce'    => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
+						'ajax_title_nonce' => wp_create_nonce( 'kemet-addons-ajax-get-title' ),
+						'test'			=> $s_position,
 						)
 					)
 				);
