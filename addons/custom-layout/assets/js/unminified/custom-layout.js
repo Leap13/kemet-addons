@@ -40,6 +40,7 @@
 					
 					$.post( kemetAddons.ajax_url, {post_id:id, action: 'kemet_get_post_title', nonce: kemetAddons.ajax_title_nonce })
 					.done(function( data ) {
+						console.log(data);
 						specificSelect.append(new Option(data, id , false, true));
 					});
 				});
@@ -47,6 +48,7 @@
 			}else{
 				$.post( kemetAddons.ajax_url, {post_id:postID, action: 'kemet_get_post_title', nonce: kemetAddons.ajax_title_nonce })
 				.done(function( data ) {
+					console.log(data);
 					specificSelect.append(new Option(data, postID , false, true));
 				});
 			}
@@ -113,6 +115,35 @@
 	});
 
 	var displaySelects =  $('.display-on-rule , .hide-on-rule').find('select');
+	displaySelects.select2({
+		width: '100%',
+	});
+	
+	displaySelects.each(function(index, selector) {
+		var value = $(this).val(),
+			ID = $(this).attr('data-depend-id');
+
+		if(value.includes("specifics-location")){	
+			console.log(ID);
+			switch(ID) {
+				case 'display-on-rule':
+					$('.kmt-display-on-specifics-select').css('display','block');
+					break;
+				case 'hide-on-rule':
+					$('.kmt-hide-on-specifics-select').css('display','block');
+					break;
+				}
+		}else{
+			switch(ID) {
+				case 'display-on-rule':
+					$('.kmt-display-on-specifics-select').css('display','none');
+					break;
+				case 'hide-on-rule':
+					$('.kmt-hide-on-specifics-select').css('display','none');
+					break;
+			}
+		}
+	});
 
 	displaySelects.change(function(){
 		var value = $(this).val(),
@@ -138,5 +169,8 @@
 					break;
 			}
 		}
+	});
+	$('.kmt-user-rules').find('select').select2({
+		width: '100%',
 	});
 })(jQuery);

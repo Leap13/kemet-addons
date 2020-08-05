@@ -415,7 +415,10 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 'head'    => array(
 					'title' => __( 'Head', 'kemet-addons' ),
 					'value' => array(
-						'kemet_head_top' => __( 'Head Top', 'kemet-addons' ),
+						'kemet_html_before' => __( 'before the opening of <html> tag', 'kemet-addons' ),
+						'kemet_head_top' => __( 'top of <head> tag', 'kemet-addons' ),
+						'kemet_head_bottom' => __( 'custom style, script and meta at the bottom of <head> tag', 'kemet-addons' ),
+						'wp_head' => __( 'Head Top', 'kemet-addons' ),
 					),
                 ),
                 'header'    => array(
@@ -437,10 +440,14 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 'content'    => array(
 					'title' => __( 'Content', 'kemet-addons' ),
 					'value' => array(
+						'kemet_content_before' => __( 'Before main content', 'kemet-addons' ),
+                        'kemet_content_top' => __( 'Top of main content', 'kemet-addons' ),
                         'kemet_content_while_before' => __( 'Before Loop Start', 'kemet-addons' ),
                         'kemet_content_loop' => __( 'Top of Primary Content Loop', 'kemet-addons' ),
 						'kemet_content_while_after' => __( 'After Loop Start', 'kemet-addons' ),
 						'kemet_primary_content_top' => __( 'Top of Primary Content', 'kemet-addons' ),
+						'kemet_template_parts_content_none' => __( 'Top of the primary content', 'kemet-addons' ),
+						'kemet_template_parts_content_top' => __( 'Top of the primary template content', 'kemet-addons' ),
                         'kemet_entry_before' => __( 'Before <article> Tag', 'kemet-addons' ),
                         'kemet_entry_after' => __( 'After <article> Tag', 'kemet-addons' ),
                         'kemet_entry_content_before' => __( 'Before Post Content', 'kemet-addons' ),
@@ -451,7 +458,10 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                         'kemet_single_header_after' => __( 'After Post Content', 'kemet-addons' ),
                         'kemet_single_header_top' => __( 'Top of Single Post Header', 'kemet-addons' ),
 						'kemet_single_header_bottom' => __( 'Bottom of Single Post Header', 'kemet-addons' ),
+						'kemet_template_parts_content_bottom' => __( 'Bottom of the primary template content', 'kemet-addons' ),
 						'kemet_primary_content_bottom' => __( 'Bottom of Primary Content', 'kemet-addons' ),
+						'kemet_content_bottom' => __( 'Bottom of main content', 'kemet-addons' ),
+						'kemet_content_after' => __( 'After main content', 'kemet-addons' ),
 					),
 				),
 				'comment'    => array(
@@ -473,9 +483,13 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					'value' => array(
 						'kemet_footer_before' => __( 'Before of <footer> tag', 'kemet-addons' ),
                         'kemet_footer_content_top' => __( 'Top of <footer> tag', 'kemet-addons' ),
-                        'kemet_footer_content' => __( 'Top of Header Content', 'kemet-addons' ),
-						'kemet_footer_content_bottom' => __( 'Bottom of Header Content', 'kemet-addons' ),
+						'kemet_footer_content' => __( 'Top of Footer Content', 'kemet-addons' ),
+						'kemet_footer_inside_container_top' => __( 'Top of footer container', 'kemet-addons' ),
+						'kemet_footer_inside_container_bottom' => __( 'Bottom of footer container', 'kemet-addons' ),
+						'kemet_footer_content_bottom' => __( 'Bottom of Footer Content', 'kemet-addons' ),
 						'kemet_footer_after' => __( 'After of <footer> tag', 'kemet-addons' ),
+						'kemet_body_bottom' => __( 'Bottom of <body> tag', 'kemet-addons' ),
+						'wp_footer' => __( 'End of the document', 'kemet-addons' ),
 					),
                 ),
             );
@@ -1222,10 +1236,11 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		function ajax_get_post_title(){
 
 			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
-			$post_id = isset( $_POST['post_id'] ) ? explode("-", $_POST['post_id'])[1] : ''; 
 			
+			$post_id = isset( $_POST['post_id'] ) ? explode("-", $_POST['post_id'])[1] : ''; 
 			if(!empty($post_id)){
-				echo get_the_title( $post_id );
+				$name = !empty(get_the_title( $post_id )) ? get_the_title( $post_id ) : get_term( $post_id )->name  ;
+				echo $name;
 			}
 			wp_die();
 		}
