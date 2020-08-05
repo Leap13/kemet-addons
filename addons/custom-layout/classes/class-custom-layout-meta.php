@@ -94,23 +94,12 @@ KFW::createSection( $prefix_page_opts, array(
         'title'  => 'Display On',
         'fields' => array(
           array(
-            'id'     => 'all-display-on-rules',
-            'class'  => 'all-display-on-rules',
-            'type'   => 'repeater',
-            'button_title' => 'Add new row',
-            'chosen'      => true,
-            'fields' => array(
-              array(
-                'id'    => 'display-on-rule',
-                'class'    => 'display-on-rule',
-                'type'  => 'select',
-                'placeholder' => __('Select an option', 'kemet-addons'),
-                'options'     => $rules_array,
-              ),
-            ),
-            'default'   => array(
-              'display-on-rule'
-            )
+            'id'    => 'display-on-rule',
+            'class'    => 'display-on-rule',
+            'type'  => 'select',
+            'multiple'    => true,
+            'placeholder' => __('Select an option', 'kemet-addons'),
+            'options'     => $rules_array,
           ),
           array(
             'id'          => 'display-on-specifics-location',
@@ -131,23 +120,12 @@ KFW::createSection( $prefix_page_opts, array(
         'title'  => 'Hide On',
         'fields' => array(
           array(
-            'id'     => 'all-hide-on-rules',
-            'class'     => 'all-hide-on-rules',
-            'type'   => 'repeater',
-            'button_title' => 'Add new rule',
-            'chosen'      => true,
-            'fields' => array(
-              array(
-                'id'    => 'hide-on-rule',
-                'type'  => 'select',
-                'class'    => 'hide-on-rule',
-                'placeholder' => __('Select an option', 'kemet-addons'),
-                'options'     => $rules_array,
-              ),
-            ),
-            'default'   => array(
-              'hide-on-rule'
-            )
+            'id'    => 'hide-on-rule',
+            'type'  => 'select',
+            'class'    => 'hide-on-rule',
+            'multiple'    => true,
+            'placeholder' => __('Select an option', 'kemet-addons'),
+            'options'     => $rules_array,
           ),
           array(
             'id'          => 'hide-on-specifics-location',
@@ -162,22 +140,13 @@ KFW::createSection( $prefix_page_opts, array(
         ),
       ),
       array(
-        'id'     => 'all-user-rules',
-        'type'   => 'repeater',
+        'id'    => 'user-rules',
+        'class'    => 'kmt-user-rules',
+        'type'  => 'select',
         'title'  => 'User Rules',
-        'button_title' => 'Add new rule',
-        'chosen'      => true,
-        'fields' => array(
-          array(
-            'id'    => 'user-rules',
-            'type'  => 'select',
-            'placeholder' => __('Select an option', 'kemet-addons'),
-            'options'     => $user_roles_array,
-          ),
-        ),
-        'default'   => array(
-          'user-rules'
-        )
+        'multiple'    => true,
+        'placeholder' => __('Select an option', 'kemet-addons'),
+        'options'     => $user_roles_array,
       ),
     )
   ) 

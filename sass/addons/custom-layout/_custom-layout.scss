@@ -1,4 +1,5 @@
 .kmt-display-on-specifics-select , .kmt-hide-on-specifics-select{
+    display: none;
     &.kfw-field{
         .kfw-fieldset{
             margin-top: 20px;
@@ -9,4 +10,11 @@
             width: auto;
         }
     } 
+}
+.hide-on-rule , .display-on-rule , .kmt-user-rules{
+    &.kfw-field-select{
+        select{
+            width: 100%;
+        }
+    }
 }

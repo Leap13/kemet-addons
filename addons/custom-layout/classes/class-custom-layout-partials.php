@@ -331,6 +331,13 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				}
 			}
 
+			$display_options['specific-position'] = array(
+				'label' => __( 'Specific Position', 'kemet-addons' ),
+				'value' => array(
+					'specifics-location' => __( 'Specific Pages / Posts / Taxanomies, etc.', 'kemet-addons' ),
+				),
+			);
+
 			return apply_filters( 'kemet_display_on_rule', $display_options );
         }
 		
@@ -817,12 +824,9 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			$display           = false;
 			$current_post_type = get_post_type( $post_id );
             
-			if ( isset( $rules['all-hide-on-rules'] ) && is_array( $rules['all-hide-on-rules'] ) && ! empty( $rules['all-hide-on-rules'] ) ) {
+			if ( isset( $rules['hide-on-rule'] ) && is_array( $rules['hide-on-rule'] ) && ! empty( $rules['hide-on-rule'] ) ) {
                 
-				foreach ( $rules['all-hide-on-rules'] as $key => $value ) {
-                    
-                    $rule = isset($value['hide-on-rule']) ? $value['hide-on-rule'] : '';
-					$specifics = isset($value['specifics-location']) ? $value['specifics-location'] : '' ;
+				foreach ( $rules['hide-on-rule'] as $key => $rule ) {
 					
 					if ( strrpos( $rule, 'all' ) !== false ) {
 						$rule_case = 'all';
@@ -997,7 +1001,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			foreach ( self::$page_data[ $post_type ] as $c_post_id => $c_data ) {
 
 				$rules_meta = get_post_meta( $c_post_id, 'kemet_custom_layout_options', true );
-				$rules		= isset($rules_meta['all-user-rules']) ? $rules_meta['all-user-rules'] : '';
+				$rules		= isset($rules_meta['user-rules']) ? $rules_meta['user-rules'] : '';
 				$is_user      = $this->check_user_display( $post_id, $rules );
 
 				if ( ! $is_user ) {
@@ -1022,8 +1026,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			if ( is_array( $rules_array ) && ! empty( $rules_array ) ) {
 				$show = false;
 
-				foreach ( $rules_array as $i => $value ) {
-					$rule = isset($value['user-rules']) ? $value['user-rules'] : '';
+				foreach ( $rules_array as $i => $rule ) {
+
 					switch ( $rule ) {
 						case '':
 						case 'all':

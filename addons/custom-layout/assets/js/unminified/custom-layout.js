@@ -112,4 +112,31 @@
 		convertToSelect2( selector );
 	});
 
+	var displaySelects =  $('.display-on-rule , .hide-on-rule').find('select');
+
+	displaySelects.change(function(){
+		var value = $(this).val(),
+			ID = $(this).attr('data-depend-id');
+
+		if(value.includes("specifics-location")){	
+			console.log(ID);
+			switch(ID) {
+				case 'display-on-rule':
+					$('.kmt-display-on-specifics-select').css('display','block');
+					break;
+				case 'hide-on-rule':
+					$('.kmt-hide-on-specifics-select').css('display','block');
+					break;
+				}
+		}else{
+			switch(ID) {
+				case 'display-on-rule':
+					$('.kmt-display-on-specifics-select').css('display','none');
+					break;
+				case 'hide-on-rule':
+					$('.kmt-hide-on-specifics-select').css('display','none');
+					break;
+			}
+		}
+	});
 })(jQuery);
