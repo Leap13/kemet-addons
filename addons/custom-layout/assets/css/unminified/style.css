@@ -1,0 +1,12 @@
+/*--------------------------------------------------------------
+## Custom Layout
+--------------------------------------------------------------*/
+.kmt-display-on-specifics-select.kfw-field .kfw-fieldset, .kmt-hide-on-specifics-select.kfw-field .kfw-fieldset {
+  margin-top: 20px;
+  margin-left: auto;
+}
+
+.kmt-display-on-specifics-select.kfw-field .kfw-title, .kmt-hide-on-specifics-select.kfw-field .kfw-title {
+  float: none;
+  width: auto;
+}

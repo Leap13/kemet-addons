@@ -129,9 +129,9 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			$spacing_top = ( isset( $meta['spacing-top'] ) && !empty($meta['spacing-top'])) ? 'padding-top:'.$meta['spacing-top'].'px;' : '';
 			$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && !empty($meta['spacing-bottom'])) ? 'padding-bottom:'.$meta['spacing-bottom'].'px;' : '';
 			$style = $spacing_top.$spacing_bottom;
-
+			$style .= 'border: 0;';
 			if ( $enable_wrapper ) {
-				echo '<div class="kemet-addons-template-' . esc_attr( $post_id ) . '" style="'.$style.'">';
+				echo '<div id="kemet-addons-template-' . esc_attr( $post_id ) . '" style="'.$style.'">';
 			}
 			if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
 				$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
@@ -330,13 +330,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					}
 				}
 			}
-
-			$display_options['specific-position'] = array(
-				'label' => __( 'Specific Position', 'kemet-addons' ),
-				'value' => array(
-					'specifics-location' => __( 'Specific Pages / Posts / Taxanomies, etc.', 'kemet-addons' ),
-				),
-			);
 
 			return apply_filters( 'kemet_display_on_rule', $display_options );
         }
@@ -677,7 +670,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                     break;
                 case 'is_front_page':
                     $this_id      = esc_sql( get_the_id() );
-                    $post_id = $this_id;
+					$post_id = $this_id;
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"general-front\"%'";
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}|all\"%'";
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"post-{$this_id}\"%'";
@@ -749,10 +742,14 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
             
 			foreach ( self::$page_data[ $post_type ] as $c_post_id => $c_data ) {
 
-                $rules_meta = get_post_meta( $c_post_id, 'kemet_custom_layout_options', true );
-				$is_hidden      = $this->check_display( $post_id, $rules_meta );
-                
+				$rules_meta = get_post_meta( $c_post_id, 'kemet_custom_layout_options', true );
+				$hide_on_group = $rules_meta['hide-on-group'] ? $rules_meta['hide-on-group'] : '';
+				$is_hidden      = $this->check_display( $post_id, $hide_on_group );
+				$specific 		= $this->check_specific_display($post_id, $hide_on_group );
 				if ( $is_hidden ) {
+					unset( self::$page_data[ $post_type ][ $c_post_id ] );
+				}
+				if( $specific ){
 					unset( self::$page_data[ $post_type ][ $c_post_id ] );
 				}
 			}
@@ -930,42 +927,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 							}
 							break;
 
-						case 'specifics-location':
-							
-							if ( isset( $specifics ) && is_array( $specifics ) ) {
-								foreach ( $specifics as $specific_page ) {
-
-									$specific_data = explode( '-', $specific_page );
-
-									$specific_post_type = isset( $specific_data[0] ) ? $specific_data[0] : false;
-									$specific_post_id   = isset( $specific_data[1] ) ? $specific_data[1] : false;
-									if ( 'post' == $specific_post_type ) {
-										if ( $specific_post_id == $post_id ) {
-											$display = true;
-										}
-									} elseif ( isset( $specific_data[2] ) && ( 'single' == $specific_data[2] ) && 'tax' == $specific_post_type ) {
-
-										if ( is_singular() ) {
-											$term_details = get_term( $specific_post_id );
-
-											if ( isset( $term_details->taxonomy ) ) {
-												$has_term = has_term( (int) $specific_post_id, $term_details->taxonomy, $post_id );
-
-												if ( $has_term ) {
-													$display = true;
-												}
-											}
-										}
-									} elseif ( 'tax' == $specific_post_type ) {
-										$tax_id = get_queried_object_id();
-										if ( $specific_post_id == $tax_id ) {
-											$display = true;
-										}
-									}
-								}
-							}
-							break;
-
 						default:
 							break;
 					}
@@ -979,7 +940,48 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			return $display;
         }
 		
-		
+		function check_specific_display($post_id, $rules){
+
+			$display = false;
+			
+			if(isset( $rules['hide-on-specifics-location'] ) && is_array( $rules['hide-on-specifics-location'] ) && ! empty( $rules['hide-on-specifics-location'] )){
+
+				$specifics = $rules['hide-on-specifics-location'];
+
+				foreach ( $specifics as $specific_page ) {
+
+					$specific_data = explode( '-', $specific_page );
+
+					$specific_post_type = isset( $specific_data[0] ) ? $specific_data[0] : false;
+					$specific_post_id   = isset( $specific_data[1] ) ? $specific_data[1] : false;
+					if ( 'post' == $specific_post_type ) {
+						if ( $specific_post_id == $post_id ) {
+							$display = true;
+						}
+					} elseif ( isset( $specific_data[2] ) && ( 'single' == $specific_data[2] ) && 'tax' == $specific_post_type ) {
+
+						if ( is_singular() ) {
+							$term_details = get_term( $specific_post_id );
+
+							if ( isset( $term_details->taxonomy ) ) {
+								$has_term = has_term( (int) $specific_post_id, $term_details->taxonomy, $post_id );
+
+								if ( $has_term ) {
+									$display = true;
+								}
+							}
+						}
+					} elseif ( 'tax' == $specific_post_type ) {
+						$tax_id = get_queried_object_id();
+						if ( $specific_post_id == $tax_id ) {
+							$display = true;
+						}
+					}
+				}
+			}
+
+			return $display;
+		}
 		/**
 		 * Remove user rule posts.
 		 *
@@ -1364,56 +1366,57 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				wp_enqueue_style( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/unminified/select2.css', KEMET_ADDONS_VERSION );
 
 				$js_prefix  = '.min.js';
+				$css_prefix  = '.min.css';
 				$dir        = 'minified';
 				if ( SCRIPT_DEBUG ) {
-				$js_prefix  = '.js';
-				$dir        = 'unminified';
+					$js_prefix  = '.js';
+					$css_prefix  = '.css';
+					$dir        = 'unminified';
 				}
 
 				$hooks = Kemet_Custom_Layout_Partials::get_hooks();
 				$description_array = array();
 				foreach($hooks as $key => $value){
-				foreach($value['value'] as $val => $decription){
-					$description_array[$val] = __( $decription , 'kemet-addons');
+					foreach($value['value'] as $val => $decription){
+						$description_array[$val] = __( $decription , 'kemet-addons');
+					}
 				}
-				}
+
 				wp_enqueue_script( 'kemet-addons-custom-layout-js', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/' . $dir . '/custom-layout' . $js_prefix, array(
 					'jquery',
 					'kemet-addons-select2',
 				), KEMET_ADDONS_VERSION, true );
+				
+				wp_enqueue_style( 'kemet-addons-custom-layout-css', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/' . $dir . '/style' . $css_prefix , '', KEMET_ADDONS_VERSION );
 
 				$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true );
-				$all_display = isset($meta['all-display-on-rules']) ? $meta['all-display-on-rules'] : '';
-				$s_position = array(); 
+				$all_display = isset($meta['display-on-group']['display-on-specifics-location']) ? $meta['display-on-group']['display-on-specifics-location'] : '';
+				$all_hide = isset($meta['hide-on-group']['hide-on-specifics-location']) ? $meta['hide-on-group']['hide-on-specifics-location'] : '';
+
+				$ds_position = array(); 
+				$hs_position = array();
 				if(is_array($all_display)){
-					$i = 1; 
-					foreach($all_display as $key => $position){
-						$specific = isset($position['specifics-location']) ? $position['specifics-location'] : '';
-						$s_position[$i][] = $specific;
-						$i++;
+					foreach($all_display as $position){
+						$ds_position[] = $position;
 					}
 				}
+				if(is_array($all_hide)){
+					foreach($all_hide as $position){
+						$hs_position[] = $position;
+					}
+				}
+
 				wp_localize_script(
 				'kemet-addons-custom-layout-js', 'kemetAddons', apply_filters(
 					'kemet_addons_admin_js_localize', array(
 						'hooks_descriptions'      => $description_array,
 						'ajax_url' => admin_url( 'admin-ajax.php' ),
 						'lang'      => $lang,
-						'please_enter'  => __( 'Please enter', 'kemet-addons' ),
-						'please_delete' => __( 'Please delete', 'kemet-addons' ),
-						'more_char'     => __( 'or more characters', 'kemet-addons' ),
-						'character'     => __( 'character', 'kemet-addons' ),
-						'loading'       => __( 'Loading more results…', 'kemet-addons' ),
-						'only_select'   => __( 'You can only select', 'kemet-addons' ),
-						'item'          => __( 'item', 'kemet-addons' ),
-						'char_s'        => __( 's', 'kemet-addons' ),
-						'no_result'     => __( 'No results found', 'kemet-addons' ),
-						'searching'     => __( 'Searching…', 'kemet-addons' ),
-						'not_loader'    => __( 'The results could not be loaded.', 'kemet-addons' ),
 						'search'        => __( 'Search pages / post / categories', 'kemet-addons' ),
 						'ajax_nonce'    => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
 						'ajax_title_nonce' => wp_create_nonce( 'kemet-addons-ajax-get-title' ),
-						'test'			=> $s_position,
+						'display_old_value'			=> $ds_position,
+						'hide_old_value'			=> $hs_position,
 						)
 					)
 				);

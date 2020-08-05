@@ -136,6 +136,7 @@ module.exports = function (grunt) {
                         'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
+                        'addons/custom-layout/assets/css/unminified/style.css': 'sass/custom-layout.scss',
                     },
 
                     {
@@ -222,7 +223,10 @@ module.exports = function (grunt) {
                         src: 'addons/single-post/assets/css/unminified/style-rtl.css',
                         dest: 'addons/single-post/assets/css/minified/style-rtl.min.css',
                     },
-
+                    {
+                        src: 'addons/custom-layout/assets/css/unminified/style.css',
+                        dest: 'addons/custom-layout/assets/css/minified/style.min.css',
+                    },
                     {
                         src: 'inc/k-framework/assets/css/kfw.css',
                         dest: 'inc/k-framework/assets/css/kfw.min.css',

@@ -87,78 +87,85 @@ KFW::createSection( $prefix_page_opts, array(
         'title' => __('Spacing Bottom', 'kemet-addons' ),
         'unit'  => 'px',
         'output_mode' => 'padding',
-      ), 
+      ),
       array(
-        'id'     => 'all-display-on-rules',
-        'class'  => 'all-display-on-rules',
-        'type'   => 'repeater',
+        'id'     => 'display-on-group',
+        'type'   => 'fieldset',
         'title'  => 'Display On',
-        'button_title' => 'Add new row',
-        'chosen'      => true,
         'fields' => array(
           array(
-            'id'    => 'display-on-rule',
-            'class'    => 'display-on-rule',
-            'type'  => 'select',
-            'placeholder' => __('Select an option', 'kemet-addons'),
-            'options'     => $rules_array,
+            'id'     => 'all-display-on-rules',
+            'class'  => 'all-display-on-rules',
+            'type'   => 'repeater',
+            'button_title' => 'Add new row',
+            'chosen'      => true,
+            'fields' => array(
+              array(
+                'id'    => 'display-on-rule',
+                'class'    => 'display-on-rule',
+                'type'  => 'select',
+                'placeholder' => __('Select an option', 'kemet-addons'),
+                'options'     => $rules_array,
+              ),
+            ),
+            'default'   => array(
+              'display-on-rule'
+            )
           ),
           array(
-            'id'          => 'specifics-location',
+            'id'          => 'display-on-specifics-location',
             'type'        => 'select',
-            'class'       => 'kmt-specifics-location-select',
+            'class'       => 'kmt-display-on-specifics-select',
             'default'     => '',
             'multiple'    => true,
+            'title'  => 'Specific Locations',
             'options'     => array(
               '' => __('Select an option', 'kemet-addons'),
             ),
-            'dependency' => array(
-              array( 'display-on-rule', '==', 'specifics-location' ),
-            ),
           ),
         ),
-        'default'   => array(
-          'display-on-rule'
-        )
-      ), 
+      ),  
       array(
-        'id'     => 'all-hide-on-rules',
-        'class'     => 'all-hide-on-rules',
-        'type'   => 'repeater',
+        'id'     => 'hide-on-group',
+        'type'   => 'fieldset',
         'title'  => 'Hide On',
-        'button_title' => 'Add new row',
-        'chosen'      => true,
         'fields' => array(
           array(
-            'id'    => 'hide-on-rule',
-            'type'  => 'select',
-            'class'    => 'hide-on-rule',
-            'placeholder' => __('Select an option', 'kemet-addons'),
-            'options'     => $rules_array,
+            'id'     => 'all-hide-on-rules',
+            'class'     => 'all-hide-on-rules',
+            'type'   => 'repeater',
+            'button_title' => 'Add new rule',
+            'chosen'      => true,
+            'fields' => array(
+              array(
+                'id'    => 'hide-on-rule',
+                'type'  => 'select',
+                'class'    => 'hide-on-rule',
+                'placeholder' => __('Select an option', 'kemet-addons'),
+                'options'     => $rules_array,
+              ),
+            ),
+            'default'   => array(
+              'hide-on-rule'
+            )
           ),
           array(
-            'id'          => 'specifics-location',
+            'id'          => 'hide-on-specifics-location',
             'type'        => 'select',
-            'class'       => 'kmt-specifics-location-select',
-            'default'     => '',
+            'class'       => 'kmt-hide-on-specifics-select',
+            'title'       => 'Specific Locations',
             'multiple'    => true,
             'options'     => array(
               '' => __('Select an option', 'kemet-addons'),
             ),
-            'dependency' => array(
-              array( 'hide-on-rule', '==', 'specifics-location' ),
-            ),
           ),
         ),
-        'default'   => array(
-          'hide-on-rule'
-        )
       ),
       array(
         'id'     => 'all-user-rules',
         'type'   => 'repeater',
         'title'  => 'User Rules',
-        'button_title' => 'Add new row',
+        'button_title' => 'Add new rule',
         'chosen'      => true,
         'fields' => array(
           array(
