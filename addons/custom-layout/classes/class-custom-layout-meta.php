@@ -1,16 +1,16 @@
 <?php
 
 // Metabox of the PAGE
-$options = Kemet_Custom_Layout_Partials::get_locations();
-$rules_array = array();
+$options = Kemet_Custom_Layout_Partials::get_location_options();
+$location_options = array();
 
 foreach($options as $key => $value){
   foreach($value['value'] as $val => $label){
-    $rules_array[ __($value['label'], 'kemet-addons') ][$val] = __($label, 'kemet-addons');
+    $location_options[ __($value['label'], 'kemet-addons') ][$val] = __($label, 'kemet-addons');
   }
 }
 
-$hooks = Kemet_Custom_Layout_Partials::get_hooks();
+$hooks = Kemet_Custom_Layout_Partials::get_hooks_options();
 $hooks_array = array();
 foreach($hooks as $key => $value){
    foreach($value['value'] as $val => $decription){
@@ -18,7 +18,7 @@ foreach($hooks as $key => $value){
    }
 }
 
-$user_roles = Kemet_Custom_Layout_Partials::get_user_rules_list();
+$user_roles = Kemet_Custom_Layout_Partials::get_user_rules_options();
 $user_roles_array = array();
 
 foreach($user_roles as $key => $value){
@@ -47,15 +47,6 @@ KFW::createSection( $prefix_page_opts, array(
   'priority_num' => 1,
   'fields' => array(
       array(
-        'id'          => 'layout-position',
-        'type'        => 'select',
-        'title'       => __('Layout', 'kemet-addons'),
-        'options'     => array(
-          'hooks'     => __('Hooks', 'kemet-addons'),
-        ),
-        'default'     => 'hooks',
-      ),      
-      array(
         'id'          => 'hook-action',
         'type'        => 'select',
         'class'       => 'kmt-hooks-select',
@@ -64,15 +55,11 @@ KFW::createSection( $prefix_page_opts, array(
         'placeholder' => __('Select an option', 'kemet-addons'),
         'default'     => '',
         'options'     => $hooks_array,
-        'dependency' => array(
-          array( 'layout-position', '==', 'hooks' ),
-        ),
       ),  
       array(
         'id'    => 'hook-priority',
         'type'  => 'number',
         'title' => __('Priority', 'kemet-addons' ),
-        'dependency' => array( 'layout-position', '==', 'hooks' ),
       ), 
       array(
         'id'    => 'spacing-top',
@@ -99,7 +86,7 @@ KFW::createSection( $prefix_page_opts, array(
             'type'  => 'select',
             'multiple'    => true,
             'placeholder' => __('Select an option', 'kemet-addons'),
-            'options'     => $rules_array,
+            'options'     => $location_options,
           ),
           array(
             'id'          => 'display-on-specifics-location',
@@ -125,7 +112,7 @@ KFW::createSection( $prefix_page_opts, array(
             'class'    => 'hide-on-rule',
             'multiple'    => true,
             'placeholder' => __('Select an option', 'kemet-addons'),
-            'options'     => $rules_array,
+            'options'     => $location_options,
           ),
           array(
             'id'          => 'hide-on-specifics-location',

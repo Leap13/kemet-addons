@@ -1,5 +1,8 @@
 (function ($) {
 
+	/**
+	 * Set options Descriptions
+	 */
     var descriptions = kemetAddons.hooks_descriptions,
 		hooksSelect = $('.kmt-hooks-select .kfw-fieldset select'),
 		hookValue = hooksSelect.val(),
@@ -21,9 +24,11 @@
             
     });
 	
-	//specific position select
-
-	//Selected Options
+	/**
+	 * set meta value to select 
+	 * @param {string} selector 
+	 * @param {array} values 
+	 */
 
 	var setValues = function (selector , values){
 		
@@ -40,7 +45,6 @@
 					
 					$.post( kemetAddons.ajax_url, {post_id:id, action: 'kemet_get_post_title', nonce: kemetAddons.ajax_title_nonce })
 					.done(function( data ) {
-						console.log(data);
 						specificSelect.append(new Option(data, id , false, true));
 					});
 				});
@@ -48,7 +52,6 @@
 			}else{
 				$.post( kemetAddons.ajax_url, {post_id:postID, action: 'kemet_get_post_title', nonce: kemetAddons.ajax_title_nonce })
 				.done(function( data ) {
-					console.log(data);
 					specificSelect.append(new Option(data, postID , false, true));
 				});
 			}
@@ -57,22 +60,25 @@
 
 	};
 
-	var specific_display_old_v = kemetAddons.display_old_value != '' ? kemetAddons.display_old_value : '',
-		specific_hide_old_v = kemetAddons.hide_old_value != '' ? kemetAddons.hide_old_value : '';
+	var displayOldValues = kemetAddons.display_old_value != '' ? kemetAddons.display_old_value : '',
+		hideOldValues = kemetAddons.hide_old_value != '' ? kemetAddons.hide_old_value : '';
 
-	if( typeof specific_display_old_v == 'object' ){
+	if( typeof displayOldValues == 'object' ){
 		
 		var displaySelector = $( '.kmt-display-on-specifics-select' ).find( 'select' );
-		setValues(displaySelector , specific_display_old_v);
+		setValues(displaySelector , displayOldValues);
 	}
 	
-	if( typeof specific_hide_old_v == 'object' ){
+	if( typeof hideOldValues == 'object' ){
 		
 		var hideSelector = $( '.kmt-hide-on-specifics-select' ).find( 'select' );
-		setValues(hideSelector , specific_hide_old_v);
+		setValues(hideSelector , hideOldValues);
 	}
 
-	//Specific Select With Search Using Select2
+	/**
+	 * convert to select2 with ajax search
+	 * @param {string} selector 
+	 */
 	var convertToSelect2 = function(selector){
 
 		if($(selector).val() == ''){
@@ -92,7 +98,7 @@
 					return {
 						query: params.term, // search term
 						page: params.page,
-						action: 'kemet_ajax_get_posts',
+						action: 'kemet_ajax_get_posts_list',
 						'nonce': kemetAddons.ajax_nonce,
 					};
 				},
@@ -124,7 +130,6 @@
 			ID = $(this).attr('data-depend-id');
 
 		if(value.includes("specifics-location")){	
-			console.log(ID);
 			switch(ID) {
 				case 'display-on-rule':
 					$('.kmt-display-on-specifics-select').css('display','block');
@@ -150,7 +155,6 @@
 			ID = $(this).attr('data-depend-id');
 
 		if(value.includes("specifics-location")){	
-			console.log(ID);
 			switch(ID) {
 				case 'display-on-rule':
 					$('.kmt-display-on-specifics-select').css('display','block');

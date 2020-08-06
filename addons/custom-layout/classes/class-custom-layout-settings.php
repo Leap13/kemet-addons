@@ -30,8 +30,29 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 			if ( is_admin() ) {
 				add_action( 'admin_menu', array( $this, 'add_custom_layout_item' ), 1 );
 			}
+			add_filter( 'fl_builder_post_types', array( $this, 'add_to_beaver_builder_post_types' ), 10, 1 );
+			add_action( 'do_meta_boxes', array( $this, 'remove_kemet_page_options' ) );
 		}
 		
+		/**
+		 * Remove Kemet Meta Box
+		 */
+		public function remove_kemet_page_options() {
+            remove_meta_box( 'kemet_page_options', KEMET_CUSTOM_LAYOUT_POST_TYPE , 'side' );
+		} 
+		
+		/**
+		 * Add page builder support to custom layout.
+		 *
+		 * @param array $value Array of post types.
+		 */
+		public function add_to_beaver_builder_post_types( $value ) {
+
+			$value[] = KEMET_CUSTOM_LAYOUT_POST_TYPE;
+
+			return $value;
+		}
+
 		/**
 		 * Custom layout template.
 		 *
@@ -43,22 +64,18 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 
 			$post_id = get_the_id();
 			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
-			$layout = ( isset( $meta['layout-position'] ) ) ? $meta['layout-position'] : '';
 			$action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
 
 			$woocommerce_hooks     = array( 'woo-global', 'woo-shop', 'woo-product', 'woo-cart', 'woo-checkout', 'woo-distraction-checkout', 'woo-account' );
 			$woocommerce_is_activated = false;
 
 			if ( KEMET_CUSTOM_LAYOUT_POST_TYPE == $post->post_type ) {
-				if ( 'hooks' === $layout ) {
-					foreach ( Kemet_Custom_Layout_Partials::get_hooks() as $key => $value ) {
-						if ( in_array( $key, $woocommerce_hooks ) && isset( Kemet_Custom_Layout_Partials::get_hooks()[ $key ]['hooks'][ $action ] ) ) {
-							$woocommerce_is_activated = true;
-						}
+				foreach ( Kemet_Custom_Layout_Partials::get_hooks() as $key => $value ) {
+					if ( in_array( $key, $woocommerce_hooks ) && isset( Kemet_Custom_Layout_Partials::get_hooks()[ $key ]['hooks'][ $action ] ) ) {
+						$woocommerce_is_activated = true;
 					}
 				}
-
-				if ( ( 'hooks' === $layout && false == $woocommerce_is_activated ) ) {
+				if ( false == $woocommerce_is_activated ) {
 					$template = KEMET_CUSTOM_LAYOUT_DIR . 'templates/template.php';
 				}
 			}
