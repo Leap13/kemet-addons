@@ -63,13 +63,13 @@
 	var displayOldValues = kemetAddons.display_old_value != '' ? kemetAddons.display_old_value : '',
 		hideOldValues = kemetAddons.hide_old_value != '' ? kemetAddons.hide_old_value : '';
 
-	if( typeof displayOldValues == 'object' ){
+	if( typeof displayOldValues == 'object' && displayOldValues != null){
 		
 		var displaySelector = $( '.kmt-display-on-specifics-select' ).find( 'select' );
 		setValues(displaySelector , displayOldValues);
 	}
 	
-	if( typeof hideOldValues == 'object' ){
+	if( typeof hideOldValues == 'object' && hideOldValues != null){
 		
 		var hideSelector = $( '.kmt-hide-on-specifics-select' ).find( 'select' );
 		setValues(hideSelector , hideOldValues);
@@ -129,7 +129,7 @@
 		var value = $(this).val(),
 			ID = $(this).attr('data-depend-id');
 
-		if(value.includes("specifics-location")){	
+		if(value != null && value.includes("specifics-location")){	
 			switch(ID) {
 				case 'display-on-rule':
 					$('.kmt-display-on-specifics-select').css('display','block');
@@ -154,7 +154,7 @@
 		var value = $(this).val(),
 			ID = $(this).attr('data-depend-id');
 
-		if(value.includes("specifics-location")){	
+		if(value != null && value.includes("specifics-location")){	
 			switch(ID) {
 				case 'display-on-rule':
 					$('.kmt-display-on-specifics-select').css('display','block');

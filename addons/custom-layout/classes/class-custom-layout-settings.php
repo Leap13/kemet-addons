@@ -70,8 +70,8 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 			$woocommerce_is_activated = false;
 
 			if ( KEMET_CUSTOM_LAYOUT_POST_TYPE == $post->post_type ) {
-				foreach ( Kemet_Custom_Layout_Partials::get_hooks() as $key => $value ) {
-					if ( in_array( $key, $woocommerce_hooks ) && isset( Kemet_Custom_Layout_Partials::get_hooks()[ $key ]['hooks'][ $action ] ) ) {
+				foreach ( Kemet_Custom_Layout_Partials::get_hooks_options() as $key => $value ) {
+					if ( in_array( $key, $woocommerce_hooks ) && isset( Kemet_Custom_Layout_Partials::get_hooks_options()[ $key ]['hooks'][ $action ] ) ) {
 						$woocommerce_is_activated = true;
 					}
 				}
