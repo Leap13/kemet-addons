@@ -17,7 +17,7 @@
         offCanvasWrap.addClass('side-off-canvas-filter');
         offCanvas.addClass('side-off-canvas-filter');
     });
-
+  
 /**
  *
  * @class Kemet_Shop_Layout
@@ -32,20 +32,21 @@ var Kemet_Shop_Layout = {
 
         var $this = this,
             cookie = $this.getCookie('kemet_shop_layout'),
-            toolBar = $('.kmt-toolbar');
-            
+            toolBar = $('.kmt-toolbar .shop-list-style');
+                    
         if(cookie != '' && cookie != 'undefined' && !kemet.in_customizer){
             $this.defaultStyle(cookie);
         }
-        
+
         toolBar.find('a').click(function(e){
             var $link = $(this);
-            $this.loadAjax(e , $link);
+
+            e.preventDefault();
+            $this.loadAjax($link);
         });
     },
-    loadAjax: function(e , $this){
+    loadAjax: function($this){
 
-        e.preventDefault();
         if ($this.hasClass('active')) return;
 
         var $body = $('body'),
@@ -121,6 +122,7 @@ var Kemet_Shop_Layout = {
       defaultStyle: function(cookie) {
         var layout = cookie,
             $body = $('body'),
+            counter = 0,
             toolBar = $('.kmt-toolbar');
         
         toolBar.find('a').each(function(){
@@ -129,8 +131,10 @@ var Kemet_Shop_Layout = {
             if($this.data('layout') == layout){
                 $this.addClass('active');
                 $this.siblings().removeClass('active');
+                counter++;
             }
         });
+
         switch(layout) {
             case 'hover-style':
                 $body.removeClass('grid-style shop-list');
@@ -148,10 +152,12 @@ var Kemet_Shop_Layout = {
 }
 
 $(function () { Kemet_Shop_Layout.init(); });
- /**
+
+/**
  * Infinite Scroll
  */
-var paginationStyle     = kemet.pagination_style;
+var infiniteScroll = function(){
+    var paginationStyle     = kemet.pagination_style,
     totalPages 			= parseInt( kemet.shop_infinite_total ) || '',
     counter             = parseInt( kemet.shop_infinite_count ) || '',
     ajax_url            = kemet.ajax_url || '',
@@ -160,7 +166,51 @@ var paginationStyle     = kemet.pagination_style;
     noMoreMsg           = $('.infinite-scroll-end-msg'), 
     shop_infinite_nonce = kemet.shop_infinite_nonce || '';
 
+    /**
+     * Get Products via AJAX
+     */
+    function ProductsLoader(pageNumber) {
+
+        loader.show();
+
+        var data = {
+            action : 'kemet_infinite_scroll',
+            page_no	: pageNumber,
+            nonce: shop_infinite_nonce,
+            query_vars: kemet.query_vars,
+        }
+
+        $.post( ajax_url, data, function( data ) {
+
+            var products = $(data),
+                productContainer = $('#main > .kmt-woocommerce-container ul.products');
+
+                productContainer.append( products );
+
+
+            loader.hide();
+            //	Show no more msg
+            if( counter > totalPages ) {
+                noMoreMsg.show();
+            }
+            loadStatus = true;
+        });
+    }
+
     if( typeof paginationStyle != '' && paginationStyle == 'infinite-scroll' ){
+
+        var in_customizer = false;
+
+        // check for wp.customize return boolean
+        if ( typeof wp !== 'undefined' ) {
+
+            in_customizer =  typeof wp.customize !== 'undefined' ? true : false;
+
+            if ( in_customizer ) {
+                return;
+            }
+        }
+
         if( $('#main').find('.product:last').length > 0 ) {
             var windowHeight = jQuery(window).outerHeight() / 1.25;
             $(window).scroll(function () {
@@ -172,7 +222,7 @@ var paginationStyle     = kemet.pagination_style;
                     } else {
 
                         if( loadStatus == true ) {
-                            ProducetsLoader(counter);
+                            ProductsLoader(counter);
                             counter++;
                             loadStatus = false;
                         }
@@ -180,35 +230,7 @@ var paginationStyle     = kemet.pagination_style;
                 }
             });
         }
-        /**
-         * Get Products via AJAX
-         */
-        function ProducetsLoader(pageNumber) {
-
-            loader.show();
-
-            var data = {
-                action : 'kemet_infinite_scroll',
-                page_no	: pageNumber,
-                nonce: shop_infinite_nonce,
-                query_vars: kemet.query_vars,
-            }
-
-            $.post( ajax_url, data, function( data ) {
-
-                var products = $(data),
-                    productContainer = $('#main > .kmt-woocommerce-container ul.products');
-
-                    productContainer.append( products );
-
-
-                loader.hide();
-                //	Show no more msg
-                if( counter > totalPages ) {
-                    noMoreMsg.show();
-                }
-                loadStatus = true;
-            });
-        }
     } 
+}
+infiniteScroll();
 })(jQuery);

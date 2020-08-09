@@ -3,7 +3,20 @@ $defaults = Kemet_Theme_Options::defaults();
 /**
 * Option: General
 */
-
+/**
+ * Option: Title
+ */
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-on-sale-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'On Sale Badge', 'kemet-addons' ),
+            'section'  => 'section-woo-general',
+            'priority' => 5,
+            'settings' => array(),
+        )
+    )
+);
 /**
 * Option: Sale Notification
 */
@@ -128,7 +141,30 @@ $wp_customize->add_control(
         'priority'        => 49,
     )
 );
-
+/**
+ * Option: Title
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[enable-quick-view]/'.KEMET_THEME_SETTINGS . '[shop-layout]', 
+            'conditions' => '==/!=', 
+            'values' => '1/hover-style',
+            'operators' => "&&",
+        ), 
+        'sanitize_callback' 	=> 'wp_kses',
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Quick View Settings', 'kemet-addons' ),
+            'section'  => 'section-woo-shop',
+            'priority' => 49,
+        )
+    )
+);
 /**
 * Option: Quick View
 */
@@ -189,6 +225,18 @@ $wp_customize->add_control(
                 'add_cart'   => __( 'Add To Cart', 'kemet' ),
                 'category'   => __( 'Category', 'kemet' ),
             ),
+        )
+    )
+);
+
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Pagination Settings', 'kemet-addons' ),
+            'section'  => 'section-woo-shop',
+            'priority' => 59,
+            'settings' => array(),
         )
     )
 );
@@ -253,6 +301,15 @@ $wp_customize->add_setting(
         ),
     )
 );
+$wp_customize->add_control(
+    new WP_Customize_Color_Control(
+        $wp_customize, KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+            'section' => 'section-woo-shop',
+            'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
+            'priority'=>70,
+        )
+    )
+);
 /**
 * Option: Shop Product Structure
 */
@@ -297,7 +354,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     new Kemet_Control_Icon_Select(
         $wp_customize, KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
-            'priority'       => 75,
+            'priority'       => 36,
             'section' => 'section-woo-shop',
             'label'   => __( 'Product Content Alignment', 'kemet-addons' ),
             'choices'  => array(
@@ -314,6 +371,7 @@ $wp_customize->add_control(
         )
     )
 );
+
 /**
 * Option: Enable Filter Button
 */
@@ -332,6 +390,31 @@ $wp_customize->add_control(
         'priority'        => 80,
     )
 );
+
+/**
+ * Option: Title
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[kmt-filter-title]', array(
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[enable-filter-button]', 
+            'conditions' => '==', 
+            'values' => '1',
+        ), 
+        'sanitize_callback' 	=> 'wp_kses',
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-filter-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Filter Settings', 'kemet-addons' ),
+            'section'  => 'section-woo-shop',
+            'priority' => 80,
+        )
+    )
+);
+
 /**
  * Option: Filter Button Text
  */
@@ -358,6 +441,21 @@ $wp_customize->add_control(
 /**
 * Option: Single Product
 */
+
+/**
+ * Title
+ */
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-single-product-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Single Product Settings', 'kemet-addons' ),
+            'section'  => 'section-woo-shop-single',
+            'priority' => 1,
+            'settings' => array(),
+        )
+    )
+);
 
 /**
 * Option: Ajax Add To Cart
@@ -472,6 +570,20 @@ $wp_customize->add_control(
     )
 );
 /**
+ * Title
+ */
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-related-products-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Related Products Settings', 'kemet-addons' ),
+            'section'  => 'section-woo-shop-single',
+            'priority' => 35,
+            'settings' => array(),
+        )
+    )
+);
+/**
 * Option: Disable Related Products
 */
 $wp_customize->add_setting(
@@ -548,6 +660,21 @@ $wp_customize->add_control(
                 'step' => 1,
                 'max'  => 6,
             ),
+        )
+    )
+);
+
+/**
+ * Title
+ */
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-up-sells-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Up-Sells Products Settings', 'kemet-addons' ),
+            'section'  => 'section-woo-shop-single',
+            'priority' => 50,
+            'settings' => array(),
         )
     )
 );

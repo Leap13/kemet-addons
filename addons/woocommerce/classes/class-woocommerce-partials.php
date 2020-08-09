@@ -139,6 +139,12 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				
 				return $_COOKIE['kemet_shop_layout'];
 
+			}else if( isset($_COOKIE['kemet_shop_layout']) && isset( $wp_customize )){
+				ob_start();
+
+				setcookie('kemet_shop_layout', kemet_get_option( 'shop-layout' ) , 0.1 , '/');
+
+				ob_clean();
 			}
 			
 			return $default;
@@ -283,7 +289,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$qv_style = apply_filters('kemet_quick_view_style' , kemet_get_option('quick-view-style'));
 			$shop_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) , 2 );
 			
-			if( $qv_enable && $shop_style != 'hover-style'){
+			if( $qv_enable && $shop_style == 'shop-grid'){
 				if( $qv_style === 'on-image' ){
 					add_action( 'kemet_product_list_image_bottom', array( $this, 'quick_view_on_image' ) , 1);
 				}elseif( $qv_style === 'after-summary' ){
@@ -293,6 +299,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				}
 			}else if( $qv_enable && $shop_style == 'hover-style'){
 				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_with_group' ), 1 );
+			}else if( $qv_enable && $shop_style == 'shop-list'){
+				add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ), 1 );
 			}
 			
 			
@@ -379,7 +387,11 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 									break;
 							}
 						}
-	
+						
+						if ( class_exists( 'TInvWL_Wishlist' ) ) {
+							echo '<div class="button woo-wishlist-btn">'. do_shortcode( '[ti_wishlists_addtowishlist]' ) .'</div>';
+						}
+						
 						do_action( 'kemet_woo_shop_summary_wrap_bottom' );
 						echo '</div>';
 						do_action( 'kemet_woo_shop_after_summary_wrap' );
@@ -685,7 +697,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 						continue;
 					}
 
-					$product_price 	= $variable_product->get_regulaproduct_price();
+					$product_price 	= $variable_product->get_regular_price();
 					$sale_price    = $variable_product->get_sale_price();
 					$percent 	= round( ( ( floatval( $product_price ) - floatval( $sale_price ) ) / floatval( $product_price ) ) * 100 );
 

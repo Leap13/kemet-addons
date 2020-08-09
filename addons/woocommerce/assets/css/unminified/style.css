@@ -88,11 +88,11 @@ Woo Quick View
   display: block;
 }
 
-.kemet-shop-thumbnail-wrap .product-list-img {
+.kemet-shop-thumbnail-wrap .product-list-img, .kemet-shop-thumbnail-wrap .product-list-details {
   position: relative;
 }
 
-.kemet-shop-thumbnail-wrap .product-list-img .kmt-qv-on-image {
+.kemet-shop-thumbnail-wrap .product-list-img .kmt-qv-on-image, .kemet-shop-thumbnail-wrap .product-list-details .kmt-qv-on-image {
   transition: 0.3s all linear;
   position: absolute;
   width: 100%;
@@ -102,6 +102,11 @@ Woo Quick View
   text-align: center !important;
   opacity: 0;
   visibility: hidden;
+}
+
+.kemet-shop-thumbnail-wrap .product-list-details:hover .kmt-qv-on-image {
+  opacity: 1;
+  visibility: visible;
 }
 
 .kemet-shop-thumbnail-wrap:hover .product-list-img .kmt-qv-on-image {
@@ -584,6 +589,11 @@ Woo Quick View
   border: 0;
 }
 
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn {
+  display: block;
+  width: fit-content;
+}
+
 .woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details {
   display: block;
   width: 32%;
@@ -676,6 +686,10 @@ Woo Quick View
   margin-left: 0;
 }
 
+.woocommerce.content-align-left ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn {
+  margin-right: auto;
+}
+
 .woocommerce.content-align-right ul.products li.product .kemet-shop-thumbnail-wrap {
   text-align: right;
 }
@@ -689,6 +703,10 @@ Woo Quick View
   margin-left: auto;
 }
 
+.woocommerce.content-align-right ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn {
+  margin-left: auto;
+}
+
 .woocommerce.content-align-center ul.products li.product .kemet-shop-thumbnail-wrap {
   text-align: center;
 }
@@ -699,6 +717,10 @@ Woo Quick View
 
 .woocommerce.content-align-center ul.products li.product .kemet-shop-thumbnail-wrap .star-rating {
   margin: 0 auto;
+}
+
+.woocommerce.content-align-center ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn {
+  margin: 0.5em auto;
 }
 
 .woocommerce .kmt-article-single.kmt-gallary-vertical span.onsale {

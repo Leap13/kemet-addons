@@ -46,7 +46,7 @@
                     } else {
 
                         if( loadStatus == true ) {
-                            ProducetsLoader(counter);
+                            PostsLoader(counter);
                             counter++;
                             loadStatus = false;
                         }
@@ -57,7 +57,7 @@
         /**
          * Get Products via AJAX
          */
-        function ProducetsLoader(pageNumber) {
+        function PostsLoader(pageNumber) {
 
             loader.show();
 

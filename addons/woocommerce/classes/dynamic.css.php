@@ -53,19 +53,25 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                     'border-color' => esc_attr( $theme_color ),
                     'color' => esc_attr( $theme_color ),
                 ),
-                '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn' => array(
+                '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn' => array(
                     'background-color' => esc_attr( $btn_bg_color ),
                     'color' => esc_attr( $btn_color ),
                 ),
-                '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover' => array(
+                '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn a' => array(
+                    'color' => esc_attr( $btn_color ),
+                ),
+                '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover a' => array(
+                    'color' => esc_attr( $btn_h_color ),
+                ),
+                '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover' => array(
                     'background-color' => esc_attr( $btn_bg_h_color ),
                     'color' => esc_attr( $btn_h_color ),
                 ),
-                '.woocommerce .product-list-img a.kmt-qv-on-image' => array(
+                '.woocommerce .product-list-img a.kmt-qv-on-image ,.woocommerce .product-list-details a.kmt-qv-on-image' => array(
                     'background-color' => esc_attr( $btn_bg_color ),
                     'color' => esc_attr( $btn_color ),
                 ),
-                '.woocommerce .product-list-img a.kmt-qv-on-image:hover' => array(
+                '.woocommerce .product-list-img a.kmt-qv-on-image:hover ,.woocommerce .product-list-details a.kmt-qv-on-image:hover' => array(
                     'background-color' => esc_attr( $btn_bg_h_color ),
                     'color' => esc_attr( $btn_h_color ),
                 ),
