@@ -89,6 +89,13 @@ if (class_exists('KFW')) {
         'subtitle' => __('Enable/Disable Extra Blog Layouts', 'kemet-ddons'),
         'default' => 'false',
       ),
+      array(
+        'id' => 'woocommerce',
+        'type' => 'switcher',
+        'title' => __('Woocommerce', 'kemet-addons'),
+        'subtitle' => __('Woocommerce', 'kemet-addons'),
+        'default' => true,
+      ),
     ),
   ),
     // Create a sub-tab
