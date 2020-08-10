@@ -67,11 +67,11 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                     'background-color' => esc_attr( $btn_bg_h_color ),
                     'color' => esc_attr( $btn_h_color ),
                 ),
-                '.woocommerce .product-list-img a.kmt-qv-on-image ,.woocommerce .product-list-details a.kmt-qv-on-image' => array(
+                '.woocommerce .product-list-img a.kmt-qv-on-image ,.woocommerce .product-list-details a.kmt-qv-on-image ,.add-to-cart-group .added_to_cart' => array(
                     'background-color' => esc_attr( $btn_bg_color ),
                     'color' => esc_attr( $btn_color ),
                 ),
-                '.woocommerce .product-list-img a.kmt-qv-on-image:hover ,.woocommerce .product-list-details a.kmt-qv-on-image:hover' => array(
+                '.woocommerce .product-list-img a.kmt-qv-on-image:hover ,.woocommerce .product-list-details a.kmt-qv-on-image:hover , .add-to-cart-group .added_to_cart:hover' => array(
                     'background-color' => esc_attr( $btn_bg_h_color ),
                     'color' => esc_attr( $btn_h_color ),
                 ),

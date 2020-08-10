@@ -33,7 +33,11 @@ var Kemet_Shop_Layout = {
         var $this = this,
             cookie = $this.getCookie('kemet_shop_layout'),
             toolBar = $('.kmt-toolbar .shop-list-style');
-                    
+        
+        if(kemet.is_product){
+            cookie = $this.getCookie('kemet_single_product_layout');
+        }
+        
         if(cookie != '' && cookie != 'undefined' && !kemet.in_customizer){
             $this.defaultStyle(cookie);
         }
@@ -134,16 +138,15 @@ var Kemet_Shop_Layout = {
                 counter++;
             }
         });
-
         switch(layout) {
             case 'hover-style':
-                $body.removeClass('grid-style shop-list');
+                $body.removeClass('shop-grid shop-list');
               break;
             case 'shop-grid':
                 $body.removeClass('hover-style shop-list');
               break;
             case 'shop-list':
-                $body.removeClass('hover-style grid-style');
+                $body.removeClass('hover-style shop-grid');
               break;
           };
 

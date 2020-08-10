@@ -500,8 +500,15 @@ Woo Quick View
   transform: translateY(50px) scale(0.8);
 }
 
-.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .kmt-quickview-icon span {
-  vertical-align: middle;
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .kmt-quickview-icon:before {
+  content: "\e90d";
+  font-family: Kemet-font;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: inherit;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .add_to_cart_button {
@@ -525,6 +532,29 @@ Woo Quick View
 
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn .tinvwl_add_to_wishlist-text {
   display: none;
+}
+
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .add-to-cart-group {
+  position: relative;
+  display: inline-block;
+}
+
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .add-to-cart-group > * {
+  margin: auto 1px;
+}
+
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .add-to-cart-group .add_to_cart_button {
+  display: block;
+}
+
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .add-to-cart-group .added_to_cart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 1px;
+  width: calc(100% - 2px);
+  padding: .3em 1.4em;
+  display: inline-block;
 }
 
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap:hover .product-top .product-btn-group {
@@ -617,6 +647,10 @@ Woo Quick View
 
 .woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap > * {
   margin: .5em 0;
+}
+
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap a.button {
+  display: inline-block;
 }
 
 .woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woocommerce-loop-product__title {
@@ -720,7 +754,7 @@ Woo Quick View
 }
 
 .woocommerce.content-align-center ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn {
-  margin: 0.5em auto;
+  margin: 1px auto;
 }
 
 .woocommerce .kmt-article-single.kmt-gallary-vertical span.onsale {

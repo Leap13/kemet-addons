@@ -48,7 +48,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
 				'add_cart',
 			);
             $defaults['sale-style'] = '100%';
-            $defaults['product-content-alignment'] = 'left';
+            $defaults['product-content-alignment'] = 'center';
             $defaults['related-products-count'] = 3;
             $defaults['related-products-colunms'] = 3;
             $defaults['disable-related-products'] = false;

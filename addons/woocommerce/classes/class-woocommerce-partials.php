@@ -66,6 +66,20 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'kemet_infinite_scroll', array( $this, 'init_woocommerce' ) );
 			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
+			add_filter( 'kemet_shop_layout_style', array( $this, 'related_posts_layout' ) );
+		}
+
+		function related_posts_layout($layout){
+			if(is_product()){
+				$layout = kemet_get_option( 'shop-layout' );
+				ob_start();
+
+				setcookie('kemet_single_product_layout', $layout , 0.1 , '/');
+
+				ob_clean();
+			}
+
+			return $layout;
 		}
 
 		/**
@@ -428,7 +442,9 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					}
 
 					do_action( 'kemet_woo_shop_add_to_cart_before' );
+					echo '<div class="add-to-cart-group">';
 					woocommerce_template_loop_add_to_cart();
+					echo '</div>';
 					do_action( 'kemet_woo_shop_add_to_cart_after' );
 					
 					echo "</div>";
@@ -773,7 +789,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 */
 		function shop_layout($classes){
 
-			if(is_shop() || is_singular( 'product' )){
+			if(is_shop() || is_singular( 'product' ) || is_product_taxonomy()){
 				$layout_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
 				$content_alignment = kemet_get_option('product-content-alignment');
 				$classes[] = 'content-align-' .  $content_alignment;
@@ -873,7 +889,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="button kmt-quickview-icon" data-product_id="' . $product_id . '"><span class="dashicons dashicons-search"></span></a>';
+			$button = '<a href="#" class="button kmt-quickview-icon" data-product_id="' . $product_id . '"></a>';
 
 			echo $button;
         }
@@ -905,6 +921,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['shop_infinite_total']        	 = $wp_query->max_num_pages;
 			$localize['pagination_style']        	     = $pagination_style;
 			$localize['shop_infinite_nonce']        	 = wp_create_nonce( 'kmt-shop-load-more-nonce' );
+			$localize['is_product']			 = is_product();
 
             return $localize;
         }
