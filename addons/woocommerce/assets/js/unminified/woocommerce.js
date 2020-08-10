@@ -37,7 +37,7 @@ var Kemet_Shop_Layout = {
         if(kemet.is_product){
             cookie = $this.getCookie('kemet_single_product_layout');
         }
-        
+
         if(cookie != '' && cookie != 'undefined' && !kemet.in_customizer){
             $this.defaultStyle(cookie);
         }
@@ -235,5 +235,8 @@ var infiniteScroll = function(){
         }
     } 
 }
-infiniteScroll();
+if($('body').hasClass('archive woocommerce')){
+    infiniteScroll();
+}
+
 })(jQuery);
