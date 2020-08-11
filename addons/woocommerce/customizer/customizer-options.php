@@ -203,11 +203,49 @@ $wp_customize->add_setting(
         'default'           => kemet_get_option( 'shop-list-product-structure' ),
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
+            'conditions' => '==', 
+            'values' => 'hover-style',
+        ),
     )
 );
 $wp_customize->add_control(
     new Kemet_Control_Sortable(
         $wp_customize, KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
+            'type'     => 'kmt-sortable',
+            'section'  => 'section-woo-shop',
+            'priority' => 55,
+            'label'    => __( 'Product Structure', 'kemet' ),
+            'choices'  => array(
+                'title'      => __( 'Title', 'kemet' ),
+                'price'      => __( 'Price', 'kemet' ),
+                'ratings'    => __( 'Ratings', 'kemet' ),
+                'short_desc' => __( 'Short Description', 'kemet' ),
+                'add_cart'   => __( 'Add To Cart', 'kemet' ),
+                'category'   => __( 'Category', 'kemet' ),
+            ),
+        )
+    )
+);
+/**
+* Option: Shop Structure 
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[shop-list-style-structure]', array(
+        'default'           => kemet_get_option( 'shop-list-style-structure' ),
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
+            'conditions' => '==', 
+            'values' => 'hover-style',
+        ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Sortable(
+        $wp_customize, KEMET_THEME_SETTINGS . '[shop-list-style-structure]', array(
             'type'     => 'kmt-sortable',
             'section'  => 'section-woo-shop',
             'priority' => 55,
@@ -223,7 +261,6 @@ $wp_customize->add_control(
         )
     )
 );
-
 $wp_customize->add_control(
     new Kemet_Control_Title(
         $wp_customize, KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]', array(

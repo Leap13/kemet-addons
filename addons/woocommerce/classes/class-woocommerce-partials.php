@@ -346,7 +346,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				 */
 				function kemet_addons_woo_woocommerce_shop_product_content() {
 	
-					$shop_structure = kemet_get_option( 'shop-list-product-structure' );
+					$shop_structure = kemet_get_option( 'shop-list-style-structure' );
 	
 					if ( is_array( $shop_structure ) && ! empty( $shop_structure ) ) {
 	

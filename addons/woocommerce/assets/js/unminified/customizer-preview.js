@@ -40,4 +40,6 @@
 
 		});
 	});
+
+	kemet_css('kemet-settings[infinite-scroll-loader-color]', 'background-color', '.kmt-infinite-scroll-loader .kmt-loader');
 })(jQuery);
