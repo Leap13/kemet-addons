@@ -77,7 +77,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                     'background-color' => esc_attr( $btn_bg_h_color ),
                     'color' => esc_attr( $btn_h_color ),
                 ),
-                '.kmt-infinite-scroll-loader .kmt-loader' => array(
+                '.kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader' => array(
                     'background-color' => esc_attr( $loader_color ),
                 ),
                 'a.plus, a.minus' => array(

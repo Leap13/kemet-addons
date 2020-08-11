@@ -41,5 +41,5 @@
 		});
 	});
 
-	kemet_css('kemet-settings[infinite-scroll-loader-color]', 'background-color', '.kmt-infinite-scroll-loader .kmt-loader');
+	kemet_css('kemet-settings[infinite-scroll-loader-color]', 'background-color', '.kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader');
 })(jQuery);
