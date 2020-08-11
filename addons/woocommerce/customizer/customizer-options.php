@@ -203,11 +203,6 @@ $wp_customize->add_setting(
         'default'           => kemet_get_option( 'shop-list-product-structure' ),
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
-        'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[shop-layout]', 
-            'conditions' => '==', 
-            'values' => 'shop-list',
-        ), 
     )
 );
 $wp_customize->add_control(
@@ -216,7 +211,7 @@ $wp_customize->add_control(
             'type'     => 'kmt-sortable',
             'section'  => 'section-woo-shop',
             'priority' => 55,
-            'label'    => __( 'Shop Product Structure', 'kemet' ),
+            'label'    => __( 'List Style Structure', 'kemet' ),
             'choices'  => array(
                 'title'      => __( 'Title', 'kemet' ),
                 'price'      => __( 'Price', 'kemet' ),

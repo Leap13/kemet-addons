@@ -67,6 +67,7 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['woo-pagination-style'] = 'standard';
             $defaults['infinite-scroll-last-text'] = 'No more products to show.';
             $defaults['infinite-scroll-loader-color'] = '';
+            $defaults['list-style-description'] = false;
 
             return $defaults;
         }

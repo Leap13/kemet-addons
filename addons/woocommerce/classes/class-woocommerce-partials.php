@@ -67,28 +67,8 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_filter( 'kemet_shop_layout_style', array( $this, 'related_posts_layout' ) );
-			//add_action( 'woocommerce_after_add_to_cart_quantity', array( $this, 'ts_quantity_plus_sign' ) );
-			//add_action( 'woocommerce_before_add_to_cart_quantity', array( $this, 'ts_quantity_minus_sign' ) );
 		}
 
-		
-		/**
-		 * Plus Icon 
-		 */
-		function ts_quantity_plus_sign() {
-			
-			echo '<a href="#" class="plus" >+</a>';
-			echo '</div>';
-		}
-
-		/**
-		 * Minus Icon 
-		 */
-		function ts_quantity_minus_sign() {
-			
-			echo '<div class="kmt-custom-qty-field" >';
-			echo '<a href="#" class="minus" >-</a>';
-		}
 		/**
 		 * Related Post Layout
 		 */
