@@ -20,7 +20,9 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             $btn_color = kemet_get_option( 'button-color' );
 			$btn_h_color = kemet_get_option( 'button-h-color' , $btn_color );
 			$btn_bg_color   = kemet_get_option( 'button-bg-color' , $theme_color);
-			$btn_bg_h_color = kemet_get_option( 'button-bg-h-color' , kemet_color_brightness($theme_color , 0.8 , 'dark') );
+            $btn_bg_h_color = kemet_get_option( 'button-bg-h-color' , kemet_color_brightness($theme_color , 0.8 , 'dark') );
+            $global_bg_color      = kemet_get_option( 'global-background-color' );
+            $input_bg_color = kemet_get_option( 'input-bg-color' , kemet_color_brightness($global_bg_color , 0.99 , 'dark'));
 
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
@@ -77,6 +79,10 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                 ),
                 '.kmt-infinite-scroll-loader .kmt-loader' => array(
                     'background-color' => esc_attr( $loader_color ),
+                ),
+                'a.plus, a.minus' => array(
+                    'border-color' => esc_attr( $global_border_color ),
+                    'background-color' => esc_attr( $input_bg_color ),
                 ),
             );
 

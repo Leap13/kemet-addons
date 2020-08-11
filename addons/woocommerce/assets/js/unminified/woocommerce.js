@@ -154,7 +154,85 @@ var Kemet_Shop_Layout = {
     }
 }
 
-$(function () { Kemet_Shop_Layout.init(); });
+/**
+ * Custom input number
+ */        
+var customInputNum = function(){
+    var quantity = $('div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)'),
+        quantityInput = quantity.find( '.qty' );
+
+	if ( quantityInput.length > 0 && 'date' !== quantityInput.prop( 'type' ) && 'hidden' !== quantityInput.prop( 'type' ) ) {
+        
+        quantityInput.parent().addClass( 'buttons_added' );
+        quantityInput.before('<a href="javascript:void(0)" class="minus" >-</a>'); 
+        quantityInput.after('<a href="javascript:void(0)" class="plus" >+</a>'); 
+        
+        $( '.plus, .minus' ).unbind( 'click' );
+
+        $('form.cart , .woocommerce-cart-form').on( 'click', '.plus, .minus', function(e) {
+
+            e.preventDefault();
+            // Get current quantity values
+            var qty = $( this ).closest( 'form.cart , td.product-quantity' ).find( '.qty' );
+            var val = parseFloat(qty.val());
+            var max = parseFloat(qty.attr( 'max' ));
+            var min = parseFloat(qty.attr( 'min' ));
+            var step = parseFloat(qty.attr( 'step' ));
+            
+            // Fallback default values
+			if ( ! val || '' === val  || 'NaN' === val ) {
+				val = 0;
+			}
+			if ( '' === max || 'NaN' === max ) {
+				max = '';
+			}
+
+			if ( '' === min || 'NaN' === min ) {
+				min = 0;
+			}
+			if ( 'any' === step || '' === step  || undefined === step || 'NaN' === parseFloat( step )  ) {
+				step = 1;
+			}
+            // Change the value if plus or minus
+            if ( $( this ).is( '.plus' ) ) {
+                if ( max && ( max <= val ) ) {
+                    qty.val( max );
+                }
+                else {
+                    qty.val( val + step );
+                }
+            }
+            else {
+            if ( min && ( min >= val ) ) {
+                qty.val( min );
+            }
+            else if ( val > 1 ) {
+                qty.val( val - step );
+                }
+            }
+            qty.trigger( 'change' );
+        }); 
+    }
+};
+
+$(function () { 
+
+    if( ($('body').hasClass('archive') && $('body').hasClass('woocommerce')) || kemet.is_product){
+        Kemet_Shop_Layout.init(); 
+    }
+});
+
+$( window ).ready( function() {
+	"use strict";
+	// Woo quantity buttons
+	customInputNum();
+} );
+
+$( document ).ajaxComplete( function() {
+	"use strict";
+	// Woo quantity buttons
+	customInputNum();
+} );
 
 /**
  * Infinite Scroll
@@ -235,7 +313,7 @@ var infiniteScroll = function(){
         }
     } 
 }
-if($('body').hasClass('archive woocommerce')){
+if($('body').hasClass('archive') && $('body').hasClass('woocommerce')){
     infiniteScroll();
 }
 

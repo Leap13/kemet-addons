@@ -83,12 +83,6 @@ if (class_exists('KFW')) {
         'title' => __('Single Post Options', 'kemet-addons'),
         'subtitle' => __('Enable/Disable the extra options that will allow you to customize your single post content.', 'kemet-addons'),
         'default' => false,
-      ),array(
-        'id' => 'reset-import-export',
-        'type' => 'switcher',
-        'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
-        'subtitle' => __('Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons'),
-        'default' => false,
       ),
       array(
         'id' => 'woocommerce',
@@ -96,6 +90,12 @@ if (class_exists('KFW')) {
         'title' => __('Woocommerce', 'kemet-addons'),
         'subtitle' => __('Woocommerce', 'kemet-addons'),
         'default' => true,
+      ),array(
+        'id' => 'reset-import-export',
+        'type' => 'switcher',
+        'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
+        'subtitle' => __('Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons'),
+        'default' => false,
       ),
     ),
   ),

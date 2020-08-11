@@ -486,9 +486,8 @@ Woo Quick View
                             transition: all .3s ease-in-out 0s;
                             text-align: center;
                             width: 100%;
-                            padding: 10px;
                             position: absolute;
-                            bottom: 0;
+                            bottom: 20px;
                             left: 0;
                             margin: auto;
                             max-width: 270px;
@@ -497,7 +496,13 @@ Woo Quick View
                             opacity: 0;
                             visibility: hidden;
                             transform: translateY(50px) scale(.8);
+                            display: flex;
+                            justify-content: center;
+                            .button{
+                                border-radius: 0;
+                            }
                             .kmt-quickview-icon{
+                                margin: auto 0;
                                 &:before{
                                     content: "\e90d";
                                     font-family: Kemet-font;
@@ -509,13 +514,10 @@ Woo Quick View
                                     -moz-osx-font-smoothing: grayscale;
                                 }
                             }
-                            .add_to_cart_button{
-                                margin: 0 1px;
-                            }
                             .woo-wishlist-btn{
                                 display: inline-block;
-                                margin-top: 0;
                                 text-align: center;
+                                margin: auto 0;
                                 .tinv-wishlist{
                                     .tinvwl_add_to_wishlist_button{
                                         color: inherit;
@@ -533,9 +535,10 @@ Woo Quick View
                             }
                             .add-to-cart-group{
                                 position: relative;
-                                display: inline-block;
+                                display: flex;
+                                margin: 0 1px;
                                 > *{
-                                    margin: auto 1px;
+                                    margin: 0;
                                 }
                                 .add_to_cart_button{
                                     display: block;
@@ -544,10 +547,11 @@ Woo Quick View
                                     position: absolute;
                                     top: 0;
                                     left: 0;
-                                    margin: 0 1px;
-                                    width: calc(100% - 2px);
-                                    padding: .3em 1.4em;
-                                    display: inline-block;
+                                    bottom: 0;
+                                    width: 100%;
+                                    padding: .6em 1em;
+                                    display: block;
+                                    line-height: 1.3;
                                 }
                             }
                         }
@@ -622,8 +626,7 @@ Woo Quick View
                     display: flex;
                     border: 0;
                     .woo-wishlist-btn{
-                        display: block;
-                        width: fit-content;
+                        display: table;
                     }
                     .product-list-details{
                         display: block;
@@ -896,3 +899,38 @@ Woo Quick View
      }   
    } 
 }
+.woocommerce{
+    .woocommerce-cart-form , form.cart{
+        .quantity{
+            display: flex;
+            float: left;
+            > a{
+                width: 38px;
+                -js-display: flex;
+                display: flex;
+                justify-content: center;
+                border-width: 1px;
+                border-style: solid;
+                align-items: center;
+                outline: 0;
+            }
+            .plus {
+                border-left-width: 0;
+                margin-right: 6px;
+            }
+            .minus {
+                border-right-width: 0;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                display: none;
+                margin: 0;
+            }
+            .qty{
+                width: 2.631em;
+                min-height: 35px;
+                -moz-appearance: textfield;
+            }
+        } 
+    }   
+}   
