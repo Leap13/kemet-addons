@@ -46,6 +46,13 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
                 'ratings',
 				'category',
 				'add_cart',
+            );
+            $defaults['shop-list-style-structure'] = array(
+                'title',
+                'price',
+                'ratings',
+				'category',
+				'add_cart',
 			);
             $defaults['sale-style'] = '100%';
             $defaults['product-content-alignment'] = 'center';

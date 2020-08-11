@@ -160,7 +160,7 @@ Woo Quick View
         }
     }
 }
-.woocommerce .products .product-inner:hover .kmt-quick-view {
+.woocommerce .products .product-inner:hover .kmt-quick-view , .woocommerce-page .products .product-inner:hover .kmt-quick-view{
     opacity: 1;
     visibility: visible;
 }
@@ -416,6 +416,7 @@ Woo Quick View
     max-width: 875px;
     margin: 0 auto;
     z-index: 1000;
+    overflow: hidden;
     @include box-shadow( 3px 3px 20px 0 rgba(0,0,0,0.15) );
 
     .kmt-qv-close {
@@ -475,7 +476,7 @@ Woo Quick View
     }
 }
 /************ Shop ************/
-.woocommerce{
+.woocommerce , .woocommerce-page{
     &.hover-style{
         ul.products{
             li.product{
@@ -570,7 +571,7 @@ Woo Quick View
         }
     }
 }
-.woocommerce{
+.woocommerce , .woocommerce-page{
     ul.products{
         &.load-ajax{
             position:relative;
@@ -617,7 +618,7 @@ Woo Quick View
         transform:rotate(360deg)
     }
 }
-.woocommerce{
+.woocommerce , .woocommerce-page{
     &.shop-list{
         ul.products{
             li.product{
@@ -899,7 +900,7 @@ Woo Quick View
      }   
    } 
 }
-.woocommerce{
+.woocommerce ,.woocommerce-page{
     .woocommerce-cart-form , form.cart{
         .quantity{
             display: flex;

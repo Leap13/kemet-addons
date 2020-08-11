@@ -73,7 +73,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 * Related Post Layout
 		 */
 		function related_posts_layout($layout){
-			if(is_product()){
+			if(!(is_shop() || is_product_taxonomy())){
 				$layout = kemet_get_option( 'shop-layout' );
 				ob_start();
 
@@ -792,7 +792,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		 */
 		function shop_layout($classes){
 
-			if(is_shop() || is_singular( 'product' ) || is_product_taxonomy()){
+			if(is_shop() || is_singular( 'product' ) || is_product_taxonomy() || is_cart() || is_woocommerce() ){
 				$layout_style = apply_filters( 'kemet_shop_layout_style' , kemet_get_option( 'shop-layout' ) );
 				$content_alignment = kemet_get_option('product-content-alignment');
 				$classes[] = 'content-align-' .  $content_alignment;
@@ -924,7 +924,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['shop_infinite_total']        	 = $wp_query->max_num_pages;
 			$localize['pagination_style']        	     = $pagination_style;
 			$localize['shop_infinite_nonce']        	 = wp_create_nonce( 'kmt-shop-load-more-nonce' );
-			$localize['is_product']			 = is_product();
+			$localize['is_shop']			 		 	 = is_shop() || is_product_taxonomy() ? true : false;
 
             return $localize;
         }

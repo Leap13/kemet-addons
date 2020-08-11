@@ -31,10 +31,12 @@ var Kemet_Shop_Layout = {
     init: function () {
 
         var $this = this,
-            cookie = $this.getCookie('kemet_shop_layout'),
+            cookie = '',
             toolBar = $('.kmt-toolbar .shop-list-style');
         
-        if(kemet.is_product){
+        if(kemet.is_shop){
+            cookie = $this.getCookie('kemet_shop_layout');
+        }else{
             cookie = $this.getCookie('kemet_single_product_layout');
         }
 
@@ -216,21 +218,16 @@ var customInputNum = function(){
 };
 
 $(function () { 
-
-    if( ($('body').hasClass('archive') && $('body').hasClass('woocommerce')) || kemet.is_product){
-        Kemet_Shop_Layout.init(); 
-    }
+    Kemet_Shop_Layout.init();  
 });
 
 $( window ).ready( function() {
 	"use strict";
-	// Woo quantity buttons
 	customInputNum();
 } );
 
 $( document ).ajaxComplete( function() {
 	"use strict";
-	// Woo quantity buttons
 	customInputNum();
 } );
 
