@@ -173,7 +173,7 @@ var customInputNum = function(){
 
             e.preventDefault();
             // Get current quantity values
-            var qty = $( this ).closest( 'form.cart , td.product-quantity' ).find( '.qty' );
+            var qty = $( this ).closest( '.quantity , td.product-quantity' ).find( '.qty' );
             var val = parseFloat(qty.val());
             var max = parseFloat(qty.attr( 'max' ));
             var min = parseFloat(qty.attr( 'min' ));
@@ -206,7 +206,7 @@ var customInputNum = function(){
             if ( min && ( min >= val ) ) {
                 qty.val( min );
             }
-            else if ( val > 1 ) {
+            else if ( val >= 1 ) {
                 qty.val( val - step );
                 }
             }
