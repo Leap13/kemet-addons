@@ -113,7 +113,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[shop-layout]', array(
         'type'     => 'select',
-        'section'  => 'section-woo-shop',
+        'section'  => 'woocommerce_product_catalog',
         'priority' => 45,
         'label'    => __( 'Shop Layout', 'kemet-addons' ),
         'choices'  => array(
@@ -136,7 +136,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
         'type'            => 'checkbox',
-        'section'         => 'section-woo-shop',
+        'section'         => 'woocommerce_product_catalog',
         'label'           => __( 'Enable Quick View', 'kemet-addons' ),
         'priority'        => 49,
     )
@@ -160,7 +160,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
             'type'     => 'kmt-title',
             'label'    => __( 'Quick View Settings', 'kemet-addons' ),
-            'section'  => 'section-woo-shop',
+            'section'  => 'woocommerce_product_catalog',
             'priority' => 49,
         )
     )
@@ -184,7 +184,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[quick-view-style]', array(
         'type'     => 'select',
-        'section'  => 'section-woo-shop',
+        'section'  => 'woocommerce_product_catalog',
         'priority' => 50,
         'label'    => __( 'Quick View Position', 'kemet-addons' ),
         'choices'  => array(
@@ -214,7 +214,7 @@ $wp_customize->add_control(
     new Kemet_Control_Sortable(
         $wp_customize, KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
             'type'     => 'kmt-sortable',
-            'section'  => 'section-woo-shop',
+            'section'  => 'woocommerce_product_catalog',
             'priority' => 55,
             'label'    => __( 'Product Structure', 'kemet' ),
             'choices'  => array(
@@ -247,7 +247,7 @@ $wp_customize->add_control(
     new Kemet_Control_Sortable(
         $wp_customize, KEMET_THEME_SETTINGS . '[shop-list-style-structure]', array(
             'type'     => 'kmt-sortable',
-            'section'  => 'section-woo-shop',
+            'section'  => 'woocommerce_product_catalog',
             'priority' => 55,
             'label'    => __( 'List Style Structure', 'kemet' ),
             'choices'  => array(
@@ -266,7 +266,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]', array(
             'type'     => 'kmt-title',
             'label'    => __( 'Pagination Settings', 'kemet-addons' ),
-            'section'  => 'section-woo-shop',
+            'section'  => 'woocommerce_product_catalog',
             'priority' => 59,
             'settings' => array(),
         )
@@ -285,7 +285,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
         'type'     => 'select',
-        'section'  => 'section-woo-shop',
+        'section'  => 'woocommerce_product_catalog',
         'priority' => 60,
         'label'    => __( 'Pagination Style', 'kemet-addons' ),
         'choices'  => array(
@@ -311,7 +311,7 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
-        'section'  => 'section-woo-shop',
+        'section'  => 'woocommerce_product_catalog',
         'priority' => 65,
         'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
         'type'     => 'text',
@@ -336,7 +336,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     new WP_Customize_Color_Control(
         $wp_customize, KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
-            'section' => 'section-woo-shop',
+            'section' => 'woocommerce_product_catalog',
             'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
             'priority'=>70,
         )
@@ -361,7 +361,7 @@ $wp_customize->add_control(
     new Kemet_Control_Sortable(
         $wp_customize, KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
             'type'     => 'kmt-sortable',
-            'section'  => 'section-woo-shop',
+            'section'  => 'woocommerce_product_catalog',
             'priority' => 60,
             'label'    => __( 'Shop Product Structure', 'kemet' ),
             'choices'  => array(
@@ -387,7 +387,7 @@ $wp_customize->add_control(
     new Kemet_Control_Icon_Select(
         $wp_customize, KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
             'priority'       => 36,
-            'section' => 'section-woo-shop',
+            'section' => 'woocommerce_product_catalog',
             'label'   => __( 'Product Content Alignment', 'kemet-addons' ),
             'choices'  => array(
                 'left' => array(
@@ -417,7 +417,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[enable-filter-button]', array(
         'type'            => 'checkbox',
-        'section'         => 'section-woo-shop',
+        'section'         => 'woocommerce_product_catalog',
         'label'           => __( 'Enable Filter Button', 'kemet-addons' ),
         'priority'        => 80,
     )
@@ -441,7 +441,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[kmt-filter-title]', array(
             'type'     => 'kmt-title',
             'label'    => __( 'Filter Settings', 'kemet-addons' ),
-            'section'  => 'section-woo-shop',
+            'section'  => 'woocommerce_product_catalog',
             'priority' => 80,
         )
     )
@@ -464,7 +464,7 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[off-canvas-filter-label]', array(
-        'section'  => 'section-woo-shop',
+        'section'  => 'woocommerce_product_catalog',
         'priority' => 80,
         'label'    => __( 'Filter Button Text', 'kemet-addons' ),
         'type'     => 'text',
