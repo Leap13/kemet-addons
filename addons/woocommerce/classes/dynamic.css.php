@@ -29,7 +29,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             $loader_color    = kemet_get_option('infinite-scroll-loader-color' , $theme_color);
             
             //Single Product
-            $image_width = kemet_get_option('product-image-width');
+            $image_width = !empty( kemet_get_option('product-image-width') ) ? kemet_get_option('product-image-width') : 50;
 
             $css_content = array(
                 '.woocommerce .product .onsale' => array(
