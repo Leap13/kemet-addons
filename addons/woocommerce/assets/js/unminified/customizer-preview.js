@@ -18,25 +18,13 @@
 	wp.customize('kemet-settings[product-image-width]', function (setting) {
 		setting.bind(function (width) {
 
-			var dynamicStyle = '.woocommerce #content .kmt-woocommerce-container div.product div.images, .woocommerce .kmt-woocommerce-container div.product div.images, .woocommerce-page #content .kmt-woocommerce-container div.product div.images, .woocommerce-page .kmt-woocommerce-container div.product div.images { width: ' + (parseInt(width)) + '% }';
-			dynamicStyle += '.woocommerce #content .kmt-woocommerce-container div.product div.images, .woocommerce .kmt-woocommerce-container div.product div.images, .woocommerce-page #content .kmt-woocommerce-container div.product div.images, .woocommerce-page .kmt-woocommerce-container div.product div.images { max-width: ' + (parseInt(width)) + '% }';
-				
+			var dynamicStyle = '@media only screen and (min-width: 768px){ .woocommerce #content .kmt-woocommerce-container div.product div.images,.woocommerce .kmt-woocommerce-container div.product div.images { width: ' + (parseInt(width)) + '% }';
+			dynamicStyle += '.woocommerce #content .kmt-woocommerce-container div.product div.images,.woocommerce .kmt-woocommerce-container div.product div.images { max-width: ' + (parseInt(width)) + '% }';
+			
+			dynamicStyle += '.woocommerce #content .kmt-woocommerce-container div.product div.summary,.woocommerce .kmt-woocommerce-container div.product div.summary { width: ' + (parseInt(100 - width) - 3) + '% }';
+			dynamicStyle += '.woocommerce #content .kmt-woocommerce-container div.product div.summary,.woocommerce .kmt-woocommerce-container div.product div.summary { max-width: ' + (parseInt(100 - width) - 3) + '% } }';	
+
 			kemet_add_dynamic_css('product-image-width', dynamicStyle);
-
-		});
-	});
-	/**
-	 * Summary Width
-	 */
-	wp.customize('kemet-settings[product-summary-width]', function (setting) {
-		setting.bind(function (width) {
-
-			var dynamicStyle = '.woocommerce #content .kmt-woocommerce-container div.product div.summary, .woocommerce .kmt-woocommerce-container div.product div.summary, .woocommerce-page #content .kmt-woocommerce-container div.product div.summary, .woocommerce-page .kmt-woocommerce-container div.product div.summary { width: ' + (parseInt(width)) + '% }';
-
-			dynamicStyle += '.woocommerce #content .kmt-woocommerce-container div.product div.summary, .woocommerce .kmt-woocommerce-container div.product div.summary, .woocommerce-page #content .kmt-woocommerce-container div.product div.summary, .woocommerce-page .kmt-woocommerce-container div.product div.summary { max-width: ' + (parseInt(width)) + '% }';
-
-				
-			kemet_add_dynamic_css('product-summary-width', dynamicStyle);
 
 		});
 	});

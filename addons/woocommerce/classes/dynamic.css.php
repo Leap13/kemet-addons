@@ -30,19 +30,18 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             
             //Single Product
             $image_width = kemet_get_option('product-image-width');
-            $summary_width = kemet_get_option('product-summary-width');
 
             $css_content = array(
                 '.woocommerce .product .onsale' => array(
                     'border-radius' => esc_attr( $sale_style ),
                 ),
-                '.woocommerce #content .kmt-woocommerce-container div.product div.images, .woocommerce .kmt-woocommerce-container div.product div.images, .woocommerce-page #content .kmt-woocommerce-container div.product div.images, .woocommerce-page .kmt-woocommerce-container div.product div.images' => array(
+                '.woocommerce #content .kmt-woocommerce-container div.product div.images,.woocommerce .kmt-woocommerce-container div.product div.images' => array(
                     'width' => kemet_get_css_value( $image_width , '%' ),
                     'max-width' => kemet_get_css_value( $image_width , '%' ),
                 ),
-                '.woocommerce #content .kmt-woocommerce-container div.product div.summary, .woocommerce .kmt-woocommerce-container div.product div.summary, .woocommerce-page #content .kmt-woocommerce-container div.product div.summary, .woocommerce-page .kmt-woocommerce-container div.product div.summary' => array(
-                    'width' => kemet_get_css_value( $summary_width , '%' ),
-                    'max-width' => kemet_get_css_value( $summary_width , '%' ),
+                '.woocommerce #content .kmt-woocommerce-container div.product div.summary,.woocommerce .kmt-woocommerce-container div.product div.summary' => array(
+                    'width' => kemet_get_css_value( ( 100 - $image_width ) - 3 , '%' ),
+                    'max-width' => kemet_get_css_value( ( 100 - $image_width ) - 3  , '%' ),
                 ),
                 '.woocommerce .kmt-toolbar' => array(
                     'border-top-color' => esc_attr( $global_border_color ),

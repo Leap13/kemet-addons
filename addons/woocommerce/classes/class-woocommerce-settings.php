@@ -63,7 +63,6 @@ if (! class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['off-canvas-filter-label'] = 'Filter';
             $defaults['sale-content'] = 'sale-text';
             $defaults['product-image-width'] = '';
-            $defaults['product-summary-width'] = '';
             $defaults['product-gallery-style'] = 'horizontal';
             $defaults['up-sells-products-count'] = 3;
             $defaults['up-sells-products-colunms'] = 3;
