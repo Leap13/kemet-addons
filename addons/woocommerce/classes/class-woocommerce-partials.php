@@ -91,7 +91,19 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 		function kemet_infinite_scroll(){
 
 			check_ajax_referer( 'kmt-shop-load-more-nonce', 'nonce' );
+
+			if( isset($_COOKIE['kemet_shop_layout']) ) {
+				
+				add_filter(
+					'kemet_shop_layout_style',
+					function () {
+						return $_COOKIE['kemet_shop_layout'];
+					}
+				);
+			}
+
 			do_action( 'kemet_infinite_scroll' );
+
 			$query_vars                   = json_decode( stripslashes( $_POST['query_vars'] ), true );
 			$query_vars['paged']          = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : 1;
 			$query_vars['post_status']    = 'publish';
