@@ -388,7 +388,56 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
-	
+	/**
+	* Option: Header8 Logo Icon Separator
+	*/
+	$fields = array(
+		/**
+		 * Option: Header8 Logo Icon Separator Color
+		 */
+		array(
+			'id'                => '[logo-icon-separator-color]',
+			'default'           => $defaults ['logo-icon-separator-color'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-color',
+			'transport'         => 'postMessage',
+			'section'           => 'section-header',
+			'priority'          => 1,
+			'label'          => __( 'Color', 'kemet' ),
+		),
+
+		array(
+			'id'                => '[header-separator-height]',
+			'default'           => $defaults ['header-separator-height'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-slider',
+			'transport'         => 'postMessage',
+			'section'           => 'section-header',
+			'priority'          => 2,
+			'label'          => __( 'Height', 'kemet' ),
+			'suffix'      => '',
+			'input_attrs' => array(
+				'min'  => 0,
+				'step' => 1,
+				'max'  => 50,
+			),
+		),
+	);
+	$group_settings = array(
+	'parent_id'       => KEMET_THEME_SETTINGS . '[header-separator-settings]',
+	'type'     => 'kmt-group',
+	'label'    => __( 'Separator Settings', 'kemet' ),
+	'section'  => 'section-header',
+	'priority' => 44,
+	'dependency'  => array(
+		'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[disable-logo-icon-separator]', 
+		'conditions' => '==/!=', 
+		'values' => 'header-main-layout-8/'.true,
+		'operators' => "&&",
+	),
+	);
+
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	/**
 	* Option: Title
 	*/
