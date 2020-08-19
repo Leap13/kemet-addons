@@ -122,14 +122,20 @@ Woo Quick View
   right: -5em;
   border-radius: 50%;
   background-color: #fff;
-  text-align: center !important;
   opacity: 0;
   transition: 0.3s all;
 }
 
-.kmt-qv-icon > span {
+.kmt-qv-icon > span:before {
+  content: "\e912";
+  display: inline-block;
+  font-family: 'Kemet-font';
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-rendering: auto;
+  vertical-align: middle;
+  position: relative;
   line-height: 40px;
-  text-align: center !important;
 }
 
 .product-list-details:hover > .kmt-qv-icon {

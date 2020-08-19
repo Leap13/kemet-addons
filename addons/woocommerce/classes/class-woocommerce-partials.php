@@ -892,7 +892,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="dashicons dashicons-visibility"></span></a>';
+			$button = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="kemet-view"></span></a>';
 
 			echo $button;
 		}
