@@ -2,29 +2,32 @@
  *
  * -----------------------------------------------------------
  *
- * K Framework
+ * Codestar Framework
  * A Simple and Lightweight WordPress Option Framework
  *
  * -----------------------------------------------------------
  *
  */
-;(function( $, window, document, undefined ) {
+; (function ($, window, document, undefined) {
   'use strict';
 
   //
   // Constants
   //
-  var KFW   = KFW || {};
+  var KFW = KFW || {};
 
   KFW.funcs = {};
 
-  KFW.vars  = {
+  KFW.vars = {
     onloaded: false,
     $body: $('body'),
     $window: $(window),
     $document: $(document),
-    is_rtl: $('body').hasClass('rtl'),
+    $form_warning: null,
+    is_confirm: false,
+    form_modified: false,
     code_themes: [],
+    is_rtl: $('body').hasClass('rtl'),
   };
 
   //
@@ -35,34 +38,34 @@
     //
     // Generate UID
     //
-    uid: function( prefix ) {
-      return ( prefix || '' ) + Math.random().toString(36).substr(2, 9);
+    uid: function (prefix) {
+      return (prefix || '') + Math.random().toString(36).substr(2, 9);
     },
 
     // Quote regular expression characters
     //
-    preg_quote: function( str ) {
-      return (str+'').replace(/(\[|\-|\])/g, "\\$1");
+    preg_quote: function (str) {
+      return (str + '').replace(/(\[|\-|\])/g, "\\$1");
     },
 
     //
     // Reneme input names
     //
-    name_nested_replace: function( $selector, field_id ) {
+    name_nested_replace: function ($selector, field_id) {
 
       var checks = [];
-      var regex  = new RegExp('('+ KFW.helper.preg_quote(field_id) +')\\[(\\d+)\\]', 'g');
+      var regex = new RegExp('(' + KFW.helper.preg_quote(field_id) + ')\\[(\\d+)\\]', 'g');
 
-      $selector.find(':radio').each(function() {
-        if( this.checked || this.orginal_checked ) {
+      $selector.find(':radio').each(function () {
+        if (this.checked || this.orginal_checked) {
           this.orginal_checked = true;
         }
       });
 
-      $selector.each( function( index ) {
-        $(this).find(':input').each(function() {
-          this.name = this.name.replace(regex, field_id +'['+ index +']');
-          if( this.orginal_checked ) {
+      $selector.each(function (index) {
+        $(this).find(':input').each(function () {
+          this.name = this.name.replace(regex, field_id + '[' + index + ']');
+          if (this.orginal_checked) {
             this.checked = true;
           }
         });
@@ -73,87 +76,23 @@
     //
     // Debounce
     //
-    debounce: function( callback, threshold, immediate ) {
+    debounce: function (callback, threshold, immediate) {
       var timeout;
-      return function() {
+      return function () {
         var context = this, args = arguments;
-        var later = function() {
+        var later = function () {
           timeout = null;
-          if( !immediate ) {
+          if (!immediate) {
             callback.apply(context, args);
           }
         };
-        var callNow = ( immediate && !timeout );
-        clearTimeout( timeout );
-        timeout = setTimeout( later, threshold );
-        if( callNow ) {
+        var callNow = (immediate && !timeout);
+        clearTimeout(timeout);
+        timeout = setTimeout(later, threshold);
+        if (callNow) {
           callback.apply(context, args);
         }
       };
-    },
-
-    //
-    // Get a cookie
-    //
-    get_cookie: function( name ) {
-
-      var e, b, cookie = document.cookie, p = name + '=';
-
-      if( ! cookie ) {
-        return;
-      }
-
-      b = cookie.indexOf( '; ' + p );
-
-      if( b === -1 ) {
-        b = cookie.indexOf(p);
-
-        if( b !== 0 ) {
-          return null;
-        }
-      } else {
-        b += 2;
-      }
-
-      e = cookie.indexOf( ';', b );
-
-      if( e === -1 ) {
-        e = cookie.length;
-      }
-
-      return decodeURIComponent( cookie.substring( b + p.length, e ) );
-
-    },
-
-    //
-    // Set a cookie
-    //
-    set_cookie: function( name, value, expires, path, domain, secure ) {
-
-      var d = new Date();
-
-      if( typeof( expires ) === 'object' && expires.toGMTString ) {
-        expires = expires.toGMTString();
-      } else if( parseInt( expires, 10 ) ) {
-        d.setTime( d.getTime() + ( parseInt( expires, 10 ) * 1000 ) );
-        expires = d.toGMTString();
-      } else {
-        expires = '';
-      }
-
-      document.cookie = name + '=' + encodeURIComponent( value ) +
-        ( expires ? '; expires=' + expires : '' ) +
-        ( path    ? '; path=' + path       : '' ) +
-        ( domain  ? '; domain=' + domain   : '' ) +
-        ( secure  ? '; secure'             : '' );
-
-    },
-
-    //
-    // Remove a cookie
-    //
-    remove_cookie: function( name, path, domain, secure ) {
-      KFW.helper.set_cookie( name, '', -1000, path, domain, secure );
     },
 
   };
@@ -161,23 +100,23 @@
   //
   // Custom clone for textarea and select clone() bug
   //
-  $.fn.kfw_clone = function() {
+  $.fn.kfw_clone = function () {
 
-    var base   = $.fn.clone.apply(this, arguments),
-        clone  = this.find('select').add(this.filter('select')),
-        cloned = base.find('select').add(base.filter('select'));
+    var base = $.fn.clone.apply(this, arguments),
+      clone = this.find('select').add(this.filter('select')),
+      cloned = base.find('select').add(base.filter('select'));
 
-    for( var i = 0; i < clone.length; ++i ) {
-      for( var j = 0; j < clone[i].options.length; ++j ) {
+    for (var i = 0; i < clone.length; ++i) {
+      for (var j = 0; j < clone[i].options.length; ++j) {
 
-        if( clone[i].options[j].selected === true ) {
+        if (clone[i].options[j].selected === true) {
           cloned[i].options[j].selected = true;
         }
 
       }
     }
 
-    this.find(':radio').each( function() {
+    this.find(':radio').each(function () {
       this.orginal_checked = this.checked;
     });
 
@@ -188,9 +127,9 @@
   //
   // Expand All Options
   //
-  $.fn.kfw_expand_all = function() {
-    return this.each( function() {
-      $(this).on('click', function( e ) {
+  $.fn.kfw_expand_all = function () {
+    return this.each(function () {
+      $(this).on('click', function (e) {
 
         e.preventDefault();
         $('.kfw-wrapper').toggleClass('kfw-show-all');
@@ -204,49 +143,49 @@
   //
   // Options Navigation
   //
-  $.fn.kfw_nav_options = function() {
-    return this.each( function() {
+  $.fn.kfw_nav_options = function () {
+    return this.each(function () {
 
-      var $nav    = $(this),
-          $links  = $nav.find('a'),
-          $hidden = $nav.closest('.kfw').find('.kfw-section-id'),
-          $last_section;
+      var $nav = $(this),
+        $links = $nav.find('a'),
+        $last;
 
-      $(window).on('hashchange', function() {
+      $(window).on('hashchange kfw.hashchange', function () {
 
-        var hash  = window.location.hash.match(new RegExp('tab=([^&]*)'));
-        var slug  = hash ? hash[1] : $links.first().attr('href').replace('#tab=', '');
-        var $link = $('#kfw-tab-link-'+ slug);
+        var hash = window.location.hash.replace('#tab=', '');
+        var slug = hash ? hash : $links.first().attr('href').replace('#tab=', '');
+        var $link = $('[data-tab-id="' + slug + '"]');
 
-        if( $link.length > 0 ) {
-          var resetOptions = $link.closest('.kfw-tab-depth-0').attr('data-reset');
-            $nav.parent().parent().parent('.kfw-container').find('.kfw-buttons').each(function(){
-              if(resetOptions == 'false'){
-                  $(this).hide();
-              }else{
-                  $(this).show();
-              }
-            });
-          
-          $link.closest('.kfw-tab-depth-0').addClass('kfw-tab-active').siblings().removeClass('kfw-tab-active');
-          $links.removeClass('kfw-section-active');
-          $link.addClass('kfw-section-active');
+        if ($link.length) {
 
-          if( $last_section !== undefined ) {
-            $last_section.hide();
+          $link.closest('.kfw-tab-item').addClass('kfw-tab-expanded').siblings().removeClass('kfw-tab-expanded');
+
+          if ($link.next().is('ul')) {
+
+            $link = $link.next().find('li').first().find('a');
+            slug = $link.data('tab-id');
+
           }
 
-          var $section = $('#kfw-section-'+slug);
-          $section.css({display: 'block'});
+          $links.removeClass('kfw-active');
+          $link.addClass('kfw-active');
+
+          if ($last) {
+            $last.hide();
+          }
+
+          var $section = $('[data-section-id="' + slug + '"]');
+
+          $section.show();
           $section.kfw_reload_script();
 
-          $hidden.val(slug);
+          $('.kfw-section-id').val($section.index());
 
-          $last_section = $section;
+          $last = $section;
 
         }
 
-      }).trigger('hashchange');
+      }).trigger('kfw.hashchange');
 
     });
   };
@@ -254,51 +193,41 @@
   //
   // Metabox Tabs
   //
-  $.fn.kfw_nav_metabox = function() {
-    return this.each( function() {
+  $.fn.kfw_nav_metabox = function () {
+    return this.each(function () {
 
-      var $nav      = $(this),
-          $links    = $nav.find('a'),
-          unique_id = $nav.data('unique'),
-          post_id   = $('#post_ID').val() || 'global',
-          $last_section,
-          $last_link;
+      var $nav = $(this),
+        $links = $nav.find('a'),
+        $sections = $nav.parent().find('.kfw-section'),
+        $last;
 
-      $links.on('click', function( e ) {
+      $links.each(function (index) {
 
-        e.preventDefault();
+        $(this).on('click', function (e) {
 
-        var $link      = $(this),
-            section_id = $link.data('section');
+          e.preventDefault();
 
-        if( $last_link !== undefined ) {
-          $last_link.removeClass('kfw-section-active');
-        }
+          var $link = $(this);
 
-        if( $last_section !== undefined ) {
-          $last_section.hide();
-        }
+          $links.removeClass('kfw-active');
+          $link.addClass('kfw-active');
 
-        $link.addClass('kfw-section-active');
+          if ($last !== undefined) {
+            $last.hide();
+          }
 
-        var $section = $('#kfw-section-'+section_id);
-        $section.css({display: 'block'});
-        $section.kfw_reload_script();
+          var $section = $sections.eq(index);
 
-        KFW.helper.set_cookie('kfw-last-metabox-tab-'+ post_id +'-'+ unique_id, section_id);
+          $section.show();
+          $section.kfw_reload_script();
 
-        $last_section = $section;
-        $last_link    = $link;
+          $last = $section;
+
+        });
 
       });
 
-      var get_cookie = KFW.helper.get_cookie('kfw-last-metabox-tab-'+ post_id +'-'+ unique_id);
-
-      if( get_cookie ) {
-        $nav.find('a[data-section="'+ get_cookie +'"]').trigger('click');
-      } else {
-        $links.first('a').trigger('click');
-      }
+      $links.first().trigger('click');
 
     });
   };
@@ -306,15 +235,15 @@
   //
   // Metabox Page Templates Listener
   //
-  $.fn.kfw_page_templates = function() {
-    if( this.length ) {
+  $.fn.kfw_page_templates = function () {
+    if (this.length) {
 
-      $(document).on('change', '.editor-page-attributes__template select, #page_template', function() {
+      $(document).on('change', '.editor-page-attributes__template select, #page_template', function () {
 
         var maybe_value = $(this).val() || 'default';
 
-        $('.kfw-page-templates').removeClass('kfw-show').addClass('kfw-hide');
-        $('.kfw-page-'+maybe_value.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-')).removeClass('kfw-hide').addClass('kfw-show');
+        $('.kfw-page-templates').removeClass('kfw-metabox-show').addClass('kfw-metabox-hide');
+        $('.kfw-page-' + maybe_value.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')).removeClass('kfw-metabox-hide').addClass('kfw-metabox-show');
 
       });
 
@@ -324,18 +253,18 @@
   //
   // Metabox Post Formats Listener
   //
-  $.fn.kfw_post_formats = function() {
-    if( this.length ) {
+  $.fn.kfw_post_formats = function () {
+    if (this.length) {
 
-      $(document).on('change', '.editor-post-format select, #formatdiv input[name="post_format"]', function() {
+      $(document).on('change', '.editor-post-format select, #formatdiv input[name="post_format"]', function () {
 
         var maybe_value = $(this).val() || 'default';
 
         // Fallback for classic editor version
-        maybe_value = ( maybe_value === '0' ) ? 'default' : maybe_value;
+        maybe_value = (maybe_value === '0') ? 'default' : maybe_value;
 
-        $('.kfw-post-formats').removeClass('kfw-show').addClass('kfw-hide');
-        $('.kfw-post-format-'+maybe_value).removeClass('kfw-hide').addClass('kfw-show');
+        $('.kfw-post-formats').removeClass('kfw-metabox-show').addClass('kfw-metabox-hide');
+        $('.kfw-post-format-' + maybe_value).removeClass('kfw-metabox-hide').addClass('kfw-metabox-show');
 
       });
 
@@ -345,34 +274,34 @@
   //
   // Search
   //
-  $.fn.kfw_search = function() {
-    return this.each( function() {
+  $.fn.kfw_search = function () {
+    return this.each(function () {
 
-      var $this    = $(this),
-          $input   = $this.find('input');
+      var $this = $(this),
+        $input = $this.find('input');
 
-      $input.on('change keyup', function() {
+      $input.on('change keyup', function () {
 
-        var value    = $(this).val(),
-            $wrapper = $('.kfw-wrapper'),
-            $section = $wrapper.find('.kfw-section'),
-            $fields  = $section.find('> .kfw-field:not(.hidden)'),
-            $titles  = $fields.find('> .kfw-title, .kfw-search-tags');
+        var value = $(this).val(),
+          $wrapper = $('.kfw-wrapper'),
+          $section = $wrapper.find('.kfw-section'),
+          $fields = $section.find('> .kfw-field:not(.kfw-depend-on)'),
+          $titles = $fields.find('> .kfw-title, .kfw-search-tags');
 
-        if( value.length > 3 ) {
+        if (value.length > 3) {
 
-          $fields.addClass('kfw-hidden');
+          $fields.addClass('kfw-metabox-hide');
           $wrapper.addClass('kfw-search-all');
 
-          $titles.each( function() {
+          $titles.each(function () {
 
             var $title = $(this);
 
-            if( $title.text().match( new RegExp('.*?' + value + '.*?', 'i') ) ) {
+            if ($title.text().match(new RegExp('.*?' + value + '.*?', 'i'))) {
 
               var $field = $title.closest('.kfw-field');
 
-              $field.removeClass('kfw-hidden');
+              $field.removeClass('kfw-metabox-hide');
               $field.parent().kfw_reload_script();
 
             }
@@ -381,7 +310,7 @@
 
         } else {
 
-          $fields.removeClass('kfw-hidden');
+          $fields.removeClass('kfw-metabox-hide');
           $wrapper.removeClass('kfw-search-all');
 
         }
@@ -394,52 +323,52 @@
   //
   // Sticky Header
   //
-  $.fn.kfw_sticky = function() {
-    return this.each( function() {
+  $.fn.kfw_sticky = function () {
+    return this.each(function () {
 
-      var $this     = $(this),
-          $window   = $(window),
-          $inner    = $this.find('.kfw-header-inner'),
-          padding   = parseInt( $inner.css('padding-left') ) + parseInt( $inner.css('padding-right') ),
-          offset    = 32,
-          scrollTop = 0,
-          lastTop   = 0,
-          ticking   = false,
-          stickyUpdate = function() {
+      var $this = $(this),
+        $window = $(window),
+        $inner = $this.find('.kfw-header-inner'),
+        padding = parseInt($inner.css('padding-left')) + parseInt($inner.css('padding-right')),
+        offset = 32,
+        scrollTop = 0,
+        lastTop = 0,
+        ticking = false,
+        stickyUpdate = function () {
 
-            var offsetTop = $this.offset().top,
-                stickyTop = Math.max(offset, offsetTop - scrollTop ),
-                winWidth  = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+          var offsetTop = $this.offset().top,
+            stickyTop = Math.max(offset, offsetTop - scrollTop),
+            winWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-            if( stickyTop <= offset && winWidth > 782 ) {
-              $inner.css({width: $this.outerWidth()-padding});
-              $this.css({height: $this.outerHeight()}).addClass( 'kfw-sticky' );
-            } else {
-              $inner.removeAttr('style');
-              $this.removeAttr('style').removeClass( 'kfw-sticky' );
-            }
+          if (stickyTop <= offset && winWidth > 782) {
+            $inner.css({ width: $this.outerWidth() - padding });
+            $this.css({ height: $this.outerHeight() }).addClass('kfw-sticky');
+          } else {
+            $inner.removeAttr('style');
+            $this.removeAttr('style').removeClass('kfw-sticky');
+          }
 
-          },
-          requestTick = function() {
+        },
+        requestTick = function () {
 
-            if( !ticking ) {
-              requestAnimationFrame( function() {
-                stickyUpdate();
-                ticking = false;
-              });
-            }
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              stickyUpdate();
+              ticking = false;
+            });
+          }
 
-            ticking = true;
+          ticking = true;
 
-          },
-          onSticky  = function() {
+        },
+        onSticky = function () {
 
-            scrollTop = $window.scrollTop();
-            requestTick();
+          scrollTop = $window.scrollTop();
+          requestTick();
 
-          };
+        };
 
-      $window.on( 'scroll resize', onSticky);
+      $window.on('scroll resize', onSticky);
 
       onSticky();
 
@@ -449,47 +378,53 @@
   //
   // Dependency System
   //
-  $.fn.kfw_dependency = function() {
-    return this.each( function() {
+  $.fn.kfw_dependency = function () {
+    return this.each(function () {
 
-      var $this     = $(this),
-          ruleset   = $.kfw_deps.createRuleset(),
-          depends   = [],
-          is_global = false;
+      var $this = $(this),
+        $fields = $this.children('[data-controller]');
 
-      $this.children('[data-controller]').each( function() {
+      if ($fields.length) {
 
-        var $field      = $(this),
+        var normal_ruleset = $.kfw_deps.createRuleset(),
+          global_ruleset = $.kfw_deps.createRuleset(),
+          normal_depends = [],
+          global_depends = [];
+
+        $fields.each(function () {
+
+          var $field = $(this),
             controllers = $field.data('controller').split('|'),
-            conditions  = $field.data('condition').split('|'),
-            values      = $field.data('value').toString().split('|'),
-            rules       = ruleset;
+            conditions = $field.data('condition').split('|'),
+            values = $field.data('value').toString().split('|'),
+            is_global = $field.data('depend-global') ? true : false,
+            ruleset = (is_global) ? global_ruleset : normal_ruleset;
 
-        if( $field.data('depend-global') ) {
-          is_global = true;
-        }
+          $.each(controllers, function (index, depend_id) {
 
-        $.each(controllers, function( index, depend_id ) {
-
-          var value     = values[index] || '',
+            var value = values[index] || '',
               condition = conditions[index] || conditions[0];
 
-          rules = rules.createRule('[data-depend-id="'+ depend_id +'"]', condition, value);
+            ruleset = ruleset.createRule('[data-depend-id="' + depend_id + '"]', condition, value);
 
-          rules.include($field);
+            ruleset.include($field);
 
-          depends.push(depend_id);
+            if (is_global) {
+              global_depends.push(depend_id);
+            } else {
+              normal_depends.push(depend_id);
+            }
+
+          });
 
         });
 
-      });
+        if (normal_depends.length) {
+          $.kfw_deps.enable($this, normal_ruleset, normal_depends);
+        }
 
-      if( depends.length ) {
-
-        if( is_global ) {
-          $.kfw_deps.enable(KFW.vars.$body, ruleset, depends);
-        } else {
-          $.kfw_deps.enable($this, ruleset, depends);
+        if (global_depends.length) {
+          $.kfw_deps.enable(KFW.vars.$body, global_ruleset, global_depends);
         }
 
       }
@@ -500,27 +435,27 @@
   //
   // Field: accordion
   //
-  $.fn.kfw_field_accordion = function() {
-    return this.each( function() {
+  $.fn.kfw_field_accordion = function () {
+    return this.each(function () {
 
       var $titles = $(this).find('.kfw-accordion-title');
 
-      $titles.on('click', function() {
+      $titles.on('click', function () {
 
-        var $title   = $(this),
-            $icon    = $title.find('.kfw-accordion-icon'),
-            $content = $title.next();
+        var $title = $(this),
+          $icon = $title.find('.kfw-accordion-icon'),
+          $content = $title.next();
 
-        if( $icon.hasClass('fa-angle-right') ) {
+        if ($icon.hasClass('fa-angle-right')) {
           $icon.removeClass('fa-angle-right').addClass('fa-angle-down');
         } else {
           $icon.removeClass('fa-angle-down').addClass('fa-angle-right');
         }
 
-        if( !$content.data( 'opened' ) ) {
+        if (!$content.data('opened')) {
 
           $content.kfw_reload_script();
-          $content.data( 'opened', true );
+          $content.data('opened', true);
 
         }
 
@@ -534,30 +469,30 @@
   //
   // Field: backup
   //
-  $.fn.kfw_field_backup = function() {
-    return this.each( function() {
+  $.fn.kfw_field_backup = function () {
+    return this.each(function () {
 
-      if( window.wp.customize === undefined ) { return; }
+      if (window.wp.customize === undefined) { return; }
 
-      var base    = this,
-          $this   = $(this),
-          $body   = $('body'),
-          $import = $this.find('.kfw-import'),
-          $reset  = $this.find('.kfw-reset');
+      var base = this,
+        $this = $(this),
+        $body = $('body'),
+        $import = $this.find('.kfw-import'),
+        $reset = $this.find('.kfw-reset');
 
-      base.notification = function( message_text ) {
+      base.notification = function (message_text) {
 
-        if( wp.customize.notifications && wp.customize.OverlayNotification ) {
+        if (wp.customize.notifications && wp.customize.OverlayNotification) {
 
           // clear if there is any saved data.
-          if( !wp.customize.state('saved').get() ) {
+          if (!wp.customize.state('saved').get()) {
             wp.customize.state('changesetStatus').set('trash');
-            wp.customize.each( function( setting ) { setting._dirty = false; });
+            wp.customize.each(function (setting) { setting._dirty = false; });
             wp.customize.state('saved').set(true);
           }
 
           // then show a notification overlay
-          wp.customize.notifications.add( new wp.customize.OverlayNotification('kfw_field_backup_notification', {
+          wp.customize.notifications.add(new wp.customize.OverlayNotification('kfw_field_backup_notification', {
             type: 'info',
             message: message_text,
             loading: true
@@ -567,46 +502,46 @@
 
       };
 
-      $reset.on('click', function( e ) {
+      $reset.on('click', function (e) {
 
         e.preventDefault();
 
-        if( KFW.vars.is_confirm ) {
+        if (KFW.vars.is_confirm) {
 
-          base.notification( window.kfw_vars.i18n.reset_notification );
+          base.notification(window.kfw_vars.i18n.reset_notification);
 
           window.wp.ajax.post('kfw-reset', {
             unique: $reset.data('unique'),
             nonce: $reset.data('nonce')
           })
-          .done( function( response ) {
-            window.location.reload(true);
-          })
-          .fail( function( response ) {
-            alert( response.error );
-            wp.customize.notifications.remove('kfw_field_backup_notification');
-          });
+            .done(function (response) {
+              window.location.reload(true);
+            })
+            .fail(function (response) {
+              alert(response.error);
+              wp.customize.notifications.remove('kfw_field_backup_notification');
+            });
 
         }
 
       });
 
-      $import.on('click', function( e ) {
+      $import.on('click', function (e) {
 
         e.preventDefault();
 
-        if( KFW.vars.is_confirm ) {
+        if (KFW.vars.is_confirm) {
 
-          base.notification( window.kfw_vars.i18n.import_notification );
+          base.notification(window.kfw_vars.i18n.import_notification);
 
-          window.wp.ajax.post( 'kfw-import', {
+          window.wp.ajax.post('kfw-import', {
             unique: $import.data('unique'),
             nonce: $import.data('nonce'),
-            import_data: $this.find('.kfw-import-data').val()
-          }).done( function( response ) {
+            data: $this.find('.kfw-import-data').val()
+          }).done(function (response) {
             window.location.reload(true);
-          }).fail( function( response ) {
-            alert( response.error );
+          }).fail(function (response) {
+            alert(response.error);
             wp.customize.notifications.remove('kfw_field_backup_notification');
           });
 
@@ -620,58 +555,114 @@
   //
   // Field: background
   //
-  $.fn.kfw_field_background = function() {
-    return this.each( function() {
-      $(this).find('.kfw--media').kfw_reload_script();
+  $.fn.kfw_field_background = function () {
+    return this.each(function () {
+      $(this).find('.kfw--background-image').kfw_reload_script();
     });
   };
-  
+
+  //
+  // Field: code_editor
+  //
+  $.fn.kfw_field_code_editor = function () {
+    return this.each(function () {
+
+      if (typeof CodeMirror !== 'function') { return; }
+
+      var $this = $(this),
+        $textarea = $this.find('textarea'),
+        $inited = $this.find('.CodeMirror'),
+        data_editor = $textarea.data('editor');
+
+      if ($inited.length) {
+        $inited.remove();
+      }
+
+      var interval = setInterval(function () {
+        if ($this.is(':visible')) {
+
+          var code_editor = CodeMirror.fromTextArea($textarea[0], data_editor);
+
+          // load code-mirror theme css.
+          if (data_editor.theme !== 'default' && KFW.vars.code_themes.indexOf(data_editor.theme) === -1) {
+
+            var $cssLink = $('<link>');
+
+            $('#kfw-codemirror-css').after($cssLink);
+
+            $cssLink.attr({
+              rel: 'stylesheet',
+              id: 'kfw-codemirror-' + data_editor.theme + '-css',
+              href: data_editor.cdnURL + '/theme/' + data_editor.theme + '.min.css',
+              type: 'text/css',
+              media: 'all'
+            });
+
+            KFW.vars.code_themes.push(data_editor.theme);
+
+          }
+
+          CodeMirror.modeURL = data_editor.cdnURL + '/mode/%N/%N.min.js';
+          CodeMirror.autoLoadMode(code_editor, data_editor.mode);
+
+          code_editor.on('change', function (editor, event) {
+            $textarea.val(code_editor.getValue()).trigger('change');
+          });
+
+          clearInterval(interval);
+
+        }
+      });
+
+    });
+  };
+
   //
   // Field: date
   //
-  $.fn.kfw_field_date = function() {
-    return this.each( function() {
+  $.fn.kfw_field_date = function () {
+    return this.each(function () {
 
-      var $this    = $(this),
-          $inputs  = $this.find('input'),
-          settings = $this.find('.kfw-date-settings').data('settings'),
-          wrapper  = '<div class="kfw-datepicker-wrapper"></div>',
-          $datepicker;
+      var $this = $(this),
+        $inputs = $this.find('input'),
+        settings = $this.find('.kfw-date-settings').data('settings'),
+        wrapper = '<div class="kfw-datepicker-wrapper"></div>',
+        $datepicker;
 
       var defaults = {
         showAnim: '',
-        beforeShow: function(input, inst) {
+        beforeShow: function (input, inst) {
           $(inst.dpDiv).addClass('kfw-datepicker-wrapper');
         },
-        onClose: function( input, inst ) {
+        onClose: function (input, inst) {
           $(inst.dpDiv).removeClass('kfw-datepicker-wrapper');
         },
       };
 
       settings = $.extend({}, settings, defaults);
 
-      if( $inputs.length === 2 ) {
+      if ($inputs.length === 2) {
 
         settings = $.extend({}, settings, {
-          onSelect: function( selectedDate ) {
+          onSelect: function (selectedDate) {
 
-            var $this  = $(this),
-                $from  = $inputs.first(),
-                option = ( $inputs.first().attr('id') === $(this).attr('id') ) ? 'minDate' : 'maxDate',
-                date   = $.datepicker.parseDate( settings.dateFormat, selectedDate );
+            var $this = $(this),
+              $from = $inputs.first(),
+              option = ($inputs.first().attr('id') === $(this).attr('id')) ? 'minDate' : 'maxDate',
+              date = $.datepicker.parseDate(settings.dateFormat, selectedDate);
 
-            $inputs.not(this).datepicker('option', option, date );
+            $inputs.not(this).datepicker('option', option, date);
 
           }
         });
 
       }
 
-      $inputs.each( function(){
+      $inputs.each(function () {
 
         var $input = $(this);
 
-        if( $input.hasClass('hasDatepicker') ) {
+        if ($input.hasClass('hasDatepicker')) {
           $input.removeAttr('id').removeClass('hasDatepicker');
         }
 
@@ -685,8 +676,8 @@
   //
   // Field: fieldset
   //
-  $.fn.kfw_field_fieldset = function() {
-    return this.each( function() {
+  $.fn.kfw_field_fieldset = function () {
+    return this.each(function () {
       $(this).find('.kfw-fieldset-content').kfw_reload_script();
     });
   };
@@ -694,30 +685,30 @@
   //
   // Field: gallery
   //
-  $.fn.kfw_field_gallery = function() {
-    return this.each( function() {
+  $.fn.kfw_field_gallery = function () {
+    return this.each(function () {
 
-      var $this  = $(this),
-          $edit  = $this.find('.kfw-edit-gallery'),
-          $clear = $this.find('.kfw-clear-gallery'),
-          $list  = $this.find('ul'),
-          $input = $this.find('input'),
-          $img   = $this.find('img'),
-          wp_media_frame;
+      var $this = $(this),
+        $edit = $this.find('.kfw-edit-gallery'),
+        $clear = $this.find('.kfw-clear-gallery'),
+        $list = $this.find('ul'),
+        $input = $this.find('input'),
+        $img = $this.find('img'),
+        wp_media_frame;
 
-      $this.on('click', '.kfw-button, .kfw-edit-gallery', function( e ) {
+      $this.on('click', '.kfw-button, .kfw-edit-gallery', function (e) {
 
-        var $el   = $(this),
-            ids   = $input.val(),
-            what  = ( $el.hasClass('kfw-edit-gallery') ) ? 'edit' : 'add',
-            state = ( what === 'add' && !ids.length ) ? 'gallery' : 'gallery-edit';
+        var $el = $(this),
+          ids = $input.val(),
+          what = ($el.hasClass('kfw-edit-gallery')) ? 'edit' : 'add',
+          state = (what === 'add' && !ids.length) ? 'gallery' : 'gallery-edit';
 
         e.preventDefault();
 
-        if( typeof window.wp === 'undefined' || ! window.wp.media || ! window.wp.media.gallery ) { return; }
+        if (typeof window.wp === 'undefined' || !window.wp.media || !window.wp.media.gallery) { return; }
 
-         // Open media with state
-        if( state === 'gallery' ) {
+        // Open media with state
+        if (state === 'gallery') {
 
           wp_media_frame = window.wp.media({
             library: {
@@ -732,31 +723,31 @@
 
         } else {
 
-          wp_media_frame = window.wp.media.gallery.edit( '[gallery ids="'+ ids +'"]' );
+          wp_media_frame = window.wp.media.gallery.edit('[gallery ids="' + ids + '"]');
 
-          if( what === 'add' ) {
+          if (what === 'add') {
             wp_media_frame.setState('gallery-library');
           }
 
         }
 
         // Media Update
-        wp_media_frame.on( 'update', function( selection ) {
+        wp_media_frame.on('update', function (selection) {
 
           $list.empty();
 
-          var selectedIds = selection.models.map( function( attachment ) {
+          var selectedIds = selection.models.map(function (attachment) {
 
-            var item  = attachment.toJSON();
-            var thumb = ( typeof item.sizes.thumbnail !== 'undefined' ) ? item.sizes.thumbnail.url : item.url;
+            var item = attachment.toJSON();
+            var thumb = (item.sizes && item.sizes.thumbnail && item.sizes.thumbnail.url) ? item.sizes.thumbnail.url : item.url;
 
-            $list.append('<li><img src="'+ thumb +'"></li>');
+            $list.append('<li><img src="' + thumb + '"></li>');
 
             return item.id;
 
           });
 
-          $input.val( selectedIds.join( ',' ) ).trigger('change');
+          $input.val(selectedIds.join(',')).trigger('change');
           $clear.removeClass('hidden');
           $edit.removeClass('hidden');
 
@@ -764,7 +755,7 @@
 
       });
 
-      $clear.on('click', function( e ) {
+      $clear.on('click', function (e) {
         e.preventDefault();
         $list.empty();
         $input.val('').trigger('change');
@@ -779,67 +770,66 @@
   //
   // Field: group
   //
-  $.fn.kfw_field_group = function() {
-    return this.each( function() {
+  $.fn.kfw_field_group = function () {
+    return this.each(function () {
 
-      var $this     = $(this),
-          $fieldset = $this.children('.kfw-fieldset'),
-          $group    = $fieldset.length ? $fieldset : $this,
-          $wrapper  = $group.children('.kfw-cloneable-wrapper'),
-          $hidden   = $group.children('.kfw-cloneable-hidden'),
-          $max      = $group.children('.kfw-cloneable-max'),
-          $min      = $group.children('.kfw-cloneable-min'),
-          field_id  = $wrapper.data('field-id'),
-          unique_id = $wrapper.data('unique-id'),
-          is_number = Boolean( Number( $wrapper.data('title-number') ) ),
-          max       = parseInt( $wrapper.data('max') ),
-          min       = parseInt( $wrapper.data('min') );
+      var $this = $(this),
+        $fieldset = $this.children('.kfw-fieldset'),
+        $group = $fieldset.length ? $fieldset : $this,
+        $wrapper = $group.children('.kfw-cloneable-wrapper'),
+        $hidden = $group.children('.kfw-cloneable-hidden'),
+        $max = $group.children('.kfw-cloneable-max'),
+        $min = $group.children('.kfw-cloneable-min'),
+        field_id = $wrapper.data('field-id'),
+        unique_id = $wrapper.data('unique-id'),
+        is_number = Boolean(Number($wrapper.data('title-number'))),
+        max = parseInt($wrapper.data('max')),
+        min = parseInt($wrapper.data('min'));
 
       // clear accordion arrows if multi-instance
-      if( $wrapper.hasClass('ui-accordion') ) {
+      if ($wrapper.hasClass('ui-accordion')) {
         $wrapper.find('.ui-accordion-header-icon').remove();
       }
 
-      var update_title_numbers = function( $selector ) {
-        $selector.find('.kfw-cloneable-title-number').each( function( index ) {
-          $(this).html( ( $(this).closest('.kfw-cloneable-item').index()+1 ) + '.' );
+      var update_title_numbers = function ($selector) {
+        $selector.find('.kfw-cloneable-title-number').each(function (index) {
+          $(this).html(($(this).closest('.kfw-cloneable-item').index() + 1) + '.');
         });
       };
 
       $wrapper.accordion({
         header: '> .kfw-cloneable-item > .kfw-cloneable-title',
-        collapsible : true,
+        collapsible: true,
         active: false,
         animate: false,
         heightStyle: 'content',
         icons: {
-          'header': 'kfw-cloneable-header-icon fa fa-angle-right',
-          'activeHeader': 'kfw-cloneable-header-icon fa fa-angle-down'
+          'header': 'kfw-cloneable-header-icon fas fa-angle-right',
+          'activeHeader': 'kfw-cloneable-header-icon fas fa-angle-down'
         },
-        activate: function( event, ui ) {
+        activate: function (event, ui) {
 
-          var $panel  = ui.newPanel;
+          var $panel = ui.newPanel;
           var $header = ui.newHeader;
 
-          if( $panel.length && !$panel.data( 'opened' ) ) {
+          if ($panel.length && !$panel.data('opened')) {
 
             var $fields = $panel.children();
-            var $first  = $fields.first().find(':input').first();
-            var $title  = $header.find('.kfw-cloneable-value');
+            var $first = $fields.first().find(':input').first();
+            var $title = $header.find('.kfw-cloneable-value');
 
-            $first.on('keyup', function( event ) {
-              $panel.find('.kfw-cloneable-title-prefix').fadeOut();
+            $first.on('change keyup', function (event) {
               $title.text($first.val());
             });
 
             $panel.kfw_reload_script();
-            $panel.data( 'opened', true );
-            $panel.data( 'retry', false );
+            $panel.data('opened', true);
+            $panel.data('retry', false);
 
-          } else if( $panel.data( 'retry' ) ) {
+          } else if ($panel.data('retry')) {
 
             $panel.kfw_reload_script_retry();
-            $panel.data( 'retry', false );
+            $panel.data('retry', false);
 
           }
 
@@ -852,26 +842,26 @@
         helper: 'original',
         cursor: 'move',
         placeholder: 'widget-placeholder',
-        start: function( event, ui ) {
+        start: function (event, ui) {
 
-          $wrapper.accordion({ active:false });
+          $wrapper.accordion({ active: false });
           $wrapper.sortable('refreshPositions');
           ui.item.children('.kfw-cloneable-content').data('retry', true);
 
         },
-        update: function( event, ui ) {
+        update: function (event, ui) {
 
-          KFW.helper.name_nested_replace( $wrapper.children('.kfw-cloneable-item'), field_id );
+          KFW.helper.name_nested_replace($wrapper.children('.kfw-cloneable-item'), field_id);
           $wrapper.kfw_customizer_refresh();
 
-          if( is_number ) {
+          if (is_number) {
             update_title_numbers($wrapper);
           }
 
         },
       });
 
-      $group.children('.kfw-cloneable-add').on('click', function( e ) {
+      $group.children('.kfw-cloneable-add').on('click', function (e) {
 
         e.preventDefault();
 
@@ -879,38 +869,38 @@
 
         $min.hide();
 
-        if( max && (count+1) > max ) {
+        if (max && (count + 1) > max) {
           $max.show();
           return;
         }
 
-        var new_field_id = unique_id + field_id + '['+ count +']';
+        var new_field_id = unique_id + field_id + '[' + count + ']';
 
         var $cloned_item = $hidden.kfw_clone(true);
 
         $cloned_item.removeClass('kfw-cloneable-hidden');
 
-        $cloned_item.find(':input').each( function() {
-          this.name = new_field_id + this.name.replace( ( this.name.startsWith('_nonce') ? '_nonce' : unique_id ), '');
+        $cloned_item.find(':input[name!="_pseudo"]').each(function () {
+          this.name = new_field_id + this.name.replace((this.name.startsWith('_nonce') ? '_nonce' : unique_id), '');
         });
 
-        $cloned_item.find('.kfw-data-wrapper').each( function(){
-          $(this).attr('data-unique-id', new_field_id );
+        $cloned_item.find('.kfw-data-wrapper').each(function () {
+          $(this).attr('data-unique-id', new_field_id);
         });
 
         $wrapper.append($cloned_item);
         $wrapper.accordion('refresh');
-        $wrapper.accordion({active: count});
+        $wrapper.accordion({ active: count });
         $wrapper.kfw_customizer_refresh();
-        $wrapper.kfw_customizer_listen({closest: true});
+        $wrapper.kfw_customizer_listen({ closest: true });
 
-        if( is_number ) {
+        if (is_number) {
           update_title_numbers($wrapper);
         }
 
       });
 
-      var event_clone = function( e ) {
+      var event_clone = function (e) {
 
         e.preventDefault();
 
@@ -918,21 +908,21 @@
 
         $min.hide();
 
-        if( max && (count+1) > max ) {
+        if (max && (count + 1) > max) {
           $max.show();
           return;
         }
 
-        var $this           = $(this),
-            $parent         = $this.parent().parent(),
-            $cloned_helper  = $parent.children('.kfw-cloneable-helper').kfw_clone(true),
-            $cloned_title   = $parent.children('.kfw-cloneable-title').kfw_clone(),
-            $cloned_content = $parent.children('.kfw-cloneable-content').kfw_clone(),
-            cloned_regex    = new RegExp('('+ KFW.helper.preg_quote(field_id) +')\\[(\\d+)\\]', 'g');
+        var $this = $(this),
+          $parent = $this.parent().parent(),
+          $cloned_helper = $parent.children('.kfw-cloneable-helper').kfw_clone(true),
+          $cloned_title = $parent.children('.kfw-cloneable-title').kfw_clone(),
+          $cloned_content = $parent.children('.kfw-cloneable-content').kfw_clone(),
+          cloned_regex = new RegExp('(' + KFW.helper.preg_quote(field_id) + ')\\[(\\d+)\\]', 'g');
 
-        $cloned_content.find('.kfw-data-wrapper').each( function(){
+        $cloned_content.find('.kfw-data-wrapper').each(function () {
           var $this = $(this);
-          $this.attr('data-unique-id', $this.attr('data-unique-id').replace(cloned_regex, field_id +'['+ ($parent.index()+1) +']') );
+          $this.attr('data-unique-id', $this.attr('data-unique-id').replace(cloned_regex, field_id + '[' + ($parent.index() + 1) + ']'));
         });
 
         var $cloned = $('<div class="kfw-cloneable-item" />');
@@ -943,13 +933,13 @@
 
         $wrapper.children().eq($parent.index()).after($cloned);
 
-        KFW.helper.name_nested_replace( $wrapper.children('.kfw-cloneable-item'), field_id );
+        KFW.helper.name_nested_replace($wrapper.children('.kfw-cloneable-item'), field_id);
 
         $wrapper.accordion('refresh');
         $wrapper.kfw_customizer_refresh();
-        $wrapper.kfw_customizer_listen({closest: true});
+        $wrapper.kfw_customizer_listen({ closest: true });
 
-        if( is_number ) {
+        if (is_number) {
           update_title_numbers($wrapper);
         }
 
@@ -958,7 +948,7 @@
       $wrapper.children('.kfw-cloneable-item').children('.kfw-cloneable-helper').on('click', '.kfw-cloneable-clone', event_clone);
       $group.children('.kfw-cloneable-hidden').children('.kfw-cloneable-helper').on('click', '.kfw-cloneable-clone', event_clone);
 
-      var event_remove = function( e ) {
+      var event_remove = function (e) {
 
         e.preventDefault();
 
@@ -967,18 +957,18 @@
         $max.hide();
         $min.hide();
 
-        if( min && (count-1) < min ) {
+        if (min && (count - 1) < min) {
           $min.show();
           return;
         }
 
         $(this).closest('.kfw-cloneable-item').remove();
 
-        KFW.helper.name_nested_replace( $wrapper.children('.kfw-cloneable-item'), field_id );
+        KFW.helper.name_nested_replace($wrapper.children('.kfw-cloneable-item'), field_id);
 
         $wrapper.kfw_customizer_refresh();
 
-        if( is_number ) {
+        if (is_number) {
           update_title_numbers($wrapper);
         }
 
@@ -993,61 +983,61 @@
   //
   // Field: icon
   //
-  $.fn.kfw_field_icon = function() {
-    return this.each( function() {
+  $.fn.kfw_field_icon = function () {
+    return this.each(function () {
 
       var $this = $(this);
 
-      $this.on('click', '.kfw-icon-add', function( e ) {
+      $this.on('click', '.kfw-icon-add', function (e) {
 
         e.preventDefault();
 
         var $button = $(this);
-        var $modal  = $('#kfw-modal-icon');
+        var $modal = $('#kfw-modal-icon');
 
-        $modal.show();
+        $modal.removeClass('hidden');
 
         KFW.vars.$icon_target = $this;
 
-        if( !KFW.vars.icon_modal_loaded ) {
+        if (!KFW.vars.icon_modal_loaded) {
 
           $modal.find('.kfw-modal-loading').show();
 
-          window.wp.ajax.post( 'kfw-get-icons', {
+          window.wp.ajax.post('kfw-get-icons', {
             nonce: $button.data('nonce')
-          }).done( function( response ) {
+          }).done(function (response) {
 
             $modal.find('.kfw-modal-loading').hide();
 
             KFW.vars.icon_modal_loaded = true;
 
-            var $load = $modal.find('.kfw-modal-load').html( response.content );
+            var $load = $modal.find('.kfw-modal-load').html(response.content);
 
-            $load.on('click', 'a', function( e ) {
+            $load.on('click', 'i', function (e) {
 
               e.preventDefault();
 
-              var icon = $(this).data('kfw-icon');
+              var icon = $(this).attr('title');
 
-              KFW.vars.$icon_target.find('span.dashicons').removeAttr('class').addClass("dashicons "+icon);
+              KFW.vars.$icon_target.find('i').removeAttr('class').addClass(icon);
               KFW.vars.$icon_target.find('input').val(icon).trigger('change');
               KFW.vars.$icon_target.find('.kfw-icon-preview').removeClass('hidden');
               KFW.vars.$icon_target.find('.kfw-icon-remove').removeClass('hidden');
 
-              $modal.hide();
+              $modal.addClass('hidden');
 
             });
 
-            $modal.on('change keyup', '.kfw-icon-search', function() {
+            $modal.on('change keyup', '.kfw-icon-search', function () {
 
-              var value  = $(this).val(),
-                  $icons = $load.find('a');
+              var value = $(this).val(),
+                $icons = $load.find('i');
 
-              $icons.each( function() {
+              $icons.each(function () {
 
                 var $elem = $(this);
 
-                if( $elem.data('kfw-icon').search( new RegExp( value, 'i' ) ) < 0 ) {
+                if ($elem.attr('title').search(new RegExp(value, 'i')) < 0) {
                   $elem.hide();
                 } else {
                   $elem.show();
@@ -1057,20 +1047,22 @@
 
             });
 
-            $modal.on('click', '.kfw-modal-close, .kfw-modal-overlay', function() {
-              $modal.hide();
+            $modal.on('click', '.kfw-modal-close, .kfw-modal-overlay', function () {
+              $modal.addClass('hidden');
             });
 
-          }).fail( function( response ) {
+          }).fail(function (response) {
             $modal.find('.kfw-modal-loading').hide();
-            $modal.find('.kfw-modal-load').html( response.error );
-            $modal.on('click', function() { $modal.hide(); });
+            $modal.find('.kfw-modal-load').html(response.error);
+            $modal.on('click', function () {
+              $modal.addClass('hidden');
+            });
           });
         }
 
       });
 
-      $this.on('click', '.kfw-icon-remove', function( e ) {
+      $this.on('click', '.kfw-icon-remove', function (e) {
         e.preventDefault();
         $this.find('.kfw-icon-preview').addClass('hidden');
         $this.find('input').val('').trigger('change');
@@ -1081,26 +1073,146 @@
   };
 
   //
+  // Field: map
+  //
+  $.fn.kfw_field_map = function () {
+    return this.each(function () {
+
+      if (typeof L === 'undefined') { return; }
+
+      var $this = $(this),
+        $map = $this.find('.kfw--map-osm'),
+        $search_input = $this.find('.kfw--map-search input'),
+        $latitude = $this.find('.kfw--latitude'),
+        $longitude = $this.find('.kfw--longitude'),
+        $zoom = $this.find('.kfw--zoom'),
+        map_data = $map.data('map');
+
+      var mapInit = L.map($map.get(0), map_data);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mapInit);
+
+      var mapMarker = L.marker(map_data.center, { draggable: true }).addTo(mapInit);
+
+      var update_latlng = function (data) {
+        $latitude.val(data.lat);
+        $longitude.val(data.lng);
+        $zoom.val(mapInit.getZoom());
+      };
+
+      mapInit.on('click', function (data) {
+        mapMarker.setLatLng(data.latlng);
+        update_latlng(data.latlng);
+      });
+
+      mapInit.on('zoom', function () {
+        update_latlng(mapMarker.getLatLng());
+      });
+
+      mapMarker.on('drag', function () {
+        update_latlng(mapMarker.getLatLng());
+      });
+
+      if (!$search_input.length) {
+        $search_input = $('[data-depend-id="' + $this.find('.kfw--address-field').data('address-field') + '"]');
+      }
+
+      var cache = {};
+
+      $search_input.autocomplete({
+        source: function (request, response) {
+
+          var term = request.term;
+
+          if (term in cache) {
+            response(cache[term]);
+            return;
+          }
+
+          $.get('https://nominatim.openstreetmap.org/search', {
+            format: 'json',
+            q: term,
+          }, function (results) {
+
+            var data;
+
+            if (results.length) {
+              data = results.map(function (item) {
+                return {
+                  value: item.display_name,
+                  label: item.display_name,
+                  lat: item.lat,
+                  lon: item.lon
+                };
+              }, 'json');
+            } else {
+              data = [{
+                value: 'no-data',
+                label: 'No Results.'
+              }];
+            }
+
+            cache[term] = data;
+            response(data);
+
+          });
+
+        },
+        select: function (event, ui) {
+
+          if (ui.item.value === 'no-data') { return false; }
+
+          var latLng = L.latLng(ui.item.lat, ui.item.lon);
+
+          mapInit.panTo(latLng);
+          mapMarker.setLatLng(latLng);
+          update_latlng(latLng);
+
+        },
+        create: function (event, ui) {
+          $(this).autocomplete('widget').addClass('kfw-map-ui-autocomplate');
+        }
+      });
+
+      var input_update_latlng = function () {
+
+        var latLng = L.latLng($latitude.val(), $longitude.val());
+
+        mapInit.panTo(latLng);
+        mapMarker.setLatLng(latLng);
+
+      };
+
+      $latitude.on('change', input_update_latlng);
+      $longitude.on('change', input_update_latlng);
+
+    });
+  };
+
+  //
   // Field: media
   //
-  $.fn.kfw_field_media = function() {
-    return this.each( function() {
+  $.fn.kfw_field_media = function () {
+    return this.each(function () {
 
-      var $this          = $(this),
-          $upload_button = $this.find('.kfw--button'),
-          $remove_button = $this.find('.kfw--remove'),
-          $library       = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
-          wp_media_frame;
+      var $this = $(this),
+        $upload_button = $this.find('.kfw--button'),
+        $remove_button = $this.find('.kfw--remove'),
+        $library = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
+        $auto_attributes = ($this.hasClass('kfw-assign-field-background')) ? $this.closest('.kfw-field-background').find('.kfw--auto-attributes') : false,
+        wp_media_frame;
 
-      $upload_button.on('click', function( e ) {
+      $upload_button.on('click', function (e) {
 
         e.preventDefault();
 
-        if( typeof window.wp === 'undefined' || ! window.wp.media || ! window.wp.media.gallery ) {
+        if (typeof window.wp === 'undefined' || !window.wp.media || !window.wp.media.gallery) {
           return;
         }
 
-        if( wp_media_frame ) {
+        if (wp_media_frame) {
           wp_media_frame.open();
           return;
         }
@@ -1111,36 +1223,41 @@
           }
         });
 
-        wp_media_frame.on( 'select', function() {
+        wp_media_frame.on('select', function () {
 
           var thumbnail;
-          var attributes   = wp_media_frame.state().get('selection').first().attributes;
+          var attributes = wp_media_frame.state().get('selection').first().attributes;
           var preview_size = $upload_button.data('preview-size') || 'thumbnail';
 
-          if( $library.length && $library.indexOf(attributes.subtype) === -1 && $library.indexOf(attributes.type) === -1 ) {
+          if ($library.length && $library.indexOf(attributes.subtype) === -1 && $library.indexOf(attributes.type) === -1) {
             return;
           }
 
-          $this.find('.kfw--url').val( attributes.url );
-          $this.find('.kfw--id').val( attributes.id );
-          $this.find('.kfw--width').val( attributes.width );
-          $this.find('.kfw--height').val( attributes.height );
-          $this.find('.kfw--alt').val( attributes.alt );
-          $this.find('.kfw--title').val( attributes.title );
-          $this.find('.kfw--description').val( attributes.description );
+          $this.find('.kfw--id').val(attributes.id);
+          $this.find('.kfw--width').val(attributes.width);
+          $this.find('.kfw--height').val(attributes.height);
+          $this.find('.kfw--alt').val(attributes.alt);
+          $this.find('.kfw--title').val(attributes.title);
+          $this.find('.kfw--description').val(attributes.description);
 
-          if( typeof attributes.sizes !== 'undefined' && typeof attributes.sizes.thumbnail !== 'undefined' && preview_size === 'thumbnail' ) {
+          if (typeof attributes.sizes !== 'undefined' && typeof attributes.sizes.thumbnail !== 'undefined' && preview_size === 'thumbnail') {
             thumbnail = attributes.sizes.thumbnail.url;
-          } else if( typeof attributes.sizes !== 'undefined' && typeof attributes.sizes.full !== 'undefined' ) {
+          } else if (typeof attributes.sizes !== 'undefined' && typeof attributes.sizes.full !== 'undefined') {
             thumbnail = attributes.sizes.full.url;
           } else {
             thumbnail = attributes.icon;
           }
 
+          if ($auto_attributes) {
+            $auto_attributes.removeClass('kfw--attributes-hidden');
+          }
+
           $remove_button.removeClass('hidden');
+
           $this.find('.kfw--preview').removeClass('hidden');
           $this.find('.kfw--src').attr('src', thumbnail);
-          $this.find('.kfw--thumbnail').val( thumbnail ).trigger('change');
+          $this.find('.kfw--thumbnail').val(thumbnail);
+          $this.find('.kfw--url').val(attributes.url).trigger('change');
 
         });
 
@@ -1148,12 +1265,19 @@
 
       });
 
-      $remove_button.on('click', function( e ) {
+      $remove_button.on('click', function (e) {
+
         e.preventDefault();
+
+        if ($auto_attributes) {
+          $auto_attributes.addClass('kfw--attributes-hidden');
+        }
+
         $remove_button.addClass('hidden');
-        $this.find('.kfw--preview').addClass('hidden');
         $this.find('input').val('');
-        $this.find('.kfw--thumbnail').trigger('change');
+        $this.find('.kfw--preview').addClass('hidden');
+        $this.find('.kfw--url').trigger('change');
+
       });
 
     });
@@ -1163,20 +1287,20 @@
   //
   // Field: repeater
   //
-  $.fn.kfw_field_repeater = function() {
-    return this.each( function() {
+  $.fn.kfw_field_repeater = function () {
+    return this.each(function () {
 
-      var $this     = $(this),
-          $fieldset = $this.children('.kfw-fieldset'),
-          $repeater = $fieldset.length ? $fieldset : $this,
-          $wrapper  = $repeater.children('.kfw-repeater-wrapper'),
-          $hidden   = $repeater.children('.kfw-repeater-hidden'),
-          $max      = $repeater.children('.kfw-repeater-max'),
-          $min      = $repeater.children('.kfw-repeater-min'),
-          field_id  = $wrapper.data('field-id'),
-          unique_id = $wrapper.data('unique-id'),
-          max       = parseInt( $wrapper.data('max') ),
-          min       = parseInt( $wrapper.data('min') );
+      var $this = $(this),
+        $fieldset = $this.children('.kfw-fieldset'),
+        $repeater = $fieldset.length ? $fieldset : $this,
+        $wrapper = $repeater.children('.kfw-repeater-wrapper'),
+        $hidden = $repeater.children('.kfw-repeater-hidden'),
+        $max = $repeater.children('.kfw-repeater-max'),
+        $min = $repeater.children('.kfw-repeater-min'),
+        field_id = $wrapper.data('field-id'),
+        unique_id = $wrapper.data('unique-id'),
+        max = parseInt($wrapper.data('max')),
+        min = parseInt($wrapper.data('min'));
 
 
       $wrapper.children('.kfw-repeater-item').children('.kfw-repeater-content').kfw_reload_script();
@@ -1187,16 +1311,16 @@
         helper: 'original',
         cursor: 'move',
         placeholder: 'widget-placeholder',
-        update: function( event, ui ) {
+        update: function (event, ui) {
 
-          KFW.helper.name_nested_replace( $wrapper.children('.kfw-repeater-item'), field_id );
+          KFW.helper.name_nested_replace($wrapper.children('.kfw-repeater-item'), field_id);
           $wrapper.kfw_customizer_refresh();
           ui.item.kfw_reload_script_retry();
 
         }
       });
 
-      $repeater.children('.kfw-repeater-add').on('click', function( e ) {
+      $repeater.children('.kfw-repeater-add').on('click', function (e) {
 
         e.preventDefault();
 
@@ -1204,33 +1328,33 @@
 
         $min.hide();
 
-        if( max && (count+1) > max ) {
+        if (max && (count + 1) > max) {
           $max.show();
           return;
         }
 
-        var new_field_id = unique_id + field_id + '['+ count +']';
+        var new_field_id = unique_id + field_id + '[' + count + ']';
 
         var $cloned_item = $hidden.kfw_clone(true);
 
         $cloned_item.removeClass('kfw-repeater-hidden');
 
-        $cloned_item.find(':input').each( function() {
-          this.name = new_field_id + this.name.replace( ( this.name.startsWith('_nonce') ? '_nonce' : unique_id ), '');
+        $cloned_item.find(':input[name!="_pseudo"]').each(function () {
+          this.name = new_field_id + this.name.replace((this.name.startsWith('_nonce') ? '_nonce' : unique_id), '');
         });
 
-        $cloned_item.find('.kfw-data-wrapper').each( function(){
-          $(this).attr('data-unique-id', new_field_id );
+        $cloned_item.find('.kfw-data-wrapper').each(function () {
+          $(this).attr('data-unique-id', new_field_id);
         });
 
         $wrapper.append($cloned_item);
         $cloned_item.children('.kfw-repeater-content').kfw_reload_script();
         $wrapper.kfw_customizer_refresh();
-        $wrapper.kfw_customizer_listen({closest: true});
+        $wrapper.kfw_customizer_listen({ closest: true });
 
       });
 
-      var event_clone = function( e ) {
+      var event_clone = function (e) {
 
         e.preventDefault();
 
@@ -1238,20 +1362,20 @@
 
         $min.hide();
 
-        if( max && (count+1) > max ) {
+        if (max && (count + 1) > max) {
           $max.show();
           return;
         }
 
-        var $this           = $(this),
-            $parent         = $this.parent().parent().parent(),
-            $cloned_content = $parent.children('.kfw-repeater-content').kfw_clone(),
-            $cloned_helper  = $parent.children('.kfw-repeater-helper').kfw_clone(true),
-            cloned_regex    = new RegExp('('+ KFW.helper.preg_quote(field_id) +')\\[(\\d+)\\]', 'g');
+        var $this = $(this),
+          $parent = $this.parent().parent().parent(),
+          $cloned_content = $parent.children('.kfw-repeater-content').kfw_clone(),
+          $cloned_helper = $parent.children('.kfw-repeater-helper').kfw_clone(true),
+          cloned_regex = new RegExp('(' + KFW.helper.preg_quote(field_id) + ')\\[(\\d+)\\]', 'g');
 
-        $cloned_content.find('.kfw-data-wrapper').each( function(){
+        $cloned_content.find('.kfw-data-wrapper').each(function () {
           var $this = $(this);
-          $this.attr('data-unique-id', $this.attr('data-unique-id').replace(cloned_regex, field_id +'['+ ($parent.index()+1) +']') );
+          $this.attr('data-unique-id', $this.attr('data-unique-id').replace(cloned_regex, field_id + '[' + ($parent.index() + 1) + ']'));
         });
 
         var $cloned = $('<div class="kfw-repeater-item" />');
@@ -1263,17 +1387,17 @@
 
         $cloned.children('.kfw-repeater-content').kfw_reload_script();
 
-        KFW.helper.name_nested_replace( $wrapper.children('.kfw-repeater-item'), field_id );
+        KFW.helper.name_nested_replace($wrapper.children('.kfw-repeater-item'), field_id);
 
         $wrapper.kfw_customizer_refresh();
-        $wrapper.kfw_customizer_listen({closest: true});
+        $wrapper.kfw_customizer_listen({ closest: true });
 
       };
 
       $wrapper.children('.kfw-repeater-item').children('.kfw-repeater-helper').on('click', '.kfw-repeater-clone', event_clone);
       $repeater.children('.kfw-repeater-hidden').children('.kfw-repeater-helper').on('click', '.kfw-repeater-clone', event_clone);
 
-      var event_remove = function( e ) {
+      var event_remove = function (e) {
 
         e.preventDefault();
 
@@ -1282,14 +1406,14 @@
         $max.hide();
         $min.hide();
 
-        if( min && (count-1) < min ) {
+        if (min && (count - 1) < min) {
           $min.show();
           return;
         }
 
         $(this).closest('.kfw-repeater-item').remove();
 
-        KFW.helper.name_nested_replace( $wrapper.children('.kfw-repeater-item'), field_id );
+        KFW.helper.name_nested_replace($wrapper.children('.kfw-repeater-item'), field_id);
 
         $wrapper.kfw_customizer_refresh();
 
@@ -1304,16 +1428,16 @@
   //
   // Field: slider
   //
-  $.fn.kfw_field_slider = function() {
-    return this.each( function() {
+  $.fn.kfw_field_slider = function () {
+    return this.each(function () {
 
-      var $this   = $(this),
-          $input  = $this.find('input'),
-          $slider = $this.find('.kfw-slider-ui'),
-          data    = $input.data(),
-          value   = $input.val() || 0;
+      var $this = $(this),
+        $input = $this.find('input'),
+        $slider = $this.find('.kfw-slider-ui'),
+        data = $input.data(),
+        value = $input.val() || 0;
 
-      if( $slider.hasClass('ui-slider') ) {
+      if ($slider.hasClass('ui-slider')) {
         $slider.empty();
       }
 
@@ -1323,12 +1447,12 @@
         min: data.min,
         max: data.max,
         step: data.step,
-        slide: function( e, o ) {
-          $input.val( o.value ).trigger('change');
+        slide: function (e, o) {
+          $input.val(o.value).trigger('change');
         }
       });
 
-      $input.keyup( function() {
+      $input.on('keyup', function () {
         $slider.slider('value', $input.val());
       });
 
@@ -1338,22 +1462,22 @@
   //
   // Field: sortable
   //
-  $.fn.kfw_field_sortable = function() {
-    return this.each( function() {
+  $.fn.kfw_field_sortable = function () {
+    return this.each(function () {
 
-      var $sortable = $(this).find('.kfw--sortable');
+      var $sortable = $(this).find('.kfw-sortable');
 
       $sortable.sortable({
         axis: 'y',
         helper: 'original',
         cursor: 'move',
         placeholder: 'widget-placeholder',
-        update: function( event, ui ) {
+        update: function (event, ui) {
           $sortable.kfw_customizer_refresh();
         }
       });
 
-      $sortable.find('.kfw--sortable-content').kfw_reload_script();
+      $sortable.find('.kfw-sortable-content').kfw_reload_script();
 
     });
   };
@@ -1361,22 +1485,22 @@
   //
   // Field: sorter
   //
-  $.fn.kfw_field_sorter = function() {
-    return this.each( function() {
+  $.fn.kfw_field_sorter = function () {
+    return this.each(function () {
 
-      var $this         = $(this),
-          $enabled      = $this.find('.kfw-enabled'),
-          $has_disabled = $this.find('.kfw-disabled'),
-          $disabled     = ( $has_disabled.length ) ? $has_disabled : false;
+      var $this = $(this),
+        $enabled = $this.find('.kfw-enabled'),
+        $has_disabled = $this.find('.kfw-disabled'),
+        $disabled = ($has_disabled.length) ? $has_disabled : false;
 
       $enabled.sortable({
         connectWith: $disabled,
         placeholder: 'ui-sortable-placeholder',
-        update: function( event, ui ) {
+        update: function (event, ui) {
 
           var $el = ui.item.find('input');
 
-          if( ui.item.parent().hasClass('kfw-enabled') ) {
+          if (ui.item.parent().hasClass('kfw-enabled')) {
             $el.attr('name', $el.attr('name').replace('disabled', 'enabled'));
           } else {
             $el.attr('name', $el.attr('name').replace('enabled', 'disabled'));
@@ -1387,12 +1511,12 @@
         }
       });
 
-      if( $disabled ) {
+      if ($disabled) {
 
         $disabled.sortable({
           connectWith: $enabled,
           placeholder: 'ui-sortable-placeholder',
-          update: function( event, ui ) {
+          update: function (event, ui) {
             $this.kfw_customizer_refresh();
           }
         });
@@ -1405,14 +1529,15 @@
   //
   // Field: spinner
   //
-  $.fn.kfw_field_spinner = function() {
-    return this.each( function() {
+  $.fn.kfw_field_spinner = function () {
+    return this.each(function () {
 
-      var $this   = $(this),
-          $input  = $this.find('input'),
-          $inited = $this.find('.ui-spinner-button');
+      var $this = $(this),
+        $input = $this.find('input'),
+        $inited = $this.find('.ui-spinner-button'),
+        $unit = $input.data('unit');
 
-      if( $inited.length ) {
+      if ($inited.length) {
         $inited.remove();
       }
 
@@ -1420,11 +1545,15 @@
         max: $input.data('max') || 100,
         min: $input.data('min') || 0,
         step: $input.data('step') || 1,
-        spin: function (event, ui ) {
+        create: function (event, ui) {
+          if ($unit.length) {
+            $this.find('.ui-spinner-up').after('<span class="ui-button-text-only kfw--unit">' + $unit + '</span>');
+          }
+        },
+        spin: function (event, ui) {
           $input.val(ui.value).trigger('change');
         }
       });
-
 
     });
   };
@@ -1432,17 +1561,17 @@
   //
   // Field: switcher
   //
-  $.fn.kfw_field_switcher = function() {
-    return this.each( function() {
+  $.fn.kfw_field_switcher = function () {
+    return this.each(function () {
 
       var $switcher = $(this).find('.kfw--switcher');
 
-      $switcher.on('click', function() {
+      $switcher.on('click', function () {
 
-        var value  = 0;
+        var value = 0;
         var $input = $switcher.find('input');
 
-        if( $switcher.hasClass('kfw--active') ) {
+        if ($switcher.hasClass('kfw--active')) {
           $switcher.removeClass('kfw--active');
         } else {
           value = 1;
@@ -1459,26 +1588,26 @@
   //
   // Field: tabbed
   //
-  $.fn.kfw_field_tabbed = function() {
-    return this.each( function() {
+  $.fn.kfw_field_tabbed = function () {
+    return this.each(function () {
 
-      var $this     = $(this),
-          $links    = $this.find('.kfw-tabbed-nav a'),
-          $sections = $this.find('.kfw-tabbed-section');
+      var $this = $(this),
+        $links = $this.find('.kfw-tabbed-nav a'),
+        $contents = $this.find('.kfw-tabbed-content');
 
-      $sections.eq(0).kfw_reload_script();
+      $contents.eq(0).kfw_reload_script();
 
-      $links.on( 'click', function( e ) {
+      $links.on('click', function (e) {
 
-       e.preventDefault();
+        e.preventDefault();
 
-        var $link    = $(this),
-            index    = $link.index(),
-            $section = $sections.eq(index);
+        var $link = $(this),
+          index = $link.index(),
+          $content = $contents.eq(index);
 
         $link.addClass('kfw-tabbed-active').siblings().removeClass('kfw-tabbed-active');
-        $section.kfw_reload_script();
-        $section.removeClass('hidden').siblings().addClass('hidden');
+        $content.kfw_reload_script();
+        $content.removeClass('hidden').siblings().addClass('hidden');
 
       });
 
@@ -1488,20 +1617,20 @@
   //
   // Field: typography
   //
-  $.fn.kfw_field_typography = function() {
+  $.fn.kfw_field_typography = function () {
     return this.each(function () {
 
-      var base          = this;
-      var $this         = $(this);
-      var loaded_fonts  = [];
-      var webfonts      = kfw_typography_json.webfonts;
-      var googlestyles  = kfw_typography_json.googlestyles;
+      var base = this;
+      var $this = $(this);
+      var loaded_fonts = [];
+      var webfonts = kfw_typography_json.webfonts;
+      var googlestyles = kfw_typography_json.googlestyles;
       var defaultstyles = kfw_typography_json.defaultstyles;
 
       //
       //
       // Sanitize google font subset
-      base.sanitize_subset = function( subset ) {
+      base.sanitize_subset = function (subset) {
         subset = subset.replace('-ext', ' Extended');
         subset = subset.charAt(0).toUpperCase() + subset.slice(1);
         return subset;
@@ -1510,29 +1639,29 @@
       //
       //
       // Sanitize google font styles (weight and style)
-      base.sanitize_style = function( style ) {
+      base.sanitize_style = function (style) {
         return googlestyles[style] ? googlestyles[style] : style;
       };
 
       //
       //
       // Load google font
-      base.load_google_font = function( font_family, weight, style ) {
+      base.load_google_font = function (font_family, weight, style) {
 
-        if( font_family && typeof WebFont === 'object' ) {
+        if (font_family && typeof WebFont === 'object') {
 
           weight = weight ? weight.replace('normal', '') : '';
-          style  = style ? style.replace('normal', '') : '';
+          style = style ? style.replace('normal', '') : '';
 
-          if( weight || style ) {
-            font_family = font_family +':'+ weight + style;
+          if (weight || style) {
+            font_family = font_family + ':' + weight + style;
           }
 
-          if( loaded_fonts.indexOf( font_family ) === -1 ) {
+          if (loaded_fonts.indexOf(font_family) === -1) {
             WebFont.load({ google: { families: [font_family] } });
           }
 
-          loaded_fonts.push( font_family );
+          loaded_fonts.push(font_family);
 
         }
 
@@ -1541,31 +1670,31 @@
       //
       //
       // Append select options
-      base.append_select_options = function( $select, options, condition, type, is_multi ) {
+      base.append_select_options = function ($select, options, condition, type, is_multi) {
 
         $select.find('option').not(':first').remove();
 
         var opts = '';
 
-        $.each( options, function( key, value ) {
+        $.each(options, function (key, value) {
 
           var selected;
           var name = value;
 
           // is_multi
-          if( is_multi ) {
-            selected = ( condition && condition.indexOf(value) !== -1 ) ? ' selected' : '';
+          if (is_multi) {
+            selected = (condition && condition.indexOf(value) !== -1) ? ' selected' : '';
           } else {
-            selected = ( condition && condition === value ) ? ' selected' : '';
+            selected = (condition && condition === value) ? ' selected' : '';
           }
 
-          if( type === 'subset' ) {
-            name = base.sanitize_subset( value );
-          } else if( type === 'style' ){
-            name = base.sanitize_style( value );
+          if (type === 'subset') {
+            name = base.sanitize_subset(value);
+          } else if (type === 'style') {
+            name = base.sanitize_style(value);
           }
 
-          opts += '<option value="'+ value +'"'+ selected +'>'+ name +'</option>';
+          opts += '<option value="' + value + '"' + selected + '>' + name + '</option>';
 
         });
 
@@ -1579,24 +1708,26 @@
         //
         // Constants
         var selected_styles = [];
-        var $typography     = $this.find('.kfw--typography');
-        var $type           = $this.find('.kfw--type');
-        var unit            = $typography.data('unit');
-        var exclude_fonts   = $typography.data('exclude') ? $typography.data('exclude').split(',') : [];
+        var $typography = $this.find('.kfw--typography');
+        var $type = $this.find('.kfw--type');
+        var $styles = $this.find('.kfw--block-font-style');
+        var unit = $typography.data('unit');
+        var line_height_unit = $typography.data('line-height-unit');
+        var exclude_fonts = $typography.data('exclude') ? $typography.data('exclude').split(',') : [];
 
         //
         //
         // Chosen init
-        if( $this.find('.kfw--chosen').length ) {
+        if ($this.find('.kfw--chosen').length) {
 
           var $chosen_selects = $this.find('select');
 
-          $chosen_selects.each( function(){
+          $chosen_selects.each(function () {
 
             var $chosen_select = $(this),
-                $chosen_inited = $chosen_select.parent().find('.chosen-container');
+              $chosen_inited = $chosen_select.parent().find('.chosen-container');
 
-            if( $chosen_inited.length ) {
+            if ($chosen_inited.length) {
               $chosen_inited.remove();
             }
 
@@ -1614,26 +1745,26 @@
         //
         // Font family select
         var $font_family_select = $this.find('.kfw--font-family');
-        var first_font_family   = $font_family_select.val();
+        var first_font_family = $font_family_select.val();
 
         // Clear default font family select options
         $font_family_select.find('option').not(':first-child').remove();
 
         var opts = '';
 
-        $.each(webfonts, function( type, group ) {
+        $.each(webfonts, function (type, group) {
 
           // Check for exclude fonts
-          if( exclude_fonts && exclude_fonts.indexOf(type) !== -1 ) { return; }
+          if (exclude_fonts && exclude_fonts.indexOf(type) !== -1) { return; }
 
           opts += '<optgroup label="' + group.label + '">';
 
-          $.each(group.fonts, function( key, value ) {
+          $.each(group.fonts, function (key, value) {
 
             // use key if value is object
-            value = ( typeof value === 'object' ) ? key : value;
-            var selected = ( value === first_font_family ) ? ' selected' : '';
-            opts += '<option value="'+ value +'" data-type="'+ type +'"'+ selected +'>'+ value +'</option>';
+            value = (typeof value === 'object') ? key : value;
+            var selected = (value === first_font_family) ? ' selected' : '';
+            opts += '<option value="' + value + '" data-type="' + type + '"' + selected + '>' + value + '</option>';
 
           });
 
@@ -1649,29 +1780,29 @@
         // Font style select
         var $font_style_block = $this.find('.kfw--block-font-style');
 
-        if( $font_style_block.length ) {
+        if ($font_style_block.length) {
 
           var $font_style_select = $this.find('.kfw--font-style-select');
-          var first_style_value  = $font_style_select.val() ? $font_style_select.val().replace(/normal/g, '' ) : '';
+          var first_style_value = $font_style_select.val() ? $font_style_select.val().replace(/normal/g, '') : '';
 
           //
           // Font Style on on change listener
-          $font_style_select.on('change kfw.change', function( event ) {
+          $font_style_select.on('change kfw.change', function (event) {
 
             var style_value = $font_style_select.val();
 
             // set a default value
-            if( !style_value && selected_styles && selected_styles.indexOf('normal') === -1 ) {
+            if (!style_value && selected_styles && selected_styles.indexOf('normal') === -1) {
               style_value = selected_styles[0];
             }
 
             // set font weight, for eg. replacing 800italic to 800
-            var font_normal = ( style_value && style_value !== 'italic' && style_value === 'normal' ) ? 'normal' : '';
-            var font_weight = ( style_value && style_value !== 'italic' && style_value !== 'normal' ) ? style_value.replace('italic', '') : font_normal;
-            var font_style  = ( style_value && style_value.substr(-6) === 'italic' ) ? 'italic' : '';
+            var font_normal = (style_value && style_value !== 'italic' && style_value === 'normal') ? 'normal' : '';
+            var font_weight = (style_value && style_value !== 'italic' && style_value !== 'normal') ? style_value.replace('italic', '') : font_normal;
+            var font_style = (style_value && style_value.substr(-6) === 'italic') ? 'italic' : '';
 
-            $this.find('.kfw--font-weight').val( font_weight );
-            $this.find('.kfw--font-style').val( font_style );
+            $this.find('.kfw--font-weight').val(font_weight);
+            $this.find('.kfw--font-style').val(font_style);
 
           });
 
@@ -1680,9 +1811,9 @@
           // Extra font style select
           var $extra_font_style_block = $this.find('.kfw--block-extra-styles');
 
-          if( $extra_font_style_block.length ) {
+          if ($extra_font_style_block.length) {
             var $extra_font_style_select = $this.find('.kfw--extra-styles');
-            var first_extra_style_value  = $extra_font_style_select.val();
+            var first_extra_style_value = $extra_font_style_select.val();
           }
 
         }
@@ -1691,7 +1822,7 @@
         //
         // Subsets select
         var $subset_block = $this.find('.kfw--block-subset');
-        if( $subset_block.length ) {
+        if ($subset_block.length) {
           var $subset_select = $this.find('.kfw--subset');
           var first_subset_select_value = $subset_select.val();
           var subset_multi_select = $subset_select.data('multiple') || false;
@@ -1705,55 +1836,55 @@
         //
         //
         // Font Family on Change Listener
-        $font_family_select.on('change kfw.change', function( event ) {
+        $font_family_select.on('change kfw.change', function (event) {
 
           // Hide subsets on change
-          if( $subset_block.length ) {
+          if ($subset_block.length) {
             $subset_block.addClass('hidden');
           }
 
           // Hide extra font style on change
-          if( $extra_font_style_block.length ) {
+          if ($extra_font_style_block.length) {
             $extra_font_style_block.addClass('hidden');
           }
 
           // Hide backup font family on change
-          if( $backup_font_family_block.length ) {
+          if ($backup_font_family_block.length) {
             $backup_font_family_block.addClass('hidden');
           }
 
           var $selected = $font_family_select.find(':selected');
-          var value     = $selected.val();
-          var type      = $selected.data('type');
+          var value = $selected.val();
+          var type = $selected.data('type');
 
-          if( type && value ) {
+          if (type && value) {
 
             // Show backup fonts if font type google or custom
-            if( ( type === 'google' || type === 'custom' ) && $backup_font_family_block.length ) {
+            if ((type === 'google' || type === 'custom') && $backup_font_family_block.length) {
               $backup_font_family_block.removeClass('hidden');
             }
 
             // Appending font style select options
-            if( $font_style_block.length ) {
+            if ($font_style_block.length) {
 
               // set styles for multi and normal style selectors
               var styles = defaultstyles;
 
               // Custom or gogle font styles
-              if( type === 'google' && webfonts[type].fonts[value][0] ) {
+              if (type === 'google' && webfonts[type].fonts[value][0]) {
                 styles = webfonts[type].fonts[value][0];
-              } else if( type === 'custom' && webfonts[type].fonts[value] ) {
+              } else if (type === 'custom' && webfonts[type].fonts[value]) {
                 styles = webfonts[type].fonts[value];
               }
 
               selected_styles = styles;
 
               // Set selected style value for avoid load errors
-              var set_auto_style  = ( styles.indexOf('normal') !== -1 ) ? 'normal' : styles[0];
-              var set_style_value = ( first_style_value && styles.indexOf(first_style_value) !== -1 ) ? first_style_value : set_auto_style;
+              var set_auto_style = (styles.indexOf('normal') !== -1) ? 'normal' : styles[0];
+              var set_style_value = (first_style_value && styles.indexOf(first_style_value) !== -1) ? first_style_value : set_auto_style;
 
               // Append style select options
-              base.append_select_options( $font_style_select, styles, set_style_value, 'style' );
+              base.append_select_options($font_style_select, styles, set_style_value, 'style');
 
               // Clear first value
               first_style_value = false;
@@ -1762,10 +1893,10 @@
               $font_style_block.removeClass('hidden');
 
               // Appending extra font style select options
-              if( type === 'google' && $extra_font_style_block.length && styles.length > 1 ) {
+              if (type === 'google' && $extra_font_style_block.length && styles.length > 1) {
 
                 // Append extra-style select options
-                base.append_select_options( $extra_font_style_select, styles, first_extra_style_value, 'style', true );
+                base.append_select_options($extra_font_style_select, styles, first_extra_style_value, 'style', true);
 
                 // Clear first value
                 first_extra_style_value = false;
@@ -1778,16 +1909,16 @@
             }
 
             // Appending google fonts subsets select options
-            if( type === 'google' && $subset_block.length && webfonts[type].fonts[value][1] ) {
+            if (type === 'google' && $subset_block.length && webfonts[type].fonts[value][1]) {
 
-              var subsets          = webfonts[type].fonts[value][1];
-              var set_auto_subset  = ( subsets.length < 2 && subsets[0] !== 'latin' ) ? subsets[0] : '';
-              var set_subset_value = ( first_subset_select_value && subsets.indexOf(first_subset_select_value) !== -1 ) ? first_subset_select_value : set_auto_subset;
+              var subsets = webfonts[type].fonts[value][1];
+              var set_auto_subset = (subsets.length < 2 && subsets[0] !== 'latin') ? subsets[0] : '';
+              var set_subset_value = (first_subset_select_value && subsets.indexOf(first_subset_select_value) !== -1) ? first_subset_select_value : set_auto_subset;
 
               // check for multiple subset select
-              set_subset_value = ( subset_multi_select && first_subset_select_value ) ? first_subset_select_value : set_subset_value;
+              set_subset_value = (subset_multi_select && first_subset_select_value) ? first_subset_select_value : set_subset_value;
 
-              base.append_select_options( $subset_select, subsets, set_subset_value, 'subset', subset_multi_select );
+              base.append_select_options($subset_select, subsets, set_subset_value, 'subset', subset_multi_select);
 
               first_subset_select_value = false;
 
@@ -1797,14 +1928,17 @@
 
           } else {
 
+            // Clear Styles
+            $styles.find(':input').val('');
+
             // Clear subsets options if type and value empty
-            if( $subset_block.length ) {
+            if ($subset_block.length) {
               $subset_select.find('option').not(':first-child').remove();
               $subset_select.trigger('chosen:updated');
             }
 
             // Clear font styles options if type and value empty
-            if( $font_style_block.length ) {
+            if ($font_style_block.length) {
               $font_style_select.find('option').not(':first-child').remove();
               $font_style_select.trigger('chosen:updated');
             }
@@ -1821,66 +1955,66 @@
         // Preview
         var $preview_block = $this.find('.kfw--block-preview');
 
-        if( $preview_block.length ) {
+        if ($preview_block.length) {
 
           var $preview = $this.find('.kfw--preview');
 
           // Set preview styles on change
-          $this.on('change', KFW.helper.debounce( function( event ) {
+          $this.on('change', KFW.helper.debounce(function (event) {
 
             $preview_block.removeClass('hidden');
 
-            var font_family       = $font_family_select.val(),
-                font_weight       = $this.find('.kfw--font-weight').val(),
-                font_style        = $this.find('.kfw--font-style').val(),
-                font_size         = $this.find('.kfw--font-size').val(),
-                font_variant      = $this.find('.kfw--font-variant').val(),
-                line_height       = $this.find('.kfw--line-height').val(),
-                text_align        = $this.find('.kfw--text-align').val(),
-                text_transform    = $this.find('.kfw--text-transform').val(),
-                text_decoration   = $this.find('.kfw--text-decoration').val(),
-                text_color        = $this.find('.kfw--color').val(),
-                word_spacing      = $this.find('.kfw--word-spacing').val(),
-                letter_spacing    = $this.find('.kfw--letter-spacing').val(),
-                custom_style      = $this.find('.kfw--custom-style').val(),
-                type              = $this.find('.kfw--type').val();
+            var font_family = $font_family_select.val(),
+              font_weight = $this.find('.kfw--font-weight').val(),
+              font_style = $this.find('.kfw--font-style').val(),
+              font_size = $this.find('.kfw--font-size').val(),
+              font_variant = $this.find('.kfw--font-variant').val(),
+              line_height = $this.find('.kfw--line-height').val(),
+              text_align = $this.find('.kfw--text-align').val(),
+              text_transform = $this.find('.kfw--text-transform').val(),
+              text_decoration = $this.find('.kfw--text-decoration').val(),
+              text_color = $this.find('.kfw--color').val(),
+              word_spacing = $this.find('.kfw--word-spacing').val(),
+              letter_spacing = $this.find('.kfw--letter-spacing').val(),
+              custom_style = $this.find('.kfw--custom-style').val(),
+              type = $this.find('.kfw--type').val();
 
-            if( type === 'google' ) {
+            if (type === 'google') {
               base.load_google_font(font_family, font_weight, font_style);
             }
 
             var properties = {};
 
-            if( font_family     ) { properties.fontFamily     = font_family;           }
-            if( font_weight     ) { properties.fontWeight     = font_weight;           }
-            if( font_style      ) { properties.fontStyle      = font_style;            }
-            if( font_variant    ) { properties.fontVariant    = font_variant;          }
-            if( font_size       ) { properties.fontSize       = font_size + unit;      }
-            if( line_height     ) { properties.lineHeight     = line_height + unit;    }
-            if( letter_spacing  ) { properties.letterSpacing  = letter_spacing + unit; }
-            if( word_spacing    ) { properties.wordSpacing    = word_spacing + unit;   }
-            if( text_align      ) { properties.textAlign      = text_align;            }
-            if( text_transform  ) { properties.textTransform  = text_transform;        }
-            if( text_decoration ) { properties.textDecoration = text_decoration;       }
-            if( text_color      ) { properties.color          = text_color;            }
+            if (font_family) { properties.fontFamily = font_family; }
+            if (font_weight) { properties.fontWeight = font_weight; }
+            if (font_style) { properties.fontStyle = font_style; }
+            if (font_variant) { properties.fontVariant = font_variant; }
+            if (font_size) { properties.fontSize = font_size + unit; }
+            if (line_height) { properties.lineHeight = line_height + line_height_unit; }
+            if (letter_spacing) { properties.letterSpacing = letter_spacing + unit; }
+            if (word_spacing) { properties.wordSpacing = word_spacing + unit; }
+            if (text_align) { properties.textAlign = text_align; }
+            if (text_transform) { properties.textTransform = text_transform; }
+            if (text_decoration) { properties.textDecoration = text_decoration; }
+            if (text_color) { properties.color = text_color; }
 
             $preview.removeAttr('style');
 
             // Customs style attribute
-            if( custom_style ) { $preview.attr('style', custom_style); }
+            if (custom_style) { $preview.attr('style', custom_style); }
 
             $preview.css(properties);
 
-          }, 100 ) );
+          }, 100));
 
           // Preview black and white backgrounds trigger
-          $preview_block.on('click', function() {
+          $preview_block.on('click', function () {
 
             $preview.toggleClass('kfw--black-background');
 
             var $toggle = $preview_block.find('.kfw--toggle');
 
-            if( $toggle.hasClass('fa-toggle-off') ) {
+            if ($toggle.hasClass('fa-toggle-off')) {
               $toggle.removeClass('fa-toggle-off').addClass('fa-toggle-on');
             } else {
               $toggle.removeClass('fa-toggle-on').addClass('fa-toggle-off');
@@ -1888,7 +2022,7 @@
 
           });
 
-          if( !$preview_block.hasClass('hidden') ) {
+          if (!$preview_block.hasClass('hidden')) {
             $this.trigger('change');
           }
 
@@ -1904,33 +2038,33 @@
   //
   // Field: upload
   //
-  $.fn.kfw_field_upload = function() {
-    return this.each( function() {
+  $.fn.kfw_field_upload = function () {
+    return this.each(function () {
 
-      var $this          = $(this),
-          $input         = $this.find('input'),
-          $upload_button = $this.find('.kfw--button'),
-          $remove_button = $this.find('.kfw--remove'),
-          $library       = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
-          wp_media_frame;
+      var $this = $(this),
+        $input = $this.find('input'),
+        $upload_button = $this.find('.kfw--button'),
+        $remove_button = $this.find('.kfw--remove'),
+        $library = $upload_button.data('library') && $upload_button.data('library').split(',') || '',
+        wp_media_frame;
 
-      $input.on('change', function( e ) {
-        if( $input.val() ) {
+      $input.on('change', function (e) {
+        if ($input.val()) {
           $remove_button.removeClass('hidden');
         } else {
           $remove_button.addClass('hidden');
         }
       });
 
-      $upload_button.on('click', function( e ) {
+      $upload_button.on('click', function (e) {
 
         e.preventDefault();
 
-        if( typeof window.wp === 'undefined' || ! window.wp.media || ! window.wp.media.gallery ) {
+        if (typeof window.wp === 'undefined' || !window.wp.media || !window.wp.media.gallery) {
           return;
         }
 
-        if( wp_media_frame ) {
+        if (wp_media_frame) {
           wp_media_frame.open();
           return;
         }
@@ -1941,11 +2075,11 @@
           },
         });
 
-        wp_media_frame.on( 'select', function() {
+        wp_media_frame.on('select', function () {
 
           var attributes = wp_media_frame.state().get('selection').first().attributes;
 
-          if( $library.length && $library.indexOf(attributes.subtype) === -1 && $library.indexOf(attributes.type) === -1 ) {
+          if ($library.length && $library.indexOf(attributes.subtype) === -1 && $library.indexOf(attributes.type) === -1) {
             return;
           }
 
@@ -1957,7 +2091,7 @@
 
       });
 
-      $remove_button.on('click', function( e ) {
+      $remove_button.on('click', function (e) {
         e.preventDefault();
         $input.val('').trigger('change');
       });
@@ -1967,495 +2101,23 @@
   };
 
   //
-  // Confirm
-  //
-  $.fn.kfw_confirm = function() {
-    return this.each( function() {
-      $(this).on('click', function( e ) {
-
-        var confirm_text    = $(this).data('confirm') || window.kfw_vars.i18n.confirm;
-        var confirm_answer  = confirm( confirm_text );
-        KFW.vars.is_confirm = true;
-
-        if( !confirm_answer ) {
-          e.preventDefault();
-          KFW.vars.is_confirm = false;
-          return false;
-        }
-
-      });
-    });
-  };
-
-  $.fn.serializeObject = function(){
-
-    var obj = {};
-
-    $.each( this.serializeArray(), function(i,o){
-      var n = o.name,
-        v = o.value;
-
-        obj[n] = obj[n] === undefined ? v
-          : $.isArray( obj[n] ) ? obj[n].concat( v )
-          : [ obj[n], v ];
-    });
-
-    return obj;
-
-  };
-
-  //
-  // Options Save
-  //
-  $.fn.kfw_save = function() {
-    return this.each( function() {
-
-      var $this    = $(this),
-          $buttons = $('.kfw-save'),
-          $panel   = $('.kfw-options'),
-          flooding = false,
-          timeout;
-
-      $this.on('click', function( e ) {
-
-        if( !flooding ) {
-
-          var $text  = $this.data('save'),
-              $value = $this.val();
-
-          $buttons.attr('value', $text);
-
-          if( $this.hasClass('kfw-save-ajax') ) {
-
-            e.preventDefault();
-
-            $panel.addClass('kfw-saving');
-            $buttons.prop('disabled', true);
-
-            window.wp.ajax.post( 'kfw_'+ $panel.data('unique') +'_ajax_save', {
-              data: $('#kfw-form').serializeJSONKFW()
-            })
-            .done( function( response ) {
-
-              clearTimeout(timeout);
-
-              var $result_success = $('.kfw-form-success');
-
-              $result_success.empty().append(response.notice).slideDown('fast', function() {
-                timeout = setTimeout( function() {
-                  $result_success.slideUp('fast');
-                }, 2000);
-              });
-
-              // clear errors
-              $('.kfw-error').remove();
-
-              var $append_errors = $('.kfw-form-error');
-
-              $append_errors.empty().hide();
-
-              if( Object.keys( response.errors ).length ) {
-
-                var error_icon = '<i class="kfw-label-error kfw-error">!</i>';
-
-                $.each(response.errors, function( key, error_message ) {
-
-                  var $field = $('[data-depend-id="'+ key +'"]'),
-                      $link  = $('#kfw-tab-link-'+ ($field.closest('.kfw-section').index()+1)),
-                      $tab   = $link.closest('.kfw-tab-depth-0');
-
-                  $field.closest('.kfw-fieldset').append( '<p class="kfw-text-error kfw-error">'+ error_message +'</p>' );
-
-                  if( !$link.find('.kfw-error').length ) {
-                    $link.append( error_icon );
-                  }
-
-                  if( !$tab.find('.kfw-arrow .kfw-error').length ) {
-                    $tab.find('.kfw-arrow').append( error_icon );
-                  }
-
-                  console.log(error_message);
-
-                  $append_errors.append( '<div>'+ error_icon +' '+ error_message + '</div>' );
-
-                });
-
-                $append_errors.show();
-
-              }
-
-              $panel.removeClass('kfw-saving');
-              $buttons.prop('disabled', false).attr('value', $value);
-              flooding = false;
-
-            })
-            .fail( function( response ) {
-              alert( response.error );
-            });
-
-          }
-
-        }
-
-        flooding = true;
-
-      });
-
-    });
-  };
-
-  //
-  // Taxonomy Framework
-  //
-  $.fn.kfw_taxonomy = function() {
-    return this.each( function() {
-
-      var $this = $(this),
-          $form = $this.parents('form');
-
-      if( $form.attr('id') === 'addtag' ) {
-
-        var $submit = $form.find('#submit'),
-            $cloned = $this.find('.kfw-field').kfw_clone();
-
-        $submit.on( 'click', function() {
-
-          if( !$form.find('.form-required').hasClass('form-invalid') ) {
-
-            $this.data('inited', false);
-
-            $this.empty();
-
-            $this.html( $cloned );
-
-            $cloned = $cloned.kfw_clone();
-
-            $this.kfw_reload_script();
-
-          }
-
-        });
-
-      }
-
-    });
-  };
-
-  //
-  // Shortcode Framework
-  //
-  $.fn.kfw_shortcode = function() {
-
-    var base = this;
-
-    base.shortcode_parse = function( serialize, key ) {
-
-      var shortcode = '';
-
-      $.each(serialize, function( shortcode_key, shortcode_values ) {
-
-        key = ( key ) ? key : shortcode_key;
-
-        shortcode += '[' + key;
-
-        $.each(shortcode_values, function( shortcode_tag, shortcode_value ) {
-
-          if( shortcode_tag === 'content' ) {
-
-            shortcode += ']';
-            shortcode += shortcode_value;
-            shortcode += '[/'+ key +'';
-
-          } else {
-
-            shortcode += base.shortcode_tags( shortcode_tag, shortcode_value );
-
-          }
-
-        });
-
-        shortcode += ']';
-
-      });
-
-      return shortcode;
-
-    };
-
-    base.shortcode_tags = function( shortcode_tag, shortcode_value ) {
-
-      var shortcode = '';
-
-      if( shortcode_value !== '' ) {
-
-        if( typeof shortcode_value === 'object' && !$.isArray( shortcode_value ) ) {
-
-          $.each(shortcode_value, function( sub_shortcode_tag, sub_shortcode_value ) {
-
-            // sanitize spesific key/value
-            switch( sub_shortcode_tag ) {
-
-              case 'background-image':
-                sub_shortcode_value = ( sub_shortcode_value.url  ) ? sub_shortcode_value.url : '';
-              break;
-
-            }
-
-            if( sub_shortcode_value !== '' ) {
-              shortcode += ' ' + sub_shortcode_tag.replace('-', '_') + '="' + sub_shortcode_value.toString() + '"';
-            }
-
-          });
-
-        } else {
-
-          shortcode += ' ' + shortcode_tag.replace('-', '_') + '="' + shortcode_value.toString() + '"';
-
-        }
-
-      }
-
-      return shortcode;
-
-    };
-
-    base.insertAtChars = function( _this, currentValue ) {
-
-      var obj = ( typeof _this[0].name !== 'undefined' ) ? _this[0] : _this;
-
-      if( obj.value.length && typeof obj.selectionStart !== 'undefined' ) {
-        obj.focus();
-        return obj.value.substring( 0, obj.selectionStart ) + currentValue + obj.value.substring( obj.selectionEnd, obj.value.length );
-      } else {
-        obj.focus();
-        return currentValue;
-      }
-
-    };
-
-    base.send_to_editor = function( html, editor_id ) {
-
-      var tinymce_editor;
-
-      if( typeof tinymce !== 'undefined' ) {
-        tinymce_editor = tinymce.get( editor_id );
-      }
-
-      if( tinymce_editor && !tinymce_editor.isHidden() ) {
-        tinymce_editor.execCommand( 'mceInsertContent', false, html );
-      } else {
-        var $editor = $('#'+editor_id);
-        $editor.val( base.insertAtChars( $editor, html ) ).trigger('change');
-      }
-
-    };
-
-    return this.each( function() {
-
-      var $modal   = $(this),
-          $load    = $modal.find('.kfw-modal-load'),
-          $content = $modal.find('.kfw-modal-content'),
-          $insert  = $modal.find('.kfw-modal-insert'),
-          $loading = $modal.find('.kfw-modal-loading'),
-          $select  = $modal.find('select'),
-          modal_id = $modal.data('modal-id'),
-          nonce    = $modal.data('nonce'),
-          editor_id,
-          target_id,
-          gutenberg_id,
-          sc_key,
-          sc_name,
-          sc_view,
-          sc_group,
-          $cloned,
-          $button;
-
-      $(document).on('click', '.kfw-shortcode-button[data-modal-id="'+ modal_id +'"]', function( e ) {
-
-        e.preventDefault();
-
-        $button      = $(this);
-        editor_id    = $button.data('editor-id')    || false;
-        target_id    = $button.data('target-id')    || false;
-        gutenberg_id = $button.data('gutenberg-id') || false;
-
-        $modal.show();
-
-        // single usage trigger first shortcode
-        if( $modal.hasClass('kfw-shortcode-single') && sc_name === undefined ) {
-          $select.trigger('change');
-        }
-
-      });
-
-      $select.on( 'change', function() {
-
-        var $option   = $(this);
-        var $selected = $option.find(':selected');
-
-        sc_key   = $option.val();
-        sc_name  = $selected.data('shortcode');
-        sc_view  = $selected.data('view') || 'normal';
-        sc_group = $selected.data('group') || sc_name;
-
-        $load.empty();
-
-        if( sc_key ) {
-
-          $loading.show();
-
-          window.wp.ajax.post( 'kfw-get-shortcode-'+ modal_id, {
-            shortcode_key: sc_key,
-            nonce: nonce
-          })
-          .done( function( response ) {
-
-            $loading.hide();
-
-            var $appended = $(response.content).appendTo($load);
-
-            $insert.parent().removeClass('hidden');
-
-            $cloned = $appended.find('.kfw--repeat-shortcode').kfw_clone();
-
-            $appended.kfw_reload_script();
-            $appended.find('.kfw-fields').kfw_reload_script();
-
-          });
-
-        } else {
-
-          $insert.parent().addClass('hidden');
-
-        }
-
-      });
-
-      $insert.on('click', function( e ) {
-
-        e.preventDefault();
-
-        var shortcode = '';
-        var serialize = $modal.find('.kfw-field:not(.hidden)').find(':input:not(.ignore)').serializeObjectKFW();
-
-        switch ( sc_view ) {
-
-          case 'contents':
-            var contentsObj = ( sc_name ) ? serialize[sc_name] : serialize;
-            $.each(contentsObj, function( sc_key, sc_value ) {
-              var sc_tag = ( sc_name ) ? sc_name : sc_key;
-              shortcode += '['+ sc_tag +']'+ sc_value +'[/'+ sc_tag +']';
-            });
-          break;
-
-          case 'group':
-
-            shortcode += '[' + sc_name;
-            $.each(serialize[sc_name], function( sc_key, sc_value ) {
-              shortcode += base.shortcode_tags( sc_key, sc_value );
-            });
-            shortcode += ']';
-            shortcode += base.shortcode_parse( serialize[sc_group], sc_group );
-            shortcode += '[/' + sc_name + ']';
-
-          break;
-
-          case 'repeater':
-            shortcode += base.shortcode_parse( serialize[sc_group], sc_group );
-          break;
-
-          default:
-            shortcode += base.shortcode_parse( serialize );
-          break;
-
-        }
-
-        if( gutenberg_id ) {
-
-          var content = window.kfw_gutenberg_props.attributes.hasOwnProperty('shortcode') ? window.kfw_gutenberg_props.attributes.shortcode : '';
-          window.kfw_gutenberg_props.setAttributes({shortcode: content + shortcode});
-
-        } else if( editor_id ) {
-
-          base.send_to_editor( shortcode, editor_id );
-
-        } else {
-
-          var $textarea = (target_id) ? $(target_id) : $button.parent().find('textarea');
-          $textarea.val( base.insertAtChars( $textarea, shortcode ) ).trigger('change');
-
-        }
-
-        $modal.hide();
-
-      });
-
-      $modal.on('click', '.kfw--repeat-button', function( e ) {
-
-        e.preventDefault();
-
-        var $repeatable = $modal.find('.kfw--repeatable');
-        var $new_clone  = $cloned.kfw_clone();
-        var $remove_btn = $new_clone.find('.kfw-repeat-remove');
-
-        var $appended = $new_clone.appendTo( $repeatable );
-
-        $new_clone.find('.kfw-fields').kfw_reload_script();
-
-        KFW.helper.name_nested_replace( $modal.find('.kfw--repeat-shortcode'), sc_group );
-
-        $remove_btn.on('click', function() {
-
-          $new_clone.remove();
-
-          KFW.helper.name_nested_replace( $modal.find('.kfw--repeat-shortcode'), sc_group );
-
-        });
-
-      });
-
-      $modal.on('click', '.kfw-modal-close, .kfw-modal-overlay', function() {
-        $modal.hide();
-      });
-
-    });
-  };
-
-  //
-  // Helper Checkbox Checker
-  //
-  $.fn.kfw_checkbox = function() {
-    return this.each( function() {
-
-      var $this     = $(this),
-          $input    = $this.find('.kfw--input'),
-          $checkbox = $this.find('.kfw--checkbox');
-
-      $checkbox.on('click', function() {
-        $input.val( Number( $checkbox.prop('checked') ) ).trigger('change');
-      });
-
-    });
-  };
-
-  //
   // Field: wp_editor
   //
-  $.fn.kfw_field_wp_editor = function() {
-    return this.each( function() {
+  $.fn.kfw_field_wp_editor = function () {
+    return this.each(function () {
 
-      if( typeof window.wp.editor === 'undefined' || typeof window.tinyMCEPreInit === 'undefined' || typeof window.tinyMCEPreInit.mceInit.kfw_wp_editor === 'undefined' ) {
+      if (typeof window.wp.editor === 'undefined' || typeof window.tinyMCEPreInit === 'undefined' || typeof window.tinyMCEPreInit.mceInit.kfw_wp_editor === 'undefined') {
         return;
       }
 
-      var $this     = $(this),
-          $editor   = $this.find('.kfw-wp-editor'),
-          $textarea = $this.find('textarea');
+      var $this = $(this),
+        $editor = $this.find('.kfw-wp-editor'),
+        $textarea = $this.find('textarea');
 
       // If there is wp-editor remove it for avoid dupliated wp-editor conflicts.
       var $has_wp_editor = $this.find('.wp-editor-wrap').length || $this.find('.mce-container').length;
 
-      if( $has_wp_editor ) {
+      if ($has_wp_editor) {
         $editor.empty();
         $editor.append($textarea);
         $textarea.css('display', '');
@@ -2476,51 +2138,51 @@
       var field_editor_settings = $editor.data('editor-settings');
 
       // Add on change event handle
-      var editor_on_change = function( editor ) {
-        editor.on('change', KFW.helper.debounce( function() {
+      var editor_on_change = function (editor) {
+        editor.on('change', KFW.helper.debounce(function () {
           editor.save();
           $textarea.trigger('change');
-        }, 250 ) );
+        }, 250));
       };
 
       // Callback for old wp editor
       var wpEditor = wp.oldEditor ? wp.oldEditor : wp.editor;
 
-      if( wpEditor && wpEditor.hasOwnProperty('autop') ) {
+      if (wpEditor && wpEditor.hasOwnProperty('autop')) {
         wp.editor.autop = wpEditor.autop;
         wp.editor.removep = wpEditor.removep;
         wp.editor.initialize = wpEditor.initialize;
       }
 
       // Extend editor selector and on change event handler
-      default_editor_settings.tinymce = $.extend( {}, default_editor_settings.tinymce, { selector: '#'+ uid, setup: editor_on_change } );
+      default_editor_settings.tinymce = $.extend({}, default_editor_settings.tinymce, { selector: '#' + uid, setup: editor_on_change });
 
       // Override editor tinymce settings
-      if( field_editor_settings.tinymce === false ) {
+      if (field_editor_settings.tinymce === false) {
         default_editor_settings.tinymce = false;
         $editor.addClass('kfw-no-tinymce');
       }
 
       // Override editor quicktags settings
-      if( field_editor_settings.quicktags === false ) {
+      if (field_editor_settings.quicktags === false) {
         default_editor_settings.quicktags = false;
         $editor.addClass('kfw-no-quicktags');
       }
 
       // Wait until :visible
       var interval = setInterval(function () {
-        if( $this.is(':visible') ) {
+        if ($this.is(':visible')) {
           window.wp.editor.initialize(uid, default_editor_settings);
           clearInterval(interval);
         }
       });
 
       // Add Media buttons
-      if( field_editor_settings.media_buttons && window.kfw_media_buttons ) {
+      if (field_editor_settings.media_buttons && window.kfw_media_buttons) {
 
         var $editor_buttons = $editor.find('.wp-media-buttons');
 
-        if( $editor_buttons.length ) {
+        if ($editor_buttons.length) {
 
           $editor_buttons.find('.kfw-shortcode-button').data('editor-id', uid);
 
@@ -2530,7 +2192,7 @@
 
           $media_buttons.find('.kfw-shortcode-button').data('editor-id', uid);
 
-          $editor.prepend( $media_buttons );
+          $editor.prepend($media_buttons);
 
         }
 
@@ -2541,22 +2203,810 @@
   };
 
   //
+  // Confirm
+  //
+  $.fn.kfw_confirm = function () {
+    return this.each(function () {
+      $(this).on('click', function (e) {
+
+        var confirm_text = $(this).data('confirm') || window.kfw_vars.i18n.confirm;
+        var confirm_answer = confirm(confirm_text);
+
+        if (confirm_answer) {
+          KFW.vars.is_confirm = true;
+          KFW.vars.form_modified = false;
+        } else {
+          e.preventDefault();
+          return false;
+        }
+
+      });
+    });
+  };
+
+  $.fn.serializeObject = function () {
+
+    var obj = {};
+
+    $.each(this.serializeArray(), function (i, o) {
+      var n = o.name,
+        v = o.value;
+
+      obj[n] = obj[n] === undefined ? v
+        : $.isArray(obj[n]) ? obj[n].concat(v)
+          : [obj[n], v];
+    });
+
+    return obj;
+
+  };
+
+  //
+  // Options Save
+  //
+  $.fn.kfw_save = function () {
+    return this.each(function () {
+
+      var $this = $(this),
+        $buttons = $('.kfw-save'),
+        $panel = $('.kfw-options'),
+        flooding = false,
+        timeout;
+
+      $this.on('click', function (e) {
+
+        if (!flooding) {
+
+          var $text = $this.data('save'),
+            $value = $this.val();
+
+          $buttons.attr('value', $text);
+
+          if ($this.hasClass('kfw-save-ajax')) {
+
+            e.preventDefault();
+
+            $panel.addClass('kfw-saving');
+            $buttons.prop('disabled', true);
+
+            window.wp.ajax.post('kfw_' + $panel.data('unique') + '_ajax_save', {
+              data: $('#kfw-form').serializeJSONKFW()
+            })
+              .done(function (response) {
+
+                // clear errors
+                $('.kfw-error').remove();
+
+                if (Object.keys(response.errors).length) {
+
+                  var error_icon = '<i class="kfw-label-error kfw-error">!</i>';
+
+                  $.each(response.errors, function (key, error_message) {
+
+                    var $field = $('[data-depend-id="' + key + '"]'),
+                      $link = $('#kfw-tab-link-' + ($field.closest('.kfw-section').index() + 1)),
+                      $tab = $link.closest('.kfw-tab-depth-0');
+
+                    $field.closest('.kfw-fieldset').append('<p class="kfw-error kfw-error-text">' + error_message + '</p>');
+
+                    if (!$link.find('.kfw-error').length) {
+                      $link.append(error_icon);
+                    }
+
+                    if (!$tab.find('.kfw-arrow .kfw-error').length) {
+                      $tab.find('.kfw-arrow').append(error_icon);
+                    }
+
+                  });
+
+                }
+
+                $panel.removeClass('kfw-saving');
+                $buttons.prop('disabled', false).attr('value', $value);
+                flooding = false;
+
+                KFW.vars.form_modified = false;
+                KFW.vars.$form_warning.hide();
+
+                clearTimeout(timeout);
+
+                var $result_success = $('.kfw-form-success');
+                $result_success.empty().append(response.notice).fadeIn('fast', function () {
+                  timeout = setTimeout(function () {
+                    $result_success.fadeOut('fast');
+                  }, 1000);
+                });
+
+              })
+              .fail(function (response) {
+                alert(response.error);
+              });
+
+          } else {
+
+            KFW.vars.form_modified = false;
+
+          }
+
+        }
+
+        flooding = true;
+
+      });
+
+    });
+  };
+
+  //
+  // Option Framework
+  //
+  $.fn.kfw_options = function () {
+    return this.each(function () {
+
+      var $this = $(this),
+        $content = $this.find('.kfw-content'),
+        $form_success = $this.find('.kfw-form-success'),
+        $form_warning = $this.find('.kfw-form-warning'),
+        $save_button = $this.find('.kfw-header .kfw-save');
+
+      KFW.vars.$form_warning = $form_warning;
+
+      // Shows a message white leaving theme options without saving
+      if ($form_warning.length) {
+
+        window.onbeforeunload = function () {
+          return (KFW.vars.form_modified) ? true : undefined;
+        };
+
+        $content.on('change keypress', ':input', function () {
+          if (!KFW.vars.form_modified) {
+            $form_success.hide();
+            $form_warning.fadeIn('fast');
+            KFW.vars.form_modified = true;
+          }
+        });
+
+      }
+
+      if ($form_success.hasClass('kfw-form-show')) {
+        setTimeout(function () {
+          $form_success.fadeOut('fast');
+        }, 1000);
+      }
+
+      $(document).keydown(function (event) {
+        if ((event.ctrlKey || event.metaKey) && event.which === 83) {
+          $save_button.trigger('click');
+          event.preventDefault();
+          return false;
+        }
+      });
+
+    });
+  };
+
+  //
+  // Taxonomy Framework
+  //
+  $.fn.kfw_taxonomy = function () {
+    return this.each(function () {
+
+      var $this = $(this),
+        $form = $this.parents('form');
+
+      if ($form.attr('id') === 'addtag') {
+
+        var $submit = $form.find('#submit'),
+          $cloned = $this.find('.kfw-field').kfw_clone();
+
+        $submit.on('click', function () {
+
+          if (!$form.find('.form-required').hasClass('form-invalid')) {
+
+            $this.data('inited', false);
+
+            $this.empty();
+
+            $this.html($cloned);
+
+            $cloned = $cloned.kfw_clone();
+
+            $this.kfw_reload_script();
+
+          }
+
+        });
+
+      }
+
+    });
+  };
+
+  //
+  // Shortcode Framework
+  //
+  $.fn.kfw_shortcode = function () {
+
+    var base = this;
+
+    base.shortcode_parse = function (serialize, key) {
+
+      var shortcode = '';
+
+      $.each(serialize, function (shortcode_key, shortcode_values) {
+
+        key = (key) ? key : shortcode_key;
+
+        shortcode += '[' + key;
+
+        $.each(shortcode_values, function (shortcode_tag, shortcode_value) {
+
+          if (shortcode_tag === 'content') {
+
+            shortcode += ']';
+            shortcode += shortcode_value;
+            shortcode += '[/' + key + '';
+
+          } else {
+
+            shortcode += base.shortcode_tags(shortcode_tag, shortcode_value);
+
+          }
+
+        });
+
+        shortcode += ']';
+
+      });
+
+      return shortcode;
+
+    };
+
+    base.shortcode_tags = function (shortcode_tag, shortcode_value) {
+
+      var shortcode = '';
+
+      if (shortcode_value !== '') {
+
+        if (typeof shortcode_value === 'object' && !$.isArray(shortcode_value)) {
+
+          $.each(shortcode_value, function (sub_shortcode_tag, sub_shortcode_value) {
+
+            // sanitize spesific key/value
+            switch (sub_shortcode_tag) {
+
+              case 'background-image':
+                sub_shortcode_value = (sub_shortcode_value.url) ? sub_shortcode_value.url : '';
+                break;
+
+            }
+
+            if (sub_shortcode_value !== '') {
+              shortcode += ' ' + sub_shortcode_tag.replace('-', '_') + '="' + sub_shortcode_value.toString() + '"';
+            }
+
+          });
+
+        } else {
+
+          shortcode += ' ' + shortcode_tag.replace('-', '_') + '="' + shortcode_value.toString() + '"';
+
+        }
+
+      }
+
+      return shortcode;
+
+    };
+
+    base.insertAtChars = function (_this, currentValue) {
+
+      var obj = (typeof _this[0].name !== 'undefined') ? _this[0] : _this;
+
+      if (obj.value.length && typeof obj.selectionStart !== 'undefined') {
+        obj.focus();
+        return obj.value.substring(0, obj.selectionStart) + currentValue + obj.value.substring(obj.selectionEnd, obj.value.length);
+      } else {
+        obj.focus();
+        return currentValue;
+      }
+
+    };
+
+    base.send_to_editor = function (html, editor_id) {
+
+      var tinymce_editor;
+
+      if (typeof tinymce !== 'undefined') {
+        tinymce_editor = tinymce.get(editor_id);
+      }
+
+      if (tinymce_editor && !tinymce_editor.isHidden()) {
+        tinymce_editor.execCommand('mceInsertContent', false, html);
+      } else {
+        var $editor = $('#' + editor_id);
+        $editor.val(base.insertAtChars($editor, html)).trigger('change');
+      }
+
+    };
+
+    return this.each(function () {
+
+      var $modal = $(this),
+        $load = $modal.find('.kfw-modal-load'),
+        $content = $modal.find('.kfw-modal-content'),
+        $insert = $modal.find('.kfw-modal-insert'),
+        $loading = $modal.find('.kfw-modal-loading'),
+        $select = $modal.find('select'),
+        modal_id = $modal.data('modal-id'),
+        nonce = $modal.data('nonce'),
+        editor_id,
+        target_id,
+        gutenberg_id,
+        sc_key,
+        sc_name,
+        sc_view,
+        sc_group,
+        $cloned,
+        $button;
+
+      $(document).on('click', '.kfw-shortcode-button[data-modal-id="' + modal_id + '"]', function (e) {
+
+        e.preventDefault();
+
+        $button = $(this);
+        editor_id = $button.data('editor-id') || false;
+        target_id = $button.data('target-id') || false;
+        gutenberg_id = $button.data('gutenberg-id') || false;
+
+        $modal.removeClass('hidden');
+
+        // single usage trigger first shortcode
+        if ($modal.hasClass('kfw-shortcode-single') && sc_name === undefined) {
+          $select.trigger('change');
+        }
+
+      });
+
+      $select.on('change', function () {
+
+        var $option = $(this);
+        var $selected = $option.find(':selected');
+
+        sc_key = $option.val();
+        sc_name = $selected.data('shortcode');
+        sc_view = $selected.data('view') || 'normal';
+        sc_group = $selected.data('group') || sc_name;
+
+        $load.empty();
+
+        if (sc_key) {
+
+          $loading.show();
+
+          window.wp.ajax.post('kfw-get-shortcode-' + modal_id, {
+            shortcode_key: sc_key,
+            nonce: nonce
+          })
+            .done(function (response) {
+
+              $loading.hide();
+
+              var $appended = $(response.content).appendTo($load);
+
+              $insert.parent().removeClass('hidden');
+
+              $cloned = $appended.find('.kfw--repeat-shortcode').kfw_clone();
+
+              $appended.kfw_reload_script();
+              $appended.find('.kfw-fields').kfw_reload_script();
+
+            });
+
+        } else {
+
+          $insert.parent().addClass('hidden');
+
+        }
+
+      });
+
+      $insert.on('click', function (e) {
+
+        e.preventDefault();
+
+        if ($insert.prop('disabled') || $insert.attr('disabled')) { return; }
+
+        var shortcode = '';
+        var serialize = $modal.find('.kfw-field:not(.kfw-depend-on)').find(':input:not(.ignore)').serializeObjectKFW();
+
+        switch (sc_view) {
+
+          case 'contents':
+            var contentsObj = (sc_name) ? serialize[sc_name] : serialize;
+            $.each(contentsObj, function (sc_key, sc_value) {
+              var sc_tag = (sc_name) ? sc_name : sc_key;
+              shortcode += '[' + sc_tag + ']' + sc_value + '[/' + sc_tag + ']';
+            });
+            break;
+
+          case 'group':
+
+            shortcode += '[' + sc_name;
+            $.each(serialize[sc_name], function (sc_key, sc_value) {
+              shortcode += base.shortcode_tags(sc_key, sc_value);
+            });
+            shortcode += ']';
+            shortcode += base.shortcode_parse(serialize[sc_group], sc_group);
+            shortcode += '[/' + sc_name + ']';
+
+            break;
+
+          case 'repeater':
+            shortcode += base.shortcode_parse(serialize[sc_group], sc_group);
+            break;
+
+          default:
+            shortcode += base.shortcode_parse(serialize);
+            break;
+
+        }
+
+        shortcode = (shortcode === '') ? '[' + sc_name + ']' : shortcode;
+
+        if (gutenberg_id) {
+
+          var content = window.kfw_gutenberg_props.attributes.hasOwnProperty('shortcode') ? window.kfw_gutenberg_props.attributes.shortcode : '';
+          window.kfw_gutenberg_props.setAttributes({ shortcode: content + shortcode });
+
+        } else if (editor_id) {
+
+          base.send_to_editor(shortcode, editor_id);
+
+        } else {
+
+          var $textarea = (target_id) ? $(target_id) : $button.parent().find('textarea');
+          $textarea.val(base.insertAtChars($textarea, shortcode)).trigger('change');
+
+        }
+
+        $modal.addClass('hidden');
+
+      });
+
+      $modal.on('click', '.kfw--repeat-button', function (e) {
+
+        e.preventDefault();
+
+        var $repeatable = $modal.find('.kfw--repeatable');
+        var $new_clone = $cloned.kfw_clone();
+        var $remove_btn = $new_clone.find('.kfw-repeat-remove');
+
+        var $appended = $new_clone.appendTo($repeatable);
+
+        $new_clone.find('.kfw-fields').kfw_reload_script();
+
+        KFW.helper.name_nested_replace($modal.find('.kfw--repeat-shortcode'), sc_group);
+
+        $remove_btn.on('click', function () {
+
+          $new_clone.remove();
+
+          KFW.helper.name_nested_replace($modal.find('.kfw--repeat-shortcode'), sc_group);
+
+        });
+
+      });
+
+      $modal.on('click', '.kfw-modal-close, .kfw-modal-overlay', function () {
+        $modal.addClass('hidden');
+      });
+
+    });
+  };
+
+  //
+  // WP Color Picker
+  //
+  if (typeof Color === 'function') {
+
+    Color.prototype.toString = function () {
+
+      if (this._alpha < 1) {
+        return this.toCSS('rgba', this._alpha).replace(/\s+/g, '');
+      }
+
+      var hex = parseInt(this._color, 10).toString(16);
+
+      if (this.error) { return ''; }
+
+      if (hex.length < 6) {
+        for (var i = 6 - hex.length - 1; i >= 0; i--) {
+          hex = '0' + hex;
+        }
+      }
+
+      return '#' + hex;
+
+    };
+
+  }
+
+  KFW.funcs.parse_color = function (color) {
+
+    var value = color.replace(/\s+/g, ''),
+      trans = (value.indexOf('rgba') !== -1) ? parseFloat(value.replace(/^.*,(.+)\)/, '$1') * 100) : 100,
+      rgba = (trans < 100) ? true : false;
+
+    return { value: value, transparent: trans, rgba: rgba };
+
+  };
+
+  $.fn.kfw_color = function () {
+    return this.each(function () {
+
+      var $input = $(this),
+        picker_color = KFW.funcs.parse_color($input.val()),
+        palette_color = window.kfw_vars.color_palette.length ? window.kfw_vars.color_palette : true,
+        $container;
+
+      // Destroy and Reinit
+      if ($input.hasClass('wp-color-picker')) {
+        $input.closest('.wp-picker-container').after($input).remove();
+      }
+
+      $input.wpColorPicker({
+        palettes: palette_color,
+        change: function (event, ui) {
+
+          var ui_color_value = ui.color.toString();
+
+          $container.removeClass('kfw--transparent-active');
+          $container.find('.kfw--transparent-offset').css('background-color', ui_color_value);
+          $input.val(ui_color_value).trigger('change');
+
+        },
+        create: function () {
+
+          $container = $input.closest('.wp-picker-container');
+
+          var a8cIris = $input.data('a8cIris'),
+            $transparent_wrap = $('<div class="kfw--transparent-wrap">' +
+              '<div class="kfw--transparent-slider"></div>' +
+              '<div class="kfw--transparent-offset"></div>' +
+              '<div class="kfw--transparent-text"></div>' +
+              '<div class="kfw--transparent-button">transparent <i class="fas fa-toggle-off"></i></div>' +
+              '</div>').appendTo($container.find('.wp-picker-holder')),
+            $transparent_slider = $transparent_wrap.find('.kfw--transparent-slider'),
+            $transparent_text = $transparent_wrap.find('.kfw--transparent-text'),
+            $transparent_offset = $transparent_wrap.find('.kfw--transparent-offset'),
+            $transparent_button = $transparent_wrap.find('.kfw--transparent-button');
+
+          if ($input.val() === 'transparent') {
+            $container.addClass('kfw--transparent-active');
+          }
+
+          $transparent_button.on('click', function () {
+            if ($input.val() !== 'transparent') {
+              $input.val('transparent').trigger('change').removeClass('iris-error');
+              $container.addClass('kfw--transparent-active');
+            } else {
+              $input.val(a8cIris._color.toString()).trigger('change');
+              $container.removeClass('kfw--transparent-active');
+            }
+          });
+
+          $transparent_slider.slider({
+            value: picker_color.transparent,
+            step: 1,
+            min: 0,
+            max: 100,
+            slide: function (event, ui) {
+
+              var slide_value = parseFloat(ui.value / 100);
+              a8cIris._color._alpha = slide_value;
+              $input.wpColorPicker('color', a8cIris._color.toString());
+              $transparent_text.text((slide_value === 1 || slide_value === 0 ? '' : slide_value));
+
+            },
+            create: function () {
+
+              var slide_value = parseFloat(picker_color.transparent / 100),
+                text_value = slide_value < 1 ? slide_value : '';
+
+              $transparent_text.text(text_value);
+              $transparent_offset.css('background-color', picker_color.value);
+
+              $container.on('click', '.wp-picker-clear', function () {
+
+                a8cIris._color._alpha = 1;
+                $transparent_text.text('');
+                $transparent_slider.slider('option', 'value', 100);
+                $container.removeClass('kfw--transparent-active');
+                $input.trigger('change');
+
+              });
+
+              $container.on('click', '.wp-picker-default', function () {
+
+                var default_color = KFW.funcs.parse_color($input.data('default-color')),
+                  default_value = parseFloat(default_color.transparent / 100),
+                  default_text = default_value < 1 ? default_value : '';
+
+                a8cIris._color._alpha = default_value;
+                $transparent_text.text(default_text);
+                $transparent_slider.slider('option', 'value', default_color.transparent);
+
+              });
+
+            }
+          });
+        }
+      });
+
+    });
+  };
+
+  //
+  // ChosenJS
+  //
+  $.fn.kfw_chosen = function () {
+    return this.each(function () {
+
+      var $this = $(this),
+        $inited = $this.parent().find('.chosen-container'),
+        is_sortable = $this.hasClass('kfw-chosen-sortable') || false,
+        is_ajax = $this.hasClass('kfw-chosen-ajax') || false,
+        is_multiple = $this.attr('multiple') || false,
+        set_width = is_multiple ? '100%' : 'auto',
+        set_options = $.extend({
+          allow_single_deselect: true,
+          disable_search_threshold: 10,
+          width: set_width,
+          no_results_text: window.kfw_vars.i18n.no_results_text,
+        }, $this.data('chosen-settings'));
+
+      if ($inited.length) {
+        $inited.remove();
+      }
+
+      // Chosen ajax
+      if (is_ajax) {
+
+        var set_ajax_options = $.extend({
+          data: {
+            type: 'post',
+            nonce: '',
+          },
+          allow_single_deselect: true,
+          disable_search_threshold: -1,
+          width: '100%',
+          min_length: 3,
+          type_delay: 500,
+          typing_text: window.kfw_vars.i18n.typing_text,
+          searching_text: window.kfw_vars.i18n.searching_text,
+          no_results_text: window.kfw_vars.i18n.no_results_text,
+        }, $this.data('chosen-settings'));
+
+        $this.KFWAjaxChosen(set_ajax_options);
+
+      } else {
+
+        $this.chosen(set_options);
+
+      }
+
+      // Chosen keep options order
+      if (is_multiple) {
+
+        var $hidden_select = $this.parent().find('.kfw-hide-select');
+        var $hidden_value = $hidden_select.val() || [];
+
+        $this.on('change', function (obj, result) {
+
+          if (result && result.selected) {
+            $hidden_select.append('<option value="' + result.selected + '" selected="selected">' + result.selected + '</option>');
+          } else if (result && result.deselected) {
+            $hidden_select.find('option[value="' + result.deselected + '"]').remove();
+          }
+
+          // Force customize refresh
+          if (window.wp.customize !== undefined && $hidden_select.children().length === 0 && $hidden_select.data('customize-setting-link')) {
+            window.wp.customize.control($hidden_select.data('customize-setting-link')).setting.set('');
+          }
+
+          $hidden_select.trigger('change');
+
+        });
+
+        // Chosen order abstract
+        $this.KFWChosenOrder($hidden_value, true);
+
+      }
+
+      // Chosen sortable
+      if (is_sortable) {
+
+        var $chosen_container = $this.parent().find('.chosen-container');
+        var $chosen_choices = $chosen_container.find('.chosen-choices');
+
+        $chosen_choices.bind('mousedown', function (event) {
+          if ($(event.target).is('span')) {
+            event.stopPropagation();
+          }
+        });
+
+        $chosen_choices.sortable({
+          items: 'li:not(.search-field)',
+          helper: 'orginal',
+          cursor: 'move',
+          placeholder: 'search-choice-placeholder',
+          start: function (e, ui) {
+            ui.placeholder.width(ui.item.innerWidth());
+            ui.placeholder.height(ui.item.innerHeight());
+          },
+          update: function (e, ui) {
+
+            var select_options = '';
+            var chosen_object = $this.data('chosen');
+            var $prev_select = $this.parent().find('.kfw-hide-select');
+
+            $chosen_choices.find('.search-choice-close').each(function () {
+              var option_array_index = $(this).data('option-array-index');
+              $.each(chosen_object.results_data, function (index, data) {
+                if (data.array_index === option_array_index) {
+                  select_options += '<option value="' + data.value + '" selected>' + data.value + '</option>';
+                }
+              });
+            });
+
+            $prev_select.children().remove();
+            $prev_select.append(select_options);
+            $prev_select.trigger('change');
+
+          }
+        });
+
+      }
+
+    });
+  };
+
+  //
+  // Helper Checkbox Checker
+  //
+  $.fn.kfw_checkbox = function () {
+    return this.each(function () {
+
+      var $this = $(this),
+        $input = $this.find('.kfw--input'),
+        $checkbox = $this.find('.kfw--checkbox');
+
+      $checkbox.on('click', function () {
+        $input.val(Number($checkbox.prop('checked'))).trigger('change');
+      });
+
+    });
+  };
+
+  //
   // Siblings
   //
-  $.fn.kfw_siblings = function() {
-    return this.each( function() {
+  $.fn.kfw_siblings = function () {
+    return this.each(function () {
 
-      var $this     = $(this),
-          $siblings = $this.find('.kfw--sibling'),
-          multiple  = $this.data('multiple') || false;
+      var $this = $(this),
+        $siblings = $this.find('.kfw--sibling'),
+        multiple = $this.data('multiple') || false;
 
-      $siblings.on('click', function() {
+      $siblings.on('click', function () {
 
         var $sibling = $(this);
 
-        if( multiple ) {
+        if (multiple) {
 
-          if( $sibling.hasClass('kfw--active') ) {
+          if ($sibling.hasClass('kfw--active')) {
             $sibling.removeClass('kfw--active');
             $sibling.find('input').prop('checked', false).trigger('change');
           } else {
@@ -2578,222 +3028,30 @@
   };
 
   //
-  // WP Color Picker
-  //
-  if( typeof Color === 'function' ) {
-
-    Color.fn.toString = function() {
-
-      if( this._alpha < 1 ) {
-        return this.toCSS('rgba', this._alpha).replace(/\s+/g, '');
-      }
-
-      var hex = parseInt( this._color, 10 ).toString( 16 );
-
-      if( this.error ) { return ''; }
-
-      if( hex.length < 6 ) {
-        for (var i = 6 - hex.length - 1; i >= 0; i--) {
-          hex = '0' + hex;
-        }
-      }
-
-      return '#' + hex;
-
-    };
-
-  }
-
-  KFW.funcs.parse_color = function( color ) {
-
-    var value = color.replace(/\s+/g, ''),
-        trans = ( value.indexOf('rgba') !== -1 ) ? parseFloat( value.replace(/^.*,(.+)\)/, '$1') * 100 ) : 100,
-        rgba  = ( trans < 100 ) ? true : false;
-
-    return { value: value, transparent: trans, rgba: rgba };
-
-  };
-
-  $.fn.kfw_color = function() {
-    return this.each( function() {
-
-      var $input        = $(this),
-          picker_color  = KFW.funcs.parse_color( $input.val() ),
-          palette_color = window.kfw_vars.color_palette.length ? window.kfw_vars.color_palette : true,
-          $container;
-
-      // Destroy and Reinit
-      if( $input.hasClass('wp-color-picker') ) {
-        $input.closest('.wp-picker-container').after($input).remove();
-      }
-
-      $input.wpColorPicker({
-        palettes: palette_color,
-        change: function( event, ui ) {
-
-          var ui_color_value = ui.color.toString();
-
-          $container.removeClass('kfw--transparent-active');
-          $container.find('.kfw--transparent-offset').css('background-color', ui_color_value);
-          $input.val(ui_color_value).trigger('change');
-
-        },
-        create: function() {
-
-          $container = $input.closest('.wp-picker-container');
-
-          var a8cIris = $input.data('a8cIris'),
-              $transparent_wrap = $('<div class="kfw--transparent-wrap">' +
-                                '<div class="kfw--transparent-slider"></div>' +
-                                '<div class="kfw--transparent-offset"></div>' +
-                                '<div class="kfw--transparent-text"></div>' +
-                                '<div class="kfw--transparent-button button button-small">transparent</div>' +
-                                '</div>').appendTo( $container.find('.wp-picker-holder') ),
-              $transparent_slider = $transparent_wrap.find('.kfw--transparent-slider'),
-              $transparent_text   = $transparent_wrap.find('.kfw--transparent-text'),
-              $transparent_offset = $transparent_wrap.find('.kfw--transparent-offset'),
-              $transparent_button = $transparent_wrap.find('.kfw--transparent-button');
-
-          if( $input.val() === 'transparent' ) {
-            $container.addClass('kfw--transparent-active');
-          }
-
-          $transparent_button.on('click', function() {
-            if( $input.val() !== 'transparent' ) {
-              $input.val('transparent').trigger('change').removeClass('iris-error');
-              $container.addClass('kfw--transparent-active');
-            } else {
-              $input.val( a8cIris._color.toString() ).trigger('change');
-              $container.removeClass('kfw--transparent-active');
-            }
-          });
-
-          $transparent_slider.slider({
-            value: picker_color.transparent,
-            step: 1,
-            min: 0,
-            max: 100,
-            slide: function( event, ui ) {
-
-              var slide_value = parseFloat( ui.value / 100 );
-              a8cIris._color._alpha = slide_value;
-              $input.wpColorPicker( 'color', a8cIris._color.toString() );
-              $transparent_text.text( ( slide_value === 1 || slide_value === 0 ? '' : slide_value ) );
-
-            },
-            create: function() {
-
-              var slide_value = parseFloat( picker_color.transparent / 100 ),
-                  text_value  = slide_value < 1 ? slide_value : '';
-
-              $transparent_text.text(text_value);
-              $transparent_offset.css('background-color', picker_color.value);
-
-              $container.on('click', '.wp-picker-clear', function() {
-
-                a8cIris._color._alpha = 1;
-                $transparent_text.text('');
-                $transparent_slider.slider('option', 'value', 100);
-                $container.removeClass('kfw--transparent-active');
-                $input.trigger('change');
-
-              });
-
-              $container.on('click', '.wp-picker-default', function() {
-
-                var default_color = KFW.funcs.parse_color( $input.data('default-color') ),
-                    default_value = parseFloat( default_color.transparent / 100 ),
-                    default_text  = default_value < 1 ? default_value : '';
-
-                a8cIris._color._alpha = default_value;
-                $transparent_text.text(default_text);
-                $transparent_slider.slider('option', 'value', default_color.transparent);
-
-              });
-
-              $container.on('click', '.wp-color-result', function() {
-                $transparent_wrap.toggle();
-              });
-
-              $('body').on( 'click.wpcolorpicker', function() {
-                $transparent_wrap.hide();
-              });
-
-            }
-          });
-        }
-      });
-
-    });
-  };
-
-  //
-  // ChosenJS
-  //
-  $.fn.kfw_chosen = function() {
-    return this.each( function() {
-
-      var $this       = $(this),
-          $inited     = $this.parent().find('.chosen-container'),
-          is_multi    = $this.attr('multiple') || false,
-          set_width   = is_multi ? '100%' : 'auto',
-          set_options = $.extend({
-            allow_single_deselect: true,
-            disable_search_threshold: 15,
-            width: set_width
-          }, $this.data());
-
-      if( $inited.length ) {
-        $inited.remove();
-      }
-
-      $this.chosen(set_options);
-
-    });
-  };
-
-  //
-  // Number (only allow numeric inputs)
-  //
-  $.fn.kfw_number = function() {
-    return this.each( function() {
-
-      $(this).on('keypress', function( e ) {
-
-        if( e.keyCode !== 0 && e.keyCode !== 8 && e.keyCode !== 45 && e.keyCode !== 46 && ( e.keyCode < 48 || e.keyCode > 57 ) ) {
-          return false;
-        }
-
-      });
-
-    });
-  };
-
-  //
   // Help Tooltip
   //
-  $.fn.kfw_help = function() {
-    return this.each( function() {
+  $.fn.kfw_help = function () {
+    return this.each(function () {
 
       var $this = $(this),
-          $tooltip,
-          offset_left;
+        $tooltip,
+        offset_left;
 
       $this.on({
-        mouseenter: function() {
+        mouseenter: function () {
 
-          $tooltip = $( '<div class="kfw-tooltip"></div>' ).html( $this.find('.kfw-help-text').html() ).appendTo('body');
-          offset_left = ( KFW.vars.is_rtl ) ? ( $this.offset().left + 24 ) : ( $this.offset().left - $tooltip.outerWidth() );
+          $tooltip = $('<div class="kfw-tooltip"></div>').html($this.find('.kfw-help-text').html()).appendTo('body');
+          offset_left = (KFW.vars.is_rtl) ? ($this.offset().left + 24) : ($this.offset().left - $tooltip.outerWidth());
 
           $tooltip.css({
-            top: $this.offset().top - ( ( $tooltip.outerHeight() / 2 ) - 14 ),
+            top: $this.offset().top - (($tooltip.outerHeight() / 2) - 14),
             left: offset_left,
           });
 
         },
-        mouseleave: function() {
+        mouseleave: function () {
 
-          if( $tooltip !== undefined ) {
+          if ($tooltip !== undefined) {
             $tooltip.remove();
           }
 
@@ -2807,25 +3065,25 @@
   //
   // Customize Refresh
   //
-  $.fn.kfw_customizer_refresh = function() {
-    return this.each( function() {
+  $.fn.kfw_customizer_refresh = function () {
+    return this.each(function () {
 
-      var $this    = $(this),
-          $complex = $this.closest('.kfw-customize-complex');
+      var $this = $(this),
+        $complex = $this.closest('.kfw-customize-complex');
 
-      if( $complex.length ) {
+      if ($complex.length) {
 
-        var $input  = $complex.find(':input'),
-            $unique = $complex.data('unique-id'),
-            $option = $complex.data('option-id'),
-            obj     = $input.serializeObjectKFW(),
-            data    = ( !$.isEmptyObject(obj) ) ? obj[$unique][$option] : '',
-            control = wp.customize.control($unique +'['+ $option +']');
+        var $input = $complex.find(':input'),
+          $unique = $complex.data('unique-id'),
+          $option = $complex.data('option-id'),
+          obj = $input.serializeObjectKFW(),
+          data = (!$.isEmptyObject(obj)) ? obj[$unique][$option] : '',
+          control = window.wp.customize.control($unique + '[' + $option + ']');
 
         // clear the value to force refresh.
         control.setting._value = null;
 
-        control.setting.set( data );
+        control.setting.set(data);
 
       } else {
 
@@ -2841,34 +3099,31 @@
   //
   // Customize Listen Form Elements
   //
-  $.fn.kfw_customizer_listen = function( options ) {
+  $.fn.kfw_customizer_listen = function (options) {
 
     var settings = $.extend({
       closest: false,
-    }, options );
+    }, options);
 
-    return this.each( function() {
+    return this.each(function () {
 
-      if( window.wp.customize === undefined ) { return; }
+      if (window.wp.customize === undefined) { return; }
 
-      var $this     = ( settings.closest ) ? $(this).closest('.kfw-customize-complex') : $(this),
-          $input    = $this.find(':input'),
-          unique_id = $this.data('unique-id'),
-          option_id = $this.data('option-id');
+      var $this = (settings.closest) ? $(this).closest('.kfw-customize-complex') : $(this),
+        $input = $this.find(':input'),
+        unique_id = $this.data('unique-id'),
+        option_id = $this.data('option-id');
 
-      if( unique_id === undefined ) { return; }
+      if (unique_id === undefined) { return; }
 
-      $input.on('change keyup', KFW.helper.debounce( function() {
+      $input.on('change keyup', KFW.helper.debounce(function () {
 
         var obj = $this.find(':input').serializeObjectKFW();
+        var val = (!$.isEmptyObject(obj) && obj[unique_id] && obj[unique_id][option_id]) ? obj[unique_id][option_id] : '';
 
-        if( !$.isEmptyObject(obj) && obj[unique_id] ) {
+        window.wp.customize.control(unique_id + '[' + option_id + ']').setting.set(val);
 
-          window.wp.customize.control( unique_id +'['+ option_id +']' ).setting.set( obj[unique_id][option_id] );
-
-        }
-
-      }, 250 ) );
+      }, 250));
 
     });
   };
@@ -2876,15 +3131,23 @@
   //
   // Customizer Listener for Reload JS
   //
-  $(document).on('expanded', '.control-section-kfw', function() {
+  $(document).on('expanded', '.control-section', function () {
 
     var $this = $(this);
 
-    if( $this.hasClass('open') && !$this.data('inited') ) {
-      $this.kfw_dependency();
-      $this.find('.kfw-customize-field').kfw_reload_script({dependency: false});
-      $this.find('.kfw-customize-complex').kfw_customizer_listen();
+    if ($this.hasClass('open') && !$this.data('inited')) {
+
+      var $fields = $this.find('.kfw-customize-field');
+      var $complex = $this.find('.kfw-customize-complex');
+
+      if ($fields.length) {
+        $this.kfw_dependency();
+        $fields.kfw_reload_script({ dependency: false });
+        $complex.kfw_customizer_listen();
+      }
+
       $this.data('inited', true);
+
     }
 
   });
@@ -2892,13 +3155,13 @@
   //
   // Window on resize
   //
-  KFW.vars.$window.on('resize kfw.resize', KFW.helper.debounce( function( event ) {
+  KFW.vars.$window.on('resize kfw.resize', KFW.helper.debounce(function (event) {
 
     var window_width = navigator.userAgent.indexOf('AppleWebKit/') > -1 ? KFW.vars.$window.width() : window.innerWidth;
 
-    if( window_width <= 782 && !KFW.vars.onloaded ) {
+    if (window_width <= 782 && !KFW.vars.onloaded) {
       $('.kfw-section').kfw_reload_script();
-      KFW.vars.onloaded  = true;
+      KFW.vars.onloaded = true;
     }
 
   }, 200)).trigger('kfw.resize');
@@ -2906,18 +3169,18 @@
   //
   // Widgets Framework
   //
-  $.fn.kfw_widgets = function() {
-    if( this.length ) {
+  $.fn.kfw_widgets = function () {
+    if (this.length) {
 
-      $(document).on('widget-added widget-updated', function( event, $widget ) {
+      $(document).on('widget-added widget-updated', function (event, $widget) {
         $widget.find('.kfw-fields').kfw_reload_script();
       });
 
-      $('.widgets-sortables, .control-section-sidebar').on('sortstop', function( event, ui ) {
+      $('.widgets-sortables, .control-section-sidebar').on('sortstop', function (event, ui) {
         ui.item.find('.kfw-fields').kfw_reload_script_retry();
       });
 
-      $(document).on('click', '.widget-top', function( event ) {
+      $(document).on('click', '.widget-top', function (event) {
         $(this).parent().find('.kfw-fields').kfw_reload_script();
       });
 
@@ -2925,14 +3188,33 @@
   };
 
   //
+  // Nav Menu Options Framework
+  //
+  $.fn.kfw_nav_menu = function () {
+    return this.each(function () {
+
+      var $navmenu = $(this);
+
+      $navmenu.on('click', 'a.item-edit', function () {
+        $(this).closest('li.menu-item').find('.kfw-fields').kfw_reload_script();
+      });
+
+      $navmenu.on('sortstop', function (event, ui) {
+        ui.item.find('.kfw-fields').kfw_reload_script_retry();
+      });
+
+    });
+  };
+
+  //
   // Retry Plugins
   //
-  $.fn.kfw_reload_script_retry = function() {
-    return this.each( function() {
+  $.fn.kfw_reload_script_retry = function () {
+    return this.each(function () {
 
       var $this = $(this);
 
-      if( $this.data('inited') ) {
+      if ($this.data('inited')) {
         $this.children('.kfw-field-wp_editor').kfw_field_wp_editor();
       }
 
@@ -2942,29 +3224,31 @@
   //
   // Reload Plugins
   //
-  $.fn.kfw_reload_script = function( options ) {
+  $.fn.kfw_reload_script = function (options) {
 
     var settings = $.extend({
       dependency: true,
-    }, options );
+    }, options);
 
-    return this.each( function() {
+    return this.each(function () {
 
       var $this = $(this);
 
       // Avoid for conflicts
-      if( !$this.data('inited') ) {
+      if (!$this.data('inited')) {
 
         // Field plugins
         $this.children('.kfw-field-accordion').kfw_field_accordion();
         $this.children('.kfw-field-backup').kfw_field_backup();
         $this.children('.kfw-field-background').kfw_field_background();
+        $this.children('.kfw-field-code_editor').kfw_field_code_editor();
         $this.children('.kfw-field-date').kfw_field_date();
         $this.children('.kfw-field-fieldset').kfw_field_fieldset();
         $this.children('.kfw-field-gallery').kfw_field_gallery();
         $this.children('.kfw-field-group').kfw_field_group();
         $this.children('.kfw-field-icon').kfw_field_icon();
         $this.children('.kfw-field-media').kfw_field_media();
+        $this.children('.kfw-field-map').kfw_field_map();
         $this.children('.kfw-field-repeater').kfw_field_repeater();
         $this.children('.kfw-field-slider').kfw_field_slider();
         $this.children('.kfw-field-sortable').kfw_field_sortable();
@@ -2984,13 +3268,6 @@
         $this.children('.kfw-field-link_color').find('.kfw-color').kfw_color();
         $this.children('.kfw-field-typography').find('.kfw-color').kfw_color();
 
-        // Field allows only number
-        $this.children('.kfw-field-dimensions').find('.kfw-number').kfw_number();
-        $this.children('.kfw-field-slider').find('.kfw-number').kfw_number();
-        $this.children('.kfw-field-spacing').find('.kfw-number').kfw_number();
-        $this.children('.kfw-field-spinner').find('.kfw-number').kfw_number();
-        $this.children('.kfw-field-typography').find('.kfw-number').kfw_number();
-
         // Field chosenjs
         $this.children('.kfw-field-select').find('.kfw-chosen').kfw_chosen();
 
@@ -3005,7 +3282,7 @@
         // Help Tooptip
         $this.children('.kfw-field').find('.kfw-help').kfw_help();
 
-        if( settings.dependency ) {
+        if (settings.dependency) {
           $this.kfw_dependency();
         }
 
@@ -3021,22 +3298,24 @@
   //
   // Document ready and run scripts
   //
-  $(document).ready( function() {
+  $(document).ready(function () {
 
     $('.kfw-save').kfw_save();
-    $('.kfw-confirm').kfw_confirm();
+    $('.kfw-options').kfw_options();
+    $('.kfw-sticky-header').kfw_sticky();
     $('.kfw-nav-options').kfw_nav_options();
     $('.kfw-nav-metabox').kfw_nav_metabox();
-    $('.kfw-expand-all').kfw_expand_all();
-    $('.kfw-search').kfw_search();
-    $('.kfw-sticky-header').kfw_sticky();
     $('.kfw-taxonomy').kfw_taxonomy();
-    $('.kfw-shortcode').kfw_shortcode();
     $('.kfw-page-templates').kfw_page_templates();
     $('.kfw-post-formats').kfw_post_formats();
+    $('.kfw-shortcode').kfw_shortcode();
+    $('.kfw-search').kfw_search();
+    $('.kfw-confirm').kfw_confirm();
+    $('.kfw-expand-all').kfw_expand_all();
     $('.kfw-onload').kfw_reload_script();
     $('.widget').kfw_widgets();
+    $('#menu-to-edit').kfw_nav_menu();
 
   });
 
-})( jQuery, window, document );
+})(jQuery, window, document);
