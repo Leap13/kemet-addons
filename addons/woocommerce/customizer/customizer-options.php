@@ -114,7 +114,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[shop-layout]', array(
         'type'     => 'select',
         'section'  => 'woocommerce_product_catalog',
-        'priority' => 45,
+        'priority' => 36,
         'label'    => __( 'Shop Layout', 'kemet-addons' ),
         'choices'  => array(
             'shop-grid'   => __( 'Grid', 'kemet-addons' ),
@@ -138,7 +138,7 @@ $wp_customize->add_control(
         'type'            => 'checkbox',
         'section'         => 'woocommerce_product_catalog',
         'label'           => __( 'Enable Quick View', 'kemet-addons' ),
-        'priority'        => 49,
+        'priority'        => 36,
     )
 );
 /**
@@ -161,7 +161,7 @@ $wp_customize->add_control(
             'type'     => 'kmt-title',
             'label'    => __( 'Quick View Settings', 'kemet-addons' ),
             'section'  => 'woocommerce_product_catalog',
-            'priority' => 49,
+            'priority' => 36,
         )
     )
 );
@@ -185,7 +185,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[quick-view-style]', array(
         'type'     => 'select',
         'section'  => 'woocommerce_product_catalog',
-        'priority' => 50,
+        'priority' => 36,
         'label'    => __( 'Quick View Position', 'kemet-addons' ),
         'choices'  => array(
             'qv-icon'   => __( 'Icon', 'kemet-addons' ),
