@@ -995,7 +995,7 @@
         var $button = $(this);
         var $modal = $('#kfw-modal-icon');
 
-        $modal.removeClass('hidden');
+        $modal.show();
 
         KFW.vars.$icon_target = $this;
 
@@ -1013,31 +1013,31 @@
 
             var $load = $modal.find('.kfw-modal-load').html(response.content);
 
-            $load.on('click', 'i', function (e) {
+            $load.on('click', 'a', function (e) {
 
               e.preventDefault();
 
-              var icon = $(this).attr('title');
+              var icon = $(this).data('kfw-icon');
 
-              KFW.vars.$icon_target.find('i').removeAttr('class').addClass(icon);
+              KFW.vars.$icon_target.find('span.dashicons').removeAttr('class').addClass("dashicons " + icon);
               KFW.vars.$icon_target.find('input').val(icon).trigger('change');
               KFW.vars.$icon_target.find('.kfw-icon-preview').removeClass('hidden');
               KFW.vars.$icon_target.find('.kfw-icon-remove').removeClass('hidden');
 
-              $modal.addClass('hidden');
+              $modal.hide();
 
             });
 
             $modal.on('change keyup', '.kfw-icon-search', function () {
 
               var value = $(this).val(),
-                $icons = $load.find('i');
+                $icons = $load.find('a');
 
               $icons.each(function () {
 
                 var $elem = $(this);
 
-                if ($elem.attr('title').search(new RegExp(value, 'i')) < 0) {
+                if ($elem.data('kfw-icon').search(new RegExp(value, 'i')) < 0) {
                   $elem.hide();
                 } else {
                   $elem.show();
@@ -1048,15 +1048,13 @@
             });
 
             $modal.on('click', '.kfw-modal-close, .kfw-modal-overlay', function () {
-              $modal.addClass('hidden');
+              $modal.hide();
             });
 
           }).fail(function (response) {
             $modal.find('.kfw-modal-loading').hide();
             $modal.find('.kfw-modal-load').html(response.error);
-            $modal.on('click', function () {
-              $modal.addClass('hidden');
-            });
+            $modal.on('click', function () { $modal.hide(); });
           });
         }
 

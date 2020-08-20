@@ -39,7 +39,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 			
 
 			KFW::createNavMenuOptions( $prefix, array(
-				'data_type' => 'serialize',
+				'data_type' => 'unserialize',
 				) 
 			);
 		}
@@ -50,35 +50,99 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 		public function create_sections($prefix)
 		{
 			KFW::createSection( $prefix, array(
+				'title'  => __('Mega Menu', 'kemet-addons'),
 				'fields' => array(
 
-				array(
-					'id'      => 'enable-mega-menu',
-					'type'    => 'checkbox',
-					'label'   => 'Enable Mega Menu',
-					'default' => false
-				),
-				array(
-					'id'    => 'mega-menu-width',
-					'type'  => 'number',
-					'title' => 'Mega Menu Width',
-				),
-				array(
-					'id'    => 'mega-menu-columns',
-					'type'  => 'number',
-					'title' => 'Mega Menu Columns',
-				),
-				array(
-					'id'    => 'mega-menu-background',
-					'type'  => 'background',
-					'title' => 'Mega Menu Background',
-				),
-				array(
-					'id'      => 'disable-link',
-					'type'    => 'checkbox',
-					'label'   => 'Disable link',
-					'default' => false
-				),
+					array(
+						'id'      => 'enable-mega-menu',
+						'type'    => 'checkbox',
+						'label'   => 'Enable Mega Menu',
+						'default' => false
+					),
+					array(
+						'id'          => 'mega-menu-width',
+						'type'        => 'select',
+						'title'       => 'Mega Menu Width',
+						'options'     => array(
+							'content' => 'Content',
+							'menu-container' => 'Menu Container Width',
+							'full' => 'Full',
+						),
+						'default' => 'content'
+					),
+					array(
+						'id'    => 'mega-menu-columns',
+						'type'  => 'number',
+						'title' => 'Mega Menu Columns',
+					),
+					array(
+						'id'    => 'mega-menu-background',
+						'type'  => 'background',
+						'title' => 'Mega Menu Background',
+					),
+					array(
+						'id'      => 'disable-link',
+						'type'    => 'checkbox',
+						'label'   => 'Disable link',
+						'default' => false
+					),
+					array(
+						'id'    => 'mega-menu-icon',
+						'type'  => 'icon', 
+						'title' => __('Icon','kemet-addons' ),
+					),
+					array(
+						'id'    => 'mega-menu-spacing',
+						'class' => 'mega-menu-spacing',
+						'type'  => 'spacing',
+						'title' => 'Spacing',
+					),
+					array(
+						'id'      => 'sub-title',
+						'type'    => 'text',
+						'title'   => 'Subtitle',
+					),
+				)
+			  ) 
+			);
+			KFW::createSection( $prefix, array(
+				'fields' => array(
+					array(
+						'id'      => 'column-heading',
+						'type'    => 'checkbox',
+						'label'   => 'Make This Item As Column Heading',
+						'default' => false
+					),
+					array(
+						'id'          => 'template',
+						'type'        => 'select',
+						'class'       => 'mega-menu-field-template',
+						'title'       => 'Content Source',
+						'options'     => array(
+							'' => 'Select an Template',
+						),
+					)
+				)
+			  ) 
+			);
+			KFW::createSection( $prefix, array(
+				'title'  => __('Label', 'kemet-addons'),
+				'fields' => array(
+					array(
+						'id'      => 'label-text',
+						'type'    => 'text',
+						'title'   => 'Menu Label',
+					),
+					array(
+						'id'    => 'label-color',
+						'type'  => 'color',
+						'title' => 'Label Color',
+					),
+					array(
+						'id'    => 'label-bg-color',
+						'type'  => 'color',
+						'title' => 'Label Background Color',
+					),
 				)
 			  ) 
 			);

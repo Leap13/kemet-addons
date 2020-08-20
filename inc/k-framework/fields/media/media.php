@@ -60,7 +60,7 @@ if ( ! class_exists( 'KFW_Field_media' ) ) {
 
       if ( ! empty( $args['preview'] ) ) {
         echo '<div class="kfw--preview'. esc_attr( $hidden_auto ) .'">';
-        echo '<div class="kfw-image-preview"><a href="#" class="kfw--remove fas fa-times"></a><img src="'. esc_url( $preview_src ) .'" class="kfw--src" /></div>';
+        echo '<div class="kfw-image-preview"><a href="#" class="kfw--remove fa fa-times"></a><img src="'. esc_url( $preview_src ) .'" class="kfw--src" /></div>';
         echo '</div>';
       }
 

@@ -23,20 +23,20 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/blog-layouts/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/blog-layouts/assets/css/unminified/',
                         ext: '-rtl.css'
 
                     },
-                     {
+                    {
                         expand: true,
                         cwd: 'addons/extra-headers/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/extra-headers/assets/css/unminified',
                         ext: '-rtl.css'
 
@@ -45,9 +45,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/extra-widgets/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/extra-widgets/assets/css/unminified',
                         ext: '-rtl.css'
 
@@ -56,9 +56,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/go-top/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/go-top/assets/css/unminified',
                         ext: '-rtl.css'
 
@@ -67,9 +67,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/page-title/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/page-title/assets/css/unminified',
                         ext: '-rtl.css'
 
@@ -78,9 +78,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/single-post/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/single-post/assets/css/unminified',
                         ext: '-rtl.css'
 
@@ -89,9 +89,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/sticky-header/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/sticky-header/assets/css/unminified',
                         ext: '-rtl.css'
 
@@ -100,15 +100,26 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/top-bar-section/assets/css/unminified/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/top-bar-section/assets/css/unminified',
                         ext: '-rtl.css'
 
                     },
+                    {
+                        expand: true,
+                        cwd: 'addons/mega-menu/assets/css/unminified/',
+                        src: [
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
+                        dest: 'addons/mega-menu/assets/css/unminified',
+                        ext: '-rtl.css'
+
+                    },
                 ]
-              }
+            }
         },
         sass: {
             options: {
@@ -137,6 +148,7 @@ module.exports = function (grunt) {
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
                         'addons/custom-layout/assets/css/unminified/style.css': 'sass/custom-layout.scss',
+                        'addons/mega-menu/assets/css/unminified/style.css': 'sass/mega-menu.scss',
                     },
 
                     {
@@ -205,7 +217,7 @@ module.exports = function (grunt) {
                         src: 'addons/go-top/assets/css/unminified/style-rtl.css',
                         dest: 'addons/go-top/assets/css/minified/style.min-rtl.css',
                     },
-                    
+
                     {
                         src: 'addons/sticky-header/assets/css/unminified/style.css',
                         dest: 'addons/sticky-header/assets/css/minified/style.min.css',
@@ -226,6 +238,10 @@ module.exports = function (grunt) {
                     {
                         src: 'addons/custom-layout/assets/css/unminified/style.css',
                         dest: 'addons/custom-layout/assets/css/minified/style.min.css',
+                    },
+                    {
+                        src: 'addons/mega-menu/assets/css/unminified/style.css',
+                        dest: 'addons/mega-menu/assets/css/minified/style.min.css',
                     },
                     {
                         src: 'inc/k-framework/assets/css/kfw.css',
@@ -250,6 +266,7 @@ module.exports = function (grunt) {
                     'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
                     'addons/custom-layout/assets/js/minified/custom-layout.min.js': 'addons/custom-layout/assets/js/unminified/custom-layout.js',
+                    'addons/mega-menu/assets/js/minified/mega-menu.min.js': 'addons/mega-menu/assets/js/unminified/mega-menu.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
 
@@ -286,9 +303,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/extra-headers/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/extra-headers/assets/css/unminified',
                         ext: '-rtl.css'
                     },
@@ -296,9 +313,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/extra-widgets/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/extra-widgets/assets/css/unminified',
                         ext: '-rtl.css'
                     },
@@ -306,9 +323,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/top-bar-section/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/top-bar-section/assets/css/unminified',
                         ext: '-rtl.css'
                     },
@@ -316,9 +333,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/page-title/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/page-title/assets/css/unminified',
                         ext: '-rtl.css'
                     },
@@ -326,9 +343,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/go-top/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/go-top/assets/css/unminified',
                         ext: '-rtl.css'
                     },
@@ -336,9 +353,9 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/sticky-header/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/sticky-header/assets/css/unminified',
                         ext: '-rtl.css'
                     },
@@ -346,14 +363,14 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'addons/single-post/assets/css/unminified',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                            ],
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
                         dest: 'addons/single-post/assets/css/unminified',
                         ext: '-rtl.css'
                     },
                 ]
-              }
+            }
         },
     });
 
@@ -371,7 +388,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['uglify']);
     // min all
     grunt.registerTask('minify', ['cssmin:css']);
-    
+
     // rtlcss, you will still need to install ruby and sass on your system manually to run this
     grunt.registerTask('rtl', ['rtlcss']);
 

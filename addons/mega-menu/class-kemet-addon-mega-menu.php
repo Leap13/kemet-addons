@@ -43,7 +43,8 @@ if ( ! class_exists( 'Kemet_Mega_Menu' ) ) {
 			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-settings.php';
 			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-partials.php';
 			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-options.php';
-            
+			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-walker.php';
+			
 		}
 
 	}

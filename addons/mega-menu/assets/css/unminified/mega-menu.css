@@ -1,0 +1,7 @@
+/* Custom Style */
+.kfw-nav-menu-options .mega-menu-spacing .kfw--label.kfw--icon{
+    display: none;
+}
+.kfw-nav-menu-options .kfw-field-spacing .kfw--input{
+    margin-right: 5px;
+}
