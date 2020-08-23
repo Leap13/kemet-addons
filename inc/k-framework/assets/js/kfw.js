@@ -143,52 +143,52 @@
   //
   // Options Navigation
   //
-$.fn.kfw_nav_options = function() {
-  return this.each( function() {
+  $.fn.kfw_nav_options = function() {
+    return this.each( function() {
 
-    var $nav   = $(this),
-        $links = $nav.find('a'),
-        $last;
+      var $nav    = $(this),
+          $links  = $nav.find('a'),
+          $hidden = $nav.closest('.kfw').find('.kfw-section-id'),
+          $last_section;
 
-    $(window).on('hashchange kfw.hashchange', function() {
+      $(window).on('hashchange', function() {
 
-      var hash  = window.location.hash.replace('#tab=', '');
-      var slug  = hash ? hash : $links.first().attr('href').replace('#tab=', '');
-      var $link = $('[data-tab-id="'+slug+'"]');
+        var hash  = window.location.hash.match(new RegExp('tab=([^&]*)'));
+        var slug  = hash ? hash[1] : $links.first().attr('href').replace('#tab=', '');
+        var $link = $('#kfw-tab-link-'+ slug);
 
-      if ( $link.length ) {
+        if( $link.length > 0 ) {
+          var resetOptions = $link.closest('.kfw-tab-depth-0').attr('data-reset');
+            $nav.parent().parent().parent('.kfw-container').find('.kfw-buttons').each(function(){
+              if(resetOptions == 'false'){
+                  $(this).hide();
+              }else{
+                  $(this).show();
+              }
+            });
+          
+          $link.closest('.kfw-tab-depth-0').addClass('kfw-tab-active').siblings().removeClass('kfw-tab-active');
+          $links.removeClass('kfw-section-active');
+          $link.addClass('kfw-section-active');
 
-        $link.closest('.kfw-tab-item').addClass('kfw-tab-expanded').siblings().removeClass('kfw-tab-expanded');
+          if( $last_section !== undefined ) {
+            $last_section.hide();
+          }
 
-        if( $link.next().is('ul') ) {
+          var $section = $('#kfw-section-'+slug);
+          $section.css({display: 'block'});
+          $section.kfw_reload_script();
 
-          $link = $link.next().find('li').first().find('a');
-          slug  = $link.data('tab-id');
+          $hidden.val(slug);
+
+          $last_section = $section;
 
         }
 
-        $links.removeClass('kfw-active');
-        $link.addClass('kfw-active');
+      }).trigger('hashchange');
 
-        if ( $last ) {
-          $last.hide();
-        }
-
-        var $section = $('[data-section-id="'+slug+'"]');
-
-        $section.show();
-        $section.kfw_reload_script();
-
-        $('.kfw-section-id').val( $section.index() );
-
-        $last = $section;
-
-      }
-
-    }).trigger('kfw.hashchange');
-
-  });
-};
+    });
+  };
 
   //
   // Metabox Tabs

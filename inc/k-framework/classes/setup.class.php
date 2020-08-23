@@ -327,9 +327,9 @@ if( ! class_exists( 'KFW' ) ) {
       wp_localize_script( 'kfw', 'kfw_vars', array(
         'color_palette'  => apply_filters( 'kfw_color_palette', array() ),
         'i18n'           => array(
-          'confirm'             => esc_html__( 'Are you sure?', 'kfw' ),
-          'reset_notification'  => esc_html__( 'Restoring options.', 'kfw' ),
-          'import_notification' => esc_html__( 'Importing options.', 'kfw' ),
+          'confirm'             => esc_html__( 'Are you sure?', 'kemet-addons' ),
+          'reset_notification'  => esc_html__( 'Restoring options.', 'kemet-addons' ),
+          'import_notification' => esc_html__( 'Importing options.', 'kemet-addons' ),
         ),
       ) );
 
@@ -429,11 +429,11 @@ if( ! class_exists( 'KFW' ) ) {
           $instance = new $classname( $field, $value, $unique, $where, $parent );
           $instance->render();
         } else {
-          echo '<p>'. esc_html__( 'This field class is not available!', 'kfw' ) .'</p>';
+          echo '<p>'. esc_html__( 'This field class is not available!', 'kemet-addons' ) .'</p>';
         }
 
       } else {
-        echo '<p>'. esc_html__( 'This type is not found!', 'kfw' ) .'</p>';
+        echo '<p>'. esc_html__( 'This type is not found!', 'kemet-addons' ) .'</p>';
       }
 
       echo ( ! empty( $field['title'] ) ) ? '</div>' : '';
