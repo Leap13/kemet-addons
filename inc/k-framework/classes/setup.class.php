@@ -41,7 +41,7 @@ if( ! class_exists( 'KFW' ) ) {
       add_action( 'after_setup_theme', array( 'KFW', 'setup' ) );
       add_action( 'init', array( 'KFW', 'setup' ) );
       add_action( 'switch_theme', array( 'KFW', 'setup' ) );
-      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ),1 );
+      add_action( 'admin_enqueue_scripts', array( 'KFW', 'add_admin_enqueue_scripts' ) );
 
     }
 
