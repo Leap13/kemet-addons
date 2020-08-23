@@ -1,18 +1,81 @@
-#site-navigation{
-    .kemet-megamenu-item{
-        .kemet-megamenu{
-            > li{
-                float: left;
-                > a{
-                    border: none;
-                }
-            }
-            &.col-1 > li { width: 100%; }
-            &.col-2 > li { width: 50%; }
-            &.col-3 > li { width: 33.33333333%; }
-            &.col-4 > li { width: 25%; }
-            &.col-5 > li { width: 20%; }
-            &.col-6 > li { width: 16.66666667%; }
+#site-navigation {
+  li.menu-item {
+    &.has-description.menu-item-has-children {
+      > a {
+        display: flex;
+        flex-direction: column;
+        &:after {
+          display: none;
         }
+      }
+      > a > span:first-child {
+        &:after {
+          content: "\e907";
+          display: inline-block;
+          font-family: Kemet-font;
+          font-size: 1rem;
+          font-weight: 700;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          margin-left: 10px;
+          vertical-align: middle;
+          line-height: normal;
+        }
+      }
     }
+    .dashicons,
+    .dashicons-before:before {
+      vertical-align: middle;
+    }
+    .kemet-mega-menu-label {
+      font-size: 0.7em;
+      margin-left: 5px;
+      line-height: normal;
+      padding: 3px 6px;
+      border-radius: 2px;
+    }
+    span.kemet-menu-decription {
+      line-height: 12px;
+      font-size: 12px;
+      opacity: 0.6;
+      text-align: center;
+      display: block;
+      margin-top: -12px;
+    }
+  }
+  .kemet-megamenu-item {
+    .kemet-megamenu {
+      .heading-item {
+        > a {
+          font-weight: 700;
+          font-size: 1.1em;
+        }
+      }
+      > li {
+        float: left;
+        > a {
+          border: none;
+        }
+      }
+      &.col-1 > li {
+        width: 100%;
+      }
+      &.col-2 > li {
+        width: 50%;
+      }
+      &.col-3 > li {
+        width: 33.33333333%;
+      }
+      &.col-4 > li {
+        width: 25%;
+      }
+      &.col-5 > li {
+        width: 20%;
+      }
+      &.col-6 > li {
+        width: 16.66666667%;
+      }
+    }
+  }
 }

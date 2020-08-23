@@ -35,15 +35,28 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
               $classes[] = $columns;
               
               $bg_obj = $this->megamenu_bg_obj;
-              $bg_object = array(
-                'background-color'    => $bg_obj['background-color'],
-                'background-image'    => $bg_obj["background-image"]['url'],
-                'background-repeat'   => $bg_obj["background-repeat"],
-                'background-size'     => $bg_obj["background-size"],
-                'background-position' => $bg_obj["background-position"],
+              
+              if(!empty($bg_obj['background-color']) || !empty($bg_obj["background-image"]['url'])){
+                
+                $bg_object = array(
+                    'background-color'    => $bg_obj['background-color'],
+                    'background-image'    => $bg_obj["background-image"]['url'],
+                    'background-repeat'   => $bg_obj["background-repeat"],
+                    'background-size'     => $bg_obj["background-size"],
+                    'background-position' => $bg_obj["background-position"],
+                  );
+                  $style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu' ] = kemet_get_background_obj( $bg_object );
+
+              }
+              $spacing = $this->megamenu_spacing;
+
+              $style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .kemet-megamenu' ] = array(
+                  'padding-top' => kemet_get_css_value( $spacing['top'] , $spacing['unit']),
+                  'padding-left' => kemet_get_css_value( $spacing['left'] , $spacing['unit']),
+                  'padding-bottom' => kemet_get_css_value( $spacing['bottom'] , $spacing['unit']),
+                  'padding-right' => kemet_get_css_value( $spacing['right'] , $spacing['unit']),
               );
-               $style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .kemet-megamenu' ] = kemet_get_background_obj( $bg_object );
-               
+
               Kemet_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
             }
 
@@ -111,17 +124,26 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
               $this->megamenu_col 	= get_post_meta( $item->ID, 'mega-menu-columns', true );
               $this->megamenu_bg_obj 	= get_post_meta( $item->ID, 'mega-menu-background', true );
               $this->megamenu_width 	= get_post_meta( $item->ID, 'mega-menu-width', true );
+              $this->megamenu_spacing 	= get_post_meta( $item->ID, 'mega-menu-spacing', true );
               $this->menu_item_id = $item->ID;
             }
+            $this->column_heading 	= get_post_meta( $item->ID, 'column-heading', true );
             $this->megamenu_disable_link  = get_post_meta( $item->ID, 'disable-link', true );
             
             $classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 
             if ( 0 === $depth && '' != $this->megamenu ) {
               $classes[] = 'kemet-megamenu-item';
-              $classes[] = 'mega-menu' . $this->megamenu_width . '-width';
+              $classes[] = 'mega-menu-' . $this->megamenu_width . '-width';
             }
 
+            if( !empty($item->description) ){
+                $classes[] = 'has-description';
+            }
+            
+            if( $this->column_heading ){
+                $classes[] = 'heading-item';
+            }
             $classes[] = 'menu-item-' . $item->ID;
 
             /**
@@ -216,6 +238,45 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
              * @param int      $depth Depth of menu item. Used for padding.
              */
             $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+
+            $title_html = '';
+
+            if(!empty($item->description)){
+
+            $title_html = '<span>';
+
+            }
+
+            if ( isset( $item->megamenu_icon ) && !empty( $item->megamenu_icon ) ) {
+                
+				$title_html .= '<span class="dashicons ' . esc_html( $item->megamenu_icon ) . '"></span>' . $item->title;
+            }else{
+
+                $title_html .= $item->title;
+            }
+            
+            if ( isset( $item->megamenu_label ) && !empty( $item->megamenu_label ) ) {
+                
+				$style = array(
+					'.menu-item-' . $item->ID . ' .kemet-mega-menu-label' => array(
+						'color'            => esc_attr( $item->megamenu_label_color ),
+						'background-color' => esc_attr( $item->megamenu_label_bg_color ),
+					),
+				);
+
+				Kemet_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
+
+				$title_html .= '<span class="kemet-mega-menu-label">' . esc_html( $item->megamenu_label ) . '</span>';
+            }
+            
+            if(!empty($item->description)){
+
+                $title_html .='</span>';
+
+                $title_html .= '<span class="kemet-menu-decription">' . esc_html( $item->description ) . '</span>';
+            }
+
+            $title = $title_html;
 
             $item_output  = $args->before;
             $item_output .= '<a' . $attributes . '>';

@@ -1,6 +1,56 @@
 /*--------------------------------------------------------------
 ## Mega Menu
 --------------------------------------------------------------*/
+#site-navigation li.menu-item.has-description.menu-item-has-children > a {
+  display: flex;
+  flex-direction: column;
+}
+
+#site-navigation li.menu-item.has-description.menu-item-has-children > a:after {
+  display: none;
+}
+
+#site-navigation li.menu-item.has-description.menu-item-has-children > a > span:first-child:after {
+  content: "\e907";
+  display: inline-block;
+  font-family: Kemet-font;
+  font-size: 1rem;
+  font-weight: 700;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-left: 10px;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+#site-navigation li.menu-item .dashicons,
+#site-navigation li.menu-item .dashicons-before:before {
+  vertical-align: middle;
+}
+
+#site-navigation li.menu-item .kemet-mega-menu-label {
+  font-size: 0.7em;
+  margin-left: 5px;
+  line-height: normal;
+  padding: 3px 6px;
+  border-radius: 2px;
+}
+
+#site-navigation li.menu-item span.kemet-menu-decription {
+  line-height: 12px;
+  font-size: 12px;
+  opacity: 0.6;
+  text-align: center;
+  display: block;
+  margin-top: -12px;
+}
+
+#site-navigation .kemet-megamenu-item .kemet-megamenu .heading-item > a {
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
 #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
   float: left;
 }

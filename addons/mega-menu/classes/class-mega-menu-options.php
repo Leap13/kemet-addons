@@ -55,39 +55,45 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 
 					array(
 						'id'      => 'enable-mega-menu',
-						'type'    => 'checkbox',
+						'class'   => 'enable-mega-menu',
+						'type' => 'switcher',
 						'label'   => 'Enable Mega Menu',
 						'default' => false
 					),
 					array(
 						'id'          => 'mega-menu-width',
+						'class'       => 'mega-menu-width',
 						'type'        => 'select',
 						'title'       => 'Mega Menu Width',
 						'options'     => array(
 							'content' => 'Content',
-							'menu-container' => 'Menu Container Width',
+							'container' => 'Menu Container Width',
 							'full' => 'Full',
 						),
 						'default' => 'content'
 					),
 					array(
 						'id'    => 'mega-menu-columns',
+						'class'   => 'enable-mega-menu',
 						'type'  => 'number',
 						'title' => 'Mega Menu Columns',
 					),
 					array(
 						'id'    => 'mega-menu-background',
+						'class'   => 'mega-menu-background',
 						'type'  => 'background',
 						'title' => 'Mega Menu Background',
 					),
 					array(
 						'id'      => 'disable-link',
+						'class'   => 'disable-link',
 						'type'    => 'checkbox',
 						'label'   => 'Disable link',
 						'default' => false
 					),
 					array(
 						'id'    => 'mega-menu-icon',
+						'class'   => 'mega-menu-icon',
 						'type'  => 'icon', 
 						'title' => __('Icon','kemet-addons' ),
 					),
@@ -99,6 +105,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 					),
 					array(
 						'id'      => 'sub-title',
+						'class'   => 'sub-title',
 						'type'    => 'text',
 						'title'   => 'Subtitle',
 					),
@@ -109,12 +116,14 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 				'fields' => array(
 					array(
 						'id'      => 'column-heading',
+						'class'   => 'column-heading',
 						'type'    => 'checkbox',
 						'label'   => 'Make This Item As Column Heading',
 						'default' => false
 					),
 					array(
 						'id'          => 'template',
+						'class'   	  => 'template',
 						'type'        => 'select',
 						'class'       => 'mega-menu-field-template',
 						'title'       => 'Content Source',
@@ -130,16 +139,19 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 				'fields' => array(
 					array(
 						'id'      => 'label-text',
+						'class'   	  => 'label-text',
 						'type'    => 'text',
 						'title'   => 'Menu Label',
 					),
 					array(
 						'id'    => 'label-color',
+						'class'   	  => 'label-color',
 						'type'  => 'color',
 						'title' => 'Label Color',
 					),
 					array(
 						'id'    => 'label-bg-color',
+						'class'   	  => 'label-bg-color',
 						'type'  => 'color',
 						'title' => 'Label Background Color',
 					),

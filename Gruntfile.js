@@ -267,6 +267,7 @@ module.exports = function (grunt) {
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
                     'addons/custom-layout/assets/js/minified/custom-layout.min.js': 'addons/custom-layout/assets/js/unminified/custom-layout.js',
                     'addons/mega-menu/assets/js/minified/mega-menu.min.js': 'addons/mega-menu/assets/js/unminified/mega-menu.js',
+                    'addons/mega-menu/assets/js/minified/admin-mega-menu.min.js': 'addons/mega-menu/assets/js/unminified/admin-mega-menu.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
 
