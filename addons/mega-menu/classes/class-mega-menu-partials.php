@@ -96,7 +96,7 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
 		 * @return void
 		 */
 		public function megamenu_style() {
-            //var_dump(self::$mega_menu_style);
+           
 			if ( '' != self::$mega_menu_style ) {
 				echo "<style type='text/css' class='kemet-megamenu-inline-style'>";
 				echo self::$mega_menu_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
