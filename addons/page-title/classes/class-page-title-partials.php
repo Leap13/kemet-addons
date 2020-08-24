@@ -27,6 +27,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
 		 */
 		public function __construct() {
             add_filter( 'kemet_title_bar_disable', '__return_false' );
+            add_filter( 'woocommerce_show_page_title', '__return_false' );
             add_action( 'kemet_after_header_block' , array( $this, 'kemet_page_title_markup' ), 9 );
             add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_before_header_block', array( $this, 'header_merged_with_title' ) );
