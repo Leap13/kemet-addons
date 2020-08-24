@@ -20,8 +20,8 @@
           return {
             query: params.term, // search term
             page: params.page,
-            action: "kemet_ajax_get_posts_title_list",
-            nonce: kemetAddons.ajax_title_nonce
+            action: "kemet_ajax_get_posts_list",
+            nonce: kemetAddons.ajax_nonce
           };
         },
         processResults: function (data) {
