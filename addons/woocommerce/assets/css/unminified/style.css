@@ -770,10 +770,6 @@ Woo Quick View
   margin: 1px auto;
 }
 
-.woocommerce .kmt-article-single.kmt-gallary-vertical span.onsale, .woocommerce-page .kmt-article-single.kmt-gallary-vertical span.onsale {
-  left: 13%;
-}
-
 .woocommerce .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-viewport, .woocommerce-page .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-viewport {
   overflow: hidden;
   position: relative;
