@@ -247,7 +247,8 @@ if( ! class_exists( 'KFW' ) ) {
     //
     // Enqueue admin and fields styles and scripts.
     public static function add_admin_enqueue_scripts() {
-
+      global $wp_version;
+      
       // check for developer mode
       $min = ( apply_filters( 'kfw_dev_mode', false ) || WP_DEBUG ) ? '' : '.min';
 
@@ -280,7 +281,7 @@ if( ! class_exists( 'KFW' ) ) {
 					)
 				);
       }
-      
+
       // cdn styles
       wp_enqueue_style( 'kfw-fa', KFW::include_plugin_url( 'assets/css/font-awesome'. $min .'.css' ), array(), '4.7.0', 'all' );
       
