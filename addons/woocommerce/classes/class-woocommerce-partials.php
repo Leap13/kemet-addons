@@ -56,13 +56,17 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action('wp_ajax_kemet_hover_style_post_ajax', array( $this, 'ajax_product_hover_style'));
 			add_action('wp_ajax_nopriv_kemet_product_default_style', array( $this, 'ajax_product_default_style'));
 			add_action('wp_ajax_kemet_product_default_style', array( $this, 'ajax_product_default_style'));
-			$kemet_woocommerce_instance = Kemet_Woocommerce::get_instance();
-			add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'shop_customization' ) );
-			add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
+
+			if(class_exists('Kemet_Woocommerce')){
+				$kemet_woocommerce_instance = Kemet_Woocommerce::get_instance();
+				add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'shop_customization' ) );
+				add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
+				add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'shop_customization' ) );
+				add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
+			}
+			
 			add_action( 'ajax_product_layout_style', array( $this, 'init_woocommerce' ) );
 			add_filter('kemet_shop_layout_style',array( $this,'kemet_get_shop_layout_cookie' ) );
-			add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'shop_customization' ) );
-			add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
 			add_action( 'kemet_infinite_scroll', array( $this, 'init_woocommerce' ) );
 			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
