@@ -1,5 +1,26 @@
 (function ($) {
   /**
+   * set meta value to select
+   */
+  var oldMetaValues = kemetAddons.template_meta_value;
+
+  if (typeof oldMetaValues == "object" && oldMetaValues != null) {
+    $.each(oldMetaValues, function (id, value) {
+      var menuItem = $("#menu-item-" + id),
+        templateSelect = menuItem.find(".mega-menu-field-template select"),
+        postID = value;
+
+      $.post(kemetAddons.ajax_url, {
+        post_id: postID,
+        action: "kemet_get_post_title",
+        nonce: kemetAddons.ajax_title_nonce
+      }).done(function (data) {
+        templateSelect.append(new Option(data, postID, false, true));
+      });
+    });
+  }
+
+  /**
    * convert to select2 with ajax search
    * @param {string} selector
    */

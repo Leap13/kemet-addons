@@ -49,8 +49,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			add_filter( 'wp', array( $this, 'get_markup' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts',  array($this, 'admin_script' ) );
-			add_action( 'wp_ajax_kemet_ajax_get_posts_list', array( $this, 'kemet_ajax_get_posts_list' ) );
-			add_action( 'wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ) );
         }
 
 
@@ -1066,18 +1064,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			return $show;
 		}
 
-		function ajax_get_post_title(){
-
-			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
-			
-			$post_id = isset( $_POST['post_id'] ) ? explode("-", $_POST['post_id'])[1] : ''; 
-			if(!empty($post_id)){
-				$name = !empty(get_the_title( $post_id )) ? get_the_title( $post_id ) : get_term( $post_id )->name  ;
-				echo $name;
-			}
-			wp_die();
-		}
-
 		function admin_script(){
 
 			$js_prefix  = '.min.js';
@@ -1129,6 +1115,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					'hide_old_value'	=> $hide_positions,
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
 					'ajax_nonce'    => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
+					'ajax_title_nonce' => wp_create_nonce( 'kemet-addons-ajax-get-title' ),
                     )
                 )
             );

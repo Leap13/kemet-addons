@@ -122,8 +122,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'default' => false
 					),
 					array(
-						'id'          => 'template',
-						'class'   	  => 'template',
+						'id'          => 'column-template',
 						'type'        => 'select',
 						'class'       => 'mega-menu-field-template',
 						'title'       => 'Content Source',

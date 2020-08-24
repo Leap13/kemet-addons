@@ -23,6 +23,7 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
          */
         public function __construct() {
             add_action( 'wp_ajax_kemet_ajax_get_posts_list', array( $this, 'kemet_ajax_get_posts_list' ) );
+            add_action( 'wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ) );
             add_action( 'admin_enqueue_scripts',  array($this, 'admin_script' ) );
         }
 
@@ -173,6 +174,18 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
             return $search;
         }
 
+        function ajax_get_post_title(){
+
+			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
+			
+			$post_id = isset( $_POST['post_id'] ) ? explode("-", $_POST['post_id'])[1] : ''; 
+			if(!empty($post_id)){
+				$name = !empty(get_the_title( $post_id )) ? get_the_title( $post_id ) : get_term( $post_id )->name  ;
+				echo $name;
+			}
+			wp_die();
+        }
+        
         public function admin_script()
         {
             wp_enqueue_script( 'kemet-addons-select2', KFW::include_plugin_url( 'assets/js/select2.js'), array( 'jquery' ), KEMET_ADDONS_VERSION, true );
