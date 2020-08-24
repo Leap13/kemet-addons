@@ -46,6 +46,20 @@
   margin-top: -12px;
 }
 
+#site-navigation .kemet-megamenu-item .mega-menu-full-wrap {
+  position: absolute;
+  left: -999em;
+  background: #fff;
+  overflow: hidden;
+}
+
+#site-navigation .kemet-megamenu-item .mega-menu-full-wrap .kemet-megamenu {
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: none;
+}
+
 #site-navigation .kemet-megamenu-item .kemet-megamenu .kemet-mega-menu-content {
   padding: 0 1em;
 }
