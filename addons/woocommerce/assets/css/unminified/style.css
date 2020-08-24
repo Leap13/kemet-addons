@@ -719,6 +719,7 @@ Woo Quick View
 
 .woocommerce .kmt-toolbar .shop-list-style a span, .woocommerce-page .kmt-toolbar .shop-list-style a span {
   vertical-align: middle;
+  height: 25px;
 }
 
 .woocommerce.content-align-left ul.products li.product .kemet-shop-thumbnail-wrap, .woocommerce-page.content-align-left ul.products li.product .kemet-shop-thumbnail-wrap {
