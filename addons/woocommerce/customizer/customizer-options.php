@@ -86,7 +86,7 @@ $wp_customize->add_setting(
         'default'           => $defaults[ 'wishlist-in-header' ],
         'type'              => 'option',
         'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-    ),
+    )
 );
 $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[wishlist-in-header]', array(
