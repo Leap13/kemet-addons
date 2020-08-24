@@ -282,6 +282,24 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
             $item_output .= '<a' . $attributes . '>';
             $item_output .= $args->link_before . $title . $args->link_after;
             $item_output .= '</a>';
+
+            ob_start();
+            $content = '';
+
+            if( '' != $this->megamenu && isset( $item->megamenu_column_template ) && !empty( $item->megamenu_column_template ) ){
+
+                $template_id = explode("-", $item->megamenu_column_template);
+                $content .= '<div class="kemet-mega-menu-content">';
+                if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+                    $custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
+                    $custom_layout_compat->render_content( $template_id[1] );
+                }
+                $content .= ob_get_contents();
+                $content .= '</div>';
+            }
+
+            ob_end_clean();
+            $item_output .= $content;
             $item_output .= $args->after;
 
             /**

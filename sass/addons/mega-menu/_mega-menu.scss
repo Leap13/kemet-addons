@@ -46,6 +46,9 @@
   }
   .kemet-megamenu-item {
     .kemet-megamenu {
+      .kemet-mega-menu-content {
+        padding: 0 1em;
+      }
       .heading-item {
         > a {
           font-weight: 700;
@@ -75,6 +78,33 @@
       }
       &.col-6 > li {
         width: 16.66666667%;
+      }
+    }
+  }
+}
+.kmt-header-break-point {
+  #site-navigation {
+    li.menu-item {
+      &.has-description.menu-item-has-children {
+        > a > span:first-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
+      span.kemet-menu-decription {
+        display: none;
+      }
+    }
+    .kemet-megamenu-item {
+      .kemet-megamenu {
+        > li {
+          width: 100%;
+          .kemet-mega-menu-content {
+            padding-left: 30px;
+            padding-right: 20px;
+          }
+        }
       }
     }
   }

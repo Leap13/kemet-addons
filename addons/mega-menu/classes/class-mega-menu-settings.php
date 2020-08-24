@@ -50,6 +50,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Settings' )) {
 			$menu_item->megamenu_label 	= get_post_meta( $menu_item->ID, 'label-text', true );
 			$menu_item->megamenu_label_color 	= get_post_meta( $menu_item->ID, 'label-color', true );
 			$menu_item->megamenu_label_bg_color 	= get_post_meta( $menu_item->ID, 'label-bg-color', true );
+			$menu_item->megamenu_column_template 	= get_post_meta( $menu_item->ID, 'column-template', true );
 
 			return $menu_item;
 		}

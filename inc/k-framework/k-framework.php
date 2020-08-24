@@ -21,3 +21,4 @@
 
 require_once plugin_dir_path( __FILE__ ) .'classes/setup.class.php';
 require_once plugin_dir_path( __FILE__ ) .'classes/advanced-posts-search.php';
+require_once plugin_dir_path( __FILE__ ) .'classes/kemet-addons-page-builder-compatiblity.php';

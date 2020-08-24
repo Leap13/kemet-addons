@@ -114,8 +114,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			if ( $enable_wrapper ) {
 				echo '<div id="kemet-addons-template-' . esc_attr( $post_id ) . '" style="'.$style.'">';
 			}
-			if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
-				$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
+			if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+				$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
 				
 				$custom_layout_compat->render_content( $post_id );
 			}
@@ -132,8 +132,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			$all_posts = self::kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE );
 
 			foreach ( $all_posts as $post_id => $post_data ) {
-				if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
-					$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
+				if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+					$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
 					$custom_layout_compat->enqueue_scripts( $post_id );
 				}
 			}

@@ -49,6 +49,7 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
             add_filter( 'wp_nav_menu_args', array( $this, 'nav_menu_args' ) );
 			add_filter( 'wp_footer', array( $this, 'megamenu_style' ) );
 			add_filter( 'wp_setup_nav_menu_item', array( $this, 'update_meta_values_array' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         }
 		
 		function update_meta_values_array( $item ) {
@@ -87,7 +88,7 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
 				'jquery',
 				'kemet-addons-select2',
 			), KEMET_ADDONS_VERSION, true );
-			var_dump(self::$meta_values);
+			
 			wp_localize_script(
                 'kemet-addons-mega-menu-js', 'kemetAddons', apply_filters(
                 'kemet_addons_admin_js_localize', array(
@@ -157,7 +158,34 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
             }
             
             Kemet_Style_Generator::kmt_add_js( KEMET_MEGA_MENU_DIR.'assets/js/' . $dir . '/mega-menu' . $js_prefix );
-        }
+		}
+		
+		/**
+		 * Add Scripts
+		 */
+		public function enqueue_scripts() {
+
+			$menu_locations = get_nav_menu_locations();
+
+			foreach ( $menu_locations as $menu_id ) {
+				$nav_items = wp_get_nav_menu_items( $menu_id );
+
+				if ( ! empty( $nav_items ) ) {
+					foreach ( $nav_items as $nav_item ) {
+
+						if ( isset( $nav_item->megamenu_column_template ) && '' != $nav_item->megamenu_column_template ) {
+
+							$template_id = explode("-", $nav_item->megamenu_column_template);
+
+							if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+								$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
+								$custom_layout_compat->enqueue_scripts( $template_id );
+							}
+						}
+					}
+				}
+			}
+		}
     }
 }
 Kemet_Mega_Menu_Partials::get_instance();
