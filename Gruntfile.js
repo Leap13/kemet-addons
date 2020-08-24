@@ -136,6 +136,7 @@ module.exports = function (grunt) {
                         'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
+                        'addons/woocommerce/assets/css/unminified/style.css': 'sass/woocommerce.scss',
                     },
 
                     {
@@ -222,7 +223,14 @@ module.exports = function (grunt) {
                         src: 'addons/single-post/assets/css/unminified/style-rtl.css',
                         dest: 'addons/single-post/assets/css/minified/style-rtl.min.css',
                     },
-
+                    {
+                        src: 'addons/woocommerce/assets/css/unminified/style.css',
+                        dest: 'addons/woocommerce/assets/css/minified/style.min.css',
+                    },
+                    {
+                        src: 'addons/woocommerce/assets/css/unminified/style-rtl.css',
+                        dest: 'addons/woocommerce/assets/css/minified/style-rtl.min.css',
+                    },
                     {
                         src: 'inc/k-framework/assets/css/kfw.css',
                         dest: 'inc/k-framework/assets/css/kfw.min.css',
@@ -245,6 +253,10 @@ module.exports = function (grunt) {
                     'addons/sticky-header/assets/js/minified/sticky-header.min.js': 'addons/sticky-header/assets/js/unminified/sticky-header.js',
                     'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
                     'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
+                    'addons/woocommerce/assets/js/minified/customizer-preview.min.js': 'addons/woocommerce/assets/js/unminified/customizer-preview.js',
+                    'addons/woocommerce/assets/js/minified/quick-view.min.js': 'addons/woocommerce/assets/js/unminified/quick-view.js',
+                    'addons/woocommerce/assets/js/minified/single-product-ajax-cart.min.js': 'addons/woocommerce/assets/js/unminified/single-product-ajax-cart.js',
+                    'addons/woocommerce/assets/js/minified/woocommerce.min.js': 'addons/woocommerce/assets/js/unminified/woocommerce.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
 
@@ -345,6 +357,16 @@ module.exports = function (grunt) {
                                 '!*-rtl.css',
                             ],
                         dest: 'addons/single-post/assets/css/unminified',
+                        ext: '-rtl.css'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'addons/woocommerce/assets/css/unminified',
+                        src: [
+                                '*.css',
+                                '!*-rtl.css',
+                            ],
+                        dest: 'addons/woocommerce/assets/css/unminified',
                         ext: '-rtl.css'
                     },
                 ]

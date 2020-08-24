@@ -247,7 +247,8 @@ if( ! class_exists( 'KFW' ) ) {
     //
     // Enqueue admin and fields styles and scripts.
     public static function add_admin_enqueue_scripts() {
-
+      global $wp_version;
+      
       // check for developer mode
       $min = ( apply_filters( 'kfw_dev_mode', false ) || WP_DEBUG ) ? '' : '.min';
 
@@ -257,6 +258,29 @@ if( ! class_exists( 'KFW' ) ) {
       // wp color picker
       wp_enqueue_style( 'wp-color-picker' );
       wp_enqueue_script( 'wp-color-picker' );
+
+       /*
+			 * This is only needed in WordPress version >= 5.5 because wpColorPickerL10n has been removed.
+			 *
+			 * @see https://github.com/WordPress/WordPress/commit/7e7b70cd1ae5772229abb769d0823411112c748b
+			 *
+			 * This is should be removed once the issue is fixed from wp-color-picker-alpha repo.
+			 * @see https://github.com/kallookoo/wp-color-picker-alpha/issues/35
+			 */
+			if ( version_compare( $wp_version, '5.4.99', '>=' ) ) {
+				wp_localize_script(
+					'wp-color-picker',
+					'wpColorPickerL10n',
+					array(
+						'clear'            => __( 'Clear', 'kemet' ),
+						'clearAriaLabel'   => __( 'Clear color', 'kemet' ),
+						'defaultString'    => __( 'Default', 'kemet' ),
+						'defaultAriaLabel' => __( 'Select default color', 'kemet' ),
+						'pick'             => __( 'Select Color', 'kemet' ),
+						'defaultLabel'     => __( 'Color value', 'kemet' ),
+					)
+				);
+      }
 
       // cdn styles
       wp_enqueue_style( 'kfw-fa', KFW::include_plugin_url( 'assets/css/font-awesome'. $min .'.css' ), array(), '4.7.0', 'all' );
