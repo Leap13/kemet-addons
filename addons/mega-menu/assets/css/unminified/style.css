@@ -124,6 +124,10 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-me
   margin: 0 auto;
 }
 
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu ul {
+  background: none;
+}
+
 body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .menu-item-has-children > a::after {
   display: none;
 }

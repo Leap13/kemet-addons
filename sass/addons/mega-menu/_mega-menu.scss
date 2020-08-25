@@ -139,6 +139,9 @@ body:not(.kmt-header-break-point) {
         }
       }
       .kemet-megamenu {
+        ul {
+          background: none;
+        }
         .menu-item-has-children {
           > a {
             &::after {
