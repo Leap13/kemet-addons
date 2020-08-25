@@ -1,4 +1,15 @@
-#site-navigation {
+.main-navigation {
+  .kemet-megamenu {
+    .heading-item {
+      > a {
+        font-weight: 700;
+        font-size: 1.1em;
+      }
+    }
+    .kemet-mega-menu-content {
+      padding: 0 1em;
+    }
+  }
   li.menu-item {
     &.has-description.menu-item-has-children {
       > a {
@@ -44,52 +55,133 @@
       margin-top: -12px;
     }
   }
-  .kemet-megamenu-item {
-    .mega-menu-full-wrap {
-      position: absolute;
-      left: -999em;
-      background: #fff;
-      overflow: hidden;
-      .kemet-megamenu {
-        position: relative;
-        top: 0;
-        left: 0;
-        box-shadow: none;
+}
+
+body:not(.kmt-header-break-point) {
+  .main-header-menu {
+    &.submenu-fade-move {
+      li {
+        ul.kemet-megamenu {
+          ul {
+            transition: none;
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+          }
+        }
+        > .mega-menu-full-wrap {
+          > ul.kemet-megamenu {
+            transition: none;
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+          }
+          -webkit-transform: translateY(4px);
+          -ms-transform: translateY(4px);
+          transform: translateY(4px);
+          opacity: 0;
+        }
+        &:hover {
+          > .mega-menu-full-wrap {
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
       }
     }
-    .kemet-megamenu {
-      .kemet-mega-menu-content {
-        padding: 0 1em;
-      }
-      .heading-item {
-        > a {
-          font-weight: 700;
-          font-size: 1.1em;
+    &.submenu-fade {
+      li {
+        ul.kemet-megamenu {
+          ul {
+            transition: none;
+            opacity: 1;
+          }
+        }
+        > .mega-menu-full-wrap {
+          > ul.kemet-megamenu {
+            transition: none;
+            opacity: 1;
+          }
+          opacity: 0;
+        }
+        &:hover {
+          > .mega-menu-full-wrap {
+            opacity: 1;
+          }
         }
       }
-      > li {
-        float: left;
-        > a {
+    }
+  }
+
+  #site-navigation {
+    .kemet-megamenu-item {
+      .mega-menu-full-wrap {
+        position: absolute;
+        left: -999em;
+        background: #fff;
+        overflow: hidden;
+        border-top-style: solid;
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out,
+          -webkit-transform 0.4s ease-in-out;
+        .sub-menu {
+          border-top: none;
+        }
+        .kemet-megamenu {
+          position: relative;
+          top: 0;
+          left: 0;
+          box-shadow: none;
+          margin: 0 auto;
+        }
+      }
+      .kemet-megamenu {
+        .menu-item-has-children {
+          > a {
+            &::after {
+              display: none;
+            }
+          }
+        }
+        .sub-menu {
+          position: static;
+          width: 100%;
+          margin: auto;
           border: none;
+          box-shadow: none;
+          li {
+            .sub-menu {
+              padding-left: 24px;
+            }
+          }
         }
-      }
-      &.col-1 > li {
-        width: 100%;
-      }
-      &.col-2 > li {
-        width: 50%;
-      }
-      &.col-3 > li {
-        width: 33.33333333%;
-      }
-      &.col-4 > li {
-        width: 25%;
-      }
-      &.col-5 > li {
-        width: 20%;
-      }
-      &.col-6 > li {
-        width: 16.66666667%;
+        > li {
+          float: left;
+          a {
+            border: none;
+          }
+        }
+        &.col-1 > li {
+          width: 100%;
+        }
+        &.col-2 > li {
+          width: 50%;
+        }
+        &.col-3 > li {
+          width: 33.33333333%;
+        }
+        &.col-4 > li {
+          width: 25%;
+        }
+        &.col-5 > li {
+          width: 20%;
+        }
+        &.col-6 > li {
+          width: 16.66666667%;
+        }
       }
     }
   }
@@ -109,13 +201,12 @@
       }
     }
     .kemet-megamenu-item {
+      .mega-menu-full-wrap {
+        position: static;
+      }
       .kemet-megamenu {
         > li {
           width: 100%;
-          .kemet-mega-menu-content {
-            padding-left: 30px;
-            padding-right: 20px;
-          }
         }
       }
     }

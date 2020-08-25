@@ -1,16 +1,25 @@
 /*--------------------------------------------------------------
 ## Mega Menu
 --------------------------------------------------------------*/
-#site-navigation li.menu-item.has-description.menu-item-has-children > a {
+.main-navigation .kemet-megamenu .heading-item > a {
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.main-navigation .kemet-megamenu .kemet-mega-menu-content {
+  padding: 0 1em;
+}
+
+.main-navigation li.menu-item.has-description.menu-item-has-children > a {
   display: flex;
   flex-direction: column;
 }
 
-#site-navigation li.menu-item.has-description.menu-item-has-children > a:after {
+.main-navigation li.menu-item.has-description.menu-item-has-children > a:after {
   display: none;
 }
 
-#site-navigation li.menu-item.has-description.menu-item-has-children > a > span:first-child:after {
+.main-navigation li.menu-item.has-description.menu-item-has-children > a > span:first-child:after {
   content: "\e907";
   display: inline-block;
   font-family: Kemet-font;
@@ -24,12 +33,12 @@
   line-height: normal;
 }
 
-#site-navigation li.menu-item .dashicons,
-#site-navigation li.menu-item .dashicons-before:before {
+.main-navigation li.menu-item .dashicons,
+.main-navigation li.menu-item .dashicons-before:before {
   vertical-align: middle;
 }
 
-#site-navigation li.menu-item .kemet-mega-menu-label {
+.main-navigation li.menu-item .kemet-mega-menu-label {
   font-size: 0.7em;
   margin-left: 5px;
   line-height: normal;
@@ -37,7 +46,7 @@
   border-radius: 2px;
 }
 
-#site-navigation li.menu-item span.kemet-menu-decription {
+.main-navigation li.menu-item span.kemet-menu-decription {
   line-height: 12px;
   font-size: 12px;
   opacity: 0.6;
@@ -46,58 +55,120 @@
   margin-top: -12px;
 }
 
-#site-navigation .kemet-megamenu-item .mega-menu-full-wrap {
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade-move li ul.kemet-megamenu ul {
+  transition: none;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade-move li > .mega-menu-full-wrap {
+  -webkit-transform: translateY(4px);
+  -ms-transform: translateY(4px);
+  transform: translateY(4px);
+  opacity: 0;
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade-move li > .mega-menu-full-wrap > ul.kemet-megamenu {
+  transition: none;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade-move li:hover > .mega-menu-full-wrap {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade li ul.kemet-megamenu ul {
+  transition: none;
+  opacity: 1;
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade li > .mega-menu-full-wrap {
+  opacity: 0;
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade li > .mega-menu-full-wrap > ul.kemet-megamenu {
+  transition: none;
+  opacity: 1;
+}
+
+body:not(.kmt-header-break-point) .main-header-menu.submenu-fade li:hover > .mega-menu-full-wrap {
+  opacity: 1;
+}
+
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-menu-full-wrap {
   position: absolute;
   left: -999em;
   background: #fff;
   overflow: hidden;
+  border-top-style: solid;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 
-#site-navigation .kemet-megamenu-item .mega-menu-full-wrap .kemet-megamenu {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-menu-full-wrap .sub-menu {
+  border-top: none;
+}
+
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-menu-full-wrap .kemet-megamenu {
   position: relative;
   top: 0;
   left: 0;
   box-shadow: none;
+  margin: 0 auto;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu .kemet-mega-menu-content {
-  padding: 0 1em;
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .menu-item-has-children > a::after {
+  display: none;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu .heading-item > a {
-  font-weight: 700;
-  font-size: 1.1em;
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .sub-menu {
+  position: static;
+  width: 100%;
+  margin: auto;
+  border: none;
+  box-shadow: none;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .sub-menu li .sub-menu {
+  padding-left: 24px;
+}
+
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
   float: left;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu > li > a {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu > li a {
   border: none;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu.col-1 > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-1 > li {
   width: 100%;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu.col-2 > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-2 > li {
   width: 50%;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu.col-3 > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-3 > li {
   width: 33.33333333%;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu.col-4 > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-4 > li {
   width: 25%;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu.col-5 > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-5 > li {
   width: 20%;
 }
 
-#site-navigation .kemet-megamenu-item .kemet-megamenu.col-6 > li {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-6 > li {
   width: 16.66666667%;
 }
 
@@ -109,11 +180,10 @@
   display: none;
 }
 
-.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
-  width: 100%;
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .mega-menu-full-wrap {
+  position: static;
 }
 
-.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li .kemet-mega-menu-content {
-  padding-left: 30px;
-  padding-right: 20px;
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
+  width: 100%;
 }

@@ -19,7 +19,7 @@
     "grunt-sass": "^2.1.0",
     "grunt-wp-i18n": "^1.0.3",
     "node-sass": "^4.13.0",
-    "prettier": "^2.0.5"
+    "prettier": "2.1.0"
   },
   "dependencies": {
     "node": "^12.10.0"

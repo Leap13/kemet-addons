@@ -30,7 +30,7 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
 
             $columns = ! empty( $this->megamenu_col ) ? ( 'col-'. $this->megamenu_col ) : 'col-2';
             $style = array();
-            if ( 0 === $depth && '' != $this->megamenu ) {
+            if ( 0 === $depth && true == $this->megamenu ) {
               $classes[] = 'kemet-megamenu';
               $classes[] = $columns;
               
@@ -58,11 +58,12 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
               );
 
               Kemet_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
-            }
 
-            if ( 'full' === $this->megamenu_width ) {
-                // Adding "hidden" class to fix the visibility issue during page load.
-                $output .= "\n$indent<div class='mega-menu-full-wrap'>\n";
+              if ( 'full' === $this->megamenu_width ) {
+                    // Adding "hidden" class to fix the visibility issue during page load.
+                    $output .= "\n$indent<div class='mega-menu-full-wrap'>\n";
+                }
+
             }
 
             /**
