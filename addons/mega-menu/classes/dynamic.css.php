@@ -55,7 +55,7 @@ function kemet_mega_menu_dynamic_css( $dynamic_css ) {
 
     if($submenu_has_boxshadow){
         $boxshadow = array( 
-            'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-menu-full-wrap' => array(
+            'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item div.mega-menu-full-wrap' => array(
                 '-webkit-box-shadow' => esc_attr('0 3px 13px 0 rgba(0,0,0,.2)'),
                 'box-shadow' => esc_attr('0 3px 13px 0 rgba(0,0,0,.2)'),
             ),

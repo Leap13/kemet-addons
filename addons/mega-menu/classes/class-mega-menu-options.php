@@ -103,12 +103,6 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'type'  => 'spacing',
 						'title' => 'Spacing',
 					),
-					array(
-						'id'      => 'sub-title',
-						'class'   => 'sub-title',
-						'type'    => 'text',
-						'title'   => 'Subtitle',
-					),
 				)
 			  ) 
 			);
