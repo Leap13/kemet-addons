@@ -8,7 +8,13 @@
 .kfw-nav-menu-options .kfw-fields > .kfw-field {
   display: none;
 }
-
+.menu-item .kfw-nav-menu-options {
+  display: none;
+}
+.menu-item-depth-0 .kfw-nav-menu-options,
+.menu-item-depth-1 .kfw-nav-menu-options {
+  display: block;
+}
 .menu-item-depth-0 .kfw-nav-menu-options .enable-mega-menu,
 .menu-item-depth-0 .kfw-nav-menu-options .mega-menu-background,
 .menu-item-depth-0 .kfw-nav-menu-options .mega-menu-width,

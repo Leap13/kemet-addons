@@ -55,6 +55,16 @@
   margin-top: -12px;
 }
 
+body:not(.kmt-header-break-point) #sitehead.header-main-layout-5 #site-navigation li:hover > .mega-menu-full-wrap, body:not(.kmt-header-break-point) #sitehead.header-main-layout-6 #site-navigation li:hover > .mega-menu-full-wrap, body:not(.kmt-header-break-point) #sitehead.header-main-layout-7 #site-navigation li:hover > .mega-menu-full-wrap {
+  position: static;
+  top: 0;
+  left: 0;
+}
+
+body:not(.kmt-header-break-point) #sitehead.header-main-layout-5 #site-navigation .kemet-megamenu li, body:not(.kmt-header-break-point) #sitehead.header-main-layout-6 #site-navigation .kemet-megamenu li, body:not(.kmt-header-break-point) #sitehead.header-main-layout-7 #site-navigation .kemet-megamenu li {
+  width: 100%;
+}
+
 body:not(.kmt-header-break-point) .main-header-menu.submenu-fade-move li ul.kemet-megamenu ul {
   transition: none;
   opacity: 1;

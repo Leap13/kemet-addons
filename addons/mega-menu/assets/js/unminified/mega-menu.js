@@ -53,8 +53,21 @@
     );
   };
 
-  kemetMegMenu();
-  $(window).resize(function () {
+  if (
+    !$("header").is(
+      ".header-main-layout-5 , .header-main-layout-6 , .header-main-layout-7"
+    )
+  ) {
     kemetMegMenu();
+  }
+
+  $(window).resize(function () {
+    if (
+      !$("header").is(
+        ".header-main-layout-5 , .header-main-layout-6 , .header-main-layout-7"
+      )
+    ) {
+      kemetMegMenu();
+    }
   });
 })(jQuery);
