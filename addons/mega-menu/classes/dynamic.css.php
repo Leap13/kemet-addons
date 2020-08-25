@@ -61,7 +61,7 @@ function kemet_mega_menu_dynamic_css( $dynamic_css ) {
             ),
         );
 
-        $parse_css = kemet_parse_css( $boxshadow );
+        $parse_css .= kemet_parse_css( $boxshadow );
     }
 
     return $dynamic_css . $parse_css;
