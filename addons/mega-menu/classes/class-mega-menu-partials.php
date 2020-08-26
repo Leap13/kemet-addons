@@ -85,11 +85,6 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
 				$js_prefix  = '.js';
 				$dir        = 'unminified';
 			}
-
-			wp_enqueue_script( 'kemet-addons-mega-menu-js', KEMET_MEGA_MENU_URL . 'assets/js/' . $dir . '/admin-mega-menu' . $js_prefix, array(
-				'jquery',
-				'kemet-addons-select2',
-			), KEMET_ADDONS_VERSION, true );
 			
 			wp_localize_script(
                 'kemet-addons-mega-menu-js', 'kemetAddons', apply_filters(
@@ -177,7 +172,7 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
 
 						if ( isset( $nav_item->megamenu_column_template ) && '' != $nav_item->megamenu_column_template ) {
 
-							$template_id = explode("-", $nav_item->megamenu_column_template);
+							$template_id = $nav_item->megamenu_column_template;
 
 							if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 								$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();

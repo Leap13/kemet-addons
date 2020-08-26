@@ -298,11 +298,11 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
 
             if( '' != $this->megamenu && isset( $item->megamenu_column_template ) && !empty( $item->megamenu_column_template ) ){
 
-                $template_id = explode("-", $item->megamenu_column_template);
+                $template_id = $item->megamenu_column_template;
                 $content .= '<div class="kemet-mega-menu-content">';
                 if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
                     $custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
-                    $custom_layout_compat->render_content( $template_id[1] );
+                    $custom_layout_compat->render_content( $template_id );
                 }
                 $content .= ob_get_contents();
                 $content .= '</div>';

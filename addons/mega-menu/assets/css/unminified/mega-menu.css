@@ -15,6 +15,9 @@
 .menu-item-depth-1 .kfw-nav-menu-options {
   display: block;
 }
+.kfw-nav-menu-options .mega-menu-field-template select {
+  width: 100%;
+}
 .menu-item-depth-0 .kfw-nav-menu-options .enable-mega-menu,
 .menu-item-depth-0 .kfw-nav-menu-options .mega-menu-background,
 .menu-item-depth-0 .kfw-nav-menu-options .mega-menu-width,

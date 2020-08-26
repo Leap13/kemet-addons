@@ -49,6 +49,17 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 		 */
 		public function create_sections($prefix)
 		{
+			$templates_array = array(
+				'' => 'Select Template',
+			);
+
+			$custom_layouts 	= get_posts( array( 'post_type' => 'kemet_custom_layouts', 'numberposts' => -1, 'post_status' => 'publish' ) );
+
+			if ( ! empty ( $custom_layouts ) ) {
+				foreach ( $custom_layouts as $layout ) {
+					$templates_array[ $layout->ID ] = __( $layout->post_title, 'kemet-addons' );
+				}
+			}
 			KFW::createSection( $prefix, array(
 				'title'  => __('Mega Menu', 'kemet-addons'),
 				'fields' => array(
@@ -127,9 +138,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'type'        => 'select',
 						'class'       => 'mega-menu-field-template',
 						'title'       => 'Content Source',
-						'options'     => array(
-							'' => 'Select an Template',
-						),
+						'options'     => $templates_array
 					)
 				)
 			  ) 
