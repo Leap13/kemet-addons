@@ -62,6 +62,11 @@ body:not(.kmt-header-break-point) {
     &.header-main-layout-5,
     &.header-main-layout-6,
     &.header-main-layout-7 {
+      .main-header-bar {
+        > div {
+          overflow: hidden;
+        }
+      }
       #site-navigation {
         li {
           &:hover {
@@ -74,6 +79,7 @@ body:not(.kmt-header-break-point) {
         }
 
         .kemet-megamenu {
+          overflow: hidden;
           li {
             width: 100%;
           }

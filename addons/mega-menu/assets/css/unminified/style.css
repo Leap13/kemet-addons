@@ -55,10 +55,18 @@
   margin-top: -12px;
 }
 
+body:not(.kmt-header-break-point) #sitehead.header-main-layout-5 .main-header-bar > div, body:not(.kmt-header-break-point) #sitehead.header-main-layout-6 .main-header-bar > div, body:not(.kmt-header-break-point) #sitehead.header-main-layout-7 .main-header-bar > div {
+  overflow: hidden;
+}
+
 body:not(.kmt-header-break-point) #sitehead.header-main-layout-5 #site-navigation li:hover > .mega-menu-full-wrap, body:not(.kmt-header-break-point) #sitehead.header-main-layout-6 #site-navigation li:hover > .mega-menu-full-wrap, body:not(.kmt-header-break-point) #sitehead.header-main-layout-7 #site-navigation li:hover > .mega-menu-full-wrap {
   position: static;
   top: 0;
   left: 0;
+}
+
+body:not(.kmt-header-break-point) #sitehead.header-main-layout-5 #site-navigation .kemet-megamenu, body:not(.kmt-header-break-point) #sitehead.header-main-layout-6 #site-navigation .kemet-megamenu, body:not(.kmt-header-break-point) #sitehead.header-main-layout-7 #site-navigation .kemet-megamenu {
+  overflow: hidden;
 }
 
 body:not(.kmt-header-break-point) #sitehead.header-main-layout-5 #site-navigation .kemet-megamenu li, body:not(.kmt-header-break-point) #sitehead.header-main-layout-6 #site-navigation .kemet-megamenu li, body:not(.kmt-header-break-point) #sitehead.header-main-layout-7 #site-navigation .kemet-megamenu li {
