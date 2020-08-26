@@ -160,6 +160,7 @@ body:not(.kmt-header-break-point) {
   #site-navigation {
     .kemet-megamenu-item {
       .mega-menu-full-wrap {
+        z-index: 99999;
         position: absolute;
         left: -999em;
         background: #fff;

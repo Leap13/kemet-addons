@@ -5,14 +5,14 @@
       "body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item"
     ).hover(
       function () {
-        var headerContainer = $(".main-header-bar .kmt-container"),
+        var headerContainer = $("header .kmt-container"),
           headerWrap = headerContainer.parent(),
           containerWidth = $(this).parent(),
           Position = headerContainer.offset(),
           menuWidth = headerContainer.outerWidth();
 
         if ($(this).hasClass("mega-menu-full-width")) {
-          menuWrapWidth = headerWrap.width();
+          menuWrapWidth = headerWrap.outerWidth();
           wrapPosition = headerWrap.offset();
         } else if ($(this).hasClass("mega-menu-container-width")) {
           menuWidth = containerWidth.width();
@@ -20,21 +20,27 @@
         }
 
         var menuItemPosition = $(this).offset(),
-          positionLeft = menuItemPosition.left - Position.left;
-
+          positionLeft = menuItemPosition.left - Position.left,
+          positionLeft =
+            positionLeft < 0
+              ? Math.abs(positionLeft) + "px"
+              : "-" + positionLeft + "px";
         if (!$(this).hasClass("mega-menu-full-width")) {
           $(this)
             .find(".kemet-megamenu")
-            .css({ left: "-" + positionLeft + "px", width: menuWidth });
+            .css({ left: positionLeft, width: menuWidth });
         } else {
           $(this).find(".kemet-megamenu").css({ width: menuWidth });
 
           var megaMenuWrap = $(this).find(".mega-menu-full-wrap"),
             menuItemPosition = $(this).offset(),
-            positionLeft = menuItemPosition.left - wrapPosition.left;
-
+            positionLeft = menuItemPosition.left - wrapPosition.left,
+            positionLeft =
+              positionLeft < 0
+                ? Math.abs(positionLeft) + "px"
+                : "-" + positionLeft + "px";
           megaMenuWrap.css({
-            left: "-" + positionLeft + "px",
+            left: positionLeft,
             width: menuWrapWidth,
           });
         }

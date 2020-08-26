@@ -1,397 +1,367 @@
 module.exports = function (grunt) {
-    'use strict';
-    // Project configuration
+  "use strict";
+  // Project configuration
 
-    var pkgInfo = grunt.file.readJSON('package.json');
-    const sass = require('node-sass');
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+  var pkgInfo = grunt.file.readJSON("package.json");
+  const sass = require("node-sass");
+  grunt.initConfig({
+    pkg: grunt.file.readJSON("package.json"),
 
-        rtlcss: {
-            options: {
-                // rtlcss options
-                config: {
-                    preserveComments: true,
-                    greedy: true
-                },
-                // generate source maps
-                map: false
-            },
-            dist: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'addons/blog-layouts/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/blog-layouts/assets/css/unminified/',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/extra-headers/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/extra-headers/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/extra-widgets/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/extra-widgets/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/go-top/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/go-top/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/page-title/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/page-title/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/single-post/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/single-post/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/sticky-header/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/sticky-header/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/top-bar-section/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/top-bar-section/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/mega-menu/assets/css/unminified/',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/mega-menu/assets/css/unminified',
-                        ext: '-rtl.css'
-
-                    },
-                ]
-            }
+    rtlcss: {
+      options: {
+        // rtlcss options
+        config: {
+          preserveComments: true,
+          greedy: true,
         },
-        sass: {
-            options: {
-                //implementation: sass,
-                sourcemap: 'none',
-                outputStyle: 'expanded',
-                linefeed: 'lf',
-                implementation: sass,
-                sourceMap: false
-            },
-            dist: {
-                files: [
+        // generate source maps
+        map: false,
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: "addons/blog-layouts/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/blog-layouts/assets/css/unminified/",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/extra-headers/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/extra-headers/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/extra-widgets/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/extra-widgets/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/go-top/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/go-top/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/page-title/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/page-title/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/single-post/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/single-post/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/sticky-header/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/sticky-header/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/top-bar-section/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/top-bar-section/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/mega-menu/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/mega-menu/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+        ],
+      },
+    },
+    sass: {
+      options: {
+        //implementation: sass,
+        sourcemap: "none",
+        outputStyle: "expanded",
+        linefeed: "lf",
+        implementation: sass,
+        sourceMap: false,
+      },
+      dist: {
+        files: [
+          // {
+          // 'style.css': 'sass/style.scss'
+          // },
 
-                    // {
-                    // 'style.css': 'sass/style.scss'
-                    // },
+          /* Editor Style */
+          {
+            "addons/blog-layouts/assets/css/unminified/blog-layouts.css":
+              "sass/blog-layouts.scss",
+            "addons/extra-headers/assets/css/unminified/extra-header-layouts.css":
+              "sass/extraheaders.scss",
+            "addons/extra-widgets/assets/css/unminified/style.css":
+              "sass/extra-widgets.scss",
+            "addons/top-bar-section/assets/css/unminified/style.css":
+              "sass/topbar.scss",
+            "addons/go-top/assets/css/unminified/style.css": "sass/go-top.scss",
+            "addons/page-title/assets/css/unminified/style.css":
+              "sass/page-title.scss",
+            "addons/sticky-header/assets/css/unminified/style.css":
+              "sass/sticky-header.scss",
+            "addons/single-post/assets/css/unminified/style.css":
+              "sass/single-post.scss",
+            "addons/custom-layout/assets/css/unminified/style.css":
+              "sass/custom-layout.scss",
+            "addons/mega-menu/assets/css/unminified/style.css":
+              "sass/mega-menu.scss",
+          },
 
-                    /* Editor Style */
-                    {
-                        'addons/blog-layouts/assets/css/unminified/blog-layouts.css': 'sass/blog-layouts.scss',
-                        'addons/extra-headers/assets/css/unminified/extra-header-layouts.css': 'sass/extraheaders.scss',
-                        'addons/extra-widgets/assets/css/unminified/style.css': 'sass/extra-widgets.scss',
-                        'addons/top-bar-section/assets/css/unminified/style.css': 'sass/topbar.scss',
-                        'addons/go-top/assets/css/unminified/style.css': 'sass/go-top.scss',
-                        'addons/page-title/assets/css/unminified/style.css': 'sass/page-title.scss',
-                        'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
-                        'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
-                        'addons/custom-layout/assets/css/unminified/style.css': 'sass/custom-layout.scss',
-                        'addons/mega-menu/assets/css/unminified/style.css': 'sass/mega-menu.scss',
-                    },
+          {
+            expand: true,
+            cwd: "styles",
+            src: ["**.scss"],
+            dest: "styles",
+            ext: ".css",
+          },
+        ],
+      },
+    },
+    cssmin: {
+      css: {
+        files: [
+          {
+            src: "addons/blog-layouts/assets/css/unminified/blog-layouts.css",
+            dest:
+              "addons/blog-layouts/assets/css/minified/blog-layouts.min.css",
+          },
+          {
+            src:
+              "addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css",
+            dest:
+              "addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css",
+          },
+          {
+            src:
+              "addons/extra-headers/assets/css/unminified/extra-header-layouts.css",
+            dest:
+              "addons/extra-headers/assets/css/minified/extra-header-layouts.min.css",
+          },
+          {
+            src:
+              "addons/extra-headers/assets/css/unminified/extra-header-layouts-rtl.css",
+            dest:
+              "addons/extra-headers/assets/css/minified/extra-header-layouts-rtl.min.css",
+          },
 
-                    {
+          {
+            src: "addons/extra-widgets/assets/css/unminified/style.css",
+            dest: "addons/extra-widgets/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/extra-widgets/assets/css/unminified/style-rtl.css",
+            dest: "addons/extra-widgets/assets/css/minified/style-rtl.min.css",
+          },
 
-                        expand: true,
-                        cwd: 'styles',
-                        src: ['**.scss'],
-                        dest: 'styles',
-                        ext: '.css'
-                    },
-                ]
-            }
+          {
+            src: "addons/top-bar-section/assets/css/unminified/style.css",
+            dest: "addons/top-bar-section/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/top-bar-section/assets/css/unminified/style-rtl.css",
+            dest:
+              "addons/top-bar-section/assets/css/minified/style-rtl.min.css",
+          },
+
+          {
+            src: "addons/page-title/assets/css/unminified/style.css",
+            dest: "addons/page-title/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/page-title/assets/css/unminified/style-rtl.css",
+            dest: "addons/page-title/assets/css/minified/style-rtl.min.css",
+          },
+
+          {
+            src: "addons/go-top/assets/css/unminified/style.css",
+            dest: "addons/go-top/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/go-top/assets/css/unminified/style-rtl.css",
+            dest: "addons/go-top/assets/css/minified/style.min-rtl.css",
+          },
+
+          {
+            src: "addons/sticky-header/assets/css/unminified/style.css",
+            dest: "addons/sticky-header/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/sticky-header/assets/css/unminified/style-rtl.css",
+            dest: "addons/sticky-header/assets/css/minified/style-rtl.min.css",
+          },
+
+          {
+            src: "addons/single-post/assets/css/unminified/style.css",
+            dest: "addons/single-post/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/single-post/assets/css/unminified/style-rtl.css",
+            dest: "addons/single-post/assets/css/minified/style-rtl.min.css",
+          },
+          {
+            src: "addons/custom-layout/assets/css/unminified/style.css",
+            dest: "addons/custom-layout/assets/css/minified/style.min.css",
+          },
+          {
+            src: "addons/mega-menu/assets/css/unminified/style.css",
+            dest: "addons/mega-menu/assets/css/minified/style.min.css",
+          },
+          {
+            src: "inc/k-framework/assets/css/kfw.css",
+            dest: "inc/k-framework/assets/css/kfw.min.css",
+          },
+        ],
+      },
+    },
+    uglify: {
+      dist: {
+        files: {
+          "addons/blog-layouts/assets/js/minified/blog-layouts.min.js":
+            "addons/blog-layouts/assets/js/unminified/blog-layouts.js",
+          "addons/blog-layouts/assets/js/minified/customizer-preview.min.js":
+            "addons/blog-layouts/assets/js/unminified/customizer-preview.js",
+          "addons/extra-headers/assets/js/minified/extra-header-layouts.min.js":
+            "addons/extra-headers/assets/js/unminified/extra-header-layouts.js",
+          "addons/extra-headers/assets/js/minified/customizer-preview.min.js":
+            "addons/extra-headers/assets/js/unminified/customizer-preview.js",
+          "addons/extra-widgets/assets/js/minified/customizer-preview.min.js":
+            "addons/extra-widgets/assets/js/unminified/customizer-preview.js",
+          "addons/top-bar-section/assets/js/minified/customizer-preview.min.js":
+            "addons/top-bar-section/assets/js/unminified/customizer-preview.js",
+          "addons/page-title/assets/js/minified/customizer-preview.min.js":
+            "addons/page-title/assets/js/unminified/customizer-preview.js",
+          "addons/go-top/assets/js/minified/customizer-preview.min.js":
+            "addons/go-top/assets/js/unminified/customizer-preview.js",
+          "addons/sticky-header/assets/js/minified/customizer-preview.min.js":
+            "addons/sticky-header/assets/js/unminified/customizer-preview.js",
+          "addons/sticky-header/assets/js/minified/sticky-header.min.js":
+            "addons/sticky-header/assets/js/unminified/sticky-header.js",
+          "addons/single-post/assets/js/minified/customizer-preview.min.js":
+            "addons/single-post/assets/js/unminified/customizer-preview.js",
+          "addons/extra-widgets/assets/js/minified/mailchimp.min.js":
+            "addons/extra-widgets/assets/js/unminified/mailchimp.js",
+          "addons/custom-layout/assets/js/minified/custom-layout.min.js":
+            "addons/custom-layout/assets/js/unminified/custom-layout.js",
+          "addons/mega-menu/assets/js/minified/mega-menu.min.js":
+            "addons/mega-menu/assets/js/unminified/mega-menu.js",
+          "inc/k-framework/assets/js/kfw-plugins-field.min.js":
+            "inc/k-framework/assets/js/kfw-plugins-field.js",
+          "inc/k-framework/assets/js/kfw.min.js":
+            "inc/k-framework/assets/js/kfw.js",
         },
-        cssmin: {
-            css: {
-                files: [
-                    {
-                        src: 'addons/blog-layouts/assets/css/unminified/blog-layouts.css',
-                        dest: 'addons/blog-layouts/assets/css/minified/blog-layouts.min.css',
-                    },
-                    {
-                        src: 'addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css',
-                        dest: 'addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css',
-                    },
-                    {
-                        src: 'addons/extra-headers/assets/css/unminified/extra-header-layouts.css',
-                        dest: 'addons/extra-headers/assets/css/minified/extra-header-layouts.min.css',
-                    },
-                    {
-                        src: 'addons/extra-headers/assets/css/unminified/extra-header-layouts-rtl.css',
-                        dest: 'addons/extra-headers/assets/css/minified/extra-header-layouts-rtl.min.css',
-                    },
-
-                    {
-                        src: 'addons/extra-widgets/assets/css/unminified/style.css',
-                        dest: 'addons/extra-widgets/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/extra-widgets/assets/css/unminified/style-rtl.css',
-                        dest: 'addons/extra-widgets/assets/css/minified/style-rtl.min.css',
-                    },
-
-                    {
-                        src: 'addons/top-bar-section/assets/css/unminified/style.css',
-                        dest: 'addons/top-bar-section/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/top-bar-section/assets/css/unminified/style-rtl.css',
-                        dest: 'addons/top-bar-section/assets/css/minified/style-rtl.min.css',
-                    },
-
-                    {
-                        src: 'addons/page-title/assets/css/unminified/style.css',
-                        dest: 'addons/page-title/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/page-title/assets/css/unminified/style-rtl.css',
-                        dest: 'addons/page-title/assets/css/minified/style-rtl.min.css',
-                    },
-
-                    {
-                        src: 'addons/go-top/assets/css/unminified/style.css',
-                        dest: 'addons/go-top/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/go-top/assets/css/unminified/style-rtl.css',
-                        dest: 'addons/go-top/assets/css/minified/style.min-rtl.css',
-                    },
-
-                    {
-                        src: 'addons/sticky-header/assets/css/unminified/style.css',
-                        dest: 'addons/sticky-header/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/sticky-header/assets/css/unminified/style-rtl.css',
-                        dest: 'addons/sticky-header/assets/css/minified/style-rtl.min.css',
-                    },
-
-                    {
-                        src: 'addons/single-post/assets/css/unminified/style.css',
-                        dest: 'addons/single-post/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/single-post/assets/css/unminified/style-rtl.css',
-                        dest: 'addons/single-post/assets/css/minified/style-rtl.min.css',
-                    },
-                    {
-                        src: 'addons/custom-layout/assets/css/unminified/style.css',
-                        dest: 'addons/custom-layout/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'addons/mega-menu/assets/css/unminified/style.css',
-                        dest: 'addons/mega-menu/assets/css/minified/style.min.css',
-                    },
-                    {
-                        src: 'inc/k-framework/assets/css/kfw.css',
-                        dest: 'inc/k-framework/assets/css/kfw.min.css',
-                    },
-                ]
-            }
+      },
+    },
+    makepot: {
+      target: {
+        options: {
+          domainPath: "/",
+          potFilename: "languages/kemet-addons.pot",
+          potHeaders: {
+            poedit: true,
+            "x-poedit-keywordslist": true,
+          },
+          type: "wp-theme",
+          updateTimestamp: true,
         },
-        uglify: {
-            dist: {
-                files: {
-                    'addons/blog-layouts/assets/js/minified/blog-layouts.min.js': 'addons/blog-layouts/assets/js/unminified/blog-layouts.js',
-                    'addons/blog-layouts/assets/js/minified/customizer-preview.min.js': 'addons/blog-layouts/assets/js/unminified/customizer-preview.js',
-                    'addons/extra-headers/assets/js/minified/extra-header-layouts.min.js': 'addons/extra-headers/assets/js/unminified/extra-header-layouts.js',
-                    'addons/extra-headers/assets/js/minified/customizer-preview.min.js': 'addons/extra-headers/assets/js/unminified/customizer-preview.js',
-                    'addons/extra-widgets/assets/js/minified/customizer-preview.min.js': 'addons/extra-widgets/assets/js/unminified/customizer-preview.js',
-                    'addons/top-bar-section/assets/js/minified/customizer-preview.min.js': 'addons/top-bar-section/assets/js/unminified/customizer-preview.js',
-                    'addons/page-title/assets/js/minified/customizer-preview.min.js': 'addons/page-title/assets/js/unminified/customizer-preview.js',
-                    'addons/go-top/assets/js/minified/customizer-preview.min.js': 'addons/go-top/assets/js/unminified/customizer-preview.js',
-                    'addons/sticky-header/assets/js/minified/customizer-preview.min.js': 'addons/sticky-header/assets/js/unminified/customizer-preview.js',
-                    'addons/sticky-header/assets/js/minified/sticky-header.min.js': 'addons/sticky-header/assets/js/unminified/sticky-header.js',
-                    'addons/single-post/assets/js/minified/customizer-preview.min.js': 'addons/single-post/assets/js/unminified/customizer-preview.js',
-                    'addons/extra-widgets/assets/js/minified/mailchimp.min.js': 'addons/extra-widgets/assets/js/unminified/mailchimp.js',
-                    'addons/custom-layout/assets/js/minified/custom-layout.min.js': 'addons/custom-layout/assets/js/unminified/custom-layout.js',
-                    'addons/mega-menu/assets/js/minified/mega-menu.min.js': 'addons/mega-menu/assets/js/unminified/mega-menu.js',
-                    'addons/mega-menu/assets/js/minified/admin-mega-menu.min.js': 'addons/mega-menu/assets/js/unminified/admin-mega-menu.js',
-                    'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
-                    'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
-
-                }
-            }
+      },
+    },
+    rtlcss: {
+      options: {
+        // rtlcss options
+        config: {
+          preserveComments: true,
+          greedy: true,
         },
-        makepot: {
-            target: {
-                options: {
-                    domainPath: '/',
-                    potFilename: 'languages/kemet-addons.pot',
-                    potHeaders: {
-                        poedit: true,
-                        'x-poedit-keywordslist': true
-                    },
-                    type: 'wp-theme',
-                    updateTimestamp: true
-                }
-            }
-        },
-        rtlcss: {
-            options: {
-                // rtlcss options
-                config: {
-                    preserveComments: true,
-                    greedy: true
-                },
-                // generate source maps
-                map: false
-            },
-            dist: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'addons/extra-headers/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/extra-headers/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/extra-widgets/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/extra-widgets/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/top-bar-section/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/top-bar-section/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/page-title/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/page-title/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/go-top/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/go-top/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/sticky-header/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/sticky-header/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'addons/single-post/assets/css/unminified',
-                        src: [
-                            '*.css',
-                            '!*-rtl.css',
-                        ],
-                        dest: 'addons/single-post/assets/css/unminified',
-                        ext: '-rtl.css'
-                    },
-                ]
-            }
-        },
-    });
+        // generate source maps
+        map: false,
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: "addons/extra-headers/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/extra-headers/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/extra-widgets/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/extra-widgets/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/top-bar-section/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/top-bar-section/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/page-title/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/page-title/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/go-top/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/go-top/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/sticky-header/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/sticky-header/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/single-post/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/single-post/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+        ],
+      },
+    },
+  });
 
-    // Load grunt tasks
-    grunt.loadNpmTasks('grunt-rtlcss');
-    grunt.loadNpmTasks('grunt-sass');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    // grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-wp-i18n');
+  // Load grunt tasks
+  grunt.loadNpmTasks("grunt-rtlcss");
+  grunt.loadNpmTasks("grunt-sass");
+  grunt.loadNpmTasks("grunt-contrib-cssmin");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  // grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks("grunt-wp-i18n");
 
-    // SASS compile
-    grunt.registerTask('default', ['sass', 'cssmin:css']);
-    //grunt.registerTask('minify', ['cssmin']); 
-    grunt.registerTask('default', ['uglify']);
-    // min all
-    grunt.registerTask('minify', ['cssmin:css']);
+  // SASS compile
+  grunt.registerTask("default", ["sass", "cssmin:css"]);
+  //grunt.registerTask('minify', ['cssmin']);
+  grunt.registerTask("default", ["uglify"]);
+  // min all
+  grunt.registerTask("minify", ["cssmin:css"]);
 
-    // rtlcss, you will still need to install ruby and sass on your system manually to run this
-    grunt.registerTask('rtl', ['rtlcss']);
-
+  // rtlcss, you will still need to install ruby and sass on your system manually to run this
+  grunt.registerTask("rtl", ["rtlcss"]);
 };
-
