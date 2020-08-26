@@ -109,6 +109,13 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 			KFW::createSection( $prefix, array(
 				'fields' => array(
 					array(
+						'id'      => 'disable-item-label',
+						'class'   => 'disable-item-label',
+						'type'    => 'checkbox',
+						'label'   => 'Hide Menu Item Label',
+						'default' => false
+					),
+					array(
 						'id'      => 'column-heading',
 						'class'   => 'column-heading',
 						'type'    => 'checkbox',

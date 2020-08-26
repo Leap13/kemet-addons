@@ -53,11 +53,13 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
         }
 		
 		function update_meta_values_array( $item ) {
-			
-			$template = get_post_meta( $item->ID, 'column-template', true );
+
+			if(isset($item->ID)){
+				$template = get_post_meta( $item->ID, 'column-template', true );
 				
-			if( ! empty( $template ) ) {
-				self::$meta_values[$item->ID] = $template;
+				if( ! empty( $template ) ) {
+					self::$meta_values[$item->ID] = $template;
+				}
 			}
 			
 			return $item;

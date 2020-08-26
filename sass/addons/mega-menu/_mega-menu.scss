@@ -7,10 +7,21 @@
       }
     }
     .kemet-mega-menu-content {
-      padding: 0 1em;
+      padding: 0.9em 1em;
     }
   }
   li.menu-item {
+    &.kemet-megamenu-item {
+      ul.kemet-megamenu {
+        > li {
+          &.disable-item-label {
+            > a {
+              display: none;
+            }
+          }
+        }
+      }
+    }
     &.has-description.menu-item-has-children {
       > a {
         display: flex;

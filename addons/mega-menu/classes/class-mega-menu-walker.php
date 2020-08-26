@@ -135,7 +135,8 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
             }
             $this->column_heading 	= get_post_meta( $item->ID, 'column-heading', true );
             $this->megamenu_disable_link  = get_post_meta( $item->ID, 'disable-link', true );
-            
+            $this->megamenu_disable_item_label  = get_post_meta( $item->ID, 'disable-item-label', true );
+
             $classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 
             if ( 0 === $depth && '' != $this->megamenu ) {
@@ -149,6 +150,9 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
             
             if( $this->column_heading ){
                 $classes[] = 'heading-item';
+            }
+            if( $this->megamenu_disable_item_label ){
+                $classes[] = 'disable-item-label';
             }
             $classes[] = 'menu-item-' . $item->ID;
 

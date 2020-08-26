@@ -7,7 +7,11 @@
 }
 
 .main-navigation .kemet-megamenu .kemet-mega-menu-content {
-  padding: 0 1em;
+  padding: 0.9em 1em;
+}
+
+.main-navigation li.menu-item.kemet-megamenu-item ul.kemet-megamenu > li.disable-item-label > a {
+  display: none;
 }
 
 .main-navigation li.menu-item.has-description.menu-item-has-children > a {
