@@ -13,7 +13,7 @@
       $.post(kemetAddons.ajax_url, {
         post_id: postID,
         action: "kemet_get_post_title",
-        nonce: kemetAddons.ajax_title_nonce
+        nonce: kemetAddons.ajax_title_nonce,
       }).done(function (data) {
         templateSelect.append(new Option(data, postID, false, true));
       });
@@ -25,6 +25,9 @@
    * @param {string} selector
    */
   var convertToSelect2 = function (selector) {
+    if ($(selector).hasClass("select2-hidden-accessible")) {
+      return;
+    }
     if ($(selector).val() == "") {
       $(selector).html("");
     }
@@ -42,24 +45,31 @@
             query: params.term, // search term
             page: params.page,
             action: "kemet_ajax_get_posts_list",
-            nonce: kemetAddons.ajax_nonce
+            nonce: kemetAddons.ajax_nonce,
           };
         },
         processResults: function (data) {
           return {
-            results: data
+            results: data,
           };
         },
-        cache: true
+        cache: true,
       },
       minimumInputLength: 2,
       language: kemetAddons.lang,
-      width: "100%"
+      width: "100%",
     });
   };
 
   var specificSelect = $(".mega-menu-field-template").find("select");
   specificSelect.each(function (index, selector) {
     convertToSelect2(selector);
+  });
+
+  $(document).ajaxComplete(function () {
+    var specificSelect = $(".mega-menu-field-template").find("select");
+    specificSelect.each(function (index, selector) {
+      convertToSelect2(selector);
+    });
   });
 })(jQuery);
