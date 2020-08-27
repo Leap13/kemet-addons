@@ -78,7 +78,7 @@ KFW::createSection( $prefix_page_opts, array(
       array(
         'id'     => 'display-on-group',
         'type'   => 'fieldset',
-        'title'  => 'Display On',
+        'title'  => __('Display On', 'kemet-addons'),
         'fields' => array(
           array(
             'id'    => 'display-on-rule',
@@ -94,7 +94,7 @@ KFW::createSection( $prefix_page_opts, array(
             'class'       => 'kmt-display-on-specifics-select',
             'default'     => '',
             'multiple'    => true,
-            'title'  => 'Specific Locations',
+            'title'  => __('Specific Locations', 'kemet-addons'),
             'options'     => array(
               '' => __('Select an option', 'kemet-addons'),
             ),
@@ -104,7 +104,7 @@ KFW::createSection( $prefix_page_opts, array(
       array(
         'id'     => 'hide-on-group',
         'type'   => 'fieldset',
-        'title'  => 'Hide On',
+        'title'  => __('Hide On',
         'fields' => array(
           array(
             'id'    => 'hide-on-rule',
@@ -118,7 +118,7 @@ KFW::createSection( $prefix_page_opts, array(
             'id'          => 'hide-on-specifics-location',
             'type'        => 'select',
             'class'       => 'kmt-hide-on-specifics-select',
-            'title'       => 'Specific Locations',
+            'title'       => __('Specific Locations', 'kemet-addons'),
             'multiple'    => true,
             'options'     => array(
               '' => __('Select an option', 'kemet-addons'),
@@ -130,7 +130,7 @@ KFW::createSection( $prefix_page_opts, array(
         'id'    => 'user-rules',
         'class'    => 'kmt-user-rules',
         'type'  => 'select',
-        'title'  => 'User Rules',
+        'title'  => __('User Rules', 'kemet-addons'),
         'multiple'    => true,
         'placeholder' => __('Select an option', 'kemet-addons'),
         'options'     => $user_roles_array,
