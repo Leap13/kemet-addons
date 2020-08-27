@@ -26,7 +26,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 			add_action( 'init', array( $this, 'custom_post_type' ) );
 			add_filter( 'single_template', array( $this, 'get_custom_layout_template' ) );
 			if ( is_admin() ) {
-				add_action( 'admin_menu', array( $this, 'add_custom_layout_item' ), 1 );
+				add_action( 'admin_menu', array( $this, 'add_custom_layout_item' ), 100 );
 			}
 			add_filter( 'fl_builder_post_types', array( $this, 'add_to_beaver_builder_post_types' ), 10, 1 );
 			add_action( 'do_meta_boxes', array( $this, 'remove_kemet_page_options' ) );

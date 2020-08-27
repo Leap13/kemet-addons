@@ -93,7 +93,7 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => __('Custom Layout', 'kemet-addons'),
         'subtitle' => __('Custom Layout', 'kemet-ddons'),
-        'default' => 'false',
+        'default' => false,
       ),
     ),
   ),
