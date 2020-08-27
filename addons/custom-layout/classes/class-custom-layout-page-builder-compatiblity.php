@@ -4,9 +4,9 @@
  * 
  * @package Kemet Addons
  */
-if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
+if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 
-    class Custom_Layout_Page_Builder_Compatiblity {
+    class Kemet_Custom_Layout_Page_Builder_Compatiblity {
 
         /**
          * Member Variable
@@ -31,8 +31,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render content for post.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
         function render_content( $post_id ){
             global $wp_post_types;
@@ -78,8 +76,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render content for post.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
         function enqueue_scripts( $post_id ){
 
@@ -123,8 +119,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render elementor content for post.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
         function render_elementor_content( $post_id ){
 
@@ -137,8 +131,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Load elementor styles and scripts.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
 		public function elementor_enqueue_scripts( $post_id ) {
 
@@ -157,8 +149,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render beaver builder content for post.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
         function render_beaver_builder_content( $post_id ){
 
@@ -173,8 +163,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Load beaver builder styles and scripts.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
 		public function render_beaver_builder_enqueue_scripts( $post_id ) {
 
@@ -188,9 +176,7 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render Divi content for post.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
-		 */
+x		 */
 		public function render_divi_content( $post_id ) {
 
 			$get_post = get_post( $post_id, OBJECT );
@@ -210,8 +196,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 
 		/**
 		 * Add Divi container wrapper to post content.
-		 *
-		 * @since 1.1.0
 		 *
 		 * @param string $content Post content.
 		 * @return string         Post content.
@@ -242,7 +226,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		/**
 		 * Add Divi main wrapper to post content.
 		 *
-		 * @since 1.1.0
 		 *
 		 * @param string $content Post content.
 		 * @return string         Post content.
@@ -264,8 +247,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render brizy content for post.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
 		public function render_brizy_editor_content( $post_id ) {
 
@@ -292,8 +273,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Load brizy styles and scripts.
 		 *
 		 * @param int $post_id Post id.
-		 *
-		 * @since 1.1.0
 		 */
 		public function brizy_enqueue_scripts( $post_id ) {
 
@@ -342,8 +321,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
          * Render Gutenberg Blocks content for post.
          *
          * @param int $post_id Post id.
-         *
-         * @since 1.1.0
          */
         public function render_gutenberg_content( $post_id ) {
 
@@ -374,8 +351,6 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
          * Load Gutenberg Blocks styles & scripts.
          *
          * @param int $post_id Post id.
-         *
-         * @since 1.1.0
          */
         public function gutenberg_enqueue_scripts( $post_id ) {
 
@@ -411,5 +386,5 @@ if (! class_exists('Custom_Layout_Page_Builder_Compatiblity')) {
     /**
 	 * Initialize class object with 'get_instance()' method
 	 */
-	Custom_Layout_Page_Builder_Compatiblity::get_instance();
+	Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 }

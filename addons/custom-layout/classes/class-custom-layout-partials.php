@@ -68,7 +68,12 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				the_content();
 			}
         }
-        
+		
+		/**
+		 * Get Template Content.
+		 *
+		 * @return void
+		 */
         public function get_markup() {
             
             $all_posts = self::kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE );
@@ -116,8 +121,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			if ( $enable_wrapper ) {
 				echo '<div id="kemet-addons-template-' . esc_attr( $post_id ) . '" style="'.$style.'">';
 			}
-			if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
-				$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
+			if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
+				$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 				
 				$custom_layout_compat->render_content( $post_id );
 			}
@@ -134,8 +139,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			$all_posts = self::kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE );
 
 			foreach ( $all_posts as $post_id => $post_data ) {
-				if ( class_exists( 'Custom_Layout_Page_Builder_Compatiblity' ) ) {
-					$custom_layout_compat = Custom_Layout_Page_Builder_Compatiblity::get_instance();
+				if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
+					$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 					$custom_layout_compat->enqueue_scripts( $post_id );
 				}
 			}
@@ -143,8 +148,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
         /**
 		 *
-		 * @param  html $content the_content markup.
-		 * @return html
+		 * @param  content $content the_content markup.
+		 * @return content
 		 */
 		public function custom_layout_content( $content ) {
 			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
@@ -317,8 +322,12 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			);
 
 			return apply_filters( 'kemet_display_on_rule', $display_options );
-        }
+		}
 		
+		/**
+		 * Get All User Rules
+		 * @return object options.
+		 */
 		public static function get_user_rules_options() {
 			global $wp_roles;
 			
@@ -385,7 +394,11 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 			return $post_output;
         }
-        
+		
+		/**
+		 * Get All Hooks
+		 * @return object  Hooks.
+		 */
         public static function get_hooks_options(){
 
             $hooks = array(
@@ -596,7 +609,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
         /**
 		 * Get Posts
 		 *
-		 * @since  1.1.0
 		 * @param  string $post_type Post Type.
 		 * @param  array  $options meta option name.
 		 *
@@ -730,7 +742,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
         }
         
         /**
-		 * rmove hidden posts from array.
+		 * remove hidden posts from array.
 		 *
 		 * @param  string $post_type Post Type.
 		 * @param  array  $option meta option name.
@@ -1212,7 +1224,9 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			}
 			return $search;
 		}
-
+		/**
+		 *ٌ Search For Post Title 
+		 */
 		function ajax_get_post_title(){
 
 			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
@@ -1225,6 +1239,9 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			wp_die();
 		}
 
+		/**
+		 *ٌ Custom Layouts Admin Scripts 
+		 */
 		function admin_script(){
 				wp_enqueue_script( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/unminified/select2.js', array( 'jquery' ), KEMET_ADDONS_VERSION, true );
 

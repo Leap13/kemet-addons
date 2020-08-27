@@ -8,8 +8,6 @@
 if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
     /**
 	 * Custom_Layout Settings
-	 *
-	 * @since 1.1.0
 	 */
     class Kemet_Custom_Layout_Settings {
         
@@ -85,8 +83,6 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 
 		/**
 		 * Add sub menu page
-		 *
-		 * @since 1.1.0
 		 */
 		public function add_custom_layout_item() {
 	
@@ -103,7 +99,6 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 		/**
 		 * Register post type
 		 *
-		 * @since 1.1.0
 		 */
 		public static function custom_post_type() {
 			
