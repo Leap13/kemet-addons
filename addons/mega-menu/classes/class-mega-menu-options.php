@@ -88,6 +88,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'class'   => 'enable-mega-menu',
 						'type'  => 'number',
 						'title' => 'Mega Menu Columns',
+						'default' => 2
 					),
 					array(
 						'id'    => 'mega-menu-background',

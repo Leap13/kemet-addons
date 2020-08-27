@@ -180,6 +180,7 @@ body:not(.kmt-header-break-point) {
         }
       }
       .kemet-megamenu {
+        overflow: hidden;
         ul {
           background: none;
         }

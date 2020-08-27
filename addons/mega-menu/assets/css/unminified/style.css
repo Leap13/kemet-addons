@@ -147,6 +147,10 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-me
   margin: 0 auto;
 }
 
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu {
+  overflow: hidden;
+}
+
 body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu ul {
   background: none;
 }
