@@ -104,7 +104,7 @@ KFW::createSection( $prefix_page_opts, array(
       array(
         'id'     => 'hide-on-group',
         'type'   => 'fieldset',
-        'title'  => __('Hide On',
+        'title'  => __('Hide On', 'kemet-addons'),
         'fields' => array(
           array(
             'id'    => 'hide-on-rule',
