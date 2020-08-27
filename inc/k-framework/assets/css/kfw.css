@@ -4182,3 +4182,8 @@
 .hidden-field-input .kfw-fieldset > div {
   display: none;
 }
+/* Kemet Icon */
+#adminmenu #toplevel_page_kmt-framework .dashicons-admin-generic:before {
+  font-family: "KMTAncientOwl";
+  content: "\e900";
+}
