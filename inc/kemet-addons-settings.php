@@ -89,8 +89,9 @@ if (class_exists('KFW')) {
         'type' => 'switcher',
         'title' => __('Woocommerce', 'kemet-addons'),
         'subtitle' => __('Enable/Disable the extra options that will allow you to customize woocommerce listing.', 'kemet-addons'),
-        'default' => true,
-      ),array(
+        'default' => false,
+      ),
+      array(
         'id' => 'reset-import-export',
         'type' => 'switcher',
         'title' => __('Customizer Reset, Import, and Export Buttons', 'kemet-addons'),
