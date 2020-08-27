@@ -79,18 +79,22 @@ if (class_exists('KFW')) {
       'default' => false,
     ),
   );
-  if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ){
-    $woo_option = array(
-      'id' => 'woocommerce',
-      'type' => 'switcher',
-      'title' => __('Woocommerce', 'kemet-addons'),
-      'subtitle' => __('Enable/Disable the extra options that will allow you to customize woocommerce listing.', 'kemet-addons'),
-      'default' => true,
-    );
-    
-    array_push( $options, $woo_option );
 
+  $woo_option = array(
+    'id' => 'woocommerce',
+    'type' => 'switcher',
+    'title' => __('Woocommerce', 'kemet-addons'),
+    'subtitle' => __('Enable/Disable the extra options that will allow you to customize woocommerce listing.', 'kemet-addons'),
+    'default' => false,
+  );
+  if( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ){
+    
+    $woo_option += ['class' => 'hidden-field-input'];
+    $woo_option += ['desc' => __('This Addon Need To Activate Woocommerce Plugin.', 'kemet-addons')];
   }
+  
+  array_push( $options, $woo_option );
+  
     $reset_import = array(
       'id' => 'reset-import-export',
       'type' => 'switcher',

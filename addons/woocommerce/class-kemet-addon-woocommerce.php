@@ -39,12 +39,15 @@ if ( ! class_exists( 'Kemet_Addons_Woocommerce' ) ) {
 		 */
 		
 		public function __construct() {
-            
-            require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-woocommerce-partials.php';
-			require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-woocommerce-settings.php';
-            
-            if ( ! is_admin() ) {
-				require_once KEMET_WOOCOMMERCE_DIR . 'classes/dynamic.css.php';
+			
+			if ( class_exists( 'WooCommerce' ) ) {
+				
+				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-woocommerce-partials.php';
+				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-woocommerce-settings.php';
+				
+				if ( ! is_admin() ) {
+					require_once KEMET_WOOCOMMERCE_DIR . 'classes/dynamic.css.php';
+				}
 			}
 		}
 
