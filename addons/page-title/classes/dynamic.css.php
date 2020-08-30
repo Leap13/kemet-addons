@@ -47,7 +47,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             
             $css_content = array(
                '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
-               '.kmt-page-title-addon-content' => array(
+               '.kmt-page-title-addon-content, .header-transparent .kmt-page-title-addon-content,.merged-header-transparent .kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'desktop' ),
                     'padding-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'desktop' ),
@@ -110,7 +110,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
            $parse_css = kemet_parse_css( $css_content );
             
             $css_tablet = array(
-                '.kmt-page-title-addon-content' => array(
+                '.kmt-page-title-addon-content, .header-transparent .kmt-page-title-addon-content,.merged-header-transparent .kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'tablet' ),
                     'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'tablet' ),
                     'padding-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'tablet' ),
@@ -142,7 +142,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
             $css_mobile = array(
-                '.kmt-page-title-addon-content' => array(
+                '.kmt-page-title-addon-content, .header-transparent .kmt-page-title-addon-content,.merged-header-transparent .kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'mobile' ),
                     'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'mobile' ),
                     'padding-bottom' => kemet_responsive_spacing( $page_title_space, 'bottom', 'mobile' ),

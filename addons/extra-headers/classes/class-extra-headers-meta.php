@@ -39,7 +39,8 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 
 			if ( is_singular() ) {
 				add_filter( 'kemet_primary_header_layout', array( $this, 'primary_header' ) );
-				add_filter( 'kemet_header_class', array( $this, 'add_header_class' ) );
+                add_filter( 'kemet_header_class', array( $this, 'add_header_class' ) );
+                add_filter( 'kemet_trnsparent_header', array( $this, 'transparent_header' ) );
 			}
            
         }
@@ -97,7 +98,8 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 
 			if ( ('enable' === $trans_meta_option && $enable_trans_header) || 'enable' === $trans_meta_option  ) {
 				
-				$classes[] = 'kmt-header-transparent';
+                $classes[] = 'kmt-header-transparent';
+
 			} elseif ( 'disable' === $trans_meta_option && $enable_trans_header ) {
 				if (in_array('kmt-header-transparent', $classes)) {
                     unset( $classes[array_search('kmt-header-transparent', $classes)] );
@@ -119,7 +121,17 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 			$display_header = ( isset( $meta['kemet-main-header-display'] ) && $meta['kemet-main-header-display'] != 'default') ? $meta['kemet-main-header-display'] : $defaults;
 			
 				return $display_header;
-		}
+        }
+        /**
+         * Transparent Header
+         */
+        function transparent_header($default){
+
+            $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
+            $trans_meta_option = (isset( $meta['kemet-meta-enable-header-transparent'] ) ) ? $meta['kemet-meta-enable-header-transparent'] : $default;
+            
+            return $trans_meta_option;
+        }
     }
 }
 

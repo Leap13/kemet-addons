@@ -187,6 +187,16 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 					}
 				}
 			}
+
+			$header_transparent       = apply_filters('kemet_trnsparent_header' , kemet_get_option( 'enable-transparent' ));
+			$top_bar_enable = apply_filters( 'kemet_top_bar_enabled', true );
+			if($header_transparent && $top_bar_enable){
+				$classes[] = 'merged-header-transparent';
+			}else{
+				$classes[] = 'header-transparent';
+			}
+			
+
             return $classes;
 		}
 		
