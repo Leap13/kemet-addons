@@ -128,7 +128,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
         function transparent_header($default){
 
             $meta = get_post_meta( get_the_ID(), 'kemet_page_options', true ); 
-            $trans_meta_option = (isset( $meta['kemet-meta-enable-header-transparent'] ) ) ? $meta['kemet-meta-enable-header-transparent'] : $default;
+            $trans_meta_option = (isset( $meta['kemet-meta-enable-header-transparent'] ) && $meta['kemet-meta-enable-header-transparent'] != 'default') ? $meta['kemet-meta-enable-header-transparent'] : $default;
             
             return $trans_meta_option;
         }
