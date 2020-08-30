@@ -34,7 +34,9 @@
 }
 .kemet-code-editor {
   #post-body-content {
-    display: none;
+    > :not(#titlediv) {
+      display: none;
+    }
   }
   .kemet-hook-custom-code {
     display: block;

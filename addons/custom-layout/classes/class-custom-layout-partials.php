@@ -54,7 +54,17 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
         }
 
+		/**
+		 * Get Code Editor Content
+		 */
+		function code_editor_content($content){
 
+				ob_start();
+				
+				eval( "?>$content<?php ");
+				
+				return ob_get_clean();
+		}
 		/**
 		 * Code Editor Script
 		 *
@@ -162,11 +172,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			}
 			if($code_editor){
 
-				ob_start();
-				
-				eval( "?>$code_editor_content<?php ");
-				
-				echo ob_get_clean();
+			echo $this->code_editor_content( $code_editor_content );
 
 			}else{
 
@@ -212,6 +218,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				$post_id = get_the_id();
                 $meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
                 $action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+				$code_editor = get_post_meta( $post_id, 'enable-code-editor', true ); 
+				$code_editor_content = get_post_meta( $post_id, 'kemet-hook-custom-code', true ); 
 
                 $header_footer_hooks = array( 'kemet_head_top', 'wp_head', 'kemet_body_bottom', 'wp_footer' );
 				$enable_wrapper          = ! in_array( $action, $header_footer_hooks );
@@ -219,6 +227,12 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				$spacing_top = ( isset( $meta['spacing-top'] ) && !empty($meta['spacing-top'])) ? 'padding-top:'.$meta['spacing-top'].'px;' : '';
 				$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && !empty($meta['spacing-bottom'])) ? 'padding-bottom:'.$meta['spacing-bottom'].'px;' : '';
 				$style = $spacing_top.$spacing_bottom;
+			
+				if($code_editor){
+
+					$content = $this->code_editor_content( $code_editor_content );
+					
+				}
 
 				if ( $enable_wrapper ) {
 					$content = '<div class="kemet-addons-template-' . $post_id . '" style="'.$style.'">' . $content . '</div>';
