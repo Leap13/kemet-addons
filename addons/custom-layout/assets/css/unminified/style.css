@@ -27,3 +27,21 @@
 .kemet-hook-custom-code {
   display: none;
 }
+
+.kemet-hook-custom-code .kfw-title {
+  float: none;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.kemet-hook-custom-code .kfw-fieldset {
+  margin-left: auto;
+}
+
+.kemet-code-editor #post-body-content {
+  display: none;
+}
+
+.kemet-code-editor .kemet-hook-custom-code {
+  display: block;
+}

@@ -102,8 +102,16 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 		 */
 		public static function custom_post_type() {
 			
-			$code_editor = get_post_meta( $_GET['post'], 'enable-code-editor', true ) ? get_post_meta( $_GET['post'], 'enable-code-editor', true ) : true;
+			$code_editor = true;
 
+			if(isset($_GET['code_editor']) || ( isset($_GET['post']) && get_post_type( $_GET['post'] ) == KEMET_CUSTOM_LAYOUT_POST_TYPE  && get_post_meta( $_GET['post'], 'enable-code-editor', true ) == true ) ){
+				
+				$code_editor = false;
+			}
+
+			if(isset($_GET['wordpress_editor'])){
+				$code_editor = true;
+			}
 			// Register the post type
 			register_post_type( KEMET_CUSTOM_LAYOUT_POST_TYPE , apply_filters( 'kemet_custon_layouts_args', array(
 					'labels' => array(

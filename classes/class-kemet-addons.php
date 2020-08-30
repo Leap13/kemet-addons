@@ -47,7 +47,6 @@ if ( ! class_exists('Kemet_Addons' ) ) {
             require_once KEMET_ADDONS_DIR.'inc/kemet-addons-settings.php';
 
             add_action('after_setup_theme', array($this, 'setup'));
-            add_action( 'admin_enqueue_scripts', array($this, 'kmt_admin_styles'));
         }
 
         public function activation() {
@@ -83,11 +82,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
         
         public function load_plugin_textdomain() {
             load_plugin_textdomain('kemet-addons', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
-        }
-        
-        public function kmt_admin_styles() {
-            wp_enqueue_style( 'kmt_admin_css', KEMET_ADDONS_URL .'assets/admin/css/style.css' );
-        }  
+        } 
 
     }
 }

@@ -39,6 +39,7 @@ KFW::createMetabox( $code_editor_prefix, array(
   'post_type'    =>  array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
   'data_type'      => 'unserialize',
   'theme'   => 'light',
+  'priority'  => 'high',
 ) );
 
 KFW::createMetabox( $prefix_page_opts, array(
@@ -55,16 +56,18 @@ KFW::createSection( $code_editor_prefix, array(
   'priority_num' => 1,
   'fields' => array(
       array(
-        'id'       => 'kemet-hook-custom-code',
-        'class'   => 'kemet-hook-custom-code',
-        'type'     => 'code_editor',
-        'data_type' => 'unserialize',
-      ),
-      array(
         'id'    => 'enable-code-editor',
         'type'  => 'switcher',
         'class' => 'enable-code-editor',
         'title' => 'Enable Code Editor',
+      ),
+      array(
+        'title'        => __('Code Editor', 'kemet-addons'),
+        'id'       => 'kemet-hook-custom-code',
+        'class'   => 'kemet-hook-custom-code',
+        'type'     => 'textarea',
+        'data_type' => 'unserialize',
+        'default'   => '<!-- Add your snippet here. -->'
       ),
     )
   )

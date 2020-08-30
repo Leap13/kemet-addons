@@ -23,4 +23,20 @@
 }
 .kemet-hook-custom-code {
   display: none;
+  .kfw-title {
+    float: none;
+    width: auto;
+    margin-bottom: 10px;
+  }
+  .kfw-fieldset {
+    margin-left: auto;
+  }
+}
+.kemet-code-editor {
+  #post-body-content {
+    display: none;
+  }
+  .kemet-hook-custom-code {
+    display: block;
+  }
 }

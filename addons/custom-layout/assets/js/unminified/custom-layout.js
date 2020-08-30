@@ -189,19 +189,31 @@
   /**
    * Enable Code Editor
    */
-  var codeEditorSwitcher = $(".enable-code-editor").find("input");
+  var codeEditorSwitcher = $(".enable-code-editor").find("input"),
+    kemetMeta = $("#kemet_code_editor");
 
   var setSwitcherValue = function() {
     var url = window.location.href;
 
-    if (url.indexOf("&code_editor") > -1) {
+    if (
+      url.indexOf("&code_editor") > -1 ||
+      (codeEditorSwitcher.val() == 1 && url.indexOf("&wordpress_editor") == -1)
+    ) {
       codeEditorSwitcher.parent().addClass("kfw--active");
+      $("body").addClass("kemet-code-editor");
       codeEditorSwitcher.val(1);
-      codeEditorSwitcher.trigger("change");
-    } else {
+    } else if (
+      url.indexOf("&wordpress_editor") > -1 ||
+      codeEditorSwitcher.val() == 0 ||
+      url.indexOf("&code_editor") == -1
+    ) {
+      if ($("body").hasClass("kemet-code-editor")) {
+        $("body").removeClass("kemet-code-editor");
+      }
       codeEditorSwitcher.parent().removeClass("kfw--active");
       codeEditorSwitcher.val(0);
-      codeEditorSwitcher.trigger("change");
+    } else {
+      codeEditorSwitcher.val(0);
     }
   };
   setSwitcherValue();
@@ -210,13 +222,17 @@
       url = window.location.href;
 
     if (value == 1) {
-      $("body").addClass("kemet-code-editor");
+      if (url.indexOf("&wordpress_editor") > -1) {
+        url = url.replace("&wordpress_editor", "");
+      }
       window.location.replace(url + "&code_editor");
     } else {
-      if ($("body").hasClass("kemet-code-editor")) {
-        $("body").removeClass("kemet-code-editor");
+      if (url.indexOf("&code_editor") > -1) {
+        url = url.replace("&code_editor", "");
       }
-      url = url.replace("&code_editor", "");
+
+      url = url + "&wordpress_editor";
+
       window.location.replace(url);
     }
   });

@@ -4137,3 +4137,8 @@ to {
 .fa.fa-plus-circle{
   line-height: 2;
 }
+/* Kemet Font */
+#adminmenu #toplevel_page_kmt-framework .dashicons-admin-generic:before {
+  font-family: 'KMTAncientOwl';
+  content: "\e900";
+}
