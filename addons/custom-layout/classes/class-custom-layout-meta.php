@@ -32,9 +32,19 @@ foreach($user_roles as $key => $value){
 if( class_exists( 'KFW' ) ) {
 
 $prefix_page_opts = 'kemet_custom_layout_options';
+$code_editor_prefix = 'kemet_code_editor';
+
+KFW::createMetabox( $code_editor_prefix, array(
+  'title'        => __('Kemet Code Editor', 'kemet-addons'),
+  'post_type'    =>  array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
+  
+    'data_type'      => 'serialize',
+    'theme'   => 'light',
+) );
 
 KFW::createMetabox( $prefix_page_opts, array(
   'title'        => __('Kemet Page Options', 'kemet-addons'),
+  'priority'     => 'high',
   'post_type'    =>  array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
   
     'data_type'      => 'serialize',
@@ -43,6 +53,21 @@ KFW::createMetabox( $prefix_page_opts, array(
 //
 // Create a section
 //
+KFW::createSection( $code_editor_prefix, array(
+  'priority_num' => 1,
+  'fields' => array(
+      array(
+        'id'       => 'kemet-hook-custom-code',
+        'type'     => 'code_editor',
+        'data_type'          => 'unserialize',
+        'settings' => array(
+          'indentUnit' => 2,
+					'tabSize'    => 2,
+        ),
+      ),
+    )
+  )
+);
 KFW::createSection( $prefix_page_opts, array(
   'priority_num' => 1,
   'fields' => array(

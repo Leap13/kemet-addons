@@ -1410,9 +1410,10 @@
 
       var $this   = $(this),
           $input  = $this.find('input'),
-          $inited = $this.find('.ui-spinner-button');
+          $inited = $this.find('.ui-spinner-button'),
+          $unit   = $input.data('unit');
 
-      if( $inited.length ) {
+      if ( $inited.length ) {
         $inited.remove();
       }
 
@@ -1420,11 +1421,15 @@
         max: $input.data('max') || 100,
         min: $input.data('min') || 0,
         step: $input.data('step') || 1,
+        create: function( event, ui ) {
+          if ( $unit.length ) {
+            $this.find('.ui-spinner-up').after('<span class="ui-button-text-only kfw--unit">'+ $unit +'</span>');
+          }
+        },
         spin: function (event, ui ) {
           $input.val(ui.value).trigger('change');
         }
       });
-
 
     });
   };
