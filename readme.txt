@@ -4,7 +4,7 @@ Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.5
 Requires PHP: 5.4
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,10 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.1.2 version
+- Added: Woocommerce notice compatibility.
+- Fixed: Page title spacing issue with enabled transparent header.
+
 1.1.1 version
 - Fixed: Woocommerce Fatal Error
 

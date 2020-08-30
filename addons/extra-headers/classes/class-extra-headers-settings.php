@@ -187,6 +187,20 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 					}
 				}
 			}
+
+			$header_transparent = kemet_get_option( 'enable-transparent' ) ? 'enable' : 'disable';
+			$header_transparent       = apply_filters('kemet_trnsparent_header' , $header_transparent );
+			$top_bar_enable = apply_filters( 'kemet_top_bar_enabled', true );
+			$top_bar_1 = kemet_get_option('top-section-1');
+			$top_bar_2 = kemet_get_option('top-section-2');
+			
+			if( $header_transparent == 'enable' && $top_bar_enable && (!empty($top_bar_1) || !empty($top_bar_2)) ){
+				$classes[] = 'merged-header-transparent';
+			}else if($header_transparent == 'enable' && ( !$top_bar_enable || (empty($top_bar_1) && empty($top_bar_2) ) ) ){
+				$classes[] = 'header-transparent';
+			}
+			
+
             return $classes;
 		}
 		
