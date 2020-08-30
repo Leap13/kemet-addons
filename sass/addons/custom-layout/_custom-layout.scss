@@ -1,20 +1,26 @@
-.kmt-display-on-specifics-select , .kmt-hide-on-specifics-select{
-    display: none;
-    &.kfw-field{
-        .kfw-fieldset{
-            margin-top: 20px;
-            margin-left: auto;
-        }
-        .kfw-title{
-            float: none;
-            width: auto;
-        }
-    } 
-}
-.hide-on-rule , .display-on-rule , .kmt-user-rules{
-    &.kfw-field-select{
-        select{
-            width: 100%;
-        }
+.kmt-display-on-specifics-select,
+.kmt-hide-on-specifics-select {
+  display: none;
+  &.kfw-field {
+    .kfw-fieldset {
+      margin-top: 20px;
+      margin-left: auto;
     }
+    .kfw-title {
+      float: none;
+      width: auto;
+    }
+  }
+}
+.hide-on-rule,
+.display-on-rule,
+.kmt-user-rules {
+  &.kfw-field-select {
+    select {
+      width: 100%;
+    }
+  }
+}
+.kemet-hook-custom-code {
+  display: none;
 }
