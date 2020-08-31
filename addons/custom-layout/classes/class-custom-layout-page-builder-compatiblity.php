@@ -59,7 +59,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 					if ( $post ) {
 						return self::render_brizy_editor_content( $post_id );
 					}
-				} catch ( Exception $exception ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+				} catch ( Exception $exception ) {
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
 				}
             }
@@ -101,7 +101,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 					if ( $post ) {
 						return self::brizy_enqueue_scripts( $post_id );
 					}
-				} catch ( Exception $exception ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+				} catch ( Exception $exception ) {
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
 				}
             }
@@ -182,7 +182,7 @@ x		 */
 			$get_post = get_post( $post_id, OBJECT );
 
 			global $post;
-			$post = $get_post; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			$post = $get_post;
 			$get_post->post_content = self::divi_container_wrap( $get_post->post_content );
 			$get_post->post_content = apply_filters( 'the_content', $get_post->post_content );
 
@@ -190,7 +190,7 @@ x		 */
 				$get_post->post_content = self::divi_main_wrapper( $get_post->post_content );
 			}
 
-			echo $get_post->post_content;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $get_post->post_content;  
 			wp_reset_postdata();
 		}
 
@@ -287,7 +287,7 @@ x		 */
 				'wp_head',
 				function() use ( $post ) {
 					$html = new Brizy_Editor_CompiledHtml( $post->get_compiled_html() );
-					echo $html->get_head(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $html->get_head(); 
 				}
 			);
 
@@ -305,9 +305,9 @@ x		 */
 							'meta'  => array(),
 						);
 
-					if ( true === $wp_admin_bar->get_node( 'brizy_Edit_page_link' ) ) { // PHPCS:ignore Generic.WhiteSpace.ScopeIndent.IncorrectExact
+					if ( true === $wp_admin_bar->get_node( 'brizy_Edit_page_link' ) ) { 
 							$args['parent'] = 'brizy_Edit_page_link';
-					} // PHPCS:ignore Generic.WhiteSpace.ScopeIndent.IncorrectExact
+					}
 
 						$wp_admin_bar->add_node( $args );
 
@@ -344,7 +344,7 @@ x		 */
 
             ob_start();
             echo do_shortcode( $output );
-            echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo ob_get_clean();
         }
 
         /**

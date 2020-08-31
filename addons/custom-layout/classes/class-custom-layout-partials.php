@@ -320,7 +320,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 			$display_options = array(
                 'global'         => array(
-					'label' => __( 'Global', 'kemet-addons' ),
+					'title' => __( 'Global', 'kemet-addons' ),
 					'value' => array(
 						'global-page'    => __( 'Entire Website', 'kemet-addons' ),
 						'all-singulars' => __( 'All Singulars', 'kemet-addons' ),
@@ -328,7 +328,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					),
 				),
                 'general-pages' => array(
-					'label' => __( 'General Pages', 'kemet-addons' ),
+					'title' => __( 'General Pages', 'kemet-addons' ),
 					'value' => array(
                         '404-page'    => __( '404 Page', 'kemet-addons' ),
                         'general-search' => __( 'Search Page', 'kemet-addons' ),
@@ -338,54 +338,33 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                         'general-author' => __( 'Author Archive', 'kemet-addons' ),
                     ),
 				),
-				
+				'posts' => array(
+					'title' => __( 'Posts', 'kemet-addons' ),
+					'value' => array(
+                        'all-post'    => __( 'All Posts', 'kemet-addons' ),
+                        'post-archive' => __( 'Posts Archive', 'kemet-addons' ),
+                        'post-tax-category'   => __( 'Categories', 'kemet-addons' ),
+                        'post-tax-post_tag'  => __( 'Tags', 'kemet-addons' ),
+                    ),
+				),
 			);
 
 			if ( class_exists( 'WooCommerce' ) ) {
 				$display_options['general-pages']['value']['global-woo-shop'] = __( 'WooCommerce Shop Page', 'kemet-addons' );
-			}
 
-			$args = array(
-				'public' => true,
-			);
-
-			$taxonomies = get_taxonomies( $args, 'objects' );
-
-			if ( ! empty( $taxonomies ) ) {
-				foreach ( $taxonomies as $taxonomy ) {
-
-					// skip post format taxonomy.
-					if ( 'post_format' == $taxonomy->name ) {
-						continue;
-					}
-
-					foreach ( $post_types as $post_type ) {
-
-						$post_opt = self::get_post_display_rule_options( $post_type, $taxonomy );
-
-						if ( isset( $display_options[ $post_opt['post_key'] ] ) ) {
-
-							if ( ! empty( $post_opt['value'] ) && is_array( $post_opt['value'] ) ) {
-
-								foreach ( $post_opt['value'] as $key => $value ) {
-
-									if ( ! in_array( $value, $display_options[ $post_opt['post_key'] ]['value'] ) ) {
-										$display_options[ $post_opt['post_key'] ]['value'][ $key ] = $value;
-									}
-								}
-							}
-						} else {
-							$display_options[ $post_opt['post_key'] ] = array(
-								'label' => $post_opt['label'],
-								'value' => $post_opt['value'],
-							);
-						}
-					}
-				}
+				$display_options['products'] = array(
+					'title' => __( 'Products', 'kemet-addons' ),
+					'value' => array(
+                        'all-product'    => __( 'All Products', 'kemet-addons' ),
+                        'product-archive' => __( 'Products Archive', 'kemet-addons' ),
+                        'product-tax-product_cat'   => __( 'Product Categories', 'kemet-addons' ),
+                        'product-tax-product_tag'  => __( 'Product Tags', 'kemet-addons' ),
+                    ),
+				);
 			}
 
 			$display_options['specific-position'] = array(
-				'label' => __( 'Specific Position', 'kemet-addons' ),
+				'title' => __( 'Specific Position', 'kemet-addons' ),
 				'value' => array(
 					'specifics-location' => __( 'Specific Pages / Posts / Taxanomies, etc.', 'kemet-addons' ),
 				),
@@ -424,46 +403,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 			return $options;
 		}
-
-
-        /**
-		 *
-		 * @param object $post_type post type parameter.
-		 * @param object $taxonomy taxonomy for creating the target rule markup.
-		 */
-		public static function get_post_display_rule_options( $post_type, $taxonomy ) {
-
-			$post_key    = str_replace( ' ', '-', strtolower( $post_type->label ) );
-			$post_label  = ucwords( $post_type->label );
-			$post_name   = $post_type->name;
-			$post_option = array();
-
-			/* translators: %s post label */
-			$all_posts                          = sprintf( __( 'All %s', 'kemet-addons' ), $post_label );
-			$post_option[ $post_name . '|all' ] = $all_posts;
-
-			if ( 'pages' != $post_key ) {
-				/* translators: %s post label */
-				$all_archive                                = sprintf( __( 'All %s Archive', 'kemet-addons' ), $post_label );
-				$post_option[ $post_name . '|all|archive' ] = $all_archive;
-			}
-
-			if ( in_array( $post_type->name, $taxonomy->object_type ) ) {
-				$tax_label = ucwords( $taxonomy->label );
-				$tax_name  = $taxonomy->name;
-
-				/* translators: %s taxonomy label */
-				$tax_archive = sprintf( __( 'All %s Archive', 'kemet-addons' ), $tax_label );
-
-				$post_option[ $post_name . '|all|taxarchive|' . $tax_name ] = $tax_archive;
-			}
-
-			$post_output['post_key'] = $post_key;
-			$post_output['label']    = $post_label;
-			$post_output['value']    = $post_option;
-
-			return $post_output;
-        }
 		
 		/**
 		 * Get All Hooks
@@ -475,26 +414,26 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 'head'    => array(
 					'title' => __( 'Head', 'kemet-addons' ),
 					'value' => array(
-						'kemet_html_before' => __( 'before the opening of <html> tag', 'kemet-addons' ),
-						'kemet_head_top' => __( 'top of <head> tag', 'kemet-addons' ),
-						'kemet_head_bottom' => __( 'custom style, script and meta at the bottom of <head> tag', 'kemet-addons' ),
+						'kemet_html_before' => esc_html__( 'before the opening of <html> tag', 'kemet-addons' ),
+						'kemet_head_top' => esc_html__( 'top of <head> tag', 'kemet-addons' ),
+						'kemet_head_bottom' => esc_html__( 'custom style, script and meta at the bottom of <head> tag', 'kemet-addons' ),
 						'wp_head' => __( 'Head Top', 'kemet-addons' ),
 					),
                 ),
                 'header'    => array(
 					'title' => __( 'Header', 'kemet-addons' ),
 					'value' => array(
-						'kemet_body_top' => __( 'Top of <body> tag', 'kemet-addons' ),
-                        'kemet_before_header_block' => __( 'Before <header> tag', 'kemet-addons' ),
+						'kemet_body_top' => esc_html__( 'Top of <body> tag', 'kemet-addons' ),
+                        'kemet_before_header_block' => esc_html__( 'Before <header> tag', 'kemet-addons' ),
                         'kemet_header' => __( 'Main Header', 'kemet-addons' ),
                         'kemet_main_header_bar_top' => __( 'Top of Header Content', 'kemet-addons' ),
-                        'kemet_sitehead_top' => __( 'Top of <header> tag', 'kemet-addons' ),
+                        'kemet_sitehead_top' => esc_html__( 'Top of <header> tag', 'kemet-addons' ),
                         'kemet_sitehead' => __( 'Header Content', 'kemet-addons' ),
                         'kemet_sitehead_toggle_buttons_before' => __( 'Before Responsive Menu Toggle Button', 'kemet-addons' ),
                         'kemet_sitehead_toggle_buttons_after' => __( 'After Responsive Menu Toggle Button', 'kemet-addons' ),
-                        'kemet_sitehead_bottom' => __( 'Bottom of <header> tag', 'kemet-addons' ),
+                        'kemet_sitehead_bottom' => esc_html__( 'Bottom of <header> tag', 'kemet-addons' ),
                         'kemet_main_header_bar_bottom' => __( 'Bottom of Header Content', 'kemet-addons' ),
-                        'kemet_after_header_block' => __( 'After <header> tag', 'kemet-addons' ),
+                        'kemet_after_header_block' => esc_html__( 'After <header> tag', 'kemet-addons' ),
 					),
                 ),
                 'content'    => array(
@@ -541,14 +480,14 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 'footer'    => array(
 					'title' => __( 'Footer', 'kemet-addons' ),
 					'value' => array(
-						'kemet_footer_before' => __( 'Before of <footer> tag', 'kemet-addons' ),
-                        'kemet_footer_content_top' => __( 'Top of <footer> tag', 'kemet-addons' ),
+						'kemet_footer_before' => esc_html__( 'Before of <footer> tag', 'kemet-addons' ),
+                        'kemet_footer_content_top' => esc_html__( 'Top of <footer> tag', 'kemet-addons' ),
 						'kemet_footer_content' => __( 'Top of Footer Content', 'kemet-addons' ),
 						'kemet_footer_inside_container_top' => __( 'Top of footer container', 'kemet-addons' ),
 						'kemet_footer_inside_container_bottom' => __( 'Bottom of footer container', 'kemet-addons' ),
 						'kemet_footer_content_bottom' => __( 'Bottom of Footer Content', 'kemet-addons' ),
-						'kemet_footer_after' => __( 'After of <footer> tag', 'kemet-addons' ),
-						'kemet_body_bottom' => __( 'Bottom of <body> tag', 'kemet-addons' ),
+						'kemet_footer_after' => esc_html__( 'After of <footer> tag', 'kemet-addons' ),
+						'kemet_body_bottom' => esc_html__( 'Bottom of <body> tag', 'kemet-addons' ),
 						'wp_footer' => __( 'End of the document', 'kemet-addons' ),
 					),
                 ),
@@ -733,12 +672,12 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 case 'is_date':
                 case 'is_author':
                     $meta_args .= " OR postmeta.meta_value LIKE '%\"all-archives\"%'";
-                    $meta_args .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}|all|archive\"%'";
+                    $meta_args .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}-archive\"%'";
 
                     if ( 'is_tax' == $c_page_type && ( is_category() || is_tag() || is_tax() ) ) {
 
                         if ( is_object( $query_obj ) ) {
-                            $meta_args .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}|all|taxarchive|{$query_obj->taxonomy}\"%'";
+                            $meta_args .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}-tax-{$query_obj->taxonomy}\"%'";
                             $meta_args .= " OR postmeta.meta_value LIKE '%\"tax-{$query_obj->term_id}\"%'";
                         }
                     } elseif ( 'is_date' == $c_page_type ) {
@@ -754,7 +693,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                     $this_id      = esc_sql( get_the_id() );
 					$post_id = $this_id;
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"general-front\"%'";
-                    $meta_args      .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}|all\"%'";
+                    $meta_args      .= " OR postmeta.meta_value LIKE '%\"all-{$c_post_type}\"%'";
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"post-{$this_id}\"%'";
                     break;
                 case 'is_singular':
@@ -764,10 +703,10 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                         $default_language = wpml_get_default_language();
                         $this_id       = icl_object_id( $this_id, $c_post_type, true, $default_language );
                     }
-
+					
                     $post_id = $this_id;
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"all-singulars\"%'";
-                    $meta_args      .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}|all\"%'";
+                    $meta_args      .= " OR postmeta.meta_value LIKE '%\"all-{$c_post_type}\"%'";
                     $meta_args      .= " OR postmeta.meta_value LIKE '%\"post-{$this_id}\"%'";
 
                     $taxonomies = get_object_taxonomies( $query_obj->post_type );
@@ -788,13 +727,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
             apply_filters( 'kemet_addons_get_display_posts_query', $meta_args, $query_obj, $post_id );
 			
-            // Ignore the PHPCS warning about constant declaration.
-            // @codingStandardsIgnoreStart
             $posts  = $wpdb->get_results( $query . ' AND (' . $meta_args . ')' . $orderby );
             
-            
-            // @codingStandardsIgnoreEnd
-
             foreach ( $posts as $local_post ) {
                 self::$page_data[ $post_type ][ $local_post->ID ] = array(
                     'id'       => $local_post->ID,
@@ -963,46 +897,45 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 							}
 							break;
 
-						case 'all':
-							$rule_data = explode( '|', $rule );
+						default:
 
-							$post_type     = isset( $rule_data[0] ) ? $rule_data[0] : false;
-							$archieve_type = isset( $rule_data[2] ) ? $rule_data[2] : false;
-							$taxonomy      = isset( $rule_data[3] ) ? $rule_data[3] : false;
-							if ( false === $archieve_type ) {
+							$rule_array = explode( '-', $rule );
+							
+							if( count($rule_array) == 2 && $rule_array[0] == 'all' ){
 
 								$current_post_type = get_post_type( $post_id );
 
-								if ( false !== $post_id && $current_post_type == $post_type ) {
+								if ( false !== $post_id && $current_post_type == $rule_array[1] ) {
 
 									$display = true;
 								}
-							} else {
+								
+							}else if( count($rule_array) == 3 || $rule_array[0] != 'all'){
 
 								if ( is_archive() ) {
 
-									$current_post_type = get_post_type();
-									if ( $current_post_type == $post_type ) {
-										if ( 'archive' == $archieve_type ) {
+									$current_post_type = get_post_type( $post_id );
+									
+									if ( $current_post_type == $rule_array[0] ) {
+										
+										if( 'archive' == $rule_array[1] ){
+											
 											$display = true;
-										} elseif ( 'taxarchive' == $archieve_type ) {
-
-											$obj              = get_queried_object();
-											$current_taxonomy = '';
-											if ( '' !== $obj && null !== $obj ) {
-												$current_taxonomy = $obj->taxonomy;
-											}
-
-											if ( $current_taxonomy == $taxonomy ) {
+	
+										}else if( 'tax' == $rule_array[1] ){
+											
+											$current_tax = get_queried_object();
+											
+											if( (!empty($current_tax) && isset($current_tax->taxonomy)) && $current_tax->taxonomy == $rule_array[2] ){
 												$display = true;
 											}
+	
 										}
 									}
+									
 								}
 							}
-							break;
 
-						default:
 							break;
 					}
 
