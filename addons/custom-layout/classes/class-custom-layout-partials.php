@@ -229,7 +229,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				$style = $spacing_top.$spacing_bottom;
 			
 				if($code_editor){
-
+					$style = '';
 					$content = $this->code_editor_content( $code_editor_content );
 					
 				}
