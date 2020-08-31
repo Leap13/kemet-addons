@@ -14,6 +14,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
         
         private static $instance;
         
+        private static $post_id;
         /**
          *  Initiator
          */
@@ -27,9 +28,16 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
         public function __construct() {
           $prefix_page_opts = 'kemet_custom_layout_options';
           $code_editor_prefix = 'kemet_code_editor';
+          $short_code_mete_prefix = 'kemet_short_code';
+
+          add_action('admin_head', function(){
+            global $post;
+	          self::$post_id = $post->ID;
+          }, 10, 1);
 
           $this->create_custom_layout_meta($prefix_page_opts);
           $this->create_code_editor($code_editor_prefix);
+          $this->create_short_code( $short_code_mete_prefix );
         }
 
         function get_options_array($array_type){
@@ -205,6 +213,45 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
                   'type'     => 'textarea',
                   'data_type' => 'unserialize',
                   'default'   => esc_html__('<!-- Add your snippet here. -->', 'kemet-addons'),
+                ),
+              )
+            )
+          );
+        }
+
+        public function create_short_code($prefix)
+        {
+          
+          $post_id = '';
+
+          if(isset($_GET['post'])){
+            $post_id = $_GET['post'];
+          }else{
+            global $wpdb;
+
+            $result  = $wpdb->get_results( "SHOW TABLE STATUS LIKE 'wp_posts'", ARRAY_A );
+            $post_id = $result[0]['Auto_increment'];
+          }
+          KFW::createMetabox( $prefix, array(
+            'title'        => __('Short Code', 'kemet-addons'),
+            'post_type'    =>  array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
+            'data_type'      => 'unserialize',
+            'priority'  => 'high',
+            'context'  => 'side'
+          ) );
+          //
+          // Create a section
+          //
+          KFW::createSection( $prefix, array(
+            'priority_num' => 1,
+            'fields' => array(
+                array(
+                  'id'       => 'kemet-custom-layout-short-code',
+                  'type'    => 'text',
+                  'default' => esc_html__("[kemet_custom_layouts id=\"" .$post_id. "\"]" , 'kemet-addons'),
+                  'attributes' => array(
+                    'readonly' => 'readonly',
+                  )
                 ),
               )
             )
