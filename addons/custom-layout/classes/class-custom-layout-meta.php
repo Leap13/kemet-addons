@@ -241,10 +241,11 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
                 array(
                   'id'       => 'kemet-custom-layout-short-code',
                   'type'    => 'text',
-                  'default' => esc_html__("[kemet_custom_layouts id=\"" .$post_id. "\"]" , 'kemet-addons'),
+                  'class'   => 'kemet-short-code',
+                  'default' => $post_id,
                   'data_type'      => 'unserialize',
                   'attributes' => array(
-                    'readonly' => 'readonly',
+                    'readonly' => 'readonly',           
                   )
                 ),
               )
