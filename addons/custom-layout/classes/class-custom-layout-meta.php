@@ -14,7 +14,6 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
         
         private static $instance;
         
-        private static $post_id;
         /**
          *  Initiator
          */
@@ -29,11 +28,6 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
           $prefix_page_opts = 'kemet_custom_layout_options';
           $code_editor_prefix = 'kemet_code_editor';
           $short_code_mete_prefix = 'kemet_short_code';
-
-          add_action('admin_head', function(){
-            global $post;
-	          self::$post_id = $post->ID;
-          }, 10, 1);
 
           $this->create_custom_layout_meta($prefix_page_opts);
           $this->create_code_editor($code_editor_prefix);
@@ -236,7 +230,6 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
             'title'        => __('Short Code', 'kemet-addons'),
             'post_type'    =>  array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
             'data_type'      => 'unserialize',
-            'priority'  => 'high',
             'context'  => 'side'
           ) );
           //
@@ -249,6 +242,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
                   'id'       => 'kemet-custom-layout-short-code',
                   'type'    => 'text',
                   'default' => esc_html__("[kemet_custom_layouts id=\"" .$post_id. "\"]" , 'kemet-addons'),
+                  'data_type'      => 'unserialize',
                   'attributes' => array(
                     'readonly' => 'readonly',
                   )
