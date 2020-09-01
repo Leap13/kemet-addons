@@ -236,17 +236,4 @@
       window.location.replace(url);
     }
   });
-
-  //ShortCode
-  var shortcode = $(".kemet-short-code").find("input"),
-    newVal = shortcode.val();
-
-  shortcode.hide();
-  shortcode
-    .parent()
-    .append(
-      "<span class='short-code-id'>[kemet_custom_layout id=\"" +
-        shortcode.val() +
-        '"] </span>'
-    );
 })(jQuery);

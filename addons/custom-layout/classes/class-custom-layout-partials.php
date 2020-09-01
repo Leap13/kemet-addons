@@ -14,7 +14,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
          * @var object instance
          */
         private static $instance;
-
+		private static $test;
         /**
 		 * page data
 		 *
@@ -47,13 +47,28 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
             add_filter( 'the_content', array( $this, 'custom_layout_content' ) );
             add_filter( 'wp', array( $this, 'layout' ) );
 			add_filter( 'wp', array( $this, 'get_markup' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_posts_scripts' ) );
 			add_action( 'admin_enqueue_scripts',  array($this, 'admin_script' ) ,1 );
 			add_action( 'wp_ajax_kemet_ajax_get_posts_list', array( $this, 'kemet_ajax_get_posts_list' ) );
 			add_action( 'wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 			add_shortcode( 'kemet_custom_layout', array( $this, 'add_short_code') );
+			add_filter('et_builder_post_types', array( $this, 'add_to_et_builder_post_types' ));
+			add_filter( 'brizy_supported_post_types', array( $this, 'add_to_brizy_post_types' ));
+			
         }
+
+		function add_to_brizy_post_types($post_types) {
+			
+			$post_types[] = KEMET_CUSTOM_LAYOUT_POST_TYPE;
+			return $post_types;
+		}
+
+		function add_to_et_builder_post_types($post_types) {
+			
+			$post_types[] = KEMET_CUSTOM_LAYOUT_POST_TYPE;
+			return $post_types;
+		}
 
 		/**
 		 * Layout ShortCode
@@ -65,7 +80,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			), $atts, 'kemet_custom_layout' );
 
 			if(isset($atts['id'])){
-
+				$post_id = $atts['id'];
 				$code_editor = get_post_meta( $atts['id'], 'enable-code-editor', true ); 
 				$code_editor_content = get_post_meta( $atts['id'], 'kemet-hook-custom-code', true ); 
 
@@ -74,15 +89,19 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				if($code_editor){
 
 					echo $this->code_editor_content( $code_editor_content );
+					
 				}else{
 					if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
 						$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 						
 						$custom_layout_compat->render_content( $atts['id'] );
+
+						$custom_layout_compat->enqueue_scripts( $atts['id'] );
+
 					}
 				}
 				
-				echo ob_get_clean();
+				return ob_get_clean();
 			}
 		}
 		/**
@@ -211,6 +230,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 					
 					$custom_layout_compat->render_content( $post_id );
+
 				}
 
 			}
@@ -223,20 +243,29 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		/**
 		 * Add Scripts
 		 */
-		public function enqueue_scripts() {
+		public function load_posts_scripts(){
 
-			$all_posts = self::kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE );
-
+			$all_posts = $this->kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE );
 			foreach ( $all_posts as $post_id => $post_data ) {
+				
+				$this->enqueue_scripts( $post_id );
+			}
+		}
 
+		public function enqueue_scripts( $post_id ) {
+
+			if( !empty( $post_id ) ){
+				
 				$code_editor = get_post_meta( $post_id, 'enable-code-editor', true ); 
+
 				if(!$code_editor){
+					
 					if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
 						$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 						$custom_layout_compat->enqueue_scripts( $post_id );
 					}
 				}
-			}
+			}			
 		}
 
         /**
@@ -701,7 +730,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 case 'is_archive':
                 case 'is_tax':
                 case 'is_date':
-                case 'is_author':
+				case 'is_author':	
                     $meta_args .= " OR postmeta.meta_value LIKE '%\"all-archives\"%'";
                     $meta_args .= " OR postmeta.meta_value LIKE '%\"{$c_post_type}-archive\"%'";
 
@@ -864,11 +893,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 
 				foreach ( $rules['hide-on-rule'] as $key => $rule ) {
 					
-					if ( strrpos( $rule, 'all' ) !== false ) {
-						$rule_case = 'all';
-					} else {
-						$rule_case = $rule;
-					}
 					switch ( $rule_case ) {
 						case 'global-page':
 							$display = true;

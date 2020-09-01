@@ -7,7 +7,7 @@
 if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 
     class Kemet_Custom_Layout_Page_Builder_Compatiblity {
-
+		
         /**
          * Member Variable
          *
@@ -26,7 +26,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
             }
             return self::$instance;
         }
-        
+		
         /**
 		 * Render content for post.
 		 *
@@ -35,7 +35,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
         function render_content( $post_id ){
             global $wp_post_types;
             $post = get_post( $post_id );
-
+			
             if ( class_exists( '\Elementor\Plugin' ) ) {
 				if ( ( version_compare( ELEMENTOR_VERSION, '1.5.0', '<' ) &&
 					'builder' === Elementor\Plugin::$instance->db->get_edit_mode( $post_id ) ) || Elementor\Plugin::$instance->db->is_built_with_elementor( $post_id ) ) {
@@ -176,7 +176,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 		 * Render Divi content for post.
 		 *
 		 * @param int $post_id Post id.
-x		 */
+		 */
 		public function render_divi_content( $post_id ) {
 
 			$get_post = get_post( $post_id, OBJECT );
@@ -206,7 +206,7 @@ x		 */
 			$outer_content_classe = implode( ' ', $outer_content_class );
 			$outer_content_id = apply_filters( 'et_builder_outer_content_id', 'et_builder_outer_content' );
 			$inner_content_class   = apply_filters( 'et_builder_inner_content_class', array( 'et_builder_inner_content' ) );
-            $inner_content_classes = implode( ' ', $inner_class );
+            $inner_content_classes = implode( ' ', $inner_content_class );
             
 			$content = sprintf(
 				'<div class="%2$s" id="%4$s">
@@ -250,15 +250,6 @@ x		 */
 		 */
 		public function render_brizy_editor_content( $post_id ) {
 
-            add_filter( 'brizy_supported_post_types', array( $this, 
-                    function() use ( $posts ) {
-
-                        $posts[] = KEMET_CUSTOM_LAYOUT_POST_TYPE;
-
-                    }
-                ) 
-            );
-
 			$post = Brizy_Editor_Post::get( $post_id );
 
 			if ( $post && $post->uses_editor() ) {
@@ -275,19 +266,38 @@ x		 */
 		 * @param int $post_id Post id.
 		 */
 		public function brizy_enqueue_scripts( $post_id ) {
-
+			
 			$post = Brizy_Editor_Post::get( $post_id );
-			$main = new Brizy_Public_Main( $post );
+			$main = method_exists( 'Brizy_Public_Main', 'get' ) ? Brizy_Public_Main::get( $post ) : new Brizy_Public_Main( $post );
 
+			
 			// Add page CSS.
-			add_filter( 'body_class', array( $main, 'body_class_frontend' ) );
+			add_filter( 'body_class', array( $main, 'body_class_frontend' ));
 			add_action( 'wp_enqueue_scripts', array( $main, '_action_enqueue_preview_assets' ), 9999 );
-
+			
+			
 			add_action(
 				'wp_head',
-				function() use ( $post ) {
-					$html = new Brizy_Editor_CompiledHtml( $post->get_compiled_html() );
-					echo $html->get_head(); 
+				function() use ($post){
+
+					$params = array( 'content' => '' );
+			
+					if ( ! $post->get_compiled_html() ) {
+			
+						$compiled_html_head = $post->get_compiled_html_head();
+						$compiled_html_head = Brizy_SiteUrlReplacer::restoreSiteUrl( $compiled_html_head );
+						$post->set_needs_compile( true )
+								   ->saveStorage();
+			
+						$params['content'] = $compiled_html_head;
+					} else {
+						$compiled_page     = $post->get_compiled_page();
+						$head              = $compiled_page->get_head();
+						$params['content'] = $head;
+					}
+			
+					$params['content'] = apply_filters( 'brizy_content', $params['content'], Brizy_Editor_Project::get(), $post->getWpPost(), 'head' );
+						
 				}
 			);
 
@@ -312,7 +322,7 @@ x		 */
 						$wp_admin_bar->add_node( $args );
 
 					},
-					1000
+					10000
 				);
 			}
 		}
@@ -333,18 +343,20 @@ x		 */
                 add_filter( 'the_content', '_restore_wpautop_hook', $priority + 1 );
             }
             
-            if ( has_blocks( $get_post ) ) {
-                $blocks = parse_blocks( $get_post->post_content );
+            if ( has_blocks( $get_post ) && isset($get_post->post_content)) {
+
+				$blocks = parse_blocks( $get_post->post_content );
+
                 foreach ( $blocks as $block ) {
                     $output .= render_block( $block );
                 }
-            } else {
+            } else if(isset($get_post->post_content)){
                 $output = $get_post->post_content;
             }
 
             ob_start();
             echo do_shortcode( $output );
-            echo ob_get_clean();
+            return ob_get_clean();
         }
 
         /**
@@ -383,8 +395,9 @@ x		 */
     
     }
 
-    /**
-	 * Initialize class object with 'get_instance()' method
-	 */
-	Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
+   
 }
+ /**
+ * Initialize class object with 'get_instance()' method
+ */
+Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();

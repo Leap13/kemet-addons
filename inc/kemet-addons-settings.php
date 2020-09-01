@@ -92,7 +92,7 @@ if (class_exists('KFW')) {
         'id' => 'custom-layout',
         'type' => 'switcher',
         'title' => __('Custom Layout', 'kemet-addons'),
-        'subtitle' => __('Custom Layout', 'kemet-ddons'),
+        'subtitle' => __('Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-ddons'),
         'default' => false,
       ),
     ),

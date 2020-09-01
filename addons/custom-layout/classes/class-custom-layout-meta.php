@@ -31,9 +31,33 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
 
           $this->create_custom_layout_meta($prefix_page_opts);
           $this->create_code_editor($code_editor_prefix);
-          $this->create_short_code( $short_code_mete_prefix );
+          add_action( 'add_meta_boxes_kemet_custom_layouts', array( $this, 'register_short_code_meta_boxes' ) );
+          add_filter( 'manage_posts_columns',  array( $this, 'shortcode_column') );
+          add_action('manage_kemet_custom_layouts_posts_custom_column',array($this , 'shortcode_column_content') , 10, 2);
         }
 
+        function get_array_value(){
+
+          $options = array();
+          $locations = Kemet_Custom_Layout_Partials::get_location_options();
+          $users = Kemet_Custom_Layout_Partials::get_user_rules_options();
+
+          foreach( $locations  as $key => $value){
+
+            if($key != 'specific-position'){
+              $options = array_merge($options, $value['value']);
+            }
+            
+          }
+
+          foreach( $users  as $key => $value){
+            if($key != 'specific-position'){
+              $options = array_merge($options, $value['value']);
+            }
+          }
+
+          return $options;
+        }
         function get_options_array($array_type){
 
           $options = array();
@@ -213,44 +237,140 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
           );
         }
 
-        public function create_short_code($prefix)
-        {
+        /**
+         * Register meta box.
+         */
+        function register_short_code_meta_boxes($post) {
+          add_meta_box( 'kemet-custom-layout-short-code', __( 'Short Code', 'kemet-addons' ), function($post){ ?>
+
+              <input type="text" class="widefat" value='[kemet_custom_layout id="<?php echo $post->ID; ?>"]' readonly />
+        <?php },
+        'kemet_custom_layouts',
+        'side',
+        'low'   
+        );
+        }
+
+        function shortcode_column( $columns ){
           
-          $post_id = '';
-
-          if(isset($_GET['post'])){
-            $post_id = $_GET['post'];
-          }else{
-            global $wpdb;
-
-            $result  = $wpdb->get_results( "SHOW TABLE STATUS LIKE 'wp_posts'", ARRAY_A );
-            $post_id = $result[0]['Auto_increment'];
+          $post_type = get_post_type();
+          if ( $post_type == 'kemet_custom_layouts' ) {
+              $custom_columns = array(
+                  'kemet_layout_action' => esc_html__( 'Action', 'kemet-addons' ),
+                  'kemet_layout_rules' => esc_html__( 'Rules', 'kemet-addons' ),
+                  'kemet_short_code' => esc_html__( 'Short Code', 'kemet-addons' ),
+              );
+              $columns = array_merge($columns, $custom_columns);
           }
-          KFW::createMetabox( $prefix, array(
-            'title'        => __('Short Code', 'kemet-addons'),
-            'post_type'    =>  array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
-            'data_type'      => 'unserialize',
-            'context'  => 'side'
-          ) );
-          //
-          // Create a section
-          //
-          KFW::createSection( $prefix, array(
-            'priority_num' => 1,
-            'fields' => array(
-                array(
-                  'id'       => 'kemet-custom-layout-short-code',
-                  'type'    => 'text',
-                  'class'   => 'kemet-short-code',
-                  'default' => $post_id,
-                  'data_type'      => 'unserialize',
-                  'attributes' => array(
-                    'readonly' => 'readonly',           
-                  )
-                ),
-              )
-            )
-          );
+
+          return $columns;
+        }
+
+        function get_post_title($id){
+
+          $post_id = explode("-", $id)[1]; 
+          if(!empty($post_id)){
+
+            $name = !empty(get_the_title( $post_id )) ? get_the_title( $post_id ) : get_term( $post_id )->name  ;
+            return $name;
+          }
+
+        }
+        function shortcode_column_content($column_key, $post_id) {
+
+          switch ($column_key) {
+            case 'kemet_short_code':
+              $short_code = sprintf( '[kemet_custom_layout id="%s"]' , $post_id );
+              
+              printf( '<input type="text" value="%s" style="min-width: 237px;" readonly \>' , esc_attr($short_code) );
+              break;
+            
+            case 'kemet_layout_rules':
+
+              $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
+              $display_rules = isset($meta['display-on-group']['display-on-rule']) ? $meta['display-on-group']['display-on-rule'] : '';
+              $hide_rules = isset($meta['hide-on-group']['hide-on-rule']) ? $meta['hide-on-group']['hide-on-rule'] : '';
+              $specific_display = isset($meta['display-on-group']['display-on-specifics-location']) ? $meta['display-on-group']['display-on-specifics-location'] : '';
+			        $specific_hide = isset($meta['hide-on-group']['hide-on-specifics-location']) ? $meta['hide-on-group']['hide-on-specifics-location'] : '';
+              $users = isset($meta['user-rules']) ? $meta['user-rules'] : '';
+              $all_options = self::get_array_value();
+
+              $all_display_rules = array(
+                  'display' => array(),
+                  'hide'   => array(),
+                  'users'  => array()
+              );
+              if(is_array($users)){
+                foreach($users as $user){
+                  $all_display_rules['users'][] = __( $all_options[$user],'kemet-addons' );
+                }
+              }
+              if(is_array($display_rules)){
+                foreach($display_rules as $position){
+
+                  if($position != 'specifics-location'){
+                    $all_display_rules['display'][] = __( $all_options[$position],'kemet-addons' );
+                  }
+                  
+                }
+              }
+              if(is_array($hide_rules)){
+                foreach($hide_rules as $position){
+                  if($position != 'specifics-location'){
+                    $all_display_rules['hide'][] = __( $all_options[$position],'kemet-addons' );
+                  }
+                }
+              }
+              
+              if(is_array($specific_display)){
+                foreach($specific_display as $position){
+                  $all_display_rules['display'][] = __( self::get_post_title($position),'kemet-addons' );
+                }
+              }
+              if(is_array($specific_hide)){
+                foreach($specific_hide as $position){
+                  $specific_hide['hide'][] = __( self::get_post_title($position),'kemet-addons' );
+                }
+              }
+
+              echo "<div class='kmt-rules-column'>";
+                if(!empty($all_display_rules['display'])){
+                  echo '<p>' ;
+                  echo '<strong>Display: </strong>';
+                  echo implode(", ", $all_display_rules['display']);
+                  echo '</p>'; 
+                }
+                if(!empty($all_display_rules['hide'])){
+                  echo '<p>' ;
+                  echo '<strong>Hide: </strong>';
+                  echo implode(", ", $all_display_rules['hide']);
+                  echo '</p>'; 
+                }
+                if(!empty($all_display_rules['users'])){
+                  echo '<p>' ;
+                  echo '<strong>Users: </strong>';
+                  echo implode(", ", $all_display_rules['users']);
+                  echo '</p>'; 
+                }
+              echo "</div>";
+              break;
+
+            case 'kemet_layout_action':
+
+              $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
+              $action = isset($meta['hook-action']) ? $meta['hook-action'] : '';
+              
+            echo "<div class='kmt-action-column'>";
+            if(!empty($action)){
+              echo '<p>' ;
+              echo $action;
+              echo '</p>'; 
+            }
+            echo "</div>";
+              
+              break;
+          }
+
         }
     }
 }
