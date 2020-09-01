@@ -43,6 +43,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		 *  Constructor
 		 */
 		public function __construct() {
+			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ));
             add_filter( 'kemet_addons_custom_layout_hook', array( $this, 'default_content' ) );
             add_filter( 'the_content', array( $this, 'custom_layout_content' ) );
             add_filter( 'wp', array( $this, 'layout' ) );
@@ -211,14 +212,13 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			$spacing_top = ( isset( $meta['spacing-top'] ) && !empty($meta['spacing-top'])) ? 'padding-top:'.$meta['spacing-top'].'px;' : '';
 			$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && !empty($meta['spacing-bottom'])) ? 'padding-bottom:'.$meta['spacing-bottom'].'px;' : '';
 			$style = $spacing_top.$spacing_bottom;
-			$style .= 'border: 0;';
 
 			if($code_editor){
 				$style = '';
 			}
 			
 			if ( $enable_wrapper ) {
-				echo '<div id="kemet-addons-template-' . esc_attr( $post_id ) . '" style="'.$style.'">';
+				echo '<div id="kemet-addons-template-' . esc_attr( $post_id ) . '" class="kemet-addons-template" style="'.$style.'">';
 			}
 			if($code_editor){
 
@@ -1497,6 +1497,11 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			);
 	
 		}
+
+		function add_styles() {
+            Kemet_Style_Generator::kmt_add_css( KEMET_CUSTOM_LAYOUT_DIR.'assets/css/unminified/front-style.css');
+
+        }
     }
 }
 Kemet_Custom_Layout_Partials::get_instance();
