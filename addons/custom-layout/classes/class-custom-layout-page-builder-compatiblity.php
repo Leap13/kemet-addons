@@ -322,7 +322,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 						$wp_admin_bar->add_node( $args );
 
 					},
-					10000
+					1000
 				);
 			}
 		}
@@ -356,7 +356,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 
             ob_start();
             echo do_shortcode( $output );
-            return ob_get_clean();
+            echo ob_get_clean();
         }
 
         /**
@@ -395,9 +395,8 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
     
     }
 
-   
+    /**
+	 * Initialize class object with 'get_instance()' method
+	 */
+	Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
 }
- /**
- * Initialize class object with 'get_instance()' method
- */
-Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();

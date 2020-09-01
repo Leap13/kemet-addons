@@ -14,7 +14,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
          * @var object instance
          */
         private static $instance;
-		private static $test;
+
         /**
 		 * page data
 		 *
@@ -81,7 +81,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			), $atts, 'kemet_custom_layout' );
 
 			if(isset($atts['id'])){
-				$post_id = $atts['id'];
+
 				$code_editor = get_post_meta( $atts['id'], 'enable-code-editor', true ); 
 				$code_editor_content = get_post_meta( $atts['id'], 'kemet-hook-custom-code', true ); 
 
