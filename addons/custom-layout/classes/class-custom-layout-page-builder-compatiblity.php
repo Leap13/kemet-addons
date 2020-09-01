@@ -57,7 +57,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 					$post = Brizy_Editor_Post::get( $post_id );
 
 					if ( $post ) {
-						return self::render_brizy_editor_content( $post_id );
+						self::render_brizy_editor_content( $post_id );
 					}
 				} catch ( Exception $exception ) {
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
