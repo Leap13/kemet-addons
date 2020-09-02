@@ -51,3 +51,14 @@
     border: 1px solid #7e8993;
   }
 }
+#kemet_custom_layout_options {
+  .kfw-field-fieldset {
+    .kfw-fieldset-content {
+      padding: 0;
+      border: 0;
+      > .kfw-field {
+        padding: 0;
+      }
+    }
+  }
+}
