@@ -122,7 +122,6 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
         /**
 		 * Append CSS style to class variable.
 		 *
-		 * @since 1.0.10
 		 * @param string $style Inline style string.
 		 * @return void
 		 */

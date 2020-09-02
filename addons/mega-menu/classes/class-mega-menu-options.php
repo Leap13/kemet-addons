@@ -9,7 +9,6 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
     /**
 	 * mega_menu options
 	 *
-	 * @since 1.0.10
 	 */
     class Kemet_Mega_Menu_Options {
         
@@ -138,7 +137,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'          => 'column-template',
 						'type'        => 'select',
 						'class'       => 'mega-menu-field-template',
-						'title'       => 'Content Source',
+						'title'       => __('Content Source', 'kemet-addons'),
 						'options'     => $templates_array
 					)
 				)
