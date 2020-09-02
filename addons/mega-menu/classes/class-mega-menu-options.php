@@ -50,7 +50,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 		public function create_sections($prefix)
 		{
 			$templates_array = array(
-				'' => 'Select Template',
+				'' => __('Select Template', 'kemet-addons'),
 			);
 
 			$custom_layouts 	= get_posts( array( 'post_type' => 'kemet_custom_layouts', 'numberposts' => -1, 'post_status' => 'publish' ) );
@@ -68,18 +68,18 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'      => 'enable-mega-menu',
 						'class'   => 'enable-mega-menu',
 						'type' => 'switcher',
-						'label'   => 'Enable Mega Menu',
+						'label'   => __('Enable Mega Menu', 'kemet-addons'),
 						'default' => false
 					),
 					array(
 						'id'          => 'mega-menu-width',
 						'class'       => 'mega-menu-width',
 						'type'        => 'select',
-						'title'       => 'Mega Menu Width',
+						'title'       => __('Mega Menu Width', 'kemet-addons'),
 						'options'     => array(
-							'content' => 'Content',
-							'container' => 'Menu Container Width',
-							'full' => 'Full',
+							'content' => __('Content', 'kemet-addons'),
+							'container' => __('Menu Container Width', 'kemet-addons'),
+							'full' => __('Full', 'kemet-addons'),
 						),
 						'default' => 'content'
 					),
@@ -87,20 +87,20 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'    => 'mega-menu-columns',
 						'class'   => 'enable-mega-menu',
 						'type'  => 'number',
-						'title' => 'Mega Menu Columns',
+						'title' => __('Mega Menu Columns', 'kemet-addons'),
 						'default' => 2
 					),
 					array(
 						'id'    => 'mega-menu-background',
 						'class'   => 'mega-menu-background',
 						'type'  => 'background',
-						'title' => 'Mega Menu Background',
+						'title' => __('Mega Menu Background', 'kemet-addons'),
 					),
 					array(
 						'id'      => 'disable-link',
 						'class'   => 'disable-link',
 						'type'    => 'checkbox',
-						'label'   => 'Disable link',
+						'label'   => __('Disable link', 'kemet-addons'),
 						'default' => false
 					),
 					array(
@@ -113,7 +113,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'    => 'mega-menu-spacing',
 						'class' => 'mega-menu-spacing',
 						'type'  => 'spacing',
-						'title' => 'Spacing',
+						'title' => __('Spacing', 'kemet-addons'),
 					),
 				)
 			  ) 
@@ -124,14 +124,14 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'      => 'disable-item-label',
 						'class'   => 'disable-item-label',
 						'type'    => 'checkbox',
-						'label'   => 'Hide Menu Item Label',
+						'label'   => __('Hide Menu Item Label', 'kemet-addons'),
 						'default' => false
 					),
 					array(
 						'id'      => 'column-heading',
 						'class'   => 'column-heading',
 						'type'    => 'checkbox',
-						'label'   => 'Make This Item As Column Heading',
+						'label'   => __('Make This Item As Column Heading', 'kemet-addons'),
 						'default' => false
 					),
 					array(
@@ -151,19 +151,19 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'      => 'label-text',
 						'class'   	  => 'label-text',
 						'type'    => 'text',
-						'title'   => 'Menu Label',
+						'title'   => __('Menu Label', 'kemet-addons'),
 					),
 					array(
 						'id'    => 'label-color',
 						'class'   	  => 'label-color',
 						'type'  => 'color',
-						'title' => 'Label Color',
+						'title' => __('Label Color', 'kemet-addons'),
 					),
 					array(
 						'id'    => 'label-bg-color',
 						'class'   	  => 'label-bg-color',
 						'type'  => 'color',
-						'title' => 'Label Background Color',
+						'title' => __('Label Background Color', 'kemet-addons'),
 					),
 				)
 			  ) 

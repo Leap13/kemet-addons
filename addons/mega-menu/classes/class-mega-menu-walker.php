@@ -59,8 +59,7 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
 
               Kemet_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
 
-              if ( 'full' === $this->megamenu_width ) {
-                    // Adding "hidden" class to fix the visibility issue during page load.
+              if ( 'full' === $this->megamenu_width ) { 
                     $output .= "\n$indent<div class='mega-menu-full-wrap'>\n";
                 }
 

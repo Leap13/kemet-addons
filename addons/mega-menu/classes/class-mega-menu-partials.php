@@ -9,7 +9,7 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
     class Kemet_Mega_Menu_Partials {
 
         /**
-		 * Member Variable
+		 * Mega Menu Style
 		 *
 		 * @var string
 		 */
@@ -132,15 +132,13 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
 
 		/**
 		 * Print inline CSS to footer.
-		 *
-		 * @since 1.0.10
 		 * @return void
 		 */
 		public function megamenu_style() {
            
 			if ( '' != self::$mega_menu_style ) {
 				echo "<style type='text/css' class='kemet-megamenu-inline-style'>";
-				echo self::$mega_menu_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo self::$mega_menu_style;
 				echo '</style>';
 			}
         }
