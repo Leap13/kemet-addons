@@ -276,6 +276,39 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
           }
 
         }
+
+        function get_values($array , $case){
+
+          $new_array = array();
+          $get_value = self::get_array_value();
+
+          if(is_array($array)){
+            switch ($case) {
+              case 'value':
+
+                $key = array_search('specifics-location', $array);
+                if (false !== $key) {
+                  unset($array[$key]);
+                }
+                foreach($array as $value){
+                  $new_array[] = __( $get_value[$value],'kemet-addons' );
+                }
+
+                break;
+              
+              case 'title':
+
+                  foreach($array as $value){
+                    $new_array[] = __( self::get_post_title($value),'kemet-addons' );
+                  }
+                
+                break;
+            }
+            
+          } 
+          return $new_array;
+        }
+
         function shortcode_column_content($column_key, $post_id) {
 
           switch ($column_key) {
@@ -288,50 +321,17 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
             case 'kemet_layout_rules':
 
               $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-              $display_rules = isset($meta['display-on-group']['display-on-rule']) ? $meta['display-on-group']['display-on-rule'] : '';
-              $hide_rules = isset($meta['hide-on-group']['hide-on-rule']) ? $meta['hide-on-group']['hide-on-rule'] : '';
-              $specific_display = isset($meta['display-on-group']['display-on-specifics-location']) ? $meta['display-on-group']['display-on-specifics-location'] : '';
-			        $specific_hide = isset($meta['hide-on-group']['hide-on-specifics-location']) ? $meta['hide-on-group']['hide-on-specifics-location'] : '';
-              $users = isset($meta['user-rules']) ? $meta['user-rules'] : '';
-              $all_options = self::get_array_value();
-
-              $all_display_rules = array(
-                  'display' => array(),
-                  'hide'   => array(),
-                  'users'  => array()
-              );
-              if(is_array($users)){
-                foreach($users as $user){
-                  $all_display_rules['users'][] = __( $all_options[$user],'kemet-addons' );
-                }
-              }
-              if(is_array($display_rules)){
-                foreach($display_rules as $position){
-
-                  if($position != 'specifics-location'){
-                    $all_display_rules['display'][] = __( $all_options[$position],'kemet-addons' );
-                  }
-                  
-                }
-              }
-              if(is_array($hide_rules)){
-                foreach($hide_rules as $position){
-                  if($position != 'specifics-location'){
-                    $all_display_rules['hide'][] = __( $all_options[$position],'kemet-addons' );
-                  }
-                }
-              }
+              $display_rules = isset($meta['display-on-group']['display-on-rule']) ? $this->get_values( $meta['display-on-group']['display-on-rule'] , 'value') : array();
+              $hide_rules = isset($meta['hide-on-group']['hide-on-rule']) ? $this->get_values( $meta['hide-on-group']['hide-on-rule'] , 'value') : array();
+              $specific_display = isset($meta['display-on-group']['display-on-specifics-location']) ? $this->get_values( $meta['display-on-group']['display-on-specifics-location'] , 'title') : array();
+			        $specific_hide = isset($meta['hide-on-group']['hide-on-specifics-location']) ? $this->get_values( $meta['hide-on-group']['hide-on-specifics-location'] , 'title') : array();
+              $users = isset($meta['user-rules']) ? $this->get_values( $meta['user-rules'] , 'value') : '';
               
-              if(is_array($specific_display)){
-                foreach($specific_display as $position){
-                  $all_display_rules['display'][] = __( self::get_post_title($position),'kemet-addons' );
-                }
-              }
-              if(is_array($specific_hide)){
-                foreach($specific_hide as $position){
-                  $specific_hide['hide'][] = __( self::get_post_title($position),'kemet-addons' );
-                }
-              }
+              $all_display_rules = array(
+                  'display' => array_merge( $display_rules , $specific_display ),
+                  'hide'   => array_merge( $hide_rules , $specific_hide ),
+                  'users'  => $users
+              );
 
               echo "<div class='kmt-rules-column'>";
                 if(!empty($all_display_rules['display'])){

@@ -893,7 +893,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                 
 				foreach ( $rules['hide-on-rule'] as $key => $rule ) {
 					
-					switch ( $rule_case ) {
+					switch ( $rule ) {
 						case 'global-page':
 							$display = true;
 							break;
