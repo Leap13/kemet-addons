@@ -136,7 +136,9 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 
 			if ( '' !== $post_id ) {
 				if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-					$css_file = new \Elementor\Core\Files\CSS\Post( $post_id );
+					$css_file = \Elementor\Core\Files\CSS\Post::create(  $post_id  );
+
+					var_dump('\Elementor\Core\Files\CSS\Post');
 				} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
 					$css_file = new \Elementor\Post_CSS_File( $post_id );
 				}
