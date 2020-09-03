@@ -131,12 +131,13 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 					'show_ui'               	=> true,
 					'show_in_menu' 				=> false,
 					'show_in_nav_menus'     	=> false,
+					'show_in_admin_bar'         => true,
 					'can_export'            	=> true,
 					'exclude_from_search'   	=> true,
 					'capability_type' 			=> 'post',
 					'rewrite' 					=> false,
 					'show_in_rest'        		=> $code_editor,
-					'supports' 					=> array( 'title', 'editor', 'thumbnail', 'author', 'elementor' ),
+					'supports' 					=> array( 'title', 'editor', 'author', 'elementor' ),
 					) 
 				) 
 			);
