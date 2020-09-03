@@ -136,9 +136,7 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
 		public function megamenu_style() {
            
 			if ( '' != self::$mega_menu_style ) {
-				echo "<style type='text/css' class='kemet-megamenu-inline-style'>";
-				echo self::$mega_menu_style;
-				echo '</style>';
+				printf( "<style type='text/css' class='kemet-megamenu-inline-style'>%s</style>" , esc_attr(self::$mega_menu_style) );
 			}
         }
         
