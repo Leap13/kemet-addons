@@ -179,6 +179,13 @@ body:not(.kmt-header-break-point) {
           margin: 0 auto;
         }
       }
+      &:hover {
+        .kemet-megamenu {
+          > li {
+            display: block;
+          }
+        }
+      }
       .kemet-megamenu {
         overflow: hidden;
         ul {
@@ -204,6 +211,7 @@ body:not(.kmt-header-break-point) {
           }
         }
         > li {
+          display: none;
           float: left;
           a {
             border: none;
