@@ -1462,8 +1462,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				'kemet-addons-select2',
 			), KEMET_ADDONS_VERSION, true );
 			
-			wp_enqueue_style( 'kemet-addons-custom-layout-css', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/' . $dir . '/style' . $css_prefix , '', KEMET_ADDONS_VERSION );
-
 			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true );
 			$all_display = isset($meta['display-on-group']['display-on-specifics-location']) ? $meta['display-on-group']['display-on-specifics-location'] : '';
 			$all_hide = isset($meta['hide-on-group']['hide-on-specifics-location']) ? $meta['hide-on-group']['hide-on-specifics-location'] : '';
