@@ -41,6 +41,9 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.1.3 version
+- Fixed: Responisve menu isuue.
+
 1.1.2 version
 - Added: Woocommerce notice compatibility.
 - Fixed: Page title spacing issue with enabled transparent header.
