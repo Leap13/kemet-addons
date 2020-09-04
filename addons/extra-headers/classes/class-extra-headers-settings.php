@@ -34,7 +34,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
             add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'kemet_header_breakpoint_style' ) );
 			add_action( 'kemet_before_top_bar', array( $this, 'header_with_top_bar' ) );
 			add_action( 'kemet_after_main_header', array( $this, 'after_main_header' ) );
 			add_filter( 'header_container_classes', array( $this,'kemet_header_container' ));
@@ -52,64 +51,6 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
 
 			return $classes;
 		}
-		/**
-		 * Function to Add Header Breakpoint Style
-		 *
-		 */
-		function kemet_header_breakpoint_style() {
-
-			// Header Break Point.
-			$header_break_point = kemet_header_break_point();
-
-			ob_start();
-			?>
-			.main-header-bar-wrap::before {
-				content: '<?php echo esc_html( $header_break_point ); ?>';
-			}
-
-			@media all and ( min-width: <?php echo esc_html( $header_break_point ); ?>px ) {
-				.main-header-bar-wrap::before {
-					content: '';
-				}
-			}
-			<?php
-
-			$kemet_header_width = kemet_get_option( 'header-main-layout-width' );
-
-			/* Width for Header */
-			if ( 'full' == $kemet_header_width ) {
-				$genral_global_responsive = array(
-					'#sitehead .kmt-container' => array(
-						'max-width'     => '100%',
-						'padding-left'  => '35px',
-						'padding-right' => '35px',
-					),
-				);
-
-				/* Parse CSS from array()*/
-				echo kemet_parse_css( $genral_global_responsive, $header_break_point );
-			}elseif ('stretched' == $kemet_header_width ){
-
-				$genral_global_responsive = array(
-					'#sitehead .kmt-container' => array(
-						'max-width'     => '100%',
-						'padding-left'  => '0',
-						'padding-right' => '0',
-					),
-				);
-
-				/* Parse CSS from array()*/
-				echo kemet_parse_css( $genral_global_responsive, $header_break_point );
-			}
-
-			$dynamic_css = ob_get_clean();
-
-			// trim white space for faster page loading.
-			$dynamic_css = Kemet_Enqueue_Scripts::trim_css( $dynamic_css );
-
-			wp_add_inline_style( 'kemet-theme-css', $dynamic_css );
-		}
-
 
         function html_markup_loader() {
             ?>
