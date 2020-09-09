@@ -137,6 +137,7 @@ module.exports = function (grunt) {
                         'addons/sticky-header/assets/css/unminified/style.css': 'sass/sticky-header.scss',
                         'addons/single-post/assets/css/unminified/style.css': 'sass/single-post.scss',
                         'addons/woocommerce/assets/css/unminified/style.css': 'sass/woocommerce.scss',
+                        'addons/custom-layout/assets/css/unminified/style.css': 'sass/custom-layout.scss',
                     },
 
                     {
@@ -235,6 +236,10 @@ module.exports = function (grunt) {
                         src: 'inc/k-framework/assets/css/kfw.css',
                         dest: 'inc/k-framework/assets/css/kfw.min.css',
                     },
+                    {
+                        src: 'addons/custom-layout/assets/css/unminified/style.css',
+                        dest: 'addons/custom-layout/assets/css/minified/style.min.css',
+                    },
                 ]
             }
         },
@@ -257,6 +262,7 @@ module.exports = function (grunt) {
                     'addons/woocommerce/assets/js/minified/quick-view.min.js': 'addons/woocommerce/assets/js/unminified/quick-view.js',
                     'addons/woocommerce/assets/js/minified/single-product-ajax-cart.min.js': 'addons/woocommerce/assets/js/unminified/single-product-ajax-cart.js',
                     'addons/woocommerce/assets/js/minified/woocommerce.min.js': 'addons/woocommerce/assets/js/unminified/woocommerce.js',
+                    'addons/custom-layout/assets/js/minified/custom-layout.min.js': 'addons/custom-layout/assets/js/unminified/custom-layout.js',
                     'inc/k-framework/assets/js/kfw-plugins-field.min.js': 'inc/k-framework/assets/js/kfw-plugins-field.js',
                     'inc/k-framework/assets/js/kfw.min.js': 'inc/k-framework/assets/js/kfw.js',
 

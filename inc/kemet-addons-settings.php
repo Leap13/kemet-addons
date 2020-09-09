@@ -77,6 +77,12 @@ if (class_exists('KFW')) {
       'title' => __('Single Post Options', 'kemet-addons'),
       'subtitle' => __('Enable/Disable the extra options that will allow you to customize your single post content.', 'kemet-addons'),
       'default' => false,
+    ),array(
+      'id' => 'custom-layout',
+      'type' => 'switcher',
+      'title' => __('Custom Layout', 'kemet-addons'),
+      'subtitle' => __('Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-ddons'),
+      'default' => false,
     ),
   );
 
