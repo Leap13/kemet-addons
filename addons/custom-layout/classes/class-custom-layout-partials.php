@@ -153,7 +153,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		 */
 		public function default_content() {
 			$post_id = get_the_id();
-			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
+			$meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
             $layout = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
             
 			if ( empty( $layout ) ) {
@@ -276,7 +276,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		public function custom_layout_content( $content ) {
 			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
 				$post_id = get_the_id();
-                $meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
+                $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
                 $action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
 				$code_editor = get_post_meta( $post_id, 'enable-code-editor', true ); 
 				$code_editor_content = get_post_meta( $post_id, 'kemet-hook-custom-code', true ); 
@@ -321,7 +321,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
                 $post_id  = get_the_id();
 
-                $meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
+                $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
                 $action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
                 $priority = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
 
@@ -345,7 +345,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				} else {
 					add_action(
 						$action,
-						function() use ( $post_id ) {
+						function() {
 
 							self::get_post_layout();
 
@@ -364,19 +364,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 		 * @return array
 		 */
 		public static function get_location_options() {
-
-			$args = array(
-				'public'   => true,
-				'_builtin' => true,
-			);
-
-			$post_types = get_post_types( $args, 'objects' );
-			unset( $post_types['attachment'] );
-
-			$args['_builtin'] = false;
-			$custom_post_type = get_post_types( $args, 'objects' );
-
-			$post_types = apply_filters( 'kemet_location_template_rule', array_merge( $post_types, $custom_post_type ) );
 
 			$display_options = array(
                 'global'         => array(
@@ -1448,7 +1435,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				$dir        = 'unminified';
 			}
 
-			$hooks = Kemet_Custom_Layout_Partials::get_hooks_options();
+			$hooks = self::get_hooks_options();
 			$description_array = array();
 			foreach($hooks as $key => $value){
 				foreach($value['value'] as $val => $decription){

@@ -27,7 +27,6 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
         public function __construct() {
           $prefix_page_opts = 'kemet_custom_layout_options';
           $code_editor_prefix = 'kemet_code_editor';
-          $short_code_mete_prefix = 'kemet_short_code';
 
           $this->create_custom_layout_meta($prefix_page_opts);
           $this->create_code_editor($code_editor_prefix);

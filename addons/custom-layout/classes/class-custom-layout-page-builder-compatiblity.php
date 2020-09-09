@@ -32,7 +32,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 		 *
 		 * @param int $post_id Post id.
 		 */
-        function render_content( $post_id ){
+        public function render_content( $post_id ){
             global $wp_post_types;
             $post = get_post( $post_id );
 			
@@ -77,7 +77,7 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 		 *
 		 * @param int $post_id Post id.
 		 */
-        function enqueue_scripts( $post_id ){
+        public function enqueue_scripts( $post_id ){
 
             global $wp_post_types;
             $post = get_post( $post_id );
