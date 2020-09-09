@@ -60,22 +60,8 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 		public function get_custom_layout_template( $template ) {
 			global $post;
 
-			$post_id = get_the_id();
-			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true ); 
-			$action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
-
-			$woocommerce_hooks     = array( 'woo-global', 'woo-shop', 'woo-product', 'woo-cart', 'woo-checkout', 'woo-distraction-checkout', 'woo-account' );
-			$woocommerce_is_activated = false;
-
 			if ( KEMET_CUSTOM_LAYOUT_POST_TYPE == $post->post_type ) {
-				foreach ( Kemet_Custom_Layout_Partials::get_hooks_options() as $key => $value ) {
-					if ( in_array( $key, $woocommerce_hooks ) && isset( Kemet_Custom_Layout_Partials::get_hooks_options()[ $key ]['hooks'][ $action ] ) ) {
-						$woocommerce_is_activated = true;
-					}
-				}
-				if ( false == $woocommerce_is_activated ) {
-					$template = KEMET_CUSTOM_LAYOUT_DIR . 'templates/template.php';
-				}
+				$template = KEMET_CUSTOM_LAYOUT_DIR . 'templates/template.php';
 			}
 			
 			return $template;	

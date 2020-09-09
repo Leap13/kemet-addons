@@ -1424,7 +1424,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 					if ( isset( $select2_lang[ $wordpress_lang ] ) && file_exists( KEMET_CUSTOM_LAYOUT_DIR . 'assets/js-unminified/i18n/' . $select2_lang[ $wordpress_lang ] . '.js' ) ) {
 
-						$ast_lang = $select2_lang[ $wordpress_lang ];
 						wp_enqueue_script(
 							'kemet-addons-select2-lang',
 							KEMET_CUSTOM_LAYOUT_URL . 'assets/js/minified/i18n/' . $select2_lang[ $wordpress_lang ] . '.js',
