@@ -8,6 +8,9 @@
 .kfw-nav-menu-options .kfw-fields > .kfw-field {
   display: none;
 }
+.kfw-nav-menu-options .kfw-fields > .kfw-field.hidden {
+  display: none;
+}
 .menu-item .kfw-nav-menu-options {
   display: none;
 }

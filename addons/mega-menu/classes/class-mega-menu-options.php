@@ -60,7 +60,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 				}
 			}
 			KFW::createSection( $prefix, array(
-				'title'  => __('Mega Menu', 'kemet-addons'),
+				'title'  => __('Menu Options', 'kemet-addons'),
 				'fields' => array(
 
 					array(
@@ -80,26 +80,38 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 							'container' => __('Menu Container Width', 'kemet-addons'),
 							'full' => __('Full', 'kemet-addons'),
 						),
-						'default' => 'content'
+						'default' => 'content',
+						'dependency' => array( 'enable-mega-menu', '==', 'true' ),
 					),
 					array(
-						'id'    => 'mega-menu-columns',
-						'class'   => 'enable-mega-menu',
-						'type'  => 'number',
-						'title' => __('Mega Menu Columns', 'kemet-addons'),
-						'default' => 2
+						'id'          => 'mega-menu-columns',
+						'class'       => 'mega-menu-columns',
+						'type'        => 'select',
+						'title'       => __('Mega Menu Columns', 'kemet-addons'),
+						'options'     => array(
+							1 => __('One', 'kemet-addons'),
+							2 => __('Two', 'kemet-addons'),
+							3 => __('Three', 'kemet-addons'),
+							4 => __('Four', 'kemet-addons'),
+							5 => __('Five', 'kemet-addons'),
+							6 => __('Six', 'kemet-addons'),
+						),
+						'default' => 2,
+						'dependency' => array( 'enable-mega-menu', '==', 'true' ),
 					),
 					array(
 						'id'    => 'mega-menu-background',
 						'class'   => 'mega-menu-background',
 						'type'  => 'background',
 						'title' => __('Mega Menu Background', 'kemet-addons'),
+						'dependency' => array( 'enable-mega-menu', '==', 'true' ),
 					),
 					array(
 						'id'      => 'disable-link',
 						'class'   => 'disable-link',
 						'type'    => 'checkbox',
 						'label'   => __('Disable link', 'kemet-addons'),
+						'dependency' => array( 'enable-mega-menu', '==', 'true' ),
 						'default' => false
 					),
 					array(
@@ -113,6 +125,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'class' => 'mega-menu-spacing',
 						'type'  => 'spacing',
 						'title' => __('Spacing', 'kemet-addons'),
+						'dependency' => array( 'enable-mega-menu', '==', 'true' ),
 					),
 				)
 			  ) 
