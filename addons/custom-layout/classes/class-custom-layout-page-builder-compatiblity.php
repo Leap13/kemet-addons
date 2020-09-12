@@ -358,40 +358,6 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
             echo do_shortcode( $output );
             echo ob_get_clean();
         }
-
-        /**
-         * Load Gutenberg Blocks styles & scripts.
-         *
-         * @param int $post_id Post id.
-         */
-        public function gutenberg_enqueue_scripts( $post_id ) {
-
-            wp_enqueue_style( 'wp-block-library' );
-            if ( defined( 'UAGB_VER' ) && version_compare( UAGB_VER, '1.14.11', '>=' ) ) {
-                $uag_style = get_post_meta( $post_id, 'uag_style_timestamp-css', true );
-            } else {
-                $uag_style = get_post_meta( $post_id, 'uagb_style_timestamp-css', true );
-            }
-
-            if ( class_exists( 'UAGB_Helper' ) && $uag_style ) {
-
-                $get_post = get_post( $post_id, OBJECT );
-
-                $uagb_helper = UAGB_Helper::get_instance();
-                $get_generated_stylesheet = array( $uagb_helper, 'get_generated_stylesheet' );
-
-                wp_enqueue_style(
-                    'uagb-block-css', // UAG-Handle.
-                    UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
-                    array(),
-                    UAGB_VER
-                );
-
-                if ( is_callable( $get_generated_stylesheet ) ) {
-                    $uagb_helper->get_generated_stylesheet( $get_post );
-                }
-            }
-        }
     
     }
 
