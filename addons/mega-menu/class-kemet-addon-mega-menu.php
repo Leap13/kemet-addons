@@ -13,7 +13,6 @@ if ( ! class_exists( 'Kemet_Mega_Menu' ) ) {
 	/**
 	 * Mega Menu
 	 *
-	 * @since 1.0.10
 	 */
 	class Kemet_Mega_Menu {
 

@@ -9,7 +9,6 @@ if ( !class_exists( 'Kemet_Mega_Menu_Settings' )) {
     /**
 	 * mega_menu Settings
 	 *
-	 * @since 1.0.10
 	 */
     class Kemet_Mega_Menu_Settings {
         
