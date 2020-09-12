@@ -869,7 +869,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$product_id = $product->get_id();
 
 			// Get label.
-			$label = __( 'Quick View', 'kemet-addon' );
+			$label = __( 'Quick View', 'kemet-addons' );
 			$button = '<div class="kmt-qv-btn-wrap">';
 			$button .= '<a href="#" class="button kmt-quick-view" data-product_id="' . $product_id . '">' . $label . '</a>';
 			$button .= '</div>';

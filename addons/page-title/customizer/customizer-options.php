@@ -375,7 +375,7 @@ $defaults = Kemet_Theme_Options::defaults();
 					'type'           => 'kmt-responsive-slider',
 					'section'        => 'section-page-title-header',
 					'priority'       => 70,
-					'label'          => __( 'Line Height', 'kemet' ),
+					'label'          => __( 'Line Height', 'kemet-addons' ),
 					'unit_choices'   => array(
 						'px' => array(
 							'min' => 0,
@@ -550,7 +550,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-page-title-header',
 				'priority'       => 100,
-				'label'          => __( 'Font Size', 'kemet' ),
+				'label'          => __( 'Font Size', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 1,
@@ -581,7 +581,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		new Kemet_Control_Typography(
 			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-font-family]', array(
 				'type'     => 'kmt-font-family',
-				'label'    => __( 'Font Family', 'kemet' ),
+				'label'    => __( 'Font Family', 'kemet-addons' ),
 				'section'  => 'section-page-title-header',
 				'priority' => 120,
 				'connect'  => KEMET_THEME_SETTINGS . '[sub-title-font-weight]',
@@ -603,7 +603,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		new Kemet_Control_Typography(
 			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-font-weight]', array(
 				'type'     => 'kmt-font-weight',
-				'label'    => __( 'Font Weight', 'kemet' ),
+				'label'    => __( 'Font Weight', 'kemet-addons' ),
 				'section'  => 'section-page-title-header',
 				'priority' => 125,
 				'connect'  => KEMET_THEME_SETTINGS . '[sub-title-font-family]',
@@ -626,15 +626,15 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[sub-title-text-transform]', array(
 			'section'  => 'section-page-title-header',
-			'label'    => __( 'Text Transform', 'kemet' ),
+			'label'    => __( 'Text Transform', 'kemet-addons' ),
 			'type'     => 'select',
 			'priority' => 130,
 			'choices'  => array(
-				''           => __( 'Inherit', 'kemet' ),
-				'none'       => __( 'None', 'kemet' ),
-				'capitalize' => __( 'Capitalize', 'kemet' ),
-				'uppercase'  => __( 'Uppercase', 'kemet' ),
-				'lowercase'  => __( 'Lowercase', 'kemet' ),
+				''           => __( 'Inherit', 'kemet-addons' ),
+				'none'       => __( 'None', 'kemet-addons' ),
+				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
+				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
+				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
 			),
 		)
 	);
@@ -656,7 +656,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-page-title-header',
 				'priority'       => 135,
-				'label'          => __( 'Line Height', 'kemet' ),
+				'label'          => __( 'Line Height', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 0,
@@ -694,7 +694,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-page-title-header',
 				'priority'       => 145,
-				'label'          => __( 'Letter Spacing', 'kemet' ),
+				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 0.1,
@@ -779,7 +779,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-breadcrumbs',
 				'priority'       => 15,
-				'label'          => __( 'Font Size', 'kemet' ),
+				'label'          => __( 'Font Size', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 1,
@@ -810,7 +810,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		new Kemet_Control_Typography(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]', array(
 				'type'     => 'kmt-font-family',
-				'label'    => __( 'Font Family', 'kemet' ),
+				'label'    => __( 'Font Family', 'kemet-addons' ),
 				'section'  => 'section-breadcrumbs',
 				'priority' => 25,
 				'connect'  => KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]',
@@ -832,7 +832,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		new Kemet_Control_Typography(
 			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]', array(
 				'type'     => 'kmt-font-weight',
-				'label'    => __( 'Font Weight', 'kemet' ),
+				'label'    => __( 'Font Weight', 'kemet-addons' ),
 				'section'  => 'section-breadcrumbs',
 				'priority' => 30,
 				'connect'  => KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]',
@@ -855,15 +855,15 @@ $defaults = Kemet_Theme_Options::defaults();
 	$wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[breadcrumbs-text-transform]', array(
 			'section'  => 'section-breadcrumbs',
-			'label'    => __( 'Text Transform', 'kemet' ),
+			'label'    => __( 'Text Transform', 'kemet-addons' ),
 			'type'     => 'select',
 			'priority' => 35,
 			'choices'  => array(
-				''           => __( 'Inherit', 'kemet' ),
-				'none'       => __( 'None', 'kemet' ),
-				'capitalize' => __( 'Capitalize', 'kemet' ),
-				'uppercase'  => __( 'Uppercase', 'kemet' ),
-				'lowercase'  => __( 'Lowercase', 'kemet' ),
+				''           => __( 'Inherit', 'kemet-addons' ),
+				'none'       => __( 'None', 'kemet-addons' ),
+				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
+				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
+				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
 			),
 		)
 	);
@@ -885,7 +885,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-breadcrumbs',
 				'priority'       => 40,
-				'label'          => __( 'Line Height', 'kemet' ),
+				'label'          => __( 'Line Height', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 0,
@@ -923,7 +923,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-breadcrumbs',
 				'priority'       => 41,
-				'label'          => __( 'Letter Spacing', 'kemet' ),
+				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 0.1,

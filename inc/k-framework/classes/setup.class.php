@@ -272,12 +272,12 @@ if( ! class_exists( 'KFW' ) ) {
 					'wp-color-picker',
 					'wpColorPickerL10n',
 					array(
-						'clear'            => __( 'Clear', 'kemet' ),
-						'clearAriaLabel'   => __( 'Clear color', 'kemet' ),
-						'defaultString'    => __( 'Default', 'kemet' ),
-						'defaultAriaLabel' => __( 'Select default color', 'kemet' ),
-						'pick'             => __( 'Select Color', 'kemet' ),
-						'defaultLabel'     => __( 'Color value', 'kemet' ),
+						'clear'            => __( 'Clear', 'kemet-addons' ),
+						'clearAriaLabel'   => __( 'Clear color', 'kemet-addons' ),
+						'defaultString'    => __( 'Default', 'kemet-addons' ),
+						'defaultAriaLabel' => __( 'Select default color', 'kemet-addons' ),
+						'pick'             => __( 'Select Color', 'kemet-addons' ),
+						'defaultLabel'     => __( 'Color value', 'kemet-addons' ),
 					)
 				);
       }

@@ -347,7 +347,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'        => 'kmt-font-family',
 				'section'     => 'section-topbar-header',
 				'priority'    => 46,
-				'label'       => __( 'Font Family', 'kemet' ),
+				'label'       => __( 'Font Family', 'kemet-addons' ),
 				'connect'     => KEMET_THEME_SETTINGS . '[top-bar-font-weight]',
 			)
 		)
@@ -369,7 +369,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'        => 'kmt-font-weight',
 				'section'     => 'section-topbar-header',
 				'priority'    => 46,
-				'label'       => __( 'Font Weight', 'kemet' ),
+				'label'       => __( 'Font Weight', 'kemet-addons' ),
 				'connect'     => KEMET_THEME_SETTINGS . '[top-bar-font-family]',
 			)
 		)
@@ -391,13 +391,13 @@ $defaults = Kemet_Theme_Options::defaults();
 			'type'     => 'select',
 			'section'  => 'section-topbar-header',
 			'priority' => 47,
-			'label'    => __( 'Text Transform', 'kemet' ),
+			'label'    => __( 'Text Transform', 'kemet-addons' ),
 			'choices'  => array(
-				''           => __( 'Default', 'kemet' ),
-				'none'       => __( 'None', 'kemet' ),
-				'capitalize' => __( 'Capitalize', 'kemet' ),
-				'uppercase'  => __( 'Uppercase', 'kemet' ),
-				'lowercase'  => __( 'Lowercase', 'kemet' ),
+				''           => __( 'Default', 'kemet-addons' ),
+				'none'       => __( 'None', 'kemet-addons' ),
+				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
+				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
+				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
 			),
 		)
 	);
@@ -418,7 +418,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-topbar-header',
 				'priority'       => 48,
-				'label'          => __( 'Line Height', 'kemet' ),
+				'label'          => __( 'Line Height', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 0,
@@ -456,7 +456,7 @@ $defaults = Kemet_Theme_Options::defaults();
 				'type'           => 'kmt-responsive-slider',
 				'section'        => 'section-topbar-header',
 				'priority'       => 49,
-				'label'          => __( 'Letter Spacing', 'kemet' ),
+				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
 						'min' => 0.1,
