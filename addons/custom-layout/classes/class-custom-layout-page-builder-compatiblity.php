@@ -105,13 +105,6 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
 				}
             }
-            
-            $editor      = get_post_meta( $post_id, 'editor_type', true );
-			$rest_support = $wp_post_types[ KEMET_CUSTOM_LAYOUT_POST_TYPE ]->show_in_rest;
-
-			if ( 'wordpress_editor' === $editor && $rest_support ) {
-				return self::gutenberg_enqueue_scripts( $post_id );
-			}
 
         }
 
@@ -237,8 +230,8 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
 					%1$s
 				</div>',
 				$content,
-				esc_attr( 'et-boc' ),
-				esc_attr( 'et-boc' )
+				esc_attr( 'et-boc' , 'kemet-addons' ),
+				esc_attr( 'et-boc' , 'kemet-addons' )
 			);
 			return $content;
         }
