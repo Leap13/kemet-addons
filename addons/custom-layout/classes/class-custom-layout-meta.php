@@ -30,7 +30,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
 
           $this->create_custom_layout_meta($prefix_page_opts);
           $this->create_code_editor($code_editor_prefix);
-          add_action( 'add_meta_boxes_kemet_custom_layouts', array( $this, 'register_short_code_meta_boxes' ) );
+          add_action( 'add_meta_boxes_kemet_custom_layouts', array( $this, 'register_shortcode_meta_boxes' ) );
           add_filter( 'manage_posts_columns',  array( $this, 'shortcode_column') );
           add_action('manage_kemet_custom_layouts_posts_custom_column',array($this , 'shortcode_column_content') , 10, 2);
         }
@@ -239,8 +239,8 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
         /**
          * Register meta box.
          */
-        function register_short_code_meta_boxes($post) {
-          add_meta_box( 'kemet-custom-layout-short-code', __( 'Short Code', 'kemet-addons' ), function($post){ ?>
+        function register_shortcode_meta_boxes($post) {
+          add_meta_box( 'kemet-custom-layout-short-code', __( 'Shortcode', 'kemet-addons' ), function($post){ ?>
 
               <input type="text" class="widefat" value='[kemet_custom_layout id="<?php echo $post->ID; ?>"]' readonly />
         <?php },
@@ -257,7 +257,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
               $custom_columns = array(
                   'kemet_layout_action' => esc_html__( 'Action', 'kemet-addons' ),
                   'kemet_layout_rules' => esc_html__( 'Rules', 'kemet-addons' ),
-                  'kemet_short_code' => esc_html__( 'Short Code', 'kemet-addons' ),
+                  'kemet_shortcode' => esc_html__( 'Shortcode', 'kemet-addons' ),
               );
               $columns = array_merge($columns, $custom_columns);
           }
@@ -311,10 +311,10 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
         function shortcode_column_content($column_key, $post_id) {
 
           switch ($column_key) {
-            case 'kemet_short_code':
-              $short_code = sprintf( '[kemet_custom_layout id="%s"]' , $post_id );
+            case 'kemet_shortcode':
+              $shortcode = sprintf( '[kemet_custom_layout id="%s"]' , $post_id );
               
-              printf( '<input type="text" value="%s" style="min-width: 237px;" readonly \>' , esc_attr($short_code) );
+              printf( '<input type="text" value="%s" style="min-width: 237px;" readonly \>' , esc_attr($shortcode) );
               break;
             
             case 'kemet_layout_rules':
@@ -331,42 +331,45 @@ if ( !class_exists( 'Kemet_Custom_Layout_Meta' )) {
                   'hide'   => array_merge( $hide_rules , $specific_hide ),
                   'users'  => $users
               );
-
-              echo "<div class='kmt-rules-column'>";
+              $html = '';
+              $html .= "<div class='kmt-rules-column'>";
                 if(!empty($all_display_rules['display'])){
-                  echo '<p>' ;
-                  echo '<strong>Display: </strong>';
-                  echo implode(", ", $all_display_rules['display']);
-                  echo '</p>'; 
+                  $html .= '<p>' ;
+                  $html .= '<strong>Display: </strong>';
+                  $html .= implode(", ", $all_display_rules['display']);
+                  $html .= '</p>'; 
                 }
                 if(!empty($all_display_rules['hide'])){
-                  echo '<p>' ;
-                  echo '<strong>Hide: </strong>';
-                  echo implode(", ", $all_display_rules['hide']);
-                  echo '</p>'; 
+                  $html .= '<p>' ;
+                  $html .= '<strong>Hide: </strong>';
+                  $html .= implode(", ", $all_display_rules['hide']);
+                  $html .= '</p>'; 
                 }
                 if(!empty($all_display_rules['users'])){
-                  echo '<p>' ;
-                  echo '<strong>Users: </strong>';
-                  echo implode(", ", $all_display_rules['users']);
-                  echo '</p>'; 
+                  $html .= '<p>' ;
+                  $html .= '<strong>Users: </strong>';
+                  $html .= implode(", ", $all_display_rules['users']);
+                  $html .= '</p>'; 
                 }
-              echo "</div>";
+                $html .= "</div>";
+
+                echo __( $html , 'kemet-addons' );
               break;
 
             case 'kemet_layout_action':
 
               $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
               $action = isset($meta['hook-action']) ? $meta['hook-action'] : '';
-              
-            echo "<div class='kmt-action-column'>";
+            
+              $html = '';             
+              $html .= "<div class='kmt-action-column'>";
             if(!empty($action)){
-              echo '<p>' ;
-              echo $action;
-              echo '</p>'; 
+              $html .= '<p>' ;
+              $html .= $action;
+              $html .= '</p>'; 
             }
-            echo "</div>";
-              
+            $html .= "</div>";
+            echo __( $html , 'kemet-addons' );
               break;
           }
 
