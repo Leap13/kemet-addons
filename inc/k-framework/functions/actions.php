@@ -32,7 +32,7 @@ if( ! function_exists( 'kfw_get_icons' ) ) {
 
       } else {
 
-        echo '<div class="kfw-text-error">'. esc_html__( 'No data provided by developer', 'kfw' ) .'</div>';
+        echo '<div class="kfw-text-error">'. esc_html__( 'No data provided by developer', 'kemet-addons' ) .'</div>';
 
       }
 
@@ -40,7 +40,7 @@ if( ! function_exists( 'kfw_get_icons' ) ) {
 
     } else {
 
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kfw' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kemet-addons' ) ) );
 
     }
 
@@ -100,7 +100,7 @@ if( ! function_exists( 'kfw_import_ajax' ) ) {
 
     }
 
-    wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kfw' ) ) );
+    wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kemet-addons' ) ) );
 
   }
   add_action( 'wp_ajax_kfw-import', 'kfw_import_ajax' );
@@ -122,7 +122,7 @@ if( ! function_exists( 'kfw_reset_ajax' ) ) {
       wp_send_json_success();
     }
 
-    wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kfw' ) ) );
+    wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kemet-addons' ) ) );
 
   }
   add_action( 'wp_ajax_kfw-reset', 'kfw_reset_ajax' );
@@ -153,11 +153,11 @@ if( ! function_exists( 'kfw_chosen_ajax' ) ) {
         wp_send_json_success( $options );
 
       } else {
-        wp_send_json_error( array( 'error' => esc_html__( 'You do not have required permissions to access.', 'kfw' ) ) );
+        wp_send_json_error( array( 'error' => esc_html__( 'You do not have required permissions to access.', 'kemet-addons' ) ) );
       }
 
     } else {
-      wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kfw' ) ) );
+      wp_send_json_error( array( 'error' => esc_html__( 'Error: Nonce verification has failed. Please try again.', 'kemet-addons' ) ) );
     }
 
   }
@@ -181,11 +181,11 @@ if( ! function_exists( 'kfw_set_icons' ) ) {
           <div class="kfw-modal-overlay"></div>
           <div class="kfw-modal-inner">
             <div class="kfw-modal-title">
-              <?php esc_html_e( 'Add Icon', 'kfw' ); ?>
+              <?php esc_html_e( 'Add Icon', 'kemet-addons' ); ?>
               <div class="kfw-modal-close kfw-icon-close"></div>
             </div>
             <div class="kfw-modal-header kfw-text-center">
-              <input type="text" placeholder="<?php esc_html_e( 'Search a Icon...', 'kfw' ); ?>" class="kfw-icon-search" />
+              <input type="text" placeholder="<?php esc_html_e( 'Search a Icon...', 'kemet-addons' ); ?>" class="kfw-icon-search" />
             </div>
             <div class="kfw-modal-content">
               <div class="kfw-modal-loading"><div class="kfw-loading"></div></div>

@@ -20,7 +20,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
         'max'                    => 0,
         'min'                    => 0,
         'fields'                 => array(),
-        'button_title'           => esc_html__( 'Add New', 'kfw' ),
+        'button_title'           => esc_html__( 'Add New', 'kemet-addons' ),
         'accordion_title_prefix' => '',
         'accordion_title_number' => false,
         'accordion_title_auto'   => true,
@@ -32,7 +32,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
 
       if( ! empty( $this->parent ) && preg_match( '/'. preg_quote( '['. $this->field['id'] .']' ) .'/', $this->parent ) ) {
 
-        echo '<div class="kfw-notice kfw-notice-danger">'. esc_html__( 'Error: Nested field id can not be same with another nested field id.', 'kfw' ) .'</div>';
+        echo '<div class="kfw-notice kfw-notice-danger">'. esc_html__( 'Error: Nested field id can not be same with another nested field id.', 'kemet-addons' ) .'</div>';
 
       } else {
 
@@ -43,7 +43,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
           echo '<div class="kfw-cloneable-helper">';
           echo '<i class="kfw-cloneable-sort fa fa-arrows"></i>';
           echo '<i class="kfw-cloneable-clone fa fa-clone"></i>';
-          echo '<i class="kfw-cloneable-remove kfw-confirm fa fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'kfw' ) .'"></i>';
+          echo '<i class="kfw-cloneable-remove kfw-confirm fa fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'kemet-addons' ) .'"></i>';
           echo '</div>';
 
           echo '<h4 class="kfw-cloneable-title">';
@@ -83,7 +83,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
               echo '<div class="kfw-cloneable-helper">';
               echo '<i class="kfw-cloneable-sort fa fa-arrows"></i>';
               echo '<i class="kfw-cloneable-clone fa fa-clone"></i>';
-              echo '<i class="kfw-cloneable-remove kfw-confirm fa fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'kfw' ) .'"></i>';
+              echo '<i class="kfw-cloneable-remove kfw-confirm fa fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'kemet-addons' ) .'"></i>';
               echo '</div>';
 
               echo '<h4 class="kfw-cloneable-title">';
@@ -118,8 +118,8 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
 
         echo '</div>';
 
-        echo '<div class="kfw-cloneable-alert kfw-cloneable-max">'. esc_html__( 'You can not add more than', 'kfw' ) .' '. $args['max'] .'</div>';
-        echo '<div class="kfw-cloneable-alert kfw-cloneable-min">'. esc_html__( 'You can not remove less than', 'kfw' ) .' '. $args['min'] .'</div>';
+        echo '<div class="kfw-cloneable-alert kfw-cloneable-max">'. esc_html__( 'You can not add more than', 'kemet-addons' ) .' '. $args['max'] .'</div>';
+        echo '<div class="kfw-cloneable-alert kfw-cloneable-min">'. esc_html__( 'You can not remove less than', 'kemet-addons' ) .' '. $args['min'] .'</div>';
 
         echo '<a href="#" class="button button-primary kfw-cloneable-add">'. $args['button_title'] .'</a>';
 
