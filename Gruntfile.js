@@ -223,6 +223,10 @@ module.exports = function (grunt) {
             dest: "addons/mega-menu/assets/css/minified/style.min.css",
           },
           {
+            src: "addons/mega-menu/assets/css/unminified/mega-menu.css",
+            dest: "addons/mega-menu/assets/css/minified/mega-menu.min.css",
+          },
+          {
             src: "inc/k-framework/assets/css/kfw.css",
             dest: "inc/k-framework/assets/css/kfw.min.css",
           },
