@@ -183,14 +183,14 @@ $wp_customize->add_control(
 					'type'           => 'kmt-responsive-spacing',
 					'section'        => 'section-blog',
 					'priority'       => 5,
-					'label'          => __( 'Posts Border Size 2', 'kemet' ),
+					'label'          => __( 'Posts Border Size 2', 'kemet-addons' ),
 					'linked_choices' => true,
 					'unit_choices'   => array( 'px', 'em', '%' ),
 					'choices'        => array(
-						'top'    => __( 'Top', 'kemet' ),
-						'right'  => __( 'Right', 'kemet' ),
-						'bottom' => __( 'Bottom', 'kemet' ),
-						'left'   => __( 'Left', 'kemet' ),
+						'top'    => __( 'Top', 'kemet-addons' ),
+						'right'  => __( 'Right', 'kemet-addons' ),
+						'bottom' => __( 'Bottom', 'kemet-addons' ),
+						'left'   => __( 'Left', 'kemet-addons' ),
 					),
 				)
 			)
@@ -298,11 +298,11 @@ $wp_customize->add_control(
             'type'     => 'kmt-sortable',
             'section'  => 'section-blog',
             'priority' => 15,
-            'label'    => __( 'Blog Post Structure', 'kemet' ),
+            'label'    => __( 'Blog Post Structure', 'kemet-addons' ),
             'choices'  => array(
-                'image'      => __( 'Featured Image', 'kemet' ),
-                'title-meta' => __( 'Title & Blog Meta', 'kemet' ),
-                'content-readmore' => __( 'Content & Readmore', 'kemet' ),
+                'image'      => __( 'Featured Image', 'kemet-addons' ),
+                'title-meta' => __( 'Title & Blog Meta', 'kemet-addons' ),
+                'content-readmore' => __( 'Content & Readmore', 'kemet-addons' ),
             ),
         )
     )
@@ -489,14 +489,14 @@ $wp_customize->add_control(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-blog',
 			'priority'       => 150,
-			'label'          => __( 'Spacing', 'kemet' ),
+			'label'          => __( 'Spacing', 'kemet-addons' ),
 			'linked_choices' => true,
 			'unit_choices'   => array( 'px', 'em', '%' ),
 			'choices'        => array(
-				'top'    => __( 'Top', 'kemet' ),
-				'right'  => __( 'Right', 'kemet' ),
-				'bottom' => __( 'Bottom', 'kemet' ),
-				'left'   => __( 'Left', 'kemet' ),
+				'top'    => __( 'Top', 'kemet-addons' ),
+				'right'  => __( 'Right', 'kemet-addons' ),
+				'bottom' => __( 'Bottom', 'kemet-addons' ),
+				'left'   => __( 'Left', 'kemet-addons' ),
 			),
 		)
 	)

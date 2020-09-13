@@ -216,14 +216,14 @@ $wp_customize->add_control(
             'type'     => 'kmt-sortable',
             'section'  => 'woocommerce_product_catalog',
             'priority' => 55,
-            'label'    => __( 'Product Structure', 'kemet' ),
+            'label'    => __( 'Product Structure', 'kemet-addons' ),
             'choices'  => array(
-                'title'      => __( 'Title', 'kemet' ),
-                'price'      => __( 'Price', 'kemet' ),
-                'ratings'    => __( 'Ratings', 'kemet' ),
-                'short_desc' => __( 'Short Description', 'kemet' ),
-                'add_cart'   => __( 'Add To Cart', 'kemet' ),
-                'category'   => __( 'Category', 'kemet' ),
+                'title'      => __( 'Title', 'kemet-addons' ),
+                'price'      => __( 'Price', 'kemet-addons' ),
+                'ratings'    => __( 'Ratings', 'kemet-addons' ),
+                'short_desc' => __( 'Short Description', 'kemet-addons' ),
+                'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
+                'category'   => __( 'Category', 'kemet-addons' ),
             ),
         )
     )
@@ -249,14 +249,14 @@ $wp_customize->add_control(
             'type'     => 'kmt-sortable',
             'section'  => 'woocommerce_product_catalog',
             'priority' => 55,
-            'label'    => __( 'List Style Structure', 'kemet' ),
+            'label'    => __( 'List Style Structure', 'kemet-addons' ),
             'choices'  => array(
-                'title'      => __( 'Title', 'kemet' ),
-                'price'      => __( 'Price', 'kemet' ),
-                'ratings'    => __( 'Ratings', 'kemet' ),
-                'short_desc' => __( 'Short Description', 'kemet' ),
-                'add_cart'   => __( 'Add To Cart', 'kemet' ),
-                'category'   => __( 'Category', 'kemet' ),
+                'title'      => __( 'Title', 'kemet-addons' ),
+                'price'      => __( 'Price', 'kemet-addons' ),
+                'ratings'    => __( 'Ratings', 'kemet-addons' ),
+                'short_desc' => __( 'Short Description', 'kemet-addons' ),
+                'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
+                'category'   => __( 'Category', 'kemet-addons' ),
             ),
         )
     )
@@ -363,11 +363,11 @@ $wp_customize->add_control(
             'type'     => 'kmt-sortable',
             'section'  => 'woocommerce_product_catalog',
             'priority' => 60,
-            'label'    => __( 'Shop Product Structure', 'kemet' ),
+            'label'    => __( 'Shop Product Structure', 'kemet-addons' ),
             'choices'  => array(
-                'short_desc' => __( 'Short Description', 'kemet' ),
-                'add_cart'   => __( 'Add To Cart', 'kemet' ),
-                'category'   => __( 'Category', 'kemet' ),
+                'short_desc' => __( 'Short Description', 'kemet-addons' ),
+                'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
+                'category'   => __( 'Category', 'kemet-addons' ),
             ),
         )
     )
@@ -564,7 +564,7 @@ $wp_customize->add_control(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
             'priority'    => 25,
-            'label'       => __( 'Image Width (%)', 'kemet' ),
+            'label'       => __( 'Image Width (%)', 'kemet-addons' ),
             'suffix'      => '',
             'input_attrs' => array(
                 'min'  => 1,
@@ -627,7 +627,7 @@ $wp_customize->add_control(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
             'priority'    => 40,
-            'label'       => __( 'Related Products Count', 'kemet' ),
+            'label'       => __( 'Related Products Count', 'kemet-addons' ),
             'suffix'      => '',
             'input_attrs' => array(
                 'min'  => 3,
@@ -658,7 +658,7 @@ $wp_customize->add_control(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
             'priority'    => 45,
-            'label'       => __( 'Related Products Columns', 'kemet' ),
+            'label'       => __( 'Related Products Columns', 'kemet-addons' ),
             'suffix'      => '',
             'input_attrs' => array(
                 'min'  => 1,
@@ -723,7 +723,7 @@ $wp_customize->add_control(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
             'priority'    => 55,
-            'label'       => __( 'Up-Sells Count', 'kemet' ),
+            'label'       => __( 'Up-Sells Count', 'kemet-addons' ),
             'suffix'      => '',
             'input_attrs' => array(
                 'min'  => 3,
@@ -754,7 +754,7 @@ $wp_customize->add_control(
             'type'        => 'kmt-slider',
             'section'     => 'section-woo-shop-single',
             'priority'    => 60,
-            'label'       => __( 'Up-Sells Columns', 'kemet' ),
+            'label'       => __( 'Up-Sells Columns', 'kemet-addons' ),
             'suffix'      => '',
             'input_attrs' => array(
                 'min'  => 1,

@@ -1,0 +1,64 @@
+.kmt-display-on-specifics-select,
+.kmt-hide-on-specifics-select {
+  display: none;
+  &.kfw-field {
+    .kfw-fieldset {
+      margin-top: 20px;
+      margin-left: auto;
+    }
+    .kfw-title {
+      float: none;
+      width: auto;
+    }
+  }
+}
+.hide-on-rule,
+.display-on-rule,
+.kmt-user-rules {
+  &.kfw-field-select {
+    select {
+      width: 100%;
+    }
+  }
+}
+.kemet-hook-custom-code {
+  display: none;
+  .kfw-title {
+    float: none;
+    width: auto;
+    margin-bottom: 10px;
+  }
+  .kfw-fieldset {
+    margin-left: auto;
+  }
+}
+.kemet-code-editor {
+  #post-body-content {
+    > :not(#titlediv) {
+      display: none;
+    }
+  }
+  .kemet-hook-custom-code {
+    display: block;
+  }
+}
+.kemet-short-code {
+  .short-code-id {
+    display: inline-block;
+    padding: 6px 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    border: 1px solid #7e8993;
+  }
+}
+#kemet_custom_layout_options {
+  .kfw-field-fieldset {
+    .kfw-fieldset-content {
+      padding: 0;
+      border: 0;
+      > .kfw-field {
+        padding: 0;
+      }
+    }
+  }
+}

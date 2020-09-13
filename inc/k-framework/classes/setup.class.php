@@ -272,12 +272,12 @@ if( ! class_exists( 'KFW' ) ) {
 					'wp-color-picker',
 					'wpColorPickerL10n',
 					array(
-						'clear'            => __( 'Clear', 'kemet' ),
-						'clearAriaLabel'   => __( 'Clear color', 'kemet' ),
-						'defaultString'    => __( 'Default', 'kemet' ),
-						'defaultAriaLabel' => __( 'Select default color', 'kemet' ),
-						'pick'             => __( 'Select Color', 'kemet' ),
-						'defaultLabel'     => __( 'Color value', 'kemet' ),
+						'clear'            => __( 'Clear', 'kfw' ),
+						'clearAriaLabel'   => __( 'Clear color', 'kfw' ),
+						'defaultString'    => __( 'Default', 'kfw' ),
+						'defaultAriaLabel' => __( 'Select default color', 'kfw' ),
+						'pick'             => __( 'Select Color', 'kfw' ),
+						'defaultLabel'     => __( 'Color value', 'kfw' ),
 					)
 				);
       }
