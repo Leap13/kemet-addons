@@ -14,7 +14,6 @@ if ( ! class_exists( 'Kemet_Custom_Layout' ) ) {
 	/**
 	 * Custom Layout
 	 *
-	 * @since 1.1.0
 	 */
 	class Kemet_Custom_Layout {
 
