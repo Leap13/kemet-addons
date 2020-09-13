@@ -237,7 +237,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
 
       }
 
-      wp_send_json_error( array( 'success' => false, 'error' => esc_html__( 'Error while saving.', 'kemet-addons' ) ) );
+      wp_send_json_error( array( 'success' => false, 'error' => esc_html__( 'Error while saving.', 'kfw' ) ) );
 
     }
 
@@ -289,7 +289,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
           $import_data = json_decode( stripslashes( trim( $transient['kfw_import_data'] ) ), true );
           $request = ( is_array( $import_data ) ) ? $import_data : array();
 
-          $this->notice = esc_html__( 'Success. Imported backup options.', 'kemet-addons' );
+          $this->notice = esc_html__( 'Success. Imported backup options.', 'kfw' );
 
         } else if( ! empty( $transient['reset'] ) ) {
 
@@ -299,7 +299,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
             }
           }
 
-          $this->notice = esc_html__( 'Default options restored.', 'kemet-addons' );
+          $this->notice = esc_html__( 'Default options restored.', 'kfw' );
 
         } else if( ! empty( $transient['reset_section'] ) && ! empty( $section_id ) ) {
 
@@ -313,7 +313,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
 
           }
 
-          $this->notice = esc_html__( 'Default options restored for only this section.', 'kemet-addons' );
+          $this->notice = esc_html__( 'Default options restored for only this section.', 'kfw' );
 
         } else {
 
@@ -371,7 +371,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
         do_action( "kfw_{$this->unique}_save_after", $request, $this );
 
         if( empty( $this->notice ) ) {
-          $this->notice = esc_html__( 'Settings saved.', 'kemet-addons' );
+          $this->notice = esc_html__( 'Settings saved.', 'kfw' );
         }
 
       }
@@ -559,14 +559,14 @@ if( ! class_exists( 'KFW_Options' ) ) {
 
           echo '<div class="kfw-header-right">';
 
-            echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="kfw-expand-all" title="'. esc_html__( 'show all options', 'kemet-addons' ) .'"><i class="fa fa-outdent"></i></div>' : '';
+            echo ( $has_nav && $this->args['show_all_options'] ) ? '<div class="kfw-expand-all" title="'. esc_html__( 'show all options', 'kfw' ) .'"><i class="fa fa-outdent"></i></div>' : '';
 
-            echo ( $this->args['show_search'] ) ? '<div class="kfw-search"><input type="text" name="kfw-search" placeholder="'. esc_html__( 'Search option(s)', 'kemet-addons' ) .'" autocomplete="off" /></div>' : '';
+            echo ( $this->args['show_search'] ) ? '<div class="kfw-search"><input type="text" name="kfw-search" placeholder="'. esc_html__( 'Search option(s)', 'kfw' ) .'" autocomplete="off" /></div>' : '';
 
             echo '<div class="kfw-buttons">';
-            echo '<input type="submit" name="'. $this->unique .'[_nonce][save]" class="button button-primary kfw-save'. $ajax_class .'" value="'. esc_html__( 'Save', 'kemet-addons' ) .'" data-save="'. esc_html__( 'Saving...', 'kemet-addons' ) .'">';
-            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="kfw_transient[reset_section]" class="button button-secondary kfw-reset-section kfw-confirm" value="'. esc_html__( 'Reset Section', 'kemet-addons' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'kemet-addons' ) .'">' : '';
-            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="kfw_transient[reset]" class="button button-secondary kfw-warning-primary kfw-reset-all kfw-confirm" value="'. esc_html__( 'Reset All', 'kemet-addons' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset all options?', 'kemet-addons' ) .'">' : '';
+            echo '<input type="submit" name="'. $this->unique .'[_nonce][save]" class="button button-primary kfw-save'. $ajax_class .'" value="'. esc_html__( 'Save', 'kfw' ) .'" data-save="'. esc_html__( 'Saving...', 'kfw' ) .'">';
+            echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="kfw_transient[reset_section]" class="button button-secondary kfw-reset-section kfw-confirm" value="'. esc_html__( 'Reset Section', 'kfw' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'kfw' ) .'">' : '';
+            echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="kfw_transient[reset]" class="button button-secondary kfw-warning-primary kfw-reset-all kfw-confirm" value="'. esc_html__( 'Reset All', 'kfw' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset all options?', 'kfw' ) .'">' : '';
             echo '</div>';
 
           echo '</div>';
@@ -660,7 +660,7 @@ if( ! class_exists( 'KFW_Options' ) ) {
 
               } else {
 
-                echo '<div class="kfw-no-option kfw-text-muted">'. esc_html__( 'No option provided by developer.', 'kemet-addons' ) .'</div>';
+                echo '<div class="kfw-no-option kfw-text-muted">'. esc_html__( 'No option provided by developer.', 'kfw' ) .'</div>';
 
               }
 
@@ -684,9 +684,9 @@ if( ! class_exists( 'KFW_Options' ) ) {
           echo '<div class="kfw-footer">';
 
           echo '<div class="kfw-buttons">';
-          echo '<input type="submit" name="kfw_transient[save]" class="button button-primary kfw-save'. $ajax_class .'" value="'. esc_html__( 'Save', 'kemet-addons' ) .'" data-save="'. esc_html__( 'Saving...', 'kemet-addons' ) .'">';
-          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="kfw_transient[reset_section]" class="button button-secondary kfw-reset-section kfw-confirm" value="'. esc_html__( 'Reset Section', 'kemet-addons' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'kemet-addons' ) .'">' : '';
-          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="kfw_transient[reset]" class="button button-secondary kfw-warning-primary kfw-reset-all kfw-confirm" value="'. esc_html__( 'Reset All', 'kemet-addons' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset all options?', 'kemet-addons' ) .'">' : '';
+          echo '<input type="submit" name="kfw_transient[save]" class="button button-primary kfw-save'. $ajax_class .'" value="'. esc_html__( 'Save', 'kfw' ) .'" data-save="'. esc_html__( 'Saving...', 'kfw' ) .'">';
+          echo ( $this->args['show_reset_section'] ) ? '<input type="submit" name="kfw_transient[reset_section]" class="button button-secondary kfw-reset-section kfw-confirm" value="'. esc_html__( 'Reset Section', 'kfw' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset this section options?', 'kfw' ) .'">' : '';
+          echo ( $this->args['show_reset_all'] ) ? '<input type="submit" name="kfw_transient[reset]" class="button button-secondary kfw-warning-primary kfw-reset-all kfw-confirm" value="'. esc_html__( 'Reset All', 'kfw' ) .'" data-confirm="'. esc_html__( 'Are you sure to reset all options?', 'kfw' ) .'">' : '';
           echo '</div>';
 
           echo ( ! empty( $this->args['footer_text'] ) ) ? '<div class="kfw-copyright">'. $this->args['footer_text'] .'</div>' : '';

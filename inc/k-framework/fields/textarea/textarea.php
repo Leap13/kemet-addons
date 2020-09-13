@@ -34,7 +34,7 @@ if ( ! class_exists( 'KFW_Field_textarea' ) ) {
           if ( isset( KFW::$args['shortcode_options'][$shortcode_id] ) ) {
 
             $setup_args   = KFW::$args['shortcode_options'][$shortcode_id];
-            $button_title = ( ! empty( $setup_args['button_title'] ) ) ? $setup_args['button_title'] : esc_html__( 'Add Shortcode', 'kemet-addons' );
+            $button_title = ( ! empty( $setup_args['button_title'] ) ) ? $setup_args['button_title'] : esc_html__( 'Add Shortcode', 'kfw' );
 
             echo '<a href="#" class="button button-primary kfw-shortcode-button" data-modal-id="'. esc_attr( $shortcode_id ) .'">'. wp_kses_post( $button_title ) .'</a>';
 

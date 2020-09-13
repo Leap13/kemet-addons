@@ -17,8 +17,8 @@ if( ! class_exists( 'KFW_Field_icon' ) ) {
     public function render() {
 
       $args = wp_parse_args( $this->field, array(
-        'button_title' => esc_html__( 'Add Icon', 'kemet-addons' ),
-        'remove_title' => esc_html__( 'Remove Icon', 'kemet-addons' ),
+        'button_title' => esc_html__( 'Add Icon', 'kfw' ),
+        'remove_title' => esc_html__( 'Remove Icon', 'kfw' ),
       ) );
 
       echo $this->field_before();

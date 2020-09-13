@@ -255,7 +255,7 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
 
               } else {
 
-                echo '<div class="kfw-no-option kfw-text-muted">'. esc_html__( 'No option provided by developer.', 'kemet-addons' ) .'</div>';
+                echo '<div class="kfw-no-option kfw-text-muted">'. esc_html__( 'No option provided by developer.', 'kfw' ) .'</div>';
 
               }
 
@@ -273,8 +273,8 @@ if( ! class_exists( 'KFW_Metabox' ) ) {
               echo '<div class="kfw-restore-wrapper">';
               echo '<label>';
               echo '<input type="checkbox" name="'. $this->unique .'[_restore]" />';
-              echo '<span class="button kfw-button-restore">'. esc_html__( 'Restore', 'kemet-addons' ) .'</span>';
-              echo '<span class="button kfw-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post for restore ', 'kemet-addons' ), esc_html__( 'Cancel', 'kemet-addons' ) ) .'</span>';
+              echo '<span class="button kfw-button-restore">'. esc_html__( 'Restore', 'kfw' ) .'</span>';
+              echo '<span class="button kfw-button-cancel">'. sprintf( '<small>( %s )</small> %s', esc_html__( 'update post for restore ', 'kfw' ), esc_html__( 'Cancel', 'kfw' ) ) .'</span>';
               echo '</label>';
               echo '</div>';
 

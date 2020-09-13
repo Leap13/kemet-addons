@@ -109,7 +109,7 @@ if( ! class_exists( 'KFW_Field_select' ) ) {
 
         } else {
 
-          echo ( ! empty( $this->field['empty_message'] ) ) ? $this->field['empty_message'] : esc_html__( 'No data provided for this option type.', 'kemet-addons' );
+          echo ( ! empty( $this->field['empty_message'] ) ) ? $this->field['empty_message'] : esc_html__( 'No data provided for this option type.', 'kfw' );
 
         }
 
