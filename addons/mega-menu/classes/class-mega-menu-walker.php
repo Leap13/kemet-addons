@@ -265,11 +265,11 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
             }
             
             if ( isset( $item->megamenu_label ) && !empty( $item->megamenu_label ) ) {
-                
+                $label_bg = !empty($item->megamenu_label_bg_color) ? $item->megamenu_label_bg_color :'#f0f0f0';
 				$style = array(
 					'.menu-item-' . $item->ID . ' .kemet-mega-menu-label' => array(
 						'color'            => esc_attr( $item->megamenu_label_color ),
-						'background-color' => esc_attr( $item->megamenu_label_bg_color ),
+						'background-color' => esc_attr( $label_bg )  ,
 					),
 				);
 

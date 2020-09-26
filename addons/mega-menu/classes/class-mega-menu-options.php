@@ -136,7 +136,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'id'      => 'disable-item-label',
 						'class'   => 'disable-item-label',
 						'type'    => 'checkbox',
-						'label'   => __('Hide Menu Item Label', 'kemet-addons'),
+						'label'   => __('Hide Menu Item Text', 'kemet-addons'),
 						'default' => false
 					),
 					array(
@@ -176,6 +176,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'class'   	  => 'label-bg-color',
 						'type'  => 'color',
 						'title' => __('Label Background Color', 'kemet-addons'),
+						'default' => '#f0f0f0'
 					),
 				)
 			  ) 

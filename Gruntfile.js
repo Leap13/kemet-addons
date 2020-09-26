@@ -264,6 +264,8 @@ module.exports = function (grunt) {
             "addons/custom-layout/assets/js/unminified/custom-layout.js",
           "addons/mega-menu/assets/js/minified/mega-menu.min.js":
             "addons/mega-menu/assets/js/unminified/mega-menu.js",
+          "addons/mega-menu/assets/js/minified/mega-menu-backend.min.js":
+            "addons/mega-menu/assets/js/unminified/mega-menu-backend.js",
           "inc/k-framework/assets/js/kfw-plugins-field.min.js":
             "inc/k-framework/assets/js/kfw-plugins-field.js",
           "inc/k-framework/assets/js/kfw.min.js":

@@ -78,11 +78,18 @@ if (! class_exists('Kemet_Mega_Menu_Partials')) {
         function admin_script(){
 
 			$css_prefix  = '.min.css';
+			$js_prefix  = '.min.js';
 			$dir        = 'minified';
 			if ( SCRIPT_DEBUG ) {
 				$css_prefix  = '.css';
+				$js_prefix  = '.js';
 				$dir        = 'unminified';
 			}
+
+			wp_enqueue_script( 'kemet-addons-mega-menu-js', KEMET_MEGA_MENU_URL . 'assets/js/' . $dir . '/mega-menu-backend' . $js_prefix, array(
+				'jquery',
+				'kemet-addons-select2',
+			), KEMET_ADDONS_VERSION, true );
 
 			wp_enqueue_style( 'kemet-addons-mega-menu-css', KEMET_MEGA_MENU_URL . 'assets/css/'. $dir .'/mega-menu' . $css_prefix, KEMET_ADDONS_VERSION );	
         }
