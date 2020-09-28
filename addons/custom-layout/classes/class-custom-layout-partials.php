@@ -92,8 +92,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					echo $this->code_editor_content( $code_editor_content );
 					
 				}else{
-					if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
-						$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
+					if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+						$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
 						
 						$custom_layout_compat->render_content( $atts['id'] );
 
@@ -226,8 +226,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 			}else{
 
-				if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
-					$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
+				if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+					$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
 					
 					$custom_layout_compat->render_content( $post_id );
 
@@ -260,8 +260,8 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 
 				if(!$code_editor){
 					
-					if ( class_exists( 'Kemet_Custom_Layout_Page_Builder_Compatiblity' ) ) {
-						$custom_layout_compat = Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
+					if ( class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
+						$custom_layout_compat = Kemet_Addons_Page_Builder_Compatiblity::get_instance();
 						$custom_layout_compat->enqueue_scripts( $post_id );
 					}
 				}
@@ -1297,145 +1297,15 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				$css_prefix  = '.css';
 				$dir        = 'unminified';
 			}
-			wp_enqueue_script( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/' . $dir . '/select2' . $js_prefix, array( 'jquery' ), KEMET_ADDONS_VERSION, true );
 
-			$wordpress_lang  = get_locale();
-			$lang = '';
-			if ( '' !== $wordpress_lang ) {
+			wp_enqueue_script( 'kemet-addons-custom-layout-js', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/' . $dir . '/custom-layout' . $js_prefix, array(
+				'jquery',
+				'kemet-addons-select2',
+			), KEMET_ADDONS_VERSION, true );
+			
+			wp_enqueue_style( 'kemet-addons-custom-layout-css', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/' . $dir . '/style' . $css_prefix , '', KEMET_ADDONS_VERSION );
 
-				$select2_lang = array(
-					''               => 'en',
-					'hi_IN'          => 'hi',
-					'mr'             => 'mr',
-					'af'             => 'af',
-					'ar'             => 'ar',
-					'ary'            => 'ar',
-					'as'             => 'as',
-					'azb'            => 'az',
-					'az'             => 'az',
-					'bel'            => 'be',
-					'bg_BG'          => 'bg',
-					'bn_BD'          => 'bn',
-					'bo'             => 'bo',
-					'bs_BA'          => 'bs',
-					'ca'             => 'ca',
-					'ceb'            => 'ceb',
-					'cs_CZ'          => 'cs',
-					'cy'             => 'cy',
-					'da_DK'          => 'da',
-					'de_CH'          => 'de',
-					'de_DE'          => 'de',
-					'de_DE_formal'   => 'de',
-					'de_CH_informal' => 'de',
-					'dzo'            => 'dz',
-					'el'             => 'el',
-					'en_CA'          => 'en',
-					'en_GB'          => 'en',
-					'en_AU'          => 'en',
-					'en_NZ'          => 'en',
-					'en_ZA'          => 'en',
-					'eo'             => 'eo',
-					'es_MX'          => 'es',
-					'es_VE'          => 'es',
-					'es_CR'          => 'es',
-					'es_CO'          => 'es',
-					'es_GT'          => 'es',
-					'es_ES'          => 'es',
-					'es_CL'          => 'es',
-					'es_PE'          => 'es',
-					'es_AR'          => 'es',
-					'et'             => 'et',
-					'eu'             => 'eu',
-					'fa_IR'          => 'fa',
-					'fi'             => 'fi',
-					'fr_BE'          => 'fr',
-					'fr_FR'          => 'fr',
-					'fr_CA'          => 'fr',
-					'gd'             => 'gd',
-					'gl_ES'          => 'gl',
-					'gu'             => 'gu',
-					'haz'            => 'haz',
-					'he_IL'          => 'he',
-					'hr'             => 'hr',
-					'hu_HU'          => 'hu',
-					'hy'             => 'hy',
-					'id_ID'          => 'id',
-					'is_IS'          => 'is',
-					'it_IT'          => 'it',
-					'ja'             => 'ja',
-					'jv_ID'          => 'jv',
-					'ka_GE'          => 'ka',
-					'kab'            => 'kab',
-					'km'             => 'km',
-					'ko_KR'          => 'ko',
-					'ckb'            => 'ku',
-					'lo'             => 'lo',
-					'lt_LT'          => 'lt',
-					'lv'             => 'lv',
-					'mk_MK'          => 'mk',
-					'ml_IN'          => 'ml',
-					'mn'             => 'mn',
-					'ms_MY'          => 'ms',
-					'my_MM'          => 'my',
-					'nb_NO'          => 'nb',
-					'ne_NP'          => 'ne',
-					'nl_NL'          => 'nl',
-					'nl_NL_formal'   => 'nl',
-					'nl_BE'          => 'nl',
-					'nn_NO'          => 'nn',
-					'oci'            => 'oc',
-					'pa_IN'          => 'pa',
-					'pl_PL'          => 'pl',
-					'ps'             => 'ps',
-					'pt_BR'          => 'pt',
-					'pt_PT_ao90'     => 'pt',
-					'pt_PT'          => 'pt',
-					'rhg'            => 'rhg',
-					'ro_RO'          => 'ro',
-					'ru_RU'          => 'ru',
-					'sah'            => 'sah',
-					'si_LK'          => 'si',
-					'sk_SK'          => 'sk',
-					'sl_SI'          => 'sl',
-					'sq'             => 'sq',
-					'sr_RS'          => 'sr',
-					'sv_SE'          => 'sv',
-					'szl'            => 'szl',
-					'ta_IN'          => 'ta',
-					'te'             => 'te',
-					'th'             => 'th',
-					'tl'             => 'tl',
-					'tr_TR'          => 'tr',
-					'tt_RU'          => 'tt',
-					'tah'            => 'ty',
-					'ug_CN'          => 'ug',
-					'uk'             => 'uk',
-					'ur'             => 'ur',
-					'uz_UZ'          => 'uz',
-					'vi'             => 'vi',
-					'zh_CN'          => 'zh',
-					'zh_TW'          => 'zh',
-					'zh_HK'          => 'zh',
-				);
-
-				if ( isset( $select2_lang[ $wordpress_lang ] ) && file_exists( KEMET_CUSTOM_LAYOUT_DIR . 'assets/js-unminified/i18n/' . $select2_lang[ $wordpress_lang ] . '.js' ) ) {
-
-					wp_enqueue_script(
-						'kemet-addons-select2-lang',
-						KEMET_CUSTOM_LAYOUT_URL . 'assets/js/minified/i18n/' . $select2_lang[ $wordpress_lang ] . '.js',
-						array(
-							'jquery',
-							'kemet-addons-select2',
-						),
-						KEMET_ADDONS_VERSION,
-						true
-					);
-				}
-			}
-
-			wp_enqueue_style( 'kemet-addons-select2', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/' . $dir . '/select2' . $css_prefix, KEMET_ADDONS_VERSION );
-
-			$hooks = self::get_hooks_options();
+			$hooks = Kemet_Custom_Layout_Partials::get_hooks_options();
 			$description_array = array();
 			foreach($hooks as $key => $value){
 				foreach($value['value'] as $val => $decription){
@@ -1443,11 +1313,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				}
 			}
 
-			wp_enqueue_script( 'kemet-addons-custom-layout-js', KEMET_CUSTOM_LAYOUT_URL . 'assets/js/' . $dir . '/custom-layout' . $js_prefix, array(
-				'jquery',
-				'kemet-addons-select2',
-			), KEMET_ADDONS_VERSION, true );
-			
 			$meta = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true );
 			$all_display = isset($meta['display-on-group']['display-on-specifics-location']) ? $meta['display-on-group']['display-on-specifics-location'] : '';
 			$all_hide = isset($meta['hide-on-group']['hide-on-specifics-location']) ? $meta['hide-on-group']['hide-on-specifics-location'] : '';
@@ -1466,20 +1331,17 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			}
 
 			wp_localize_script(
-			'kemet-addons-custom-layout-js', 'kemetAddons', apply_filters(
-				'kemet_addons_admin_js_localize', array(
-					'hooks_descriptions'      => $description_array,
+                'kemet-addons-custom-layout-js', 'kemetAddons', apply_filters(
+                'kemet_addons_admin_js_localize', array(
+                    'hooks_descriptions' => $description_array,
+					'display_old_value'	=> $display_positions,
+					'hide_old_value'	=> $hide_positions,
 					'ajax_url' => admin_url( 'admin-ajax.php' ),
-					'lang'      => $lang,
-					'search'        => __( 'Search pages / post / categories', 'kemet-addons' ),
 					'ajax_nonce'    => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
 					'ajax_title_nonce' => wp_create_nonce( 'kemet-addons-ajax-get-title' ),
-					'display_old_value'			=> $display_positions,
-					'hide_old_value'			=> $hide_positions,
-					)
-				)
-			);
-	
+                    )
+                )
+            );
 		}
 
 		function add_styles() {

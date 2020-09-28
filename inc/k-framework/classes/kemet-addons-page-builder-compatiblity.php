@@ -4,11 +4,11 @@
  * 
  * @package Kemet Addons
  */
-if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
+if (! class_exists('Kemet_Addons_Page_Builder_Compatiblity')) {
 
-    class Kemet_Custom_Layout_Page_Builder_Compatiblity {
-		
-        /**
+    class Kemet_Addons_Page_Builder_Compatiblity {
+
+       	/**
          * Member Variable
          *
          * @var object instance
@@ -357,5 +357,5 @@ if (! class_exists('Kemet_Custom_Layout_Page_Builder_Compatiblity')) {
     /**
 	 * Initialize class object with 'get_instance()' method
 	 */
-	Kemet_Custom_Layout_Page_Builder_Compatiblity::get_instance();
+	Kemet_Addons_Page_Builder_Compatiblity::get_instance();
 }

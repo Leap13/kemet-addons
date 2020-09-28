@@ -20,6 +20,7 @@ if( ! class_exists( 'KFW' ) ) {
     public static $args    = array(
       'options'            => array(),
       'metaboxes'          => array(),
+      'nav_menu_options'    => array(),
     );
 
     // shortcode instances
@@ -97,6 +98,22 @@ if( ! class_exists( 'KFW' ) ) {
         }
       }
 
+      // Setup nav menu option framework
+      $params = array();
+      if ( ! empty( self::$args['nav_menu_options'] ) ) {
+        foreach ( self::$args['nav_menu_options'] as $key => $value ) {
+          if ( ! empty( self::$args['sections'][$key] ) && ! isset( self::$inited[$key] ) ) {
+
+            $params['args']     = $value;
+            $params['sections'] = self::$args['sections'][$key];
+            self::$inited[$key] = true;
+
+            KFW_Nav_Menu_Options::instance( $key, $params );
+
+          }
+        }
+      }
+
       do_action( 'kfw_loaded' );
 
     }
@@ -115,7 +132,10 @@ if( ! class_exists( 'KFW' ) ) {
     public static function createMetabox( $id, $args = array() ) {
       self::$args['metaboxes'][$id] = $args;
     }
-
+    // Create menu options
+    public static function createNavMenuOptions( $id, $args = array() ) {
+      self::$args['nav_menu_options'][$id] = $args;
+    }
     // create section
     public static function createSection( $id, $sections ) {
       self::$args['sections'][$id][] = $sections;
@@ -204,6 +224,7 @@ if( ! class_exists( 'KFW' ) ) {
       if( self::$premium ) {
         self::include_plugin_file( 'classes/metabox.class.php' );
         self::include_plugin_file( 'classes/customize-options.class.php' );
+        self::include_plugin_file( 'classes/nav-menu-options.class.php' );
       }
 
     }

@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   "use strict";
   // Project configuration
 
@@ -12,10 +12,10 @@ module.exports = function (grunt) {
         // rtlcss options
         config: {
           preserveComments: true,
-          greedy: true,
+          greedy: true
         },
         // generate source maps
-        map: false,
+        map: false
       },
       dist: {
         files: [
@@ -24,59 +24,73 @@ module.exports = function (grunt) {
             cwd: "addons/blog-layouts/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/blog-layouts/assets/css/unminified/",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/extra-headers/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/extra-headers/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/extra-widgets/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/extra-widgets/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/go-top/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/go-top/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/page-title/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/page-title/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/single-post/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/single-post/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/sticky-header/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/sticky-header/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/top-bar-section/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/top-bar-section/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
-        ],
-      },
+          {
+            expand: true,
+            cwd: "addons/top-bar-section/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/top-bar-section/assets/css/unminified",
+            ext: "-rtl.css"
+          },
+          {
+            expand: true,
+            cwd: "addons/mega-menu/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/mega-menu/assets/css/unminified",
+            ext: "-rtl.css"
+          }
+        ]
+      }
     },
     sass: {
       options: {
@@ -85,7 +99,7 @@ module.exports = function (grunt) {
         outputStyle: "expanded",
         linefeed: "lf",
         implementation: sass,
-        sourceMap: false,
+        sourceMap: false
       },
       dist: {
         files: [
@@ -114,6 +128,8 @@ module.exports = function (grunt) {
               "sass/woocommerce.scss",
             "addons/custom-layout/assets/css/unminified/style.css":
               "sass/custom-layout.scss",
+            "addons/mega-menu/assets/css/unminified/style.css":
+              "sass/mega-menu.scss"
           },
 
           {
@@ -121,114 +137,112 @@ module.exports = function (grunt) {
             cwd: "styles",
             src: ["**.scss"],
             dest: "styles",
-            ext: ".css",
-          },
-        ],
-      },
+            ext: ".css"
+          }
+        ]
+      }
     },
     cssmin: {
       css: {
         files: [
           {
             src: "addons/blog-layouts/assets/css/unminified/blog-layouts.css",
-            dest:
-              "addons/blog-layouts/assets/css/minified/blog-layouts.min.css",
+            dest: "addons/blog-layouts/assets/css/minified/blog-layouts.min.css"
           },
           {
             src:
               "addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css",
             dest:
-              "addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css",
+              "addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css"
           },
           {
             src:
               "addons/extra-headers/assets/css/unminified/extra-header-layouts.css",
             dest:
-              "addons/extra-headers/assets/css/minified/extra-header-layouts.min.css",
+              "addons/extra-headers/assets/css/minified/extra-header-layouts.min.css"
           },
           {
             src:
               "addons/extra-headers/assets/css/unminified/extra-header-layouts-rtl.css",
             dest:
-              "addons/extra-headers/assets/css/minified/extra-header-layouts-rtl.min.css",
+              "addons/extra-headers/assets/css/minified/extra-header-layouts-rtl.min.css"
           },
 
           {
             src: "addons/extra-widgets/assets/css/unminified/style.css",
-            dest: "addons/extra-widgets/assets/css/minified/style.min.css",
+            dest: "addons/extra-widgets/assets/css/minified/style.min.css"
           },
           {
             src: "addons/extra-widgets/assets/css/unminified/style-rtl.css",
-            dest: "addons/extra-widgets/assets/css/minified/style-rtl.min.css",
+            dest: "addons/extra-widgets/assets/css/minified/style-rtl.min.css"
           },
 
           {
             src: "addons/top-bar-section/assets/css/unminified/style.css",
-            dest: "addons/top-bar-section/assets/css/minified/style.min.css",
+            dest: "addons/top-bar-section/assets/css/minified/style.min.css"
           },
           {
             src: "addons/top-bar-section/assets/css/unminified/style-rtl.css",
-            dest:
-              "addons/top-bar-section/assets/css/minified/style-rtl.min.css",
+            dest: "addons/top-bar-section/assets/css/minified/style-rtl.min.css"
           },
 
           {
             src: "addons/page-title/assets/css/unminified/style.css",
-            dest: "addons/page-title/assets/css/minified/style.min.css",
+            dest: "addons/page-title/assets/css/minified/style.min.css"
           },
           {
             src: "addons/page-title/assets/css/unminified/style-rtl.css",
-            dest: "addons/page-title/assets/css/minified/style-rtl.min.css",
+            dest: "addons/page-title/assets/css/minified/style-rtl.min.css"
           },
 
           {
             src: "addons/go-top/assets/css/unminified/style.css",
-            dest: "addons/go-top/assets/css/minified/style.min.css",
+            dest: "addons/go-top/assets/css/minified/style.min.css"
           },
           {
             src: "addons/go-top/assets/css/unminified/style-rtl.css",
-            dest: "addons/go-top/assets/css/minified/style.min-rtl.css",
+            dest: "addons/go-top/assets/css/minified/style.min-rtl.css"
           },
 
           {
             src: "addons/sticky-header/assets/css/unminified/style.css",
-            dest: "addons/sticky-header/assets/css/minified/style.min.css",
+            dest: "addons/sticky-header/assets/css/minified/style.min.css"
           },
           {
             src: "addons/sticky-header/assets/css/unminified/style-rtl.css",
-            dest: "addons/sticky-header/assets/css/minified/style-rtl.min.css",
+            dest: "addons/sticky-header/assets/css/minified/style-rtl.min.css"
           },
 
           {
             src: "addons/single-post/assets/css/unminified/style.css",
-            dest: "addons/single-post/assets/css/minified/style.min.css",
+            dest: "addons/single-post/assets/css/minified/style.min.css"
           },
           {
             src: "addons/single-post/assets/css/unminified/style-rtl.css",
-            dest: "addons/single-post/assets/css/minified/style-rtl.min.css",
+            dest: "addons/single-post/assets/css/minified/style-rtl.min.css"
           },
           {
             src: "addons/woocommerce/assets/css/unminified/style.css",
-            dest: "addons/woocommerce/assets/css/minified/style.min.css",
+            dest: "addons/woocommerce/assets/css/minified/style.min.css"
           },
           {
             src: "addons/woocommerce/assets/css/unminified/style-rtl.css",
-            dest: "addons/woocommerce/assets/css/minified/style-rtl.min.css",
+            dest: "addons/woocommerce/assets/css/minified/style-rtl.min.css"
           },
           {
             src: "inc/k-framework/assets/css/kfw.css",
-            dest: "inc/k-framework/assets/css/kfw.min.css",
+            dest: "inc/k-framework/assets/css/kfw.min.css"
           },
           {
             src: "addons/custom-layout/assets/css/unminified/style.css",
-            dest: "addons/custom-layout/assets/css/minified/style.min.css",
+            dest: "addons/custom-layout/assets/css/minified/style.min.css"
           },
           {
-            src: "addons/custom-layout/assets/css/unminified/select2.css",
-            dest: "addons/custom-layout/assets/css/minified/select2.min.css",
-          },
-        ],
-      },
+            src: "addons/mega-menu/assets/css/unminified/mega-menu.css",
+            dest: "addons/mega-menu/assets/css/minified/mega-menu.min.css"
+          }
+        ]
+      }
     },
     uglify: {
       dist: {
@@ -267,14 +281,16 @@ module.exports = function (grunt) {
             "addons/woocommerce/assets/js/unminified/woocommerce.js",
           "addons/custom-layout/assets/js/minified/custom-layout.min.js":
             "addons/custom-layout/assets/js/unminified/custom-layout.js",
-          "addons/custom-layout/assets/js/minified/select2.min.js":
-            "addons/custom-layout/assets/js/unminified/select2.js",
           "inc/k-framework/assets/js/kfw-plugins-field.min.js":
             "inc/k-framework/assets/js/kfw-plugins-field.js",
+          "addons/mega-menu/assets/js/minified/mega-menu.min.js":
+            "addons/mega-menu/assets/js/unminified/mega-menu.js",
+          "addons/mega-menu/assets/js/minified/mega-menu-backend.min.js":
+            "addons/mega-menu/assets/js/unminified/mega-menu-backend.js",
           "inc/k-framework/assets/js/kfw.min.js":
-            "inc/k-framework/assets/js/kfw.js",
-        },
-      },
+            "inc/k-framework/assets/js/kfw.js"
+        }
+      }
     },
     makepot: {
       target: {
@@ -283,22 +299,22 @@ module.exports = function (grunt) {
           potFilename: "languages/kemet-addons.pot",
           potHeaders: {
             poedit: true,
-            "x-poedit-keywordslist": true,
+            "x-poedit-keywordslist": true
           },
           type: "wp-theme",
-          updateTimestamp: true,
-        },
-      },
+          updateTimestamp: true
+        }
+      }
     },
     rtlcss: {
       options: {
         // rtlcss options
         config: {
           preserveComments: true,
-          greedy: true,
+          greedy: true
         },
         // generate source maps
-        map: false,
+        map: false
       },
       dist: {
         files: [
@@ -307,60 +323,60 @@ module.exports = function (grunt) {
             cwd: "addons/extra-headers/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/extra-headers/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/extra-widgets/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/extra-widgets/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/top-bar-section/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/top-bar-section/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/page-title/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/page-title/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/go-top/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/go-top/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/sticky-header/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/sticky-header/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/single-post/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/single-post/assets/css/unminified",
-            ext: "-rtl.css",
+            ext: "-rtl.css"
           },
           {
             expand: true,
             cwd: "addons/woocommerce/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/woocommerce/assets/css/unminified",
-            ext: "-rtl.css",
-          },
-        ],
-      },
-    },
+            ext: "-rtl.css"
+          }
+        ]
+      }
+    }
   });
 
   // Load grunt tasks
