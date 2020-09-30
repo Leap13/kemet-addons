@@ -14,7 +14,6 @@
         if ($(this).hasClass("mega-menu-full-width")) {
           menuWrapWidth = headerWrap.outerWidth();
           wrapPosition = headerWrap.offset();
-          console.log(headerWrap);
         } else if ($(this).hasClass("mega-menu-container-width")) {
           menuWidth = containerWidth.width();
           Position = containerWidth.offset();
