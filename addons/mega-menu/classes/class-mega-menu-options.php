@@ -136,6 +136,13 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'default' => false
 					),
 					array(
+						'id'      => 'enable-template',
+						'class'   => 'enable-template',
+						'type' => 'switcher',
+						'label'   => __('Enable Templates', 'kemet-addons'),
+						'default' => false
+					),
+					array(
 						'id'          => 'column-template',
 						'type'        => 'select',
 						'class'       => 'mega-menu-field-template',
@@ -143,6 +150,7 @@ if ( !class_exists( 'Kemet_Mega_Menu_Options' )) {
 						'options'     => array(
 							'' => 'Select an Template',
 						),
+						'dependency' => array( 'enable-template', '==', 'true' ),
 					)
 				)
 			  ) 

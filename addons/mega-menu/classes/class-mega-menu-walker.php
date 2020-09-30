@@ -295,7 +295,7 @@ if( ! class_exists( 'Mega_Menu_Walker_Nav_Menu' ) ) {
             ob_start();
             $content = '';
 
-            if( '' != $this->megamenu && isset( $item->megamenu_column_template ) && !empty( $item->megamenu_column_template ) ){
+            if( false != $this->megamenu && $item->megamenu_enable_template && !empty( $item->megamenu_column_template ) ){
 
                 $template_id = explode("-", $item->megamenu_column_template);
                 $content .= '<div class="kemet-mega-menu-content">';

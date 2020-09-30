@@ -15,13 +15,13 @@
       if (megaMenu.hasClass("kfw--active")) {
         $this
           .find(
-            ".kfw-nav-menu-options .column-heading , .kfw-nav-menu-options .disable-item-label , .kfw-nav-menu-options .mega-menu-field-template"
+            ".kfw-nav-menu-options .enable-template , .kfw-nav-menu-options .column-heading , .kfw-nav-menu-options .disable-item-label , .kfw-nav-menu-options .mega-menu-field-template"
           )
           .show();
       } else {
         $this
           .find(
-            ".kfw-nav-menu-options .column-heading , .kfw-nav-menu-options .disable-item-label , .kfw-nav-menu-options .mega-menu-field-template"
+            ".kfw-nav-menu-options .enable-template , .kfw-nav-menu-options .column-heading , .kfw-nav-menu-options .disable-item-label , .kfw-nav-menu-options .mega-menu-field-template"
           )
           .hide();
       }

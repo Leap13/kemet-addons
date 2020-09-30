@@ -39,3 +39,6 @@
 .menu-item-depth-1 .kfw-nav-menu-options .label-bg-color {
   display: block;
 }
+.kfw-nav-menu-options .mega-menu-field-template.hidden {
+  display: none !important;
+}
