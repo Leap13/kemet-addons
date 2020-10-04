@@ -83,6 +83,12 @@ if (class_exists('KFW')) {
       'title' => __('Custom Layout', 'kemet-addons'),
       'subtitle' => __('Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-ddons'),
       'default' => false,
+    ),array(
+      'id' => 'mega-menu',
+      'type' => 'switcher',
+      'title' => __('Mega Menu', 'kemet-addons'),
+      'subtitle' => __('Enable/Disable Mega Menu', 'kemet-ddons'),
+      'default' => 'false',
     ),
   );
 
