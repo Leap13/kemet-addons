@@ -88,7 +88,7 @@ if (class_exists('KFW')) {
       'type' => 'switcher',
       'title' => __('Mega Menu', 'kemet-addons'),
       'subtitle' => __('Enable/Disable Mega Menu', 'kemet-ddons'),
-      'default' => 'false',
+      'default' => false,
     ),
   );
 
