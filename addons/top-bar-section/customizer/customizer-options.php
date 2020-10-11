@@ -71,7 +71,7 @@ $defaults = Kemet_Theme_Options::defaults();
 			'default'           => $defaults[ 'section1-content-align' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_icon_select' ),
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[top-section-1]', 
 				'conditions' => 'notEmpty', 
@@ -80,7 +80,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Icon_Select(
+		new Kemet_Control_Responsive_Icon_Select(
 			$wp_customize, KEMET_THEME_SETTINGS . '[section1-content-align]', array(
 				'priority'       => 15,
 				'section' => 'section-topbar-header',
@@ -168,7 +168,7 @@ $defaults = Kemet_Theme_Options::defaults();
 			'default'           => $defaults[ 'section2-content-align' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_icon_select' ),
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[top-section-2]', 
 				'conditions' => 'notEmpty', 
@@ -177,7 +177,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 	$wp_customize->add_control(
-		new Kemet_Control_Icon_Select(
+		new Kemet_Control_Responsive_Icon_Select(
 			$wp_customize, KEMET_THEME_SETTINGS . '[section2-content-align]', array(
 				'priority'       => 28,
 				'section' => 'section-topbar-header',

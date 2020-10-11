@@ -42,7 +42,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
             $topbar_letter_spacing                    = kemet_get_option( 'top-bar-letter-spacing' );
             $css_content = array(     
                 '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
-                    'justify-content' => $section1_content_align,
+                    'justify-content' => kemet_responsive_icon_select( $section1_content_align , 'desktop' ),
                     'flex-direction' => $top_bar_direction 
                 ),
                 '.kemet-top-header-section-wrap .kemet-top-header-section-2' => array(
@@ -114,6 +114,9 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-bottom' => kemet_responsive_spacing( $topbar_item_spacing, 'bottom', 'tablet' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_item_spacing, 'left', 'tablet' ),  
                 ),
+                '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
+                    'justify-content' => kemet_responsive_icon_select( $section1_content_align , 'tablet' ),
+                ),
              );
            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
@@ -124,14 +127,17 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'padding-bottom' => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'mobile' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_spacing, 'left', 'mobile' ),
                     'font-size'    => kemet_responsive_slider( $topbar_font_size, 'mobile' ),
-                    'letter-spacing' => kemet_responsive_slider( $topbar_letter_spacing , 'tablet' ),
-                    'line-height' => kemet_responsive_slider( $topbar_line_height , 'tablet' ),
+                    'letter-spacing' => kemet_responsive_slider( $topbar_letter_spacing , 'mobile' ),
+                    'line-height' => kemet_responsive_slider( $topbar_line_height , 'mobile' ),
                 ),
                 '.kemet-top-header-section > div'  => array(
                     'padding-top'    => kemet_responsive_spacing( $topbar_item_spacing, 'top', 'mobile' ),
                     'padding-right'  => kemet_responsive_spacing( $topbar_item_spacing, 'right', 'mobile' ),
                     'padding-bottom' => kemet_responsive_spacing( $topbar_item_spacing, 'bottom', 'mobile' ),
                     'padding-left'   => kemet_responsive_spacing( $topbar_item_spacing, 'left', 'mobile' ),  
+                ),
+                '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
+                    'justify-content' => kemet_responsive_icon_select( $section1_content_align , 'mobile' ),
                 ),
              );
            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );

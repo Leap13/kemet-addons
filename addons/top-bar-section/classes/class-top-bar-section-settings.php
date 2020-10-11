@@ -53,8 +53,8 @@ if (! class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['top-section-2']              = '';
             $defaults['top-section-1-html']              = '';
             $defaults['top-section-2-html']                    = '';
-            $defaults['section1-content-align']              = 'flex-start';
-            $defaults['section2-content-align']                    = 'flex-end';
+            $defaults['section1-content-align']              = '';
+            $defaults['section2-content-align']                    = '';
             $defaults['topbar-padding']         = '';
             $defaults['topbar-responsive']         = 'all-devices';
             $defaults['topbar-bg-color']    = '';
