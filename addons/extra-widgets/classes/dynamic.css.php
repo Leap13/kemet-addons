@@ -32,7 +32,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
                 '.kmt-widget-style3 .widget-content,.kmt-widget-style6 div.title .widget-title,.kmt-widget-style6 div.title .widget-title:before, .kmt-widget-style8 .widget-title' => array(
 					'border-bottom-color' => esc_attr( $widget_border_color ),
                 ),
-                '.kmt-widget-style3 .widget-content , .kmt-widget-style5.widget' => array(
+                '.kmt-widget-style3 .widget-content , .kmt-widget-style5.widget , .kmt-widget-style9 .widget-title' => array(
 					'border-color' => esc_attr( $widget_border_color ),
                 ),
                 '.kmt-widget-style7 div.title .widget-title:after' => array(
@@ -45,7 +45,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
                 '.kemet-footer .kmt-widget-style3 .widget-content,.kemet-footer .kmt-widget-style6 div.title .widget-title,.kemet-footer .kmt-widget-style6 div.title .widget-title:before  ,.kmt-footer-copyright .kmt-widget-style3 .widget-content,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title:before' => array(
 					'border-bottom-color' => esc_attr( $footer_widget_border_color ),
                 ),
-                '.kemet-footer .kmt-widget-style3 .widget-content ,.kemet-footer .kmt-widget-style5.widget , .kmt-footer-copyright .kmt-widget-style3 .widget-content ,.kmt-footer-copyright .kmt-widget-style5.widget' => array(
+                '.kemet-footer .kmt-widget-style3 .widget-content ,.kemet-footer .kmt-widget-style5.widget , .kmt-footer-copyright .kmt-widget-style3 .widget-content ,.kmt-footer-copyright .kmt-widget-style5.widget, .kemet-footer .kmt-widget-style9 .widget-title' => array(
 					'border-color' => esc_attr( $footer_widget_border_color ),
                 ),
                 '.kemet-footer .kmt-widget-style7 div.title .widget-title:after ,.kmt-footer-copyright .kmt-widget-style7 div.title .widget-title:after ' => array(

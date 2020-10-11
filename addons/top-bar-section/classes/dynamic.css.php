@@ -46,7 +46,7 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                     'flex-direction' => $top_bar_direction 
                 ),
                 '.kemet-top-header-section-wrap .kemet-top-header-section-2' => array(
-                    'justify-content' => $section2_content_align,
+                    'justify-content' => kemet_responsive_icon_select( $section2_content_align , 'desktop' ),
                     'flex-direction' => $top_bar_direction 
                 ),
                 // Top Bar Header   topbar-bg-color
@@ -117,6 +117,9 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                 '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
                     'justify-content' => kemet_responsive_icon_select( $section1_content_align , 'tablet' ),
                 ),
+                '.kemet-top-header-section-wrap .kemet-top-header-section-2' => array(
+                    'justify-content' => kemet_responsive_icon_select( $section2_content_align , 'tablet' ),
+                ),
              );
            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
@@ -138,6 +141,9 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
                 ),
                 '.kemet-top-header-section-wrap .kemet-top-header-section-1' => array(
                     'justify-content' => kemet_responsive_icon_select( $section1_content_align , 'mobile' ),
+                ),
+                '.kemet-top-header-section-wrap .kemet-top-header-section-2' => array(
+                    'justify-content' => kemet_responsive_icon_select( $section2_content_align , 'mobile' ),
                 ),
              );
            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
