@@ -240,6 +240,14 @@ module.exports = function(grunt) {
           {
             src: "addons/mega-menu/assets/css/unminified/mega-menu.css",
             dest: "addons/mega-menu/assets/css/minified/mega-menu.min.css"
+          },
+          {
+            src: "addons/mega-menu/assets/css/unminified/mega-menu-rtl.css",
+            dest: "addons/mega-menu/assets/css/minified/mega-menu-rtl.min.css"
+          },
+          {
+            src: "addons/mega-menu/assets/css/unminified/style-rtl.css",
+            dest: "addons/mega-menu/assets/css/minified/style-rtl.min.css"
           }
         ]
       }
@@ -372,6 +380,13 @@ module.exports = function(grunt) {
             cwd: "addons/woocommerce/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/woocommerce/assets/css/unminified",
+            ext: "-rtl.css"
+          },
+          {
+            expand: true,
+            cwd: "addons/mega-menu/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/mega-menu/assets/css/unminified",
             ext: "-rtl.css"
           }
         ]

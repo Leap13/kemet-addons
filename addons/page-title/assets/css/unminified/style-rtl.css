@@ -22,7 +22,8 @@
   width: 100%;
 }
 
-.kemet-breadcrumb-trail .trail-items, .kemet-breadcrumb-trail li {
+.kemet-breadcrumb-trail .trail-items,
+.kemet-breadcrumb-trail li {
   list-style: none;
   display: inline-block;
   margin: 0px;
@@ -38,7 +39,8 @@
   flex-wrap: nowrap;
 }
 
-.page-title-layout-2 .kmt-page-title-wrap, .page-title-layout-2 .kemet-breadcrumb-trail {
+.page-title-layout-2 .kmt-page-title-wrap,
+.page-title-layout-2 .kemet-breadcrumb-trail {
   flex-grow: 1;
   text-align: center;
   align-self: center;
@@ -74,7 +76,7 @@
 }
 
 .kemet-breadcrumb-trail > .prefix {
-  margin-left: 2px;
+  margin-left: 0.4em;
 }
 
 .kemet-breadcrumb-trail .dashicons {
@@ -83,6 +85,14 @@
 
 .align-right .kemet-page-title::after {
   margin-right: auto;
+}
+
+.header-transparent .kmt-page-title-addon-content {
+  padding: 120px 0 50px 0;
+}
+
+.merged-header-transparent .kmt-page-title-addon-content {
+  padding: 155px 0 50px 0;
 }
 
 .page-title-layout-3 .kmt-page-title-wrap {
