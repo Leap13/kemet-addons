@@ -12,6 +12,56 @@ $Social_icons_widget = array(
       'title'   => __('Title', 'kemet-addons' ),
     ),
     array(
+      'id'    => 'enable-title',
+      'type'  => 'switcher',
+      'title' => __('Display Icon Title', 'kemet-addons' ),
+    ),
+    array(
+      'id'          => 'alignment',
+      'type'        => 'select',
+      'title'       => __('Alignment', 'kemet-addons' ),
+      'options'     => array(
+        'row'  => __('Inline', 'kemet-addons' ),
+        'column'  => __('Stack', 'kemet-addons' ),
+      ),
+      'default'     => 'inline'
+    ),
+    array(
+      'id'          => 'icon-style',
+      'type'        => 'select',
+      'class'       => 'social-icons-icons-style',
+      'title'       => __('Icon Style', 'kemet-addons' ),
+      'options'     => array(
+        'simple'  => __('Simple', 'kemet-addons' ),
+        'circle'  => __('Circle', 'kemet-addons' ),
+        'square'  => __('Square', 'kemet-addons' ),
+        'circle-outline'  => __('Circle Outline', 'kemet-addons' ),
+        'square-outline'  => __('Square Outline', 'kemet-addons' ),
+      ),
+      'default'     => 'simple'
+    ),
+    array(
+      'id'    => 'icon-width',
+      'type'  => 'number',
+      'title' => __('Icon Width', 'kemet-addons' ),
+      'unit'  => 'px',
+    ),
+    array(
+      'id'    => 'space-between-icon-text',
+      'type'  => 'number',
+      'title' => __('Space Between Icon & Text:', 'kemet-addons' ),
+      'unit'  => 'px',
+      'output_mode' => 'padding',
+      'dependency' => array( 'enable-title', '==', 'true' ),
+    ),
+    array(
+      'id'    => 'space-between-profiles',
+      'type'  => 'number',
+      'title' => __('Space Between Social Icons:', 'kemet-addons' ),
+      'unit'  => 'px',
+      'output_mode' => 'padding'
+    ),
+    array(
       'id'     => 'social-profile',
       'type'   => 'group',
       'title'  => __('Add Icon', 'kemet-addons' ),
@@ -43,6 +93,7 @@ $Social_icons_widget = array(
         array(
           'id'    => 'social-icon',
           'type'  => 'icon', 
+          'button_title'  => __('Select Icon', 'kemet-addons' ),
           'title' => __('Icon','kemet-addons' ),
         ),
         array(
@@ -55,96 +106,31 @@ $Social_icons_widget = array(
           'type'  => 'color',
           'title' => __('Icon Hover Color', 'kemet-addons' ),
         ),
+        array(
+          'id'    => 'icon-bg-color',
+          'class'    => 'icon-bg-color',
+          'type'  => 'color',
+          'title' => __('Background Color', 'kemet-addons' ),
+        ),
+        array(
+          'id'    => 'icon-hover-bg-color',
+          'class'    => 'icon-hover-bg-color',
+          'type'  => 'color',
+          'title' => __('Background Hover Color', 'kemet-addons' ),
+        ),
+        array(
+          'id'    => 'icon-border-color',
+          'class'    => 'icon-border-color',
+          'type'  => 'color',
+          'title' => __('Border Color', 'kemet-addons' ),
+        ),
+        array(
+          'id'    => 'icon-hover-border-color',
+          'class'    => 'icon-hover-border-color',
+          'type'  => 'color',
+          'title' => __('Border Hover Color', 'kemet-addons' ),
+        ),
       ),
-    ),
-    array(
-      'id'    => 'enable-title',
-      'type'  => 'switcher',
-      'title' => __('Display Icon Title', 'kemet-addons' ),
-    ),
-    array(
-      'id'          => 'alignment',
-      'type'        => 'select',
-      'title'       => __('Alignment', 'kemet-addons' ),
-      'options'     => array(
-        'row'  => __('Inline', 'kemet-addons' ),
-        'column'  => __('Stack', 'kemet-addons' ),
-      ),
-      'default'     => 'inline'
-    ),
-    array(
-      'id'          => 'icon-style',
-      'type'        => 'select',
-      'title'       => __('Icon Style', 'kemet-addons' ),
-      'options'     => array(
-        'simple'  => __('Simple', 'kemet-addons' ),
-        'circle'  => __('Circle', 'kemet-addons' ),
-        'square'  => __('Square', 'kemet-addons' ),
-        'circle-outline'  => __('Circle Outline', 'kemet-addons' ),
-        'square-outline'  => __('Square Outline', 'kemet-addons' ),
-      ),
-      'default'     => 'simple'
-    ),
-    array(
-      'id'    => 'icon-bg-color',
-      'type'  => 'color',
-      'title' => __('Background Color', 'kemet-addons' ),
-      'dependency' => array(
-        array( 'icon-style', '!=', 'simple' ),
-        array( 'icon-style',   '!=', 'circle-outline' ),
-        array( 'icon-style',   '!=', 'square-outline' ),
-      ),
-    ),
-    array(
-      'id'    => 'icon-hover-bg-color',
-      'type'  => 'color',
-      'title' => __('Background Hover Color', 'kemet-addons' ),
-      'dependency' => array(
-        array( 'icon-style', '!=', 'simple' ),
-        array( 'icon-style',   '!=', 'circle-outline' ),
-        array( 'icon-style',   '!=', 'square-outline' ),
-      ),
-    ),
-    array(
-      'id'    => 'icon-border-color',
-      'type'  => 'color',
-      'title' => __('Border Color', 'kemet-addons' ),
-      'dependency' => array(
-        array( 'icon-style', '!=', 'simple' ),
-        array( 'icon-style',   '!=', 'circle' ),
-        array( 'icon-style',   '!=', 'square' ),
-      ),
-    ),
-    array(
-      'id'    => 'icon-hover-border-color',
-      'type'  => 'color',
-      'title' => __('Border Hover Color', 'kemet-addons' ),
-      'dependency' => array(
-        array( 'icon-style', '!=', 'simple' ),
-        array( 'icon-style',   '!=', 'circle' ),
-        array( 'icon-style',   '!=', 'square' ),
-      ),
-    ),
-    array(
-      'id'    => 'icon-width',
-      'type'  => 'number',
-      'title' => __('Icon Width', 'kemet-addons' ),
-      'unit'  => 'px',
-    ),
-    array(
-      'id'    => 'space-between-icon-text',
-      'type'  => 'number',
-      'title' => __('Space Between Icon & Text:', 'kemet-addons' ),
-      'unit'  => 'px',
-      'output_mode' => 'padding',
-      'dependency' => array( 'enable-title', '==', 'true' ),
-    ),
-    array(
-      'id'    => 'space-between-profiles',
-      'type'  => 'number',
-      'title' => __('Space Between Social Icons:', 'kemet-addons' ),
-      'unit'  => 'px',
-      'output_mode' => 'padding'
     ),
   )
 );
@@ -178,11 +164,7 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     //Css Style
     $icon_color = !empty($instance['icon-color']) ? $instance['icon-color'] : '';
     $icon_hover_color = !empty($instance['icon-hover-color']) ? $instance['icon-hover-color'] : '';
-    $icon_bg_color = !empty($instance['icon-bg-color']) ? $instance['icon-bg-color'] : '';
-    $icon__hover_bg_color = !empty($instance['icon-hover-bg-color']) ? $instance['icon-hover-bg-color'] : '';
     $alignment = !empty($instance['alignment']) ? $instance['alignment'] : '';
-    $border_color = !empty($instance['icon-border-color']) ? $instance['icon-border-color'] : '';
-    $icon__hover_border_color = !empty($instance['icon-hover-border-color']) ? $instance['icon-hover-border-color'] : '';
     if(!empty($instance['space-between-profiles']) && $instance['alignment'] == 'row'){
       $space_between_profiles = 'padding-right:' . $instance['space-between-profiles'] . 'px';
     }elseif(!empty($instance['space-between-profiles']) && $instance['alignment'] == 'column'){
@@ -190,16 +172,10 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     }else{
       $space_between_profiles = '';
     }
-    $icon_width = !empty($instance['icon-width']) ? $instance['icon-width'] .'px' : '';
+    $icon_width = !empty($instance['icon-width']) ? $instance['icon-width'] .'px' : 'initial';
     $space_text_icon = !empty($instance['space-between-icon-text']) ? $instance['space-between-icon-text'] .'px' : '';
     ?> 
   <style>
-    <?php echo $id ?>.kmt-social-profiles.circle .kmt-profile-link .profile-icon , <?php echo $id ?>.kmt-social-profiles.square .kmt-profile-link .profile-icon{ 
-      <?php if ( $icon_bg_color ) { echo 'background-color:' . esc_attr($icon_bg_color); } ?>;
-    }
-    <?php echo $id ?>.kmt-social-profiles.circle .kmt-profile-link .profile-icon:hover , <?php echo $id ?>.kmt-social-profiles.square .kmt-profile-link .profile-icon:hover{ 
-      <?php if ( $icon__hover_bg_color ){ echo 'background-color:' . esc_attr($icon__hover_bg_color); } ?>;
-    }
     <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon { 
       <?php if ( $icon_width ) { echo 'font-size:' . esc_attr($icon_width); } ?>;
     }
@@ -209,6 +185,10 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     <?php foreach($instance['social-profile'] as $profile){ 
       if(!empty($profile['social-icon'])){
       $icon_class = explode('-', $profile['social-icon'],2)[1];
+      $icon_bg_color = !empty($profile['icon-bg-color']) ? $profile['icon-bg-color'] : '';
+      $icon__hover_bg_color = !empty($profile['icon-hover-bg-color']) ? $profile['icon-hover-bg-color'] : '';
+      $border_color = !empty($profile['icon-border-color']) ? $profile['icon-border-color'] : '';
+      $icon__hover_border_color = !empty($profile['icon-hover-border-color']) ? $profile['icon-hover-border-color'] : '';
       ?>
       <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?> {
         <?php if ( $profile['icon-color'] ){ echo 'color: '.esc_attr($profile['icon-color']); } ?>;
@@ -216,15 +196,21 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
       <?php echo $id ?>.kmt-social-profiles .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>:hover {
         <?php if ( $profile['icon-hover-color'] ){ echo 'color:' . esc_attr($profile['icon-hover-color']); } ?>;
       }
+      <?php echo $id ?>.kmt-social-profiles.circle .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?> , <?php echo $id ?>.kmt-social-profiles.square .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>{ 
+      <?php if ( $icon_bg_color ) { echo 'background-color:' . esc_attr($icon_bg_color); } ?>;
+      }
+      <?php echo $id ?>.kmt-social-profiles.circle .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>:hover , <?php echo $id ?>.kmt-social-profiles.square .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>:hover{ 
+        <?php if ( $icon__hover_bg_color ){ echo 'background-color:' . esc_attr($icon__hover_bg_color); } ?>;
+      }
+      <?php echo $id ?>.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>{
+      <?php if ( $border_color ){ echo 'border:1px solid'.esc_attr($border_color); } ?>;
+      }
+      <?php echo $id ?>.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon.<?php echo esc_attr($icon_class); ?>:hover{
+        <?php if ( $icon__hover_border_color ){ echo 'border-color: '. esc_attr($icon__hover_border_color);} ?>;
+      }
       <?php }
       } ?>
 
-    <?php echo $id ?>.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon{
-      <?php if ( $border_color ){ echo 'border:1px solid'.esc_attr($border_color); } ?>;
-    }
-    <?php echo $id ?>.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon:hover{
-      <?php if ( $icon__hover_border_color ){ echo 'border-color: '. esc_attr($icon__hover_border_color);} ?>;
-    }
     <?php echo $id ?>.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon{
       <?php if ( $border_color ){ echo 'background:transparent; border-radius: unset; border:1px solid'.esc_attr($border_color); } ?>;
     }

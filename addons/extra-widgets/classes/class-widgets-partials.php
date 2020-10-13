@@ -10,6 +10,7 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
 
         private static $instance;
 
+        private static $extra_widgets_style;
         /**
          * Initiator
          */
@@ -30,6 +31,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             add_action( 'widgets_init', array( $this, 'kemet_extra_widgets_markup'), 10 );
             add_action( 'wp_ajax_kmt_mailchimp', array( $this, 'mailchimp_action' ) );
             add_action( 'wp_ajax_nopriv_kmt_mailchimp', array( $this, 'mailchimp_action' ) );
+            add_action( 'admin_enqueue_scripts', array( $this, 'admin_script' ) );
+            add_filter( 'wp_footer', array( $this, 'extra_widgets_style' ) );
         }
         
         public static function kemet_extra_widgets_markup() {
@@ -54,6 +57,27 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             }
         }
         
+         /**
+		 * Append CSS style to class variable.
+		 *
+		 * @param string $style Inline style string.
+		 * @return void
+		 */
+		public static function add_css( $style ) {
+			self::$extra_widgets_style .= $style;
+        }
+        
+        /**
+		 * Print inline CSS to footer.
+		 * @return void
+		 */
+		public function extra_widgets_style() {
+           
+			if ( '' != self::$mega_menu_style ) {
+				printf( "<style type='text/css' class='kemet-megamenu-inline-style'>%s</style>" , esc_attr(self::$extra_widgets_style) );
+			}
+        }
+
         function mailchimp_post( $email, $status, $list_id, $api_key){
  
             $data = array(
@@ -125,9 +149,21 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
 				$dir        = 'unminified';
             }
             
-            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/mailchimp' . $js_prefix);
+            Kemet_Style_Generator::kmt_add_js(KEMET_WIDGETS_DIR.'assets/js/'.$dir.'/extre-widgets' . $js_prefix);
 		}
-        
+        function admin_script(){
+
+			$js_prefix  = '.min.js';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$js_prefix  = '.js';
+				$dir        = 'unminified';
+			}
+
+			wp_enqueue_script( 'kemet-addons-extra-widgets-js', KEMET_WIDGETS_URL . 'assets/js/' . $dir . '/extra-widgets-admin' . $js_prefix, array(
+				'jquery',
+			), KEMET_ADDONS_VERSION, true );
+        }
     }
 }
 Kemet_Extra_Widgets_Partials::get_instance();
