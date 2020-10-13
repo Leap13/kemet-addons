@@ -1,7 +1,12 @@
 /********************** mailchimp widget **********************/
 .mailchimp-form {
-  div:first-child {
-    margin: 20px 0;
+  form {
+    div:first-child {
+      margin: 20px 0;
+    }
+  }
+  .mailchimp-description {
+    margin: 0 0 10px 0;
   }
   input[type="submit"].button {
     display: block;

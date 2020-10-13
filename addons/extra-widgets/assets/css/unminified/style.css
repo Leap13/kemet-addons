@@ -11,8 +11,12 @@
 ## Extra Widgets
 --------------------------------------------------------------*/
 /********************** mailchimp widget **********************/
-.mailchimp-form div:first-child {
+.mailchimp-form form div:first-child {
   margin: 20px 0;
+}
+
+.mailchimp-form .mailchimp-description {
+  margin: 0 0 10px 0;
 }
 
 .mailchimp-form input[type="submit"].button {
