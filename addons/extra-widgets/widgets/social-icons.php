@@ -179,7 +179,7 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
     }else{
       $space_between_profiles = array();
     }
-    $icon_width = !empty($instance['icon-width']) ? $instance['icon-width'] .'px' : 20;
+    $icon_width = !empty($instance['icon-width']) ? $instance['icon-width'] : 20;
     $font_size = !empty($instance['icon-font-size']) ? $instance['icon-font-size'] .'px' : 'initial';
     $space_text_icon = !empty($instance['space-between-icon-text']) ? $instance['space-between-icon-text'] : '';
 
@@ -188,9 +188,9 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
         'font-size'  => esc_attr( $font_size ),
       ),
       $id . '.kmt-social-profiles .kmt-profile-link .profile-icon' => array(
-        'width' => esc_attr( $icon_width ),
-        'height' => esc_attr( $icon_width ),
-        'line-height' => esc_attr( $icon_width ),
+        'width' => kemet_get_css_value( $icon_width , 'px' ),
+        'height' => kemet_get_css_value( $icon_width , 'px' ),
+        'line-height' => kemet_get_css_value( $icon_width , 'px' ),
       ),
       $id . '.kmt-social-profiles .kmt-profile-link .profile-title' => array(
         'padding-left' => kemet_get_css_value( $space_text_icon , 'px' ),
