@@ -201,36 +201,39 @@ if( ! function_exists( 'kemet_widget_social_profiles' ) ) {
       ),
     );
     $parse_css = kemet_parse_css( $style );
-    foreach($instance['social-profile'] as $profile){ 
-      if(!empty($profile['social-icon'])){
-        $icon_class = explode('-', $profile['social-icon'],2)[1];
-        $icon_bg_color = !empty($profile['icon-bg-color']) ? $profile['icon-bg-color'] : '';
-        $icon__hover_bg_color = !empty($profile['icon-hover-bg-color']) ? $profile['icon-hover-bg-color'] : '';
-        $border_color = !empty($profile['icon-border-color']) ? $profile['icon-border-color'] : '';
-        $icon__hover_border_color = !empty($profile['icon-hover-border-color']) ? $profile['icon-hover-border-color'] : '';
+    if( isset($instance['social-profile']) && !empty($instance['social-profile']) ){
 
-        $icons_style = array(
-          $id . '.kmt-social-profiles .kmt-profile-link .profile-icon.' . esc_attr($icon_class) => array(
-            'color' => esc_attr( $profile['icon-color'] ),
-          ),
-          $id . '.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ', ' . $id . '.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) => array(
-            'border-color' => esc_attr( $border_color ),
-          ),
-          $id . '.kmt-social-profiles.circle .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ', ' . $id . '.kmt-social-profiles.square .kmt-profile-link .profile-icon.' . esc_attr($icon_class) => array(
-            'background-color' => esc_attr( $icon_bg_color ),
-          ),
-          $id . '.kmt-social-profiles .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover' => array(
-            'color' => esc_attr( $profile['icon-hover-color'] ),
-          ),
-          $id . '.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover , ' . $id . '.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover' => array(
-            'border-color' => esc_attr( $icon__hover_border_color ),
-          ),
-          $id . '.kmt-social-profiles.circle .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover , ' . $id . '.kmt-social-profiles.square .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover' => array(
-            'background-color' => esc_attr( $icon__hover_bg_color ),
-          ),
-        );
+      foreach($instance['social-profile'] as $profile){ 
+        if(!empty($profile['social-icon'])){
+          $icon_class = explode('-', $profile['social-icon'],2)[1];
+          $icon_bg_color = !empty($profile['icon-bg-color']) ? $profile['icon-bg-color'] : '';
+          $icon__hover_bg_color = !empty($profile['icon-hover-bg-color']) ? $profile['icon-hover-bg-color'] : '';
+          $border_color = !empty($profile['icon-border-color']) ? $profile['icon-border-color'] : '';
+          $icon__hover_border_color = !empty($profile['icon-hover-border-color']) ? $profile['icon-hover-border-color'] : '';
+
+          $icons_style = array(
+            $id . '.kmt-social-profiles .kmt-profile-link .profile-icon.' . esc_attr($icon_class) => array(
+              'color' => esc_attr( $profile['icon-color'] ),
+            ),
+            $id . '.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ', ' . $id . '.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) => array(
+              'border-color' => esc_attr( $border_color ),
+            ),
+            $id . '.kmt-social-profiles.circle .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ', ' . $id . '.kmt-social-profiles.square .kmt-profile-link .profile-icon.' . esc_attr($icon_class) => array(
+              'background-color' => esc_attr( $icon_bg_color ),
+            ),
+            $id . '.kmt-social-profiles .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover' => array(
+              'color' => esc_attr( $profile['icon-hover-color'] ),
+            ),
+            $id . '.kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover , ' . $id . '.kmt-social-profiles.square-outline .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover' => array(
+              'border-color' => esc_attr( $icon__hover_border_color ),
+            ),
+            $id . '.kmt-social-profiles.circle .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover , ' . $id . '.kmt-social-profiles.square .kmt-profile-link .profile-icon.' . esc_attr($icon_class) . ':hover' => array(
+              'background-color' => esc_attr( $icon__hover_bg_color ),
+            ),
+          );
+        }
+        $parse_css .= kemet_parse_css( $icons_style );
       }
-      $parse_css .= kemet_parse_css( $icons_style );
     }
     $style_id = str_replace(array("#"," "),"", $id);
     printf( "<style type='text/css' class='" . $style_id ."-inline-style'>%s</style>" , esc_attr($parse_css) );
