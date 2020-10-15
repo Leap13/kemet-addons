@@ -69,7 +69,7 @@ if( ( $section_1 != '' || $enable_top_section_1 ) && ( $section_2 == '' && $enab
  	$sections++;
  } 
 
-if ( empty( $section_1 ) && empty( $section_2 ) ) {
+if ( (empty( $section_1 ) && $enable_top_section_1 == false) && (empty( $section_2 ) && $enable_top_section_2 == false) ) {
 	return;
 }
 

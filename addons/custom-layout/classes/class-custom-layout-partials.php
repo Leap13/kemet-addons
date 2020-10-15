@@ -290,7 +290,6 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 				$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' ); 
 
 				if( in_array( $action, $top_bar_sections ) ){
-					add_filter("enable_kemet_top_bar_section_2" , "__return_true");
 					switch ($action) {
 						case 'kemet_top_bar_section_1':
 							add_filter("enable_kemet_top_bar_section_1" , "__return_true");
