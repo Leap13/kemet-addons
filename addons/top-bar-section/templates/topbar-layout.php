@@ -50,12 +50,12 @@ $section_2 = kemet_get_top_section( 'top-section-2' );
 $section1_class = 'kmt-col-md-6';
 $section2_class = 'kmt-col-md-6';
 $sections  = 0;
-
-
-if($section_1 != '' && $section_2 == ''){
+$enable_top_section_1 = apply_filters( "enable_kemet_top_bar_section_1" , false);
+$enable_top_section_2 = apply_filters( "enable_kemet_top_bar_section_2" , false);
+if( ( $section_1 != '' || $enable_top_section_1 ) && ( $section_2 == '' && $enable_top_section_2 == false ) ){
 	$section1_class = 'kmt-col-md-12';
 	$section2_class = 'kmt-col-md-6';
-}elseif($section_2 != '' && $section_1 == ''){
+}elseif(($section_2 != '' || $enable_top_section_2) && ($section_1 == '' && $enable_top_section_1  == false ) ){
 	$section1_class = 'kmt-col-md-6';
 	$section2_class = 'kmt-col-md-12';
 }else{
@@ -84,14 +84,16 @@ if(in_array('search' , (array)kemet_get_option( 'top-section-1' )) || in_array('
 	<div class="kemet-top-header  <?php echo esc_attr( $classes ); ?>" >
 		<div class="kmt-container">
 			<div class="kmt-row kmt-flex kemet-top-header-section-wrap">
-				<?php if(!empty( $section_1 )){ ?>
+				<?php if(!empty( $section_1 ) || $enable_top_section_1 ){ ?>
 					<div class="kemet-top-header-section kemet-top-header-section-1 kmt-flex kmt-justify-content-flex-start mt-topbar-section-equally <?php echo $section1_class; ?> kmt-col-xs-12" >
 							<?php echo $section_1; ?>
+							<?php do_action("kemet_top_bar_section_1"); ?>
 					</div>
 				<?php } ?>
-				<?php if(!empty( $section_2 )){ ?>
+				<?php if(!empty( $section_2 ) || $enable_top_section_2 ){ ?>
 					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally <?php echo $section2_class; ?> kmt-col-xs-12<" >
 							<?php echo $section_2; ?>
+							<?php do_action("kemet_top_bar_section_2"); ?>
 					</div>
 				<?php } ?>
 			</div>

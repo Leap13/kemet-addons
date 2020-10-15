@@ -56,6 +56,7 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			add_shortcode( 'kemet_custom_layout', array( $this, 'add_shortcode') );
 			add_filter('et_builder_post_types', array( $this, 'add_to_et_builder_post_types' ));
 			add_filter( 'brizy_supported_post_types', array( $this, 'add_to_brizy_post_types' ));
+			add_action( 'kemet_sitehead_top' , array( $this, 'top_bar_hooks' ) , 8 );
 			
         }
 
@@ -178,7 +179,20 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
                     $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
                     $action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
                     $priority = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : 10;
-                    
+                    $top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' ); 
+
+					if( in_array( $action, $top_bar_sections ) ){
+						
+						switch ($action) {
+							case 'kemet_top_bar_section_1':
+								add_filter("enable_kemet_top_bar_section_1" , "__return_true");
+								break;
+							
+							case 'kemet_top_bar_section_2':
+								add_filter("enable_kemet_top_bar_section_2" , "__return_true");
+								break;
+						}
+					}
                     // Add Action.
                     add_action(
                         $action,
@@ -268,6 +282,27 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 			}			
 		}
 
+		function top_bar_hooks(){
+			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
+				$post_id = get_the_id();
+                $meta = get_post_meta( $post_id, 'kemet_custom_layout_options', true ); 
+				$action = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+				$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' ); 
+
+				if( in_array( $action, $top_bar_sections ) ){
+					add_filter("enable_kemet_top_bar_section_2" , "__return_true");
+					switch ($action) {
+						case 'kemet_top_bar_section_1':
+							add_filter("enable_kemet_top_bar_section_1" , "__return_true");
+							break;
+						
+						case 'kemet_top_bar_section_2':
+							add_filter("enable_kemet_top_bar_section_2" , "__return_true");
+							break;
+					}
+				}
+			}
+		}
         /**
 		 *
 		 * @param  content $content the_content markup.
@@ -471,7 +506,9 @@ if (! class_exists('Kemet_Custom_Layout_Partials')) {
 					'title' => __( 'Header', 'kemet-addons' ),
 					'value' => array(
 						'kemet_body_top' => esc_html__( 'Top of <body> tag', 'kemet-addons' ),
-                        'kemet_before_header_block' => esc_html__( 'Before <header> tag', 'kemet-addons' ),
+						'kemet_before_header_block' => esc_html__( 'Before <header> tag', 'kemet-addons' ),
+						'kemet_top_bar_section_1'	=> esc_html__( 'Top Bar Section 1', 'kemet-addons' ),
+						'kemet_top_bar_section_2'	=> esc_html__( 'Top Bar Section 2', 'kemet-addons' ),
                         'kemet_header' => __( 'Main Header', 'kemet-addons' ),
                         'kemet_main_header_bar_top' => __( 'Top of Header Content', 'kemet-addons' ),
                         'kemet_sitehead_top' => esc_html__( 'Top of <header> tag', 'kemet-addons' ),

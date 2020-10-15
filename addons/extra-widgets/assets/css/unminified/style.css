@@ -19,7 +19,7 @@
   margin: 0 0 10px 0;
 }
 
-.mailchimp-form input[type="submit"].button {
+.mailchimp-form button[type="submit"].button {
   display: block;
 }
 

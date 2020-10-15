@@ -83,7 +83,7 @@ if( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
             $output .= '</div>';
                 
             $output .='<div class="send-div">';
-                $output .='<input type="submit" class="button" style="'.$align.'" value="'.esc_html__( $submit_text , 'kemet-addons').'" name="subscribe">';
+                $output .='<button type="submit" class="button" style="'.$align.'" name="subscribe">'.esc_html__( $submit_text , 'kemet-addons').'</button>';
                 $output .='<div class="sending"></div>';
             $output .='</div>';
 
