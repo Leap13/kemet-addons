@@ -44,7 +44,7 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $menu_icon_separator_height = kemet_get_option('header-separator-height');
             $css_content = array(
                 '.header-main-layout-4 .main-header-menu' => array(
-                    'background-color' => esc_attr($menu_bg_color),
+                    'background-color' => kemet_responsive_color($menu_bg_color , "desktop"),
                 ),
                 '.header-boxed-width .main-header-content , .header-stretched-width .main-header-content' => array(
                     'background-color' => esc_attr($header_content_bg_color),
@@ -129,6 +129,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'tablet' ),
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'tablet' ),              
                 ),
+                '.header-main-layout-4 .main-header-menu' => array(
+                    'background-color' => kemet_responsive_color($menu_bg_color , "tablet"),
+                ),
              );
            $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
             
@@ -138,6 +141,9 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                     'margin-right'  => kemet_responsive_spacing( $space_icon_bars, 'right', 'mobile' ),
                     'margin-bottom' => kemet_responsive_spacing( $space_icon_bars, 'bottom', 'mobile' ),
                     'margin-left'   => kemet_responsive_spacing( $space_icon_bars, 'left', 'mobile' ),              
+                ),
+                '.header-main-layout-4 .main-header-menu' => array(
+                    'background-color' => kemet_responsive_color($menu_bg_color , "mobile"),
                 ),
              );
            $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
