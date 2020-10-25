@@ -490,6 +490,10 @@ Woo Quick View
   background-color: transparent;
 }
 
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kmt-out-of-stock, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kmt-out-of-stock {
+  cursor: not-allowed;
+}
+
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top {
   position: relative;
 }
