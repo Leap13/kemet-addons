@@ -489,6 +489,9 @@ Woo Quick View
         ul.products{
             li.product{
                 .kemet-shop-thumbnail-wrap{
+                    .kemet-shop-summary-wrap{
+                        background-color: transparent;
+                    }
                     .product-top{
                         position: relative;
                         .product-btn-group{

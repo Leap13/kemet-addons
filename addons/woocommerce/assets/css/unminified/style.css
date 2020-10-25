@@ -486,6 +486,10 @@ Woo Quick View
 }
 
 /************ Shop ************/
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
+  background-color: transparent;
+}
+
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top {
   position: relative;
 }
