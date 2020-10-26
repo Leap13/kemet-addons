@@ -661,6 +661,7 @@ Woo Quick View
 }
 
 .woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap, .woocommerce-page.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
+  background-color: transparent;
   padding: 0 1.2em 0;
   align-self: center;
   width: 65%;
