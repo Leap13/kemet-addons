@@ -27,8 +27,8 @@
     },
     quickViewStyle: function() {
       $("#kmt-qv-content").css({
-        "max-width": parseFloat($(window).width()) - 120,
-        "max-height": parseFloat($(window).height()) - 120
+        "max-width": parseFloat($(window).width()) - 150,
+        "max-height": parseFloat($(window).height()) - 150
       });
     },
     openModel: function(e) {
