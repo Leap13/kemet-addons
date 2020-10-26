@@ -5,7 +5,7 @@
   KmtQuickView = {
     init: function() {
       this.bind();
-      //   this.quickViewStyle();
+      this.quickViewStyle();
     },
     bind: function() {
       // Open Quick View.
@@ -26,13 +26,9 @@
       $(document).on("keyup", KmtQuickView.EscKeypress);
     },
     quickViewStyle: function() {
-      var sliderHeight = $("#kmt-qv-content .images").outerHeight();
       $("#kmt-qv-content").css({
         "max-width": parseFloat($(window).width()) - 120,
-        "max-height": parseFloat(sliderHeight)
-      });
-      $("#kmt-qv-content .entry-summary").css({
-        "max-height": parseFloat(sliderHeight)
+        "max-height": parseFloat($(window).height()) - 120
       });
     },
     openModel: function(e) {
@@ -77,6 +73,12 @@
           }
         }
       }).done(function() {
+        var sliderHeight = $("#kmt-qv-content .images")
+          .find(".woocommerce-product-gallery__image")
+          .outerHeight();
+        $("#kmt-qv-content .entry-summary").css({
+          "max-height": parseFloat(sliderHeight)
+        });
         overlay.removeClass("loading");
       });
     },
