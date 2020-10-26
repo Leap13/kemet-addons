@@ -65,7 +65,7 @@
           content.html(results);
           setTimeout(function() {
             KmtQuickView.quickViewStyle();
-          }, 100);
+          }, 120);
           // Display modal
           modal.fadeIn();
           modal.addClass("is-visible");
