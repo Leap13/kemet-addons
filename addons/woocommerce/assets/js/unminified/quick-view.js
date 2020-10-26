@@ -63,7 +63,9 @@
           $("html").addClass("kmt-qv-open");
 
           content.html(results);
-
+          setTimeout(function() {
+            KmtQuickView.quickViewStyle();
+          }, 100);
           // Display modal
           modal.fadeIn();
           modal.addClass("is-visible");
@@ -75,7 +77,6 @@
           }
         }
       }).done(function() {
-        KmtQuickView.quickViewStyle();
         overlay.removeClass("loading");
       });
     },
