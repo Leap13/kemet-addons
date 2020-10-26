@@ -76,9 +76,17 @@
         var sliderHeight = $("#kmt-qv-content .images")
           .find(".woocommerce-product-gallery__image")
           .outerHeight();
-        $("#kmt-qv-content .entry-summary").css({
-          "max-height": parseFloat(sliderHeight)
-        });
+        var containerHeight = $("#kmt-qv-contents").outerHeight();
+        if (sliderHeight) {
+          $("#kmt-qv-content .entry-summary").css({
+            "max-height": parseFloat(sliderHeight)
+          });
+        } else {
+          $("#kmt-qv-content .entry-summary").css({
+            "max-height": parseFloat(containerHeight)
+          });
+        }
+
         overlay.removeClass("loading");
       });
     },
