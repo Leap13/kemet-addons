@@ -75,12 +75,10 @@
           .outerHeight();
         var containerHeight = $("#kmt-qv-content").outerHeight();
         if (sliderHeight) {
-          console.log("One");
           $("#kmt-qv-content .entry-summary").css({
             "max-height": parseFloat(sliderHeight)
           });
         } else {
-          console.log("Two");
           $("#kmt-qv-content .entry-summary").css({
             "max-height": parseFloat(containerHeight)
           });
