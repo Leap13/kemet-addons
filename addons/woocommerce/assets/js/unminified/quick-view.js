@@ -59,9 +59,6 @@
           $("html").addClass("kmt-qv-open");
 
           content.html(results);
-          setTimeout(function() {
-            KmtQuickView.quickViewStyle();
-          }, 120);
           // Display modal
           modal.fadeIn();
           modal.addClass("is-visible");
