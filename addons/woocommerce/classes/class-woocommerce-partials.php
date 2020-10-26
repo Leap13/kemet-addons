@@ -933,7 +933,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					$single_ajax_add_to_cart = false;
 				}
 			}
-
+			$check_page 								 = is_shop() || is_product_taxonomy() ? true : false;
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
@@ -947,7 +947,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['shop_infinite_total']        	 = $wp_query->max_num_pages;
 			$localize['pagination_style']        	     = $pagination_style;
 			$localize['shop_infinite_nonce']        	 = wp_create_nonce( 'kmt-shop-load-more-nonce' );
-			$localize['is_shop']			 		 	 = is_shop() || is_product_taxonomy() ? true : false;
+			$localize['is_shop']			 		 	 = apply_filters("kemet_woocommerce_styles_enable" , $check_page );
 
             return $localize;
         }
