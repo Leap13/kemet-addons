@@ -84,6 +84,14 @@ Woo Quick View
   }
 }
 
+#kmt-qv-content {
+  overflow: hidden;
+}
+
+#kmt-qv-content .product .entry-summary {
+  overflow-y: auto;
+}
+
 .shop-grid .kmt-quick-view {
   display: block;
 }
@@ -432,7 +440,7 @@ Woo Quick View
 .kmt-qv-content-inner .kmt-qv-close {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 8px;
   color: #333;
   opacity: .5;
   font-weight: 300;
@@ -486,6 +494,14 @@ Woo Quick View
 }
 
 /************ Shop ************/
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
+  background-color: transparent;
+}
+
+.woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kmt-out-of-stock, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kmt-out-of-stock {
+  cursor: not-allowed;
+}
+
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top, .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top {
   position: relative;
 }
@@ -653,6 +669,7 @@ Woo Quick View
 }
 
 .woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap, .woocommerce-page.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
+  background-color: transparent;
   padding: 0 1.2em 0;
   align-self: center;
   width: 65%;

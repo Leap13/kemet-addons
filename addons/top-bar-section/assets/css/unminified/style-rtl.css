@@ -209,3 +209,7 @@
     left: auto;
   }
 }
+
+.kemet-merged-top-bar-header .kemet-top-header {
+  background: transparent;
+}

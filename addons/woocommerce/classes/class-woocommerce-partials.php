@@ -460,9 +460,15 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 						echo '<div class="button woo-wishlist-btn">'. do_shortcode( '[ti_wishlists_addtowishlist]' ) .'</div>';
 					}
 
+					$out_of_stock        = get_post_meta( get_the_ID(), '_stock_status', true );
 					do_action( 'kemet_woo_shop_add_to_cart_before' );
 					echo '<div class="add-to-cart-group">';
-					woocommerce_template_loop_add_to_cart();
+					if($out_of_stock === 'outofstock' ){ ?>
+						<a href="javascript:void(0)" class="kmt-out-of-stock button disabled">Out Of Stock</a>
+					<?php }else{
+						woocommerce_template_loop_add_to_cart();
+					}
+					// echo $button_group;
 					echo '</div>';
 					do_action( 'kemet_woo_shop_add_to_cart_after' );
 					
@@ -544,6 +550,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				remove_action( 'woocommerce_before_shop_loop_item', 'product_list_details' , 8);
 				remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title' ,1);
 				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content' ,2);
+				remove_action( 'woocommerce_shop_loop_item_title', 'kemet_woo_shop_out_of_stock', 8 );
 
 			}elseif($shop_style == 'shop-grid'){
 				add_action( 'woocommerce_before_shop_loop_item', 'product_list_details' , 8);
@@ -926,7 +933,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					$single_ajax_add_to_cart = false;
 				}
 			}
-
+			$check_page 								 = is_shop() || is_product_taxonomy() ? true : false;
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
@@ -940,7 +947,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['shop_infinite_total']        	 = $wp_query->max_num_pages;
 			$localize['pagination_style']        	     = $pagination_style;
 			$localize['shop_infinite_nonce']        	 = wp_create_nonce( 'kmt-shop-load-more-nonce' );
-			$localize['is_shop']			 		 	 = is_shop() || is_product_taxonomy() ? true : false;
+			$localize['is_shop']			 		 	 = apply_filters("kemet_woocommerce_styles_enable" , $check_page );
 
             return $localize;
         }

@@ -23,10 +23,15 @@ $mail_chimp_widgets = array(
       'default'   => __('Subscribe', 'kemet-addons' ),
     ),
     array(
-      'id'      => 'submit-text',
+      'id'      => 'title',
       'type'    => 'text',
-      'title'   => __('Submit Text', 'kemet-addons' ),
+      'title'   => __('Title:', 'kemet-addons' ),
       'default'   => __('Subscribe', 'kemet-addons' ),
+    ),
+    array(
+      'id'      => 'description',
+      'type'    => 'textarea',
+      'title'   => __('Description', 'kemet-addons' ),
     ),
     array(
         'id'          => 'button-align',
@@ -50,6 +55,7 @@ if( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
     }
 
      $submit_text = isset($instance['submit-text']) ? $instance['submit-text'] : 'Subscribe';
+     $decription = isset($instance['description']) ? $instance['description'] : '';
      $button_align = isset($instance['button-align']) ? $instance['button-align'] : 'left';
      $align = '';
      switch($button_align){
@@ -67,7 +73,9 @@ if( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 
     $output = "";
     $output .='<div class="mailchimp-form">';
-
+        $output .='<div class="mailchimp-description">';
+          $output .= esc_html__( $decription , 'kemet-addons');
+        $output .='</div>';
         $output .='<form class="kmt-mailchimp-form" name="kmt-mailchimp-form" action="'.esc_url( admin_url('admin-post.php') ).'" method="POST">';
             $output .='<div>';
                 $output .='<input type="text" value="" name="email" placeholder="'.esc_html__("Email", 'kemet-addons').'">';
@@ -75,7 +83,7 @@ if( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
             $output .= '</div>';
                 
             $output .='<div class="send-div">';
-                $output .='<input type="submit" class="button" style="'.$align.'" value="'.esc_html__( $submit_text , 'kemet-addons').'" name="subscribe">';
+                $output .='<button type="submit" class="button" style="'.$align.'" name="subscribe">'.esc_html__( $submit_text , 'kemet-addons').'</button>';
                 $output .='<div class="sending"></div>';
             $output .='</div>';
 

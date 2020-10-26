@@ -240,6 +240,14 @@ module.exports = function(grunt) {
           {
             src: "addons/mega-menu/assets/css/unminified/mega-menu.css",
             dest: "addons/mega-menu/assets/css/minified/mega-menu.min.css"
+          },
+          {
+            src: "addons/mega-menu/assets/css/unminified/mega-menu-rtl.css",
+            dest: "addons/mega-menu/assets/css/minified/mega-menu-rtl.min.css"
+          },
+          {
+            src: "addons/mega-menu/assets/css/unminified/style-rtl.css",
+            dest: "addons/mega-menu/assets/css/minified/style-rtl.min.css"
           }
         ]
       }
@@ -269,8 +277,10 @@ module.exports = function(grunt) {
             "addons/sticky-header/assets/js/unminified/sticky-header.js",
           "addons/single-post/assets/js/minified/customizer-preview.min.js":
             "addons/single-post/assets/js/unminified/customizer-preview.js",
-          "addons/extra-widgets/assets/js/minified/mailchimp.min.js":
-            "addons/extra-widgets/assets/js/unminified/mailchimp.js",
+          "addons/extra-widgets/assets/js/minified/extre-widgets.min.js":
+            "addons/extra-widgets/assets/js/unminified/extre-widgets.js",
+          "addons/extra-widgets/assets/js/minified/extra-widgets-admin.min.js":
+            "addons/extra-widgets/assets/js/unminified/extra-widgets-admin.js",
           "addons/woocommerce/assets/js/minified/customizer-preview.min.js":
             "addons/woocommerce/assets/js/unminified/customizer-preview.js",
           "addons/woocommerce/assets/js/minified/quick-view.min.js":
@@ -372,6 +382,13 @@ module.exports = function(grunt) {
             cwd: "addons/woocommerce/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/woocommerce/assets/css/unminified",
+            ext: "-rtl.css"
+          },
+          {
+            expand: true,
+            cwd: "addons/mega-menu/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/mega-menu/assets/css/unminified",
             ext: "-rtl.css"
           }
         ]

@@ -97,6 +97,14 @@ Woo Quick View
     to {
     transform: translateX(1.3em);
     }
+}
+#kmt-qv-content{
+    overflow: hidden;
+    .product{
+        .entry-summary{
+            overflow-y: auto;
+        }
+    }
 } 
 .shop-grid{
     .kmt-quick-view {
@@ -430,7 +438,7 @@ Woo Quick View
     .kmt-qv-close {
         position: absolute;
         top: 0;
-        right: 0;
+        right: 8px;
         color: #333;
         opacity: .5;
         font-weight: 300;
@@ -489,6 +497,12 @@ Woo Quick View
         ul.products{
             li.product{
                 .kemet-shop-thumbnail-wrap{
+                    .kemet-shop-summary-wrap{
+                        background-color: transparent;
+                    }
+                    .kmt-out-of-stock{
+                        cursor:not-allowed
+                    }
                     .product-top{
                         position: relative;
                         .product-btn-group{
@@ -652,6 +666,7 @@ Woo Quick View
                         }
                     }
                     .kemet-shop-summary-wrap{
+                        background-color: transparent;
                         padding: 0 1.2em 0;
                         align-self: center;
                         >*{
