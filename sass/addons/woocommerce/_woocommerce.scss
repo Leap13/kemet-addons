@@ -97,6 +97,13 @@ Woo Quick View
     to {
     transform: translateX(1.3em);
     }
+}
+#kmt-qv-content{
+    .product{
+        .entry-summary{
+            overflow-y: auto;
+        }
+    }
 } 
 .shop-grid{
     .kmt-quick-view {
@@ -430,7 +437,7 @@ Woo Quick View
     .kmt-qv-close {
         position: absolute;
         top: 0;
-        right: 0;
+        right: 8px;
         color: #333;
         opacity: .5;
         font-weight: 300;
