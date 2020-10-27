@@ -11,11 +11,15 @@
 ## Extra Widgets
 --------------------------------------------------------------*/
 /********************** mailchimp widget **********************/
-.mailchimp-form div:first-child {
+.mailchimp-form form div:first-child {
   margin: 20px 0;
 }
 
-.mailchimp-form input[type="submit"].button {
+.mailchimp-form .mailchimp-description {
+  margin: 0 0 10px 0;
+}
+
+.mailchimp-form button[type="submit"].button {
   display: block;
 }
 
@@ -66,9 +70,9 @@
   line-height: 1;
 }
 
-.kmt-social-profiles.simple .kmt-profile-link .profile-icon {
-  height: 1em;
-  width: 1em;
+.kmt-social-profiles.simple .kmt-profile-link .profile-icon .dashicons,
+.kmt-social-profiles.simple .kmt-profile-link .profile-icon .dashicons-before:before {
+  vertical-align: sub;
 }
 
 .kmt-social-profiles.circle-outline .kmt-profile-link .profile-icon, .kmt-social-profiles.square-outline .kmt-profile-link .profile-icon {
@@ -92,8 +96,6 @@
 }
 
 .kmt-social-profiles .kmt-profile-link .profile-icon {
-  height: 2em;
-  width: 2em;
   display: inline-block;
   background-color: inherit;
   font-size: 15px;
@@ -102,10 +104,33 @@
 
 .kmt-social-profiles .kmt-profile-link .dashicons,
 .kmt-social-profiles .kmt-profile-link .dashicons-before:before {
-  width: unset;
-  height: unset;
-  font-size: inherit;
-  line-height: inherit;
+  vertical-align: middle;
+  width: auto;
+  height: auto;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon.facebook {
+  color: #3b5998;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon.facebook-alt {
+  color: #3b5998;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon.twitter {
+  color: #1da1f2;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon.googleplus {
+  color: #db4437;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon.wordpress-alt {
+  color: #21759b;
+}
+
+.kmt-social-profiles .kmt-profile-link .profile-icon.wordpress {
+  color: #21759b;
 }
 
 /********************** posts in images widget **********************/
