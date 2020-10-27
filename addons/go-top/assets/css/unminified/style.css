@@ -66,7 +66,9 @@
     display: none !important;
   }
   .kmt-go-top-link {
-    right: 10px;
-    bottom: 10px;
+    right: 20px;
+    bottom: 20px;
+    width: 35px;
+    height: 35px;
   }
 }
