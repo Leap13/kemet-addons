@@ -46,9 +46,6 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			add_action( 'wp', array( $this, 'init_woocommerce' ) );
 			add_action( 'widgets_init', array( $this,'kemet_register_off_canvas' ) );
 			add_filter( 'post_class', array( $this, 'product_classes' ) );
-			add_action( 'woocommerce_before_shop_loop', array( $this, 'start_tool_bar_div' ) );
-			add_action( 'woocommerce_before_shop_loop', array( $this, 'toolbar_buttons' ) , 20);
-			add_action( 'woocommerce_before_shop_loop', array( $this, 'end_tool_bar_div' ), 40 );
 			add_filter( 'wp_nav_menu_items', array( $this,'menu_wishlist_icon' ), 10, 2 );
 			add_action('wp_ajax_nopriv_kemet_list_post_ajax', array( $this, 'ajax_product_list_style'));
 			add_action('wp_ajax_kemet_list_post_ajax', array( $this, 'ajax_product_list_style'));
@@ -619,7 +616,12 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 				remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 				add_action( 'woocommerce_after_shop_loop', array( $this, 'infinite_pagination' ), 10 );
 			}
-
+			
+			add_action( 'woocommerce_before_shop_loop', array( $this, 'start_tool_bar_div' ) );
+			if(is_shop() || is_product_taxonomy()){
+				add_action( 'woocommerce_before_shop_loop', array( $this, 'toolbar_buttons' ) , 20);
+			}
+			add_action( 'woocommerce_before_shop_loop', array( $this, 'end_tool_bar_div' ), 40 );
 		}
 
 		/**
