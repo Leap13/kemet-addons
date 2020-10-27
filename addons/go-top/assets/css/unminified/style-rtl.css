@@ -34,7 +34,7 @@
 
 .kmt-go-top-link:before {
   content: "\e911";
-  font-family: 'kemet-font';
+  font-family: "kemet-font";
   font-size: 20px;
 }
 
@@ -64,5 +64,11 @@
 @media only screen and (max-width: 767px) {
   .hide-tablet-mobile {
     display: none !important;
+  }
+  .kmt-go-top-link {
+    left: 20px;
+    bottom: 20px;
+    width: 35px;
+    height: 35px;
   }
 }

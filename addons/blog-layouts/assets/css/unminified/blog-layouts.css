@@ -703,6 +703,7 @@
 .blog-layout-4 .blog-post-layout-4 .entry-header .kmt-blog-featured-section, .blog-layout-4 .blog-post-layout-4 .entry-header .kmt-default-featured-section {
   position: relative;
   margin-bottom: 0;
+  overflow: hidden;
 }
 
 .blog-layout-4 .blog-post-layout-4 .entry-header .kmt-blog-featured-bg, .blog-layout-4 .blog-post-layout-4 .entry-header .kmt-default-featured-section {
