@@ -593,6 +593,10 @@ Woo Quick View
   transform: translateY(-10px) scale(1);
 }
 
+.woocommerce .product.kmt-gallary-vertical .onsale, .woocommerce-page .product.kmt-gallary-vertical .onsale {
+  left: calc(7.5% + 25px);
+}
+
 .woocommerce ul.products.load-ajax, .woocommerce-page ul.products.load-ajax {
   position: relative;
 }
@@ -793,12 +797,12 @@ Woo Quick View
   position: relative;
   height: 281px;
   float: right;
-  width: 75%;
+  width: 85%;
 }
 
 .woocommerce .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-control-thumbs, .woocommerce-page .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-control-thumbs {
   float: left;
-  width: calc(25% - 1em);
+  width: calc(15% - 1em);
   overflow-x: hidden;
   margin: 0;
   padding: 0;

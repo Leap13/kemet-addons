@@ -594,6 +594,13 @@ Woo Quick View
     }
 }
 .woocommerce , .woocommerce-page{
+    .product{
+        &.kmt-gallary-vertical{
+            .onsale{
+                left: calc(7.5% + 25px);
+            }
+        }
+    }
     ul.products{
         &.load-ajax{
             position:relative;
@@ -790,11 +797,11 @@ Woo Quick View
                     position: relative;
                     height: 281px;
                     float: right;
-                    width: 75%;
+                    width: 85%;
                 }
                 .flex-control-thumbs{
                     float: left;
-                    width: calc(25% - 1em);
+                    width: calc(15% - 1em);
                     overflow-x: hidden;
                     margin: 0;
                     padding: 0;
