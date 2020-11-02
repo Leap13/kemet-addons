@@ -296,177 +296,143 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
-	
+
 	/**
-	 * Option: Top Bar Font Size
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[topbar-font-size]', array(
-			'default'           => $defaults[ 'topbar-font-size' ],
+	* Option: Typography
+	*/
+	$fields = array(
+		/**
+		* Option: Top Bar Font Size
+		*/
+		array(
+			'id'                => '[topbar-font-size]',
+			'default'           => $defaults ['topbar-font-size'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[topbar-font-size]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-topbar-header',
-				'priority'       => 45,
-				'label'          => __( 'Font Size', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 1,
-						'step' => 1,
-						'max' =>200,
-					),
-					'em' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
-				 ),
-			)
-		)
-	);
-	/**
-	 * Option: Font Family
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[top-bar-font-family]', array(
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-topbar-header',
+			'priority'          => 2,
+			'label'          => __( 'Font Size', 'kemet' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 1,
+					'step' => 1,
+					'max' =>200,
+				),
+				'em' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+		/**
+		 * Option: Font Family
+		 */
+		array(
+			'id'                => '[top-bar-font-family]',
 			'default'           => $defaults[ 'top-bar-font-family' ],
 			'type'              => 'option',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-font-family]', array(
-				'type'        => 'kmt-font-family',
-				'section'     => 'section-topbar-header',
-				'priority'    => 46,
-				'label'       => __( 'Font Family', 'kemet-addons' ),
-				'connect'     => KEMET_THEME_SETTINGS . '[top-bar-font-weight]',
-			)
-		)
-	);
-
-	/**
-	 * Option: Font Weight
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[top-bar-font-weight]', array(
+			'control_type'      => 'kmt-font-family',
+			'label'             => __( 'Font Family', 'kemet' ),
+			'section'           => 'section-topbar-header',
+			'priority'          => 3,
+			'connect'           => KEMET_THEME_SETTINGS . '[top-bar-font-weight]',
+		),
+		/**
+		 * Option: Font Weight
+		 */
+		array(
+			'id'                => '[top-bar-font-weight]',
 			'default'           => $defaults[ 'top-bar-font-weight' ],
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-font-weight]', array(
-				'type'        => 'kmt-font-weight',
-				'section'     => 'section-topbar-header',
-				'priority'    => 46,
-				'label'       => __( 'Font Weight', 'kemet-addons' ),
-				'connect'     => KEMET_THEME_SETTINGS . '[top-bar-font-family]',
-			)
-		)
-	);
-
-	/**
-	 * Option: Top Bar Text Transform
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[top-bar-text-transform]', array(
+			'control_type'      => 'kmt-font-weight',
+			'label'             => __( 'Font Weight', 'kemet' ),
+			'section'           => 'section-topbar-header',
+			'priority'          => 4,
+			'connect'           => KEMET_THEME_SETTINGS . '[top-bar-font-family]',
+		),
+		/**
+		* Option: Top Bar Text Transform
+		*/
+		array(
+			'id'                => '[top-bar-text-transform]',
 			'default'           => $defaults[ 'top-bar-text-transform' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[top-bar-text-transform]', array(
-			'type'     => 'select',
-			'section'  => 'section-topbar-header',
-			'priority' => 47,
-			'label'    => __( 'Text Transform', 'kemet-addons' ),
+			'control_type'      => 'kmt-select',
+			'label'             => __( 'Text Transform', 'kemet' ),
+			'section'           => 'section-topbar-header',
+			'priority'          => 5,
 			'choices'  => array(
-				''           => __( 'Default', 'kemet-addons' ),
-				'none'       => __( 'None', 'kemet-addons' ),
-				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
-				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
-				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
+				''           => __( 'Default', 'kemet' ),
+				'none'       => __( 'None', 'kemet' ),
+				'capitalize' => __( 'Capitalize', 'kemet' ),
+				'uppercase'  => __( 'Uppercase', 'kemet' ),
+				'lowercase'  => __( 'Lowercase', 'kemet' ),
 			),
-		)
-	);
-	/**
-	 * Option: Top Bar Line Height
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[top-bar-line-height]', array(
-			'default'           => $defaults[ 'top-bar-line-height' ],
+		),
+		/**
+		* Option: Top Bar Line Height
+		*/
+		array(
+			'id'                => '[top-bar-line-height]',
+			'default'           => $defaults ['top-bar-line-height'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-topbar-header',
+			'transport'         => 'postMessage',
+			'priority'          => 6,
+			'label'          => __( 'Line Height', 'kemet' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' =>100,
+				),
+				'em' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' => 10,
+				),
+				'%' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' => 100,
+				),
+			),
+		),
+		/**
+		* Option: Top Bar Letter Spacing
+		*/
+		array(
+			'id'                => '[top-bar-letter-spacing]',
+			'default'           => $defaults ['top-bar-letter-spacing'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-line-height]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-topbar-header',
-				'priority'       => 48,
-				'label'          => __( 'Line Height', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' =>100,
-					),
-					'em' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 10,
-					),
-					'%' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 100,
-					),
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-topbar-header',
+			'priority'       => 7,
+			'label'          => __( 'Letter Spacing', 'kemet' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
 				),
-			)
-		)
+			),
+		),
 	);
-	/**
-	* Option: Top Bar Letter Spacing
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[top-bar-letter-spacing]', array(
-			'default'           => $defaults[ 'top-bar-letter-spacing' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-top-bar-typography]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Typography', 'kemet' ),
+		'section'  => 'section-topbar-header',
+		'priority' => 45,
+		'settings' => array(),
 	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[top-bar-letter-spacing]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-topbar-header',
-				'priority'       => 49,
-				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
-				),
-			)
-		)
-	);
+
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	/**
      * Option:Top Bar Responsive
      */
