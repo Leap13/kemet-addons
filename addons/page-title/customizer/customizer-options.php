@@ -692,178 +692,143 @@ $defaults = Kemet_Theme_Options::defaults();
 			'label'    => __( 'Breadcrumbs Prefix Text', 'kemet-addons' ),
 		)
 	);
+
 	/**
-	* Option: Breadcrumbs Font Size
+	* Option: Typography
 	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-font-size]', array(
-			'default'           => $defaults[ 'breadcrumbs-font-size' ],
+	$fields = array(
+		/**
+		* Option: Breadcrumbs Font Size
+		*/
+		array(
+			'id'                => '[breadcrumbs-font-size]',
+			'default'           => $defaults ['breadcrumbs-font-size'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-size]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-breadcrumbs',
-				'priority'       => 15,
-				'label'          => __( 'Font Size', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 1,
-						'step' => 1,
-						'max' =>200,
-					),
-					'em' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 2,
+			'label'          => __( 'Font Size', 'kemet' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 1,
+					'step' => 1,
+					'max' =>200,
 				),
-			)
-		)
-	);
-	/**
-	* Option: Breadcrumbs Font Family
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]', array(
+				'em' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+		/**
+		 * Option: Font Family
+		 */
+		array(
+			'id'                => '[breadcrumbs-font-family]',
 			'default'           => $defaults[ 'breadcrumbs-font-family' ],
 			'type'              => 'option',
-			'sanitize_callback' => 'sanitize_text_field',
-
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]', array(
-				'type'     => 'kmt-font-family',
-				'label'    => __( 'Font Family', 'kemet-addons' ),
-				'section'  => 'section-breadcrumbs',
-				'priority' => 25,
-				'connect'  => KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]',
-			)
-		)
-	);
-
-	/**
-	* Option: Breadcrumbs Font Weight
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]', array(
+			'control_type'      => 'kmt-font-family',
+			'label'             => __( 'Font Family', 'kemet' ),
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 3,
+			'connect'           => KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]',
+		),
+		/**
+		 * Option: Font Weight
+		 */
+		array(
+			'id'                => '[breadcrumbs-font-weight]',
 			'default'           => $defaults[ 'breadcrumbs-font-weight' ],
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]', array(
-				'type'     => 'kmt-font-weight',
-				'label'    => __( 'Font Weight', 'kemet-addons' ),
-				'section'  => 'section-breadcrumbs',
-				'priority' => 30,
-				'connect'  => KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]',
-
-			)
-		)
-	);
-
-	/**
-	* Option: Breadcrumbs Text Transform
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-text-transform]', array(
+			'control_type'      => 'kmt-font-weight',
+			'label'             => __( 'Font Weight', 'kemet' ),
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 4,
+			'connect'           => KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]',
+		),
+		/**
+		* Option: Breadcrumbs Text Transform
+		*/
+		array(
+			'id'                => '[breadcrumbs-text-transform]',
 			'default'           => $defaults[ 'breadcrumbs-text-transform' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-text-transform]', array(
-			'section'  => 'section-breadcrumbs',
-			'label'    => __( 'Text Transform', 'kemet-addons' ),
-			'type'     => 'select',
-			'priority' => 35,
+			'control_type'      => 'kmt-select',
+			'label'             => __( 'Text Transform', 'kemet' ),
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 5,
 			'choices'  => array(
-				''           => __( 'Inherit', 'kemet-addons' ),
-				'none'       => __( 'None', 'kemet-addons' ),
-				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
-				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
-				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
+				''           => __( 'Default', 'kemet' ),
+				'none'       => __( 'None', 'kemet' ),
+				'capitalize' => __( 'Capitalize', 'kemet' ),
+				'uppercase'  => __( 'Uppercase', 'kemet' ),
+				'lowercase'  => __( 'Lowercase', 'kemet' ),
 			),
-		)
+		),
+		/**
+		* Option: Breadcrumbs Line Height
+		*/
+		array(
+			'id'                => '[breadcrumbs-line-height]',
+			'default'           => $defaults ['breadcrumbs-line-height'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-breadcrumbs',
+			'transport'         => 'postMessage',
+			'priority'          => 6,
+			'label'          => __( 'Line Height', 'kemet' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' =>100,
+				),
+				'em' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' => 10,
+				),
+				'%' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' => 100,
+				),
+			),
+		),
+		/**
+		* Option: Breadcrumbs Letter Spacing
+		*/
+		array(
+			'id'                => '[breadcrumbs-letter-spacing]',
+			'default'           => $defaults ['breadcrumbs-letter-spacing'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-breadcrumbs',
+			'priority'       => 7,
+			'label'          => __( 'Letter Spacing', 'kemet' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+	);
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-typography]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Typography', 'kemet' ),
+		'section'  => 'section-breadcrumbs',
+		'priority' => 15,
+		'settings' => array(),
 	);
 
-	/**
-	* Option: Breadcrumbs Line Height
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-line-height]', array(
-			'default'           => $defaults[ 'breadcrumbs-line-height' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-line-height]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-breadcrumbs',
-				'priority'       => 40,
-				'label'          => __( 'Line Height', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' =>100,
-					),
-					'em' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 10,
-					),
-					'%' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 100,
-					),
-				),
-			)
-		)
-	);
-	/**
-	* Option: Breadcrumbs Letter Spacing
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-letter-spacing]', array(
-			'default'           => $defaults[ 'breadcrumbs-letter-spacing' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-letter-spacing]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-breadcrumbs',
-				'priority'       => 41,
-				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
-				),
-			)
-		)
-	);
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	/**
 	 * Option: Home Item
 	 */
