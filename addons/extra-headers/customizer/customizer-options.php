@@ -438,161 +438,99 @@ $defaults = Kemet_Theme_Options::defaults();
 			'type'     => 'text',
 		)
 	);
-	 /**
-   	* Option: Icon Label Color
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header-icon-label-color]', array(
-		  'default'           => $defaults[ 'header-icon-label-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
-			'conditions' => '==/==', 
-			'values' => 'header-main-layout-4/header-main-layout-6',
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-label-color]', array(
-			'label'   => __( 'Hamburger Menu Label Color', 'kemet-addons' ),
-			'section' => 'section-menu-header',
-			'priority' => 56,
-		  )
-		)
-	);
-	 /**
-   	* Option: Icon Label Hover Color
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header-icon-label-hover-color]', array(
-		  'default'           => $defaults[ 'header-icon-label-hover-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'. KEMET_THEME_SETTINGS . '[header-layouts]', 
-			'conditions' => '==/==', 
-			'values' => 'header-main-layout-4/header-main-layout-6',
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-label-hover-color]', array(
-			'label'   => __( 'Hamburger Menu Label Hover Color', 'kemet-addons' ),
-			'section' => 'section-menu-header',
-			'priority' => 56,
-		  )
-		)
-	);
 	/**
-   	* Option: Icon Bars Color
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header-icon-bars-color]', array(
-		  'default'           => $defaults[ 'header-icon-bars-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
+	* Option: Colors
+	*/
+	$fields = array(
+		
+		/**
+		* Option - Color
+		*/
+		array(
+			'id'                => '[header-icon-label-color]',
+			'default'           => $defaults ['header-icon-label-color'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Label Color', 'kemet' ),
+			'priority'          => 1,
+			'section'           => 'section-menu-header',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		array(
+			'id'                => '[header-icon-bars-color]',
+			'default'           => $defaults ['header-icon-bars-color'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Icon Color', 'kemet' ),
+			'priority'          => 2,
+			'section'           => 'section-menu-header',
+			'tab'               => __('Normal' , 'kemet')
+		),
+		array(
+			'id'                => '[header-icon-bars-bg-color]',
+			'default'           => $defaults ['header-icon-bars-bg-color'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Background Color', 'kemet' ),
+			'priority'          => 3,
+			'section'           => 'section-menu-header',
+			'tab'               => __('Normal' , 'kemet')
+		),
+		/**
+		* Option - Hover Color
+		*/
+		array(
+			'id'                => '[header-icon-label-hover-color]',
+			'default'           => $defaults ['header-icon-label-hover-color'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Label Color', 'kemet' ),
+			'priority'          => 4,
+			'section'           => 'section-menu-header',
+			'tab'               => __('Hover' , 'kemet')
+		),
+		array(
+			'id'                => '[header-icon-bars-h-color]',
+			'default'           => $defaults ['header-icon-bars-h-color'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Icon Color', 'kemet' ),
+			'priority'          => 5,
+			'section'           => 'section-menu-header',
+			'tab'               => __('Hover' , 'kemet')
+		), 
+		array(
+			'id'                => '[header-icon-bars-bg-h-color]',
+			'default'           => $defaults ['header-icon-bars-bg-h-color'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Background Color', 'kemet' ),
+			'priority'          => 5,
+			'section'           => 'section-menu-header',
+			'tab'               => __('Hover' , 'kemet')
+		),  
+	);
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-hamburger-menu-colors]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Hamburger Menu Colors', 'kemet' ),
+		'section'  => 'section-menu-header',
+		'priority' => 56,
+		'settings' => array(),
+		'dependency'  => array(
 			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
 			'conditions' => '==/==/==/==', 
 			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
 			'operators' => "||/||/||",
 		),
-		)
 	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-color]', array(
-			'label'   => __( 'Hamburger Menu Color', 'kemet-addons' ),
-			'section' => 'section-menu-header',
-			'priority' => 56,
-		  )
-		)
-	);
-	/**
-   	* Option: Icon Background Color
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header-icon-bars-bg-color]', array(
-		  'default'           => $defaults[ 'header-icon-bars-bg-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
-			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
-			'operators' => "||/||/||",
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-bg-color]', array(
-			'label'   => __( 'Hamburger Menu Background Color', 'kemet-addons' ),
-			'section' => 'section-menu-header',
-			'priority' => 56,
-		  )
-		)
-	);
-	/**
-   	* Option: Icon Hover Color
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header-icon-bars-h-color]', array(
-		  'default'           => $defaults[ 'header-icon-bars-h-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
-			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
-			'operators' => "||/||/||",
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-h-color]', array(
-			'label'   => __( 'Hamburger Menu Hover Color', 'kemet-addons' ),
-			'section' => 'section-menu-header',
-			'priority' => 56,
-		  )
-		)
-	);
-
-	/**
-   	* Option: Icon Background Hover Color
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[header-icon-bars-bg-h-color]', array(
-		  'default'           => $defaults[ 'header-icon-bars-bg-h-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]/'.KEMET_THEME_SETTINGS . '[header-layouts]', 
-			'conditions' => '==/==/==/==', 
-			'values' => 'header-main-layout-4/header-main-layout-6/header-main-layout-7/header-main-layout-8',
-			'operators' => "||/||/||",
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[header-icon-bars-bg-h-color]', array(
-			'label'   => __( 'Hamburger Menu Background Hover Color', 'kemet-addons' ),
-			'section' => 'section-menu-header',
-			'priority' => 56,
-		  )
-		)
-	);
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 		/**
 	 * Option: Icon Border Radius
 	 */
