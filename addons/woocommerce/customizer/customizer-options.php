@@ -261,87 +261,6 @@ $wp_customize->add_control(
         )
     )
 );
-$wp_customize->add_control(
-    new Kemet_Control_Title(
-        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]', array(
-            'type'     => 'kmt-title',
-            'label'    => __( 'Pagination Settings', 'kemet-addons' ),
-            'section'  => 'woocommerce_product_catalog',
-            'priority' => 59,
-            'settings' => array(),
-        )
-    )
-);
-/**
-* Option: Pagination Style
-*/
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
-        'default'           => $defaults['woo-pagination-style'],
-        'type'              => 'option',
-        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-    )
-);
-$wp_customize->add_control(
-    KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
-        'type'     => 'select',
-        'section'  => 'woocommerce_product_catalog',
-        'priority' => 60,
-        'label'    => __( 'Pagination Style', 'kemet-addons' ),
-        'choices'  => array(
-            'standard' => __( 'Standard', 'kemet-addons' ),
-            'infinite-scroll'   => __( 'Infinite Scroll', 'kemet-addons' ),
-        ),
-    )
-);
-/**
- * Option: Infinite Scroll: Last Text
- */
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
-        'default'           => $defaults[ 'infinite-scroll-last-text' ],
-        'type'              => 'option',
-        'sanitize_callback' => 'sanitize_text_field',
-        'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]', 
-            'conditions' => '==', 
-            'values' => 'infinite-scroll',
-        ),
-    )
-);
-$wp_customize->add_control(
-    KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
-        'section'  => 'woocommerce_product_catalog',
-        'priority' => 65,
-        'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
-        'type'     => 'text',
-    )
-);
-/**
- * Option: Loader Color
- */
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
-        'default'           => $defaults[ 'infinite-scroll-loader-color' ],
-        'type'              => 'option',
-        'transport'         => 'postMessage',
-        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-        'dependency'  => array(
-            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]', 
-            'conditions' => '==', 
-            'values' => 'infinite-scroll',
-        ),
-    )
-);
-$wp_customize->add_control(
-    new WP_Customize_Color_Control(
-        $wp_customize, KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
-            'section' => 'woocommerce_product_catalog',
-            'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
-            'priority'=>70,
-        )
-    )
-);
 /**
 * Option: Shop Product Structure
 */
@@ -370,6 +289,165 @@ $wp_customize->add_control(
                 'category'   => __( 'Category', 'kemet-addons' ),
             ),
         )
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]', array(
+            'type'     => 'kmt-title',
+            'label'    => __( 'Pagination Settings', 'kemet-addons' ),
+            'section'  => 'woocommerce_product_catalog',
+            'priority' => 61,
+            'settings' => array(),
+        )
+    )
+);
+/**
+* Option: Pagination Style
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
+        'default'           => $defaults['woo-pagination-style'],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
+        'type'     => 'select',
+        'section'  => 'woocommerce_product_catalog',
+        'priority' => 61,
+        'label'    => __( 'Pagination Style', 'kemet-addons' ),
+        'choices'  => array(
+            'standard' => __( 'Standard', 'kemet-addons' ),
+            'infinite-scroll'   => __( 'Infinite Scroll', 'kemet-addons' ),
+        ),
+    )
+);
+/**
+ * Option: Load More Style
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[woo-load-more-style]', array(
+        'default'           => $defaults[ 'woo-load-more-style' ],
+        'type'              => 'option',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]', 
+            'conditions' => '==', 
+            'values' => 'infinite-scroll',
+        ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[woo-load-more-style]', array(
+        'type'     => 'select',
+        'section'  => 'woocommerce_product_catalog',
+        'priority' => 61,
+        'label'    => __( 'Load More Style', 'kemet-addons' ),
+        'choices'  => array(
+            'dots'    => __( 'Dots', 'kemet-addons' ),
+            'text' => __( 'Text', 'kemet-addons' ),
+        ),
+    )
+);
+/**
+ * Option: Load More Text
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[woo-load-more-text]', array(
+        'default'           => $defaults[ 'woo-load-more-text' ],
+        'type'              => 'option',
+        'sanitize_callback' => 'sanitize_text_field',
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]/' . KEMET_THEME_SETTINGS . '[woo-load-more-style]', 
+            'conditions' => '==/==', 
+            'values' => 'infinite-scroll/text',
+            'operators' => '&&'
+        ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[woo-load-more-text]', array(
+        'section'  => 'woocommerce_product_catalog',
+        'priority' => 61,
+        'label'    => __( 'Load More Text', 'kemet' ),
+        'type'     => 'text',
+    )
+);
+/**
+   * Option: Load More Text Color 
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[woo-infinite-text-color]', array(
+      'default'           => $defaults[ 'woo-infinite-text-color' ],
+      'type'              => 'option',
+      'transport'         => 'postMessage',
+      'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
+      'dependency'  => array(
+        'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]/' . KEMET_THEME_SETTINGS . '[woo-load-more-style]', 
+        'conditions' => '==/==', 
+        'values' => 'infinite-scroll/text',
+        'operators' => '&&'
+    ),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+      $wp_customize, KEMET_THEME_SETTINGS . '[woo-infinite-text-color]', array(
+        'label'   => __( 'Infinite Scroll Text Color', 'kemet-addons' ),
+        'section' => 'woocommerce_product_catalog',
+        'priority' => 61,
+      )
+    )
+);
+/**
+ * Option: Loader Color
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+        'default'           => $defaults[ 'infinite-scroll-loader-color' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+        'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]/' . KEMET_THEME_SETTINGS . '[woo-load-more-style]', 
+            'conditions' => '==/==', 
+            'values' => 'infinite-scroll/dots',
+            'operators' => '&&'
+        ),
+    )
+);
+$wp_customize->add_control(
+    new WP_Customize_Color_Control(
+        $wp_customize, KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+            'section' => 'woocommerce_product_catalog',
+            'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
+            'priority'=> 61,
+        )
+    )
+);
+/**
+ * Option: Infinite Scroll: Last Text
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
+        'default'           => $defaults[ 'infinite-scroll-last-text' ],
+        'type'              => 'option',
+        'sanitize_callback' => 'sanitize_text_field',
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[woo-pagination-style]', 
+            'conditions' => '==', 
+            'values' => 'infinite-scroll',
+        ),
+    )
+);
+$wp_customize->add_control(
+    KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
+        'section'  => 'woocommerce_product_catalog',
+        'priority' => 61,
+        'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
+        'type'     => 'text',
     )
 );
 /**

@@ -17,6 +17,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             //Global
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $theme_color  = kemet_get_option( 'theme-color' );
+            $text_meta_color      = kemet_get_option( 'text-meta-color' );
             $btn_color = kemet_get_option( 'button-color' );
 			$btn_h_color = kemet_get_option( 'button-h-color' , $btn_color );
 			$btn_bg_color   = kemet_get_option( 'button-bg-color' , $theme_color);
@@ -27,7 +28,8 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
             //Shop
             $sale_style      = kemet_get_option( 'sale-style' );
             $loader_color    = kemet_get_option('infinite-scroll-loader-color' , $theme_color);
-            
+            $inifinte_text_color = kemet_get_option( 'woo-infinite-text-color' ,  $text_meta_color);
+
             //Single Product
             $image_width = !empty( kemet_get_option('product-image-width') ) ? kemet_get_option('product-image-width') : 50;
 
@@ -76,24 +78,19 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
                     'background-color' => esc_attr( $btn_bg_h_color ),
                     'color' => esc_attr( $btn_h_color ),
                 ),
-                '.kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader' => array(
+                '.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader' => array(
                     'background-color' => esc_attr( $loader_color ),
                 ),
                 'a.plus, a.minus' => array(
                     'border-color' => esc_attr( $global_border_color ),
                     'background-color' => esc_attr( $input_bg_color ),
                 ),
+                '.kmt-woo-load-more .woo-load-more-text' => array(
+                    'color' => esc_attr( $inifinte_text_color ),
+                ),
             );
 
             $parse_css = kemet_parse_css( $css_content );
-            
-            // $css_tablet = array(
-            //  );
-            // $parse_css .= kemet_parse_css( $css_tablet, '', '768' );
-            
-            // $css_mobile = array(
-            //  );
-            // $parse_css .= kemet_parse_css( $css_mobile, '', '544' );
             
             return $dynamic_css . $parse_css;
 }

@@ -35,22 +35,34 @@ Woo Quick View
   box-shadow: $args;
 }
 /* infinite scroll */
-.kmt-infinite-scroll-loader {
+.kmt-woo-load-more {
   margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
-  clear: both;
-  .infinite-scroll-end-msg {
+  .woo-load-more-text {
+    display: inline-block;
+  }
+  .woo-infinite-scroll-end-msg {
     display: none;
     margin: 0;
   }
-  .kmt-infinite-scroll-dots {
+}
+.kmt-woo-infinite-scroll-loader {
+  margin-top: 20px;
+  text-align: center;
+  clear: both;
+  .woo-infinite-scroll-end-msg {
+    display: none;
+    margin: 0;
+  }
+  .kmt-woo-infinite-scroll-dots {
     font-size: 12px;
     position: relative;
     width: 3.5em;
     height: 1em;
     margin: 0 auto;
   }
-  .kmt-loader {
+  .kmt-woo-loader {
     display: block;
     width: 1em;
     height: 1em;

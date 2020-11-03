@@ -621,14 +621,14 @@ $wp_customize->add_control(
 	);
 	$wp_customize->add_control(
 		KEMET_THEME_SETTINGS . '[load-more-text]', array(
-			'section'  => 'section-menu-header',
+			'section'  => 'section-blog',
 			'priority' => 162,
 			'label'    => __( 'Load More Text', 'kemet' ),
 			'type'     => 'text',
 		)
 	);
 	/**
-   	* Option: Pagination Border Color 
+   	* Option: Dots Color 
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]', array(
@@ -654,7 +654,7 @@ $wp_customize->add_control(
 		)
 	);
 	/**
-   	* Option: Pagination Border Color 
+   	* Option: Load More Text Color 
     */
 	$wp_customize->add_setting(
 		KEMET_THEME_SETTINGS . '[blog-infinite-text-color]', array(

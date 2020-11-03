@@ -14,18 +14,33 @@
 Woo Quick View
 -------------------------------------------------------------------*/
 /* infinite scroll */
-.kmt-infinite-scroll-loader {
+.kmt-woo-load-more {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.kmt-woo-load-more .woo-load-more-text {
+  display: inline-block;
+}
+
+.kmt-woo-load-more .woo-infinite-scroll-end-msg {
+  display: none;
+  margin: 0;
+}
+
+.kmt-woo-infinite-scroll-loader {
   margin-top: 20px;
   text-align: center;
   clear: both;
 }
 
-.kmt-infinite-scroll-loader .infinite-scroll-end-msg {
+.kmt-woo-infinite-scroll-loader .woo-infinite-scroll-end-msg {
   display: none;
   margin: 0;
 }
 
-.kmt-infinite-scroll-loader .kmt-infinite-scroll-dots {
+.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots {
   font-size: 12px;
   position: relative;
   width: 3.5em;
@@ -33,7 +48,7 @@ Woo Quick View
   margin: 0 auto;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader {
   display: block;
   width: 1em;
   height: 1em;
@@ -44,27 +59,27 @@ Woo Quick View
   animation-iteration-count: infinite;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader:nth-child(1), .kmt-infinite-scroll-loader .kmt-loader:nth-child(2) {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(1), .kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(2) {
   left: 0;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader:nth-child(3) {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(3) {
   left: 1.3em;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader:nth-child(4) {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(4) {
   left: 2.6em;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader:nth-child(1) {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(1) {
   animation-name: reveal;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader:nth-child(2), .kmt-infinite-scroll-loader .kmt-loader:nth-child(3) {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(2), .kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(3) {
   animation-name: slide;
 }
 
-.kmt-infinite-scroll-loader .kmt-loader:nth-child(4) {
+.kmt-woo-infinite-scroll-loader .kmt-woo-loader:nth-child(4) {
   animation-name: reveal;
   animation-direction: reverse;
 }

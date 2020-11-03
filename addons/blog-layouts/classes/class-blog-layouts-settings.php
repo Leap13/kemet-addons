@@ -70,7 +70,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['post-margin-bottom']   = '';
             $defaults['layout-2-post-border-size']   = '';
             $defaults['load-more-style']   = 'dots';
-            $defaults['load-more-text']   = 'loading...';
+            $defaults['load-more-text']   = 'Loading...';
             $defaults['blog-infinite-text-color']   = '';
 
             return $defaults;
