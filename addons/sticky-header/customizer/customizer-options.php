@@ -309,6 +309,11 @@
 		'section'  => 'section-sticky-header',
 		'priority' => 40,
 		'settings' => array(),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+			'conditions' => '==', 
+			'values' => true,
+		), 
 	);
 	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
     /**
