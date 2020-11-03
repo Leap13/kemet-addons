@@ -129,28 +129,30 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	); 
-	/**
-	 * Option: Page Title Background
-	 */
-		$wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
+		/**
+		* Option: Sticky Header Background
+		*/
+		$fields = array(
+			array(
+				'id'                => '[page-title-bg-obj]',
 				'default'           => $defaults[ 'page-title-bg-obj' ],
 				'type'              => 'option',
+				'control_type'      => 'kmt-background',
+				'section'           => 'section-page-title-header',
+				'priority'          => 1,
 				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_background_obj' ),
-			)
+			),
+			
 		);
-		$wp_customize->add_control(
-			new Kemet_Control_Background(
-				$wp_customize, KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
-				'type'    => 'kmt-background',
-				'section' => 'section-page-title-header',
-				'priority' => 15,
-				'label'   => __( 'Page Title Background', 'kemet-addons' ),
-				)
-			)
+		$group_settings = array(
+			'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-page-title-bg-obj]',
+			'type'     => 'kmt-group',
+			'label'    => __( 'Page Title Background', 'kemet' ),
+			'section'  => 'section-page-title-header',
+			'priority' => 30,
+			'settings' => array(),
 		);
-
+		new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 		/**
 		 * Option: Title
 		 */
@@ -1031,69 +1033,60 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
-	  /**
-      * Option: Breadcrumbs Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-			'default'           => $defaults[ 'breadcrumbs-color' ],
+    /**
+	* Option: Colors
+	*/
+	$fields = array(
+		
+		/**
+		* Option - Color
+		*/
+		array(
+			'id'                => '[breadcrumbs-color]',
+			'default'           => $defaults ['breadcrumbs-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-				'label'   => __( 'Text Color', 'kemet-addons' ),
-				'priority'       => 112,
-				'section' => 'section-breadcrumbs',
-			)
-		)
-	);
-
-	  /**
-      * Option: Breadcrumbs Link Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-			'default'           => $defaults[ 'breadcrumbs-link-color' ],
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Text Color', 'kemet' ),
+			'priority'          => 1,
+			'section'           => 'section-breadcrumbs',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		array(
+			'id'                => '[breadcrumbs-link-color]',
+			'default'           => $defaults ['breadcrumbs-link-color'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-color',
+			'transport'         => 'postMessage',
+			'label'             => __( 'Link Color', 'kemet' ),
+			'priority'          => 2,
+			'section'           => 'section-breadcrumbs',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		/**
+		* Option - Hover Color
+		*/
+		array(
+			'id'                => '[breadcrumbs-link-h-color]',
+			'default'           => $defaults ['breadcrumbs-link-h-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Link Color', 'kemet' ),
+			'priority'          => 3,
+			'section'           => 'section-breadcrumbs',
+			'tab'               => __('Hover' , 'kemet')
+		),
 	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-				'label'   => __( 'Link Color', 'kemet-addons' ),
-				'priority'       => 115,
-				'section' => 'section-breadcrumbs',
-			)
-		)
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-colors]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Colors', 'kemet' ),
+		'section'  => 'section-breadcrumbs',
+		'priority' => 115,
+		'settings' => array(),
 	);
-
-	  /**
-      * Option: Breadcrumbs Link Hover Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-			'default'           => $defaults[ 'breadcrumbs-link-h-color' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-				'label'   => __( 'Link Hover Color', 'kemet-addons' ),
-				'priority'       => 120,
-				'section' => 'section-breadcrumbs',
-			)
-		)
-	);
-    
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	 
 	 
 	

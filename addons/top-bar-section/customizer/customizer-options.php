@@ -571,7 +571,7 @@ $defaults = Kemet_Theme_Options::defaults();
 		),
 	);
 	$group_settings = array(
-		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-mobile-menu-icon-colors]',
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-top-bar-colors]',
 		'type'     => 'kmt-group',
 		'label'    => __( 'Top Bar Colors', 'kemet' ),
 		'section'  => 'section-topbar-header',
