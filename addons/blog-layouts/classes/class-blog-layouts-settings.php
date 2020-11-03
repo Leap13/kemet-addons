@@ -69,6 +69,9 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-infinite-scroll-last-text']   = 'No more posts to show.';
             $defaults['post-margin-bottom']   = '';
             $defaults['layout-2-post-border-size']   = '';
+            $defaults['load-more-style']   = 'dots';
+            $defaults['load-more-text']   = 'loading...';
+            $defaults['blog-infinite-text-color']   = '';
 
             return $defaults;
         }

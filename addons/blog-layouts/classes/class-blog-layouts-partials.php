@@ -112,6 +112,10 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
             }else if($pagination_style == 'infinite-scroll'){ 
                 $end_text = kemet_get_option('blog-infinite-scroll-last-text');
                 $msg = esc_html__( $end_text , 'kemet-addons' );
+                $load_more_style = kemet_get_option('load-more-style');
+                $load_more_text = esc_html( kemet_get_option('load-more-text') , 'kemet-addons');
+
+                if( $load_more_style == 'dots' ){
                 ?>
 
                 <div class="kmt-infinite-scroll-loader">
@@ -124,7 +128,14 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 				<p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
 			</div>
 
-           <?php }
+           <?php 
+                }else{ ?>
+                <div class="kmt-load-more">
+                    <span class="load-more-text"><?php echo esc_html( $load_more_text , "kemet-addons") ?></span>
+                    <p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
+                </div>
+        <?php }
+            }
         }
         
         /**
