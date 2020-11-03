@@ -395,11 +395,6 @@ $defaults = Kemet_Theme_Options::defaults();
 					'step' => 1,
 					'max' => 10,
 				),
-				'%' => array(
-					'min' => 0,
-					'step' => 1,
-					'max' => 100,
-				),
 			),
 		),
 		/**
