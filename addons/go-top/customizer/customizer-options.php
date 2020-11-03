@@ -222,105 +222,72 @@ $defaults = Kemet_Theme_Options::defaults();
         )
     );
     /**
-     * Option: Icon color
-     */
-    $wp_customize->add_setting(
-        KEMET_THEME_SETTINGS . '[go-top-icon-color]', array(
-            'default'           => $defaults[ 'go-top-icon-color' ],
+    * Option: Colors
+    */
+    $fields = array(
+        
+        /**
+        * Option - Color
+        */
+        array(
+            'id'                => '[go-top-icon-color]',
+            'default'           => $defaults ['go-top-icon-color'] ,
             'type'              => 'option',
             'transport'         => 'postMessage',
-            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-            'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
-				'conditions' => '==', 
-				'values' => true,
-			),
-        )
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize, KEMET_THEME_SETTINGS . '[go-top-icon-color]', array(
-                'section' => 'section-go-top',
-                'label'   => __( 'Icon Color', 'kemet-addons' ),
-                'priority'=>35,
-            )
-        )
-    );
-
-    /**
-     * Option: Icon Hover color
-     */
-    $wp_customize->add_setting(
-        KEMET_THEME_SETTINGS . '[go-top-icon-h-color]', array(
-            'default'           => $defaults[ 'go-top-icon-h-color' ],
+            'control_type'      => 'kmt-color',
+            'label'             => __( 'Icon Color', 'kemet' ),
+            'priority'          => 1,
+            'section'           => 'section-go-top',
+            'tab'               => __( 'Normal', 'kemet' ),
+        ),  
+        array(
+            'id'                => '[go-top-bg-color]',
+            'default'           => $defaults ['go-top-bg-color'] ,
             'type'              => 'option',
             'transport'         => 'postMessage',
-            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-            'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
-				'conditions' => '==', 
-				'values' => true,
-			),
-        )
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize, KEMET_THEME_SETTINGS . '[go-top-icon-h-color]', array(
-                'section' => 'section-go-top',
-                'label'   => __( 'Icon Hover Color', 'kemet-addons' ),
-                'priority'=>40,
-            )
-        )
-    );
-
-    /**
-	 * Option: Go Top Link Background Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[go-top-bg-color]', array(
-			'default'           => $defaults[ 'go-top-bg-color' ],
+            'control_type'      => 'kmt-color',
+            'label'             => __( 'Background Color', 'kemet' ),
+            'priority'          => 2,
+            'section'           => 'section-go-top',
+            'tab'               => __( 'Normal', 'kemet' ),
+        ),
+        /**
+        * Option - Hover Color
+        */
+        array(
+            'id'                => '[go-top-icon-h-color]',
+            'default'           => $defaults ['go-top-icon-h-color'] ,
             'type'              => 'option',
             'transport'         => 'postMessage',
-            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-            'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
-				'conditions' => '==', 
-				'values' => true,
-			),
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-bg-color]', array(
-                'priority'       => 40,
-                'section' => 'section-go-top',
-                'label'   => __( 'Background Color', 'kemet-addons' ),
-			)
-		)
-    );
-    
-    /**
-	 * Option: Go Top Link Background Hover Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[go-top-bg-h-color]', array(
-			'default'           => $defaults[ 'go-top-bg-color' ],
+            'control_type'      => 'kmt-color',
+            'label'             => __( 'Icon Color', 'kemet' ),
+            'priority'          => 3,
+            'section'           => 'section-go-top',
+            'tab'               => __( 'Hover', 'kemet' ),
+        ), 
+        array(
+            'id'                => '[go-top-bg-h-color]',
+            'default'           => $defaults ['go-top-bg-h-color'] ,
             'type'              => 'option',
             'transport'         => 'postMessage',
-            'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-            'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
-				'conditions' => '==', 
-				'values' => true,
-			),
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize, KEMET_THEME_SETTINGS . '[go-top-bg-h-color]', array(
-                'priority'       => 50,
-                'section' => 'section-go-top',
-                'label'   => __( 'Background Hover Color', 'kemet-addons' ),
-			)
-		)
+            'control_type'      => 'kmt-color',
+            'label'             => __( 'Background Color', 'kemet' ),
+            'priority'          => 4,
+            'section'           => 'section-go-top',
+            'tab'               => __( 'Hover', 'kemet' ),
+        ),    
     );
+    $group_settings = array(
+        'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-go-top-colors]',
+        'type'     => 'kmt-group',
+        'label'    => __( 'Colors', 'kemet' ),
+        'section'  => 'section-go-top',
+        'priority' => 100,
+        'settings' => array(),
+        'dependency'  => array(
+            'controls' =>  KEMET_THEME_SETTINGS . '[enable-go-top]', 
+            'conditions' => '==', 
+            'values' => true,
+        ),
+    );
+    new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
