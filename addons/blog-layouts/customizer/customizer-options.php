@@ -183,9 +183,9 @@ $wp_customize->add_control(
 					'type'           => 'kmt-responsive-spacing',
 					'section'        => 'section-blog',
 					'priority'       => 5,
-					'label'          => __( 'Posts Border Size 2', 'kemet-addons' ),
+					'label'          => __( 'Posts Border Size', 'kemet-addons' ),
 					'linked_choices' => true,
-					'unit_choices'   => array( 'px', 'em', '%' ),
+					'unit_choices'   => array( 'px' ),
 					'choices'        => array(
 						'top'    => __( 'Top', 'kemet-addons' ),
 						'right'  => __( 'Right', 'kemet-addons' ),
