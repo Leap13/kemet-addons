@@ -129,28 +129,30 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	); 
-	/**
-	 * Option: Page Title Background
-	 */
-		$wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
+		/**
+		* Option: Sticky Header Background
+		*/
+		$fields = array(
+			array(
+				'id'                => '[page-title-bg-obj]',
 				'default'           => $defaults[ 'page-title-bg-obj' ],
 				'type'              => 'option',
+				'control_type'      => 'kmt-background',
+				'section'           => 'section-page-title-header',
+				'priority'          => 1,
 				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_background_obj' ),
-			)
+			),
+			
 		);
-		$wp_customize->add_control(
-			new Kemet_Control_Background(
-				$wp_customize, KEMET_THEME_SETTINGS . '[page-title-bg-obj]', array(
-				'type'    => 'kmt-background',
-				'section' => 'section-page-title-header',
-				'priority' => 15,
-				'label'   => __( 'Page Title Background', 'kemet-addons' ),
-				)
-			)
+		$group_settings = array(
+			'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-page-title-bg-obj]',
+			'type'     => 'kmt-group',
+			'label'    => __( 'Page Title Background', 'kemet' ),
+			'section'  => 'section-page-title-header',
+			'priority' => 30,
+			'settings' => array(),
 		);
-
+		new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 		/**
 		 * Option: Title
 		 */
@@ -254,22 +256,20 @@ $defaults = Kemet_Theme_Options::defaults();
 		)
 	);
 		/**
-	 * Option: Page Title Font Size
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
-			'default'           => $defaults[ 'page-title-font-size' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-size]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-page-title-header',
-				'priority'       => 50,
+		* Option: Typography
+		*/
+		$fields = array(
+			/**
+			* Option: Page Title Font Size
+			*/
+			array(
+				'id'                => '[page-title-font-size]',
+				'default'           => $defaults ['page-title-font-size'] ,
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'control_type'      => 'kmt-responsive-slider',
+				'section'           => 'section-page-title-header',
+				'priority'          => 2,
 				'label'          => __( 'Font Size', 'kemet-addons' ),
 				'unit_choices'   => array(
 					'px' => array(
@@ -282,148 +282,110 @@ $defaults = Kemet_Theme_Options::defaults();
 						'step' => 0.1,
 						'max' => 10,
 					),
-				 ),
-			)
-		)
-	);
-	   /**
-       * Option: Page Title Font Family
-       */
-      $wp_customize->add_setting(
-          KEMET_THEME_SETTINGS . '[page-title-font-family]', array(
-              'default'           => $defaults[ 'page-title-font-family' ],
-              'type'              => 'option',
-              'sanitize_callback' => 'sanitize_text_field',
-          )
-      );
-      $wp_customize->add_control(
-          new Kemet_Control_Typography(
-              $wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-family]', array(
-                  'type'     => 'kmt-font-family',
-                  'label'    => __( 'Font Family', 'kemet-addons' ),
-                  'section'  => 'section-page-title-header',
-                  'priority' => 55,
-                  'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-weight]',
-              )
-          )
-      );
-      
-       /**
-          * Option: Page Title Font Weight
-          */
-         $wp_customize->add_setting(
-             KEMET_THEME_SETTINGS . '[page-title-font-weight]', array(
-                 'default'           => $defaults[ 'page-title-font-weight' ],
-                 'type'              => 'option',
-                 'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
-             )
-         );
-         $wp_customize->add_control(
-             new Kemet_Control_Typography(
-                 $wp_customize, KEMET_THEME_SETTINGS . '[page-title-font-weight]', array(
-                     'type'     => 'kmt-font-weight',
-                     'label'    => __( 'Font Weight', 'kemet-addons' ),
-                     'section'  => 'section-page-title-header',
-                     'priority' => 60,
-                     'connect'  => KEMET_THEME_SETTINGS . '[page-title-font-family]',
- 
-                 )
-             )
-         );
- 
-         /**
-          * Option: Page Title Text Transform
-          */
-         $wp_customize->add_setting(
-             KEMET_THEME_SETTINGS . '[pagetitle-text-transform]', array(
-                 'default'           => $defaults[ 'pagetitle-text-transform' ],
-                 'type'              => 'option',
-                 'transport'         => 'postMessage',
-                 'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-             )
-         );
-         $wp_customize->add_control(
-             KEMET_THEME_SETTINGS . '[pagetitle-text-transform]', array(
-                 'section'  => 'section-page-title-header',
-                 'label'    => __( 'Text Transform', 'kemet-addons' ),
-                 'type'     => 'select',
-                 'priority' => 65,
-                 'choices'  => array(
-                     ''           => __( 'Inherit', 'kemet-addons' ),
-                     'none'       => __( 'None', 'kemet-addons' ),
-                     'capitalize' => __( 'Capitalize', 'kemet-addons' ),
-                     'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
-                     'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
-                 ),
-             )
-         );
- 
-         /**
-          * Option: Page Title Line Height
-          */
-         $wp_customize->add_setting(
-             KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
-                 'default'           => $defaults[ 'pagetitle-line-height' ],
-                 'type'              => 'option',
-                 'transport'         => 'postMessage',
-                 'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-             )
-         );
-         $wp_customize->add_control(
-			new Kemet_Control_Responsive_Slider(
-				$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-line-height]', array(
-					'type'           => 'kmt-responsive-slider',
-					'section'        => 'section-page-title-header',
-					'priority'       => 70,
-					'label'          => __( 'Line Height', 'kemet-addons' ),
-					'unit_choices'   => array(
-						'px' => array(
-							'min' => 0,
-							'step' => 1,
-							'max' =>100,
-						),
-						'em' => array(
-							'min' => 0,
-							'step' => 1,
-							'max' => 10,
-						),
-						'%' => array(
-							'min' => 0,
-							'step' => 1,
-							'max' => 100,
-						),
-					),
-				)
-			)
-		);
-		 /**
-		 * Option: Page Title Letter Spacing
-		 */
-		$wp_customize->add_setting(
-			KEMET_THEME_SETTINGS . '[page-title-letter-spacing]', array(
-				'default'           => $defaults[ 'page-title-letter-spacing' ],
+				),
+			),
+			/**
+			 * Option: Font Family
+			 */
+			array(
+				'id'                => '[page-title-font-family]',
+				'default'           => $defaults[ 'page-title-font-family' ],
+				'type'              => 'option',
+				'control_type'      => 'kmt-font-family',
+				'label'             => __( 'Font Family', 'kemet-addons' ),
+				'section'           => 'section-page-title-header',
+				'priority'          => 3,
+				'connect'           => KEMET_THEME_SETTINGS . '[page-title-font-weight]',
+			),
+			/**
+			 * Option: Font Weight
+			 */
+			array(
+				'id'                => '[page-title-font-weight]',
+				'default'           => $defaults[ 'page-title-font-weight' ],
+				'type'              => 'option',
+				'control_type'      => 'kmt-font-weight',
+				'label'             => __( 'Font Weight', 'kemet-addons' ),
+				'section'           => 'section-page-title-header',
+				'priority'          => 4,
+				'connect'           => KEMET_THEME_SETTINGS . '[page-title-font-family]',
+			),
+			/**
+			* Option: Page Title Text Transform
+			*/
+			array(
+				'id'                => '[pagetitle-text-transform]',
+				'default'           => $defaults[ 'pagetitle-text-transform' ],
 				'type'              => 'option',
 				'transport'         => 'postMessage',
-				'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-			)
-		);
-		$wp_customize->add_control(
-			new Kemet_Control_Responsive_Slider(
-				$wp_customize, KEMET_THEME_SETTINGS . '[page-title-letter-spacing]', array(
-					'type'           => 'kmt-responsive-slider',
-					'section'        => 'section-page-title-header',
-					'priority'       => 73,
-					'label'          => __( 'Letter Spacing', 'kemet-addons' ),
-					'unit_choices'   => array(
-						'px' => array(
-							'min' => 0.1,
-							'step' => 0.1,
-							'max' => 10,
-						),
+				'control_type'      => 'kmt-select',
+				'label'             => __( 'Text Transform', 'kemet-addons' ),
+				'section'           => 'section-page-title-header',
+				'priority'          => 5,
+				'choices'  => array(
+					''           => __( 'Default', 'kemet-addons' ),
+					'none'       => __( 'None', 'kemet-addons' ),
+					'capitalize' => __( 'Capitalize', 'kemet-addons' ),
+					'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
+					'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
+				),
+			),
+			/**
+			* Option: Page Title Line Height
+			*/
+			array(
+				'id'                => '[pagetitle-line-height]',
+				'default'           => $defaults ['pagetitle-line-height'] ,
+				'type'              => 'option',
+				'control_type'      => 'kmt-responsive-slider',
+				'section'           => 'section-page-title-header',
+				'transport'         => 'postMessage',
+				'priority'          => 6,
+				'label'          => __( 'Line Height', 'kemet-addons' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' =>100,
 					),
-				)
-			)
+					'em' => array(
+						'min' => 0,
+						'step' => 1,
+						'max' => 10,
+					),
+				),
+			),
+			/**
+			* Option: Page Title Letter Spacing
+			*/
+			array(
+				'id'                => '[page-title-letter-spacing]',
+				'default'           => $defaults ['page-title-letter-spacing'] ,
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'control_type'      => 'kmt-responsive-slider',
+				'section'           => 'section-page-title-header',
+				'priority'       => 7,
+				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
+				'unit_choices'   => array(
+					'px' => array(
+						'min' => 0.1,
+						'step' => 0.1,
+						'max' => 10,
+					),
+				),
+			),
 		);
+		$group_settings = array(
+			'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-page-title-typography]',
+			'type'     => 'kmt-group',
+			'label'    => __( 'Typography', 'kemet-addons' ),
+			'section'  => 'section-page-title-header',
+			'priority' => 50,
+			'settings' => array(),
+		);
+
+		new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 		 /**
 		 * Option: Page Title Bottom Line Color
 		*/
@@ -533,178 +495,138 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
+
 	/**
-	* Option: Sub Title Font Size
+	* Option: Typography
 	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-font-size]', array(
-			'default'           => $defaults[ 'sub-title-font-size' ],
+	$fields = array(
+		/**
+		* Option: Sub Title Font Size
+		*/
+		array(
+			'id'                => '[sub-title-font-size]',
+			'default'           => $defaults ['sub-title-font-size'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-font-size]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-page-title-header',
-				'priority'       => 100,
-				'label'          => __( 'Font Size', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 1,
-						'step' => 1,
-						'max' =>100,
-					),
-					'em' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-page-title-header',
+			'priority'          => 2,
+			'label'          => __( 'Font Size', 'kemet-addons' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 1,
+					'step' => 1,
+					'max' =>200,
 				),
-			)
-		)
-	);
-	/**
-	* Option: Sub Title Font Family
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-font-family]', array(
+				'em' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+		/**
+		 * Option: Font Family
+		 */
+		array(
+			'id'                => '[sub-title-font-family]',
 			'default'           => $defaults[ 'sub-title-font-family' ],
 			'type'              => 'option',
-			'sanitize_callback' => 'sanitize_text_field',
-
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-font-family]', array(
-				'type'     => 'kmt-font-family',
-				'label'    => __( 'Font Family', 'kemet-addons' ),
-				'section'  => 'section-page-title-header',
-				'priority' => 120,
-				'connect'  => KEMET_THEME_SETTINGS . '[sub-title-font-weight]',
-			)
-		)
-	);
-
-	/**
-	* Option: Sub Title Font Weight
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-font-weight]', array(
+			'control_type'      => 'kmt-font-family',
+			'label'             => __( 'Font Family', 'kemet-addons' ),
+			'section'           => 'section-page-title-header',
+			'priority'          => 3,
+			'connect'           => KEMET_THEME_SETTINGS . '[sub-title-font-weight]',
+		),
+		/**
+		 * Option: Font Weight
+		 */
+		array(
+			'id'                => '[sub-title-font-weight]',
 			'default'           => $defaults[ 'sub-title-font-weight' ],
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-font-weight]', array(
-				'type'     => 'kmt-font-weight',
-				'label'    => __( 'Font Weight', 'kemet-addons' ),
-				'section'  => 'section-page-title-header',
-				'priority' => 125,
-				'connect'  => KEMET_THEME_SETTINGS . '[sub-title-font-family]',
-
-			)
-		)
-	);
-
-	/**
-	* Option: Sub Title Text Transform
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-text-transform]', array(
+			'control_type'      => 'kmt-font-weight',
+			'label'             => __( 'Font Weight', 'kemet-addons' ),
+			'section'           => 'section-page-title-header',
+			'priority'          => 4,
+			'connect'           => KEMET_THEME_SETTINGS . '[sub-title-font-family]',
+		),
+		/**
+		* Option: Sub Title Text Transform
+		*/
+		array(
+			'id'                => '[sub-title-text-transform]',
 			'default'           => $defaults[ 'sub-title-text-transform' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[sub-title-text-transform]', array(
-			'section'  => 'section-page-title-header',
-			'label'    => __( 'Text Transform', 'kemet-addons' ),
-			'type'     => 'select',
-			'priority' => 130,
+			'control_type'      => 'kmt-select',
+			'label'             => __( 'Text Transform', 'kemet-addons' ),
+			'section'           => 'section-page-title-header',
+			'priority'          => 5,
 			'choices'  => array(
-				''           => __( 'Inherit', 'kemet-addons' ),
+				''           => __( 'Default', 'kemet-addons' ),
 				'none'       => __( 'None', 'kemet-addons' ),
 				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
 				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
 				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
 			),
-		)
+		),
+		/**
+		* Option: Sub Title Line Height
+		*/
+		array(
+			'id'                => '[sub-title-line-height]',
+			'default'           => $defaults ['sub-title-line-height'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-page-title-header',
+			'transport'         => 'postMessage',
+			'priority'          => 6,
+			'label'          => __( 'Line Height', 'kemet-addons' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' =>100,
+				),
+				'em' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' => 10,
+				),
+			),
+		),
+		/**
+		* Option: Sub Title Letter Spacing
+		*/
+		array(
+			'id'                => '[sub-title-letter-spacing]',
+			'default'           => $defaults ['sub-title-letter-spacing'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-page-title-header',
+			'priority'       => 7,
+			'label'          => __( 'Letter Spacing', 'kemet-addons' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+	);
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-sub-title-typography]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Typography', 'kemet-addons' ),
+		'section'  => 'section-page-title-header',
+		'priority' => 100,
+		'settings' => array(),
 	);
 
-	/**
-	* Option: Sub Title Line Height
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-line-height]', array(
-			'default'           => $defaults[ 'sub-title-line-height' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-line-height]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-page-title-header',
-				'priority'       => 135,
-				'label'          => __( 'Line Height', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' =>100,
-					),
-					'em' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 10,
-					),
-					'%' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 100,
-					),
-				),
-			)
-		)
-	);
-	/**
-	* Option: Sub Title Letter Spacing
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sub-title-letter-spacing]', array(
-			'default'           => $defaults[ 'sub-title-letter-spacing' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-letter-spacing]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-page-title-header',
-				'priority'       => 145,
-				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
-				),
-			)
-		)
-	);
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	/**
 	 * Option: Show item title
 	 */
@@ -762,178 +684,138 @@ $defaults = Kemet_Theme_Options::defaults();
 			'label'    => __( 'Breadcrumbs Prefix Text', 'kemet-addons' ),
 		)
 	);
+
 	/**
-	* Option: Breadcrumbs Font Size
+	* Option: Typography
 	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-font-size]', array(
-			'default'           => $defaults[ 'breadcrumbs-font-size' ],
+	$fields = array(
+		/**
+		* Option: Breadcrumbs Font Size
+		*/
+		array(
+			'id'                => '[breadcrumbs-font-size]',
+			'default'           => $defaults ['breadcrumbs-font-size'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-size]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-breadcrumbs',
-				'priority'       => 15,
-				'label'          => __( 'Font Size', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 1,
-						'step' => 1,
-						'max' =>200,
-					),
-					'em' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 2,
+			'label'          => __( 'Font Size', 'kemet-addons' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 1,
+					'step' => 1,
+					'max' =>200,
 				),
-			)
-		)
-	);
-	/**
-	* Option: Breadcrumbs Font Family
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]', array(
+				'em' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+		/**
+		 * Option: Font Family
+		 */
+		array(
+			'id'                => '[breadcrumbs-font-family]',
 			'default'           => $defaults[ 'breadcrumbs-font-family' ],
 			'type'              => 'option',
-			'sanitize_callback' => 'sanitize_text_field',
-
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]', array(
-				'type'     => 'kmt-font-family',
-				'label'    => __( 'Font Family', 'kemet-addons' ),
-				'section'  => 'section-breadcrumbs',
-				'priority' => 25,
-				'connect'  => KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]',
-			)
-		)
-	);
-
-	/**
-	* Option: Breadcrumbs Font Weight
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]', array(
+			'control_type'      => 'kmt-font-family',
+			'label'             => __( 'Font Family', 'kemet-addons' ),
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 3,
+			'connect'           => KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]',
+		),
+		/**
+		 * Option: Font Weight
+		 */
+		array(
+			'id'                => '[breadcrumbs-font-weight]',
 			'default'           => $defaults[ 'breadcrumbs-font-weight' ],
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_font_weight' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Typography(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-font-weight]', array(
-				'type'     => 'kmt-font-weight',
-				'label'    => __( 'Font Weight', 'kemet-addons' ),
-				'section'  => 'section-breadcrumbs',
-				'priority' => 30,
-				'connect'  => KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]',
-
-			)
-		)
-	);
-
-	/**
-	* Option: Breadcrumbs Text Transform
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-text-transform]', array(
+			'control_type'      => 'kmt-font-weight',
+			'label'             => __( 'Font Weight', 'kemet-addons' ),
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 4,
+			'connect'           => KEMET_THEME_SETTINGS . '[breadcrumbs-font-family]',
+		),
+		/**
+		* Option: Breadcrumbs Text Transform
+		*/
+		array(
+			'id'                => '[breadcrumbs-text-transform]',
 			'default'           => $defaults[ 'breadcrumbs-text-transform' ],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-text-transform]', array(
-			'section'  => 'section-breadcrumbs',
-			'label'    => __( 'Text Transform', 'kemet-addons' ),
-			'type'     => 'select',
-			'priority' => 35,
+			'control_type'      => 'kmt-select',
+			'label'             => __( 'Text Transform', 'kemet-addons' ),
+			'section'           => 'section-breadcrumbs',
+			'priority'          => 5,
 			'choices'  => array(
-				''           => __( 'Inherit', 'kemet-addons' ),
+				''           => __( 'Default', 'kemet-addons' ),
 				'none'       => __( 'None', 'kemet-addons' ),
 				'capitalize' => __( 'Capitalize', 'kemet-addons' ),
 				'uppercase'  => __( 'Uppercase', 'kemet-addons' ),
 				'lowercase'  => __( 'Lowercase', 'kemet-addons' ),
 			),
-		)
+		),
+		/**
+		* Option: Breadcrumbs Line Height
+		*/
+		array(
+			'id'                => '[breadcrumbs-line-height]',
+			'default'           => $defaults ['breadcrumbs-line-height'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-breadcrumbs',
+			'transport'         => 'postMessage',
+			'priority'          => 6,
+			'label'          => __( 'Line Height', 'kemet-addons' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' =>100,
+				),
+				'em' => array(
+					'min' => 0,
+					'step' => 1,
+					'max' => 10,
+				),
+			),
+		),
+		/**
+		* Option: Breadcrumbs Letter Spacing
+		*/
+		array(
+			'id'                => '[breadcrumbs-letter-spacing]',
+			'default'           => $defaults ['breadcrumbs-letter-spacing'] ,
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'control_type'      => 'kmt-responsive-slider',
+			'section'           => 'section-breadcrumbs',
+			'priority'       => 7,
+			'label'          => __( 'Letter Spacing', 'kemet-addons' ),
+			'unit_choices'   => array(
+				'px' => array(
+					'min' => 0.1,
+					'step' => 0.1,
+					'max' => 10,
+				),
+			),
+		),
+	);
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-typography]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Typography', 'kemet-addons' ),
+		'section'  => 'section-breadcrumbs',
+		'priority' => 15,
+		'settings' => array(),
 	);
 
-	/**
-	* Option: Breadcrumbs Line Height
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-line-height]', array(
-			'default'           => $defaults[ 'breadcrumbs-line-height' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-line-height]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-breadcrumbs',
-				'priority'       => 40,
-				'label'          => __( 'Line Height', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' =>100,
-					),
-					'em' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 10,
-					),
-					'%' => array(
-						'min' => 0,
-						'step' => 1,
-						'max' => 100,
-					),
-				),
-			)
-		)
-	);
-	/**
-	* Option: Breadcrumbs Letter Spacing
-	*/
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-letter-spacing]', array(
-			'default'           => $defaults[ 'breadcrumbs-letter-spacing' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Responsive_Slider(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-letter-spacing]', array(
-				'type'           => 'kmt-responsive-slider',
-				'section'        => 'section-breadcrumbs',
-				'priority'       => 41,
-				'label'          => __( 'Letter Spacing', 'kemet-addons' ),
-				'unit_choices'   => array(
-					'px' => array(
-						'min' => 0.1,
-						'step' => 0.1,
-						'max' => 10,
-					),
-				),
-			)
-		)
-	);
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	/**
 	 * Option: Home Item
 	 */
@@ -1136,69 +1018,60 @@ $defaults = Kemet_Theme_Options::defaults();
 			)
 		)
 	);
-	  /**
-      * Option: Breadcrumbs Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-			'default'           => $defaults[ 'breadcrumbs-color' ],
+    /**
+	* Option: Colors
+	*/
+	$fields = array(
+		
+		/**
+		* Option - Color
+		*/
+		array(
+			'id'                => '[breadcrumbs-color]',
+			'default'           => $defaults ['breadcrumbs-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-color]', array(
-				'label'   => __( 'Text Color', 'kemet-addons' ),
-				'priority'       => 112,
-				'section' => 'section-breadcrumbs',
-			)
-		)
-	);
-
-	  /**
-      * Option: Breadcrumbs Link Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-			'default'           => $defaults[ 'breadcrumbs-link-color' ],
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Text Color', 'kemet' ),
+			'priority'          => 1,
+			'section'           => 'section-breadcrumbs',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		array(
+			'id'                => '[breadcrumbs-link-color]',
+			'default'           => $defaults ['breadcrumbs-link-color'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-color',
+			'transport'         => 'postMessage',
+			'label'             => __( 'Link Color', 'kemet' ),
+			'priority'          => 2,
+			'section'           => 'section-breadcrumbs',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		/**
+		* Option - Hover Color
+		*/
+		array(
+			'id'                => '[breadcrumbs-link-h-color]',
+			'default'           => $defaults ['breadcrumbs-link-h-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Link Color', 'kemet' ),
+			'priority'          => 3,
+			'section'           => 'section-breadcrumbs',
+			'tab'               => __('Hover' , 'kemet')
+		),
 	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-color]', array(
-				'label'   => __( 'Link Color', 'kemet-addons' ),
-				'priority'       => 115,
-				'section' => 'section-breadcrumbs',
-			)
-		)
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-colors]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Colors', 'kemet' ),
+		'section'  => 'section-breadcrumbs',
+		'priority' => 115,
+		'settings' => array(),
 	);
-
-	  /**
-      * Option: Breadcrumbs Link Hover Color
-      */
-	  $wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-			'default'           => $defaults[ 'breadcrumbs-link-h-color' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_hex_color' ),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-link-h-color]', array(
-				'label'   => __( 'Link Hover Color', 'kemet-addons' ),
-				'priority'       => 120,
-				'section' => 'section-breadcrumbs',
-			)
-		)
-	);
-    
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 	 
 	 
 	

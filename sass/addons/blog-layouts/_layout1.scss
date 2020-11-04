@@ -1,97 +1,112 @@
-.post-thumb-img-content{
-    overflow: hidden;
+.post-thumb-img-content {
+  overflow: hidden;
 }
-.blog-layout-1{
-    .post-thumb-img-content{
-        width: fit-content;
-    }
+.blog-layout-1 {
+  .post-thumb-img-content {
+    width: fit-content;
+  }
 }
 
-.kmt-pagination{
-    &.standard{
-        .nav-links{
-            > a{
-                border-width: 1px;
-                border-style: solid;
-                > span{
-                    vertical-align: middle;
-                }
-            }
+.kmt-pagination {
+  &.standard {
+    .nav-links {
+      > a {
+        border-width: 1px;
+        border-style: solid;
+        > span {
+          vertical-align: middle;
         }
-        .page-numbers{
-            width: 2.33333em;
-            height: 2.33333em;
-            line-height: calc(2.33333em - 3px);
-            &.prev , &.next{
-                width: 2.33333em;
-                height: 2.33333em;
-            }
-        }
+      }
     }
-}
-/* infinite scroll */
-.kmt-infinite-scroll-loader {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    clear: both;
-    .infinite-scroll-end-msg {
-      display: none;
-      margin: 0;
-    }
-    .kmt-infinite-scroll-dots{
-      font-size: 12px;
-      position: relative;
-      width: 3.5em;
-      height: 1em;
-      margin: 0 auto;
-    }
-    .kmt-loader{
-      display: block;
-      width: 1em;
-      height: 1em;
-      border-radius: 0.5em;
-      position: absolute;
-      animation-duration: 0.5s;
-      animation-timing-function: ease;
-      animation-iteration-count: infinite;
-      &:nth-child(1), &:nth-child(2) {
-          left: 0;
-        }
-        
-        &:nth-child(3) {
-          left: 1.3em;
-        }
-        
-        &:nth-child(4) {
-          left: 2.6em;
-        }
-        
-        &:nth-child(1) {
-          animation-name: reveal;
-        }
-        
-        &:nth-child(2), &:nth-child(3) {
-          animation-name: slide;
-        }
-        
-        &:nth-child(4) {
-          animation-name: reveal;
-          animation-direction: reverse;
-        }
+    .page-numbers {
+      width: 2.33333em;
+      height: 2.33333em;
+      line-height: calc(2.33333em - 3px);
+      &.prev,
+      &.next {
+        width: 2.33333em;
+        height: 2.33333em;
+      }
     }
   }
-  @keyframes reveal {
-      from {
-        transform: scale(0.001);
-      }
-      to {
-        transform: scale(1);
-      }
+}
+/* infinite scroll */
+.kmt-load-more {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  .load-more-text {
+    display: inline-block;
+  }
+  .infinite-scroll-end-msg {
+    display: none;
+    margin: 0;
+  }
+}
+.kmt-infinite-scroll-loader {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  clear: both;
+  .infinite-scroll-end-msg {
+    display: none;
+    margin: 0;
+  }
+  .kmt-infinite-scroll-dots {
+    font-size: 12px;
+    position: relative;
+    width: 3.5em;
+    height: 1em;
+    margin: 0 auto;
+  }
+  .kmt-loader {
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    position: absolute;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    &:nth-child(1),
+    &:nth-child(2) {
+      left: 0;
     }
-    
-  @keyframes slide {
-      to {
-        transform: translateX(1.3em);
-      }
+
+    &:nth-child(3) {
+      left: 1.3em;
     }
+
+    &:nth-child(4) {
+      left: 2.6em;
+    }
+
+    &:nth-child(1) {
+      animation-name: reveal;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      animation-name: slide;
+    }
+
+    &:nth-child(4) {
+      animation-name: reveal;
+      animation-direction: reverse;
+    }
+  }
+}
+@keyframes reveal {
+  from {
+    transform: scale(0.001);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(1.3em);
+  }
+}

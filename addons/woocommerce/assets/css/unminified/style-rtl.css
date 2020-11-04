@@ -793,12 +793,12 @@ Woo Quick View
   position: relative;
   height: 281px;
   float: left;
-  width: 75%;
+  width: 85%;
 }
 
 .woocommerce .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-control-thumbs, .woocommerce-page .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-control-thumbs {
   float: right;
-  width: calc(25% - 1em);
+  width: calc(15% - 1em);
   overflow-x: hidden;
   margin: 0;
   padding: 0;

@@ -161,33 +161,35 @@
 			)
 		)
 	);
-    /**
-	 * Option: Sticky Header Background
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-bg-obj]', array(
+	/**
+    * Option: Sticky Header Background
+    */
+	$fields = array(
+		array(
+			'id'                => '[sticky-bg-obj]',
 			'default'           => $defaults[ 'sticky-bg-obj' ],
 			'type'              => 'option',
+			'control_type'      => 'kmt-background',
+			'section'           => 'section-sticky-header',
+			'priority'          => 1,
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_background_obj' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
+		),
+		
 	);
-	$wp_customize->add_control(
-		new Kemet_Control_Background(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-bg-obj]', array(
-				'type'    => 'kmt-background',
-                'section' => 'section-sticky-header',
-                'priority' => 30,
-                'label'   => __( 'Sticky Header Background', 'kemet-addons' ),
-			)
-		)
-    );
-
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-sticky-bg-obj]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Sticky Header Background', 'kemet' ),
+		'section'  => 'section-sticky-header',
+		'priority' => 30,
+		'settings' => array(),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+			'conditions' => '==', 
+			'values' => true,
+		), 
+	);
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
     /**
 	 * Option: Title
 	 */
@@ -212,188 +214,108 @@
 			)
 		)
 	);
-	
-    /**
-	 * Option: Sticky Text Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-menu-link-color]', array(
-			'default'           => $defaults[ 'sticky-menu-link-color' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-menu-link-color]', array(
-				'label'   => __( 'Menu Link Color', 'kemet-addons' ),
-				'priority'=> 40,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
-    
-    /**
-	 * Option: Sticky Text Hover Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-menu-link-h-color]', array(
-			'default'           => $defaults[ 'sticky-menu-link-h-color' ],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-menu-link-h-color]', array(
-				'label'   => __( 'Menu Link Hover Color', 'kemet-addons' ),
-				'priority'=> 45,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
 
 	/**
-	 * Option: Sticky Border Bottom Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-border-bottom-color]', array(
-			'default'           => $defaults[ 'sticky-border-bottom-color' ],
+	* Option: Colors
+	*/
+	$fields = array(
+		
+		/**
+		* Option - Color
+		*/
+		array(
+			'id'                => '[sticky-menu-link-color]',
+			'default'           => $defaults ['sticky-menu-link-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-border-bottom-color]', array(
-				'label'   => __( 'Bottom Border Color', 'kemet-addons' ),
-				'priority'=> 50,
-                'section' => 'section-sticky-header',
-			)
-		)
-	);
-	
-    /**
-	 * Option: Sticky Submenu Background Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-submenu-bg-color]', array(
-			'default'           => $defaults[ 'sticky-submenu-bg-color' ],
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Link Color', 'kemet' ),
+			'priority'          => 1,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		array(
+			'id'                => '[sticky-border-bottom-color]',
+			'default'           => $defaults ['sticky-border-bottom-color'] ,
 			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-submenu-bg-color]', array(
-                'label'   => __( 'Submenu Background Color', 'kemet-addons' ),
-                'priority'       => 55,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
-    
-    /**
-	 * Option: Sticky Submenu Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-submenu-link-color]', array(
-			'default'           => $defaults[ 'sticky-submenu-link-color' ],
+			'control_type'      => 'kmt-color',
+			'transport'         => 'postMessage',
+			'label'             => __( 'Border Bottom Color', 'kemet' ),
+			'priority'          => 2,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Normal' , 'kemet')
+		),
+		array(
+			'id'                => '[sticky-submenu-bg-color]',
+			'default'           => $defaults ['sticky-submenu-bg-color'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Submenu Background Color', 'kemet' ),
+			'priority'          => 3,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Normal' , 'kemet')
+		), 
+		array(
+			'id'                => '[sticky-submenu-link-color]',
+			'default'           => $defaults ['sticky-submenu-link-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-submenu-link-color]', array(
-				'label'   => __( 'Submenu Link Color', 'kemet-addons' ),
-				'priority'=> 60,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
-    
-    /**
-	 * Option: Sticky Submenu Hover Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-submenu-link-h-color]', array(
-			'default'           => $defaults[ 'sticky-submenu-link-h-color' ],
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Submenu Link Color', 'kemet' ),
+			'priority'          => 4,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Normal' , 'kemet')
+		),
+		array(
+			'id'                => '[sticky-submenu-border-color]',
+			'default'           => $defaults ['sticky-submenu-border-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-submenu-link-h-color]', array(
-				'label'   => __( 'Submenu Link Hover Color', 'kemet-addons' ),
-				'priority'=> 65,
-                'section' => 'section-sticky-header',
-			)
-		)
-    );
-	
-	/**
-	 * Option: Sub menu Border Color
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-submenu-border-color]', array(
-			'default'           =>  $defaults[ 'sticky-submenu-border-color' ],
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Submenu Border Color', 'kemet' ),
+			'priority'          => 5,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Normal' , 'kemet')
+		),  
+		/**
+		* Option - Hover Color
+		*/
+		array(
+			'id'                => '[sticky-menu-link-h-color]',
+			'default'           => $defaults ['sticky-menu-link-h-color'] ,
 			'type'              => 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Link Color', 'kemet' ),
+			'priority'          => 6,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Hover' , 'kemet')
+		),
+		array(
+			'id'                => '[sticky-submenu-link-h-color]',
+			'default'           => $defaults ['sticky-submenu-link-h-color'] ,
+			'type'              => 'option',
+			'control_type'      => 'kmt-color',
+			'label'             => __( 'Submenu Link Color', 'kemet' ),
+			'priority'          => 7,
+			'section'           => 'section-sticky-header',
+			'tab'               => __('Hover' , 'kemet')
+		),
 	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-submenu-border-color]', array(
-				'section'  => 'section-sticky-header',
-				'priority' => 70,
-				'label'    => __( 'Submenu Separator Color', 'kemet-addons' ),
-			)
-		)
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-sticky-header-colors]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Sticky Header Colors', 'kemet' ),
+		'section'  => 'section-sticky-header',
+		'priority' => 40,
+		'settings' => array(),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+			'conditions' => '==', 
+			'values' => true,
+		), 
 	);
-
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
     /**
      * Option:Sticky Responsive
      */

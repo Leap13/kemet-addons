@@ -540,6 +540,21 @@
 }
 
 /* infinite scroll */
+.kmt-load-more {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.kmt-load-more .load-more-text {
+  display: inline-block;
+}
+
+.kmt-load-more .infinite-scroll-end-msg {
+  display: none;
+  margin: 0;
+}
+
 .kmt-infinite-scroll-loader {
   margin-top: 20px;
   margin-bottom: 20px;
