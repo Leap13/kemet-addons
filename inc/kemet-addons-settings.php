@@ -176,7 +176,19 @@ if (class_exists('KFW')) {
         'type' => 'systeminfo',
       ),
     ),
-  )
+  ),
+  KFW::createSection($prefix, array(
+    'id' => 'wizard_tab',
+    'title' => __( 'Theme License', 'kemet-addons'),
+    'reset_options' => false,
+    'priority' => '15',
+    'fields' => array(
+      array(
+        'id' => 'wizard-process',
+        'type' => 'wizard',
+      ),
+    ),
+  ))
     )));
 
   

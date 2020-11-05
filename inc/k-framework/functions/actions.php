@@ -200,3 +200,23 @@ if( ! function_exists( 'kfw_set_icons' ) ) {
   add_action( 'admin_footer', 'kfw_set_icons' );
   add_action( 'customize_controls_print_footer_scripts', 'kfw_set_icons' );
 }
+/**
+ * Text Envato Api
+ */
+
+// function test_client_api(){
+//   $url = "https://api.envato.com/v3/market/buyer/list-purchases?include_all_item_details";
+//   $curl = curl_init($url);
+//   $personal_token = "l0bcvBCrcIFzE9AgkXZk37WyvkDyWSQt";
+//   $header = array();
+//   $header[] = 'Authorization: Bearer '.$personal_token;
+//   $header[] = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:41.0) Gecko/20100101 Firefox/41.0';
+//   $header[] = 'timeout: 20';
+//   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+//   curl_setopt($curl, CURLOPT_HTTPHEADER,$header);
+//   $envatoRes = curl_exec($curl);
+//   curl_close($curl);
+//   $envatoRes = json_decode($envatoRes);
+//   return wp_send_json($envatoRes);
+// }
+// add_action( 'wp_ajax_test_client_api', 'test_client_api' );
