@@ -91,7 +91,7 @@ if(in_array('search' , (array)kemet_get_option( 'top-section-1' )) || in_array('
 					</div>
 				<?php } ?>
 				<?php if(!empty( $section_2 ) || $enable_top_section_2 ){ ?>
-					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally <?php echo $section2_class; ?> kmt-col-xs-12<" >
+					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally <?php echo $section2_class; ?> kmt-col-xs-12" >
 							<?php echo $section_2; ?>
 							<?php do_action("kemet_top_bar_section_2"); ?>
 					</div>
