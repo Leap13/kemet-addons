@@ -255,6 +255,9 @@
       toolBar = $(".kmt-toolbar .shop-list-style"),
       shop_infinite_nonce = kemet.shop_infinite_nonce || "";
 
+    if (kemet.woo_infinite_scroll_style == 'button') {
+      loader.hide();
+    }
     /**
      * Counter with Style Change
      */
@@ -290,7 +293,6 @@
         loadMore.show();
         productContainer.append(products);
 
-        loader.hide();
         //	Show no more msg
         if (counter > totalPages) {
           loadMore.hide();
@@ -336,7 +338,6 @@
         }
 
       } else {
-        loader.hide();
         $(".woo-load-more-text").click(function () {
           if (counter > totalPages) {
             return false;

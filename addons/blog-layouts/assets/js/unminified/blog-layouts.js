@@ -21,6 +21,9 @@
     noMoreMsg = $(".infinite-scroll-end-msg"),
     blog_infinite_nonce = kemet.blog_infinite_nonce || "";
 
+  if (kemet.blog_load_more_style == 'button') {
+    loader.hide();
+  }
   if (typeof paginationStyle != "" && paginationStyle == "infinite-scroll") {
     var in_customizer = false;
 
@@ -54,7 +57,6 @@
         });
       }
     } else {
-      loader.hide();
       $(".load-more-text").click(function () {
         if (counter > totalPages) {
           return false;
