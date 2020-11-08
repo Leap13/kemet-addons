@@ -11,12 +11,13 @@
   /**
    * Infinite Scroll
    */
-  var paginationStyle = kemet.pagination_style,
+  var paginationStyle = kemet.blog_pagination_style,
     totalPages = parseInt(kemet.blog_infinite_total) || "",
     counter = parseInt(kemet.blog_infinite_count) || "",
     ajax_url = kemet.ajax_url || "",
     loadStatus = true,
-    loader = $(".kmt-infinite-scroll-dots , .load-more-text"),
+    loader = $(".kmt-infinite-scroll-dots"),
+    loadMore = $(".load-more-text"),
     noMoreMsg = $(".infinite-scroll-end-msg"),
     blog_infinite_nonce = kemet.blog_infinite_nonce || "";
 
@@ -32,31 +33,46 @@
       }
     }
 
-    if ($("#main").find(".post:last").length > 0) {
-      var windowHeight = $(window).outerHeight() / 2;
-      $(window).scroll(function () {
-        if (
-          $(window).scrollTop() + windowHeight >=
-          $("#main").find("article:last").offset().top
-        ) {
-          if (counter > totalPages) {
-            return false;
-          } else {
-            if (loadStatus == true) {
-              PostsLoader(counter);
-              counter++;
-              loadStatus = false;
+    if (kemet.blog_load_more_style == 'dots') {
+      if ($("#main").find(".post:last").length > 0) {
+        var windowHeight = $(window).outerHeight() / 2;
+        $(window).scroll(function () {
+          if (
+            $(window).scrollTop() + windowHeight >=
+            $("#main").find("article:last").offset().top
+          ) {
+            if (counter > totalPages) {
+              return false;
+            } else {
+              if (loadStatus == true) {
+                PostsLoader(counter);
+                counter++;
+                loadStatus = false;
+              }
             }
+          }
+        });
+      }
+    } else {
+      loader.hide();
+      $(".load-more-text").click(function () {
+        if (counter > totalPages) {
+          return false;
+        } else {
+          if (loadStatus == true) {
+            PostsLoader(counter);
+            counter++;
           }
         }
       });
     }
+
     /**
      * Get Products via AJAX
      */
     function PostsLoader(pageNumber) {
       loader.show();
-
+      loadMore.hide();
       var data = {
         action: "kemet_pagination_infinite",
         page_no: pageNumber,
@@ -68,7 +84,8 @@
       $.post(ajax_url, data, function (data) {
         var posts = $(data),
           postContainer = $("#main > div > .blog-posts-container");
-
+        loader.hide();
+        loadMore.show();
         postContainer.append(posts);
 
         if (postContainer.hasClass("blog-layout-2")) {
@@ -80,9 +97,10 @@
           postContainer.trigger("masonryItemAdded");
         }
 
-        loader.hide();
         //	Show no more msg
         if (counter > totalPages) {
+          loadMore.hide();
+          loader.hide();
           noMoreMsg.show();
         }
         loadStatus = true;

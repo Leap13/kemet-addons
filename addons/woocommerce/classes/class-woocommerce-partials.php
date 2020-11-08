@@ -147,9 +147,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$load_more_style = kemet_get_option('woo-load-more-style');
 			$load_more_text = esc_html( kemet_get_option('woo-load-more-text') , 'kemet-addons');
 			
-			if( $load_more_style == 'dots' ){
 			?>
-
 			<div class="kmt-woo-infinite-scroll-loader">
 				<div class="kmt-woo-infinite-scroll-dots">
 					<span class="kmt-woo-loader"></span>
@@ -157,16 +155,15 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 					<span class="kmt-woo-loader"></span>
 					<span class="kmt-woo-loader"></span>
 				</div>
+			<?php 
+            if( $load_more_style == 'button' ){ ?>
+                <div class="kmt-woo-load-more">
+                    <button class="button woo-load-more-text"><?php echo esc_html( $load_more_text , "kemet-addons") ?></button>
+                </div>
+		<?php } ?>
 				<p class="woo-infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
 			</div>
-			<?php 
-                }else{ ?>
-                <div class="kmt-woo-load-more">
-                    <span class="woo-load-more-text"><?php echo esc_html( $load_more_text , "kemet-addons") ?></span>
-                    <p class="woo-infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
-                </div>
-        <?php }
-        }
+    <?php }
 
 		/**
 		 * Get Shop Layout Cookie
@@ -960,6 +957,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			$localize['pagination_style']        	     = $pagination_style;
 			$localize['shop_infinite_nonce']        	 = wp_create_nonce( 'kmt-shop-load-more-nonce' );
 			$localize['is_shop']			 		 	 = apply_filters("kemet_woocommerce_styles_enable" , $check_page );
+			$localize['woo_infinite_scroll_style']        	 = kemet_get_option( 'woo-load-more-style' );
 
             return $localize;
         }

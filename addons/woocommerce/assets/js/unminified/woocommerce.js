@@ -158,8 +158,8 @@
    */
   var customInputNum = function () {
     var quantity = $(
-        "div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)"
-      ),
+      "div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)"
+    ),
       quantityInput = quantity.find(".qty");
 
     if (
@@ -249,7 +249,8 @@
       counter = parseInt(kemet.shop_infinite_count) || "",
       ajax_url = kemet.ajax_url || "",
       loadStatus = true,
-      loader = $(".kmt-woo-infinite-scroll-dots , .woo-load-more-text"),
+      loader = $(".kmt-woo-infinite-scroll-dots"),
+      loadMore = $(".woo-load-more-text"),
       noMoreMsg = $(".woo-infinite-scroll-end-msg"),
       toolBar = $(".kmt-toolbar .shop-list-style"),
       shop_infinite_nonce = kemet.shop_infinite_nonce || "";
@@ -271,6 +272,7 @@
      */
     function ProductsLoader(pageNumber) {
       loader.show();
+      loadMore.hide();
 
       var data = {
         action: "kemet_infinite_scroll",
@@ -284,12 +286,15 @@
           productContainer = $(
             "#main > .kmt-woocommerce-container ul.products"
           );
-
+        loader.hide();
+        loadMore.show();
         productContainer.append(products);
 
         loader.hide();
         //	Show no more msg
         if (counter > totalPages) {
+          loadMore.hide();
+          loader.hide();
           noMoreMsg.show();
         }
         loadStatus = true;
@@ -308,21 +313,38 @@
         }
       }
 
-      if ($("#main").find(".product:last").length > 0) {
-        var windowHeight = jQuery(window).outerHeight() / 1.25;
-        $(window).scroll(function () {
-          if (
-            $(window).scrollTop() + windowHeight >=
-            $("#main").find(".product:last").offset().top
-          ) {
-            if (counter > totalPages) {
-              return false;
-            } else {
-              if (loadStatus == true) {
-                ProductsLoader(counter);
-                counter++;
-                loadStatus = false;
+      if (kemet.woo_infinite_scroll_style == 'dots') {
+
+        if ($("#main").find(".product:last").length > 0) {
+          var windowHeight = jQuery(window).outerHeight() / 1.25;
+          $(window).scroll(function () {
+            if (
+              $(window).scrollTop() + windowHeight >=
+              $("#main").find(".product:last").offset().top
+            ) {
+              if (counter > totalPages) {
+                return false;
+              } else {
+                if (loadStatus == true) {
+                  ProductsLoader(counter);
+                  counter++;
+                  loadStatus = false;
+                }
               }
+            }
+          });
+        }
+
+      } else {
+        loader.hide();
+        $(".woo-load-more-text").click(function () {
+          if (counter > totalPages) {
+            return false;
+          } else {
+            if (loadStatus == true) {
+              ProductsLoader(counter);
+              counter++;
+              loadStatus = false;
             }
           }
         });

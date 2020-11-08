@@ -44,9 +44,4 @@
     "background-color",
     ".kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader"
   );
-  kemet_css(
-    "kemet-settings[woo-infinite-text-color]",
-    "color",
-    ".kmt-woo-load-more .woo-load-more-text"
-  );
 })(jQuery);
