@@ -599,7 +599,7 @@ $wp_customize->add_control(
 			'label'    => __( 'Load More Style', 'kemet-addons' ),
 			'choices'  => array(
 				'dots'    => __( 'Dots', 'kemet-addons' ),
-				'text' => __( 'Text', 'kemet-addons' ),
+				'button' => __( 'Button', 'kemet-addons' ),
 			),
 		)
 	);
@@ -614,7 +614,7 @@ $wp_customize->add_control(
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[blog-pagination-style]/' . KEMET_THEME_SETTINGS . '[load-more-style]', 
 				'conditions' => '==/==', 
-				'values' => 'infinite-scroll/text',
+				'values' => 'infinite-scroll/button',
 				'operators' => '&&'
 			),
 		)
@@ -648,32 +648,6 @@ $wp_customize->add_control(
 		new Kemet_Control_Color(
 		  $wp_customize, KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]', array(
 			'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
-			'section' => 'section-blog',
-			'priority' => 165,
-		  )
-		)
-	);
-	/**
-   	* Option: Load More Text Color 
-    */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[blog-infinite-text-color]', array(
-		  'default'           => $defaults[ 'blog-infinite-text-color' ],
-		  'type'              => 'option',
-		  'transport'         => 'postMessage',
-		  'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_alpha_color' ),
-		  'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[blog-pagination-style]/' . KEMET_THEME_SETTINGS . '[load-more-style]', 
-			'conditions' => '==/==', 
-			'values' => 'infinite-scroll/text',
-			'operators' => '&&'
-		),
-		)
-	);
-	$wp_customize->add_control(
-		new Kemet_Control_Color(
-		  $wp_customize, KEMET_THEME_SETTINGS . '[blog-infinite-text-color]', array(
-			'label'   => __( 'Infinite Scroll Text Color', 'kemet-addons' ),
 			'section' => 'section-blog',
 			'priority' => 165,
 		  )

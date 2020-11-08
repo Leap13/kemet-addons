@@ -96,9 +96,4 @@
     "background-color",
     ".kmt-infinite-scroll-loader .kmt-infinite-scroll-dots .kmt-loader"
   );
-  kemet_css(
-    "kemet-settings[blog-infinite-text-color]",
-    "color",
-    ".kmt-load-more .load-more-text"
-  );
 })(jQuery);
