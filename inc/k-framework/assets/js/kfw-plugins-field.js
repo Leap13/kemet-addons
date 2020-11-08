@@ -101,15 +101,14 @@ function plugin_action(event) {
   var apiButton = $(".test-wizard");
   apiButton.click(function () {
     popupWindow = window.open(
-      "http://localhost:8888/kemet/activations",
-      "Theme activation",
-      "resizable,width=840,height=570"
+      'https://demos.thenomadgeek.com/activation',
+      'Theme activation',
+      'resizable,width=840,height=570'
     );
 
-    $(window).on("message", function (e) {
+    popupWindow.onmessage = (value) => {
       popupWindow.close();
-      var data = e.originalEvent.data; // Should work.
-      console.log(data);
-    });
+      console.log(value.data);
+    };
   });
 })(jQuery);
