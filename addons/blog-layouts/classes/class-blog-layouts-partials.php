@@ -114,8 +114,6 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
                 $msg = esc_html__( $end_text , 'kemet-addons' );
                 $load_more_style = kemet_get_option('load-more-style');
                 $load_more_text = esc_html( kemet_get_option('load-more-text') , 'kemet-addons');
-
-                if( $load_more_style == 'dots' ){
                 ?>
 
                 <div class="kmt-infinite-scroll-loader">
@@ -125,17 +123,17 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 					<span class="kmt-loader"></span>
 					<span class="kmt-loader"></span>
 				</div>
-				<p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
-			</div>
+				
 
            <?php 
-                }else{ ?>
+                if( $load_more_style == 'button' ){ ?>
                 <div class="kmt-load-more">
-                    <span class="load-more-text"><?php echo esc_html( $load_more_text , "kemet-addons") ?></span>
-                    <p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
+                    <button class="load-more-text"><?php echo esc_html( $load_more_text , "kemet-addons") ?></button>
                 </div>
-        <?php }
-            }
+        <?php } ?>
+                <p class="infinite-scroll-end-msg"><?php echo esc_attr( $msg ); ?></p>
+            </div>           
+    <?php }
         }
         
         /**
@@ -153,9 +151,10 @@ if (! class_exists('Kemet_Blog_Layouts_Partials')) {
 			$localize['ajax_url'] 						 = admin_url( 'admin-ajax.php' );
 			$localize['blog_infinite_count']        	 = 2;
 			$localize['blog_infinite_total']        	 = $wp_query->max_num_pages;
-			$localize['pagination_style']        	     = $blog_pagination;
+			$localize['blog_pagination_style']        	     = $blog_pagination;
 			$localize['blog_infinite_nonce']        	 = wp_create_nonce( 'kmt-load-more-nonce' );
-			$localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
+            $localize['query_vars']                 	 = json_encode( $wp_query->query_vars );
+            $localize['blog_load_more_style']            = kemet_get_option('load-more-style');
 
 			return $localize;
 		}
