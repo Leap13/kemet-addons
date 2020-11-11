@@ -106,9 +106,26 @@ function plugin_action(event) {
       'resizable,width=840,height=570'
     );
 
-    popupWindow.onmessage = (value) => {
+    $(window).on("message", function (e) {
+      var data = e.originalEvent.data;
       popupWindow.close();
-      console.log(value.data);
-    };
+      $.ajax({
+        url: window.ajaxurl,
+        type: "POST",
+        dataType: "json",
+        data: {
+          action: "save_license_code",
+          license: JSON.parse(data),
+        },
+      })
+        .fail(function (jqXHR) {
+          alert("Error");
+        })
+        .done(function (response) {
+          if (response.success) {
+            window.location.reload();
+          }
+        });
+    });
   });
 })(jQuery);

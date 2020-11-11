@@ -4306,3 +4306,12 @@
 .kfw-nav-menu-options .kfw-field .kfw-fieldset{
   margin-left: 0;
 }
+/* Wizard */
+.license-status{
+  font-size: 15px;
+  color: #23282d;
+  margin: 0;
+}
+.kfw-field-wizard .test-wizard{
+  margin-top: 1em;
+}
