@@ -47,7 +47,22 @@ if ( ! class_exists('Kemet_Addons' ) ) {
             require_once KEMET_ADDONS_DIR.'inc/kemet-addons-settings.php';
 
             add_action('after_setup_theme', array($this, 'setup'));
+
+            add_action( 'admin_notices', array( $this, 'admin_notice' ) );
         }
+
+        //Display admin notices 
+        function admin_notice()
+        { 
+			$license = get_option('wiz_license_code');
+			if($license){
+				return;
+			}
+            ?>
+			<div class="notice notice-error is-dismissible wiz-active-license-notice">
+				<p class="massege"><?php  esc_html_e("Wiz Theme Need to activate your license. You can active from"); ?> <a href="<?php echo esc_url(admin_url( 'admin.php?page=kmt-framework#tab=4' )); ?>">Here</a>.</p>
+			</div>
+  <?php }
 
         public function activation() {
             //registered KA

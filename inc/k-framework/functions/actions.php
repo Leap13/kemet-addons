@@ -208,12 +208,12 @@ function save_license_code() {
   }
   $data = (object) $data;
   if ( !empty( $data->code ) && !empty( $data->sold_at ) && !empty( $data->supported_until ) ) {
-      add_option( 'wiz_license_code', $data->code );
-      add_option( 'wiz_license_sold_at', $data->sold_at );
+      update_option( 'wiz_license_code', $data->code );
+      update_option( 'wiz_license_sold_at', $data->sold_at );
 
       $timestamp = (new \DateTime( $data->supported_until ))->getTimestamp();
-      add_option( 'wiz_license_support_until', $timestamp );
-      add_option( 'wiz_license_type', $data->type );
+      update_option( 'wiz_license_support_until', $timestamp );
+      update_option( 'wiz_license_type', $data->type );
       wp_send_json_success();
   }
 }
