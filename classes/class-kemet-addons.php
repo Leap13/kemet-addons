@@ -90,6 +90,7 @@ if ( ! class_exists('Kemet_Addons' ) ) {
 		 * Includes
 		 */
 		function includes() {
+            require_once KEMET_ADDONS_DIR.'classes/class-wiz-check-update.php';
             require_once KEMET_ADDONS_DIR.'classes/class-kemet-style-generator.php';
             require_once KEMET_ADDONS_DIR.'inc/k-framework/k-framework.php';
             require_once KEMET_ADDONS_DIR.'inc/functions.php';

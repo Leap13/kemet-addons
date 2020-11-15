@@ -214,6 +214,7 @@ function save_license_code() {
       $timestamp = (new \DateTime( $data->supported_until ))->getTimestamp();
       update_option( 'wiz_license_support_until', $timestamp );
       update_option( 'wiz_license_type', $data->type );
+      update_option( 'wiz_refresh_token', $data->refresh_token );
       wp_send_json_success();
   }
 }

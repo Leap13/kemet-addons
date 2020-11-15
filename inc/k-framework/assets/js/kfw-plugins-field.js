@@ -101,9 +101,9 @@ function plugin_action(event) {
   var apiButton = $(".test-wizard");
   apiButton.click(function () {
     popupWindow = window.open(
-      'https://demos.thenomadgeek.com/activation',
-      'Theme activation',
-      'resizable,width=840,height=570'
+      "https://demos.thenomadgeek.com/activation",
+      "Theme activation",
+      "resizable,width=840,height=570"
     );
 
     $(window).on("message", function (e) {
