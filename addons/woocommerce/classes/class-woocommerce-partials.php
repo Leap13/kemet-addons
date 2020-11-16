@@ -622,7 +622,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 			 */
 			$pagination_style = kemet_get_option('woo-pagination-style');
 
-			if( $pagination_style == 'infinite-scroll'){
+			if( $pagination_style == 'infinite-scroll' && (is_shop() || is_product_taxonomy()) ){
 				remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 				add_action( 'woocommerce_after_shop_loop', array( $this, 'infinite_pagination' ), 10 );
 			}
