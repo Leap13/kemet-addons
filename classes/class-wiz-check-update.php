@@ -66,6 +66,8 @@ if ( ! class_exists( 'Wiz_Update' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
+			$license = get_option('wiz_license_code');
+			if(!$license){return;}
             $this->set_access_token();
             // Check for theme & plugin updates.
 			add_filter( 'http_request_args', array( $this, 'update_check' ), 5, 2 );
@@ -185,11 +187,13 @@ if ( ! class_exists( 'Wiz_Update' ) ) {
 				// Decode JSON so we can manipulate the array.
 				$data = json_decode( $request['body']['themes'] );
 
-				// Remove the excluded themes.
-				foreach ( $installed as $slug => $id ) {
-					unset( $data->themes->$slug );
+				if(isset($installed)){
+					// Remove the excluded themes.
+					foreach ( $installed as $slug => $id ) {
+						unset( $data->themes->$slug );
+					}
 				}
-
+				
 				// Encode back into JSON and update the response.
 				$request['body']['themes'] = wp_json_encode( $data );
 			}
@@ -210,16 +214,18 @@ if ( ! class_exists( 'Wiz_Update' ) ) {
 			// Process premium theme updates.
 			if ( isset( $transient->checked ) ) {
 				self::set_themes( true );
-				$installed = array_merge( self::$themes['active'], self::$themes['installed'] );
-				foreach ( $installed as $slug => $premium ) {
-					$theme = wp_get_theme( $slug );
-					if ( $theme->exists() && version_compare( $theme->get( 'Version' ), $premium['version'], '<' ) ) {
-						$transient->response[ $slug ] = array(
-							'theme'       => $slug,
-							'new_version' => $premium['version'],
-							'url'         => $premium['url'],
-							'package'     => $this->deferred_download( $premium['id'] ),
-						);
+				if(isset(self::$themes['active']) && self::$themes['installed']){
+					$installed = array_merge( self::$themes['active'], self::$themes['installed'] );
+					foreach ( $installed as $slug => $premium ) {
+						$theme = wp_get_theme( $slug );
+						if ( $theme->exists() && version_compare( $theme->get( 'Version' ), $premium['version'], '<' ) ) {
+							$transient->response[ $slug ] = array(
+								'theme'       => $slug,
+								'new_version' => $premium['version'],
+								'url'         => $premium['url'],
+								'package'     => $this->deferred_download( $premium['id'] ),
+							);
+						}
 					}
 				}
 			}
@@ -402,7 +408,7 @@ if ( ! class_exists( 'Wiz_Update' ) ) {
 			self::$themes['installed'] = array_unique( $installed, SORT_REGULAR );
 			self::$themes['install']   = array_unique( array_values( $install ), SORT_REGULAR );
 
-			set_site_transient( 'wiz_theme_update', self::$themes, DAY_IN_SECONDS );
+			set_site_transient( 'wiz_theme_update', self::$themes, MINUTE_IN_SECONDS );
         }
         
         /**

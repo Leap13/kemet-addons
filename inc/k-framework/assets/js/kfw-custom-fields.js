@@ -1,3 +1,6 @@
+/**
+ * Plugins Field
+ */
 function plugin_action(event) {
   "use strict";
 
@@ -96,10 +99,15 @@ function plugin_action(event) {
     request.send();
   }
 }
-
+/**
+ * Wizard Field
+ */
 (function ($) {
   var apiButton = $(".test-wizard");
   apiButton.click(function () {
+    if ($(this).hasClass("updating-message")) {
+      return;
+    }
     popupWindow = window.open(
       "https://demos.thenomadgeek.com/activation",
       "Theme activation",
@@ -109,6 +117,7 @@ function plugin_action(event) {
     $(window).on("message", function (e) {
       var data = e.originalEvent.data;
       popupWindow.close();
+      apiButton.addClass("updating-message");
       $.ajax({
         url: window.ajaxurl,
         type: "POST",
