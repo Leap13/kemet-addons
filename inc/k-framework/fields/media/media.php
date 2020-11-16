@@ -20,8 +20,8 @@ if ( ! class_exists( 'KFW_Field_media' ) ) {
         'url'          => true,
         'preview'      => true,
         'library'      => array(),
-        'button_title' => esc_html__( 'Upload', 'kemet-addons' ),
-        'remove_title' => esc_html__( 'Remove', 'kemet-addons' ),
+        'button_title' => esc_html__( 'Upload', 'kfw' ),
+        'remove_title' => esc_html__( 'Remove', 'kfw' ),
         'preview_size' => 'thumbnail',
       ) );
 
@@ -54,7 +54,7 @@ if ( ! class_exists( 'KFW_Field_media' ) ) {
       $preview_src = ( $args['preview_size'] !== 'thumbnail' ) ? $this->value['url'] : $this->value['thumbnail'];
       $hidden_url  = ( empty( $args['url'] ) ) ? ' hidden' : '';
       $hidden_auto = ( empty( $this->value['url'] ) ) ? ' hidden' : '';
-      $placeholder = ( empty( $this->field['placeholder'] ) ) ? ' placeholder="'.  esc_html__( 'No media selected', 'kemet-addons' ) .'"' : '';
+      $placeholder = ( empty( $this->field['placeholder'] ) ) ? ' placeholder="'.  esc_html__( 'No media selected', 'kfw' ) .'"' : '';
 
       echo $this->field_before();
 

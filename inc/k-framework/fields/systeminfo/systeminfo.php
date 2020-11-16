@@ -126,7 +126,7 @@ if ( ! class_exists( 'KFW_Field_systeminfo' ) ) {
                     <?php
                     $time_limit = ini_get('max_execution_time'); 
                     if ( $time_limit < 60 && $time_limit != 0 ) {
-                        echo '<mark>' . sprintf( __( '%s - We recommend setting max execution time at least 60. </mark> See:<a href="%2$s" target="_blank">Increasing max execution to PHP</a>', 'kemet-addonss' ), $time_limit, 'https://kemet.io/docs/increase-maximum-execution-time-on-wordpress/' );
+                        echo '<mark>' . sprintf( __( '%s - We recommend setting max execution time at least 60. </mark> See:<a href="%2$s" target="_blank">Increasing max execution to PHP</a>', 'kfw' ), $time_limit, 'https://kemet.io/docs/increase-maximum-execution-time-on-wordpress/' );
                     } else {
                         echo $time_limit;
                     }

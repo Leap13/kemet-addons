@@ -32,7 +32,7 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
         'background_image_preview'      => true,
         'background_auto_attributes'    => false,
         'background_image_library'      => 'image',
-        'background_image_placeholder'  => esc_html__( 'No background selected', 'kemet-addons' ),
+        'background_image_placeholder'  => esc_html__( 'No background selected', 'kfw' ),
       ) );
 
       $default_value                    = array(
@@ -63,7 +63,7 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
 
         echo '<div class="kfw--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="kfw--title">'. esc_html__( 'From', 'kemet-addons' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="kfw--title">'. esc_html__( 'From', 'kfw' ) .'</div>' : '';
 
         KFW::field( array(
           'id'      => 'background-color',
@@ -81,7 +81,7 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
 
         echo '<div class="kfw--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="kfw--title">'. esc_html__( 'To', 'kemet-addons' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="kfw--title">'. esc_html__( 'To', 'kfw' ) .'</div>' : '';
 
         KFW::field( array(
           'id'      => 'background-gradient-color',
@@ -99,17 +99,17 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
 
         echo '<div class="kfw--color">';
 
-        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="kfw---title">'. esc_html__( 'Direction', 'kemet-addons' ) .'</div>' : '';
+        echo ( ! empty( $args['background_gradient'] ) ) ? '<div class="kfw---title">'. esc_html__( 'Direction', 'kfw' ) .'</div>' : '';
 
         KFW::field( array(
           'id'          => 'background-gradient-direction',
           'type'        => 'select',
           'options'     => array(
-            ''          => esc_html__( 'Gradient Direction', 'kemet-addons' ),
-            'to bottom' => esc_html__( '&#8659; top to bottom', 'kemet-addons' ),
-            'to right'  => esc_html__( '&#8658; left to right', 'kemet-addons' ),
-            '135deg'    => esc_html__( '&#8664; corner top to right', 'kemet-addons' ),
-            '-135deg'   => esc_html__( '&#8665; corner top to left', 'kemet-addons' ),
+            ''          => esc_html__( 'Gradient Direction', 'kfw' ),
+            'to bottom' => esc_html__( '&#8659; top to bottom', 'kfw' ),
+            'to right'  => esc_html__( '&#8658; left to right', 'kfw' ),
+            '135deg'    => esc_html__( '&#8664; corner top to right', 'kfw' ),
+            '-135deg'   => esc_html__( '&#8665; corner top to left', 'kfw' ),
           ),
         ), $this->value['background-gradient-direction'], $this->field_name(), 'field/background' );
 
@@ -152,16 +152,16 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'              => 'background-position',
           'type'            => 'select',
           'options'         => array(
-            ''              => esc_html__( 'Background Position', 'kemet-addons' ),
-            'left top'      => esc_html__( 'Left Top', 'kemet-addons' ),
-            'left center'   => esc_html__( 'Left Center', 'kemet-addons' ),
-            'left bottom'   => esc_html__( 'Left Bottom', 'kemet-addons' ),
-            'center top'    => esc_html__( 'Center Top', 'kemet-addons' ),
-            'center center' => esc_html__( 'Center Center', 'kemet-addons' ),
-            'center bottom' => esc_html__( 'Center Bottom', 'kemet-addons' ),
-            'right top'     => esc_html__( 'Right Top', 'kemet-addons' ),
-            'right center'  => esc_html__( 'Right Center', 'kemet-addons' ),
-            'right bottom'  => esc_html__( 'Right Bottom', 'kemet-addons' ),
+            ''              => esc_html__( 'Background Position', 'kfw' ),
+            'left top'      => esc_html__( 'Left Top', 'kfw' ),
+            'left center'   => esc_html__( 'Left Center', 'kfw' ),
+            'left bottom'   => esc_html__( 'Left Bottom', 'kfw' ),
+            'center top'    => esc_html__( 'Center Top', 'kfw' ),
+            'center center' => esc_html__( 'Center Center', 'kfw' ),
+            'center bottom' => esc_html__( 'Center Bottom', 'kfw' ),
+            'right top'     => esc_html__( 'Right Top', 'kfw' ),
+            'right center'  => esc_html__( 'Right Center', 'kfw' ),
+            'right bottom'  => esc_html__( 'Right Bottom', 'kfw' ),
           ),
         ), $this->value['background-position'], $this->field_name(), 'field/background' );
 
@@ -175,11 +175,11 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'          => 'background-repeat',
           'type'        => 'select',
           'options'     => array(
-            ''          => esc_html__( 'Background Repeat', 'kemet-addons' ),
-            'repeat'    => esc_html__( 'Repeat', 'kemet-addons' ),
-            'no-repeat' => esc_html__( 'No Repeat', 'kemet-addons' ),
-            'repeat-x'  => esc_html__( 'Repeat Horizontally', 'kemet-addons' ),
-            'repeat-y'  => esc_html__( 'Repeat Vertically', 'kemet-addons' ),
+            ''          => esc_html__( 'Background Repeat', 'kfw' ),
+            'repeat'    => esc_html__( 'Repeat', 'kfw' ),
+            'no-repeat' => esc_html__( 'No Repeat', 'kfw' ),
+            'repeat-x'  => esc_html__( 'Repeat Horizontally', 'kfw' ),
+            'repeat-y'  => esc_html__( 'Repeat Vertically', 'kfw' ),
           ),
         ), $this->value['background-repeat'], $this->field_name(), 'field/background' );
 
@@ -193,9 +193,9 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'       => 'background-attachment',
           'type'     => 'select',
           'options'  => array(
-            ''       => esc_html__( 'Background Attachment', 'kemet-addons' ),
-            'scroll' => esc_html__( 'Scroll', 'kemet-addons' ),
-            'fixed'  => esc_html__( 'Fixed', 'kemet-addons' ),
+            ''       => esc_html__( 'Background Attachment', 'kfw' ),
+            'scroll' => esc_html__( 'Scroll', 'kfw' ),
+            'fixed'  => esc_html__( 'Fixed', 'kfw' ),
           ),
         ), $this->value['background-attachment'], $this->field_name(), 'field/background' );
 
@@ -209,10 +209,10 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'        => 'background-size',
           'type'      => 'select',
           'options'   => array(
-            ''        => esc_html__( 'Background Size', 'kemet-addons' ),
-            'cover'   => esc_html__( 'Cover', 'kemet-addons' ),
-            'contain' => esc_html__( 'Contain', 'kemet-addons' ),
-            'auto'    => esc_html__( 'Auto', 'kemet-addons' ),
+            ''        => esc_html__( 'Background Size', 'kfw' ),
+            'cover'   => esc_html__( 'Cover', 'kfw' ),
+            'contain' => esc_html__( 'Contain', 'kfw' ),
+            'auto'    => esc_html__( 'Auto', 'kfw' ),
           ),
         ), $this->value['background-size'], $this->field_name(), 'field/background' );
 
@@ -226,10 +226,10 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'            => 'background-origin',
           'type'          => 'select',
           'options'       => array(
-            ''            => esc_html__( 'Background Origin', 'kemet-addons' ),
-            'padding-box' => esc_html__( 'Padding Box', 'kemet-addons' ),
-            'border-box'  => esc_html__( 'Border Box', 'kemet-addons' ),
-            'content-box' => esc_html__( 'Content Box', 'kemet-addons' ),
+            ''            => esc_html__( 'Background Origin', 'kfw' ),
+            'padding-box' => esc_html__( 'Padding Box', 'kfw' ),
+            'border-box'  => esc_html__( 'Border Box', 'kfw' ),
+            'content-box' => esc_html__( 'Content Box', 'kfw' ),
           ),
         ), $this->value['background-origin'], $this->field_name(), 'field/background' );
 
@@ -243,10 +243,10 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'            => 'background-clip',
           'type'          => 'select',
           'options'       => array(
-            ''            => esc_html__( 'Background Clip', 'kemet-addons' ),
-            'border-box'  => esc_html__( 'Border Box', 'kemet-addons' ),
-            'padding-box' => esc_html__( 'Padding Box', 'kemet-addons' ),
-            'content-box' => esc_html__( 'Content Box', 'kemet-addons' ),
+            ''            => esc_html__( 'Background Clip', 'kfw' ),
+            'border-box'  => esc_html__( 'Border Box', 'kfw' ),
+            'padding-box' => esc_html__( 'Padding Box', 'kfw' ),
+            'content-box' => esc_html__( 'Content Box', 'kfw' ),
           ),
         ), $this->value['background-clip'], $this->field_name(), 'field/background' );
 
@@ -260,17 +260,17 @@ if ( ! class_exists( 'KFW_Field_background' ) ) {
           'id'            => 'background-blend-mode',
           'type'          => 'select',
           'options'       => array(
-            ''            => esc_html__( 'Background Blend Mode', 'kemet-addons' ),
-            'normal'      => esc_html__( 'Normal', 'kemet-addons' ),
-            'multiply'    => esc_html__( 'Multiply', 'kemet-addons' ),
-            'screen'      => esc_html__( 'Screen', 'kemet-addons' ),
-            'overlay'     => esc_html__( 'Overlay', 'kemet-addons' ),
-            'darken'      => esc_html__( 'Darken', 'kemet-addons' ),
-            'lighten'     => esc_html__( 'Lighten', 'kemet-addons' ),
-            'color-dodge' => esc_html__( 'Color Dodge', 'kemet-addons' ),
-            'saturation'  => esc_html__( 'Saturation', 'kemet-addons' ),
-            'color'       => esc_html__( 'Color', 'kemet-addons' ),
-            'luminosity'  => esc_html__( 'Luminosity', 'kemet-addons' ),
+            ''            => esc_html__( 'Background Blend Mode', 'kfw' ),
+            'normal'      => esc_html__( 'Normal', 'kfw' ),
+            'multiply'    => esc_html__( 'Multiply', 'kfw' ),
+            'screen'      => esc_html__( 'Screen', 'kfw' ),
+            'overlay'     => esc_html__( 'Overlay', 'kfw' ),
+            'darken'      => esc_html__( 'Darken', 'kfw' ),
+            'lighten'     => esc_html__( 'Lighten', 'kfw' ),
+            'color-dodge' => esc_html__( 'Color Dodge', 'kfw' ),
+            'saturation'  => esc_html__( 'Saturation', 'kfw' ),
+            'color'       => esc_html__( 'Color', 'kfw' ),
+            'luminosity'  => esc_html__( 'Luminosity', 'kfw' ),
           ),
         ), $this->value['background-blend-mode'], $this->field_name(), 'field/background' );
 
