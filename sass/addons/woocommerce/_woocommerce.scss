@@ -191,7 +191,8 @@ Woo Quick View
   }
 }
 .woocommerce .products .product-inner:hover .kmt-quick-view,
-.woocommerce-page .products .product-inner:hover .kmt-quick-view {
+.woocommerce-page .products .product-inner:hover .kmt-quick-view,
+.products .product-inner:hover .kmt-quick-view {
   opacity: 1;
   visibility: visible;
 }
@@ -508,6 +509,7 @@ Woo Quick View
   }
 }
 /************ Shop ************/
+body,
 .woocommerce,
 .woocommerce-page {
   &.hover-style {
@@ -613,6 +615,7 @@ Woo Quick View
     }
   }
 }
+body,
 .woocommerce,
 .woocommerce-page {
   .product {
@@ -668,6 +671,7 @@ Woo Quick View
     transform: rotate(360deg);
   }
 }
+body,
 .woocommerce,
 .woocommerce-page {
   &.shop-list {
