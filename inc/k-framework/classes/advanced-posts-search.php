@@ -1,11 +1,13 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if (! defined('ABSPATH')) {
+    die;
+} // Cannot access directly.
 /**
  *
  *
  */
 if (! class_exists('Kemet_Advanced_Posts_Search')) {
-    class Kemet_Advanced_Posts_Search{
-
+    class Kemet_Advanced_Posts_Search
+    {
         private static $instance;
         /**
          * Initiator
@@ -21,10 +23,11 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
         /**
          *  Constructor
          */
-        public function __construct() {
-            add_action( 'wp_ajax_kemet_ajax_get_posts_list', array( $this, 'kemet_ajax_get_posts_list' ) );
-            add_action( 'wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ) );
-            add_action( 'admin_enqueue_scripts',  array($this, 'admin_script' ) );
+        public function __construct()
+        {
+            add_action('wp_ajax_kemet_ajax_get_posts_list', array( $this, 'kemet_ajax_get_posts_list' ));
+            add_action('wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ));
+            add_action('admin_enqueue_scripts', array($this, 'admin_script' ));
         }
 
         /**
@@ -32,11 +35,11 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
          * When searching for the post/pages only titles are searched for.
          *
          */
-        public function kemet_ajax_get_posts_list() {
+        public function kemet_ajax_get_posts_list()
+        {
+            check_ajax_referer('kemet-addons-ajax-get-post', 'nonce');
 
-            check_ajax_referer( 'kemet-addons-ajax-get-post', 'nonce' );
-
-            $search_query = isset( $_POST['query'] ) ? sanitize_text_field( $_POST['query'] ) : ''; 
+            $search_query = isset($_POST['query']) ? sanitize_text_field($_POST['query']) : '';
             $data          = array();
             $result        = array();
 
@@ -48,16 +51,15 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
             $output = 'names'; // 'names' or 'objects' (default: 'names')
             $operator = 'and'; // 'and' or 'or' (default: 'and')
             
-            $post_types = get_post_types( $args, $output, $operator );
+            $post_types = get_post_types($args, $output, $operator);
 
             $post_types['Posts'] = 'post';
             $post_types['Pages'] = 'page';
 
-            foreach ( $post_types as $key => $post_type ) {
-
+            foreach ($post_types as $key => $post_type) {
                 $data = array();
 
-                add_filter( 'posts_search', array( $this, '__search_by_title_only' ), 500, 2 );
+                add_filter('posts_search', array( $this, '__search_by_title_only' ), 500, 2);
 
                 $query = new WP_Query(
                     array(
@@ -67,11 +69,11 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                     )
                 );
 
-                if ( $query->have_posts() ) {
-                    while ( $query->have_posts() ) {
+                if ($query->have_posts()) {
+                    while ($query->have_posts()) {
                         $query->the_post();
                         $title  = get_the_title();
-                        $title .= ( 0 != $query->post->post_parent ) ? ' (' . get_the_title( $query->post->post_parent ) . ')' : '';
+                        $title .= (0 != $query->post->post_parent) ? ' (' . get_the_title($query->post->post_parent) . ')' : '';
                         $id     = get_the_id();
                         $data[] = array(
                             'id'   => 'post-' . $id,
@@ -79,7 +81,7 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                         );
                     }
                 }
-                if ( is_array( $data ) && ! empty( $data ) ) {
+                if (is_array($data) && ! empty($data)) {
                     $result[] = array(
                         'text'     => $key,
                         'children' => $data,
@@ -97,9 +99,9 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
 
             $output     = 'objects'; // names or objects, note names is the default.
             $operator   = 'and'; // also supports 'or'.
-            $taxonomies = get_taxonomies( $args, $output, $operator );
+            $taxonomies = get_taxonomies($args, $output, $operator);
 
-            foreach ( $taxonomies as $taxonomy ) {
+            foreach ($taxonomies as $taxonomy) {
                 $terms = get_terms(
                     $taxonomy->name,
                     array(
@@ -111,13 +113,11 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
 
                 $data = array();
 
-                $label = ucwords( $taxonomy->label );
+                $label = ucwords($taxonomy->label);
 
-                if ( ! empty( $terms ) ) {
-
-                    foreach ( $terms as $term ) {
-
-                        $term_taxonomy_name = ucfirst( str_replace( '_', ' ', $taxonomy->name ) );
+                if (! empty($terms)) {
+                    foreach ($terms as $term) {
+                        $term_taxonomy_name = ucfirst(str_replace('_', ' ', $taxonomy->name));
 
                         $data[] = array(
                             'id'   => 'tax-' . $term->term_id,
@@ -128,11 +128,10 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                             'id'   => 'tax-' . $term->term_id . '-single-' . $taxonomy->name,
                             'text' => 'All singulars from ' . $term->name,
                         );
-
                     }
                 }
 
-                if ( is_array( $data ) && ! empty( $data ) ) {
+                if (is_array($data) && ! empty($data)) {
                     $result[] = array(
                         'text'     => $label,
                         'children' => $data,
@@ -141,7 +140,7 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
             }
 
             // return the result in json.
-            wp_send_json( $result );
+            wp_send_json($result);
         }
 
         /**
@@ -151,10 +150,10 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
          *
          * @return (string) The Modified Search SQL for WHERE clause.
          */
-        function __search_by_title_only( $search,$wp_query )
+        public function __search_by_title_only($search, $wp_query)
         {
             global $wpdb;
-            if(empty($search)) {
+            if (empty($search)) {
                 return $search; // skip processing - no search term in query
             }
             $q = $wp_query->query_vars;
@@ -168,40 +167,39 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
             }
             if (!empty($search)) {
                 $search = " AND ({$search}) ";
-                if (!is_user_logged_in())
+                if (!is_user_logged_in()) {
                     $search .= " AND ($wpdb->posts.post_password = '') ";
+                }
             }
             return $search;
         }
 
-        function ajax_get_post_title(){
-
-			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
-			
-			$post_id = isset( $_POST['post_id'] ) ? explode("-", $_POST['post_id'])[1] : ''; 
-			if(!empty($post_id)){
-				$name = !empty(get_the_title( $post_id )) ? get_the_title( $post_id ) : get_term( $post_id )->name  ;
-				echo $name;
-			}
-			wp_die();
+        public function ajax_get_post_title()
+        {
+            check_ajax_referer('kemet-addons-ajax-get-title', 'nonce');
+            
+            $post_id = isset($_POST['post_id']) ? explode("-", $_POST['post_id'])[1] : '';
+            if (!empty($post_id)) {
+                $name = !empty(get_the_title($post_id)) ? get_the_title($post_id) : get_term($post_id)->name  ;
+                echo $name;
+            }
+            wp_die();
         }
         
         public function admin_script()
         {
-
             $js_prefix  = '.min.js';
-			$css_prefix  = '.min.css';
-			if ( SCRIPT_DEBUG ) {
-				$js_prefix  = '.js';
-				$css_prefix  = '.css';
+            $css_prefix  = '.min.css';
+            if (SCRIPT_DEBUG) {
+                $js_prefix  = '.js';
+                $css_prefix  = '.css';
             }
             
-            wp_enqueue_script( 'kemet-addons-select2', KFW::include_plugin_url( 'assets/js/select2' . $js_prefix), array( 'jquery' ), KEMET_ADDONS_VERSION, true );
+            wp_enqueue_script('kemet-addons-select2', KFW::include_plugin_url('assets/js/select2' . $js_prefix), array( 'jquery' ), KEMET_ADDONS_VERSION, true);
 
             $wordpress_lang  = get_locale();
             $lang = '';
-            if ( '' !== $wordpress_lang ) {
-
+            if ('' !== $wordpress_lang) {
                 $select2_lang = array(
                     ''               => 'en',
                     'hi_IN'          => 'hi',
@@ -317,12 +315,11 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                     'zh_HK'          => 'zh',
                 );
 
-                if ( isset( $select2_lang[ $wordpress_lang ] ) && file_exists( KFW::include_plugin_url( 'assets/js/i18n/' . $select2_lang[ $wordpress_lang ] . '.js') ) ) {
-
+                if (isset($select2_lang[ $wordpress_lang ]) && file_exists(KFW::include_plugin_url('assets/js/i18n/' . $select2_lang[ $wordpress_lang ] . '.js'))) {
                     $ast_lang = $select2_lang[ $wordpress_lang ];
                     wp_enqueue_script(
                         'kemet-addons-select2-lang',
-                        KEMET_CUSTOM_LAYOUT_URL . 'assets/js/minified/i18n/' . $select2_lang[ $wordpress_lang ] . '.js',
+                        KFW::include_plugin_url('assets/js/i18n/' . $select2_lang[ $wordpress_lang ] . '.js'),
                         array(
                             'jquery',
                             'kemet-addons-select2',
@@ -333,13 +330,16 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                 }
             }
 
-            wp_enqueue_style( 'kemet-addons-select2', KFW::include_plugin_url( 'assets/css/select2' . $css_prefix ), KEMET_ADDONS_VERSION );
+            wp_enqueue_style('kemet-addons-select2', KFW::include_plugin_url('assets/css/select2' . $css_prefix), KEMET_ADDONS_VERSION);
 
             wp_localize_script(
-                'kemet-addons-select2', 'kemetAddons', apply_filters(
-                'kemet_addons_admin_js_localize', array(
+                'kemet-addons-select2',
+                'kemetAddons',
+                apply_filters(
+                    'kemet_addons_admin_js_localize',
+                    array(
                     'lang'      => $lang,
-                    'search'        => __( 'Search pages / post / categories', 'kemet-addons' ),
+                    'search'        => __('Search pages / post / categories', 'kemet-addons'),
                     )
                 )
             );
