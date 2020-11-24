@@ -177,7 +177,7 @@ class Kemet_Breadcrumb_Trail {
 				// Wrap the item with its itemprop.
 				$item = ! empty( $matches )
 					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemtype="http://schema.org/Thing" itemprop=$2item$2>', $item )
-					: sprintf( '<span itemprop="item">%s</span>', $item );
+					: sprintf( '%s', $item );
 				// Add list item classes.
 				$item_class = 'trail-item';
 				if ( 1 === $item_position && 1 < $item_count )
@@ -195,7 +195,7 @@ class Kemet_Breadcrumb_Trail {
 				// Build the meta position HTML.
 				$meta = sprintf( '<meta itemprop="position" content="%s" />', absint( $item_position ) );
 				// Build the list item.
-				$breadcrumb .= sprintf( '<%1$s %2$s>%3$s%4$s</%1$s>', tag_escape( $this->args['item_tag'] ),$attributes, $item, $sep, $meta );
+				$breadcrumb .= sprintf( '<li %s>%s%s%s</li>', $attributes, $item, $sep, $meta );
 			}
 			// Close the unordered list.
             $breadcrumb .= sprintf( '</%s>', tag_escape( $this->args['list_tag'] ) );
