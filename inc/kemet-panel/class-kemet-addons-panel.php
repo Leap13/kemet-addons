@@ -254,6 +254,12 @@ if (! class_exists('Kemet_Panel')) {
                 $css_prefix  = '.css';
                 $dir        = 'unminified';
             }
+            if (is_rtl()) {
+                $css_prefix = '-rtl.min.css';
+                if (SCRIPT_DEBUG) {
+                    $css_prefix = '-rtl.css';
+                }
+            }
             wp_enqueue_style('kemet-panel-css', KEMET_PANEL_URL . 'assets/css/' . $dir . '/kemet-panel' . $css_prefix, false, KEMET_ADDONS_VERSION);
             if ('toplevel_page_kemet_panel' != $hook) {
                 return;
