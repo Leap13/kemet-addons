@@ -5,8 +5,8 @@
  *
  *
  */
-if (! class_exists('Kemet_Advanced_Posts_Search')) {
-    class Kemet_Advanced_Posts_Search
+if (! class_exists('Kemet_Addons_Advanced_Posts_Search')) {
+    class Kemet_Addons_Advanced_Posts_Search
     {
         private static $instance;
         /**
@@ -186,16 +186,21 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
             wp_die();
         }
         
-        public function admin_script()
+        public function admin_script($hook)
         {
+            if ('nav-menus.php' != $hook && 'post.php' != $hook) {
+                return;
+            }
             $js_prefix  = '.min.js';
             $css_prefix  = '.min.css';
+            $dir        = 'minified';
             if (SCRIPT_DEBUG) {
                 $js_prefix  = '.js';
                 $css_prefix  = '.css';
+                $dir        = 'unminified';
             }
             
-            wp_enqueue_script('kemet-addons-select2', KFW::include_plugin_url('assets/js/select2' . $js_prefix), array( 'jquery' ), KEMET_ADDONS_VERSION, true);
+            wp_enqueue_script('kemet-addons-select2', KEMET_COMPATIBLITY_URL . 'assets/js/'  . $dir .  '/select2' . $js_prefix, array( 'jquery' ), KEMET_ADDONS_VERSION, true);
 
             $wordpress_lang  = get_locale();
             $lang = '';
@@ -315,11 +320,11 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                     'zh_HK'          => 'zh',
                 );
 
-                if (isset($select2_lang[ $wordpress_lang ]) && file_exists(KFW::include_plugin_url('assets/js/i18n/' . $select2_lang[ $wordpress_lang ] . '.js'))) {
+                if (isset($select2_lang[ $wordpress_lang ]) && file_exists(KEMET_COMPATIBLITY_URL . 'assets/js/' . $dir . '/' . 'i18n/' . $select2_lang[ $wordpress_lang ] . '.js')) {
                     $ast_lang = $select2_lang[ $wordpress_lang ];
                     wp_enqueue_script(
                         'kemet-addons-select2-lang',
-                        KFW::include_plugin_url('assets/js/i18n/' . $select2_lang[ $wordpress_lang ] . '.js'),
+                        KEMET_COMPATIBLITY_URL . 'assets/js/' . $dir . '/' . 'i18n/' . $select2_lang[ $wordpress_lang ] . '.js',
                         array(
                             'jquery',
                             'kemet-addons-select2',
@@ -330,7 +335,7 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
                 }
             }
 
-            wp_enqueue_style('kemet-addons-select2', KFW::include_plugin_url('assets/css/select2' . $css_prefix), KEMET_ADDONS_VERSION);
+            wp_enqueue_style('kemet-addons-select2', KEMET_COMPATIBLITY_URL . 'assets/css/'. $dir .'/select2' . $css_prefix, KEMET_ADDONS_VERSION);
 
             wp_localize_script(
                 'kemet-addons-select2',
@@ -346,4 +351,4 @@ if (! class_exists('Kemet_Advanced_Posts_Search')) {
         }
     }
 }
-Kemet_Advanced_Posts_Search::get_instance();
+Kemet_Addons_Advanced_Posts_Search::get_instance();

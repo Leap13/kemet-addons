@@ -15,25 +15,26 @@
  * @param   string  $default_path           Default path to template files.
  * @return  string                          Path to the template file.
  */
-function kemetaddons_locate_template( $template_name, $template_path = '', $default_path = '' ) {
-  // Set variable to search in the templates folder of theme.
-  if ( ! $template_path ) :
+function kemetaddons_locate_template($template_name, $template_path = '', $default_path = '')
+{
+    // Set variable to search in the templates folder of theme.
+    if (! $template_path) :
     $template_path = KEMET_ADDONS_DIR . 'addons/';
-  endif;
-  // Set default plugin templates path.
-  if ( ! $default_path ) :
+    endif;
+    // Set default plugin templates path.
+    if (! $default_path) :
     $default_path = KEMET_ADDONS_DIR . 'addons/'; // Path to the template folder
-  endif;
-  // Search template file in theme folder.
-  $template = locate_template( array(
+    endif;
+    // Search template file in theme folder.
+    $template = locate_template(array(
     $template_path . $template_name,
     $template_name
-  ) );
-  // Get plugins template file.
-  if ( ! $template ) :
+  ));
+    // Get plugins template file.
+    if (! $template) :
     $template = $default_path . $template_name;
-  endif;
-  return apply_filters( 'kemetaddons_locate_template', $template, $template_name, $template_path, $default_path );
+    endif;
+    return apply_filters('kemetaddons_locate_template', $template, $template_name, $template_path, $default_path);
 }
 
 /**
@@ -50,16 +51,17 @@ function kemetaddons_locate_template( $template_name, $template_path = '', $defa
  * @param string  $string $template_path  Path to templates.
  * @param string  $default_path           Default path to template files.
  */
-function kemetaddons_get_template( $template_name, $args = array(), $tempate_path = '', $default_path = '' ) {
-  if ( is_array( $args ) && isset( $args ) ) :
-    extract( $args );
-  endif;
-  $template_file = kemetaddons_locate_template( $template_name, $tempate_path, $default_path );
-  if ( ! file_exists( $template_file ) ) :
-    _doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $template_file ), '1.0.0' );
+function kemetaddons_get_template($template_name, $args = array(), $tempate_path = '', $default_path = '')
+{
+    if (is_array($args) && isset($args)) :
+    extract($args);
+    endif;
+    $template_file = kemetaddons_locate_template($template_name, $tempate_path, $default_path);
+    if (! file_exists($template_file)) :
+    _doing_it_wrong(__FUNCTION__, sprintf('<code>%s</code> does not exist.', $template_file), '1.0.0');
     return;
-  endif;
-  include $template_file;
+    endif;
+    include $template_file;
 }
 
 
@@ -67,9 +69,10 @@ function kemetaddons_get_template( $template_name, $args = array(), $tempate_pat
 * Get Panel Option
 *
 */
-if ( ! function_exists( 'kmt_get_panel_option' ) ) {
-  function kmt_get_panel_option( $option = '', $default = null ) {
-    $options = get_option( 'kmt_framework' ); // Attention: Set your unique id of the framework
-    return ( isset( $options[$option] ) ) ? $options[$option] : $default;
-  }
+if (! function_exists('kemet_get_integration')) {
+    function kemet_get_integration($option = '', $default = null)
+    {
+        $options = get_option('kemet_addons_integration'); // Attention: Set your unique id of the framework
+        return (isset($options[$option])) ? $options[$option] : $default;
+    }
 }

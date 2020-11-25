@@ -69,7 +69,7 @@ if( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
             $align = 'margin: auto';
             break;    
      }
-     $list = kmt_get_panel_option('kmt-mailchimp-list-id');
+     $list = kemet_get_integration('kmt-mailchimp-list-id');
 
     $output = "";
     $output .='<div class="mailchimp-form">';

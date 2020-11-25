@@ -89,6 +89,13 @@ module.exports = function (grunt) {
             dest: "addons/mega-menu/assets/css/unminified",
             ext: "-rtl.css",
           },
+          {
+            expand: true,
+            cwd: "inc/kemet-panel/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "inc/kemet-panel/assets/css/unminified",
+            ext: "-rtl.css",
+          },
         ],
       },
     },
@@ -130,6 +137,8 @@ module.exports = function (grunt) {
               "sass/custom-layout.scss",
             "addons/mega-menu/assets/css/unminified/style.css":
               "sass/mega-menu.scss",
+            "inc/kemet-panel/assets/css/unminified/kemet-panel.css":
+              "sass/kemet-panel.scss",
           },
 
           {
@@ -236,6 +245,10 @@ module.exports = function (grunt) {
             dest: "inc/k-framework/assets/css/kfw.min.css",
           },
           {
+            src: "inc/k-framework/assets/css/kfw-rtl.css",
+            dest: "inc/k-framework/assets/css/kfw-rtl.min.css",
+          },
+          {
             src: "addons/custom-layout/assets/css/unminified/style.css",
             dest: "addons/custom-layout/assets/css/minified/style.min.css",
           },
@@ -250,6 +263,14 @@ module.exports = function (grunt) {
           {
             src: "addons/mega-menu/assets/css/unminified/style-rtl.css",
             dest: "addons/mega-menu/assets/css/minified/style-rtl.min.css",
+          },
+          {
+            src: "inc/kemet-panel/assets/css/unminified/kemet-panel.css",
+            dest: "inc/kemet-panel/assets/css/minified/kemet-panel.min.css",
+          },
+          {
+            src: "inc/kemet-panel/assets/css/unminified/kemet-panel-rtl.css",
+            dest: "inc/kemet-panel/assets/css/minified/kemet-panel-rtl.min.css",
           },
         ],
       },
@@ -293,14 +314,14 @@ module.exports = function (grunt) {
             "addons/woocommerce/assets/js/unminified/woocommerce.js",
           "addons/custom-layout/assets/js/minified/custom-layout.min.js":
             "addons/custom-layout/assets/js/unminified/custom-layout.js",
-          "inc/k-framework/assets/js/kfw-custom-fields.min.js":
-            "inc/k-framework/assets/js/kfw-custom-fields.js",
           "addons/mega-menu/assets/js/minified/mega-menu.min.js":
             "addons/mega-menu/assets/js/unminified/mega-menu.js",
           "addons/mega-menu/assets/js/minified/mega-menu-backend.min.js":
             "addons/mega-menu/assets/js/unminified/mega-menu-backend.js",
           "inc/k-framework/assets/js/kfw.min.js":
             "inc/k-framework/assets/js/kfw.js",
+          "inc/kemet-panel/assets/js/minified/kemet-panel.min.js":
+            "inc/kemet-panel/assets/js/unminified/kemet-panel.js",
         },
       },
     },
@@ -391,6 +412,13 @@ module.exports = function (grunt) {
             cwd: "addons/mega-menu/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/mega-menu/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "inc/kemet-panel/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "inc/kemet-panel/assets/css/unminified",
             ext: "-rtl.css",
           },
         ],

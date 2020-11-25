@@ -263,7 +263,7 @@ if (! class_exists('KFW')) {
             global $wp_version;
       
             // check for developer mode
-            $min = (apply_filters('kfw_dev_mode', false) || WP_DEBUG) ? '' : '.min';
+            $min = (apply_filters('kfw_dev_mode', false) || SCRIPT_DEBUG) ? '' : '.min';
 
             // admin utilities
             wp_enqueue_media();
@@ -273,13 +273,13 @@ if (! class_exists('KFW')) {
             wp_enqueue_script('wp-color-picker');
 
             /*
-                  * This is only needed in WordPress version >= 5.5 because wpColorPickerL10n has been removed.
-                  *
-                  * @see https://github.com/WordPress/WordPress/commit/7e7b70cd1ae5772229abb769d0823411112c748b
-                  *
-                  * This is should be removed once the issue is fixed from wp-color-picker-alpha repo.
-                  * @see https://github.com/kallookoo/wp-color-picker-alpha/issues/35
-                  */
+             * This is only needed in WordPress version >= 5.5 because wpColorPickerL10n has been removed.
+             *
+             * @see https://github.com/WordPress/WordPress/commit/7e7b70cd1ae5772229abb769d0823411112c748b
+             *
+             * This is should be removed once the issue is fixed from wp-color-picker-alpha repo.
+             * @see https://github.com/kallookoo/wp-color-picker-alpha/issues/35
+             */
             if (version_compare($wp_version, '5.4.99', '>=')) {
                 wp_localize_script(
                     'wp-color-picker',
@@ -309,10 +309,6 @@ if (! class_exists('KFW')) {
             // framework core scripts
             wp_enqueue_script('kfw-plugins', KFW::include_plugin_url('assets/js/kfw-plugins'. $min .'.js'), array(), '1.0.0', true);
             wp_enqueue_script('kfw', KFW::include_plugin_url('assets/js/kfw'. $min .'.js'), array( 'kfw-plugins' ), '1.0.0', true);
-
-            //Plugins Install / Activate / Deactivate
-            wp_enqueue_script('kfw-custom-fields', KFW::include_plugin_url('assets/js/kfw-custom-fields'. $min .'.js'), array(), '1.0.0', true);
-            wp_enqueue_script('kfw', KFW::include_plugin_url('assets/js/kfw'. $min .'.js'), array( 'kfw-custom-fields' ), '1.0.0', true);
 
             wp_localize_script('kfw', 'kfw_vars', array(
         'color_palette'  => apply_filters('kfw_color_palette', array()),
