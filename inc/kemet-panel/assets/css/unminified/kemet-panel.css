@@ -232,7 +232,7 @@
   .kmt-plugins-container .kmt-card {
     width: 100%;
   }
-  .kmt-plugins-container .kmt-card .kmt-plugins-container h2 {
+  .kmt-plugins-container .kmt-card h2 {
     font-size: 20px;
   }
   .kmt-plugins-container .kmt-card-body .plugin-description {
@@ -247,7 +247,7 @@
   .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description {
     font-size: 10px;
   }
-  .kmt-plugins-container .kmt-card .kmt-card-body .kmt-plugins-container h2 {
+  .kmt-plugins-container .kmt-card .kmt-card-body h2 {
     font-size: 20px;
   }
 }
