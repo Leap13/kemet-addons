@@ -49,6 +49,7 @@ if (! class_exists('Kemet_Panel')) {
             add_action('wp_ajax_kemet-panel-save-options', array($this , 'save_options'));
             add_action('wp_ajax_kemet-panel-reset-options', array($this , 'reset_options'));
             add_action('wp_ajax_kemet-panel-enable-all', array($this , 'enable_all_options'));
+            add_action('wp_ajax_kemet-addons-plugin-activate', array($this , 'activate_plugin'));
             add_action('admin_menu', array($this , 'register_custom_menu_page'));
             add_action('admin_enqueue_scripts', array($this , 'enqueue_admin_script'));
             add_action('wp_loaded', array($this , 'set_default_options'));
@@ -196,6 +197,20 @@ if (! class_exists('Kemet_Panel')) {
                     break;
             }
             wp_send_json_error();
+        }
+        public function activate_plugin()
+        {
+            $plugin_path = (isset($_POST['path'])) ? esc_attr($_POST['path']) : $path;
+
+            wp_clean_plugins_cache();
+
+            $activate = activate_plugin($plugin_path, '', false, true);
+           
+            if (is_wp_error($activate)) {
+                wp_send_json_error();
+            } else {
+                wp_send_json_success();
+            }
         }
         /**
          * Get Defaults

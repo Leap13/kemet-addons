@@ -228,6 +228,10 @@
   padding: 10px 20px;
 }
 
+.kmt-plugins-container .kmt-card .kmt-plugin.button.updating-message::before {
+  color: #fff;
+}
+
 @media only screen and (max-width: 767px) {
   .kmt-plugins-container .kmt-card {
     width: 100%;

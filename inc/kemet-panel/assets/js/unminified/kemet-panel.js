@@ -5,6 +5,8 @@
       $(window).on("ready", kemetPanel.tabs());
       $(document).on("click", ".kemet-save-ajax", kemetPanel.saveOptions);
       $(document).on("click", ".kemet-reset-options", kemetPanel.resetOptions);
+      $(document).on("click", ".kmt-plugin", kemetPanel.plugin);
+      $(window).on("kemet-plugin-install-success", kemetPanel.activatePlugin);
       $(document).on(
         "click",
         ".kemet-enable-all-options",
@@ -14,6 +16,46 @@
       $(document).on("ready", kemetPanel.stickyFooter());
       $(window).on("scroll", kemetPanel.stickyFooter);
       $(window).on("kemet-tab-changed", kemetPanel.stickyFooter);
+    },
+    plugin: function () {
+      var pluginBtn = $(this),
+        status = pluginBtn.data("status");
+      $(this).addClass("updating-message");
+      switch (status) {
+        case "install":
+          var requestUrl = pluginBtn.data("url-install"),
+            text = "Installin";
+          break;
+        case "activate":
+          var requestUrl = pluginBtn.data("url-activate"),
+            text = "Activating";
+          break;
+        case "deactivate":
+          var requestUrl = pluginBtn.data("url-deactivate"),
+            text = "Deactivating";
+          break;
+      }
+      $.ajax({
+        url: requestUrl,
+        type: "GET",
+        beforeSend: function () {
+          pluginBtn.text(text);
+        },
+      }).done(function (result) {
+        if (status == "install") {
+          $.ajax({
+            url: pluginBtn.data("url-activate"),
+            type: "GET",
+            beforeSend: function () {
+              pluginBtn.text("Activating");
+            },
+          }).done(function (result) {
+            window.location.reload();
+          });
+        } else {
+          window.location.reload();
+        }
+      });
     },
     tabs: function () {
       var hash = window.location.hash.match(new RegExp("tab=([^&]*)"));

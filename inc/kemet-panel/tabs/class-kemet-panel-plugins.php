@@ -113,17 +113,17 @@ if (! class_exists('Kemet_Panel_plugins_Tab')) {
                     if (is_plugin_active($plugin_path)) {
                         $button_label = __('Deactivate ', 'kfw');
                         $status = 'deactivate';
-                        $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.'  data-url-deactivate = '.$deactivate_url.' onclick="plugin_action(event)" >' . $button_label . '</a>';
+                        $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.'  data-url-deactivate = '.$deactivate_url.' >' . $button_label . '</a>';
                     } else {
                         $button_label = __('Activate', 'kfw');
                         $status = 'activate';
-                        $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.'  data-url-activate = '.$activate_url.' onclick="plugin_action(event)" >' . $button_label . '</a>';
+                        $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.'  data-url-activate = '.$activate_url.' >' . $button_label . '</a>';
                     }
                 } else {
                     if (current_user_can('install_plugins')) {
                         $status = 'install';
                         $button_label = __('Install and Activate', 'kfw');
-                        $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.' data-url-install = '.$install_url.'  data-url-activate = '.$activate_url.' onclick="plugin_action(event)" >' . $button_label . '</a>';
+                        $button = '<a class="button button-primary kmt-plugin" data-status = '.$status.' data-url-install = '.$install_url.'  data-url-activate = '.$activate_url.' >' . $button_label . '</a>';
                     }
                 }
                 
