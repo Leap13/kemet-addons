@@ -90,9 +90,9 @@ if (! class_exists('Kemet_Panel_plugins_Tab')) {
             ); ?>
             <div class="kmt-plugins-container">
     <?php foreach ($plugins as $plugin) {
-                $plugin_description = $this->call_plugin_api($plugin)->short_description;
-                $plugin_banner = $this->call_plugin_api($plugin)->banners;
-                $plugin_name = $this->call_plugin_api($plugin)->name;
+                $plugin_description = isset($this->call_plugin_api($plugin)->short_description) ? $this->call_plugin_api($plugin)->short_description : '';
+                $plugin_banner = isset($this->call_plugin_api($plugin)->banners) ? $this->call_plugin_api($plugin)->banners : '';
+                $plugin_name = isset($this->call_plugin_api($plugin)->name) ? $this->call_plugin_api($plugin)->name : '';
                 $plugin_path = $plugin . '/'. $plugin . '.php'; ?>
         <div class="kmt-card">
             <div class="kmt-card-header">
