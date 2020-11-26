@@ -158,8 +158,8 @@
    */
   var customInputNum = function () {
     var quantity = $(
-      "div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)"
-    ),
+        "div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)"
+      ),
       quantityInput = quantity.find(".qty");
 
     if (
@@ -254,8 +254,8 @@
       noMoreMsg = $(".woo-infinite-scroll-end-msg"),
       toolBar = $(".kmt-toolbar .shop-list-style"),
       shop_infinite_nonce = kemet.shop_infinite_nonce || "";
-
-    if (kemet.woo_infinite_scroll_style == 'button') {
+    console.log(kemet.woo_infinite_scroll_style);
+    if (kemet.woo_infinite_scroll_style == "button") {
       loader.hide();
     }
     /**
@@ -315,8 +315,7 @@
         }
       }
 
-      if (kemet.woo_infinite_scroll_style == 'dots') {
-
+      if (kemet.woo_infinite_scroll_style == "dots") {
         if ($("#main").find(".product:last").length > 0) {
           var windowHeight = jQuery(window).outerHeight() / 1.25;
           $(window).scroll(function () {
@@ -336,7 +335,6 @@
             }
           });
         }
-
       } else {
         $(".woo-load-more-text").click(function () {
           if (counter > totalPages) {
