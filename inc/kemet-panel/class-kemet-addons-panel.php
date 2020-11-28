@@ -51,8 +51,25 @@ if (! class_exists('Kemet_Panel')) {
             add_action('wp_ajax_kemet-panel-enable-all', array($this , 'enable_all_options'));
             add_action('wp_ajax_kemet-addons-plugin-activate', array($this , 'activate_plugin'));
             add_action('admin_menu', array($this , 'register_custom_menu_page'));
+            add_action( 'admin_bar_menu', array($this , 'admin_bar_item'), 500 );
             add_action('admin_enqueue_scripts', array($this , 'enqueue_admin_script'));
             add_action('wp_loaded', array($this , 'set_default_options'));
+        }
+
+        function admin_bar_item ( WP_Admin_Bar $admin_bar ) {
+            if ( ! current_user_can( 'manage_options' ) ) {
+                return;
+            }
+            $admin_bar->add_menu( array(
+                'id'    => 'menu-id',
+                'parent' => null,
+                'group'  => null,
+                'title' => __('Kemet', 'kemet-addons'), //you can use img tag with image link. it will show the image icon Instead of the title.
+                'href'  => admin_url('admin.php?page=kemet_panel'),
+                'meta' => [
+                    'title' => __('Kemet', 'kemet-addons'), //This title will show on hover
+                ]
+            ) );
         }
 
         public function register_custom_menu_page()

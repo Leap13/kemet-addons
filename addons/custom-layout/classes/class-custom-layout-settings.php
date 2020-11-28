@@ -74,7 +74,7 @@ if ( !class_exists( 'Kemet_Custom_Layout_Settings' )) {
 	
 			// Name
 			add_submenu_page(
-				'kmt-framework',
+				'kemet_panel',
 				esc_html__( 'Custom Layouts', 'kemet-addons' ),
 				esc_html__( 'Custom Layouts', 'kemet-addons' ),
 				'manage_options',
