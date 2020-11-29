@@ -168,6 +168,7 @@ Woo Quick View
   background-color: #fff;
   opacity: 0;
   transition: 0.3s all;
+  text-align: center;
   > span {
     &:before {
       content: "\e912";
@@ -681,12 +682,8 @@ body,
         .kemet-shop-thumbnail-wrap {
           display: flex;
           border: 0;
-          .woo-wishlist-btn {
-            display: table;
-          }
           .product-list-details {
             display: block;
-            width: 32%;
             margin: 0 3% 0 0;
             position: relative;
             .kmt-shop-product-out-of-stock {
@@ -705,9 +702,43 @@ body,
             > * {
               margin: 0.5em 0;
             }
-            width: 65%;
+            flex: 1;
             a.button {
               display: inline-block;
+            }
+            .kmt-qv-on-list {
+              background-color: transparent;
+              border-width: 1px;
+              border-style: solid;
+              margin-left: 10px;
+              .kmt-quick-view-icon {
+                &:before {
+                  content: "\e90d";
+                  font-family: Kemet-font;
+                  font-style: normal;
+                  font-weight: 600;
+                  text-decoration: inherit;
+                  text-align: center;
+                  -webkit-font-smoothing: antialiased;
+                }
+              }
+            }
+            .woo-wishlist-btn {
+              display: inline-block;
+              margin: 0;
+              margin-left: 10px;
+              background-color: transparent;
+              border-width: 1px;
+              border-style: solid;
+              .tinvwl-icon-heart.tinvwl-product-in-list {
+                &:before {
+                  margin-right: 0;
+                  font-size: 19px;
+                }
+              }
+              .tinvwl_add_to_wishlist-text {
+                display: none;
+              }
             }
           }
           .woocommerce-loop-product__title {
@@ -765,14 +796,11 @@ body,
       li.product {
         .kemet-shop-thumbnail-wrap {
           text-align: left;
-          *:not(.onsale) {
+          *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
             text-align: left;
           }
           .star-rating {
             margin-left: 0;
-          }
-          .woo-wishlist-btn {
-            margin-right: auto;
           }
         }
       }
@@ -783,14 +811,11 @@ body,
       li.product {
         .kemet-shop-thumbnail-wrap {
           text-align: right;
-          *:not(.onsale) {
+          *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
             text-align: right;
           }
           .star-rating {
             margin-right: 0;
-            margin-left: auto;
-          }
-          .woo-wishlist-btn {
             margin-left: auto;
           }
         }
@@ -802,14 +827,11 @@ body,
       li.product {
         .kemet-shop-thumbnail-wrap {
           text-align: center;
-          *:not(.onsale) {
+          *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
             text-align: center;
           }
           .star-rating {
             margin: 0 auto;
-          }
-          .woo-wishlist-btn {
-            margin: 1px auto;
           }
         }
       }

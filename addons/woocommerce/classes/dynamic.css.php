@@ -61,11 +61,18 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
                     'background-color' => esc_attr($btn_bg_color),
                     'color' => esc_attr($btn_color),
                 ),
+                '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .kmt-qv-on-list' => array(
+                    'border-color' => esc_attr($global_border_color),
+                    'color' => esc_attr($text_meta_color),
+                ),
+                '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn' => array(
+                    'border-color' => esc_attr($global_border_color),
+                ),
                 '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn a' => array(
-                    'color' => esc_attr($btn_color),
+                    'color' => esc_attr($text_meta_color),
                 ),
                 '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover a' => array(
-                    'color' => esc_attr($btn_h_color),
+                    'color' => esc_attr($text_meta_color),
                 ),
                 '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover' => array(
                     'background-color' => esc_attr($btn_bg_h_color),

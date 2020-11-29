@@ -254,7 +254,6 @@
       noMoreMsg = $(".woo-infinite-scroll-end-msg"),
       toolBar = $(".kmt-toolbar .shop-list-style"),
       shop_infinite_nonce = kemet.shop_infinite_nonce || "";
-    console.log(kemet.woo_infinite_scroll_style);
     if (kemet.woo_infinite_scroll_style == "button") {
       loader.hide();
     }

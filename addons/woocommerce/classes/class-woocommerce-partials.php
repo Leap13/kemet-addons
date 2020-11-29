@@ -339,7 +339,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
             } elseif ($qv_enable && $shop_style == 'hover-style') {
                 add_action('kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_with_group' ), 1);
             } elseif ($qv_enable && $shop_style == 'shop-list') {
-                add_action('kemet_product_list_details_bottom', array( $this, 'quick_view_on_image' ), 1);
+                add_action('kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_list_style' ), 1);
             }
             
             
@@ -893,6 +893,21 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
             echo $button;
         }
+
+        /**
+         * Quick view on image
+         */
+        public function quick_view_list_style()
+        {
+            global $product;
+
+            $product_id = $product->get_id();
+
+            $button = '<a href="#" class="kmt-qv-on-list button" data-product_id="' . $product_id . '"><span class="kmt-quick-view-icon"></span></a>';
+
+            echo $button;
+        }
+
         /**
          * Quick view Icon
          */
