@@ -889,7 +889,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
 
             $product_id = $product->get_id();
 
-            $button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '">Quick View</a>';
+            $button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '">'.__('Quick View' , 'kemet-addons').'</a>';
 
             echo $button;
         }

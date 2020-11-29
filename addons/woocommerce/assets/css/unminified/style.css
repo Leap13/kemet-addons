@@ -804,9 +804,9 @@ body.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-sum
   border-style: solid;
 }
 
-body.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .woo-wishlist-btn .tinvwl-icon-heart.tinvwl-product-in-list:before,
-.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .woo-wishlist-btn .tinvwl-icon-heart.tinvwl-product-in-list:before,
-.woocommerce-page.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .woo-wishlist-btn .tinvwl-icon-heart.tinvwl-product-in-list:before {
+body.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .woo-wishlist-btn .tinvwl-icon-heart:before,
+.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .woo-wishlist-btn .tinvwl-icon-heart:before,
+.woocommerce-page.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .woo-wishlist-btn .tinvwl-icon-heart:before {
   margin-right: 0;
   font-size: 19px;
 }
