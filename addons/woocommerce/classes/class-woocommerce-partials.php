@@ -351,14 +351,12 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
                 {
                     echo '<div class="product-list-details">';
                     do_action('kemet_product_list_details_top');
-                    echo '<a href="' . esc_url(get_the_permalink()) . '" class="kmt-loop-product__link">';
                 }
                 /**
                  * Woocommerce shop/product details div close tag.
                  */
                 function kemet_addons_after_shop_loop_item_title()
                 {
-                    echo '</a>';
                     do_action('kemet_product_list_details_bottom');
                     echo '</div>';
                 }
@@ -382,7 +380,7 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
                                      * Add Product Title on shop page for all products.
                                      */
                                     do_action('kemet_woo_shop_title_before');
-                                    kemet_woo_woocommerce_template_loop_product_title();
+                                    kemet_woo_shop_products_title();
                                     do_action('kemet_woo_shop_title_after');
                                     break;
                                 case 'price':
@@ -450,14 +448,12 @@ if (! class_exists('Kemet_Woocommerce_Partials')) {
                 {
                     echo '<div class="product-top">';
                     do_action('kemet_product_list_details_top');
-                    echo '<a href="' . esc_url(get_the_permalink()) . '" class="kmt-loop-product__link">';
                 }
                 /**
                  * Woocommerce shop/product details div close tag.
                  */
                 function kemet_addons_after_shop_loop_item_title()
                 {
-                    echo '</a>';
                     echo '<div class="product-btn-group">';
 
                     if (class_exists('TInvWL_Wishlist')) {
