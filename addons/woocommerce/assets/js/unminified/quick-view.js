@@ -74,7 +74,7 @@
           .find(".woocommerce-product-gallery__image")
           .outerHeight();
         var containerHeight = $("#kmt-qv-content").outerHeight();
-        if (sliderHeight) {
+        if (sliderHeight >= containerHeight) {
           $("#kmt-qv-content .entry-summary , #kmt-qv-content").css({
             "max-height": parseFloat(sliderHeight),
           });
