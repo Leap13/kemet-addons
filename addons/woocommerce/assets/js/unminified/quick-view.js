@@ -24,6 +24,7 @@
         .off("click", ".kmt-qv-close , .kmt-close-qv")
         .on("click", ".kmt-qv-close , .kmt-close-qv", KmtQuickView.closeModel);
       $(document).on("keyup", KmtQuickView.EscKeypress);
+      $(document).on("kemet-quick-view-loaded", KmtQuickView.resizeModel);
     },
     quickViewStyle: function () {
       $("#kmt-qv-content").css({
@@ -51,40 +52,50 @@
           action: "kemet_load_quick_view",
           product_id: productId,
         },
-        success: function (results) {
-          var innerWidth = $("html").innerWidth();
-          $("html").css("overflow", "hidden");
-          var hiddenInnerWidth = $("html").innerWidth();
-          $("html").css("margin-right", hiddenInnerWidth - innerWidth);
-          $("html").addClass("kmt-qv-open");
+      }).done(function (results) {
+        var innerWidth = $("html").innerWidth();
+        $("html").css("overflow", "hidden");
+        var hiddenInnerWidth = $("html").innerWidth();
+        $("html").css("margin-right", hiddenInnerWidth - innerWidth);
+        $("html").addClass("kmt-qv-open");
 
-          content.html(results);
-          // Display modal
-          modal.fadeIn();
-          modal.addClass("is-visible");
+        content.html(results);
+        // Display modal
+        modal.fadeIn();
+        modal.addClass("is-visible");
 
-          var imageSlider = content.find(".kmt-qv-image");
+        var imageSlider = content.find(".kmt-qv-image");
 
-          if (imageSlider.find("li").length > 1) {
-            imageSlider.flexslider();
-          }
-        },
-      }).done(function () {
-        var sliderHeight = $("#kmt-qv-content .images")
-          .find(".woocommerce-product-gallery__image")
-          .outerHeight();
-        var containerHeight = $("#kmt-qv-content").outerHeight();
-        if (sliderHeight >= containerHeight) {
-          $("#kmt-qv-content .entry-summary , #kmt-qv-content").css({
-            "max-height": parseFloat(sliderHeight),
-          });
-        } else {
-          $("#kmt-qv-content .entry-summary, #kmt-qv-content").css({
-            "max-height": parseFloat(containerHeight),
-          });
+        if (imageSlider.find("li").length > 1) {
+          imageSlider.flexslider();
         }
         overlay.removeClass("loading");
+        $(document).trigger("kemet-quick-view-loaded");
       });
+    },
+    resizeModel: function () {
+      var sliderHeight = window.matchMedia("(max-width: 767px)").matches
+        ? "auto"
+        : parseFloat(
+            $("#kmt-qv-content .images")
+              .find(".woocommerce-product-gallery__image")
+              .outerHeight()
+          );
+
+      var containerHeight = window.matchMedia("(max-width: 767px)").matches
+        ? "auto"
+        : parseFloat($("#kmt-qv-content").outerHeight());
+
+      $("#kmt-qv-content").removeAttr("style");
+      if (sliderHeight && sliderHeight <= containerHeight) {
+        $("#kmt-qv-content .entry-summary , #kmt-qv-content").css({
+          "max-height": sliderHeight,
+        });
+      } else {
+        $("#kmt-qv-content .entry-summary, #kmt-qv-content").css({
+          "max-height": containerHeight,
+        });
+      }
     },
     closeModel: function (e) {
       e.preventDefault();
