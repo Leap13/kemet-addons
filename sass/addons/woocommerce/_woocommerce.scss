@@ -1018,3 +1018,33 @@ body,
     }
   }
 }
+// Responsive
+@media only screen and (max-width: 767px) {
+  body,
+  .woocommerce,
+  .woocommerce-page {
+    &.shop-list {
+      ul.products {
+        li.product {
+          .kemet-shop-thumbnail-wrap {
+            .product-list-details {
+              flex: auto;
+              width: 50%;
+            }
+            .kemet-shop-summary-wrap {
+              padding: 0 5px 0;
+              flex: auto;
+              width: 50%;
+              .kmt-qv-on-list {
+                margin-left: 5px;
+              }
+              .woo-wishlist-btn {
+                margin-left: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
