@@ -104,6 +104,7 @@
             expires: 0.1,
             path: "/",
           });
+          $(document).trigger("kemet-woocommerce-style-loaded");
         },
       });
     },
