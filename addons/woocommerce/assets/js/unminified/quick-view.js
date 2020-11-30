@@ -1,22 +1,22 @@
-(function($) {
+(function ($) {
   if (typeof kemet === "undefined") {
     return false;
   }
   KmtQuickView = {
-    init: function() {
+    init: function () {
       this.bind();
       this.quickViewStyle();
     },
-    bind: function() {
+    bind: function () {
       // Open Quick View.
       $(document)
         .off(
           "click",
-          ".kmt-quick-view , .kmt-qv-on-image, .kmt-qv-icon, .kmt-quickview-icon"
+          ".kmt-quick-view , .kmt-qv-on-list , .kmt-qv-on-image, .kmt-qv-icon, .kmt-quickview-icon"
         )
         .on(
           "click",
-          ".kmt-quick-view, .kmt-qv-on-image , .kmt-qv-icon, .kmt-quickview-icon",
+          ".kmt-quick-view, .kmt-qv-on-list , .kmt-qv-on-image , .kmt-qv-icon, .kmt-quickview-icon",
           KmtQuickView.openModel
         );
       // Close Quick View.
@@ -24,14 +24,15 @@
         .off("click", ".kmt-qv-close , .kmt-close-qv")
         .on("click", ".kmt-qv-close , .kmt-close-qv", KmtQuickView.closeModel);
       $(document).on("keyup", KmtQuickView.EscKeypress);
+      $(document).on("kemet-quick-view-loaded", KmtQuickView.resizeModel);
     },
-    quickViewStyle: function() {
+    quickViewStyle: function () {
       $("#kmt-qv-content").css({
         "max-width": parseFloat($(window).width()) - 150,
-        "max-height": parseFloat($(window).height()) - 150
+        "max-height": parseFloat($(window).height()) - 150,
       });
     },
-    openModel: function(e) {
+    openModel: function (e) {
       e.preventDefault();
 
       var control = this,
@@ -49,45 +50,56 @@
         dataType: "html",
         data: {
           action: "kemet_load_quick_view",
-          product_id: productId
+          product_id: productId,
         },
-        success: function(results) {
-          var innerWidth = $("html").innerWidth();
-          $("html").css("overflow", "hidden");
-          var hiddenInnerWidth = $("html").innerWidth();
-          $("html").css("margin-right", hiddenInnerWidth - innerWidth);
-          $("html").addClass("kmt-qv-open");
+      }).done(function (results) {
+        var innerWidth = $("html").innerWidth();
+        $("html").css("overflow", "hidden");
+        var hiddenInnerWidth = $("html").innerWidth();
+        $("html").css("margin-right", hiddenInnerWidth - innerWidth);
+        $("html").addClass("kmt-qv-open");
 
-          content.html(results);
-          // Display modal
-          modal.fadeIn();
-          modal.addClass("is-visible");
+        content.html(results);
+        // Display modal
+        modal.fadeIn();
+        modal.addClass("is-visible");
 
-          var imageSlider = content.find(".kmt-qv-image");
+        var imageSlider = content.find(".kmt-qv-image");
 
-          if (imageSlider.find("li").length > 1) {
-            imageSlider.flexslider();
-          }
+        if (imageSlider.find("li").length > 1) {
+          imageSlider.flexslider();
         }
-      }).done(function() {
-        var sliderHeight = $("#kmt-qv-content .images")
-          .find(".woocommerce-product-gallery__image")
-          .outerHeight();
-        var containerHeight = $("#kmt-qv-content").outerHeight();
-        if (sliderHeight) {
-          $("#kmt-qv-content .entry-summary").css({
-            "max-height": parseFloat(sliderHeight)
-          });
-        } else {
-          $("#kmt-qv-content .entry-summary").css({
-            "max-height": parseFloat(containerHeight)
-          });
-        }
-
         overlay.removeClass("loading");
+        setTimeout(function () {
+          $(document).trigger("kemet-quick-view-loaded");
+        }, 100);
       });
     },
-    closeModel: function(e) {
+    resizeModel: function () {
+      var sliderHeight = window.matchMedia("(max-width: 767px)").matches
+        ? "auto"
+        : parseFloat(
+            $("#kmt-qv-content .images")
+              .find(".woocommerce-product-gallery__image")
+              .outerHeight()
+          );
+
+      var containerHeight = window.matchMedia("(max-width: 767px)").matches
+        ? "auto"
+        : parseFloat($("#kmt-qv-content").outerHeight());
+
+      $("#kmt-qv-content").removeAttr("style");
+      if (sliderHeight > 0) {
+        $("#kmt-qv-content .entry-summary , #kmt-qv-content").css({
+          "max-height": sliderHeight,
+        });
+      } else {
+        $("#kmt-qv-content .entry-summary, #kmt-qv-content").css({
+          "max-height": containerHeight,
+        });
+      }
+    },
+    closeModel: function (e) {
       e.preventDefault();
 
       var modal = $("#kmt-qv-wrap"),
@@ -96,7 +108,7 @@
 
       $("html").css({
         overflow: "",
-        "margin-right": ""
+        "margin-right": "",
       });
       $("html").removeClass("kmt-qv-open");
 
@@ -104,22 +116,22 @@
       modal.removeClass("is-visible");
       overlay.removeClass("visible");
 
-      setTimeout(function() {
+      setTimeout(function () {
         content.html("");
       }, 600);
     },
-    EscKeypress: function(e) {
+    EscKeypress: function (e) {
       e.preventDefault();
       if (e.keyCode === 27) {
         KmtQuickView.closeModel(e);
       }
-    }
+    },
   };
 
   /**
    * Initialization
    */
-  $(function() {
+  $(function () {
     KmtQuickView.init();
   });
 })(jQuery);

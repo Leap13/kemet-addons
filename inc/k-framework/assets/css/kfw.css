@@ -3545,10 +3545,6 @@
     display: none !important;
   }
 
-  .kemet-addons-options .kfw-content {
-    margin-left: 0;
-  }
-
   .kfw-section-title,
   .kfw-section {
     display: block !important;
@@ -4017,32 +4013,8 @@
   padding: 4px 5px 4px 20px;
   direction: rtl;
 }
-/***********************************/
-/******** Kemet Panel **************/
-.kfw-header-left:before {
-  font-family: "KMTAncientOwl" !important;
-  content: "\e900";
-  color: #fab522;
-  padding: 10px;
-  font-size: 140px;
-  line-height: normal;
-  margin-right: 15px;
-  position: absolute;
-  top: 3px;
-  left: -24px;
-}
 .kfw-theme-light .kfw-nav-background {
   display: none;
-}
-.kemet-addons-options .kfw-nav ul li {
-  display: inline-block;
-}
-.kemet-addons-options .kfw-nav {
-  float: none;
-  width: 100%;
-}
-.kemet-addons-options .kfw-content {
-  margin-left: 0px;
 }
 .kfw-theme-light .kfw-nav ul li .kfw-section-active,
 .kfw-theme-light .kfw-nav ul li a {
@@ -4057,204 +4029,10 @@
 .kfw-header-inner h1 {
   margin-left: 30px;
 }
-.kfw-options.kemet-addons-options {
-  margin: 100px;
-  margin-left: 80px;
-}
-.kemet-addons-options .kfw-field .kfw-fieldset {
-  margin-left: 45%;
-}
-.kemet-addons-options .kfw-field .kfw-title {
-  width: 40%;
-}
-.kemet-addons-options .kfw-header-inner {
-  padding: 40px;
-}
-.kemet-addons-options .kfw-nav-options .kfw-tab-depth-0 a {
-  font-size: 16px;
-  line-height: 1.8em;
-}
-.kfw-field-systeminfo table.widefat {
-  border: 0px;
-  box-shadow: none;
-}
-.kfw-field-systeminfo table.widefat tr:nth-child(even) {
-  background-color: #f7f7f7;
-}
-.kfw-field-systeminfo .widefat td:first-child {
-  width: 30%;
-}
-/* Kemet Plugins */
-.kmt-plugins-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  overflow: hidden;
-}
-.kmt-plugins-container h2 {
-  font-size: 24px;
-  line-height: 24px;
-}
-.kmt-plugins-container .kmt-card {
-  width: 32%;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: max-content;
-}
-.kmt-plugins-container .kmt-card .button {
-  cursor: pointer;
-}
-.kmt-plugins-container .kmt-card .kmt-card-body {
-  border-top: 1px solid #ccc;
-  padding: 10px 20px;
-}
-.kmt-plugins-container .kmt-card .kmt-card-footer {
-  border-top: 1px solid #ccc;
-  padding: 10px 20px;
-}
-.kmt-plugins-container .kmt-card-header .card-img img {
-  max-width: 100%;
-  max-height: 200px;
-  display: block;
-  margin: auto;
-}
-.kmt-plugins-container .kmt-card .kmt-card-body .plugin-description {
-  color: #777;
-  font-size: 13px;
-}
-@media only screen and (max-width: 767px) {
-  .kmt-plugins-container .kmt-card {
-    width: 100%;
-  }
-  .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description {
-    font-size: 10px;
-  }
-  .kmt-plugins-container h2 {
-    font-size: 20px;
-  }
-}
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
-  .kmt-plugins-container .kmt-card {
-    width: 100%;
-  }
-  .kmt-plugins-container .kmt-card .kmt-card-body .plugin-description {
-    font-size: 10px;
-  }
-  .kmt-plugins-container h2 {
-    font-size: 20px;
-  }
-}
-.kmt-plugin .dashicons {
-  margin-top: 5px;
-  -webkit-animation: rotating 2s linear infinite;
-  -moz-animation: rotating 2s linear infinite;
-  -ms-animation: rotating 2s linear infinite;
-  -o-animation: rotating 2s linear infinite;
-  animation: rotating 2s linear infinite;
-}
-@keyframes rotating {
-  from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-#kemet_page_options .kfw-nav ul {
-  padding-bottom: 100px;
-}
-.kfw-nav .kfw-icon.dashicons {
-  font-size: 17px;
-  margin-right: 5px;
-}
-/* Hidden Switcher */
-.hidden-field-input .kfw-fieldset > div {
-  display: none;
-}
-/* Kemet Icon */
-#adminmenu #toplevel_page_kmt-framework .dashicons-admin-generic:before {
-  font-family: "KMTAncientOwl";
-  content: "\e900";
-}
-/*--------------------------------------------------------------
-## Custom Layout
---------------------------------------------------------------*/
-.kmt-display-on-specifics-select,
-.kmt-hide-on-specifics-select {
-  display: none;
-}
-
-.kmt-display-on-specifics-select.kfw-field .kfw-fieldset,
-.kmt-hide-on-specifics-select.kfw-field .kfw-fieldset {
-  margin-top: 20px;
-  margin-left: auto;
-}
-
-.kmt-display-on-specifics-select.kfw-field .kfw-title,
-.kmt-hide-on-specifics-select.kfw-field .kfw-title {
-  float: none;
-  width: auto;
-}
-
-.hide-on-rule.kfw-field-select select,
-.display-on-rule.kfw-field-select select,
-.kmt-user-rules.kfw-field-select select {
-  width: 100%;
-}
-
-.kemet-hook-custom-code {
-  display: none;
-}
-
-.kemet-hook-custom-code .kfw-title {
-  float: none;
-  width: auto;
-  margin-bottom: 10px;
-}
-
-.kemet-hook-custom-code .kfw-fieldset {
-  margin-left: auto;
-}
-
-.kemet-code-editor #post-body-content > :not(#titlediv) {
-  display: none;
-}
-
-.kemet-code-editor .kemet-hook-custom-code {
-  display: block;
-}
-
-.kemet-short-code .short-code-id {
-  display: inline-block;
-  padding: 6px 8px;
-  background-color: #eee;
-  border-radius: 4px;
-  border: 1px solid #7e8993;
-}
-
-#kemet_custom_layout_options .kfw-field-fieldset .kfw-fieldset-content {
-  padding: 0;
-  border: 0;
-}
-
-#kemet_custom_layout_options .kfw-field-fieldset .kfw-fieldset-content > .kfw-field {
-  padding: 0;
-}
 /**
  * 08. Nav Menu
  */
- .kfw-nav-menu-options {
+.kfw-nav-menu-options {
   clear: both;
   float: left;
   width: 100%;
@@ -4303,6 +4081,6 @@
 .kfw-nav-menu-icon {
   margin-right: 5px;
 }
-.kfw-nav-menu-options .kfw-field .kfw-fieldset{
+.kfw-nav-menu-options .kfw-field .kfw-fieldset {
   margin-left: 0;
 }

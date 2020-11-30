@@ -1,10 +1,10 @@
-(function($) {
+(function ($) {
   // Mega menu in principal menu
-  var kemetMegMenu = function() {
+  var kemetMegMenu = function () {
     $(
       "body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item"
     ).hover(
-      function() {
+      function () {
         var headerContainer = $("header .main-header-bar .kmt-container"),
           headerWrap = headerContainer.parents(".main-header-bar"),
           containerWidth = $(this).parent(),
@@ -30,9 +30,7 @@
             .find(".kemet-megamenu")
             .css({ left: positionLeft, width: menuWidth });
         } else {
-          $(this)
-            .find(".kemet-megamenu")
-            .css({ width: menuWidth });
+          $(this).find(".kemet-megamenu").css({ width: menuWidth });
 
           var megaMenuWrap = $(this).find(".mega-menu-full-wrap"),
             menuItemPosition = $(this).offset(),
@@ -43,11 +41,11 @@
                 : "-" + positionLeft + "px";
           megaMenuWrap.css({
             left: positionLeft,
-            width: menuWrapWidth
+            width: menuWrapWidth,
           });
         }
       },
-      function() {
+      function () {
         if (!$(this).hasClass("mega-menu-full-width")) {
           $(this)
             .find(".kemet-megamenu")
@@ -61,11 +59,11 @@
     );
   };
   //RTL Mega Menu
-  var kemetRtlMegMenu = function() {
+  var kemetRtlMegMenu = function () {
     $(
       "body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item"
     ).hover(
-      function() {
+      function () {
         var headerContainer = $("header .main-header-bar .kmt-container"),
           headerWrap = headerContainer.parents(".main-header-bar"),
           containerWidth = $(this).parent(),
@@ -86,15 +84,12 @@
             positionRight < 0
               ? "-" + Math.abs(positionRight) + "px"
               : positionRight + "px";
-        console.log(positionRight);
         if (!$(this).hasClass("mega-menu-full-width")) {
           $(this)
             .find(".kemet-megamenu")
             .css({ right: positionRight, width: menuWidth });
         } else {
-          $(this)
-            .find(".kemet-megamenu")
-            .css({ width: menuWidth });
+          $(this).find(".kemet-megamenu").css({ width: menuWidth });
 
           var megaMenuWrap = $(this).find(".mega-menu-full-wrap"),
             menuItemPosition = $(this).offset().left + $(this).outerWidth(),
@@ -105,11 +100,11 @@
                 : positionRight + "px";
           megaMenuWrap.css({
             right: positionRight,
-            width: menuWrapWidth
+            width: menuWrapWidth,
           });
         }
       },
-      function() {
+      function () {
         if (!$(this).hasClass("mega-menu-full-width")) {
           $(this)
             .find(".kemet-megamenu")
@@ -140,7 +135,7 @@
       kemetMegMenu();
     }
   }
-  $(window).resize(function() {
+  $(window).resize(function () {
     if ($("body").hasClass("rtl")) {
       if (
         !$("header").is(

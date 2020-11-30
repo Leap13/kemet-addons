@@ -93,8 +93,8 @@ if (! class_exists('Kemet_Extra_Widgets_Partials')) {
             } else {
          
                 $email     = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-                $list      = kmt_get_panel_option('kmt-mailchimp-list-id');
-                $api_key   = kmt_get_panel_option('kmt-mailchimp-api-key');
+                $list      = kemet_get_integration('kmt-mailchimp-list-id');
+                $api_key   = kemet_get_integration('kmt-mailchimp-api-key');
                 
                 mailchimp_post($email, 'subscribed', $list, $api_key);       
                 die;

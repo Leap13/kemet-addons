@@ -5,7 +5,7 @@
   wp.customize("kemet-settings[sale-style]", function (setting) {
     setting.bind(function (radius) {
       var dynamicStyle =
-        ".woocommerce .product .onsale { border-radius: " +
+        ".woocommerce .product .onsale , .product .onsale { border-radius: " +
         parseInt(radius) +
         "% }";
 

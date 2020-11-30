@@ -71,7 +71,7 @@ if ( !class_exists( 'Kemet_Extra_Headers_Partials' )) {
             
 			$kemet_header_layout = kemet_get_option( 'header-layouts' );
 			$kemet_header_layout = apply_filters( 'kemet_primary_header_layout', $kemet_header_layout );
-			$options = get_option( 'kmt_framework' );
+			$options = get_option( 'kemet_addons_options' );
 			
 			if ( $kemet_header_layout !== 'disable' ) {
 				if ( 'header-main-layout-1' !== $kemet_header_layout && 'header-main-layout-2' !== $kemet_header_layout  && 'header-main-layout-3' !== $kemet_header_layout) {

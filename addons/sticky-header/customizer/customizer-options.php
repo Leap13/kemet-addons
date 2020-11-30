@@ -429,7 +429,7 @@ $wp_customize->add_control(
             'type'           => 'kmt-responsive-spacing',
             'section'        => 'section-sticky-header',
             'priority'       => 95,
-            'label'          => __( 'Padding', 'kemet-addons' ),
+            'label'          => __( 'Logo Padding', 'kemet-addons' ),
             'linked_choices' => true,
             'unit_choices'   => array( 'px', 'em', '%' ),
             'choices'        => array(
