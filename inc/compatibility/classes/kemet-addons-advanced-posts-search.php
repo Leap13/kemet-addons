@@ -188,9 +188,7 @@ if (! class_exists('Kemet_Addons_Advanced_Posts_Search')) {
         
         public function admin_script($hook)
         {
-            if ('nav-menus.php' != $hook && 'post.php' != $hook) {
-                return;
-            }
+
             $js_prefix  = '.min.js';
             $css_prefix  = '.min.css';
             $dir        = 'minified';
