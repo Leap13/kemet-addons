@@ -525,6 +525,7 @@ body.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-s
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap,
 .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
   background-color: transparent;
+  margin-top: 10px;
 }
 
 body.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kmt-out-of-stock,
