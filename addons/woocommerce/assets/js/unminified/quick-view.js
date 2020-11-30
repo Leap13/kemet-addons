@@ -70,7 +70,9 @@
           imageSlider.flexslider();
         }
         overlay.removeClass("loading");
-        $(document).trigger("kemet-quick-view-loaded");
+        setTimeout(function () {
+          $(document).trigger("kemet-quick-view-loaded");
+        }, 100);
       });
     },
     resizeModel: function () {
@@ -87,7 +89,7 @@
         : parseFloat($("#kmt-qv-content").outerHeight());
 
       $("#kmt-qv-content").removeAttr("style");
-      if (sliderHeight && sliderHeight <= containerHeight) {
+      if (sliderHeight > 0) {
         $("#kmt-qv-content .entry-summary , #kmt-qv-content").css({
           "max-height": sliderHeight,
         });
