@@ -44,7 +44,7 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 1.1.9 version
 - Fixed: Load k-framework js files issue.
 - Fixed: Breadcrumbs Missing field "position" issue.
- 
+- Tweak: Improve Woocommerce styling in responsive.
 
 1.1.8 version
 - Added: Infinite scroll button for blog & Product listing.
