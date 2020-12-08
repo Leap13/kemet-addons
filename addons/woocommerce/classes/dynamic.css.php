@@ -19,7 +19,7 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
     $global_border_color = kemet_get_option('global-border-color');
     $theme_color = kemet_get_option('theme-color');
     $text_meta_color = kemet_get_option('text-meta-color');
-    $btn_color = kemet_get_option('button-color');
+    $btn_color = kemet_get_option('button-color', '#ffffff');
     $btn_h_color = kemet_get_option('button-h-color', $btn_color);
     $btn_bg_color = kemet_get_option('button-bg-color', $theme_color);
     $btn_bg_h_color = kemet_get_option('button-bg-h-color', kemet_color_brightness($theme_color, 0.8, 'dark'));
@@ -35,6 +35,9 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
     $image_width = !empty(kemet_get_option('product-image-width')) ? kemet_get_option('product-image-width') : 50;
 
     $css_content = array(
+        '.hover-style .product-btn-group .woo-wishlist-btn .tinv-wishlist .tinvwl_add_to_wishlist_button' => array(
+            'color' => esc_attr($btn_color),
+        ),
         '.woocommerce .product .onsale , .product .onsale' => array(
             'border-radius' => esc_attr($sale_style),
         ),
