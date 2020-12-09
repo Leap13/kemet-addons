@@ -159,7 +159,7 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-m
   background: none;
 }
 
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .menu-item-has-children > a::after {
+body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .menu-item-has-children > a > span::after {
   display: none;
 }
 
@@ -208,7 +208,7 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-m
   width: 16.66666667%;
 }
 
-.kmt-header-break-point #site-navigation li.menu-item.has-description.menu-item-has-children > a > span:first-child:after {
+.kmt-header-break-point #site-navigation li.menu-item.has-description.menu-item-has-children > a > span.kemet-menu-decription:after {
   display: none;
 }
 
