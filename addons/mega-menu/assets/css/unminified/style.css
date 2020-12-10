@@ -180,10 +180,6 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-m
   float: left;
 }
 
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu > li a {
-  border: none;
-}
-
 body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-1 > li {
   width: 100%;
 }
