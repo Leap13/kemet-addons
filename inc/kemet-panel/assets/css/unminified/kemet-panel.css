@@ -171,6 +171,17 @@
   margin-left: 10px;
 }
 
+.kemet-panel-container .kemet-panel-body .kemet-panel-tabs-group .kemet-panel-tabs-content .kemet-panel-footer-inner .kemet-disable-all-options {
+  color: #ba281e;
+  border-color: #ba281e;
+}
+
+.kemet-panel-container .kemet-panel-body .kemet-panel-tabs-group .kemet-panel-tabs-content .kemet-panel-footer-inner .kemet-disable-all-options:focus {
+  -moz-box-shadow: 0 0 0 1px #ba281e;
+  -webkit-box-shadow: 0 0 0 1px #ba281e;
+  box-shadow: 0 0 0 1px #ba281e;
+}
+
 .kemet-panel-container .kemet-panel-body .kemet-panel-tabs-group .kemet-panel-tabs-content .kemet-panel-footer-inner .kemet-reset-options {
   color: #fff;
   border-color: #d02c21 #ba281e #ba281e;
