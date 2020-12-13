@@ -6,11 +6,15 @@
       $(document).on("click", ".kemet-save-ajax", kemetPanel.saveOptions);
       $(document).on("click", ".kemet-reset-options", kemetPanel.resetOptions);
       $(document).on("click", ".kmt-plugin", kemetPanel.plugin);
-      $(window).on("kemet-plugin-install-success", kemetPanel.activatePlugin);
       $(document).on(
         "click",
         ".kemet-enable-all-options",
         kemetPanel.enableAllOptions
+      );
+      $(document).on(
+        "click",
+        ".kemet-disable-all-options",
+        kemetPanel.disableAllOptions
       );
       $(document).on("click", ".kfw--switcher", kemetPanel.switcher);
       $(document).on("ready", kemetPanel.stickyFooter());
@@ -146,6 +150,35 @@
         type: "POST",
         data: {
           action: "kemet-panel-enable-all",
+          class: class_name,
+          options: optionsArray,
+        },
+      }).done(function (response) {
+        if (response.success) {
+          window.location.reload();
+        }
+      });
+    },
+    disableAllOptions: function () {
+      if ($(this).hasClass("updating-message")) {
+        return;
+      }
+      var saveBtn = $(this),
+        class_name = saveBtn.data("class"),
+        tabID = saveBtn.data("id"),
+        options = $("#" + tabID + " .kfw--switcher input"),
+        optionsArray = {};
+      $(this).addClass("updating-message");
+      $.each(options, function () {
+        var input = $(this),
+          optionID = input.data("depend-id");
+        optionsArray[optionID] = 0;
+      });
+      $.ajax({
+        url: window.ajaxurl,
+        type: "POST",
+        data: {
+          action: "kemet-panel-disable-all",
           class: class_name,
           options: optionsArray,
         },

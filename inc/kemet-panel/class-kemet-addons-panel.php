@@ -7,7 +7,7 @@
 define('KEMET_PANEL_DIR', KEMET_ADDONS_DIR . 'inc/kemet-panel/');
 define('KEMET_PANEL_URL', KEMET_ADDONS_URL . 'inc/kemet-panel/');
 
-if (! class_exists('Kemet_Panel')) {
+if (!class_exists('Kemet_Panel')) {
 
     /**
      * Kemet Panel
@@ -31,7 +31,7 @@ if (! class_exists('Kemet_Panel')) {
 
         public static function get_instance()
         {
-            if (! isset(self::$instance)) {
+            if (!isset(self::$instance)) {
                 self::$instance = new self;
             }
             return self::$instance;
@@ -39,43 +39,45 @@ if (! class_exists('Kemet_Panel')) {
         /**
          *  Constructor
          */
-        
+
         public function __construct()
         {
             $tabs = $this->tabs();
             foreach ($tabs as $tab => $values) {
-                require_once KEMET_PANEL_DIR . 'tabs/class-kemet-panel-'.$tab.'.php';
+                require_once KEMET_PANEL_DIR . 'tabs/class-kemet-panel-' . $tab . '.php';
             }
-            add_action('wp_ajax_kemet-panel-save-options', array($this , 'save_options'));
-            add_action('wp_ajax_kemet-panel-reset-options', array($this , 'reset_options'));
-            add_action('wp_ajax_kemet-panel-enable-all', array($this , 'enable_all_options'));
-            add_action('wp_ajax_kemet-addons-plugin-activate', array($this , 'activate_plugin'));
-            add_action('admin_menu', array($this , 'register_custom_menu_page'));
-            add_action( 'admin_bar_menu', array($this , 'admin_bar_item'), 500 );
-            add_action('admin_enqueue_scripts', array($this , 'enqueue_admin_script'));
-            add_action('wp_loaded', array($this , 'set_default_options'));
+            add_action('wp_ajax_kemet-panel-save-options', array($this, 'save_options'));
+            add_action('wp_ajax_kemet-panel-reset-options', array($this, 'reset_options'));
+            add_action('wp_ajax_kemet-panel-enable-all', array($this, 'enable_all_options'));
+            add_action('wp_ajax_kemet-panel-disable-all', array($this, 'disable_all_options'));
+            add_action('wp_ajax_kemet-addons-plugin-activate', array($this, 'activate_plugin'));
+            add_action('admin_menu', array($this, 'register_custom_menu_page'));
+            add_action('admin_bar_menu', array($this, 'admin_bar_item'), 500);
+            add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_script'));
+            add_action('wp_loaded', array($this, 'set_default_options'));
         }
 
-        function admin_bar_item ( WP_Admin_Bar $admin_bar ) {
-            if ( ! current_user_can( 'manage_options' ) ) {
+        public function admin_bar_item(WP_Admin_Bar $admin_bar)
+        {
+            if (!current_user_can('manage_options')) {
                 return;
             }
-            $admin_bar->add_menu( array(
-                'id'    => 'menu-id',
+            $admin_bar->add_menu(array(
+                'id' => 'menu-id',
                 'parent' => null,
-                'group'  => null,
+                'group' => null,
                 'title' => __('Kemet', 'kemet-addons'), //you can use img tag with image link. it will show the image icon Instead of the title.
-                'href'  => admin_url('admin.php?page=kemet_panel'),
+                'href' => admin_url('admin.php?page=kemet_panel'),
                 'meta' => [
                     'title' => __('Kemet', 'kemet-addons'), //This title will show on hover
-                ]
-            ) );
+                ],
+            ));
         }
 
         public function register_custom_menu_page()
         {
             $tabs = $this->tabs();
-            add_menu_page(__('Kemet Panel', 'kemet-addons'), __('Kemet', 'kemet-addons'), 'manage_options', 'kemet_panel', array($this , 'render'), null);
+            add_menu_page(__('Kemet Panel', 'kemet-addons'), __('Kemet', 'kemet-addons'), 'manage_options', 'kemet_panel', array($this, 'render'), null);
             foreach ($tabs as $tab => $values) {
                 add_submenu_page('kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel' . '#tab=' . $values['slug']);
             }
@@ -103,14 +105,14 @@ if (! class_exists('Kemet_Panel')) {
                 'system' => array(
                     'title' => __('System Info', 'kemet-addons'),
                     'slug' => 'system',
-                )
+                ),
             );
 
             return $tabs;
         }
         public function render()
         {
-            $tabs = $this->tabs(); ?>
+            $tabs = $this->tabs();?>
             <div class="kemet-panel-container">
                 <div class="kemet-panel-header">
                     <div class="kemet-panel-header-inner">
@@ -118,9 +120,9 @@ if (! class_exists('Kemet_Panel')) {
                             <div class="icon"></div>
                             <div class="title">
                                 <h1>
-                                    <span><?php _e("Welcome to", "kemet-addons") ?></span>
-                                    <strong><?php _e("Kemet Theme", "kemet-addons") ?></strong>
-                                    <small><?php _e("by Leap13", "kemet-addons") ?></small>
+                                    <span><?php _e("Welcome to", "kemet-addons")?></span>
+                                    <strong><?php _e("Kemet Theme", "kemet-addons")?></strong>
+                                    <small><?php _e("by Leap13", "kemet-addons")?></small>
                                 </h1>
                             </div>
                         </div>
@@ -128,42 +130,45 @@ if (! class_exists('Kemet_Panel')) {
                 </div>
                 <div class="kemet-panel-body">
                     <div class="kemet-panel-tabs-group">
-                        <ul class="kemet-panel-tabs">
-                            <?php foreach ($tabs as $tab => $values) { ?>
-                            <li class="<?php esc_attr_e($values['slug'] . '-tab', 'kemet-addons') ?>"><a href="#tab=<?php esc_attr_e($values['slug'], 'kemet-addons') ?>"><span><?php echo $values['title']; ?></span></a></li>
-                            <?php } ?>
-                        </ul>
+                        <div class="kemet-panel-tabs">
+                            <ul class="kemet-panel-tabs">
+                                <?php foreach ($tabs as $tab => $values) {?>
+                                <li class="<?php esc_attr_e($values['slug'] . '-tab', 'kemet-addons')?>"><a href="#tab=<?php esc_attr_e($values['slug'], 'kemet-addons')?>"><span><?php echo $values['title']; ?></span></a></li>
+                                <?php }?>
+                            </ul>
+                        </div>
                         <div class="kemet-panel-tabs-content">
-                            <?php foreach ($tabs as $tab => $values) { ?>
-                                <div id="<?php esc_attr_e($values['slug'], 'kemet-addons') ?>" class="tab">
+                            <?php foreach ($tabs as $tab => $values) {?>
+                                <div id="<?php esc_attr_e($values['slug'], 'kemet-addons')?>" class="tab">
                                     <?php
-                                        $class = 'Kemet_Panel_' . $tab . '_Tab';
-                                        echo '<div class="tab-content">';
-                                        $class::get_instance()->render_html();
-                                        echo '</div>';
-                                        $enable_all = isset($values['enable_all']) ? $values['enable_all'] : false;
-                                         if (isset($values['reset']) && $values['reset']) {
-                                             $this->render_footer($tab, $values['slug'], $enable_all);
-                                         } ?>
+$class = 'Kemet_Panel_' . $tab . '_Tab';
+                echo '<div class="tab-content">';
+                $class::get_instance()->render_html();
+                echo '</div>';
+                $enable_all = isset($values['enable_all']) ? $values['enable_all'] : false;
+                if (isset($values['reset']) && $values['reset']) {
+                    $this->render_footer($tab, $values['slug'], $enable_all);
+                }?>
                                 </div>
-                            <?php } ?>
+                            <?php }?>
                         </div>
                     </div>
                 </div>
             </div>
   <?php
-        }
+}
 
         public function render_footer($class, $id, $enable_all)
-        { ?>
+        {?>
             <div class="kemet-panel-footer">
                 <div class="kemet-panel-footer-inner">
                     <div class="footer-button">
-                        <button data-class="<?php esc_attr_e($class, 'kemet-addons') ?>" data-id="<?php esc_attr_e($id, 'kemet-addons') ?>" class="button button-primary kemet-save-ajax"><?php _e("Save", "kemet-addons"); ?></button>
+                        <button data-class="<?php esc_attr_e($class, 'kemet-addons')?>" data-id="<?php esc_attr_e($id, 'kemet-addons')?>" class="button button-primary kemet-save-ajax"><?php _e("Save", "kemet-addons");?></button>
                         <?php if ($enable_all): ?>
-                            <button data-class="<?php esc_attr_e($class, 'kemet-addons') ?>" data-id="<?php esc_attr_e($id, 'kemet-addons') ?>" class="button button-secondary kemet-enable-all-options"><?php _e("Enable All", "kemet-addons"); ?></button>
-                        <?php endif; ?>
-                        <button data-class="<?php esc_attr_e($class, 'kemet-addons') ?>" data-id="<?php esc_attr_e($id, 'kemet-addons') ?>" class="button button-secondary kemet-reset-options"><?php _e("Reset All", "kemet-addons"); ?></button>
+                            <button data-class="<?php esc_attr_e($class, 'kemet-addons')?>" data-id="<?php esc_attr_e($id, 'kemet-addons')?>" class="button button-secondary kemet-enable-all-options"><?php _e("Enable All", "kemet-addons");?></button>
+                            <button data-class="<?php esc_attr_e($class, 'kemet-addons')?>" data-id="<?php esc_attr_e($id, 'kemet-addons')?>" class="button button-secondary kemet-disable-all-options"><?php _e("Disable All", "kemet-addons");?></button>
+                        <?php endif;?>
+                        <button data-class="<?php esc_attr_e($class, 'kemet-addons')?>" data-id="<?php esc_attr_e($id, 'kemet-addons')?>" class="button button-secondary kemet-reset-options"><?php _e("Reset All", "kemet-addons");?></button>
                     </div>
                 </div>
             </div>
@@ -189,7 +194,7 @@ if (! class_exists('Kemet_Panel')) {
         {
             $class = isset($_POST['class']) ? $_POST['class'] : '';
             $options = $this->get_defaults();
-            $options = isset($options['Kemet_Panel_'.$class.'_Tab']) ? $options['Kemet_Panel_'.$class.'_Tab'] : array();
+            $options = isset($options['Kemet_Panel_' . $class . '_Tab']) ? $options['Kemet_Panel_' . $class . '_Tab'] : array();
             switch ($class) {
                 case 'options':
                     update_option("kemet_addons_options", $options);
@@ -215,6 +220,18 @@ if (! class_exists('Kemet_Panel')) {
             }
             wp_send_json_error();
         }
+        public function disable_all_options()
+        {
+            $class = isset($_POST['class']) ? $_POST['class'] : '';
+            $options = isset($_POST['options']) ? $_POST['options'] : array();
+            switch ($class) {
+                case 'options':
+                    update_option("kemet_addons_" . $class, $options);
+                    wp_send_json_success();
+                    break;
+            }
+            wp_send_json_error();
+        }
         public function activate_plugin()
         {
             $plugin_path = (isset($_POST['path'])) ? esc_attr($_POST['path']) : $path;
@@ -222,7 +239,7 @@ if (! class_exists('Kemet_Panel')) {
             wp_clean_plugins_cache();
 
             $activate = activate_plugin($plugin_path, '', false, true);
-           
+
             if (is_wp_error($activate)) {
                 wp_send_json_error();
             } else {
@@ -278,13 +295,13 @@ if (! class_exists('Kemet_Panel')) {
          */
         public function enqueue_admin_script($hook)
         {
-            $js_prefix  = '.min.js';
-            $css_prefix  = '.min.css';
-            $dir        = 'minified';
+            $js_prefix = '.min.js';
+            $css_prefix = '.min.css';
+            $dir = 'minified';
             if (SCRIPT_DEBUG) {
-                $js_prefix  = '.js';
-                $css_prefix  = '.css';
-                $dir        = 'unminified';
+                $js_prefix = '.js';
+                $css_prefix = '.css';
+                $dir = 'unminified';
             }
             if (is_rtl()) {
                 $css_prefix = '-rtl.min.css';

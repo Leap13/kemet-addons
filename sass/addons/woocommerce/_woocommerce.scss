@@ -567,7 +567,6 @@ body,
                 margin: auto 0;
                 .tinv-wishlist {
                   .tinvwl_add_to_wishlist_button {
-                    color: inherit;
                     &.tinvwl-icon-heart {
                       &:before {
                         margin-right: 0;
@@ -704,9 +703,6 @@ body,
             background-color: transparent;
             padding: 0 1.2em 0;
             align-self: center;
-            > * {
-              margin: 0.5em 0;
-            }
             flex: 2;
             a.button {
               display: inline-block;
@@ -745,12 +741,6 @@ body,
                 display: none;
               }
             }
-          }
-          .woocommerce-loop-product__title {
-            text-align: left;
-          }
-          .star-rating {
-            margin: 0;
           }
           .kmt-quick-view {
             display: inline-block;
@@ -797,48 +787,36 @@ body,
     }
   }
   &.content-align-left {
-    ul.products {
-      li.product {
-        .kemet-shop-thumbnail-wrap {
-          text-align: left;
-          *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-            text-align: left;
-          }
-          .star-rating {
-            margin-left: 0;
-          }
-        }
+    .kemet-shop-thumbnail-wrap {
+      text-align: left;
+      *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
+        text-align: left;
+      }
+      .star-rating {
+        margin-left: 0;
       }
     }
   }
   &.content-align-right {
-    ul.products {
-      li.product {
-        .kemet-shop-thumbnail-wrap {
-          text-align: right;
-          *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-            text-align: right;
-          }
-          .star-rating {
-            margin-right: 0;
-            margin-left: auto;
-          }
-        }
+    .kemet-shop-thumbnail-wrap {
+      text-align: right;
+      *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
+        text-align: right;
+      }
+      .star-rating {
+        margin-right: 0;
+        margin-left: auto;
       }
     }
   }
   &.content-align-center {
-    ul.products {
-      li.product {
-        .kemet-shop-thumbnail-wrap {
-          text-align: center;
-          *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-            text-align: center;
-          }
-          .star-rating {
-            margin: 0 auto;
-          }
-        }
+    .kemet-shop-thumbnail-wrap {
+      text-align: center;
+      *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
+        text-align: center;
+      }
+      .star-rating {
+        margin: 0 auto;
       }
     }
   }

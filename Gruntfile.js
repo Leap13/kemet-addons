@@ -261,6 +261,10 @@ module.exports = function (grunt) {
             dest: "addons/mega-menu/assets/css/minified/mega-menu-rtl.min.css",
           },
           {
+            src: "addons/mega-menu/assets/css/unminified/style.css",
+            dest: "addons/mega-menu/assets/css/minified/style.min.css",
+          },
+          {
             src: "addons/mega-menu/assets/css/unminified/style-rtl.css",
             dest: "addons/mega-menu/assets/css/minified/style-rtl.min.css",
           },

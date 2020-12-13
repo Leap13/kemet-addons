@@ -41,7 +41,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
         echo '<div class="kfw-cloneable-item kfw-cloneable-hidden">';
 
           echo '<div class="kfw-cloneable-helper">';
-          echo '<i class="kfw-cloneable-sort fa fa-arrows"></i>';
+          echo '<i class="kfw-cloneable-sort fa fa-arrows-alt"></i>';
           echo '<i class="kfw-cloneable-clone fa fa-clone"></i>';
           echo '<i class="kfw-cloneable-remove kfw-confirm fa fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'kfw' ) .'"></i>';
           echo '</div>';
@@ -81,7 +81,7 @@ if( ! class_exists( 'KFW_Field_group' ) ) {
             echo '<div class="kfw-cloneable-item">';
 
               echo '<div class="kfw-cloneable-helper">';
-              echo '<i class="kfw-cloneable-sort fa fa-arrows"></i>';
+              echo '<i class="kfw-cloneable-sort fa fa-arrows-alt"></i>';
               echo '<i class="kfw-cloneable-clone fa fa-clone"></i>';
               echo '<i class="kfw-cloneable-remove kfw-confirm fa fa-times" data-confirm="'. esc_html__( 'Are you sure to delete this item?', 'kfw' ) .'"></i>';
               echo '</div>';
