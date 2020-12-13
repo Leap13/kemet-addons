@@ -21,7 +21,7 @@ if( ! class_exists( 'KFW_Field_spacing' ) ) {
         'right_icon'         => '<i class="fa fa-long-arrow-right"></i>',
         'bottom_icon'        => '<i class="fa fa-long-arrow-down"></i>',
         'left_icon'          => '<i class="fa fa-long-arrow-left"></i>',
-        'all_icon'           => '<i class="fa fa-arrows"></i>',
+        'all_icon'           => '<i class="fa fa-arrows-alt"></i>',
         'top_placeholder'    => esc_html__( 'top', 'kfw' ),
         'right_placeholder'  => esc_html__( 'right', 'kfw' ),
         'bottom_placeholder' => esc_html__( 'bottom', 'kfw' ),

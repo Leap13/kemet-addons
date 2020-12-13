@@ -193,7 +193,7 @@ body:not(.kmt-header-break-point) {
         }
         .menu-item-has-children {
           > a {
-            &::after {
+            > span::after {
               display: none;
             }
           }
@@ -213,9 +213,6 @@ body:not(.kmt-header-break-point) {
         > li {
           display: none;
           float: left;
-          a {
-            border: none;
-          }
         }
         &.col-1 > li {
           width: 100%;
@@ -243,7 +240,7 @@ body:not(.kmt-header-break-point) {
   #site-navigation {
     li.menu-item {
       &.has-description.menu-item-has-children {
-        > a > span:first-child {
+        > a > span.kemet-menu-decription {
           &:after {
             display: none;
           }
