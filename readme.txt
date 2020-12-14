@@ -2,9 +2,9 @@
 Contributors: Leap13
 Tags: metabox, Kemet, addons
 Requires at least: 4.7
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.4
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,12 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.1.10 version
+- Added: Link to product image in woocommerce listing
+- Fixed: Top bar direction issue in RTL.
+- Fixed: Submenu icon doesn't work.
+- Tweak: Improve Blog style.
+
 1.1.9 version
 - Fixed: Load k-framework js files issue.
 - Fixed: Breadcrumbs Missing field "position" issue.
