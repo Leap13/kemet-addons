@@ -55,8 +55,8 @@ if (!class_exists('Kemet_Top_Bar_Settings')) {
             $defaults['top-section-2'] = '';
             $defaults['top-section-1-html'] = '';
             $defaults['top-section-2-html'] = '';
-            $defaults['section1-content-align'] = is_rtl() ? array('desktop' => 'flex-end') : array('desktop' => 'flex-start');
-            $defaults['section2-content-align'] = is_rtl() ? array('desktop' => 'flex-start') : array('desktop' => 'flex-end');
+            $defaults['section1-content-align'] = array('desktop' => 'flex-start');
+            $defaults['section2-content-align'] = array('desktop' => 'flex-end');
             $defaults['topbar-padding'] = '';
             $defaults['topbar-responsive'] = 'all-devices';
             $defaults['topbar-bg-color'] = '';

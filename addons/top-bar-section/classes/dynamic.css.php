@@ -33,8 +33,10 @@ function kemet_topbar_dynamic_css($dynamic_css)
     $topbar_submenu_items_color = kemet_get_option('topbar-submenu-items-color');
     $topbar_submenu_items_h_color = kemet_get_option('topbar-submenu-items-h-color');
     $section1_content_align = kemet_get_option('section1-content-align');
+    $section1_content_align = is_rtl() ? get_flex_rtl_value($section1_content_align) : $section1_content_align;
     $section2_content_align = kemet_get_option('section2-content-align');
-    $top_bar_direction = is_rtl() ? 'row-reverse' : 'row';
+    $section2_content_align = is_rtl() ? get_flex_rtl_value($section2_content_align) : $section2_content_align;
+    $top_bar_direction = 'row';
     $topbar_font_size = kemet_get_option('topbar-font-size');
     $topbar_font_family = kemet_get_option('top-bar-font-family');
     $topbar_font_weight = kemet_get_option('top-bar-font-weight');
@@ -150,4 +152,18 @@ function kemet_topbar_dynamic_css($dynamic_css)
     $parse_css .= kemet_parse_css($css_mobile, '', '544');
 
     return $dynamic_css . $parse_css;
+}
+
+function get_flex_rtl_value($value)
+{
+    switch ($value) {
+        case 'flex-start':
+            $value = 'flex-end';
+            break;
+
+        case 'flex-end':
+            $value = 'flex-start';
+            break;
+    }
+    return $value;
 }
