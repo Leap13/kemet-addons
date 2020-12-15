@@ -48,8 +48,12 @@ if (!class_exists('Kemet_Extra_Headers_Partials')) {
         public function kemet_header_container($classes)
         {
             $header_width = kemet_get_option('header-main-layout-width');
+            $kemet_header_layout = kemet_get_option('header-layouts');
+            $kemet_header_layout = apply_filters('kemet_primary_header_layout', $kemet_header_layout);
 
             if ($header_width == 'boxed') {
+                $classes[] = 'main-header-content';
+            } else if ($header_width == 'stretched' && $kemet_header_layout != 'header-main-layout-3') {
                 $classes[] = 'main-header-content';
             }
 
