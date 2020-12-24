@@ -47,7 +47,7 @@ if (!class_exists('Kemet_Extra_Headers_Partials')) {
          */
         public function kemet_header_container($classes)
         {
-            $header_width = kemet_get_option('header-main-layout-width');
+            $header_width = apply_filters('kemet_header_width', kemet_get_option('header-main-layout-width'));
             $kemet_header_layout = kemet_get_option('header-layouts');
             $kemet_header_layout = apply_filters('kemet_primary_header_layout', $kemet_header_layout);
 
@@ -197,7 +197,7 @@ if (!class_exists('Kemet_Extra_Headers_Partials')) {
                 }
             }
 
-            $kemet_header_content_width = kemet_get_option('header-main-layout-width');
+            $kemet_header_content_width = apply_filters('kemet_header_width', kemet_get_option('header-main-layout-width'));
             $classes[] = 'header-' . $kemet_header_content_width . '-width';
             return $classes;
         }
