@@ -515,12 +515,6 @@ Woo Quick View
 }
 
 /************ Shop ************/
-body.hover-style ul.products li.product .woocommerce-loop-product__title,
-.woocommerce.hover-style ul.products li.product .woocommerce-loop-product__title,
-.woocommerce-page.hover-style ul.products li.product .woocommerce-loop-product__title {
-  margin-bottom: 15px;
-}
-
 body.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap,
 .woocommerce.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap,
 .woocommerce-page.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap {
