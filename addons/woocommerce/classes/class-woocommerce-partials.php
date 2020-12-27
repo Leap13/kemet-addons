@@ -306,9 +306,18 @@ if ($load_more_style == 'button') {?>
         {
             $wishlist_in_header = kemet_get_option('wishlist-in-header');
 
-            if (class_exists('TInvWL_Wishlist') && $wishlist_in_header) {
+            if (class_exists('YITH_WCWL') && $wishlist_in_header) {
+                // get wishlist url.
+                $wishlist_url = YITH_WCWL()->get_wishlist_url();
                 // Add wishlist link to menu items
-                $items .= '<li class="woo-wishlist-link">' . do_shortcode('[ti_wishlist_products_counter]') . '</li>';
+                $item = '<li class="woo-wishlist-link">';
+                $item .= '<a href="' . esc_url($wishlist_url) . '" class="kmt-wishlist">';
+                $item .= '<i class="fa fa-heart-o"></i>';
+                $item .= '<span class="kmt-wishlist-text">' . YITH_WCWL()->count_products() . '</span>';
+                $item .= '</a>';
+                $item .= '</li>';
+
+                $items .= $item;
             }
 
             // Return menu items
@@ -424,16 +433,13 @@ if ($load_more_style == 'button') {?>
                             }
                         }
 
-                        if (class_exists('TInvWL_Wishlist')) {
-                            echo '<div class="button woo-wishlist-btn">' . do_shortcode('[ti_wishlists_addtowishlist]') . '</div>';
-                        }
-
                         do_action('kemet_woo_shop_summary_wrap_bottom');
                         echo '</div>';
                         do_action('kemet_woo_shop_after_summary_wrap');
                     }
                 }
 
+                add_action('kemet_woo_shop_add_to_cart_after', 'kemet_get_wishlist');
                 add_action('woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details', 8);
                 add_action('woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title', 1);
                 add_action('woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content', 2);
@@ -458,11 +464,7 @@ if ($load_more_style == 'button') {?>
                 {
                     echo '</a>';
                     echo '<div class="product-btn-group">';
-
-                    if (class_exists('TInvWL_Wishlist')) {
-                        echo '<div class="button woo-wishlist-btn">' . do_shortcode('[ti_wishlists_addtowishlist]') . '</div>';
-                    }
-
+                    kemet_get_wishlist();
                     $out_of_stock = get_post_meta(get_the_ID(), '_stock_status', true);
                     do_action('kemet_woo_shop_add_to_cart_before');
                     echo '<div class="add-to-cart-group">';
@@ -547,6 +549,7 @@ if ($load_more_style == 'button') {?>
                 add_action('woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title', 1);
                 add_action('woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content', 2);
 
+                remove_action('kemet_woo_shop_add_to_cart_after', 'kemet_get_wishlist');
                 remove_action('woocommerce_before_shop_loop_item', 'product_list_details', 8);
                 remove_action('woocommerce_after_shop_loop_item', 'after_shop_loop_item_title', 1);
                 remove_action('woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content', 2);
