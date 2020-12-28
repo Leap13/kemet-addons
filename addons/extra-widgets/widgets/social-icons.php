@@ -180,14 +180,20 @@ if (!function_exists('kemet_widget_social_profiles')) {
         $icon_color = !empty($instance['icon-color']) ? $instance['icon-color'] : '';
         $icon_hover_color = !empty($instance['icon-hover-color']) ? $instance['icon-hover-color'] : '';
         $alignment = !empty($instance['alignment']) ? $instance['alignment'] : '';
+        $space_between_profiles = array();
+        if (!empty($instance['space-between-profiles'])) {
+            switch ($instance['alignment']) {
+                case 'row':
+                    $spacing_direction = is_rtl() ? 'left' : 'right';
+                    $space_between_profiles = array('padding-' . $spacing_direction => kemet_get_css_value($instance['space-between-profiles'], 'px'));
+                    break;
 
-        if (!empty($instance['space-between-profiles']) && $instance['alignment'] == 'row') {
-            $space_between_profiles = array('padding-right' => kemet_get_css_value($instance['space-between-profiles'], 'px'));
-        } elseif (!empty($instance['space-between-profiles']) && $instance['alignment'] == 'column') {
-            $space_between_profiles = array('padding-bottom' => kemet_get_css_value($instance['space-between-profiles'], 'px'));
-        } else {
-            $space_between_profiles = array();
+                case 'column':
+                    $space_between_profiles = array('padding-bottom' => kemet_get_css_value($instance['space-between-profiles'], 'px'));
+                    break;
+            }
         }
+
         $icon_width = !empty($instance['icon-width']) ? $instance['icon-width'] : 20;
         $font_size = !empty($instance['icon-font-size']) ? $instance['icon-font-size'] . 'px' : 'initial';
         $space_text_icon = !empty($instance['space-between-icon-text']) ? $instance['space-between-icon-text'] : '';
@@ -202,7 +208,7 @@ if (!function_exists('kemet_widget_social_profiles')) {
                 'line-height' => kemet_get_css_value($icon_width, 'px'),
             ),
             $id . '.kmt-social-profiles .kmt-profile-link .profile-title' => array(
-                'padding-left' => kemet_get_css_value($space_text_icon, 'px'),
+                'padding-' . $spacing_direction => kemet_get_css_value($space_text_icon, 'px'),
             ),
             $id . '.kmt-social-profiles .kmt-profile-link:not(:last-child)' => $space_between_profiles,
             $id . '.kmt-social-profiles' => array(
