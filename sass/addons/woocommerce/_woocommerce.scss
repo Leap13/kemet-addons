@@ -565,7 +565,8 @@ body,
                 .add_to_wishlist > span {
                   display: none;
                 }
-                .yith-wcwl-wishlistexistsbrowse {
+                .yith-wcwl-wishlistexistsbrowse,
+                .yith-wcwl-wishlistaddedbrowse {
                   position: relative;
                   .feedback {
                     display: none;
@@ -733,7 +734,8 @@ body,
               .add_to_wishlist > span {
                 display: none;
               }
-              .yith-wcwl-wishlistexistsbrowse {
+              .yith-wcwl-wishlistexistsbrowse,
+              .yith-wcwl-wishlistaddedbrowse {
                 position: relative;
                 .feedback {
                   display: none;
