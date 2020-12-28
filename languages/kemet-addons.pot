@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/kemet-addons\n"
-"POT-Creation-Date: 2020-12-03 17:26+0200\n"
+"POT-Creation-Date: 2020-12-28 18:50+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,6 +22,10 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: addons/blog-layouts/classes/class-blog-layouts-settings.php:69
+msgid "No more posts to show."
+msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:18
 #: inc/kemet-panel/tabs/class-kemet-panel-options.php:105
@@ -73,7 +77,7 @@ msgstr ""
 #: addons/blog-layouts/customizer/customizer-options.php:499
 #: addons/extra-headers/customizer/customizer-options.php:109
 #: addons/extra-headers/customizer/customizer-options.php:598
-#: addons/extra-widgets/widgets/mailchimp.php:41
+#: addons/extra-widgets/widgets/mailchimp.php:35
 #: addons/page-title/customizer/customizer-options.php:195
 #: addons/page-title/customizer/customizer-options.php:1001
 #: addons/single-post/customizer/customizer-options.php:202
@@ -90,7 +94,7 @@ msgstr ""
 #: addons/blog-layouts/customizer/customizer-options.php:497
 #: addons/extra-headers/customizer/customizer-options.php:110
 #: addons/extra-headers/customizer/customizer-options.php:596
-#: addons/extra-widgets/widgets/mailchimp.php:43
+#: addons/extra-widgets/widgets/mailchimp.php:37
 #: addons/page-title/customizer/customizer-options.php:193
 #: addons/page-title/customizer/customizer-options.php:999
 #: addons/single-post/customizer/customizer-options.php:200
@@ -247,7 +251,7 @@ msgid "Next/Prev"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:549
-#: addons/woocommerce/customizer/customizer-options.php:322
+#: addons/woocommerce/customizer/customizer-options.php:340
 msgid "Standard"
 msgstr ""
 
@@ -260,32 +264,32 @@ msgid "Pagination Border Color"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:599
-#: addons/woocommerce/customizer/customizer-options.php:347
+#: addons/woocommerce/customizer/customizer-options.php:365
 msgid "Load More Style"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:601
-#: addons/woocommerce/customizer/customizer-options.php:349
+#: addons/woocommerce/customizer/customizer-options.php:367
 msgid "Dots"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:602
-#: addons/woocommerce/customizer/customizer-options.php:350
+#: addons/woocommerce/customizer/customizer-options.php:368
 msgid "Button"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:626
-#: addons/woocommerce/customizer/customizer-options.php:374
+#: addons/woocommerce/customizer/customizer-options.php:392
 msgid "Load More Text"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:650
-#: addons/woocommerce/customizer/customizer-options.php:399
+#: addons/woocommerce/customizer/customizer-options.php:417
 msgid "Infinite Scroll Loader Color"
 msgstr ""
 
 #: addons/blog-layouts/customizer/customizer-options.php:675
-#: addons/woocommerce/customizer/customizer-options.php:423
+#: addons/woocommerce/customizer/customizer-options.php:441
 msgid "Infinite Scroll: Last Text"
 msgstr ""
 
@@ -499,7 +503,7 @@ msgid "Head Top"
 msgstr ""
 
 #: addons/custom-layout/classes/class-custom-layout-partials.php:505
-#: addons/extra-headers/classes/class-extra-headers-meta.php:51
+#: addons/extra-headers/classes/class-extra-headers-meta.php:56
 msgid "Header"
 msgstr ""
 
@@ -1108,15 +1112,16 @@ msgstr ""
 msgid "New Custom Layout Name"
 msgstr ""
 
-#: addons/extra-headers/classes/class-extra-headers-meta.php:58
+#: addons/extra-headers/classes/class-extra-headers-meta.php:63
 msgid "Display Primary Header"
 msgstr ""
 
-#: addons/extra-headers/classes/class-extra-headers-meta.php:76
+#: addons/extra-headers/classes/class-extra-headers-meta.php:81
 msgid "Overlay Header"
 msgstr ""
 
-#: addons/extra-headers/classes/class-extra-headers-meta.php:78
+#: addons/extra-headers/classes/class-extra-headers-meta.php:83
+#: addons/extra-headers/classes/class-extra-headers-meta.php:95
 #: addons/extra-widgets/customizer/customizer-options.php:109
 #: addons/page-title/customizer/customizer-options.php:326
 #: addons/page-title/customizer/customizer-options.php:567
@@ -1127,16 +1132,43 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: addons/extra-headers/classes/class-extra-headers-meta.php:79
+#: addons/extra-headers/classes/class-extra-headers-meta.php:84
 #: addons/sticky-header/classes/class-sticky-headers-meta.php:58
 msgid "Enable"
 msgstr ""
 
-#: addons/extra-headers/classes/class-extra-headers-meta.php:80
+#: addons/extra-headers/classes/class-extra-headers-meta.php:85
 #: addons/extra-headers/customizer/customizer-options.php:23
 #: addons/page-title/customizer/customizer-options.php:32
 #: addons/sticky-header/classes/class-sticky-headers-meta.php:59
 msgid "Disable"
+msgstr ""
+
+#: addons/extra-headers/classes/class-extra-headers-meta.php:93
+#: addons/extra-headers/customizer/customizer-options.php:225
+msgid "Header Width"
+msgstr ""
+
+#: addons/extra-headers/classes/class-extra-headers-meta.php:96
+#: addons/extra-headers/customizer/customizer-options.php:227
+msgid "Full Width"
+msgstr ""
+
+#: addons/extra-headers/classes/class-extra-headers-meta.php:97
+#: addons/extra-headers/customizer/customizer-options.php:228
+msgid "Content Width"
+msgstr ""
+
+#: addons/extra-headers/classes/class-extra-headers-meta.php:98
+#: addons/extra-headers/customizer/customizer-options.php:229
+#: addons/metabox/classes/class-metabox-data.php:50
+msgid "Boxed Content"
+msgstr ""
+
+#: addons/extra-headers/classes/class-extra-headers-meta.php:99
+#: addons/extra-headers/customizer/customizer-options.php:230
+#: addons/metabox/classes/class-metabox-data.php:52
+msgid "Stretched Content"
 msgstr ""
 
 #: addons/extra-headers/customizer/customizer-options.php:19
@@ -1191,28 +1223,6 @@ msgstr ""
 #: addons/extra-headers/customizer/customizer-options.php:200
 #: addons/sticky-header/customizer/customizer-options.php:90
 msgid "Enable Box Shadow"
-msgstr ""
-
-#: addons/extra-headers/customizer/customizer-options.php:225
-msgid "Header Width"
-msgstr ""
-
-#: addons/extra-headers/customizer/customizer-options.php:227
-msgid "Full Width"
-msgstr ""
-
-#: addons/extra-headers/customizer/customizer-options.php:228
-msgid "Content Width"
-msgstr ""
-
-#: addons/extra-headers/customizer/customizer-options.php:229
-#: addons/metabox/classes/class-metabox-data.php:50
-msgid "Boxed Content"
-msgstr ""
-
-#: addons/extra-headers/customizer/customizer-options.php:230
-#: addons/metabox/classes/class-metabox-data.php:52
-msgid "Stretched Content"
 msgstr ""
 
 #: addons/extra-headers/customizer/customizer-options.php:254
@@ -1277,7 +1287,7 @@ msgstr ""
 
 #: addons/extra-headers/customizer/customizer-options.php:466
 #: addons/extra-headers/customizer/customizer-options.php:502
-#: addons/extra-widgets/widgets/social-icons.php:108
+#: addons/extra-widgets/widgets/social-icons.php:113
 #: addons/go-top/customizer/customizer-options.php:233
 #: addons/go-top/customizer/customizer-options.php:258
 msgid "Icon Color"
@@ -1285,7 +1295,7 @@ msgstr ""
 
 #: addons/extra-headers/customizer/customizer-options.php:477
 #: addons/extra-headers/customizer/customizer-options.php:513
-#: addons/extra-widgets/widgets/social-icons.php:119
+#: addons/extra-widgets/widgets/social-icons.php:124
 #: addons/go-top/customizer/customizer-options.php:244
 #: addons/go-top/customizer/customizer-options.php:269
 #: addons/top-bar-section/customizer/customizer-options.php:483
@@ -1432,7 +1442,6 @@ msgstr ""
 
 #: addons/extra-widgets/widgets/login-form.php:11
 #: addons/extra-widgets/widgets/mailchimp.php:22
-#: addons/extra-widgets/widgets/mailchimp.php:28
 #: addons/extra-widgets/widgets/posts-in-images.php:17
 #: addons/extra-widgets/widgets/posts-list.php:11
 msgid "Title:"
@@ -1451,35 +1460,35 @@ msgid "Mailchimp subscribe widget"
 msgstr ""
 
 #: addons/extra-widgets/widgets/mailchimp.php:23
-#: addons/extra-widgets/widgets/mailchimp.php:29
 msgid "Subscribe"
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:34
+#: addons/extra-widgets/widgets/mailchimp.php:28
+#: addons/extra-widgets/widgets/social-icons.php:17
 msgid "Description"
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:39
+#: addons/extra-widgets/widgets/mailchimp.php:33
 msgid "Align button"
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:42
+#: addons/extra-widgets/widgets/mailchimp.php:36
 msgid "Center"
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:81
+#: addons/extra-widgets/widgets/mailchimp.php:76
 msgid "Email"
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:82
+#: addons/extra-widgets/widgets/mailchimp.php:77
 msgid "Invalid or empty email"
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:90
+#: addons/extra-widgets/widgets/mailchimp.php:85
 msgid "You have successfully subscribed to the newsletter."
 msgstr ""
 
-#: addons/extra-widgets/widgets/mailchimp.php:91
+#: addons/extra-widgets/widgets/mailchimp.php:86
 msgid "Something went wrong. Your subscription failed."
 msgstr ""
 
@@ -1500,8 +1509,8 @@ msgstr ""
 #: addons/extra-widgets/widgets/posts-in-images.php:29
 #: addons/page-title/customizer/customizer-options.php:969
 #: addons/woocommerce/customizer/customizer-options.php:226
-#: addons/woocommerce/customizer/customizer-options.php:259
-#: addons/woocommerce/customizer/customizer-options.php:289
+#: addons/woocommerce/customizer/customizer-options.php:254
+#: addons/woocommerce/customizer/customizer-options.php:307
 msgid "Category"
 msgstr ""
 
@@ -1546,59 +1555,59 @@ msgid "Social Icons"
 msgstr ""
 
 #: addons/extra-widgets/widgets/social-icons.php:12
-#: addons/extra-widgets/widgets/social-icons.php:81
+#: addons/extra-widgets/widgets/social-icons.php:86
 #: addons/woocommerce/customizer/customizer-options.php:221
-#: addons/woocommerce/customizer/customizer-options.php:254
+#: addons/woocommerce/customizer/customizer-options.php:249
 msgid "Title"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:17
+#: addons/extra-widgets/widgets/social-icons.php:22
 msgid "Display Icon Title"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:22
+#: addons/extra-widgets/widgets/social-icons.php:27
 msgid "Alignment"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:24
+#: addons/extra-widgets/widgets/social-icons.php:29
 msgid "Inline"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:25
+#: addons/extra-widgets/widgets/social-icons.php:30
 msgid "Stack"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:33
+#: addons/extra-widgets/widgets/social-icons.php:38
 msgid "Icon Style"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:35
+#: addons/extra-widgets/widgets/social-icons.php:40
 msgid "Simple"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:36
+#: addons/extra-widgets/widgets/social-icons.php:41
 #: addons/woocommerce/customizer/customizer-options.php:38
 msgid "Circle"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:37
+#: addons/extra-widgets/widgets/social-icons.php:42
 #: addons/woocommerce/customizer/customizer-options.php:39
 msgid "Square"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:38
+#: addons/extra-widgets/widgets/social-icons.php:43
 msgid "Circle Outline"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:39
+#: addons/extra-widgets/widgets/social-icons.php:44
 msgid "Square Outline"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:46
+#: addons/extra-widgets/widgets/social-icons.php:51
 msgid "Icon Width"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:52
+#: addons/extra-widgets/widgets/social-icons.php:57
 #: addons/page-title/customizer/customizer-options.php:273
 #: addons/page-title/customizer/customizer-options.php:514
 #: addons/page-title/customizer/customizer-options.php:703
@@ -1606,42 +1615,42 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:58
+#: addons/extra-widgets/widgets/social-icons.php:63
 msgid "Space Between Icon & Text:"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:66
+#: addons/extra-widgets/widgets/social-icons.php:71
 msgid "Space Between Social Icons:"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:73
-#: addons/extra-widgets/widgets/social-icons.php:74
+#: addons/extra-widgets/widgets/social-icons.php:78
+#: addons/extra-widgets/widgets/social-icons.php:79
 #: inc/k-framework/fields/icon/icon.php:20
 #: inc/k-framework/functions/actions.php:163
 msgid "Add Icon"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:86
+#: addons/extra-widgets/widgets/social-icons.php:91
 msgid "Link"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:92
+#: addons/extra-widgets/widgets/social-icons.php:97
 msgid "Target"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:94
+#: addons/extra-widgets/widgets/social-icons.php:99
 msgid "Same Page"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:95
+#: addons/extra-widgets/widgets/social-icons.php:100
 msgid "New Page"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:102
+#: addons/extra-widgets/widgets/social-icons.php:107
 msgid "Select Icon"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:103
+#: addons/extra-widgets/widgets/social-icons.php:108
 #: addons/mega-menu/classes/class-mega-menu-options.php:110
 #: addons/page-title/customizer/customizer-options.php:837
 #: addons/top-bar-section/customizer/customizer-options.php:594
@@ -1649,20 +1658,20 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:113
+#: addons/extra-widgets/widgets/social-icons.php:118
 msgid "Icon Hover Color"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:125
+#: addons/extra-widgets/widgets/social-icons.php:130
 msgid "Background Hover Color"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:131
+#: addons/extra-widgets/widgets/social-icons.php:136
 #: addons/top-bar-section/customizer/customizer-options.php:516
 msgid "Border Color"
 msgstr ""
 
-#: addons/extra-widgets/widgets/social-icons.php:137
+#: addons/extra-widgets/widgets/social-icons.php:142
 msgid "Border Hover Color"
 msgstr ""
 
@@ -2412,7 +2421,7 @@ msgstr ""
 msgid "Top Bar Widget Section 2"
 msgstr ""
 
-#: addons/top-bar-section/classes/class-top-bar-section-settings.php:40
+#: addons/top-bar-section/classes/class-top-bar-section-settings.php:42
 #: inc/kemet-panel/tabs/class-kemet-panel-options.php:81
 msgid "Top Bar Section"
 msgstr ""
@@ -2490,26 +2499,39 @@ msgstr ""
 msgid "Search Box"
 msgstr ""
 
-#: addons/woocommerce/classes/class-woocommerce-partials.php:709
+#: addons/woocommerce/classes/class-woocommerce-partials.php:117
+#: addons/woocommerce/customizer/customizer-options.php:73
+msgid "Wishlist"
+msgstr ""
+
+#: addons/woocommerce/classes/class-woocommerce-partials.php:144
+msgid "Added"
+msgstr ""
+
+#: addons/woocommerce/classes/class-woocommerce-partials.php:789
 msgid "Off Canvas Filter"
 msgstr ""
 
-#: addons/woocommerce/classes/class-woocommerce-partials.php:753
+#: addons/woocommerce/classes/class-woocommerce-partials.php:833
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/woocommerce/classes/class-woocommerce-partials.php:755
+#: addons/woocommerce/classes/class-woocommerce-partials.php:835
 msgid "Sale!"
 msgstr ""
 
-#: addons/woocommerce/classes/class-woocommerce-partials.php:876
-#: addons/woocommerce/classes/class-woocommerce-partials.php:892
+#: addons/woocommerce/classes/class-woocommerce-partials.php:956
+#: addons/woocommerce/classes/class-woocommerce-partials.php:972
 msgid "Quick View"
 msgstr ""
 
-#: addons/woocommerce/classes/class-woocommerce-partials.php:956
+#: addons/woocommerce/classes/class-woocommerce-partials.php:1036
 msgid "View cart"
+msgstr ""
+
+#: addons/woocommerce/classes/class-woocommerce-settings.php:78
+msgid "No more products to show."
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:13
@@ -2528,15 +2550,8 @@ msgstr ""
 msgid "Percentage"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:73
-msgid "Wishlist"
-msgstr ""
-
 #: addons/woocommerce/customizer/customizer-options.php:74
-msgid ""
-"You need to activate the <a target=\"_blank\" href=\"https://wordpress.org/"
-"plugins/ti-woocommerce-wishlist/\">TI WooCommerce Wishlist</a> plugin to add a "
-"wishlist button and icon"
+msgid "You need to activate the <a target=\"_blank\" href=\""
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:95
@@ -2580,120 +2595,124 @@ msgid "Product Structure"
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:222
-#: addons/woocommerce/customizer/customizer-options.php:255
+#: addons/woocommerce/customizer/customizer-options.php:250
 msgid "Price"
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:223
-#: addons/woocommerce/customizer/customizer-options.php:256
+#: addons/woocommerce/customizer/customizer-options.php:251
 msgid "Ratings"
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:224
-#: addons/woocommerce/customizer/customizer-options.php:257
-#: addons/woocommerce/customizer/customizer-options.php:287
+#: addons/woocommerce/customizer/customizer-options.php:252
+#: addons/woocommerce/customizer/customizer-options.php:305
 msgid "Short Description"
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:225
-#: addons/woocommerce/customizer/customizer-options.php:258
-#: addons/woocommerce/customizer/customizer-options.php:288
+#: addons/woocommerce/customizer/customizer-options.php:253
+#: addons/woocommerce/customizer/customizer-options.php:306
 msgid "Add To Cart"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:252
+#: addons/woocommerce/customizer/customizer-options.php:247
 msgid "List Style Structure"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:285
+#: addons/woocommerce/customizer/customizer-options.php:278
+msgid "Disable Short Description In Responsive"
+msgstr ""
+
+#: addons/woocommerce/customizer/customizer-options.php:303
 msgid "Shop Product Structure"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:298
+#: addons/woocommerce/customizer/customizer-options.php:316
 msgid "Pagination Settings"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:320
+#: addons/woocommerce/customizer/customizer-options.php:338
 msgid "Pagination Style"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:323
+#: addons/woocommerce/customizer/customizer-options.php:341
 msgid "Infinite Scroll"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:443
+#: addons/woocommerce/customizer/customizer-options.php:461
 msgid "Product Content Alignment"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:473
+#: addons/woocommerce/customizer/customizer-options.php:491
 msgid "Enable Filter Button"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:495
+#: addons/woocommerce/customizer/customizer-options.php:513
 msgid "Filter Settings"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:521
+#: addons/woocommerce/customizer/customizer-options.php:539
 msgid "Filter Button Text"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:536
+#: addons/woocommerce/customizer/customizer-options.php:554
 msgid "Single Product Settings"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:558
+#: addons/woocommerce/customizer/customizer-options.php:576
 msgid "Enable Ajax Add To Cart"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:576
+#: addons/woocommerce/customizer/customizer-options.php:594
 msgid "Enable Product Navigation"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:595
+#: addons/woocommerce/customizer/customizer-options.php:613
 msgid "Gallery Style"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:597
+#: addons/woocommerce/customizer/customizer-options.php:615
 msgid "Horizontal"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:598
+#: addons/woocommerce/customizer/customizer-options.php:616
 msgid "Vertical"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:619
+#: addons/woocommerce/customizer/customizer-options.php:637
 msgid "Image Width (%)"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:636
+#: addons/woocommerce/customizer/customizer-options.php:654
 msgid "Related Products Settings"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:657
+#: addons/woocommerce/customizer/customizer-options.php:675
 msgid "Disable Related Products"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:682
+#: addons/woocommerce/customizer/customizer-options.php:700
 msgid "Related Products Count"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:713
+#: addons/woocommerce/customizer/customizer-options.php:731
 msgid "Related Products Columns"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:731
+#: addons/woocommerce/customizer/customizer-options.php:749
 msgid "Up-Sells Products Settings"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:753
+#: addons/woocommerce/customizer/customizer-options.php:771
 msgid "Disable Up-Sells Products"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:778
+#: addons/woocommerce/customizer/customizer-options.php:796
 msgid "Up-Sells Count"
 msgstr ""
 
-#: addons/woocommerce/customizer/customizer-options.php:809
+#: addons/woocommerce/customizer/customizer-options.php:827
 msgid "Up-Sells Columns"
 msgstr ""
 
@@ -2757,7 +2776,7 @@ msgstr ""
 
 #: inc/k-framework/classes/options.class.php:531
 #: inc/k-framework/classes/options.class.php:636
-#: inc/kemet-panel/class-kemet-addons-panel.php:162
+#: inc/kemet-panel/class-kemet-addons-panel.php:166
 msgid "Save"
 msgstr ""
 
@@ -2778,7 +2797,7 @@ msgstr ""
 
 #: inc/k-framework/classes/options.class.php:533
 #: inc/k-framework/classes/options.class.php:638
-#: inc/kemet-panel/class-kemet-addons-panel.php:166
+#: inc/kemet-panel/class-kemet-addons-panel.php:171
 msgid "Reset All"
 msgstr ""
 
@@ -3103,50 +3122,54 @@ msgstr ""
 msgid "Search a Icon..."
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:67
-#: inc/kemet-panel/class-kemet-addons-panel.php:70
-#: inc/kemet-panel/class-kemet-addons-panel.php:78
+#: inc/kemet-panel/class-kemet-addons-panel.php:69
+#: inc/kemet-panel/class-kemet-addons-panel.php:72
+#: inc/kemet-panel/class-kemet-addons-panel.php:80
 msgid "Kemet"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:78
+#: inc/kemet-panel/class-kemet-addons-panel.php:80
 msgid "Kemet Panel"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:89
+#: inc/kemet-panel/class-kemet-addons-panel.php:91
 msgid "Customizer & Page Options"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:95
+#: inc/kemet-panel/class-kemet-addons-panel.php:97
 msgid "Integrations"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:100
+#: inc/kemet-panel/class-kemet-addons-panel.php:102
 msgid "Plugins"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:104
+#: inc/kemet-panel/class-kemet-addons-panel.php:106
 msgid "System Info"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:121
+#: inc/kemet-panel/class-kemet-addons-panel.php:123
 msgid "Welcome to"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:122
+#: inc/kemet-panel/class-kemet-addons-panel.php:124
 msgid "Kemet Theme"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:123
+#: inc/kemet-panel/class-kemet-addons-panel.php:125
 msgid "by Leap13"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:133
+#: inc/kemet-panel/class-kemet-addons-panel.php:136
 msgid "-tab"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:164
+#: inc/kemet-panel/class-kemet-addons-panel.php:168
 msgid "Enable All"
+msgstr ""
+
+#: inc/kemet-panel/class-kemet-addons-panel.php:169
+msgid "Disable All"
 msgstr ""
 
 #: inc/kemet-panel/tabs/class-kemet-panel-integration.php:63
