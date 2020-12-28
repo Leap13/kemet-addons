@@ -109,6 +109,10 @@
   height: auto;
 }
 
+.kmt-social-description {
+  margin-bottom: 10px;
+}
+
 .kmt-social-profiles .kmt-profile-link .profile-icon.facebook {
   color: #3b5998;
 }
