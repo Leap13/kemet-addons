@@ -19,6 +19,7 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
     $global_border_color = kemet_get_option('global-border-color');
     $theme_color = kemet_get_option('theme-color');
     $text_meta_color = kemet_get_option('text-meta-color');
+    $headings_links_color = kemet_get_option('headings-links-color');
     $btn_color = kemet_get_option('button-color', '#ffffff');
     $btn_h_color = kemet_get_option('button-h-color', $btn_color);
     $btn_bg_color = kemet_get_option('button-bg-color', $theme_color);
@@ -104,6 +105,12 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         ),
         '.kmt-woo-load-more .woo-load-more-text' => array(
             'color' => esc_attr($inifinte_text_color),
+        ),
+        '.shop-grid .yith-wcwl-add-to-wishlist' => array(
+            'color' => esc_attr($headings_links_color),
+        ),
+        '.shop-grid .yith-wcwl-add-to-wishlist:hover' => array(
+            'color' => esc_attr($theme_color),
         ),
     );
     $parse_css = kemet_parse_css($css_content);
