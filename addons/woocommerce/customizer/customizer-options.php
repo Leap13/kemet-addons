@@ -71,7 +71,7 @@ $wp_customize->add_control(
         $wp_customize, KEMET_THEME_SETTINGS . '[kmt-wishlist]', array(
             'type' => 'kmt-title',
             'label' => __('Wishlist', 'kemet-addons'),
-            'description' => __('You need to activate the <a target="_blank" href="https://wordpress.org/plugins/ti-woocommerce-wishlist/">TI WooCommerce Wishlist</a> plugin to add a wishlist button and icon', 'kemet-addons'),
+            'description' => __('You need to activate the <a target="_blank" href="' . esc_url('https://wordpress.org/plugins/yith-woocommerce-wishlist/') . '">YITH WooCommerce Wishlist</a> plugin to add a wishlist button and icon', 'kemet-addons'),
             'section' => 'section-woo-general',
             'priority' => 14,
             'settings' => array(),

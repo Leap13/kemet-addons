@@ -75,7 +75,7 @@ if (!class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['wishlist-in-header'] = false;
             $defaults['enable-quick-view'] = false;
             $defaults['woo-pagination-style'] = 'standard';
-            $defaults['infinite-scroll-last-text'] = 'No more products to show.';
+            $defaults['infinite-scroll-last-text'] = __('No more products to show.', 'kemet-addons');
             $defaults['infinite-scroll-loader-color'] = '';
             $defaults['list-style-description'] = false;
             $defaults['woo-load-more-style'] = 'dots';

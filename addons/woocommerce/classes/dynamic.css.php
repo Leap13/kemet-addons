@@ -19,6 +19,7 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
     $global_border_color = kemet_get_option('global-border-color');
     $theme_color = kemet_get_option('theme-color');
     $text_meta_color = kemet_get_option('text-meta-color');
+    $headings_links_color = kemet_get_option('headings-links-color');
     $btn_color = kemet_get_option('button-color', '#ffffff');
     $btn_h_color = kemet_get_option('button-h-color', $btn_color);
     $btn_bg_color = kemet_get_option('button-bg-color', $theme_color);
@@ -35,7 +36,7 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
     $image_width = !empty(kemet_get_option('product-image-width')) ? kemet_get_option('product-image-width') : 50;
 
     $css_content = array(
-        '.hover-style .product-btn-group .woo-wishlist-btn .tinv-wishlist .tinvwl_add_to_wishlist_button' => array(
+        '.hover-style .product-btn-group .woo-wishlist-btn .yith-wcwl-add-to-wishlist .add_to_wishlist' => array(
             'color' => esc_attr($btn_color),
         ),
         '.woocommerce .product .onsale , .product .onsale' => array(
@@ -71,11 +72,17 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn' => array(
             'border-color' => esc_attr($global_border_color),
         ),
-        '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn a' => array(
+        '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn .yith-wcwl-add-to-wishlist > *' => array(
             'color' => esc_attr($text_meta_color),
         ),
         '.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover a' => array(
             'color' => esc_attr($text_meta_color),
+        ),
+        'div.product .summary .yith-wcwl-wishlistexistsbrowse:hover' => array(
+            'color' => esc_attr($theme_color),
+        ),
+        '.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon' => array(
+            'background-color' => esc_attr(kemet_color_brightness($global_bg_color, 0.94, 'dark')),
         ),
         '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover' => array(
             'background-color' => esc_attr($btn_bg_h_color),
@@ -98,6 +105,12 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         ),
         '.kmt-woo-load-more .woo-load-more-text' => array(
             'color' => esc_attr($inifinte_text_color),
+        ),
+        '.shop-grid .yith-wcwl-add-to-wishlist' => array(
+            'color' => esc_attr($headings_links_color),
+        ),
+        '.shop-grid .yith-wcwl-add-to-wishlist:hover' => array(
+            'color' => esc_attr($theme_color),
         ),
     );
     $parse_css = kemet_parse_css($css_content);

@@ -66,7 +66,7 @@ if ( !class_exists( 'Kemet_Blog_Layouts_settings' )) {
             $defaults['blog-pagination-style']   = 'next-prev';
             $defaults['blog-pagination-border-color']   = '';
             $defaults['blog-infinite-loader-color']   = '';
-            $defaults['blog-infinite-scroll-last-text']   = 'No more posts to show.';
+            $defaults['blog-infinite-scroll-last-text']   = __( 'No more posts to show.', 'kemet-addons' );
             $defaults['post-margin-bottom']   = '';
             $defaults['layout-2-post-border-size']   = '';
             $defaults['load-more-style']   = 'dots';
