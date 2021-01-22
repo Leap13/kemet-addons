@@ -25,7 +25,6 @@
 
 .mailchimp-form input[name="email"] {
   width: 100%;
-  padding: 16px 45px 16px 15px;
 }
 
 .mailchimp-form input[name="email"]:focus {
