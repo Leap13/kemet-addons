@@ -29,8 +29,8 @@
 			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 			'dependency'  => array(
 				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]/'.KEMET_THEME_SETTINGS . '[top-section-1]/'.KEMET_THEME_SETTINGS . '[top-section-2]', 
-				'conditions' => '==/!=/!=', 
-				'values' => true.'//',
+				'conditions' => '==/notEmpty/notEmpty', 
+				'values' => true . '//',
 				'operators' => '&&/||'
 			), 
         )
@@ -40,7 +40,7 @@
             'type'            => 'checkbox',
             'section'         => 'section-sticky-header',
             'label'           => __( 'Enable Sticky Top Bar', 'kemet-addons' ),
-			'priority'        => 2,
+			'priority'        => 5,
         )
 	);
 

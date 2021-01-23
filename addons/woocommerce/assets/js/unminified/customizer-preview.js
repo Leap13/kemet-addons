@@ -49,4 +49,14 @@
     "color",
     ".kmt-woo-load-more .woo-load-more-text"
   );
+  kemet_css(
+    "kemet-settings[sale-text-color]",
+    "color",
+    ".woocommerce .product .onsale , .product .onsale"
+  );
+  kemet_css(
+    "kemet-settings[sale-background-color]",
+    "background-color",
+    ".woocommerce .product .onsale , .product .onsale"
+  );
 })(jQuery);

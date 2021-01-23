@@ -62,7 +62,46 @@ $wp_customize->add_control(
         ),
     )
 );
-
+/**
+ * Option: Content Text Color
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sale-text-color]', array(
+        'default' => $defaults['sale-text-color'],
+        'type' => 'option',
+        'transport' => 'postMessage',
+        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_alpha_color'),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[sale-text-color]', array(
+            'label' => __('Text Color', 'kemet'),
+            'priority' => 11,
+            'section' => 'section-woo-general',
+        )
+    )
+);
+/**
+ * Option: Content Text Color
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sale-background-color]', array(
+        'default' => $defaults['sale-background-color'],
+        'type' => 'option',
+        'transport' => 'postMessage',
+        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_alpha_color'),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[sale-background-color]', array(
+            'label' => __('Background Color', 'kemet'),
+            'priority' => 12,
+            'section' => 'section-woo-general',
+        )
+    )
+);
 /**
  * Option: Title
  */

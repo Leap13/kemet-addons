@@ -59,7 +59,12 @@ class Import {
         $file_contants = $wp_filesystem->get_contents( $import_file );
         $settings      = json_decode( $file_contants, 1 );
 
-        delete_option( 'kemet-settings' );
+        if(is_array($settings['mods'])){
+            foreach ($settings['mods'] as $mode => $value) {
+                set_theme_mod( $mode, $value );
+            }
+        }
+        update_option( 'site_icon', $settings['site-icon'] );
         update_option( 'kemet-settings', $settings['customizer-settings'] );
 
         // Call the customize_save action.

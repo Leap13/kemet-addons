@@ -29,6 +29,8 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
 
     //Shop
     $sale_style = kemet_get_option('sale-style');
+    $sale_color = kemet_get_option('sale-text-color');
+    $sale_bg_color = kemet_get_option('sale-background-color');
     $loader_color = kemet_get_option('infinite-scroll-loader-color', $theme_color);
     $inifinte_text_color = kemet_get_option('woo-infinite-text-color', $text_meta_color);
 
@@ -41,6 +43,8 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         ),
         '.woocommerce .product .onsale , .product .onsale' => array(
             'border-radius' => esc_attr($sale_style),
+            'color' => esc_attr($sale_color),
+            'background-color' => esc_attr($sale_bg_color),
         ),
         '.woocommerce #content .kmt-woocommerce-container div.product div.images,.woocommerce .kmt-woocommerce-container div.product div.images' => array(
             'width' => kemet_get_css_value($image_width, '%'),
