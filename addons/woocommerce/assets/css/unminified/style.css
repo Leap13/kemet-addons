@@ -758,12 +758,6 @@ body.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-d
   flex: 1;
 }
 
-body.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details span.onsale,
-.woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details span.onsale,
-.woocommerce-page.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details span.onsale {
-  left: 55px;
-}
-
 body.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details .kmt-shop-product-out-of-stock,
 .woocommerce.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details .kmt-shop-product-out-of-stock,
 .woocommerce-page.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .product-list-details .kmt-shop-product-out-of-stock {
