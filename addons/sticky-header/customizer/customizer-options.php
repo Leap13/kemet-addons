@@ -441,3 +441,37 @@ $wp_customize->add_control(
         )
     )
 );
+/**
+* Option - Menu Item Padding
+*/
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sticky-menu-item-spacing]', array(
+        'default'           => $defaults[ 'sticky-menu-item-spacing' ],
+        'type'              => 'option',
+        'transport'         => 'postMessage',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+			'conditions' => '==', 
+			'values' => true,
+		), 
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Responsive_Spacing(
+        $wp_customize, KEMET_THEME_SETTINGS . '[sticky-menu-item-spacing]', array(
+            'type'           => 'kmt-responsive-spacing',
+            'section'        => 'section-sticky-header',
+            'priority'       => 100,
+            'label'          => __( 'Menu Item Padding', 'kemet-addons' ),
+            'linked_choices' => true,
+            'unit_choices'   => array( 'px', 'em', '%' ),
+            'choices'        => array(
+                'top'    => __( 'Top', 'kemet-addons' ),
+                'right'  => __( 'Right', 'kemet-addons' ),
+                'bottom' => __( 'Bottom', 'kemet-addons' ),
+                'left'   => __( 'Left', 'kemet-addons' ),
+            ),
+        )
+    )
+);
