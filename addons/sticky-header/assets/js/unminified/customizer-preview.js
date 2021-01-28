@@ -17,7 +17,7 @@
   kemet_css(
     "kemet-settings[sticky-border-bottom-color]",
     "border-bottom-color",
-    ".kmt-is-sticky .main-header-bar"
+    ".kmt-is-sticky.header-main-layout-4 .main-header-container.logo-menu-icon , .kmt-is-sticky .main-header-bar"
   );
   /**
    * SubMenu Border color
@@ -102,5 +102,10 @@
     ".kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li a,.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *,.site-header.kmt-is-sticky .main-header-menu a",
     "padding",
     ["top", "bottom", "right", "left"]
+  );
+  kemet_responsive_slider(
+    "kemet-settings[sticky-border-width]",
+    ".kmt-is-sticky.header-main-layout-4 .main-header-container.logo-menu-icon , .kmt-is-sticky .main-header-bar",
+    "border-bottom-width"
   );
 })(jQuery);

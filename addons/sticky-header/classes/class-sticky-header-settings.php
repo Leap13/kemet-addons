@@ -70,7 +70,7 @@ if (! class_exists('Kemet_Sticky_Header_Settings')) {
             $defaults['sticky-header-box-shadow']  = false;
             $defaults['sticky-site-identity-spacing']  = '';
             $defaults['sticky-menu-item-spacing']  = '';
-
+            $defaults['sticky-border-width']  = '';
             return $defaults;
         }
 

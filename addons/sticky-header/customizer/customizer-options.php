@@ -162,6 +162,39 @@
 		)
 	);
 	/**
+	 * Option: Sticky Border Size
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[sticky-border-width]', array(
+			'default'           => $defaults[ 'sticky-border-width' ],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_slider' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+				'conditions' => '==', 
+				'values' => true,
+			), 
+		)
+	);
+	$wp_customize->add_control(
+		new Kemet_Control_Responsive_Slider(
+			$wp_customize, KEMET_THEME_SETTINGS . '[sticky-border-width]', array(
+				'type'           => 'kmt-responsive-slider',
+				'section'        => 'section-sticky-header',
+				'priority'       => 26,
+				'label'          => __( 'border Width', 'kemet-addons' ),
+				'unit_choices'   => array(
+					 'px' => array(
+						 'min' => 1,
+						 'step' => 1,
+						 'max' =>15,
+					 ),
+				 ),
+			)
+		)
+	);
+	/**
     * Option: Sticky Header Background
     */
 	$fields = array(
