@@ -667,6 +667,11 @@ body,
         z-index: 11;
       }
     }
+    li {
+      .compare.button {
+        display: none;
+      }
+    }
   }
 }
 @keyframes circle-loading {
@@ -1086,6 +1091,95 @@ body,
           &::before {
             vertical-align: text-top;
           }
+        }
+      }
+    }
+  }
+}
+ul.products {
+  li.product {
+    .woo-wishlist-btn {
+      margin-bottom: 0;
+      position: relative;
+    }
+    .yith-wcwl-add-to-wishlist {
+      margin-top: 0;
+      .yith-wcwl-icon {
+        margin-right: 0;
+      }
+      .yith-wcwl-wishlistexistsbrowse,
+      .yith-wcwl-wishlistaddedbrowse {
+        > a {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+.kmt-wishlist {
+  .kmt-wishlist-text {
+    margin-left: 5px;
+  }
+}
+
+.single-product {
+  div.product {
+    .entry-summary {
+      .compare {
+        margin-left: 20px;
+        background-color: transparent;
+        &:before {
+          content: "\f164";
+          font-family: dashicons;
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 10px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          line-height: inherit;
+          overflow: hidden;
+          font-size: 18px;
+          text-align: center;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .yith-wcwl-add-to-wishlist {
+        .yith-wcwl-wishlistexistsbrowse {
+          position: relative;
+          > a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+          }
+        }
+        display: inline-block;
+        margin-bottom: 1em;
+        .feedback,
+        .add_to_wishlist {
+          display: flex;
+          align-items: center;
+        }
+        .yith-wcwl-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          line-height: inherit;
+          margin-right: 10px;
+          overflow: hidden;
+          font-size: 18px;
+          text-align: center;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }

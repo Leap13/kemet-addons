@@ -85,7 +85,7 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         'div.product .summary .yith-wcwl-wishlistexistsbrowse:hover' => array(
             'color' => esc_attr($theme_color),
         ),
-        '.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon' => array(
+        '.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon, .single-product div.product .entry-summary .compare:before' => array(
             'background-color' => esc_attr(kemet_color_brightness($global_bg_color, 0.94, 'dark')),
         ),
         '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover' => array(

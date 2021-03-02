@@ -355,13 +355,13 @@ module.exports = function (grunt) {
       },
       dist: {
         files: [
-          {
-            expand: true,
-            cwd: "addons/extra-headers/assets/css/unminified",
-            src: ["*.css", "!*-rtl.css"],
-            dest: "addons/extra-headers/assets/css/unminified",
-            ext: "-rtl.css",
-          },
+          // {
+          //   expand: true,
+          //   cwd: "addons/extra-headers/assets/css/unminified",
+          //   src: ["*.css", "!*-rtl.css"],
+          //   dest: "addons/extra-headers/assets/css/unminified",
+          //   ext: "-rtl.css",
+          // },
           {
             expand: true,
             cwd: "addons/extra-widgets/assets/css/unminified",
@@ -447,4 +447,6 @@ module.exports = function (grunt) {
 
   // rtlcss, you will still need to install ruby and sass on your system manually to run this
   grunt.registerTask("rtl", ["rtlcss"]);
+
+  grunt.registerTask("style", ["sass", "rtl", "minify"]);
 };
