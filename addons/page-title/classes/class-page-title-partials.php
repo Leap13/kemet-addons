@@ -35,6 +35,26 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             add_filter( 'kemet_disable_breadcrumbs', array( $this, 'breadcrumbs_display' ) );
         }
 
+        /**
+		 * Get current page title
+		 *
+		 * @return string page title
+		 */
+		public function kemet_get_current_page_title() {
+			$title = '';
+			if ( is_author() ) {
+				$title = get_the_author();
+			} elseif ( is_category() || ( class_exists( 'Woocommerce' ) && is_product_category() ) ) {
+				$title = single_cat_title();
+			} elseif ( is_tag() ) {
+				$title = single_tag_title();
+			} else {
+				$title = kemet_get_the_title();
+			}
+
+			return $title;
+		}
+
         public function kemet_page_title_markup() {
             $page_title_layout = apply_filters( 'kemet_the_page_title_layout' , kemet_get_option( 'page-title-layouts' ));
             if ( $page_title_layout != 'disable' ) {
