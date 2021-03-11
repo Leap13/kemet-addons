@@ -48,12 +48,6 @@
   &.simple {
     .kmt-profile-link {
       line-height: 1;
-      .profile-icon {
-        .dashicons,
-        .dashicons-before:before {
-          vertical-align: sub;
-        }
-      }
     }
   }
   &.circle-outline,
@@ -77,21 +71,22 @@
   .kmt-profile-link {
     display: block;
     line-height: 2;
-    margin-bottom: 5px;
     .profile-title {
       display: inline-block;
     }
     .profile-icon {
-      display: inline-block;
+      display: inline-flex;
       background-color: inherit;
       font-size: 15px;
-      text-align: center;
+      justify-content: center;
+      align-self: center;
     }
     .dashicons,
     .dashicons-before:before {
       vertical-align: middle;
-      width: auto;
-      height: auto;
+      width: 100%;
+      height: 100%;
+      line-height: inherit;
     }
   }
 }
