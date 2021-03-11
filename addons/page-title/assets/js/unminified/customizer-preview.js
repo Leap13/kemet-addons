@@ -60,6 +60,11 @@
     "text-transform",
     ".kemet-page-title"
   );
+  kemet_css(
+		"kemet-settings[pagetitle-font-style]",
+		"font-style",
+		".wiz-page-title"
+	);
   kemet_responsive_slider(
     "kemet-settings[pagetitle-line-height]",
     ".kemet-page-title",

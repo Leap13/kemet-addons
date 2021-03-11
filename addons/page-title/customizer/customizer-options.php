@@ -331,6 +331,25 @@ $defaults = Kemet_Theme_Options::defaults();
 				),
 			),
 			/**
+			* Option: Page Title Font Style
+			*/
+			array(
+				'id'                => '[pagetitle-font-style]',
+				'default'           => $defaults[ 'pagetitle-font-style' ],
+				'type'              => 'option',
+				'transport'         => 'postMessage',
+				'control_type'      => 'kmt-select',
+				'label'             => __( 'Font Style', 'kemet-addons' ),
+				'section'           => 'section-page-title-header',
+				'priority'          => 5,
+				'choices'      => array(
+					'inherit' => __( 'Inherit', 'kemet' ),
+					'normal'  => __( 'Normal', 'kemet' ),
+					'italic'  => __( 'Italic', 'kemet' ),
+					'oblique' => __( 'Oblique', 'kemet' ),
+				),
+			),
+			/**
 			* Option: Page Title Line Height
 			*/
 			array(

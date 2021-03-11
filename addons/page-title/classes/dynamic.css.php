@@ -19,6 +19,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_font_family        = kemet_get_option( 'page-title-font-family' );
             $page_title_font_weight        = kemet_get_option( 'page-title-font-weight' );
             $page_title_font_transform        = kemet_get_option( 'pagetitle-text-transform' );
+            $page_title_font_style        = kemet_get_option( 'pagetitle-font-style' );
             $page_title_line_height        = kemet_get_option( 'pagetitle-line-height' );
             $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
             $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' , $theme_color);
@@ -60,6 +61,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'desktop' ),
                     'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'desktop' ),
                     'text-transform' => esc_attr( $page_title_font_transform ),
+                    'font-style'     => esc_attr( $page_title_font_style ),
                     'line-height'     => kemet_responsive_slider( $page_title_line_height, 'desktop' ),
                ),
                '.kmt-page-title.page-title-layout-1'  => array(
