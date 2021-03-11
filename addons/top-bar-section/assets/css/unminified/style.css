@@ -196,6 +196,9 @@
   .kemet-top-header.hide-tablet-mobile {
     display: none;
   }
+  .kmt-header-break-point .kemet-top-header-section {
+    flex: auto;
+  }
   .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-2 .kmt-search-menu-icon, .kmt-header-break-point .kemet-top-header-section.kemet-top-header-section-1 .kmt-search-menu-icon {
     left: 30px;
     right: auto;

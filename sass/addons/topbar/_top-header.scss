@@ -181,6 +181,7 @@
     }
     .kmt-header-break-point{
         .kemet-top-header-section{
+            flex: auto;
             &.kemet-top-header-section-2 , &.kemet-top-header-section-1{
                 .kmt-search-menu-icon{
                     left: 30px;
