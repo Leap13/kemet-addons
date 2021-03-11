@@ -122,4 +122,10 @@
   .page-title-layout-3 .kemet-page-sub-title {
     width: auto;
   }
+  .page-title-layout-2 .kmt-page-title-wrap {
+    text-align: center;
+  }
+  .page-title-layout-2 .kemet-breadcrumb-trail {
+    display: none;
+  }
 }
