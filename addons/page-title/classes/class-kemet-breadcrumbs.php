@@ -461,7 +461,7 @@ class Kemet_Breadcrumb_Trail {
 		$post_id = get_queried_object_id();
 		$post    = get_post( $post_id );
 		// If the post has parents, add them to the trail.
-		if ( 0 < $post->post_parent )
+		if ( isset($post->post_parent) && 0 < $post->post_parent )
 			$this->add_post_parents( $post->post_parent );
 		// Get the page title.
 		$title = get_the_title( $post_id );
