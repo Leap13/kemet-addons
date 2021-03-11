@@ -56,30 +56,39 @@ if( ! function_exists( 'kemet_widget_posts_in_images' ) ) {
     $order = isset($instance['posts-order']) ? $instance['posts-order'] : 'random';
     $category = isset($instance['select-category']) ? $instance['select-category'] : 1;
     $posts_number = isset($instance['posts-number']) ? $instance['posts-number'] : 12;
+    $query = array(
+			'posts_per_page'      => $posts_number,
+			'no_found_rows'       => true,
+			'post_status'         => 'publish',
+			'ignore_sticky_posts' => true,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'id',
+					'terms'    => $category,
+				),
+			),
+		);
+    if( 'random' == $order ){
+			$query['orderby'] = esc_html( 'rand' );
+		}
+		$cat_posts = new WP_Query( $query );
     
-    switch($order){
-      case 'random':
-          $cat_posts	 = get_posts( array( 'numberposts' => $posts_number, 'orderby' => 'rand', 'category' => $category ) );
-
-          break;
-      case 'most-recent':
-          $cat_posts	 = get_posts( array( 'numberposts' => $posts_number, 'category' => $category ) );
-      
-          break;   
-    }
-    ?>
-    <?php foreach ( $cat_posts as $post ){
-			setup_postdata( $post );
-			if ( function_exists( "has_post_thumbnail" ) && has_post_thumbnail() ) { 
-        ?>
-					<div class="wgt-img">
-					      <a class="ttip" title="<?php esc_attr(the_title(), 'kemet-addons' ); ?>" href="<?php the_permalink(); ?>" ><?php the_post_thumbnail( array('50', '50') ) ?></a>
-				  </div><!-- wgt-img /-->
-			<?php }
-        } 
+		if ( $cat_posts->have_posts() ) {
+      foreach ( $cat_posts->posts as $q_post ) {
+        if ( function_exists( 'has_post_thumbnail' ) && has_post_thumbnail( $q_post->ID ) ) {
+          $post_title = get_the_title( $q_post->ID );
+          $title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)' );
+          ?>
+          <div class="wgt-img">
+            <a class="ttip" title="<?php echo esc_html( $title ); ?>" href="<?php the_permalink( $q_post->ID ); ?>" ><?php echo get_the_post_thumbnail( $q_post->ID, array( '50', '50' ) ); ?></a>
+          </div><!-- wgt-img /-->
+          <?php
+        }
+      }
       ?>
     <?php
-    $post = $orig_post;
+    }
     echo $args['after_widget']; 
   } 
 }
