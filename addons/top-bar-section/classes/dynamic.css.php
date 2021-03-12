@@ -34,7 +34,7 @@ function kemet_topbar_dynamic_css($dynamic_css)
     $topbar_submenu_items_h_color = kemet_get_option('topbar-submenu-items-h-color');
     $section1_content_align = kemet_get_option('section1-content-align');
     $section2_content_align = kemet_get_option('section2-content-align');
-    $top_bar_direction = is_rtl() ? 'row-reverse' : 'row';
+    $top_bar_direction = is_rtl() ? 'inherit' : 'row';
     $topbar_font_size = kemet_get_option('topbar-font-size');
     $topbar_font_family = kemet_get_option('top-bar-font-family');
     $topbar_font_weight = kemet_get_option('top-bar-font-weight');
