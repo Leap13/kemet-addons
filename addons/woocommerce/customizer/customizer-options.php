@@ -21,29 +21,6 @@ $wp_customize->add_control(
  * Option: Sale Notification
  */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[sale-style]', array(
-        'default' => $defaults['sale-style'],
-        'type' => 'option',
-        'transport' => 'postMessage',
-        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_choices'),
-    )
-);
-$wp_customize->add_control(
-    KEMET_THEME_SETTINGS . '[sale-style]', array(
-        'type' => 'select',
-        'section' => 'section-woo-general',
-        'priority' => 5,
-        'label' => __('Sale Notification', 'kemet-addons'),
-        'choices' => array(
-            '100%' => __('Circle', 'kemet-addons'),
-            '0' => __('Square', 'kemet-addons'),
-        ),
-    )
-);
-/**
- * Option: Sale Notification
- */
-$wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[sale-content]', array(
         'default' => $defaults['sale-content'],
         'type' => 'option',

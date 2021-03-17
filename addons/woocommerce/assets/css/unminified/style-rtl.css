@@ -677,10 +677,10 @@ body.hover-style ul.products li.product .kemet-shop-thumbnail-wrap:hover .produc
   transform: translateY(-10px) scale(1);
 }
 
-body .product.kmt-gallary-vertical .onsale,
-.woocommerce .product.kmt-gallary-vertical .onsale,
-.woocommerce-page .product.kmt-gallary-vertical .onsale {
-  right: calc(7.5% + 25px);
+body .product.kmt-gallary-vertical.kmt-product-has-v-gallary .onsale,
+.woocommerce .product.kmt-gallary-vertical.kmt-product-has-v-gallary .onsale,
+.woocommerce-page .product.kmt-gallary-vertical.kmt-product-has-v-gallary .onsale {
+  right: 7.5%;
 }
 
 body ul.products.load-ajax,

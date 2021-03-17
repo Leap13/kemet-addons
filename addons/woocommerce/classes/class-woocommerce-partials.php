@@ -771,7 +771,14 @@ previous_post_link('%link', '<span class="prev"></span>');
         {
             $gallay_style = kemet_get_option('product-gallery-style');
 
-            if (post_type_exists('product')) {
+            if (post_type_exists('product') && 'product' == get_post_type() ) {
+                global $product;
+                $id = $product->get_id();
+                $product = new WC_product($id);
+                $attachment_ids = $product->get_gallery_image_ids('view');
+                if(count($attachment_ids) > 1){
+                    $classes[] = 'kmt-product-has-v-gallary';
+                }
                 $classes[] = 'kmt-gallary-' . $gallay_style;
             }
 

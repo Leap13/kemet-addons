@@ -58,7 +58,6 @@ if (!class_exists('Kemet_Woocommerce_Settings')) {
                 'short_desc',
                 'add_cart',
             );
-            $defaults['sale-style'] = '100%';
             $defaults['product-content-alignment'] = 'center';
             $defaults['related-products-count'] = 3;
             $defaults['related-products-colunms'] = 3;
