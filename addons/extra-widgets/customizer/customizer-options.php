@@ -103,7 +103,7 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[footer-widgets-style]', array(
         'type'     => 'select',
         'section'  => 'section-kemet-footer',
-        'priority' => 141,
+        'priority' => 139,
         'label'    => __( 'Widgets Style', 'kemet-addons' ),
         'choices'  => array(
             ''                 => __( 'Default', 'kemet-addons' ),
@@ -140,7 +140,7 @@ $wp_customize->add_control(
     new Kemet_Control_Color(
         $wp_customize, KEMET_THEME_SETTINGS . '[footer-widget-border-color]', array(
             'section'  => 'section-kemet-footer',
-            'priority' => 142,
+            'priority' => 139,
             'label'    => __( 'Widget Border Color', 'kemet-addons' ),
         )
     )
@@ -167,7 +167,7 @@ $wp_customize->add_control(
     new Kemet_Control_Color(
         $wp_customize, KEMET_THEME_SETTINGS . '[footer-widget-title-bg-color]', array(
             'section'  => 'section-kemet-footer',
-            'priority' => 142,
+            'priority' => 139,
             'label'    => __( 'Widget Title Background Color', 'kemet-addons' ),
         )
     )
