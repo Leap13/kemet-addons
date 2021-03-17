@@ -36,11 +36,13 @@ if (!class_exists('Mega_Menu_Walker_Nav_Menu')) {
                 $classes[] = $columns;
 
                 $bg_obj = $this->megamenu_bg_obj;
+                $global_bg_color = kemet_get_option( 'global-background-color' );
+				$bg_color        = empty( $bg_obj['background-color'] ) ? kemet_get_option( 'submenu-bg-color', kemet_color_brightness( $global_bg_color, 0.99, 'dark' ) ) : $bg_obj['background-color'];
 
-                if (!empty($bg_obj['background-color']) || !empty($bg_obj["background-image"]['url'])) {
+                if (!empty($bg_color) || !empty($bg_obj["background-image"]['url'])) {
 
                     $bg_object = array(
-                        'background-color' => $bg_obj['background-color'],
+                        'background-color' => $bg_color,
                         'background-image' => $bg_obj["background-image"]['url'],
                         'background-repeat' => $bg_obj["background-repeat"],
                         'background-size' => $bg_obj["background-size"],

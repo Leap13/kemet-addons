@@ -5,6 +5,9 @@
       "body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item"
     ).hover(
       function () {
+        if (window.innerWidth <= kemet.break_point) {
+					return;
+				}
         var headerContainer = $("header .main-header-bar .kmt-container"),
           headerWrap = headerContainer.parents(".main-header-bar"),
           containerWidth = $(this).parent(),
@@ -46,6 +49,9 @@
         }
       },
       function () {
+        if (window.innerWidth <= kemet.break_point) {
+					return;
+				}
         if (!$(this).hasClass("mega-menu-full-width")) {
           $(this)
             .find(".kemet-megamenu")
@@ -64,6 +70,9 @@
       "body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item"
     ).hover(
       function () {
+        if (window.innerWidth <= kemet.break_point) {
+					return;
+				}
         var headerContainer = $("header .main-header-bar .kmt-container"),
           headerWrap = headerContainer.parents(".main-header-bar"),
           containerWidth = $(this).parent(),
@@ -105,6 +114,9 @@
         }
       },
       function () {
+        if (window.innerWidth <= kemet.break_point) {
+					return;
+				}
         if (!$(this).hasClass("mega-menu-full-width")) {
           $(this)
             .find(".kemet-megamenu")
@@ -136,22 +148,31 @@
     }
   }
   $(window).resize(function () {
-    if ($("body").hasClass("rtl")) {
-      if (
-        !$("header").is(
-          ".header-main-layout-5 , .header-main-layout-6 , .header-main-layout-7"
-        )
-      ) {
-        kemetRtlMegMenu();
-      }
-    } else {
-      if (
-        !$("header").is(
-          ".header-main-layout-5 , .header-main-layout-6 , .header-main-layout-7"
-        )
-      ) {
-        kemetMegMenu();
-      }
-    }
-  });
+		if (window.innerWidth <= kemet.break_point) {
+			$("#site-navigation .kemet-megamenu-item")
+				.find(".kemet-megamenu").removeAttr('style').css({ width: "100%" });
+			$("#site-navigation .kemet-megamenu-item").find(".kemet-megamenu").removeAttr('style').css({ width: "100%" });
+			$("#site-navigation .kemet-megamenu-item").find(".mega-menu-full-wrap").removeAttr('style').css({
+				width: "100%",
+			});
+		} else {
+			if ($("body").is("rtl")) {
+				if (
+					!$("header").is(
+						".header-main-layout-5 , .header-main-layout-6 , .header-main-layout-7"
+					)
+				) {
+					kemetRtlMegMenu();
+				}
+			} else {
+				if (
+					!$("header").is(
+						".header-main-layout-5 , .header-main-layout-6 , .header-main-layout-7"
+					)
+				) {
+					kemetMegMenu();
+				}
+			}
+		}
+	});
 })(jQuery);
