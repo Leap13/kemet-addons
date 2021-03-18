@@ -32,6 +32,18 @@ $Social_icons_widget = array(
             'default' => 'inline',
         ),
         array(
+            'id'         => 'align',
+            'type'       => 'select',
+            'title'      => __( 'Align', 'kemet-addons' ),
+            'options'    => array(
+                'flex-start' => __( 'Left', 'kemet-addons' ),
+                'center'     => __( 'Center', 'kemet-addons' ),
+                'flex-end'   => __( 'Right', 'kemet-addons' ),
+            ),
+            'default'    => 'center',
+            'dependency' => array( 'alignment', '==', 'row' ),
+        ),
+        array(
             'id' => 'icon-style',
             'type' => 'select',
             'class' => 'social-icons-icons-style',
@@ -180,7 +192,9 @@ if (!function_exists('kemet_widget_social_profiles')) {
         $icon_color = !empty($instance['icon-color']) ? $instance['icon-color'] : '';
         $icon_hover_color = !empty($instance['icon-hover-color']) ? $instance['icon-hover-color'] : '';
         $alignment = !empty($instance['alignment']) ? $instance['alignment'] : '';
+        $align                  = ! empty( $instance['align'] ) ? $instance['align'] : 'center';
         $space_between_profiles = array();
+        $spacing_direction = '';
         if (!empty($instance['space-between-profiles'])) {
             switch ($instance['alignment']) {
                 case 'row':
@@ -216,6 +230,16 @@ if (!function_exists('kemet_widget_social_profiles')) {
             ),
         );
         $parse_css = kemet_parse_css($style);
+
+        if ( 'row' == $instance['alignment'] ) {
+			$widget_align = array(
+				$id . '.kmt-social-profiles' => array(
+					'justify-content' => esc_attr( $align ),
+				),
+			);
+			$parse_css   .= kemet_parse_css( $widget_align );
+		}
+
         if (isset($instance['social-profile']) && !empty($instance['social-profile'])) {
 
             foreach ($instance['social-profile'] as $profile) {

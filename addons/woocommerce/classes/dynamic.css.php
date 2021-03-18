@@ -44,6 +44,10 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
             'color' => esc_attr($sale_color),
             'background-color' => esc_attr($sale_bg_color),
         ),
+        '.woocommerce .kmt-qv-icon,.kmt-qv-icon' => array(
+            'background-color' => kemet_color_brightness($global_bg_color, 0.94, 'dark'),
+            'border-color' =>  $global_border_color,
+        ),
         '.woocommerce #content .kmt-woocommerce-container div.product div.images,.woocommerce .kmt-woocommerce-container div.product div.images' => array(
             'width' => kemet_get_css_value($image_width, '%'),
             'max-width' => kemet_get_css_value($image_width, '%'),

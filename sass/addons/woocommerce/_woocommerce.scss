@@ -169,17 +169,19 @@ Woo Quick View
   opacity: 0;
   transition: 0.3s all;
   text-align: center;
+  border-width: 2px;
+  border-style: solid;
   > span {
     &:before {
-      content: "\e912";
+      content: "\e913";
       display: inline-block;
       font-family: "Kemet-font";
-      font-size: 1.6rem;
+      font-size: 19px;
       font-weight: 500;
       text-rendering: auto;
       vertical-align: middle;
       position: relative;
-      line-height: 40px;
+      line-height: 38px;
     }
   }
 }
@@ -555,10 +557,10 @@ body,
               .kmt-quickview-icon {
                 margin: 0;
                 &:before {
-                  content: "\e90d";
+                  content: "\e912";
                   font-family: Kemet-font;
                   font-style: normal;
-                  font-weight: 600;
+                  font-size: 19px;
                   text-decoration: inherit;
                   text-align: center;
                   -webkit-font-smoothing: antialiased;
@@ -566,7 +568,8 @@ body,
                 }
               }
               .woo-wishlist-btn {
-                display: inline-block;
+                display: inline-flex;
+                align-items: center;
                 text-align: center;
                 margin: 0;
                 .add_to_wishlist > span {
@@ -599,12 +602,18 @@ body,
               .add-to-cart-group {
                 position: relative;
                 display: flex;
-                margin: 0 1px;
+                margin: 0 3px;
                 > * {
                   margin: 0;
                 }
                 .add_to_cart_button {
                   display: block;
+                }
+                a.added_to_cart {
+                  padding: 0;
+                  display: inline-flex;
+                  justify-content: center;
+                  align-items: center;
                 }
               }
             }
@@ -725,7 +734,7 @@ body,
               margin-left: 10px;
               .kmt-quick-view-icon {
                 &:before {
-                  content: "\e90d";
+                  content: "\e912";
                   font-family: Kemet-font;
                   font-style: normal;
                   font-weight: 600;

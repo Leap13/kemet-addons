@@ -103,6 +103,11 @@
   text-align: center;
 }
 
+.page-title-layout-3 .taxonomy-description {
+  width: 100%;
+  text-align: right;
+}
+
 .kmt-sticky-footer .kmt-page-title-addon-content {
   position: relative;
   z-index: 1;
@@ -121,6 +126,9 @@
   }
   .page-title-layout-3 .kemet-page-sub-title {
     width: auto;
+  }
+  .page-title-layout-3 .taxonomy-description {
+    text-align: center;
   }
   .page-title-layout-2 .kmt-page-title-wrap {
     text-align: center;

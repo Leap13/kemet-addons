@@ -20,12 +20,14 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
             $global_border_color      = kemet_get_option( 'global-border-color' );
             $global_footer_text_color      = kemet_get_option( 'global-footer-text-color' );
 			$global_footer_bg_color      = kemet_get_option( 'global-footer-bg-color' );
+            $widget_list_border_color = kemet_get_option( 'widget-list-border-color', $global_border_color );
             //Widget Styles Colors
-            $widget_bg_color         = kemet_get_option( 'widget-style-bg-color' ,  kemet_color_brightness($global_bg_color , 0.94 , 'dark') );
-            $widget_border_color         = kemet_get_option( 'widget-border-color' , $global_border_color );
+            $widget_bg_color            = kemet_get_option( 'widget-style-bg-color', kemet_color_brightness( $global_bg_color, 0.94, 'dark' ) );
+            $widget_border_color        = kemet_get_option( 'widget-border-color', kemet_color_brightness( $global_footer_bg_color, 0.9, 'light' ) );
+            $footer_global_border_color = kemet_color_brightness( $global_footer_bg_color, 0.9, 'light' );
             //Footer Widget Styles Colors
-            $footer_widget_bg_color         = kemet_get_option( 'footer-widget-title-bg-color' , kemet_color_brightness($global_footer_bg_color , 0.8 , 'dark') );
-            $footer_widget_border_color         = kemet_get_option( 'footer-widget-border-color' , kemet_color_brightness($global_footer_text_color , 0.4 , 'dark'));
+            $footer_widget_bg_color     = kemet_get_option( 'footer-widget-title-bg-color', kemet_color_brightness( $global_footer_bg_color, 0.8, 'dark' ) );
+	        $footer_widget_border_color = kemet_get_option( 'footer-widget-border-color', kemet_color_brightness( $global_footer_bg_color, 0.9, 'light' ) );
 
             $css_content = array(
                 //Widget Styles Css     
@@ -54,14 +56,26 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ' => array(
 					'background-color' => esc_attr( $footer_widget_bg_color ),
                 ),
+                '.tweets-container>div:not(:last-child)'           => array(
+                    'border-bottom-color' => esc_attr( $widget_list_border_color ),
+                ),
                 '.kfw-widget-posts-list .kmt-wdg-posts-list li' => array(
 					'border-bottom-color' => esc_attr( $global_border_color ),
                 ),
                 '.kfw-widget-tags .post-tags .label' => array(
 					'border-color' => esc_attr( $global_border_color ),
                 ),
+                '.kemet-footer .tweets-container>div:not(:last-child),.kmt-footer-copyright .tweets-container>div:not(:last-child)' => array(
+                    'border-bottom-color' => esc_attr( $footer_global_border_color ),
+                ),
+                '.kemet-footer .kfw-widget-tags .post-tags .label , .kmt-footer-copyright .kfw-widget-tags .post-tags .label' => array(
+                    'border-color' => esc_attr( $footer_global_border_color ),
+                ),
                 '.wgt-img img' => array(
 					'border-color' => esc_attr( $global_border_color ),
+                ),
+                '.kemet-footer .wgt-img img'                         => array(
+                    'border-color' => esc_attr( $footer_global_border_color ),
                 ),
             );
 

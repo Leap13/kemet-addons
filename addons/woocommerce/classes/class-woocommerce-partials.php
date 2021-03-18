@@ -664,7 +664,7 @@ if ($load_more_style == 'button') {?>
             $off_canvas_enable = kemet_get_option('enable-filter-button');
 
             if ($off_canvas_enable) {
-                add_action('woocommerce_before_shop_loop', array($this, 'off_canvas_filter_button'), 10);
+                add_action('woocommerce_before_shop_loop', array($this, 'off_canvas_filter_button'), 15);
                 add_action('wp_footer', array($this, 'off_canvas_filter_sidebar'));
             }
 

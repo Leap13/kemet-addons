@@ -35,7 +35,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $sub_title_line_height           =  kemet_get_option( 'sub-title-line-height' );
             // Breadcrumbs
             $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
-            $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
+            $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color', $page_title_color );
             $breadcrumbs_font_size        = kemet_get_option( 'breadcrumbs-font-size' );
             $breadcrumbs_letter_spacing     = kemet_get_option( 'breadcrumbs-letter-spacing' );
             $breadcrumbs_font_family        = kemet_get_option( 'breadcrumbs-font-family' );
@@ -43,8 +43,8 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $breadcrumbs_text_transform        = kemet_get_option( 'breadcrumbs-text-transform' );
             $breadcrumbs_line_height        = kemet_get_option( 'breadcrumbs-line-height' );
             $breadcrumbs_font_size        = kemet_get_option( 'breadcrumbs-font-size' );
-            $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color' );
-            $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
+            $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color', $page_title_color );
+            $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color', $theme_color );
             
             $css_content = array(
                '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
@@ -64,6 +64,9 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'font-style'     => esc_attr( $page_title_font_style ),
                     'line-height'     => kemet_responsive_slider( $page_title_line_height, 'desktop' ),
                ),
+               '.taxonomy-description' => array(
+                    'color' => esc_attr( $page_title_color ),
+                ),
                '.kmt-page-title.page-title-layout-1'  => array(
                 'text-align'  => esc_attr( $page_title_algin ),
                 ),

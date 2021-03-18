@@ -67,10 +67,10 @@ if (!class_exists('Kemet_Woocommerce_Settings')) {
             $defaults['sale-content'] = 'sale-text';
             $defaults['sale-text-color'] = '';
             $defaults['sale-background-color'] = '';
-            $defaults['product-image-width'] = '';
+            $defaults['product-image-width'] = 50;
             $defaults['product-gallery-style'] = 'horizontal';
-            $defaults['up-sells-products-count'] = 3;
-            $defaults['up-sells-products-colunms'] = 3;
+            $defaults['up-sells-products-count'] = 4;
+            $defaults['up-sells-products-colunms'] = 4;
             $defaults['disable-up-sells-products'] = false;
             $defaults['enable-product-navigation'] = false;
             $defaults['wishlist-in-header'] = false;
