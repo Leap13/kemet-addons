@@ -171,35 +171,7 @@
 			)
 		)
 	);
-	/**
-    * Option: Sticky Header Background
-    */
-	$fields = array(
-		array(
-			'id'                => '[sticky-bg-obj]',
-			'default'           => $defaults[ 'sticky-bg-obj' ],
-			'type'              => 'option',
-			'control_type'      => 'kmt-background',
-			'section'           => 'section-sticky-header',
-			'priority'          => 1,
-			'transport'         => 'postMessage',
-		),
-		
-	);
-	$group_settings = array(
-		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-sticky-bg-obj]',
-		'type'     => 'kmt-group',
-		'label'    => __( 'Sticky Header Background', 'kemet' ),
-		'section'  => 'section-sticky-header',
-		'priority' => 30,
-		'settings' => array(),
-		'dependency'  => array(
-			'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-			'conditions' => '==', 
-			'values' => true,
-		), 
-	);
-	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
+	
     /**
 	 * Option: Title
 	 */
@@ -248,6 +220,36 @@
             'priority'        => 36,
 		)
 	);
+
+	/**
+    * Option: Sticky Header Background
+    */
+	$fields = array(
+		array(
+			'id'                => '[sticky-bg-obj]',
+			'default'           => $defaults[ 'sticky-bg-obj' ],
+			'type'              => 'option',
+			'control_type'      => 'kmt-background',
+			'section'           => 'section-sticky-header',
+			'priority'          => 1,
+			'transport'         => 'postMessage',
+		),
+		
+	);
+	$group_settings = array(
+		'parent_id'       => KEMET_THEME_SETTINGS . '[kmt-sticky-bg-obj]',
+		'type'     => 'kmt-group',
+		'label'    => __( 'Sticky Header Background', 'kemet' ),
+		'section'  => 'section-sticky-header',
+		'priority' => 37,
+		'settings' => array(),
+		'dependency'  => array(
+			'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+			'conditions' => '==', 
+			'values' => true,
+		), 
+	);
+	new Kemet_Generate_Control_Group($wp_customize, $group_settings , $fields);
 
 	/**
 	* Option: Colors
