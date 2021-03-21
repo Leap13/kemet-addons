@@ -44,7 +44,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 					'background-color' => esc_attr( $widget_bg_color ),
                 ),
                 //Footer Widget Styles Css
-                '.kemet-footer .kmt-widget-style3 .widget-content,.kemet-footer .kmt-widget-style6 div.title .widget-title,.kemet-footer .kmt-widget-style6 div.title .widget-title:before  ,.kmt-footer-copyright .kmt-widget-style3 .widget-content,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title:before' => array(
+                '.kemet-footer .kmt-widget-style3 .widget-content,.kemet-footer .kmt-widget-style6 div.title .widget-title,.kemet-footer .kmt-widget-style6 div.title .widget-title:before  ,.kmt-footer-copyright .kmt-widget-style3 .widget-content,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title,.kmt-footer-copyright .kmt-widget-style6 div.title .widget-title:before, .kemet-footer .kmt-widget-style8 .widget-title' => array(
 					'border-bottom-color' => esc_attr( $footer_widget_border_color ),
                 ),
                 '.kemet-footer .kmt-widget-style3 .widget-content ,.kemet-footer .kmt-widget-style5.widget , .kmt-footer-copyright .kmt-widget-style3 .widget-content ,.kmt-footer-copyright .kmt-widget-style5.widget, .kemet-footer .kmt-widget-style9 .widget-title' => array(
@@ -56,7 +56,7 @@ function kemet_ext_widgets_dynamic_css( $dynamic_css ) {
 				'.kemet-footer .kmt-widget-style2 .widget-title ,.kemet-footer .kmt-widget-style4 .widget-head ,  .kmt-footer-copyright .kmt-widget-style2 .widget-title ,.kmt-footer-copyright .kmt-widget-style4 .widget-head ' => array(
 					'background-color' => esc_attr( $footer_widget_bg_color ),
                 ),
-                '.tweets-container>div:not(:last-child)'           => array(
+                '#secondary .widget ul > li ,.kfw-widget-posts-list .kmt-wdg-posts-list li, .tweets-container>div:not(:last-child)'           => array(
                     'border-bottom-color' => esc_attr( $widget_list_border_color ),
                 ),
                 '.kfw-widget-posts-list .kmt-wdg-posts-list li' => array(
