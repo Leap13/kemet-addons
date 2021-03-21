@@ -55,6 +55,7 @@
 
       var $body = $("body"),
         layoutStyle = $this.data("layout"),
+        loadMore = $(".woo-load-more-text"),
         prevClass = $this.siblings("a").data("layout"),
         container = $(".kmt-woocommerce-container .products"),
         shop_load_template = kemet.shop_load_layout_style || "",
@@ -94,7 +95,9 @@
             container.html(data);
             $this.addClass("active");
             $this.siblings().removeClass("active");
-
+            if (loadMore.length) {
+              loadMore.show();
+            }
             $body.addClass(layoutStyle);
             $body.removeClass(prevClass);
 
