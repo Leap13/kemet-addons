@@ -381,7 +381,7 @@ if ($load_more_style == 'button') {?>
         {
             $wishlist_in_header = kemet_get_option('wishlist-in-header');
 
-            if (class_exists('YITH_WCWL') && $wishlist_in_header) {
+            if (class_exists('YITH_WCWL') && $wishlist_in_header && 'primary' == $args->theme_location) {
                 // get wishlist url.
                 $wishlist_url = YITH_WCWL()->get_wishlist_url();
                 // Add wishlist link to menu items
