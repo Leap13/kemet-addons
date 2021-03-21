@@ -37,6 +37,10 @@
   line-height: normal;
 }
 
+.main-navigation li.menu-item span.dashicons {
+  margin-left: 5px;
+}
+
 .main-navigation li.menu-item .dashicons,
 .main-navigation li.menu-item .dashicons-before:before {
   vertical-align: middle;
@@ -44,7 +48,7 @@
 
 .main-navigation li.menu-item .kemet-mega-menu-label {
   font-size: 0.7em;
-  margin-right: 5px;
+  margin-right: 10px;
   line-height: normal;
   padding: 3px 6px;
   border-radius: 2px;

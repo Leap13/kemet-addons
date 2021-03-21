@@ -46,13 +46,16 @@
         }
       }
     }
+    span.dashicons {
+      margin-right: 5px;
+    }
     .dashicons,
     .dashicons-before:before {
       vertical-align: middle;
     }
     .kemet-mega-menu-label {
       font-size: 0.7em;
-      margin-left: 5px;
+      margin-left: 10px;
       line-height: normal;
       padding: 3px 6px;
       border-radius: 2px;
