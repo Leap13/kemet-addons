@@ -67,7 +67,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             $kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );	
 			$unsupported_headers = array('header-main-layout-5' , 'header-main-layout-6' , 'header-main-layout-7');
             $header_merged_title = kemet_get_option('merge-with-header');
-            if( $header_merged_title == '1' && !in_array($kemet_header_layout , $unsupported_headers)) {
+            if( $header_merged_title == '1' && 'disable' != $page_title_layout && !in_array($kemet_header_layout , $unsupported_headers)) {
                 echo '</div>';
             }
          }
@@ -78,11 +78,12 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             return $default;
          }
         public function header_merged_with_title() {
+            $page_title_layout = apply_filters( 'kemet_the_page_title_layout' , kemet_get_option( 'page-title-layouts' ));
             $header_merged_title = kemet_get_option("merge-with-header");
             $kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );	
             $unsupported_headers = array('header-main-layout-5' , 'header-main-layout-6' , 'header-main-layout-7');
             
-            if( $header_merged_title == '1' && !in_array($kemet_header_layout , $unsupported_headers)) {
+            if( $header_merged_title == '1' && 'disable' != $page_title_layout && !in_array($kemet_header_layout , $unsupported_headers)) {
                 $combined = 'kemet-merged-header-title';
             printf(
 				'<div class="%1$s">',
