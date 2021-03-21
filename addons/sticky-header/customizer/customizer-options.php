@@ -69,29 +69,6 @@
 		)
 	);
 	/**
-	 * Option:Enable Box Shadow
-	 */
-	$wp_customize->add_setting(
-		KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]', array(
-			'default'           => $defaults[ 'sticky-header-box-shadow' ],
-			'type'              => 'option',
-			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
-			'dependency'  => array(
-				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
-				'conditions' => '==', 
-				'values' => true,
-			), 
-		)
-	);
-	$wp_customize->add_control(
-		KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]', array(
-			'type'            => 'checkbox',
-			'section'         => 'section-sticky-header',
-			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
-            'priority'        => 17,
-		)
-	);
-	/**
 	 * Option: Logo Image
 	 */
 	$wp_customize->add_setting(
@@ -245,6 +222,30 @@
 				'priority' => 35,
 				'settings' => array(),
 			)
+		)
+	);
+
+	/**
+	 * Option:Enable Box Shadow
+	 */
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]', array(
+			'default'           => $defaults[ 'sticky-header-box-shadow' ],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
+			'dependency'  => array(
+				'controls' =>  KEMET_THEME_SETTINGS . '[enable-sticky]', 
+				'conditions' => '==', 
+				'values' => true,
+			), 
+		)
+	);
+	$wp_customize->add_control(
+		KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]', array(
+			'type'            => 'checkbox',
+			'section'         => 'section-sticky-header',
+			'label'           => __( 'Enable Box Shadow', 'kemet-addons' ),
+            'priority'        => 36,
 		)
 	);
 
