@@ -160,7 +160,7 @@ class Kemet_Breadcrumb_Trail {
 		if ( 0 < $item_count ) {
 			// Open the unordered list.
 			$breadcrumb .= sprintf(
-				'<%s class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">',
+				'<%s class="trail-items" itemscope itemtype="https://schema.org/BreadcrumbList">',
 				tag_escape( $this->args['list_tag'] )
 			);
 			// Add the number of items and item list order schema.
@@ -176,7 +176,7 @@ class Kemet_Breadcrumb_Trail {
 				$item = ! empty( $matches ) ? sprintf( '%s<span itemprop="name">%s</span>%s', $matches[1], $matches[2], $matches[3] ) : sprintf( '<span itemprop="name">%s</span>', $item );
 				// Wrap the item with its itemprop.
 				$item = ! empty( $matches )
-					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemtype="http://schema.org/Thing" itemprop=$2item$2>', $item )
+					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemtype="https://schema.org/Thing" itemprop=$2item$2>', $item )
 					: sprintf( '%s', $item );
 				// Add list item classes.
 				$item_class = 'trail-item';
@@ -185,7 +185,7 @@ class Kemet_Breadcrumb_Trail {
 				elseif ( $item_count === $item_position )
 					$item_class .= ' trail-end';
 				// Create list item attributes.
-                $attributes = 'itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="' . $item_class . '"';
+                $attributes = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="' . $item_class . '"';
                 // Separator
 				if ( $item_count === $item_position ) {
 					$sep = '';
