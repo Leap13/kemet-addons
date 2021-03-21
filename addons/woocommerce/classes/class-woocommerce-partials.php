@@ -760,7 +760,7 @@ previous_post_link('%link', '<span class="prev"></span>');
 
             // up-sell columns
             $columns = kemet_get_option('up-sells-products-colunms');
-            $columns = $columns ? $columns : '3';
+            $columns = $columns ? $columns : '4';
 
             woocommerce_upsell_display($products_per_page, $columns);
         }
