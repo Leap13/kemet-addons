@@ -67,6 +67,7 @@ if (! class_exists('Kemet_Extra_Header_Partials')) {
             $defaults['header8-width']                   = '';
             $defaults['disable-logo-icon-separator']     = false;
             $defaults['header-separator-height']     = '';
+            $defaults['vertical-menu-items-border-color'] = '';
             return $defaults;
         }
 
