@@ -32,7 +32,6 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 
 			$css_output = array(
             //Sticky Header
-				'.site-header.kmt-is-sticky .main-header-bar' => kemet_get_background_obj( $sticky_bg_obj ),
 				'.kmt-is-sticky .main-header-menu a' => array(
 					'color' => esc_attr($sticky_menu_link_color),
 				),
@@ -80,6 +79,8 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 			);
 
 			$parse_css = kemet_parse_css( $css_output );
+
+			$parse_css .= kemet_get_background_obj('.site-header.kmt-is-sticky .main-header-bar' , $sticky_bg_obj );
 
 			$css_tablet = array(
 				'#sitehead .site-logo-img .custom-logo-link.sticky-custom-logo img' => array(

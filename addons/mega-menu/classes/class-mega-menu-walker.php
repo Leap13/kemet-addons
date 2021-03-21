@@ -48,7 +48,7 @@ if (!class_exists('Mega_Menu_Walker_Nav_Menu')) {
                         'background-size' => $bg_obj["background-size"],
                         'background-position' => $bg_obj["background-position"],
                     );
-                    $style['body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap'] = kemet_get_background_obj($bg_object);
+                    $style['body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap'] = $bg_object;
 
                 }
                 $spacing = $this->megamenu_spacing;
