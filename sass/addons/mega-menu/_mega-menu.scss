@@ -260,6 +260,21 @@ body:not(.kmt-header-break-point) {
       .kemet-megamenu {
         > li {
           width: 100%;
+          &.disable-item-label {
+            > ul.sub-menu {
+              display: block !important;
+            }
+          }
+          > ul.sub-menu {
+            li {
+              a {
+                padding-left: 30px;
+                &::before {
+                  content: "-";
+                }
+              }
+            }
+          }
         }
       }
     }

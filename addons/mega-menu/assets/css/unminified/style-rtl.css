@@ -223,3 +223,15 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-m
 .kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
   width: 100%;
 }
+
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li.disable-item-label > ul.sub-menu {
+  display: block !important;
+}
+
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li > ul.sub-menu li a {
+  padding-right: 30px;
+}
+
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li > ul.sub-menu li a::before {
+  content: "-";
+}
