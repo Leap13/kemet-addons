@@ -36,13 +36,23 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             $vertical_border_width         = kemet_get_option( 'header-main-sep' );
             $vheader_border_style         = kemet_get_option( 'vheader-border-style' );
             $vheader_border_color         = kemet_get_option( 'header-main-sep-color' , $global_border_color);
-            
             $mini_vheader_width         = kemet_get_option( 'mini-vheader-width' );
+
+            // Main menu options.
+            $menu_link_h_color             = kemet_get_option( 'menu-link-h-color', $theme_color );
+	        $menu_link_bottom_border_color = kemet_get_option( 'menu-link-bottom-border-color', isset( $menu_link_h_color['desktop'] ) ? $menu_link_h_color['desktop'] : $menu_link_h_color );
+            $menu_link_bottom_color        = kemet_get_option( 'vertical-menu-items-border-color' );
 
             //Header8
             $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $global_border_color);
             $menu_icon_separator_height = kemet_get_option('header-separator-height');
             $css_content = array(
+                '.ss-content .main-header-menu .menu-item>a'       => array(
+                    'border-bottom-color' => esc_attr( $menu_link_bottom_color ),
+                ),
+                '.ss-content .main-header-menu .menu-item:hover>a' => array(
+                    'border-bottom-color' => esc_attr( $menu_link_bottom_border_color ),
+                ),
                 '.header-main-layout-4 .main-header-menu' => array(
                     'background-color' => kemet_responsive_color($menu_bg_color , "desktop"),
                 ),

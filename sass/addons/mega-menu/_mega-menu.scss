@@ -46,13 +46,16 @@
         }
       }
     }
+    span.dashicons {
+      margin-right: 5px;
+    }
     .dashicons,
     .dashicons-before:before {
       vertical-align: middle;
     }
     .kemet-mega-menu-label {
       font-size: 0.7em;
-      margin-left: 5px;
+      margin-left: 10px;
       line-height: normal;
       padding: 3px 6px;
       border-radius: 2px;
@@ -257,6 +260,21 @@ body:not(.kmt-header-break-point) {
       .kemet-megamenu {
         > li {
           width: 100%;
+          &.disable-item-label {
+            > ul.sub-menu {
+              display: block !important;
+            }
+          }
+          > ul.sub-menu {
+            li {
+              a {
+                padding-left: 30px;
+                &::before {
+                  content: "-";
+                }
+              }
+            }
+          }
         }
       }
     }

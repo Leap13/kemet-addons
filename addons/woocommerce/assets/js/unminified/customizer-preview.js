@@ -1,18 +1,4 @@
-(function ($) {
-  /**
-   * Sale
-   */
-  wp.customize("kemet-settings[sale-style]", function (setting) {
-    setting.bind(function (radius) {
-      var dynamicStyle =
-        ".woocommerce .product .onsale , .product .onsale { border-radius: " +
-        parseInt(radius) +
-        "% }";
-
-      kemet_add_dynamic_css("sale-style", dynamicStyle);
-    });
-  });
-  /**
+(function ($) {  /**
    * Image Width
    */
   wp.customize("kemet-settings[product-image-width]", function (setting) {
@@ -48,5 +34,15 @@
     "kemet-settings[woo-infinite-text-color]",
     "color",
     ".kmt-woo-load-more .woo-load-more-text"
+  );
+  kemet_css(
+    "kemet-settings[sale-text-color]",
+    "color",
+    ".woocommerce .product .onsale , .product .onsale"
+  );
+  kemet_css(
+    "kemet-settings[sale-background-color]",
+    "background-color",
+    ".woocommerce .product .onsale , .product .onsale"
   );
 })(jQuery);

@@ -10,6 +10,27 @@
 /*--------------------------------------------------------------
 ## Top Header
 --------------------------------------------------------------*/
+.kmt-header-break-point .kmt-is-sticky {
+  top: 0;
+}
+
+.kmt-header-break-point .kmt-is-sticky.header-main-layout-2 .kmt-header-logo-right-section {
+  width: 100%;
+}
+
+.kmt-is-sticky.header-main-layout-2 .kmt-header-logo-right-section {
+  width: auto;
+}
+
+.kmt-is-sticky.header-main-layout-2 .kmt-header-logo-right-section .header-right-section {
+  display: none;
+}
+
+.kmt-is-sticky.header-main-layout-2 .kmt-header-logo-right-section + .kmt-main-header-bar-alignment {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .sticky-custom-logo-link {
   display: none;
 }

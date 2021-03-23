@@ -101,8 +101,17 @@
   .kemet-page-title {
     text-align: center;
   }
+  .taxonomy-description {
+    width: 100%;
+    text-align: right;
+  }
 }
-
+.kmt-sticky-footer {
+  .kmt-page-title-addon-content {
+    position: relative;
+    z-index: 1;
+  }
+}
 @media only screen and (max-width: 767px) {
   .page-title-layout-3 {
     .kmt-page-title-wrap {
@@ -117,6 +126,17 @@
     }
     .kemet-page-sub-title {
       width: auto;
+    }
+    .taxonomy-description {
+      text-align: center;
+    }
+  }
+  .page-title-layout-2 {
+    .kmt-page-title-wrap {
+      text-align: center;
+    }
+    .kemet-breadcrumb-trail {
+      display: none;
     }
   }
 }

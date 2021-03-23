@@ -19,6 +19,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $page_title_font_family        = kemet_get_option( 'page-title-font-family' );
             $page_title_font_weight        = kemet_get_option( 'page-title-font-weight' );
             $page_title_font_transform        = kemet_get_option( 'pagetitle-text-transform' );
+            $page_title_font_style        = kemet_get_option( 'pagetitle-font-style' );
             $page_title_line_height        = kemet_get_option( 'pagetitle-line-height' );
             $Page_title_bottomline_height         = kemet_get_option( 'pagetitle-bottomline-height' );
             $Page_title_bottomline_color         = kemet_get_option( 'pagetitle-bottomline-color' , $theme_color);
@@ -34,7 +35,7 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $sub_title_line_height           =  kemet_get_option( 'sub-title-line-height' );
             // Breadcrumbs
             $breadcrumbs_spacing              = kemet_get_option( 'breadcrumbs-space' );
-            $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color' );
+            $breadcrumbs_color        = kemet_get_option( 'breadcrumbs-color', $page_title_color );
             $breadcrumbs_font_size        = kemet_get_option( 'breadcrumbs-font-size' );
             $breadcrumbs_letter_spacing     = kemet_get_option( 'breadcrumbs-letter-spacing' );
             $breadcrumbs_font_family        = kemet_get_option( 'breadcrumbs-font-family' );
@@ -42,11 +43,10 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             $breadcrumbs_text_transform        = kemet_get_option( 'breadcrumbs-text-transform' );
             $breadcrumbs_line_height        = kemet_get_option( 'breadcrumbs-line-height' );
             $breadcrumbs_font_size        = kemet_get_option( 'breadcrumbs-font-size' );
-            $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color' );
-            $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color' );
+            $breadcrumbs_link_color        = kemet_get_option( 'breadcrumbs-link-color', $page_title_color );
+            $breadcrumbs_link_h_color        = kemet_get_option( 'breadcrumbs-link-h-color', $theme_color );
             
             $css_content = array(
-               '.kmt-page-title-addon-content, .kemet-merged-header-title' => kemet_get_background_obj( $page_title_bg ),
                '.kmt-page-title-addon-content, .header-transparent .kmt-page-title-addon-content,.merged-header-transparent .kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'desktop' ),
                     'padding-right'  => kemet_responsive_spacing( $page_title_space, 'right', 'desktop' ),
@@ -60,8 +60,12 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
                     'font-size'      => kemet_responsive_slider( $page_title_font_size, 'desktop' ),
                     'letter-spacing' => kemet_responsive_slider( $page_title_letter_spacing, 'desktop' ),
                     'text-transform' => esc_attr( $page_title_font_transform ),
+                    'font-style'     => esc_attr( $page_title_font_style ),
                     'line-height'     => kemet_responsive_slider( $page_title_line_height, 'desktop' ),
                ),
+               '.taxonomy-description' => array(
+                    'color' => esc_attr( $page_title_color ),
+                ),
                '.kmt-page-title.page-title-layout-1'  => array(
                 'text-align'  => esc_attr( $page_title_algin ),
                 ),
@@ -108,7 +112,9 @@ function kemet_ext_page_title_dynamic_css( $dynamic_css ) {
             );
 
            $parse_css = kemet_parse_css( $css_content );
-            
+            // Background
+	        $parse_css .= kemet_get_background_obj('.kmt-page-title-addon-content, .kemet-merged-header-title' , $page_title_bg );
+
             $css_tablet = array(
                 '.kmt-page-title-addon-content, .header-transparent .kmt-page-title-addon-content,.merged-header-transparent .kmt-page-title-addon-content' => array(
                     'padding-top'    => kemet_responsive_spacing( $page_title_space, 'top', 'tablet' ),

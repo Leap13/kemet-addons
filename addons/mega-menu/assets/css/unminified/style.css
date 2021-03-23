@@ -37,6 +37,10 @@
   line-height: normal;
 }
 
+.main-navigation li.menu-item span.dashicons {
+  margin-right: 5px;
+}
+
 .main-navigation li.menu-item .dashicons,
 .main-navigation li.menu-item .dashicons-before:before {
   vertical-align: middle;
@@ -44,7 +48,7 @@
 
 .main-navigation li.menu-item .kemet-mega-menu-label {
   font-size: 0.7em;
-  margin-left: 5px;
+  margin-left: 10px;
   line-height: normal;
   padding: 3px 6px;
   border-radius: 2px;
@@ -218,4 +222,16 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-m
 
 .kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
   width: 100%;
+}
+
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li.disable-item-label > ul.sub-menu {
+  display: block !important;
+}
+
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li > ul.sub-menu li a {
+  padding-left: 30px;
+}
+
+.kmt-header-break-point #site-navigation .kemet-megamenu-item .kemet-megamenu > li > ul.sub-menu li a::before {
+  content: "-";
 }

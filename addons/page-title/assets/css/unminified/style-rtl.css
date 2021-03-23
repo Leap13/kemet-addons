@@ -103,6 +103,16 @@
   text-align: center;
 }
 
+.page-title-layout-3 .taxonomy-description {
+  width: 100%;
+  text-align: left;
+}
+
+.kmt-sticky-footer .kmt-page-title-addon-content {
+  position: relative;
+  z-index: 1;
+}
+
 @media only screen and (max-width: 767px) {
   .page-title-layout-3 .kmt-page-title-wrap {
     justify-content: center;
@@ -116,5 +126,14 @@
   }
   .page-title-layout-3 .kemet-page-sub-title {
     width: auto;
+  }
+  .page-title-layout-3 .taxonomy-description {
+    text-align: center;
+  }
+  .page-title-layout-2 .kmt-page-title-wrap {
+    text-align: center;
+  }
+  .page-title-layout-2 .kemet-breadcrumb-trail {
+    display: none;
   }
 }

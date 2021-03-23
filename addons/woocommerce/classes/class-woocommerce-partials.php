@@ -381,7 +381,7 @@ if ($load_more_style == 'button') {?>
         {
             $wishlist_in_header = kemet_get_option('wishlist-in-header');
 
-            if (class_exists('YITH_WCWL') && $wishlist_in_header) {
+            if (class_exists('YITH_WCWL') && $wishlist_in_header && 'primary' == $args->theme_location) {
                 // get wishlist url.
                 $wishlist_url = YITH_WCWL()->get_wishlist_url();
                 // Add wishlist link to menu items
@@ -664,7 +664,7 @@ if ($load_more_style == 'button') {?>
             $off_canvas_enable = kemet_get_option('enable-filter-button');
 
             if ($off_canvas_enable) {
-                add_action('woocommerce_before_shop_loop', array($this, 'off_canvas_filter_button'), 10);
+                add_action('woocommerce_before_shop_loop', array($this, 'off_canvas_filter_button'), 15);
                 add_action('wp_footer', array($this, 'off_canvas_filter_sidebar'));
             }
 
@@ -760,7 +760,7 @@ previous_post_link('%link', '<span class="prev"></span>');
 
             // up-sell columns
             $columns = kemet_get_option('up-sells-products-colunms');
-            $columns = $columns ? $columns : '3';
+            $columns = $columns ? $columns : '4';
 
             woocommerce_upsell_display($products_per_page, $columns);
         }
@@ -771,7 +771,12 @@ previous_post_link('%link', '<span class="prev"></span>');
         {
             $gallay_style = kemet_get_option('product-gallery-style');
 
-            if (post_type_exists('product')) {
+            if (post_type_exists('product') && is_product() && 'product' == get_post_type() ) {
+                $product = wc_get_product();
+                $attachment_ids = $product->get_gallery_image_ids('view');
+                if(count($attachment_ids) > 1){
+                    $classes[] = 'kmt-product-has-v-gallary';
+                }
                 $classes[] = 'kmt-gallary-' . $gallay_style;
             }
 

@@ -33,9 +33,9 @@ class Export {
 			'mods'     => $mods ? $mods : array(),
 			'options'  => array(),
 		);
-
+		
+		$theme_options['site-icon'] = get_option( 'site_icon' );
         $theme_options['customizer-settings'] = Kemet_Theme_Options::get_options();
-
 		if ( function_exists( 'wp_get_custom_css_post' ) ) {
 			$theme_options['wp_css'] = wp_get_custom_css();
 		}
@@ -51,5 +51,5 @@ class Export {
 		// Start the download.
 		exit;
  
-            }
+        }
 }

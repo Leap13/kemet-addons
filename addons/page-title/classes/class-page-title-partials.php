@@ -35,6 +35,26 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             add_filter( 'kemet_disable_breadcrumbs', array( $this, 'breadcrumbs_display' ) );
         }
 
+        /**
+		 * Get current page title
+		 *
+		 * @return string page title
+		 */
+		public function kemet_get_current_page_title() {
+			$title = '';
+			if ( is_author() ) {
+				$title = get_the_author();
+			} elseif ( is_category() || ( class_exists( 'Woocommerce' ) && is_product_category() ) ) {
+				$title = single_cat_title();
+			} elseif ( is_tag() ) {
+				$title = single_tag_title();
+			} else {
+				$title = kemet_get_the_title();
+			}
+
+			return $title;
+		}
+
         public function kemet_page_title_markup() {
             $page_title_layout = apply_filters( 'kemet_the_page_title_layout' , kemet_get_option( 'page-title-layouts' ));
             if ( $page_title_layout != 'disable' ) {
@@ -47,7 +67,7 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             $kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );	
 			$unsupported_headers = array('header-main-layout-5' , 'header-main-layout-6' , 'header-main-layout-7');
             $header_merged_title = kemet_get_option('merge-with-header');
-            if( $header_merged_title == '1' && !in_array($kemet_header_layout , $unsupported_headers)) {
+            if( $header_merged_title == '1' && 'disable' != $page_title_layout && !in_array($kemet_header_layout , $unsupported_headers)) {
                 echo '</div>';
             }
          }
@@ -58,11 +78,12 @@ if (! class_exists('Kemet_Page_Title_Partials')) {
             return $default;
          }
         public function header_merged_with_title() {
+            $page_title_layout = apply_filters( 'kemet_the_page_title_layout' , kemet_get_option( 'page-title-layouts' ));
             $header_merged_title = kemet_get_option("merge-with-header");
             $kemet_header_layout = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );	
             $unsupported_headers = array('header-main-layout-5' , 'header-main-layout-6' , 'header-main-layout-7');
             
-            if( $header_merged_title == '1' && !in_array($kemet_header_layout , $unsupported_headers)) {
+            if( $header_merged_title == '1' && 'disable' != $page_title_layout && !in_array($kemet_header_layout , $unsupported_headers)) {
                 $combined = 'kemet-merged-header-title';
             printf(
 				'<div class="%1$s">',

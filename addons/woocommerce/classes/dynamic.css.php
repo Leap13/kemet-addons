@@ -28,7 +28,8 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
     $input_bg_color = kemet_get_option('input-bg-color', kemet_color_brightness($global_bg_color, 0.99, 'dark'));
 
     //Shop
-    $sale_style = kemet_get_option('sale-style');
+    $sale_color = kemet_get_option('sale-text-color');
+    $sale_bg_color = kemet_get_option('sale-background-color');
     $loader_color = kemet_get_option('infinite-scroll-loader-color', $theme_color);
     $inifinte_text_color = kemet_get_option('woo-infinite-text-color', $text_meta_color);
 
@@ -40,7 +41,12 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
             'color' => esc_attr($btn_color),
         ),
         '.woocommerce .product .onsale , .product .onsale' => array(
-            'border-radius' => esc_attr($sale_style),
+            'color' => esc_attr($sale_color),
+            'background-color' => esc_attr($sale_bg_color),
+        ),
+        '.woocommerce .kmt-qv-icon,.kmt-qv-icon' => array(
+            'background-color' => kemet_color_brightness($global_bg_color, 0.94, 'dark'),
+            'border-color' =>  $global_border_color,
         ),
         '.woocommerce #content .kmt-woocommerce-container div.product div.images,.woocommerce .kmt-woocommerce-container div.product div.images' => array(
             'width' => kemet_get_css_value($image_width, '%'),
@@ -81,7 +87,7 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         'div.product .summary .yith-wcwl-wishlistexistsbrowse:hover' => array(
             'color' => esc_attr($theme_color),
         ),
-        '.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon' => array(
+        '.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon, .single-product div.product .entry-summary .compare:before' => array(
             'background-color' => esc_attr(kemet_color_brightness($global_bg_color, 0.94, 'dark')),
         ),
         '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover' => array(

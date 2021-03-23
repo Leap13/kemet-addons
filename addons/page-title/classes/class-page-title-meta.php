@@ -82,7 +82,7 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Meta_Box' ) ) {
             );
             KFW::createSection( 'kemet_page_options', array(
                 'title'  => __('Breadcrumbs', 'kemet-addons'),
-                'icon'   => 'fa fa-thumb-tack',
+                'icon'   => 'dashicons dashicons-tag',
                 'priority_num' => 6,
                 'fields' => array(
                     array(

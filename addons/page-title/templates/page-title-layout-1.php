@@ -6,12 +6,12 @@
  * @package Kemet Addon
  */
 
-$title                 = kemet_get_the_title();
-$page_title_layout = apply_filters( 'kemet_the_page_title_layout' , kemet_get_option( 'page-title-layouts' ));
-if(is_singular( 'post' )){
-	$header_title = kemet_get_option('page-header-title');
-	if($header_title == 'blog'){
-		$title  = esc_html__( 'Blog', 'kemet-addons' );
+$title             = kemet_get_the_title();
+$page_title_layout = apply_filters( 'kemet_the_page_title_layout', kemet_get_option( 'page-title-layouts' ) );
+if ( 'post' == get_post_type() ) {
+	$header_title = kemet_get_option( 'page-header-title' );
+	if ( $header_title == 'blog' ) {
+		$title = esc_html__( 'Blog', 'kemet-addons' );
 	}
 }
 $description           = get_the_archive_description();
@@ -30,8 +30,15 @@ $classes   = implode( ' ', $classes );
 		<div class="kmt-container">
 			<div class="kmt-page-title-wrap">
 				<?php if ( $title ) { ?>
-
-				<h1 class="kemet-page-title"><?php echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( $title ) ); ?></h1>
+					<h1 class="kemet-page-title">
+						<?php
+						if ( is_singular() ) {
+							echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( $title ) );
+						} else {
+							echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( Kemet_Page_Title_Partials::get_instance()->kemet_get_current_page_title() ) );
+						}
+						?>
+					</h1>
 					<?php if ( $sub_title ) { ?>
 					<h5 class="kemet-page-sub-title"><?php echo $sub_title; ?></h5>
 					<?php } ?>

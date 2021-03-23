@@ -21,29 +21,6 @@ $wp_customize->add_control(
  * Option: Sale Notification
  */
 $wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[sale-style]', array(
-        'default' => $defaults['sale-style'],
-        'type' => 'option',
-        'transport' => 'postMessage',
-        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_choices'),
-    )
-);
-$wp_customize->add_control(
-    KEMET_THEME_SETTINGS . '[sale-style]', array(
-        'type' => 'select',
-        'section' => 'section-woo-general',
-        'priority' => 5,
-        'label' => __('Sale Notification', 'kemet-addons'),
-        'choices' => array(
-            '100%' => __('Circle', 'kemet-addons'),
-            '0' => __('Square', 'kemet-addons'),
-        ),
-    )
-);
-/**
- * Option: Sale Notification
- */
-$wp_customize->add_setting(
     KEMET_THEME_SETTINGS . '[sale-content]', array(
         'default' => $defaults['sale-content'],
         'type' => 'option',
@@ -62,7 +39,46 @@ $wp_customize->add_control(
         ),
     )
 );
-
+/**
+ * Option: Content Text Color
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sale-text-color]', array(
+        'default' => $defaults['sale-text-color'],
+        'type' => 'option',
+        'transport' => 'postMessage',
+        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_alpha_color'),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[sale-text-color]', array(
+            'label' => __('Text Color', 'kemet'),
+            'priority' => 11,
+            'section' => 'section-woo-general',
+        )
+    )
+);
+/**
+ * Option: Content Text Color
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[sale-background-color]', array(
+        'default' => $defaults['sale-background-color'],
+        'type' => 'option',
+        'transport' => 'postMessage',
+        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_alpha_color'),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Color(
+        $wp_customize, KEMET_THEME_SETTINGS . '[sale-background-color]', array(
+            'label' => __('Background Color', 'kemet'),
+            'priority' => 12,
+            'section' => 'section-woo-general',
+        )
+    )
+);
 /**
  * Option: Title
  */
@@ -97,10 +113,6 @@ $wp_customize->add_control(
     )
 );
 /**
- * Option: Shop
- */
-
-/**
  * Option: Shop Layout
  */
 $wp_customize->add_setting(
@@ -114,15 +126,58 @@ $wp_customize->add_control(
     KEMET_THEME_SETTINGS . '[shop-layout]', array(
         'type' => 'select',
         'section' => 'woocommerce_product_catalog',
-        'priority' => 36,
+        'priority' => 18,
         'label' => __('Shop Layout', 'kemet-addons'),
         'choices' => array(
-            'shop-grid' => __('Grid', 'kemet-addons'),
-            'hover-style' => __('Hover Style', 'kemet-addons'),
+            'shop-grid' => __('Boxed', 'kemet-addons'),
+            'hover-style' => __('Simple', 'kemet-addons'),
         ),
     )
 );
-
+/**
+ * Option: Product Content Alignment
+ */
+$wp_customize->add_setting(
+    KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
+        'default' => $defaults['product-content-alignment'],
+        'type' => 'option',
+        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_choices'),
+    )
+);
+$wp_customize->add_control(
+    new Kemet_Control_Icon_Select(
+        $wp_customize, KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
+            'priority' => 36,
+            'section' => 'woocommerce_product_catalog',
+            'label' => __('Product Content Alignment', 'kemet-addons'),
+            'choices' => array(
+                'left' => array(
+                    'icon' => 'dashicons-editor-alignleft',
+                ),
+                'center' => array(
+                    'icon' => 'dashicons-editor-aligncenter',
+                ),
+                'right' => array(
+                    'icon' => 'dashicons-editor-alignright',
+                ),
+            ),
+        )
+    )
+);
+/**
+ * Option: Title
+ */
+$wp_customize->add_control(
+    new Kemet_Control_Title(
+        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
+            'type' => 'kmt-title',
+            'label' => __('Quick View Settings', 'kemet-addons'),
+            'section' => 'woocommerce_product_catalog',
+            'priority' => 36,
+            'settings' => array()
+        )
+    )
+);
 /**
  * Option: Enable Sticky Header
  */
@@ -139,30 +194,6 @@ $wp_customize->add_control(
         'section' => 'woocommerce_product_catalog',
         'label' => __('Enable Quick View', 'kemet-addons'),
         'priority' => 36,
-    )
-);
-/**
- * Option: Title
- */
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
-        'dependency' => array(
-            'controls' => KEMET_THEME_SETTINGS . '[enable-quick-view]/' . KEMET_THEME_SETTINGS . '[shop-layout]',
-            'conditions' => '==/!=',
-            'values' => '1/hover-style',
-            'operators' => "&&",
-        ),
-        'sanitize_callback' => 'wp_kses',
-    )
-);
-$wp_customize->add_control(
-    new Kemet_Control_Title(
-        $wp_customize, KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
-            'type' => 'kmt-title',
-            'label' => __('Quick View Settings', 'kemet-addons'),
-            'section' => 'woocommerce_product_catalog',
-            'priority' => 36,
-        )
     )
 );
 /**
@@ -188,13 +219,26 @@ $wp_customize->add_control(
         'priority' => 36,
         'label' => __('Quick View Position', 'kemet-addons'),
         'choices' => array(
-            'qv-icon' => __('Icon', 'kemet-addons'),
-            'on-image' => __('On Image Click', 'kemet-addons'),
-            'after-summary' => __('After Summary', 'kemet-addons'),
+            'qv-icon' => __('Top Right Corner', 'kemet-addons'),
+            'on-image' => __('On Product Image', 'kemet-addons'),
+            'after-summary' => __('After Product Summary', 'kemet-addons'),
         ),
     )
 );
-
+/**
+ * Option: Title
+ */
+$wp_customize->add_control(
+	new Kemet_Control_Title(
+		$wp_customize, KEMET_THEME_SETTINGS . '[kemet-product-structure]', array(
+			'type'     => 'kmt-title',
+			'label'    => __( 'Product Structure', 'kemet-addons' ),
+			'section'  => 'woocommerce_product_catalog',
+			'priority' => 55,
+			'settings' => array(),
+		)
+	)
+);
 /**
  * Option: Shop Structure
  */
@@ -442,37 +486,7 @@ $wp_customize->add_control(
         'type' => 'text',
     )
 );
-/**
- * Option: Product Content Alignment
- */
 
-$wp_customize->add_setting(
-    KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
-        'default' => $defaults['product-content-alignment'],
-        'type' => 'option',
-        'sanitize_callback' => array('Kemet_Customizer_Sanitizes', 'sanitize_choices'),
-    )
-);
-$wp_customize->add_control(
-    new Kemet_Control_Icon_Select(
-        $wp_customize, KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
-            'priority' => 36,
-            'section' => 'woocommerce_product_catalog',
-            'label' => __('Product Content Alignment', 'kemet-addons'),
-            'choices' => array(
-                'left' => array(
-                    'icon' => 'dashicons-editor-alignleft',
-                ),
-                'center' => array(
-                    'icon' => 'dashicons-editor-aligncenter',
-                ),
-                'right' => array(
-                    'icon' => 'dashicons-editor-alignright',
-                ),
-            ),
-        )
-    )
-);
 
 /**
  * Option: Enable Filter Button
@@ -612,8 +626,8 @@ $wp_customize->add_control(
         'priority' => 20,
         'label' => __('Gallery Style', 'kemet-addons'),
         'choices' => array(
-            'horizontal' => __('Horizontal', 'kemet-addons'),
-            'vertical' => __('Vertical', 'kemet-addons'),
+            'horizontal' => __('Below Product Image', 'kemet-addons'),
+            'vertical' => __('Beside Product Image', 'kemet-addons'),
         ),
     )
 );

@@ -672,6 +672,10 @@ body:not(.kmt-separate-container) .blog-layout-2 .kmt-article-post .blog-post-la
 /*--------------------------------------------------------------
 ## Blog Layout 3
 --------------------------------------------------------------*/
+.blog-layout-3 {
+  margin-bottom: 2.5em;
+}
+
 .blog-layout-3 .kmt-article-post .entry-meta {
   margin-bottom: 5px;
 }
@@ -681,7 +685,7 @@ body:not(.kmt-separate-container) .blog-layout-2 .kmt-article-post .blog-post-la
 }
 
 .blog-layout-3 .kmt-article-post.has-post-thumbnail .blog-post-layout-3:not(.kmt-no-thumb) .post-content {
-  margin: -50px 30px 20px;
+  margin: -50px 30px 2.5em;
   position: relative;
 }
 
@@ -807,7 +811,7 @@ body:not(.kmt-separate-container) .blog-layout-4 .kmt-article-post > div {
 ## Blog Layout 5
 --------------------------------------------------------------*/
 body:not(.kmt-separate-container) .blog-post-layout-5 {
-  padding-bottom: 2em;
+  padding-bottom: 2.5em;
 }
 
 body:not(.kmt-separate-container) .blog-layout-5 .kmt-article-post:last-child > div,

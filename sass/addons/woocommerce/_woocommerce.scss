@@ -169,17 +169,19 @@ Woo Quick View
   opacity: 0;
   transition: 0.3s all;
   text-align: center;
+  border-width: 2px;
+  border-style: solid;
   > span {
     &:before {
-      content: "\e912";
+      content: "\e913";
       display: inline-block;
       font-family: "Kemet-font";
-      font-size: 1.6rem;
+      font-size: 19px;
       font-weight: 500;
       text-rendering: auto;
       vertical-align: middle;
       position: relative;
-      line-height: 40px;
+      line-height: 38px;
     }
   }
 }
@@ -555,10 +557,10 @@ body,
               .kmt-quickview-icon {
                 margin: 0;
                 &:before {
-                  content: "\e90d";
+                  content: "\e912";
                   font-family: Kemet-font;
                   font-style: normal;
-                  font-weight: 600;
+                  font-size: 19px;
                   text-decoration: inherit;
                   text-align: center;
                   -webkit-font-smoothing: antialiased;
@@ -566,7 +568,8 @@ body,
                 }
               }
               .woo-wishlist-btn {
-                display: inline-block;
+                display: inline-flex;
+                align-items: center;
                 text-align: center;
                 margin: 0;
                 .add_to_wishlist > span {
@@ -599,12 +602,18 @@ body,
               .add-to-cart-group {
                 position: relative;
                 display: flex;
-                margin: 0 1px;
+                margin: 0 3px;
                 > * {
                   margin: 0;
                 }
                 .add_to_cart_button {
                   display: block;
+                }
+                a.added_to_cart {
+                  padding: 0;
+                  display: inline-flex;
+                  justify-content: center;
+                  align-items: center;
                 }
               }
             }
@@ -628,8 +637,10 @@ body,
 .woocommerce-page {
   .product {
     &.kmt-gallary-vertical {
-      .onsale {
-        left: calc(7.5% + 25px);
+      &.kmt-product-has-v-gallary {
+        .onsale {
+          left: 7.5%;
+        }
       }
     }
   }
@@ -667,6 +678,11 @@ body,
         z-index: 11;
       }
     }
+    li {
+      .compare.button {
+        display: none;
+      }
+    }
   }
 }
 @keyframes circle-loading {
@@ -694,9 +710,6 @@ body,
             margin: 0 3% 0 0;
             position: relative;
             flex: 1;
-            span.onsale {
-              left: 55px;
-            }
             .kmt-shop-product-out-of-stock {
               padding: 0.5em 0.7em;
             }
@@ -721,7 +734,7 @@ body,
               margin-left: 10px;
               .kmt-quick-view-icon {
                 &:before {
-                  content: "\e90d";
+                  content: "\e912";
                   font-family: Kemet-font;
                   font-style: normal;
                   font-weight: 600;
@@ -1089,6 +1102,95 @@ body,
           &::before {
             vertical-align: text-top;
           }
+        }
+      }
+    }
+  }
+}
+ul.products {
+  li.product {
+    .woo-wishlist-btn {
+      margin-bottom: 0;
+      position: relative;
+    }
+    .yith-wcwl-add-to-wishlist {
+      margin-top: 0;
+      .yith-wcwl-icon {
+        margin-right: 0;
+      }
+      .yith-wcwl-wishlistexistsbrowse,
+      .yith-wcwl-wishlistaddedbrowse {
+        > a {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+.kmt-wishlist {
+  .kmt-wishlist-text {
+    margin-left: 5px;
+  }
+}
+
+.single-product {
+  div.product {
+    .entry-summary {
+      .compare {
+        margin-left: 20px;
+        background-color: transparent;
+        &:before {
+          content: "\f164";
+          font-family: dashicons;
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 10px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          line-height: inherit;
+          overflow: hidden;
+          font-size: 18px;
+          text-align: center;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .yith-wcwl-add-to-wishlist {
+        .yith-wcwl-wishlistexistsbrowse {
+          position: relative;
+          > a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+          }
+        }
+        display: inline-block;
+        margin-bottom: 1em;
+        .feedback,
+        .add_to_wishlist {
+          display: flex;
+          align-items: center;
+        }
+        .yith-wcwl-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          line-height: inherit;
+          margin-right: 10px;
+          overflow: hidden;
+          font-size: 18px;
+          text-align: center;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }

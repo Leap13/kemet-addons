@@ -529,6 +529,27 @@ $wp_customize->add_control(
 		)
 	);
 	/**
+	* Option: Title
+	*/
+	$wp_customize->add_control(
+		new Kemet_Control_Title(
+			$wp_customize, KEMET_THEME_SETTINGS . '[kemet-blog-pagination-title]', array(
+				'type'     => 'kmt-title',
+				'label'    => __( 'Pagination Style', 'kemet-addons' ),
+				'section'  => 'section-blog',
+				'priority' => 155,
+				'settings' => array(),
+			)
+		)
+	);
+	$wp_customize->add_setting(
+		KEMET_THEME_SETTINGS . '[blog-pagination-style]', array(
+			'default'           => $defaults['blog-pagination-style'],
+			'type'              => 'option',
+			'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
+		)
+	);
+	/**
 	 * Option: Pagination
 	 */
 	$wp_customize->add_setting(

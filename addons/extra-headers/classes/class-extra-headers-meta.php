@@ -45,6 +45,8 @@ if (!class_exists('Kemet_Addon_Extra_Headers_Meta_Box')) {
                 add_filter('kemet_header_class', array($this, 'add_header_class'));
                 add_filter('kemet_trnsparent_header', array($this, 'transparent_header'));
                 add_filter('kemet_header_width', array($this, 'header_width'));
+                add_filter( 'kemet_main_menu_link_color', array( $this, 'main_menu_color' ) );
+				add_filter( 'kemet_main_menu_link_h_color', array( $this, 'main_menu_hover_color' ) );
             }
 
         }
@@ -99,6 +101,18 @@ if (!class_exists('Kemet_Addon_Extra_Headers_Meta_Box')) {
                             'stretched' => __('Stretched Content', 'kemet-addons'),
                         ),
                         'default' => 'default',
+                    ),
+                    array(
+                        'id'         => 'main-menu-color',
+                        'type'       => 'color',
+                        'title'      => __( 'Main menu Item Color', 'kemet-addons' ),
+                        'dependency' => array( 'kemet-main-header-display', '!=', 'disable' ),
+                    ),
+                    array(
+                        'id'         => 'main-menu-hover-color',
+                        'type'       => 'color',
+                        'title'      => __( 'Main menu Item Hover Color', 'kemet-addons' ),
+                        'dependency' => array( 'kemet-main-header-display', '!=', 'disable' ),
                     ),
                 ),
             )
@@ -162,6 +176,46 @@ if (!class_exists('Kemet_Addon_Extra_Headers_Meta_Box')) {
 
             return $header_width;
         }
+
+        /**
+		 * Main menu item color
+		 *
+		 * @param mixed $default
+		 * @return mixed
+		 */
+		public function main_menu_color( $default ) {
+			$meta                 = get_post_meta( get_the_ID(), 'kemet_page_options', true );
+			$main_menu_link_color = isset( $meta['main-menu-color'] ) ? $meta['main-menu-color'] : '';
+            
+			if ( '' != $main_menu_link_color ) {
+				if ( is_array( $default ) ) {
+					$default['desktop'] = $main_menu_link_color;
+				} else {
+					return $main_menu_link_color;
+				}
+			}
+			return $default;
+		}
+
+		/**
+		 * Main menu item hover color
+		 *
+		 * @param mixed $default
+		 * @return mixed
+		 */
+		public function main_menu_hover_color( $default ) {
+			$meta                 = get_post_meta( get_the_ID(), 'kemet_page_options', true );
+			$main_menu_link_color = isset( $meta['main-menu-hover-color'] ) ? $meta['main-menu-hover-color'] : '';
+
+			if ( '' != $main_menu_link_color ) {
+				if ( is_array( $default ) ) {
+					$default['desktop'] = $main_menu_link_color;
+				} else {
+					return $main_menu_link_color;
+				}
+			}
+			return $default;
+		}
     }
 }
 
