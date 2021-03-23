@@ -4,7 +4,7 @@ Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.6
 Requires PHP: 5.4
-Stable tag: 1.1.12
+Stable tag: 1.1.13
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,12 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.1.13 version
+- Fixed: Display mega menu in responsive.
+- Fixed: Blog layout spacing issue.
+- Fixed: upsell products style.
+- Fixed: Menu item/icon spacing issues.
+
 1.1.12 version
 - Added: Font style to tyography group control.
 - Added: Woo compare style.
