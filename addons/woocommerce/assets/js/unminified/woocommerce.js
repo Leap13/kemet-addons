@@ -355,4 +355,35 @@
   if ($("body").hasClass("archive") && $("body").hasClass("woocommerce")) {
     infiniteScroll();
   }
+  // Vertical Gallary
+  var verticalSliderScroll = function () {
+    var vGallary = $(".kmt-gallary-vertical"),
+      slider = vGallary.find(".flex-control-nav");
+    if (vGallary.length > 0) {
+      if ($(window).width() > 768) {
+        var imgHeight = vGallary.find(".flex-viewport").height(),
+          sliderHeight = slider.height();
+        if (sliderHeight > imgHeight + 50) {
+          slider.css({
+            "max-height": imgHeight + "px",
+            "overflow-y": "scroll",
+          });
+        }
+      } else {
+        slider.css({
+          "max-height": "",
+          "overflow-y": "",
+        });
+      }
+    }
+  };
+  verticalSliderScroll();
+  $(window).on("load", function () {
+    setTimeout(function () {
+      verticalSliderScroll();
+    }, 500);
+  });
+  $(window).on("resize", function () {
+    verticalSliderScroll();
+  });
 })(jQuery);

@@ -90,15 +90,15 @@ function kemet_woocommerce_dynamic_css($dynamic_css)
         '.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon, .single-product div.product .entry-summary .compare:before' => array(
             'background-color' => esc_attr(kemet_color_brightness($global_bg_color, 0.94, 'dark')),
         ),
-        '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover' => array(
+        '.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover' => array(
             'background-color' => esc_attr($btn_bg_h_color),
             'color' => esc_attr($btn_h_color),
         ),
-        '.woocommerce .product-list-img a.kmt-qv-on-image ,.woocommerce .product-list-details a.kmt-qv-on-image ,.add-to-cart-group .added_to_cart , body .product-list-img a.kmt-qv-on-image ,body .product-list-details a.kmt-qv-on-image ,.add-to-cart-group .added_to_cart' => array(
+        '.product-list-img a.kmt-qv-on-image, .add-to-cart-group .added_to_cart' => array(
             'background-color' => esc_attr($btn_bg_color),
             'color' => esc_attr($btn_color),
         ),
-        '.woocommerce .product-list-img a.kmt-qv-on-image:hover ,.woocommerce .product-list-details a.kmt-qv-on-image:hover , .add-to-cart-group .added_to_cart:hover , body .product-list-img a.kmt-qv-on-image:hover ,body .product-list-details a.kmt-qv-on-image:hover , .add-to-cart-group .added_to_cart:hover' => array(
+        '.product-list-img a.kmt-qv-on-image:hover, .add-to-cart-group .added_to_cart:hover' => array(
             'background-color' => esc_attr($btn_bg_h_color),
             'color' => esc_attr($btn_h_color),
         ),

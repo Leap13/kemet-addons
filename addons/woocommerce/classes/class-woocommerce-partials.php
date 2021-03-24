@@ -492,7 +492,9 @@ if ($load_more_style == 'button') {?>
                                     break;
                                 case 'add_cart':
                                     do_action('kemet_woo_shop_add_to_cart_before');
+                                    printf('<div class="%s">', esc_attr( 'add-to-cart-group' ) );
                                     woocommerce_template_loop_add_to_cart();
+                                    printf("</div>");
                                     do_action('kemet_woo_shop_add_to_cart_after');
                                     break;
                                 case 'category':

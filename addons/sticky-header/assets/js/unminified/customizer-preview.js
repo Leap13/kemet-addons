@@ -99,7 +99,7 @@
   );
   kemet_responsive_spacing(
     "kemet-settings[sticky-menu-item-spacing]",
-    ".kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li a,.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *,.site-header.kmt-is-sticky .main-header-menu a",
+    ".kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li > a,.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu li > a",
     "padding",
     ["top", "bottom", "right", "left"]
   );

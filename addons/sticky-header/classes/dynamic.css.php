@@ -35,7 +35,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 				'.kmt-is-sticky .main-header-menu a' => array(
 					'color' => esc_attr($sticky_menu_link_color),
 				),
-				'.kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li a:not(.button),.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu a:not(.button)' => array(
+				'.kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li > a,.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu li > a' => array(
 					'padding-top' => kemet_responsive_spacing($menu_link_spacing, 'top', 'desktop'),
                     'padding-bottom' => kemet_responsive_spacing($menu_link_spacing, 'bottom', 'desktop'),
                     'padding-right' => kemet_responsive_spacing($menu_link_spacing, 'right', 'desktop'),
@@ -99,7 +99,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 					'padding-bottom' => kemet_responsive_spacing( $site_identity_spacing, 'bottom', 'tablet' ),
 					'padding-left'   => kemet_responsive_spacing( $site_identity_spacing, 'left', 'tablet' ),
 				),
-				'.kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li a:not(.button),.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu a:not(.button)' => array(
+				'.kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li > a,.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu li > a' => array(
 					'padding-top' => kemet_responsive_spacing($menu_link_spacing, 'top', 'tablet'),
                     'padding-bottom' => kemet_responsive_spacing($menu_link_spacing, 'bottom', 'tablet'),
                     'padding-right' => kemet_responsive_spacing($menu_link_spacing, 'right', 'tablet'),
@@ -129,7 +129,7 @@ function kemet_sticky_header_dynamic_css( $dynamic_css ) {
 					'padding-bottom' => kemet_responsive_spacing( $site_identity_spacing, 'bottom', 'mobile' ),
 					'padding-left'   => kemet_responsive_spacing( $site_identity_spacing, 'left', 'mobile' ),
 				),
-				'.kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li a:not(.button),.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu a:not(.button)' => array(
+				'.kmt-header-break-point .site-header.kmt-is-sticky .main-navigation ul li > a,.site-header.kmt-is-sticky .kmt-sitehead-custom-menu-items > *:not(.button),.site-header.kmt-is-sticky .main-header-menu li > a' => array(
 					'padding-top' => kemet_responsive_spacing($menu_link_spacing, 'top', 'mobile'),
                     'padding-bottom' => kemet_responsive_spacing($menu_link_spacing, 'bottom', 'mobile'),
                     'padding-right' => kemet_responsive_spacing($menu_link_spacing, 'right', 'mobile'),
