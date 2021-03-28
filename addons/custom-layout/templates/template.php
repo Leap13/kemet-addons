@@ -5,7 +5,6 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package Kemet Addons
- * 
  */
 
 get_header();

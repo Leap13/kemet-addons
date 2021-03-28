@@ -59,7 +59,7 @@ if (! class_exists('Kemet_Addons_Advanced_Posts_Search')) {
             foreach ($post_types as $key => $post_type) {
                 $data = array();
 
-                add_filter('posts_search', array( $this, '__search_by_title_only' ), 500, 2);
+                add_filter('posts_search', array( $this, 'search_by_title_only' ), 500, 2);
 
                 $query = new WP_Query(
                     array(
@@ -150,7 +150,7 @@ if (! class_exists('Kemet_Addons_Advanced_Posts_Search')) {
          *
          * @return (string) The Modified Search SQL for WHERE clause.
          */
-        public function __search_by_title_only($search, $wp_query)
+        public function search_by_title_only($search, $wp_query)
         {
             global $wpdb;
             if (empty($search)) {
