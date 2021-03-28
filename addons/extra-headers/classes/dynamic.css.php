@@ -41,16 +41,17 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
             // Main menu options.
             $menu_link_h_color             = kemet_get_option( 'menu-link-h-color', $theme_color );
 	        $menu_link_bottom_border_color = kemet_get_option( 'menu-link-bottom-border-color', isset( $menu_link_h_color['desktop'] ) ? $menu_link_h_color['desktop'] : $menu_link_h_color );
-            $menu_link_bottom_color        = kemet_get_option( 'vertical-menu-items-border-color' );
+            $menu_link_bottom_color        = kemet_get_option( 'vertical-menu-items-border-color', $global_border_color );
+            $menu_link_border_bottom       = kemet_get_option( 'menu-item-border-bottom', $global_border_color );
 
             //Header8
             $logo_icon_separator        = kemet_get_option( 'logo-icon-separator-color' , $global_border_color);
             $menu_icon_separator_height = kemet_get_option('header-separator-height');
             $css_content = array(
-                '.ss-content .main-header-menu .menu-item>a'       => array(
+                '.ss-content .main-header-menu .menu-item>a, .ss-content .main-header-menu .page_item>a'       => array(
                     'border-bottom-color' => esc_attr( $menu_link_bottom_color ),
                 ),
-                '.ss-content .main-header-menu .menu-item:hover>a' => array(
+                '.ss-content .main-header-menu .menu-item:hover>a, .ss-content .main-header-menu li.menu-item:last-child:hover>a, .ss-content .main-header-menu .page_item:hover>a, .ss-content .main-header-menu li.page_item:last-child:hover>a' => array(
                     'border-bottom-color' => esc_attr( $menu_link_bottom_border_color ),
                 ),
                 '.header-main-layout-4 .main-header-menu' => array(
@@ -127,7 +128,11 @@ function kemet_ext_headers_dynamic_css( $dynamic_css ) {
                 ),
                 '.menu-icon-header-8 .menu-icon' => array(
 					'background-color' => esc_attr(kemet_color_brightness($global_bg_color , 0.94 , 'dark')),
-                ),     
+                ), 
+                '.ss-content .main-header-menu li.menu-item:last-child>a, .ss-content .main-header-menu li.page_item:last-child>a' => array(
+                    'border-bottom-width' => kemet_get_css_value( $menu_link_border_bottom, 'px' ),
+                    'border-bottom-color' => esc_attr( $menu_link_bottom_color ),
+                ),  
             );
 
             $parse_css = kemet_parse_css( $css_content );

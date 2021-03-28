@@ -1202,6 +1202,9 @@ ul.products li.product .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse
 .single-product div.product .entry-summary .compare {
   margin-right: 20px;
   background-color: transparent;
+  font-weight: inherit;
+  font-family: inherit;
+  text-transform: inherit;
 }
 
 .single-product div.product .entry-summary .compare:before {
