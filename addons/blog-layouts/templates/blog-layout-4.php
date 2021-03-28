@@ -10,53 +10,65 @@
  */
 
 $blog_post_order = kemet_get_option( 'blog-post-structure' );
-
 ?>
-<div <?php kemet_blog_layout_class('blog-post-layout-4'); ?>>
-    <?php do_action( 'kemet_archive_entry_header_before' ); ?> 
-    <header class="entry-header">
-        <?php echo kemet_get_the_post_thumbnail_background( get_the_ID(), '570x570' ); ?>
-    </header><!-- .entry-header -->
-    <?php do_action( 'kemet_archive_entry_header_after' ); ?>
-        <div class="post-content">
 
-        <?php do_action( 'kemet_archive_post_title_before' );
+<div <?php kemet_blog_layout_class( 'blog-post-layout-4' ); ?>>
+	<?php do_action( 'kemet_archive_entry_header_before' ); ?> 
+	<header class="entry-header">
+		<?php
+			$args     = array(
+				'div' => array(
+					'class' => true,
+					'style' => true,
+				),
+				'a'   => array(
+					'href'  => true,
+					'class' => true,
+				),
+			);
+			$bg_image = kemet_get_the_post_thumbnail_background( get_the_ID(), '570x570' );
+			echo wp_kses( $bg_image, $args );
+			?>
+	</header><!-- .entry-header -->
+		<?php do_action( 'kemet_archive_entry_header_after' ); ?>
+			<div class="post-content">
 
-            /* translators: 1: Current post link, 2: Current post id */
-            kemet_the_title( sprintf( '<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>', get_the_id() );
+			<?php
+			do_action( 'kemet_archive_post_title_before' );
 
-            do_action( 'kemet_archive_post_title_after' );
+				/* translators: 1: Current post link, 2: Current post id */
+				kemet_the_title( sprintf( '<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>', get_the_id() );
 
-            ?>
-            <?php
+				do_action( 'kemet_archive_post_title_after' );
 
-            do_action( 'kemet_archive_post_meta_before' );
+			?>
+			<?php
 
-            kemet_blog_get_post_meta();
+			do_action( 'kemet_archive_post_meta_before' );
 
-            do_action( 'kemet_archive_post_meta_after' );
+			kemet_blog_get_post_meta();
 
-            ?>
-            
-            <div class="entry-content" itemprop="text">
-            
-            <?php kemet_entry_content_before(); ?>
+			do_action( 'kemet_archive_post_meta_after' );
 
-            <?php kemet_the_excerpt(); ?>
+			?>
+			<div class="entry-content" itemprop="text">
+			<?php kemet_entry_content_before(); ?>
 
-            <?php kemet_entry_content_after(); ?>
+			<?php kemet_the_excerpt(); ?>
 
-            <?php
-                wp_link_pages(
-                    array(
-                        'before'      => '<div class="page-links">' . esc_html( kemet_theme_strings( 'string-blog-page-links-before', false ) ),
-                        'after'       => '</div>',
-                        'link_before' => '<span class="page-link">',
-                        'link_after'  => '</span>',
-                    )
-                );
-            ?>
-        </div><!-- .entry-content .clear -->
+			<?php kemet_entry_content_after(); ?>
+
+			<?php
+				wp_link_pages(
+					array(
+						'before'      => '<div class="page-links">' . esc_html( kemet_theme_strings( 'string-blog-page-links-before', false ) ),
+						'after'       => '</div>',
+						'link_before' => '<span class="page-link">',
+						'link_after'  => '</span>',
+					)
+				);
+				?>
+		</div><!-- .entry-content .clear -->
 	</div><!-- .post-content -->
 
 </div> <!-- .blog-layout-4 -->
