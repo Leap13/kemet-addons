@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Kemet Meta Box Options
  *
@@ -9,14 +8,14 @@
 define( 'KEMET_METABOX_DIR', KEMET_ADDONS_DIR . 'addons/metabox/' );
 define( 'KEMET_METABOX_URL', KEMET_ADDONS_URL . 'addons/metabox/' );
 
-if ( ! class_exists( 'Kemet_Metabox)' ) ) {
+if ( ! class_exists( 'Kemet_Addon_Metabox' ) ) {
 
 	/**
 	 * Meta Box Markup Initial Setup
 	 *
 	 * @since 1.0.0
 	 */
-	class Kemet_Metabox {
+	class Kemet_Addon_Metabox {
 
 		/**
 		 * Member Variable
@@ -26,11 +25,13 @@ if ( ! class_exists( 'Kemet_Metabox)' ) ) {
 		private static $instance;
 
 		/**
-		 *  Initiator
+		 * Initiator
+		 *
+		 * @return object
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -38,14 +39,13 @@ if ( ! class_exists( 'Kemet_Metabox)' ) ) {
 		/**
 		 *  Constructor
 		 */
-		
 		public function __construct() {
-			require_once KEMET_METABOX_DIR . 'classes/class-metabox-data.php';	
-			require_once KEMET_METABOX_DIR . 'classes/class-metabox-data-helper.php';	
-		}		
+			require_once KEMET_METABOX_DIR . 'classes/class-kemet-addon-metabox-data.php';
+			require_once KEMET_METABOX_DIR . 'classes/class-kemet-addon-metabox-helper.php';
+		}
 
 	}
-    Kemet_Metabox::get_instance();
+	Kemet_Addon_Metabox::get_instance();
 }
 
 /**
