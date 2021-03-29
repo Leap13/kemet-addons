@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Kemet Woocommerce Addon
  *
@@ -8,14 +8,14 @@
 define( 'KEMET_WOOCOMMERCE_DIR', KEMET_ADDONS_DIR . 'addons/woocommerce/' );
 define( 'KEMET_WOOCOMMERCE_URL', KEMET_ADDONS_URL . 'addons/woocommerce/' );
 
-if ( ! class_exists( 'Kemet_Addons_Woocommerce' ) ) {
+if ( ! class_exists( 'Kemet_Addon_Woocommerce' ) ) {
 
 	/**
 	 * Woocommerce
 	 *
 	 * @since 1.0.3
 	 */
-	class Kemet_Addons_Woocommerce {
+	class Kemet_Addon_Woocommerce {
 
 		/**
 		 * Member Variable
@@ -25,11 +25,13 @@ if ( ! class_exists( 'Kemet_Addons_Woocommerce' ) ) {
 		private static $instance;
 
 		/**
-		 *  Initiator
+		 * Instance
+		 *
+		 * @return object
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -37,14 +39,13 @@ if ( ! class_exists( 'Kemet_Addons_Woocommerce' ) ) {
 		/**
 		 *  Constructor
 		 */
-		
 		public function __construct() {
-			
+
 			if ( class_exists( 'WooCommerce' ) ) {
-				
-				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-woocommerce-partials.php';
-				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-woocommerce-settings.php';
-				
+
+				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-kemet-addon-woocommerce-partials.php';
+				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-kemet-addon-woocommerce-settings.php';
+
 				if ( ! is_admin() ) {
 					require_once KEMET_WOOCOMMERCE_DIR . 'classes/dynamic.css.php';
 				}
@@ -52,7 +53,7 @@ if ( ! class_exists( 'Kemet_Addons_Woocommerce' ) ) {
 		}
 
 	}
-    Kemet_Addons_Woocommerce::get_instance();
+	Kemet_Addon_Woocommerce::get_instance();
 }
 
 /**
