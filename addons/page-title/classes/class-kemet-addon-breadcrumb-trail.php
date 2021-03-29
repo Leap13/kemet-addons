@@ -38,7 +38,7 @@ function kemet_breadcrumb_trail( $args = array() ) {
 	}
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null, $args );
 	if ( ! is_object( $breadcrumb ) )
-		$breadcrumb = new Kemet_Breadcrumb_Trail( $args );
+		$breadcrumb = new Kemet_Addon_Breadcrumb_Trail( $args );
 	return $breadcrumb->trail();
 }
 /**
@@ -47,7 +47,7 @@ function kemet_breadcrumb_trail( $args = array() ) {
  * @since  0.6.0
  * @access public
  */
-class Kemet_Breadcrumb_Trail {
+class Kemet_Addon_Breadcrumb_Trail {
 	/**
 	 * Array of items belonging to the current breadcrumb trail.
 	 *

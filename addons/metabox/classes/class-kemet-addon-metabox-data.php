@@ -2,7 +2,7 @@
 /**
  * Create a Metabox Options
  *
- * @package Wiz Addons
+ * @package Kemet Addons
  */
 
 if ( class_exists( 'KFW' ) ) {

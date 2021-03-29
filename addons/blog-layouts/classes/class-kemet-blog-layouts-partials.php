@@ -8,7 +8,7 @@
 if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 
 	/**
-	 * Class Wiz_Addon_Blog_Layouts_Partials
+	 * Class Kemet_Blog_Layouts_Partials
 	 */
 	class Kemet_Blog_Layouts_Partials {
 
@@ -112,7 +112,7 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 		}
 
 		/**
-		 * Wiz addons Pagination
+		 * Kemet addons Pagination
 		 *
 		 * @return void
 		 */
