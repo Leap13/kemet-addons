@@ -1,10 +1,16 @@
 <?php
 /**
-*  Kemet Customizer Export
-*/
+ * Export Customizer Settings
+ *
+ * @package Kemet Addons
+ */
 
-class Export {
-    /**
+/**
+ *  Kemet Customizer Export
+ */
+class Kemet_Addon_Export {
+
+	/**
 	 * An instance of WP_Customize_Manager.
 	 *
 	 * @access private
@@ -25,17 +31,17 @@ class Export {
 	 * Export the customizer.
 	 */
 	public function export() {
-		$theme    = get_stylesheet();
-		$mods     = get_theme_mods();
-		$charset  = get_option( 'blog_charset' );
-		$theme_options     = array(
+		$theme         = get_stylesheet();
+		$mods          = get_theme_mods();
+		$charset       = get_option( 'blog_charset' );
+		$theme_options = array(
 			'template' => $theme,
 			'mods'     => $mods ? $mods : array(),
 			'options'  => array(),
 		);
-		
-		$theme_options['site-icon'] = get_option( 'site_icon' );
-        $theme_options['customizer-settings'] = Kemet_Theme_Options::get_options();
+
+		$theme_options['site-icon']           = get_option( 'site_icon' );
+		$theme_options['customizer-settings'] = Kemet_Theme_Options::get_options();
 		if ( function_exists( 'wp_get_custom_css_post' ) ) {
 			$theme_options['wp_css'] = wp_get_custom_css();
 		}
@@ -50,6 +56,6 @@ class Export {
 
 		// Start the download.
 		exit;
- 
-        }
+
+	}
 }
