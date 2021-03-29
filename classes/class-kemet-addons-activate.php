@@ -31,7 +31,7 @@ final class Kemet_Addons_Activate {
 
 		$enabled_addon = get_option( 'kemet_addons_options', array() );
 
-		if ( 0 < count( $enabled_addon ) ) {
+		if ( is_array( $enabled_addon ) && 0 < count( $enabled_addon ) ) {
 
 			foreach ( $enabled_addon as $slug => $value ) {
 
