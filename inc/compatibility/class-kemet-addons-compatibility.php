@@ -1,45 +1,47 @@
 <?php
 /**
- * Kemet Compatiblity
+ * Compatiblity
  *
  * @package Kemet Addons
  */
 
-define('KEMET_COMPATIBLITY_DIR', KEMET_ADDONS_DIR . 'inc/compatibility/');
-define('KEMET_COMPATIBLITY_URL', KEMET_ADDONS_URL . 'inc/compatibility/');
+define( 'KEMET_COMPATIBLITY_DIR', KEMET_ADDONS_DIR . 'inc/compatibility/' );
+define( 'KEMET_COMPATIBLITY_URL', KEMET_ADDONS_URL . 'inc/compatibility/' );
 
-if (! class_exists('Kemet_Addons_Compatiblity')) {
-    class Kemet_Addons_Compatiblity
-    {
+if ( ! class_exists( 'Kemet_Addons_Compatibility' ) ) {
 
-        /**
-         * Member Variable
-         *
-         * @var object instance
-         */
-        private static $instance;
+	/**
+	 * Kemet Addons Page Builder Compatiblity
+	 */
+	class Kemet_Addons_Compatibility {
 
-        /**
-         *  Initiator
-         */
-        public static function get_instance()
-        {
-            if (! isset(self::$instance)) {
-                self::$instance = new self;
-            }
-            return self::$instance;
-        }
+		/**
+		 * Member Variable
+		 *
+		 * @var object instance
+		 */
+		private static $instance;
 
-        /**
-         *  Constructor
-         */
-        
-        public function __construct()
-        {
-            require_once KEMET_COMPATIBLITY_DIR . 'classes/kemet-addons-page-builder-compatiblity.php';
-            require_once KEMET_COMPATIBLITY_DIR . 'classes/kemet-addons-advanced-posts-search.php';
-        }
-    }
+		/**
+		 * Instance
+		 *
+		 * @return object
+		 */
+		public static function get_instance() {
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
+			}
+			return self::$instance;
+		}
 
-    Kemet_Addons_Compatiblity::get_instance();
+		/**
+		 *  Constructor
+		 */
+		public function __construct() {
+			require_once KEMET_COMPATIBLITY_DIR . 'classes/class-kemet-addons-page-builder-compatiblity.php';
+			require_once KEMET_COMPATIBLITY_DIR . 'classes/class-kemet-addons-advanced-posts-search.php';
+		}
+	}
+
+	Kemet_Addons_Compatibility::get_instance();
 }

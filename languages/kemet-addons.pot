@@ -2720,11 +2720,11 @@ msgstr ""
 msgid "Placeholder"
 msgstr ""
 
-#: inc/compatibility/classes/kemet-addons-advanced-posts-search.php:345
+#: inc/compatibility/classes/class-kemet-addons-advanced-posts-search.php:345
 msgid "Search pages / post / categories"
 msgstr ""
 
-#: inc/compatibility/classes/kemet-addons-page-builder-compatiblity.php:306
+#: inc/compatibility/classes/class-kemet-addons-page-builder-compatiblity.php:306
 #, php-format
 msgid "Edit %1$s with %2$s"
 msgstr ""
