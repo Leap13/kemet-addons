@@ -35,7 +35,6 @@
 
 		<?php
 			kemet_edit_post_link(
-
 				sprintf(
 					/* translators: %s: Name of current post */
 					esc_html__( 'Edit %s', 'kemet-addons' ),
@@ -44,7 +43,7 @@
 				'<span class="edit-link">',
 				'</span>'
 			);
-		?>
+			?>
 
 		<?php kemet_entry_content_after(); ?>
 
@@ -57,26 +56,30 @@
 					'link_after'  => '</span>',
 				)
 			);
-		?>
+			?>
 	</div><!-- .entry-content .clear -->
 </div>
 
-<?php if(kemet_get_option('enable-author-box') == true){ 
-	add_action('kemet_entry_after' , 'author_box_template' , 1);
-
-	function author_box_template(){
-?>
-<section class="kmt-author-box-info"> 
-	<div class="kmt-author-info">
-		<div class="kmt-author-avatar">
-		<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
-		</div>
-		<div class="author-information">
-			<h4 class='author-title'><?php echo get_the_author(); ?></h4>
-			<p><?php echo wp_kses_post( get_the_author_meta( 'description' ) ); ?></p>
-		</div>
-	</div>
-</section>
-
+<?php
+if ( kemet_get_option( 'enable-author-box' ) == true ) {
+	add_action( 'kemet_entry_after', 'author_box_template', 1 );
+	/**
+	 * Author box template
+	 *
+	 * @return void
+	 */
+	function author_box_template() {
+		?>
+		<section class="kmt-author-box-info"> 
+			<div class="kmt-author-info">
+				<div class="kmt-author-avatar">
+				<?php echo get_avatar( get_the_author_meta( 'email' ), 120 ); ?>
+				</div>
+				<div class="author-information">
+					<h4 class='author-title'><?php echo get_the_author(); ?></h4>
+					<p><?php echo wp_kses_post( get_the_author_meta( 'description' ) ); ?></p>
+				</div>
+			</div>
+		</section>
 <?php }
 } ?>
