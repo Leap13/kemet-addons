@@ -44,12 +44,12 @@ if ( ! class_exists( 'Kemet_Addon_Metabox_Helper' ) ) {
 		public function meta_options_hooks() {
 
 			if ( is_singular() ) {
-				// add_filter( 'kemet_featured_image_enabled', array( $this, 'featured_img' ) );
-				// add_filter( 'kemet_main_footer_disable', array( $this, 'kemet_footer_display' ) );
-				// add_filter( 'kmt_footer_copyright_layout_disable', array( $this, 'kemet_copyright_display' ), 1 );
-				// add_filter( 'display_go_top_icon', array( $this, 'kemet_go_top_display' ), 1 );
-				// add_filter( 'kemet_content_padding', array( $this, 'content_padding' ) );
-				// add_filter( 'kemet_get_content_layout', array( $this, 'content_layout' ) );
+				add_filter( 'kemet_featured_image_enabled', array( $this, 'featured_img' ) );
+				add_filter( 'kemet_main_footer_disable', array( $this, 'kemet_footer_display' ) );
+				add_filter( 'kmt_footer_copyright_layout_disable', array( $this, 'kemet_copyright_display' ), 1 );
+				add_filter( 'display_go_top_icon', array( $this, 'kemet_go_top_display' ), 1 );
+				add_filter( 'kemet_content_padding', array( $this, 'content_padding' ) );
+				add_filter( 'kemet_get_content_layout', array( $this, 'content_layout' ) );
 
 			}
 
