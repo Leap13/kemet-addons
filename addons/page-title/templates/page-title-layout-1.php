@@ -32,19 +32,19 @@ $classes   = implode( ' ', $classes );
 					<h1 class="kemet-page-title">
 						<?php
 						if ( is_singular() ) {
-							echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( $title ) );
+							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', $title ) );
 						} else {
-							echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( Kemet_Addon_Page_Title_Partials::get_instance()->kemet_get_current_page_title() ) );
+							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', Kemet_Addon_Page_Title_Partials::get_instance()->kemet_get_current_page_title() ) );
 						}
 						?>
 					</h1>
 					<?php if ( $sub_title ) { ?>
-					<h5 class="kemet-page-sub-title"><?php echo $sub_title; ?></h5>
+					<h5 class="kemet-page-sub-title"><?php echo esc_html( $sub_title ); ?></h5>
 					<?php } ?>
 				<?php } ?>
 				<?php if ( $description ) { ?>
 				<div class="taxonomy-description">
-					<?php echo apply_filters( 'kemet_page_title_addon_description', wp_kses_post( $description ) ); ?>
+					<?php echo wp_kses_post( apply_filters( 'kemet_page_title_addon_description', $description ) ); ?>
 				</div>
 				<?php } ?>
 			</div>

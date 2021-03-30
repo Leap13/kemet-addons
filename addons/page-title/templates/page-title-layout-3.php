@@ -16,7 +16,7 @@ if ( 'post' == get_post_type() ) {
 $description        = get_the_archive_description();
 $classes []         = $page_title_layout;
 $classes_responsive = kemet_get_option( 'page-title-responsive' );
-if ( $page_title_layout != 'disable' && apply_filters( 'kemet_disable_breadcrumbs', true ) ) {
+if ( 'disable' != $page_title_layout && apply_filters( 'kemet_disable_breadcrumbs', true ) ) {
 	$classes [] = 'has-breadcrumb';
 }
 $sub_title = '';
@@ -29,34 +29,34 @@ $classes   = implode( ' ', $classes );
 		<div class = 'kmt-container'>
 			<div class = 'kmt-row kmt-flex kemet-top-header-section-wrap'>
 				<div class = 'kmt-page-title-wrap kmt-flex kmt-justify-content-flex-end kmt-col-md-6 kmt-col-xs-12'>
-				<?php if ( $title ) { ?>
-					<h1 class = 'kemet-page-title'>
-					<?php
-					if ( is_singular() ) {
-						echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( $title ) );
-					} else {
-						echo apply_filters( 'kemet_page_title_addon_title', wp_kses_post( Kemet_Addon_Page_Title_Partials::get_instance()->kemet_get_current_page_title() ) );
-					}
-					?>
-					</h1>
-				<?php } ?>
-				<?php if ( $description ) { ?>
-				<div class = 'taxonomy-description'>
-					<?php echo apply_filters( 'kemet_page_title_addon_description', wp_kses_post( $description ) ); ?>
+					<?php if ( $title ) { ?>
+						<h1 class = 'kemet-page-title'>
+						<?php
+						if ( is_singular() ) {
+							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', $title ) );
+						} else {
+							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', Kemet_Addon_Page_Title_Partials::get_instance()->kemet_get_current_page_title() ) );
+						}
+						?>
+						</h1>
+					<?php } ?>
+					<?php if ( $description ) { ?>
+					<div class = 'taxonomy-description'>
+						<?php echo wp_kses_post( apply_filters( 'kemet_page_title_addon_description', $description ) ); ?>
+					</div>
+					<?php } ?>
 				</div>
-		<?php } ?>
+				<div class = 'kmt-flex kmt-justify-content-flex-start subtitle-breadcrumbs kmt-col-md-6 kmt-col-xs-12'>
+				<?php if ( $sub_title ) { ?>
+					<h5 class="kemet-page-sub-title">
+						<?php echo esc_html( $sub_title ); ?>
+					</h5>
+				<?php } ?>    
+				<?php if ( 'disable' != $page_title_layout && apply_filters( 'kemet_disable_breadcrumbs', true ) ) { ?>
+					<?php kemet_breadcrumb_trail(); ?>
+				<?php } ?>
+				</div>
+			</div>
 		</div>
-		<div class = 'kmt-flex kmt-justify-content-flex-start subtitle-breadcrumbs kmt-col-md-6 kmt-col-xs-12'>
-		<?php if ( $sub_title ) { ?>
-			<h5 class="kemet-page-sub-title">
-				<?php echo $sub_title; ?>
-			</h5>
-		<?php } ?>    
-		<?php if ( 'disable' != $page_title_layout && apply_filters( 'kemet_disable_breadcrumbs', true ) ) { ?>
-			<?php kemet_breadcrumb_trail(); ?>
-		<?php } ?>
 	</div>
-	</div>
-	</div>
-  </div>
 </div>
