@@ -757,8 +757,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			$shop_style = kemet_get_option( 'shop-layout' );
 			$html       = '<div class="shop-list-style">';
 			$html      .= '<span>View As: </span>';
-			$html      .= '<a href="#" class="kmt-grid-style" data-layout= ' . $shop_style . '><span class="dashicons dashicons-screenoptions"></span></a>';
-			$html      .= '<a href="#" class="kmt-list-style" data-layout="shop-list"><span class="dashicons dashicons-editor-ul"></span></a>';
+			$html      .= '<a href="javascript:void(0)" class="kmt-grid-style" data-layout= ' . $shop_style . '><span class="dashicons dashicons-screenoptions"></span></a>';
+			$html      .= '<a href="javascript:void(0)" class="kmt-list-style" data-layout="shop-list"><span class="dashicons dashicons-editor-ul"></span></a>';
 			$html      .= '</div>';
 
 			echo $html;
@@ -896,7 +896,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 */
 		public function off_canvas_filter_button() {
 			$label  = kemet_get_option( 'off-canvas-filter-label' );
-			$button = '<a href="#" class="kmt-woo-filter">' . $label . '</a>';
+			$button = '<a href="javascript:void(0)" class="kmt-woo-filter">' . $label . '</a>';
 
 			echo $button;
 		}
@@ -909,7 +909,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		public function off_canvas_filter_sidebar() {
 			echo '<div id="kmt-off-canvas-wrap">';
 			echo '<div class="kmt-off-canvas-sidebar">';
-			echo '<a href="#" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
+			echo '<a href="javascript:void(0)" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
 			echo kemet_get_custom_widget( 'off-canvas-filter' );
 			echo '</div>';
 			echo '<div class="kmt-off-canvas-overlay"></div>';
@@ -1017,7 +1017,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			// Get label.
 			$label   = __( 'Quick View', 'kemet-addons' );
 			$button  = '<div class="kmt-qv-btn-wrap">';
-			$button .= '<a href="#" class="button kmt-quick-view" data-product_id="' . $product_id . '">' . $label . '</a>';
+			$button .= '<a href="javascript:void(0)" class="button kmt-quick-view" data-product_id="' . $product_id . '">' . $label . '</a>';
 			$button .= '</div>';
 
 			echo $button;
@@ -1033,7 +1033,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '">' . __( 'Quick View', 'kemet-addons' ) . '</a>';
+			$button = '<a href="javascript:void(0)" class="kmt-qv-on-image" data-product_id="' . $product_id . '">' . __( 'Quick View', 'kemet-addons' ) . '</a>';
 
 			echo $button;
 		}
@@ -1048,7 +1048,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="kmt-qv-on-list button" data-product_id="' . $product_id . '"><span class="kmt-quick-view-icon"></span></a>';
+			$button = '<a href="javascript:void(0)" class="kmt-qv-on-list button" data-product_id="' . $product_id . '"><span class="kmt-quick-view-icon"></span></a>';
 
 			echo $button;
 		}
@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="kemet-view"></span></a>';
+			$button = '<a href="javascript:void(0)" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="kemet-view"></span></a>';
 
 			echo $button;
 		}
@@ -1078,7 +1078,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button = '<a href="#" class="button kmt-quickview-icon" data-product_id="' . $product_id . '"></a>';
+			$button = '<a href="javascript:void(0)" class="button kmt-quickview-icon" data-product_id="' . $product_id . '"></a>';
 
 			echo $button;
 		}
