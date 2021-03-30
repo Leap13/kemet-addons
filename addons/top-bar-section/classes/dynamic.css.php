@@ -59,13 +59,6 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 			'padding-bottom'      => kemet_responsive_spacing( $topbar_spacing, 'bottom', 'desktop' ),
 			'padding-left'        => kemet_responsive_spacing( $topbar_spacing, 'left', 'desktop' ),
 			'background-color'    => esc_attr( $topbar_bg_color ),
-			'border-style'        => 'solid',
-			'border-color'        => esc_attr( $topbar_border_color ),
-			'border-top-width'    => kemet_responsive_spacing( $topbar_border_size, 'top', 'desktop' ),
-			'border-right-width'  => kemet_responsive_spacing( $topbar_border_size, 'right', 'desktop' ),
-			'border-bottom-width' => kemet_responsive_spacing( $topbar_border_size, 'bottom', 'desktop' ),
-			'border-left-width'   => kemet_responsive_spacing( $topbar_border_size, 'left', 'desktop' ),
-
 			'font-size'           => kemet_responsive_slider( $topbar_font_size, 'desktop' ),
 			'font-family'         => kemet_get_font_family( $topbar_font_family ),
 			'font-weight'         => esc_attr( $topbar_font_weight ),
@@ -98,7 +91,14 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 		),
 
 	);
-
+	if ( ! apply_filters( 'kemet_addons_disable_top_bar_separators', false ) ) {
+		$css_content['.kemet-top-header']['border-style']        = esc_attr( 'solid' );
+		$css_content['.kemet-top-header']['border-color']        = esc_attr( $topbar_border_color );
+		$css_content['.kemet-top-header']['border-top-width']    = kemet_responsive_spacing( $topbar_border_size, 'top', 'desktop' );
+		$css_content['.kemet-top-header']['border-right-width']  = kemet_responsive_spacing( $topbar_border_size, 'right', 'desktop' );
+		$css_content['.kemet-top-header']['border-bottom-width'] = kemet_responsive_spacing( $topbar_border_size, 'bottom', 'desktop' );
+		$css_content['.kemet-top-header']['border-left-width']   = kemet_responsive_spacing( $topbar_border_size, 'left', 'desktop' );
+	}
 	$parse_css = kemet_parse_css( $css_content );
 
 	$css_tablet = array(
@@ -124,6 +124,14 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 			'justify-content' => kemet_responsive_icon_select( $section2_content_align, 'tablet' ),
 		),
 	);
+	if ( ! apply_filters( 'kemet_addons_disable_top_bar_separators', false ) ) {
+		$css_tablet['.kemet-top-header']['border-style']        = esc_attr( 'solid' );
+		$css_tablet['.kemet-top-header']['border-color']        = esc_attr( $topbar_border_color );
+		$css_tablet['.kemet-top-header']['border-top-width']    = kemet_responsive_spacing( $topbar_border_size, 'top', 'tablet' );
+		$css_tablet['.kemet-top-header']['border-right-width']  = kemet_responsive_spacing( $topbar_border_size, 'right', 'tablet' );
+		$css_tablet['.kemet-top-header']['border-bottom-width'] = kemet_responsive_spacing( $topbar_border_size, 'bottom', 'tablet' );
+		$css_tablet['.kemet-top-header']['border-left-width']   = kemet_responsive_spacing( $topbar_border_size, 'left', 'tablet' );
+	}
 	$parse_css .= kemet_parse_css( $css_tablet, '', '768' );
 
 	$css_mobile = array(
@@ -149,6 +157,14 @@ function kemet_topbar_dynamic_css( $dynamic_css ) {
 			'justify-content' => kemet_responsive_icon_select( $section2_content_align, 'mobile' ),
 		),
 	);
+	if ( ! apply_filters( 'kemet_addons_disable_top_bar_separators', false ) ) {
+		$css_mobile['.kemet-top-header']['border-style']        = esc_attr( 'solid' );
+		$css_mobile['.kemet-top-header']['border-color']        = esc_attr( $topbar_border_color );
+		$css_mobile['.kemet-top-header']['border-top-width']    = kemet_responsive_spacing( $topbar_border_size, 'top', 'mobile' );
+		$css_mobile['.kemet-top-header']['border-right-width']  = kemet_responsive_spacing( $topbar_border_size, 'right', 'mobile' );
+		$css_mobile['.kemet-top-header']['border-bottom-width'] = kemet_responsive_spacing( $topbar_border_size, 'bottom', 'mobile' );
+		$css_mobile['.kemet-top-header']['border-left-width']   = kemet_responsive_spacing( $topbar_border_size, 'left', 'mobile' );
+	}
 	$parse_css .= kemet_parse_css( $css_mobile, '', '544' );
 
 	return $dynamic_css . $parse_css;

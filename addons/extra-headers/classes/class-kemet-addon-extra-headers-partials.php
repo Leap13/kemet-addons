@@ -113,7 +113,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Partials' ) ) {
 		 * @return void
 		 */
 		public function header_with_top_bar() {
-			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );
+			$merge_top_bar_with_header = apply_filters( 'kemet_addons_merge_top_bar_with_header', kemet_get_option( 'merge-top-bar-header' ) );
 			$kemet_header_layout       = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
 			$unsupported_headers       = array( 'header-main-layout-5', 'header-main-layout-6', 'header-main-layout-7' );
 			if ( $merge_top_bar_with_header && ( ! empty( kemet_get_option( 'top-section-1' ) ) || ! empty( kemet_get_option( 'top-section-2' ) ) ) && ! in_array( $kemet_header_layout, $unsupported_headers ) ) {
@@ -133,7 +133,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Partials' ) ) {
 		public function after_main_header() {
 			$kemet_header_layout       = apply_filters( 'kemet_primary_header_layout', kemet_get_option( 'header-layouts' ) );
 			$unsupported_headers       = array( 'header-main-layout-5', 'header-main-layout-6', 'header-main-layout-7' );
-			$merge_top_bar_with_header = kemet_get_option( 'merge-top-bar-header' );
+			$merge_top_bar_with_header = apply_filters( 'kemet_addons_merge_top_bar_with_header', kemet_get_option( 'merge-top-bar-header' ) );
 			if ( $merge_top_bar_with_header && ( ! empty( kemet_get_option( 'top-section-1' ) ) || ! empty( kemet_get_option( 'top-section-2' ) ) ) && ! in_array( $kemet_header_layout, $unsupported_headers ) ) {
 				echo '</div><!-- .kemet-merged-top-bar-header -->';
 			}

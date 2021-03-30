@@ -14,7 +14,6 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Settings' ) ) {
 	 */
 	class Kemet_Addon_Top_Bar_Settings {
 
-
 		/**
 		 * Instance
 		 *

@@ -50,8 +50,9 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Metabox' ) ) {
 
 			if ( is_singular() ) {
 				add_filter( 'kemet_top_bar_enabled', array( $this, 'top_bar' ) );
+				add_filter( 'kemet_addons_merge_top_bar_with_header', array( $this, 'merge_top_bar' ) );
+				add_filter( 'kemet_addons_disable_top_bar_separators', array( $this, 'disable_top_bar_separator' ) );
 			}
-
 		}
 
 		/**
@@ -96,6 +97,36 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Metabox' ) ) {
 			}
 
 			return $defaults;
+		}
+
+		/**
+		 * Merge Top Bar with main header
+		 *
+		 * @param boolean $defaults default value.
+		 * @return boolean
+		 */
+		public function merge_top_bar( $defaults ) {
+
+			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true );
+
+			$merge_top_bar = ( isset( $meta['kemet-merge-top-bar-with-header'] ) && '' != $meta['kemet-merge-top-bar-with-header'] ) ? $meta['kemet-merge-top-bar-with-header'] : $defaults;
+
+			return $merge_top_bar;
+		}
+
+		/**
+		 * Disable Top Bar Separators
+		 *
+		 * @param boolean $defaults default value.
+		 * @return boolean
+		 */
+		public function disable_top_bar_separator( $defaults ) {
+
+			$meta = get_post_meta( get_the_ID(), 'kemet_page_options', true );
+
+			$disable_separators = ( isset( $meta['kemet-disable-top-bar-separators'] ) ) ? $meta['kemet-disable-top-bar-separators'] : $defaults;
+
+			return $disable_separators;
 		}
 	}
 }
