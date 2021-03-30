@@ -167,7 +167,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 		}
 
 		/**
-		 * Enqueues styles for single post
+		 * Enqueues styles for sticky header
 		 *
 		 * @return void
 		 */
@@ -189,7 +189,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 		}
 
 		/**
-		 * Enqueues scripts for single post
+		 * Enqueues scripts for sticky header
 		 *
 		 * @return void
 		 */
