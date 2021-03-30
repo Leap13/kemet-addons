@@ -104,7 +104,7 @@ $wp_customize->add_control(
 );
 
 /**
- * Option: Vertical Headers Enable Box Shadow
+ * Option: Add wishlist to header
  */
 $wp_customize->add_setting(
 	KEMET_THEME_SETTINGS . '[wishlist-in-header]', array(
@@ -192,7 +192,7 @@ $wp_customize->add_control(
 );
 
 /**
- * Option: Enable Sticky Header
+ * Option: Enable Quick view
  */
 $wp_customize->add_setting(
 	KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
