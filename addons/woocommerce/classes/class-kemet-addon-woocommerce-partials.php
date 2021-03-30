@@ -848,7 +848,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		/**
 		 * Sale badge content
 		 *
-		 * @return void
+		 * @return string
 		 */
 		public function kemet_sale_flash_content() {
 			global $product;
