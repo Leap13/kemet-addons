@@ -569,7 +569,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 					echo '<div class="add-to-cart-group">';
 					if ( 'outofstock' === $out_of_stock ) {
 						?>
-						<a href="javascript:void(0)" class="kmt-out-of-stock button disabled">Out Of Stock</a>
+						<a href="javascript:void(0)" class="kmt-out-of-stock button disabled"><?php esc_html_e( 'Out Of Stock', 'kemet-addons' ) ?></a>
 						<?php
 					} else {
 						woocommerce_template_loop_add_to_cart();
