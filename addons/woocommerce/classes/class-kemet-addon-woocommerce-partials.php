@@ -286,7 +286,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			do_action( 'ajax_product_layout_style' );
 
 			// prepare our arguments for the query.
-			$args = json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true );
+			$args = isset( $_POST['query'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true ) : '';
 
 			$posts = new WP_Query( $args );
 
@@ -326,7 +326,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			do_action( 'ajax_product_layout_style' );
 
 			// prepare our arguments for the query.
-			$args = json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true );
+			$args = isset( $_POST['query'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true ) : '';
 
 			$posts = new WP_Query( $args );
 
@@ -366,7 +366,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			do_action( 'ajax_product_layout_style' );
 
 			// prepare our arguments for the query.
-			$args = json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true );
+			$args = isset( $_POST['query'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true ) : '';
 
 			$posts = new WP_Query( $args );
 
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Enqueues scripts for top bar
+		 * Enqueues scripts for Woocommerce
 		 *
 		 * @return void
 		 */
@@ -1173,7 +1173,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Enqueues styles for top bar
+		 * Enqueues styles for Woocommerce
 		 *
 		 * @return void
 		 */
