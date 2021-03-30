@@ -37,7 +37,7 @@ class Kemet_Addon_Import {
 			return;
 		}
 
-		$filename = $_FILES['import_file']['name'];
+		$filename = isset( $_FILES['import_file']['name'] ) ? sanitize_text_field( wp_unslash( $_FILES['import_file']['name'] ) ) : '';
 
 		if ( empty( $filename ) ) {
 			return;
