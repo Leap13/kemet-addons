@@ -39,9 +39,7 @@ $enable_overlay  = kemet_get_option( 'overlay-image-style' );
 			do_action( 'kemet_archive_post_meta_after' );
 
 			?>
-			
 			<div class="entry-content" itemprop="text">
-			
 			<?php kemet_entry_content_before(); ?>
 
 			<?php kemet_the_excerpt(); ?>

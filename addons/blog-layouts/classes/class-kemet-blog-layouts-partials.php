@@ -126,7 +126,14 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 
 			if ( isset( $numpages ) && $enabled && 'infinite-scroll' != $pagination_style ) {
 				ob_start();
-				echo "<div class='kmt-pagination " . $pagination_style . "'>";
+				echo wp_kses(
+					"<div class='kmt-pagination " . $pagination_style . "'>",
+					array(
+						'div' => array(
+							'class' => array(),
+						),
+					)
+				);
 				the_posts_pagination(
 					array(
 						'prev_text'    => $prev_text,
@@ -135,7 +142,12 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 						'in_same_term' => true,
 					)
 				);
-				echo '</div>';
+				echo wp_kses(
+					'</div>',
+					array(
+						'div' => array(),
+					)
+				);
 				$output = ob_get_clean();
 				echo apply_filters( 'kemet_pagination_markup', $output ); // WPCS: XSS OK.
 
@@ -201,8 +213,8 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 
 			do_action( 'kemet_pagination_infinite' );
 
-			$query_vars                = json_decode( stripslashes( $_POST['query_vars'] ), true );
-			$query_vars['paged']       = ( isset( $_POST['page_no'] ) ) ? stripslashes( $_POST['page_no'] ) : 1;
+			$query_vars                = isset( $_POST['query_vars'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query_vars'] ) ), true ) : '';
+			$query_vars['paged']       = ( isset( $_POST['page_no'] ) ) ? sanitize_text_field( wp_unslash( $_POST['page_no'] ) ) : 1;
 			$query_vars['post_status'] = 'publish';
 			$posts                     = new WP_Query( $query_vars );
 
