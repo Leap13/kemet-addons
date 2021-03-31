@@ -843,6 +843,15 @@ Woo Quick View
     }
   }
 }
+.woocommerce,
+.woocommerce-page {
+  .kmt-toolbar {
+    form.woocommerce-ordering,
+    .woocommerce-result-count {
+      margin: 0;
+    }
+  }
+}
 .content-align-left {
   .kemet-shop-thumbnail-wrap {
     text-align: left;

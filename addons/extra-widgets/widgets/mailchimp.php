@@ -99,35 +99,23 @@ if ( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 		$output .= '</form>';
 		$output .= '</div>';
 
+		$html_args          = kemet_allowed_html( array( 'div', 'span', 'button' ) );
+		$html_args['form']  = array(
+			'class'  => true,
+			'name'   => true,
+			'action' => true,
+			'method' => true,
+		);
+		$html_args['input'] = array(
+			'class'       => true,
+			'type'        => true,
+			'value'       => true,
+			'name'        => true,
+			'placeholder' => true,
+		);
 		echo wp_kses(
 			$output,
-			array(
-				'div'    => array(
-					'class' => true,
-				),
-				'form'   => array(
-					'class'  => true,
-					'name'   => true,
-					'action' => true,
-					'method' => true,
-				),
-				'input'  => array(
-					'class'       => true,
-					'type'        => true,
-					'value'       => true,
-					'name'        => true,
-					'placeholder' => true,
-				),
-				'span'   => array(
-					'class' => true,
-				),
-				'button' => array(
-					'class' => true,
-					'type'  => true,
-					'style' => true,
-					'name'  => true,
-				),
-			)
+			$html_args
 		);?>
 
 		<?php

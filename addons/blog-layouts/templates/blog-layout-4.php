@@ -16,19 +16,9 @@ $blog_post_order = kemet_get_option( 'blog-post-structure' );
 	<?php do_action( 'kemet_archive_entry_header_before' ); ?> 
 	<header class="entry-header">
 		<?php
-			$args     = array(
-				'div' => array(
-					'class' => true,
-					'style' => true,
-				),
-				'a'   => array(
-					'href'  => true,
-					'class' => true,
-				),
-			);
 			$bg_image = kemet_get_the_post_thumbnail_background( get_the_ID(), '570x570' );
-			echo wp_kses( $bg_image, $args );
-			?>
+			echo wp_kses( $bg_image, kemet_allowed_html( array( 'div', 'a' ) ) );
+		?>
 	</header><!-- .entry-header -->
 		<?php do_action( 'kemet_archive_entry_header_after' ); ?>
 			<div class="post-content">

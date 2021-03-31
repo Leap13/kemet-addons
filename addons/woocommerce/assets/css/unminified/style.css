@@ -877,6 +877,13 @@ Woo Quick View
   height: 25px;
 }
 
+.woocommerce .kmt-toolbar form.woocommerce-ordering,
+.woocommerce .kmt-toolbar .woocommerce-result-count,
+.woocommerce-page .kmt-toolbar form.woocommerce-ordering,
+.woocommerce-page .kmt-toolbar .woocommerce-result-count {
+  margin: 0;
+}
+
 .content-align-left .kemet-shop-thumbnail-wrap {
   text-align: left;
 }

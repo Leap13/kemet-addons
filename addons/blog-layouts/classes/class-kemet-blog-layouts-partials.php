@@ -128,11 +128,7 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 				ob_start();
 				echo wp_kses(
 					"<div class='kmt-pagination " . $pagination_style . "'>",
-					array(
-						'div' => array(
-							'class' => array(),
-						),
-					)
+					kemet_allowed_html( array( 'div' ) )
 				);
 				the_posts_pagination(
 					array(
@@ -144,9 +140,7 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 				);
 				echo wp_kses(
 					'</div>',
-					array(
-						'div' => array(),
-					)
+					kemet_allowed_html( array( 'div' ) )
 				);
 				$output = ob_get_clean();
 				echo apply_filters( 'kemet_pagination_markup', $output ); // WPCS: XSS OK.

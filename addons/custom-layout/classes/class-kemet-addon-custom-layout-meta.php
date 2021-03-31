@@ -370,30 +370,22 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		 */
 		public function shortcode_column_content( $column_key, $post_id ) {
 
-			$html_args = array(
-				'div'    => array(
-					'class' => true,
-					'style' => true,
-				),
-				'input'  => array(
+			$html_args  = kemet_allowed_html( array( 'div', 'strong', 'p' ) );
+			$input_args = array(
+				'input' => array(
 					'value'    => true,
 					'class'    => true,
 					'readonly' => true,
 					'style'    => true,
 					'type'     => true,
 				),
-				'strong' => array(
-					'class' => true,
-				),
-				'p'      => array(
-					'class' => true,
-				),
 			);
+
 			switch ( $column_key ) {
 				case 'kemet_shortcode':
 					$shortcode = sprintf( '[Kemet_Addon_Custom_Layout id="%s"]', $post_id );
 
-					printf( '<input type="text" value="%s" style="min-width: 237px;" readonly \>', esc_attr( $shortcode ) );
+					printf( wp_kses( '<input type="text" value="%s" style="min-width: 237px;" readonly \>', $input_args ), esc_attr( $shortcode ) );
 					break;
 
 				case 'kemet_layout_rules':
