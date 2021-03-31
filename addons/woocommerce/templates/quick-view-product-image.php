@@ -26,7 +26,10 @@ global $post, $product, $woocommerce; ?>
 			echo sprintf(
 				'<li class="%s">%s</li>',
 				esc_attr( 'woocommerce-product-gallery__image' ),
-				$image
+				wp_kses(
+					$image,
+					kemet_allowed_html( array( 'img' ) )
+				)
 			);
 
 			if ( $attachment_ids ) {
@@ -50,7 +53,7 @@ global $post, $product, $woocommerce; ?>
 				}
 			}
 		} else {
-			echo sprintf( '<li><img src="%s" alt="%s" /></li>', wc_placeholder_img_src(), esc_html__( 'Placeholder', 'kemet-addons' ) );
+			echo sprintf( '<li><img src="%s" alt="%s" /></li>', wp_kses( wc_placeholder_img_src(), kemet_allowed_html( array( 'img' ) ) ), esc_html__( 'Placeholder', 'kemet-addons' ) );
 		}
 		?>
 	</ul>
