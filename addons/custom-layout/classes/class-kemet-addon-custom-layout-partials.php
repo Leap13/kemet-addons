@@ -860,7 +860,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					'id'       => $local_post->ID,
 					'location' => maybe_unserialize( $local_post->meta_value ),
 				);
-
 			}
 
 			$options['post_id'] = $post_id;
@@ -1207,7 +1206,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 			check_ajax_referer( 'kemet-addons-ajax-get-post', 'nonce' );
 
-			$search_query = isset( $_POST['query'] ) ? sanitize_text_field( $_POST['query'] ) : '';
+			$search_query = isset( $_POST['query'] ) ? sanitize_text_field( wp_unslash( $_POST['query'] ) ) : '';
 			$data         = array();
 			$result       = array();
 
@@ -1350,7 +1349,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 			check_ajax_referer( 'kemet-addons-ajax-get-title', 'nonce' );
 
-			$post_id = isset( $_POST['post_id'] ) ? explode( '-', $_POST['post_id'] )[1] : '';
+			$post_id = isset( $_POST['post_id'] ) ? explode( '-', sanitize_text_field( wp_unslash( $_POST['post_id'] ) ) )[1] : '';
 			if ( ! empty( $post_id ) ) {
 				$name = ! empty( get_the_title( $post_id ) ) ? get_the_title( $post_id ) : get_term( $post_id )->name;
 				echo esc_html( $name );
