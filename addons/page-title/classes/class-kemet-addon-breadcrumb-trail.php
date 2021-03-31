@@ -37,8 +37,9 @@ function kemet_breadcrumb_trail( $args = array() ) {
 		return;
 	}
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null, $args );
-	if ( ! is_object( $breadcrumb ) )
+	if ( ! is_object( $breadcrumb ) ) {
 		$breadcrumb = new Kemet_Addon_Breadcrumb_Trail( $args );
+	}
 	return $breadcrumb->trail();
 }
 /**
@@ -98,7 +99,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 *
 	 * @since  0.6.0
 	 * @access public
-	 * @param  array   $args  {
+	 * @param  array $args  {
 	 *     @type string    $container      Container HTML element. nav|div
 	 *     @type string    $before         String to output before breadcrumb menu.
 	 *     @type string    $after          String to output after breadcrumb menu.
@@ -114,19 +115,19 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 */
 	public function __construct( $args = array() ) {
 		$defaults = array(
-			'container'       => 'nav',
-			'before'          => '',
-			'after'           => '',
-			//'browse_tag'      => 'h2',
-			'list_tag'        => 'ul',
-			'item_tag'        => 'li',
-			'show_on_front'   => false,
-			'network'         => false,
-			'show_title'      => true,
-			//'show_browse'     => true,
-			'labels'          => array(),
-			'post_taxonomy'   => array(),
-			'echo'            => true
+			'container'     => 'nav',
+			'before'        => '',
+			'after'         => '',
+			// 'browse_tag'      => 'h2',
+			'list_tag'      => 'ul',
+			'item_tag'      => 'li',
+			'show_on_front' => false,
+			'network'       => false,
+			'show_title'    => true,
+			// 'show_browse'     => true,
+			'labels'        => array(),
+			'post_taxonomy' => array(),
+			'echo'          => true,
 		);
 		// Parse the arguments with the deaults.
 		$this->args = apply_filters( 'breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
@@ -146,14 +147,14 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 */
 	public function get_trail() {
 		// Set up variables that we'll need.
-		$breadcrumb    = '';
+		$breadcrumb        = '';
 		$breadcrumb_prefix = kemet_get_option( 'breadcrumb-prefix' );
-        $separator      = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'breadcrumb-separator', '»' ) );
-		$separator      = '<span class="breadcrumb-sep">' . $separator . '</span>';
-		$item_count    = count( $this->items );
-		$item_position = 0;
+		$separator         = apply_filters( 'kemet_breadcrumb_separator', kemet_get_option( 'breadcrumb-separator', '»' ) );
+		$separator         = '<span class="breadcrumb-sep">' . $separator . '</span>';
+		$item_count        = count( $this->items );
+		$item_position     = 0;
 
-		if(!empty($breadcrumb_prefix)){
+		if ( ! empty( $breadcrumb_prefix ) ) {
 			$breadcrumb .= sprintf( '<span class="%s">%s</span>', 'prefix', __( $breadcrumb_prefix, 'kemet-addons' ) );
 		}
 		// Connect the breadcrumb trail if there are items in the trail.
@@ -180,13 +181,14 @@ class Kemet_Addon_Breadcrumb_Trail {
 					: sprintf( '%s', $item );
 				// Add list item classes.
 				$item_class = 'trail-item';
-				if ( 1 === $item_position && 1 < $item_count )
+				if ( 1 === $item_position && 1 < $item_count ) {
 					$item_class .= ' trail-begin';
-				elseif ( $item_count === $item_position )
+				} elseif ( $item_count === $item_position ) {
 					$item_class .= ' trail-end';
+				}
 				// Create list item attributes.
-                $attributes = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="' . $item_class . '"';
-                // Separator
+				$attributes = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="' . $item_class . '"';
+				// Separator
 				if ( $item_count === $item_position ) {
 					$sep = '';
 				} else {
@@ -198,7 +200,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 				$breadcrumb .= sprintf( '<li %s>%s%s%s</li>', $attributes, $item, $sep, $meta );
 			}
 			// Close the unordered list.
-            $breadcrumb .= sprintf( '</%s>', tag_escape( $this->args['list_tag'] ) );
+			$breadcrumb .= sprintf( '</%s>', tag_escape( $this->args['list_tag'] ) );
 			// Wrap the breadcrumb trail.
 			$breadcrumb = sprintf(
 				'<%1$s role="navigation" aria-label="%2$s" class="kemet-breadcrumb-trail breadcrumbs" itemprop="breadcrumb">%3$s%4$s%5$s</%1$s>',
@@ -211,11 +213,11 @@ class Kemet_Addon_Breadcrumb_Trail {
 		}
 		// Allow developers to filter the breadcrumb trail HTML.
 		$breadcrumb = apply_filters( 'breadcrumb_trail', $breadcrumb, $this->args );
-		//if ( false === $this->args['echo'] )
+		// if ( false === $this->args['echo'] )
 			return $breadcrumb;
-		//echo $breadcrumb;
-    }
-    /**
+		// echo $breadcrumb;
+	}
+	/**
 	 * Echo the breadcrumb trail.
 	 *
 	 * @since  0.6.0
@@ -235,22 +237,22 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function set_labels() {
-		$defaults = array(
-			'browse'              => esc_html__( 'Browse:',                               'breadcrumb-trail' ),
+		$defaults     = array(
+			'browse'              => esc_html__( 'Browse:', 'breadcrumb-trail' ),
 			'aria_label'          => esc_attr_x( 'Breadcrumbs', 'breadcrumbs aria label', 'breadcrumb-trail' ),
-			'home'                => esc_html__( 'Home',                                  'breadcrumb-trail' ),
-			'error_404'           => esc_html__( '404 Not Found',                         'breadcrumb-trail' ),
-			'archives'            => esc_html__( 'Archives',                              'breadcrumb-trail' ),
+			'home'                => esc_html__( 'Home', 'breadcrumb-trail' ),
+			'error_404'           => esc_html__( '404 Not Found', 'breadcrumb-trail' ),
+			'archives'            => esc_html__( 'Archives', 'breadcrumb-trail' ),
 			// Translators: %s is the search query.
-			'search'              => esc_html__( 'Search results for: %s',                'breadcrumb-trail' ),
+			'search'              => esc_html__( 'Search results for: %s', 'breadcrumb-trail' ),
 			// Translators: %s is the page number.
-			'paged'               => esc_html__( 'Page %s',                               'breadcrumb-trail' ),
+			'paged'               => esc_html__( 'Page %s', 'breadcrumb-trail' ),
 			// Translators: %s is the page number.
-			//'paged_comments'      => esc_html__( 'Comment Page %s',                       'breadcrumb-trail' ),
+			// 'paged_comments'      => esc_html__( 'Comment Page %s',                       'breadcrumb-trail' ),
 			// Translators: Minute archive title. %s is the minute time format.
-			'archive_minute'      => esc_html__( 'Minute %s',                             'breadcrumb-trail' ),
+			'archive_minute'      => esc_html__( 'Minute %s', 'breadcrumb-trail' ),
 			// Translators: Weekly archive title. %s is the week date format.
-			'archive_week'        => esc_html__( 'Week %s',                               'breadcrumb-trail' ),
+			'archive_week'        => esc_html__( 'Week %s', 'breadcrumb-trail' ),
 			// "%s" is replaced with the translated date/time format.
 			'archive_minute_hour' => '%s',
 			'archive_hour'        => '%s',
@@ -271,8 +273,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 	protected function set_post_taxonomy() {
 		$defaults = array();
 		// If post permalink is set to `%postname%`, use the `category` taxonomy.
-		if ( '%postname%' === trim( get_option( 'permalink_structure' ), '/' ) )
+		if ( '%postname%' === trim( get_option( 'permalink_structure' ), '/' ) ) {
 			$defaults['post'] = 'tag';
+		}
 		$this->post_taxonomy = apply_filters( 'breadcrumb_trail_post_taxonomy', wp_parse_args( $this->args['post_taxonomy'], $defaults ) );
 	}
 	/**
@@ -303,28 +306,29 @@ class Kemet_Addon_Breadcrumb_Trail {
 			}
 			// If viewing an archive page.
 			elseif ( is_archive() ) {
-				if ( is_post_type_archive() )
+				if ( is_post_type_archive() ) {
 					$this->add_post_type_archive_items();
-				elseif ( is_category() || is_tag() || is_tax() )
+				} elseif ( is_category() || is_tag() || is_tax() ) {
 					$this->add_term_archive_items();
-				elseif ( is_author() )
+				} elseif ( is_author() ) {
 					$this->add_user_archive_items();
-				elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
+				} elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ) {
 					$this->add_minute_hour_archive_items();
-				elseif ( get_query_var( 'minute' ) )
+				} elseif ( get_query_var( 'minute' ) ) {
 					$this->add_minute_archive_items();
-				elseif ( get_query_var( 'hour' ) )
+				} elseif ( get_query_var( 'hour' ) ) {
 					$this->add_hour_archive_items();
-				elseif ( is_day() )
+				} elseif ( is_day() ) {
 					$this->add_day_archive_items();
-				elseif ( get_query_var( 'w' ) )
+				} elseif ( get_query_var( 'w' ) ) {
 					$this->add_week_archive_items();
-				elseif ( is_month() )
+				} elseif ( is_month() ) {
 					$this->add_month_archive_items();
-				elseif ( is_year() )
+				} elseif ( is_year() ) {
 					$this->add_year_archive_items();
-				else
+				} else {
 					$this->add_default_archive_items();
+				}
 			}
 			// If viewing a search results page.
 			elseif ( is_search() ) {
@@ -349,8 +353,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 */
 	protected function add_rewrite_front_items() {
 		global $wp_rewrite;
-		if ( $wp_rewrite->front )
+		if ( $wp_rewrite->front ) {
 			$this->add_path_parents( $wp_rewrite->front );
+		}
 	}
 	/**
 	 * Adds the page/paged number to the items array.
@@ -361,14 +366,17 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 */
 	protected function add_paged_items() {
 		// If viewing a paged singular post.
-		if ( is_singular() && 1 < get_query_var( 'page' ) && true === $this->args['show_title'] )
+		if ( is_singular() && 1 < get_query_var( 'page' ) && true === $this->args['show_title'] ) {
 			$this->items[] = sprintf( $this->labels['paged'], number_format_i18n( absint( get_query_var( 'page' ) ) ) );
+		}
 		// If viewing a singular post with paged comments.
-		elseif ( is_singular() && get_option( 'page_comments' ) && 1 < get_query_var( 'cpage' ) )
+		elseif ( is_singular() && get_option( 'page_comments' ) && 1 < get_query_var( 'cpage' ) ) {
 			$this->items[] = sprintf( $this->labels['paged_comments'], number_format_i18n( absint( get_query_var( 'cpage' ) ) ) );
+		}
 		// If viewing a paged archive-type page.
-		elseif ( is_paged() && true === $this->args['show_title'] )
+		elseif ( is_paged() && true === $this->args['show_title'] ) {
 			$this->items[] = sprintf( $this->labels['paged'], number_format_i18n( absint( get_query_var( 'paged' ) ) ) );
+		}
 	}
 	/**
 	 * Adds the network (all sites) home page link to the items array.
@@ -378,7 +386,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_network_home_link() {
-        // Home item
+		// Home item
 		$setting = kemet_get_option( 'kemet_breadcrumbs_home', 'icon' );
 
 		// Icon
@@ -390,7 +398,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 		$icon = '';
 		if ( is_customize_preview()
 			|| 'icon' == $setting ) {
-			$icon = '<span class="icon-home'. $icon_class .'"></span>';
+			$icon = '<span class="icon-home' . $icon_class . '"></span>';
 		}
 
 		// Text
@@ -398,12 +406,13 @@ class Kemet_Addon_Breadcrumb_Trail {
 		if ( 'icon' == $setting ) {
 			$text_class = ' has-icon';
 		}
-		$text = '<span class="breadcrumb-home'. $text_class .'">'. $this->labels['home'] .'</span>';
+		$text = '<span class="breadcrumb-home' . $text_class . '">' . $this->labels['home'] . '</span>';
 
-		if ( is_multisite() && ! is_main_site() && true === $this->args['network'] )
-			$this->items[] = sprintf( '<a href="%s" rel="home" aria-label="' .$this->labels['home']. '">%s</a>', esc_url( network_home_url() ), $icon, $text );
+		if ( is_multisite() && ! is_main_site() && true === $this->args['network'] ) {
+			$this->items[] = sprintf( '<a href="%s" rel="home" aria-label="' . $this->labels['home'] . '">%s</a>', esc_url( network_home_url() ), $icon, $text );
+		}
 	}
-	
+
 	/**
 	 * Adds the current site's home page link to the items array.
 	 *
@@ -412,14 +421,14 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_site_home_link() {
-        // Home item
+		// Home item
 		$home_item = kemet_get_option( 'breadcrumb-home-item', 'icon' );
 
 		$html = '';
 		if ( 'icon' == $home_item ) {
 			$html = '<span class="dashicons dashicons-admin-home"></span>';
-		}else{
-			$html = '<span class="breadcrumb-home">'. $this->labels['home'] .'</span>';
+		} else {
+			$html = '<span class="breadcrumb-home">' . $this->labels['home'] . '</span>';
 		}
 
 		// Vars
@@ -427,7 +436,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 		$label   = $network ? get_bloginfo( 'name' ) : $html;
 		$rel     = $network ? '' : ' rel="home"';
 
-		$this->items[] = sprintf( '<a href="%s"%s aria-label="' .$this->labels['home']. '">%s</a>', esc_url( home_url() ), $rel, $html );
+		$this->items[] = sprintf( '<a href="%s"%s aria-label="' . $this->labels['home'] . '">%s</a>', esc_url( home_url() ), $rel, $html );
 	}
 	/**
 	 * Adds items for the front page to the items array.
@@ -442,11 +451,13 @@ class Kemet_Addon_Breadcrumb_Trail {
 			// Add network home link.
 			$this->add_network_home_link();
 			// If on a paged view, add the site home link.
-			if ( is_paged() )
+			if ( is_paged() ) {
 				$this->add_site_home_link();
+			}
 			// If on the main front page, add the network home title.
-			elseif ( true === $this->args['show_title'] )
+			elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = is_multisite() && true === $this->args['network'] ? get_bloginfo( 'name' ) : $this->labels['home'];
+			}
 		}
 	}
 	/**
@@ -461,15 +472,17 @@ class Kemet_Addon_Breadcrumb_Trail {
 		$post_id = get_queried_object_id();
 		$post    = get_post( $post_id );
 		// If the post has parents, add them to the trail.
-		if ( isset($post->post_parent) && 0 < $post->post_parent )
+		if ( isset( $post->post_parent ) && 0 < $post->post_parent ) {
 			$this->add_post_parents( $post->post_parent );
+		}
 		// Get the page title.
 		$title = get_the_title( $post_id );
 		// Add the posts page item.
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), $title );
-		elseif ( $title && true === $this->args['show_title'] )
+		} elseif ( $title && true === $this->args['show_title'] ) {
 			$this->items[] = $title;
+		}
 	}
 	/**
 	 * Adds singular post items to the items array.
@@ -480,40 +493,42 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 */
 	protected function add_singular_items() {
 		// Get the queried post.
-		$post    = get_queried_object();
-		$post_id = get_queried_object_id();
-		$posts_taxonomy 		= kemet_get_option( 'breadcrumb-posts-taxonomy', 'category' );
+		$post           = get_queried_object();
+		$post_id        = get_queried_object_id();
+		$posts_taxonomy = kemet_get_option( 'breadcrumb-posts-taxonomy', 'category' );
 		// If the post has a parent, follow the parent trail.
-		if ( 0 < $post->post_parent )
+		if ( 0 < $post->post_parent ) {
 			$this->add_post_parents( $post->post_parent );
+		}
 		// If the post doesn't have a parent, get its hierarchy based off the post type.
-		else
+		else {
 			$this->add_post_hierarchy( $post_id );
+		}
 		// If the post type is 'post'.
 		if ( 'post' === $post->post_type
 			&& 'none' != $posts_taxonomy ) {
 
 			if ( 'blog' == $posts_taxonomy
 				&& ( 'posts' !== get_option( 'show_on_front' ) && 0 < $post_id ) ) {
-				$page_id = get_option( 'page_for_posts');
+				$page_id       = get_option( 'page_for_posts' );
 				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $page_id ) ), get_the_title( $page_id ) );
 			} else {
 				$this->add_post_terms( $post_id, $posts_taxonomy );
 			}
-
 		}
 		// Display terms for specific post type taxonomy if requested.
-		else { if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) ) {
-			$this->add_post_terms( $post_id, $this->post_taxonomy[ $post->post_type ] );
-		}
+		else {
+			if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) ) {
+				$this->add_post_terms( $post_id, $this->post_taxonomy[ $post->post_type ] );
+			}
 		}
 		// End with the post title.
-		
-		if ( true == kemet_get_option('show-item-title') && $post_title = single_post_title( '', false ) ) {
-			if ( ( 1 < get_query_var( 'page' ) || is_paged() ) || ( get_option( 'page_comments' ) && 1 < absint( get_query_var( 'cpage' ) ) ) )
+		if ( true == kemet_get_option( 'show-item-title' ) && $post_title = single_post_title( '', false ) ) {
+			if ( ( 1 < get_query_var( 'page' ) || is_paged() ) || ( get_option( 'page_comments' ) && 1 < absint( get_query_var( 'cpage' ) ) ) ) {
 				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), $post_title );
-			elseif ( true === $this->args['show_title'] )
+			} elseif ( true === $this->args['show_title'] ) {
 				$this->items[] = $post_title;
+			}
 		}
 	}
 	/**
@@ -533,8 +548,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// If there are rewrite rules for the taxonomy.
 		if ( false !== $taxonomy->rewrite ) {
 			// If 'with_front' is true, dd $wp_rewrite->front to the trail.
-			if ( $taxonomy->rewrite['with_front'] && $wp_rewrite->front )
+			if ( $taxonomy->rewrite['with_front'] && $wp_rewrite->front ) {
 				$this->add_rewrite_front_items();
+			}
 			// Get parent pages by path if they exist.
 			$this->add_path_parents( $taxonomy->rewrite['slug'] );
 			// Add post type archive if its 'has_archive' matches the taxonomy rewrite 'slug'.
@@ -561,7 +577,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 							// Core filter hook.
 							$label = apply_filters( 'post_type_archive_title', $label, $post_type_object->name );
 							// Add the post type archive link to the trail.
-							$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type_object->name ) ), $label );
+							$this->items[]  = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type_object->name ) ), $label );
 							$done_post_type = true;
 							// Break out of the loop.
 							break;
@@ -575,25 +591,28 @@ class Kemet_Addon_Breadcrumb_Trail {
 			// If the post type is 'post'.
 			if ( 'post' === $taxonomy->object_type[0] ) {
 				$post_id = get_option( 'page_for_posts' );
-				if ( 'posts' !== get_option( 'show_on_front' ) && 0 < $post_id )
+				if ( 'posts' !== get_option( 'show_on_front' ) && 0 < $post_id ) {
 					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
-			// If the post type is not 'post'.
+				}
+				// If the post type is not 'post'.
 			} else {
 				$post_type_object = get_post_type_object( $taxonomy->object_type[0] );
-				$label = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
+				$label            = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
 				// Core filter hook.
-				$label = apply_filters( 'post_type_archive_title', $label, $post_type_object->name );
+				$label         = apply_filters( 'post_type_archive_title', $label, $post_type_object->name );
 				$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type_object->name ) ), $label );
 			}
 		}
 		// If the taxonomy is hierarchical, list its parent terms.
-		if ( is_taxonomy_hierarchical( $term->taxonomy ) && $term->parent )
+		if ( is_taxonomy_hierarchical( $term->taxonomy ) && $term->parent ) {
 			$this->add_term_parents( $term->parent, $term->taxonomy );
+		}
 		// Add the term name to the trail end.
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_term_link( $term, $term->taxonomy ) ), single_term_title( '', false ) );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = single_term_title( '', false );
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for post type archives.
@@ -607,20 +626,24 @@ class Kemet_Addon_Breadcrumb_Trail {
 		$post_type_object = get_post_type_object( get_query_var( 'post_type' ) );
 		if ( false !== $post_type_object->rewrite ) {
 			// If 'with_front' is true, add $wp_rewrite->front to the trail.
-			if ( $post_type_object->rewrite['with_front'] )
+			if ( $post_type_object->rewrite['with_front'] ) {
 				$this->add_rewrite_front_items();
+			}
 			// If there's a rewrite slug, check for parents.
-			if ( ! empty( $post_type_object->rewrite['slug'] ) )
+			if ( ! empty( $post_type_object->rewrite['slug'] ) ) {
 				$this->add_path_parents( $post_type_object->rewrite['slug'] );
+			}
 		}
 		// Add the post type [plural] name to the trail end.
-		if ( is_paged() || is_author() )
+		if ( is_paged() || is_author() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type_object->name ) ), post_type_archive_title( '', false ) );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = post_type_archive_title( '', false );
+		}
 		// If viewing a post type archive by author.
-		if ( is_author() )
+		if ( is_author() ) {
 			$this->add_user_archive_items();
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for user (author) archives.
@@ -637,13 +660,15 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Get the user ID.
 		$user_id = get_query_var( 'author' );
 		// If $author_base exists, check for parent pages.
-		if ( ! empty( $wp_rewrite->author_base ) && ! is_post_type_archive() )
+		if ( ! empty( $wp_rewrite->author_base ) && ! is_post_type_archive() ) {
 			$this->add_path_parents( $wp_rewrite->author_base );
+		}
 		// Add the author's display name to the trail end.
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $user_id ) ), get_the_author_meta( 'display_name', $user_id ) );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = get_the_author_meta( 'display_name', $user_id );
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for minute + hour archives.
@@ -656,8 +681,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Add the minute + hour item.
-		if ( true === $this->args['show_title'] )
+		if ( true === $this->args['show_title'] ) {
 			$this->items[] = sprintf( $this->labels['archive_minute_hour'], get_the_time( esc_html_x( 'g:i a', 'minute and hour archives time format', 'breadcrumb-trail' ) ) );
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for minute archives.
@@ -670,8 +696,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Add the minute item.
-		if ( true === $this->args['show_title'] )
+		if ( true === $this->args['show_title'] ) {
 			$this->items[] = sprintf( $this->labels['archive_minute'], get_the_time( esc_html_x( 'i', 'minute archives time format', 'breadcrumb-trail' ) ) );
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for hour archives.
@@ -684,8 +711,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Add the hour item.
-		if ( true === $this->args['show_title'] )
+		if ( true === $this->args['show_title'] ) {
 			$this->items[] = sprintf( $this->labels['archive_hour'], get_the_time( esc_html_x( 'g a', 'hour archives time format', 'breadcrumb-trail' ) ) );
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for day archives.
@@ -698,17 +726,18 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Get year, month, and day.
-		$year  = sprintf( $this->labels['archive_year'],  get_the_time( esc_html_x( 'Y', 'yearly archives date format',  'breadcrumb-trail' ) ) );
+		$year  = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'breadcrumb-trail' ) ) );
 		$month = sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'breadcrumb-trail' ) ) );
-		$day   = sprintf( $this->labels['archive_day'],   get_the_time( esc_html_x( 'j', 'daily archives date format',   'breadcrumb-trail' ) ) );
+		$day   = sprintf( $this->labels['archive_day'], get_the_time( esc_html_x( 'j', 'daily archives date format', 'breadcrumb-trail' ) ) );
 		// Add the year and month items.
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ), $month );
 		// Add the day item.
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y' ) ), get_the_time( 'm' ), get_the_time( 'd' ) ), $day );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = $day;
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for week archives.
@@ -721,15 +750,25 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Get the year and week.
-		$year = sprintf( $this->labels['archive_year'],  get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'breadcrumb-trail' ) ) );
-		$week = sprintf( $this->labels['archive_week'],  get_the_time( esc_html_x( 'W', 'weekly archives date format', 'breadcrumb-trail' ) ) );
+		$year = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'breadcrumb-trail' ) ) );
+		$week = sprintf( $this->labels['archive_week'], get_the_time( esc_html_x( 'W', 'weekly archives date format', 'breadcrumb-trail' ) ) );
 		// Add the year item.
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
 		// Add the week item.
-		if ( is_paged() )
-			$this->items[] = esc_url( get_archives_link( add_query_arg( array( 'm' => get_the_time( 'Y' ), 'w' => get_the_time( 'W' ) ), home_url() ), $week, false ) );
-		elseif ( true === $this->args['show_title'] )
+		if ( is_paged() ) {
+			$this->items[] = esc_url(
+				get_archives_link(
+					add_query_arg(
+						array(
+							'm' => get_the_time( 'Y' ),
+							'w' => get_the_time( 'W' ),
+						), home_url()
+					), $week, false
+				)
+			);
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = $week;
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for month archives.
@@ -742,15 +781,16 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Get the year and month.
-		$year  = sprintf( $this->labels['archive_year'],  get_the_time( esc_html_x( 'Y', 'yearly archives date format',  'breadcrumb-trail' ) ) );
+		$year  = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'breadcrumb-trail' ) ) );
 		$month = sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'breadcrumb-trail' ) ) );
 		// Add the year item.
 		$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
 		// Add the month item.
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ), $month );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = $month;
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for year archives.
@@ -763,12 +803,13 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
 		// Get the year.
-		$year  = sprintf( $this->labels['archive_year'],  get_the_time( esc_html_x( 'Y', 'yearly archives date format',  'breadcrumb-trail' ) ) );
+		$year = sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'breadcrumb-trail' ) ) );
 		// Add the year item.
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y' ) ) ), $year );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = $year;
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for archives that don't have a more specific method
@@ -780,10 +821,12 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 */
 	protected function add_default_archive_items() {
 		// If this is a date-/time-based archive, add $wp_rewrite->front to the trail.
-		if ( is_date() || is_time() )
+		if ( is_date() || is_time() ) {
 			$this->add_rewrite_front_items();
-		if ( true === $this->args['show_title'] )
+		}
+		if ( true === $this->args['show_title'] ) {
 			$this->items[] = $this->labels['archives'];
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for search results.
@@ -793,10 +836,11 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_search_items() {
-		if ( is_paged() )
+		if ( is_paged() ) {
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_search_link() ), sprintf( $this->labels['search'], get_search_query() ) );
-		elseif ( true === $this->args['show_title'] )
+		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = sprintf( $this->labels['search'], get_search_query() );
+		}
 	}
 	/**
 	 * Adds the items to the trail items array for 404 pages.
@@ -806,15 +850,16 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_404_items() {
-		if ( true === $this->args['show_title'] )
+		if ( true === $this->args['show_title'] ) {
 			$this->items[] = $this->labels['error_404'];
+		}
 	}
 	/**
 	 * Adds a specific post's parents to the items array.
 	 *
 	 * @since  1.0.0
 	 * @access protected
-	 * @param  int    $post_id
+	 * @param  int $post_id
 	 * @return void
 	 */
 	protected function add_post_parents( $post_id ) {
@@ -823,21 +868,24 @@ class Kemet_Addon_Breadcrumb_Trail {
 			// Get the post by ID.
 			$post = get_post( $post_id );
 			// If we hit a page that's set as the front page, bail.
-			if ( 'page' == $post->post_type && 'page' == get_option( 'show_on_front' ) && $post_id == get_option( 'page_on_front' ) )
+			if ( 'page' == $post->post_type && 'page' == get_option( 'show_on_front' ) && $post_id == get_option( 'page_on_front' ) ) {
 				break;
+			}
 			// Add the formatted post link to the array of parents.
 			$parents[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
 			// If there's no longer a post parent, break out of the loop.
-			if ( 0 >= $post->post_parent )
+			if ( 0 >= $post->post_parent ) {
 				break;
+			}
 			// Change the post ID to the parent post to continue looping.
 			$post_id = $post->post_parent;
 		}
 		// Get the post hierarchy based off the final parent post.
 		$this->add_post_hierarchy( $post_id );
 		// Display terms for specific post type taxonomy if requested.
-		if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) )
+		if ( ! empty( $this->post_taxonomy[ $post->post_type ] ) ) {
 			$this->add_post_terms( $post_id, $this->post_taxonomy[ $post->post_type ] );
+		}
 		// Merge the parent items into the items array.
 		$this->items = array_merge( $this->items, array_reverse( $parents ) );
 	}
@@ -847,7 +895,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 *
 	 * @since  1.0.0
 	 * @access protected
-	 * @param  int    $post_id
+	 * @param  int $post_id
 	 * @return void
 	 */
 	protected function add_post_hierarchy( $post_id ) {
@@ -864,23 +912,26 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// If the post type has rewrite rules.
 		elseif ( false !== $post_type_object->rewrite ) {
 			// If 'with_front' is true, add $wp_rewrite->front to the trail.
-			if ( $post_type_object->rewrite['with_front'] )
+			if ( $post_type_object->rewrite['with_front'] ) {
 				$this->add_rewrite_front_items();
+			}
 			// If there's a path, check for parents.
-			if ( ! empty( $post_type_object->rewrite['slug'] ) )
+			if ( ! empty( $post_type_object->rewrite['slug'] ) ) {
 				$this->add_path_parents( $post_type_object->rewrite['slug'] );
+			}
 		}
 		// If there's an archive page, add it to the trail.
 		if ( $post_type_object->has_archive ) {
 			// Add support for a non-standard label of 'archive_title' (special use case).
 			$label = ! empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
 			// Core filter hook.
-			$label = apply_filters( 'post_type_archive_title', $label, $post_type_object->name );
+			$label         = apply_filters( 'post_type_archive_title', $label, $post_type_object->name );
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( $post_type ) ), $label );
 		}
 		// Map the rewrite tags if there's a `%` in the slug.
-		if ( 'post' !== $post_type && ! empty( $post_type_object->rewrite['slug'] ) && false !== strpos( $post_type_object->rewrite['slug'], '%' ) )
+		if ( 'post' !== $post_type && ! empty( $post_type_object->rewrite['slug'] ) && false !== strpos( $post_type_object->rewrite['slug'], '%' ) ) {
 			$this->map_rewrite_tags( $post_id, $post_type_object->rewrite['slug'] );
+		}
 	}
 	/**
 	 * Gets post types by slug.  This is needed because the get_post_types() function doesn't exactly
@@ -888,15 +939,16 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 *
 	 * @since  0.6.0
 	 * @access protected
-	 * @param  int    $slug  The post type archive slug to search for.
+	 * @param  int $slug  The post type archive slug to search for.
 	 * @return void
 	 */
 	protected function get_post_types_by_slug( $slug ) {
-		$return = array();
+		$return     = array();
 		$post_types = get_post_types( array(), 'objects' );
 		foreach ( $post_types as $type ) {
-			if ( $slug === $type->has_archive || ( true === $type->has_archive && $slug === $type->rewrite['slug'] ) )
+			if ( $slug === $type->has_archive || ( true === $type->has_archive && $slug === $type->rewrite['slug'] ) ) {
 				$return[] = $type;
+			}
 		}
 		return $return;
 	}
@@ -905,8 +957,8 @@ class Kemet_Addon_Breadcrumb_Trail {
 	 *
 	 * @since  1.0.0
 	 * @access protected
-	 * @param  int     $post_id  The ID of the post to get the terms for.
-	 * @param  string  $taxonomy The taxonomy to get the terms from.
+	 * @param  int    $post_id  The ID of the post to get the terms for.
+	 * @param  string $taxonomy The taxonomy to get the terms from.
 	 * @return void
 	 */
 	protected function add_post_terms( $post_id, $taxonomy ) {
@@ -917,14 +969,16 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Check that categories were returned.
 		if ( $terms && ! is_wp_error( $terms ) ) {
 			// Sort the terms by ID and get the first category.
-			if ( function_exists( 'wp_list_sort' ) )
+			if ( function_exists( 'wp_list_sort' ) ) {
 				$terms = wp_list_sort( $terms, 'term_id' );
-			else
+			} else {
 				usort( $terms, '_usort_terms_by_ID' );
+			}
 			$term = get_term( $terms[0], $taxonomy );
 			// If the category has a parent, add the hierarchy to the trail.
-			if ( 0 < $term->parent )
+			if ( 0 < $term->parent ) {
 				$this->add_term_parents( $term->parent, $taxonomy );
+			}
 			// Add the category archive link to the trail.
 			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_term_link( $term, $taxonomy ) ), $term->name );
 		}
@@ -943,17 +997,17 @@ class Kemet_Addon_Breadcrumb_Trail {
 		// Trim '/' off $path in case we just got a simple '/' instead of a real path.
 		$path = trim( $path, '/' );
 		// If there's no path, return.
-		if ( empty( $path ) )
+		if ( empty( $path ) ) {
 			return;
+		}
 		// Get parent post by the path.
 		$post = get_page_by_path( $path );
 		if ( ! empty( $post ) ) {
 			$this->add_post_parents( $post->ID );
-		}
-		elseif ( is_null( $post ) ) {
+		} elseif ( is_null( $post ) ) {
 			// Separate post names into separate paths by '/'.
 			$path = trim( $path, '/' );
-			preg_match_all( "/\/.*?\z/", $path, $matches );
+			preg_match_all( '/\/.*?\z/', $path, $matches );
 			// If matches are found for the path.
 			if ( isset( $matches ) ) {
 				// Reverse the array of matches to search for posts in the proper order.
@@ -997,8 +1051,9 @@ class Kemet_Addon_Breadcrumb_Trail {
 			$term_id = $term->parent;
 		}
 		// If we have parent terms, reverse the array to put them in the proper order for the trail.
-		if ( ! empty( $parents ) )
+		if ( ! empty( $parents ) ) {
 			$this->items = array_merge( $this->items, array_reverse( $parents ) );
+		}
 	}
 	/**
 	 * Turns %tag% from permalink structures into usable links for the breadcrumb trail.  This feels kind of
@@ -1026,17 +1081,21 @@ class Kemet_Addon_Breadcrumb_Trail {
 				// Trim any '/' from the $match.
 				$tag = trim( $match, '/' );
 				// If using the %year% tag, add a link to the yearly archive.
-				if ( '%year%' == $tag )
-					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y', $post_id ) ) ), sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format',  'breadcrumb-trail' ) ) ) );
+				if ( '%year%' == $tag ) {
+					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_year_link( get_the_time( 'Y', $post_id ) ) ), sprintf( $this->labels['archive_year'], get_the_time( esc_html_x( 'Y', 'yearly archives date format', 'breadcrumb-trail' ) ) ) );
+				}
 				// If using the %monthnum% tag, add a link to the monthly archive.
-				elseif ( '%monthnum%' == $tag )
+				elseif ( '%monthnum%' == $tag ) {
 					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_month_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ) ) ), sprintf( $this->labels['archive_month'], get_the_time( esc_html_x( 'F', 'monthly archives date format', 'breadcrumb-trail' ) ) ) );
+				}
 				// If using the %day% tag, add a link to the daily archive.
-				elseif ( '%day%' == $tag )
+				elseif ( '%day%' == $tag ) {
 					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y', $post_id ), get_the_time( 'm', $post_id ), get_the_time( 'd', $post_id ) ) ), sprintf( $this->labels['archive_day'], get_the_time( esc_html_x( 'j', 'daily archives date format', 'breadcrumb-trail' ) ) ) );
+				}
 				// If using the %author% tag, add a link to the post author archive.
-				elseif ( '%author%' == $tag )
+				elseif ( '%author%' == $tag ) {
 					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $post->post_author ) ), get_the_author_meta( 'display_name', $post->post_author ) );
+				}
 				// If using the %category% tag, add a link to the first category archive to match permalinks.
 				elseif ( taxonomy_exists( trim( $tag, '%' ) ) ) {
 					// Force override terms in this post type.
