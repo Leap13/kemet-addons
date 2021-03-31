@@ -111,7 +111,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				wp_send_json_error( 'not_preview' );
 			}
 
-			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'kmt-customizer-reset' ) ) {
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'kmt-customizer-reset' ) ) {
 				wp_send_json_error( 'invalid_nonce' );
 			}
 
@@ -135,7 +135,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( $_GET['nonce'], 'customizer-export' ) ) {
+			if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'customizer-export' ) ) {
 				return;
 			}
 
@@ -154,7 +154,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_POST['kemet_import_nonce'] ) || ! wp_verify_nonce( $_POST['kemet_import_nonce'], 'kemet_import_nonce' ) ) {
+			if ( ! isset( $_POST['kemet_import_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['kemet_import_nonce'] ), 'kemet_import_nonce' ) ) {
 				return;
 			}
 			if ( empty( $_POST['kemet_ie_action'] ) || 'import_settings' !== $_POST['kemet_ie_action'] ) {

@@ -49,7 +49,7 @@ class Kemet_Addon_Import {
 			wp_die( esc_html__( 'Please upload a valid .json file', 'kemet-addons' ) );
 		}
 
-		$import_file = $_FILES['import_file']['tmp_name'];
+		$import_file = isset( $_FILES['import_file']['tmp_name'] ) ? $_FILES['import_file']['tmp_name'] : '';
 
 		if ( empty( $import_file ) ) {
 			wp_die( esc_html__( 'Please upload a file to import', 'kemet-addons' ) );
