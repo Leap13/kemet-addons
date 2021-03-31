@@ -135,7 +135,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'customizer-export' ) ) {
+			if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_GET['nonce'] ), 'customizer-export' ) ) {
 				return;
 			}
 
