@@ -55,7 +55,7 @@ if ( ! function_exists( 'kemet_widget_posts_list' ) ) {
 	function kemet_widget_posts_list( $args, $instance, $id ) {
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', esc_html( $instance['title'] ) ) . $args['after_title'];
+			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title'];
 		}
 		global $post;
 		$orig_post = $post;

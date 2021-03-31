@@ -102,7 +102,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 				'Content-Type: application/json',
 				'Authorization: Basic ' . base64_encode( 'user:' . $api_key ),
 			);
-			$user_agent = $_SERVER['HTTP_USER_AGENT'];
+			$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
 			$mailchimp  = curl_init();
 
 			curl_setopt( $mailchimp, CURLOPT_URL, $url );
@@ -125,11 +125,11 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 		 */
 		public function mailchimp_action() {
 
-			if ( ! isset( $_POST['kmt_mailchimp_nonce'] ) || ! wp_verify_nonce( $_POST['kmt_mailchimp_nonce'], 'kmt_mailchimp_action' ) ) {
+			if ( ! isset( $_POST['kmt_mailchimp_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['kmt_mailchimp_nonce'] ), 'kmt_mailchimp_action' ) ) {
 				exit;
 			} else {
 
-				$email   = filter_var( trim( $_POST['email'] ), FILTER_SANITIZE_EMAIL );
+				$email   = isset( $_POST['email'] ) ? filter_var( wp_unslash( $_POST['email'] ), FILTER_SANITIZE_EMAIL ) : '';
 				$list    = kemet_get_integration( 'kmt-mailchimp-list-id' );
 				$api_key = kemet_get_integration( 'kmt-mailchimp-api-key' );
 

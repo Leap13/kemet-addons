@@ -176,7 +176,7 @@ if ( ! function_exists( 'kemet_widget_social_profiles' ) ) {
 	function kemet_widget_social_profiles( $args, $instance, $id ) {
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', esc_html( $instance['title'] ) ) . $args['after_title'];
+			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title'];
 		}
 		if ( ! empty( $instance['social-profile'] ) ) {
 			?>
@@ -293,7 +293,16 @@ if ( ! function_exists( 'kemet_widget_social_profiles' ) ) {
 			}
 		}
 		$style_id = str_replace( array( '#', ' ' ), '', $id );
-		printf( "<style type='text/css' class='" . $style_id . "-inline-style'>%s</style>", esc_attr( $parse_css ) );
+		printf(
+			wp_kses(
+				"<style type='text/css' class='" . $style_id . "-inline-style'>%s</style>", array(
+					'style' => array(
+						'type'  => true,
+						'class' => true,
+					),
+				)
+			), esc_attr( $parse_css )
+		);
 
 		echo $args['after_widget'];
 	}

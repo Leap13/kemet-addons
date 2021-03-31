@@ -53,7 +53,7 @@ if ( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 	function kemet_widget_mail_chimp( $args, $instance, $id ) {
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', esc_html( $instance['title'] ) ) . $args['after_title'];
+			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title'];
 		}
 
 		$submit_text  = isset( $instance['submit-text'] ) ? $instance['submit-text'] : 'Subscribe';
@@ -99,7 +99,36 @@ if ( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 		$output .= '</form>';
 		$output .= '</div>';
 
-		echo $output;?>
+		echo wp_kses(
+			$output,
+			array(
+				'div'    => array(
+					'class' => true,
+				),
+				'form'   => array(
+					'class'  => true,
+					'name'   => true,
+					'action' => true,
+					'method' => true,
+				),
+				'input'  => array(
+					'class'       => true,
+					'type'        => true,
+					'value'       => true,
+					'name'        => true,
+					'placeholder' => true,
+				),
+				'span'   => array(
+					'class' => true,
+				),
+				'button' => array(
+					'class' => true,
+					'type'  => true,
+					'style' => true,
+					'name'  => true,
+				),
+			)
+		);?>
 
 		<?php
 		echo $args['after_widget'];
