@@ -130,10 +130,10 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 			} else {
 
 				$email   = isset( $_POST['email'] ) ? filter_var( wp_unslash( $_POST['email'] ), FILTER_SANITIZE_EMAIL ) : '';
-				$list    = kemet_get_integration( 'kmt-mailchimp-list-id' );
-				$api_key = kemet_get_integration( 'kmt-mailchimp-api-key' );
+				$list    = kemet_get_integration( 'kemet-mailchimp-list-id' );
+				$api_key = kemet_get_integration( 'kemet-mailchimp-api-key' );
 
-				mailchimp_post( $email, 'subscribed', $list, $api_key );
+				$this->mailchimp_post( $email, 'subscribed', $list, $api_key );
 				die;
 			}
 		}

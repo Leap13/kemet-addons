@@ -78,7 +78,7 @@ if ( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 		$output .= '<div class="mailchimp-description">';
 		$output .= esc_html( $decription );
 		$output .= '</div>';
-		$output .= '<form class="kmt-mailchimp-form" name="kmt-mailchimp-form" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" method="POST">';
+		$output .= '<form class="kmt-mailchimp-form" name="kmt-mailchimp-form" action="' . esc_url( admin_url( 'admin-ajax.php' ) ) . '" method="POST">';
 		$output .= '<div>';
 		$output .= '<input type="text" value="" name="email" placeholder="' . esc_html__( 'Email', 'kemet-addons' ) . '">';
 		$output .= '<span class="alert warning">' . esc_html__( 'Invalid or empty email', 'kemet-addons' ) . '</span>';
