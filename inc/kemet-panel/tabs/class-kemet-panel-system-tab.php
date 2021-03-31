@@ -80,9 +80,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 						echo sprintf(
 							wp_kses(
 								'<mark>%s - %s</mark>',
-								array(
-									'mark' => array(),
-								)
+								kemet_allowed_html( array( 'mark' ) )
 							), esc_html( size_format( $memory_limit ) ),
 							esc_html__( 'We recommend setting wp memory at least 64MB.', 'kemet-addons' )
 						);
@@ -165,9 +163,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 								echo sprintf(
 									wp_kses(
 										'<mark>%s - %s</mark>',
-										array(
-											'mark' => array(),
-										)
+										kemet_allowed_html( array( 'mark' ) )
 									), esc_html( $time_limit ),
 									esc_html__( 'We recommend setting max execution time at least 60.', 'kemet-addons' )
 								);
@@ -237,14 +233,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 							<?php
 								echo wp_kses(
 									$plugin_name,
-									array(
-										'a' => array(
-											'class'  => array(),
-											'href'   => array(),
-											'target' => array(),
-											'title'  => array(),
-										),
-									),
+									kemet_allowed_html( array( 'a' ) )
 								);
 							?>
 							</td>
@@ -253,15 +242,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 								echo sprintf(
 									wp_kses(
 										esc_html__( 'by', 'kemet-addons' ) . ' ' . $plugin_data['Author'] . esc_html( ' &ndash; ' ) . esc_html( $plugin_data['Version'] ) . $version_string . $network_string,
-										array(
-											'a'      => array(
-												'class'  => array(),
-												'href'   => array(),
-												'target' => array(),
-												'title'  => array(),
-											),
-											'string' => array(),
-										)
+										kemet_allowed_html( array( 'a' ) )
 									),
 								);
 							?>
