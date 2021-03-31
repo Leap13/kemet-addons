@@ -4,6 +4,7 @@
  *
  * @package Kemet Addons
  */
+
 if ( ! class_exists( 'Kemet_Addon_Go_Top_Settings' ) ) {
 
 	/**
