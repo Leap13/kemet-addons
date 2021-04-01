@@ -1,57 +1,83 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php
 /**
- *
  * Field: Button_Set
  *
- * @since 1.0.0
- * @version 1.0.0
- *
+ * @package Kemet Framework
  */
-if( ! class_exists( 'KFW_Field_Button_Set' ) ) {
-  class KFW_Field_Button_Set extends KFW_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 
-    public function render() {
+if ( ! class_exists( 'KFW_Field_Button_Set' ) ) {
 
-      $args = wp_parse_args( $this->field, array(
-        'multiple' => false,
-        'options'  => array(),
-      ) );
+	/**
+	 *
+	 * Field: Button_Set
+	 *
+	 * @since 1.0.0
+	 * @version 1.0.0
+	 */
+	class KFW_Field_Button_Set extends KFW_Fields {
 
-      $value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
+		/**
+		 * Constructor
+		 *
+		 * @param array  $field field options.
+		 * @param string $value value.
+		 * @param string $unique key.
+		 * @param string $where location.
+		 * @param string $parent parent.
+		 * @return void
+		 */
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      echo $this->field_before();
+		/**
+		 * Render field html
+		 *
+		 * @return void
+		 */
+		public function render() {
 
-      if( ! empty( $args['options'] ) ) {
+			$args = wp_parse_args(
+				$this->field, array(
+					'multiple' => false,
+					'options'  => array(),
+				)
+			);
 
-        echo '<div class="kfw-siblings kfw--button-group" data-multiple="'. $args['multiple'] .'">';
+			$value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 
-        foreach( $args['options'] as $key => $option ) {
+			echo wp_kses( $this->field_before(), kfw_allowed_html( 'all' ) );
 
-          $type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
-          $extra   = ( $args['multiple'] ) ? '[]' : '';
-          $active  = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) )  ) ? ' kfw--active' : '';
-          $checked = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' checked' : '';
+			if ( ! empty( $args['options'] ) ) {
 
-          echo '<div class="kfw--sibling kfw--button'. $active .'">';
-          echo '<input type="'. $type .'" name="'. $this->field_name( $extra ) .'" value="'. $key .'"'. $this->field_attributes() . $checked .'/>';
-          echo $option;
-          echo '</div>';
+				echo wp_kses( '<div class="kfw-siblings kfw--button-group" data-multiple="' . $args['multiple'] . '">', kfw_allowed_html( array( 'div' ) ) );
 
-        }
+				foreach ( $args['options'] as $key => $option ) {
 
-        echo '</div>';
+					$type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
+					$extra   = ( $args['multiple'] ) ? '[]' : '';
+					$active  = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' kfw--active' : '';
+					$checked = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' checked' : '';
 
-      }
+					echo wp_kses( '<div class="kfw--sibling kfw--button' . $active . '">', kfw_allowed_html( array( 'div' ) ) );
+					echo wp_kses( '<input type="' . $type . '" name="' . $this->field_name( $extra ) . '" value="' . $key . '"' . $this->field_attributes() . $checked . '/>', kfw_allowed_html( array( 'input' ) ) );
+					echo esc_html( $option );
+					echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
 
-      echo '<div class="clear"></div>';
+				}
 
-      echo $this->field_after();
+				echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
 
-    }
+			}
 
-  }
+			echo wp_kses( '<div class="clear"></div>', kfw_allowed_html( array( 'div' ) ) );
+
+			echo wp_kses( $this->field_after(), kfw_allowed_html( 'all' ) );
+		}
+
+	}
 }
