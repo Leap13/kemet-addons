@@ -1128,7 +1128,7 @@ msgstr ""
 #: addons/page-title/customizer/customizer-options.php:756
 #: addons/sticky-header/classes/class-sticky-headers-meta.php:57
 #: addons/top-bar-section/customizer/customizer-options.php:368
-#: inc/k-framework/classes/setup.class.php:290
+#: inc/k-framework/classes/class-kfw.php:290
 msgid "Default"
 msgstr ""
 
@@ -2806,48 +2806,48 @@ msgstr ""
 msgid "Are you sure to reset all options?"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:288
+#: inc/k-framework/classes/class-kfw.php:288
 msgid "Clear"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:289
+#: inc/k-framework/classes/class-kfw.php:289
 msgid "Clear color"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:291
+#: inc/k-framework/classes/class-kfw.php:291
 msgid "Select default color"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:292
+#: inc/k-framework/classes/class-kfw.php:292
 msgid "Select Color"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:293
+#: inc/k-framework/classes/class-kfw.php:293
 msgid "Color value"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:316
+#: inc/k-framework/classes/class-kfw.php:316
 msgid "Are you sure?"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:317
+#: inc/k-framework/classes/class-kfw.php:317
 msgid "Restoring options."
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:318
+#: inc/k-framework/classes/class-kfw.php:318
 msgid "Importing options."
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:354
+#: inc/k-framework/classes/class-kfw.php:354
 #, php-format
 msgid "Ooops! This field type (%s) can not be used here, yet."
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:413
+#: inc/k-framework/classes/class-kfw.php:413
 msgid "This field class is not available!"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:416
+#: inc/k-framework/classes/class-kfw.php:416
 msgid "This type is not found!"
 msgstr ""
 

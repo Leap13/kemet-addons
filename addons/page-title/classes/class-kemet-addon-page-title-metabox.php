@@ -61,7 +61,7 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Metabox' ) ) {
 		 * @return void
 		 */
 		public function add_page_title_meta_box() {
-			KFW::createSection(
+			KFW::create_section(
 				'kemet_page_options', array(
 					'title'        => __( 'Page Title', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-format-quote',
@@ -94,7 +94,7 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Metabox' ) ) {
 					),
 				)
 			);
-			KFW::createSection(
+			KFW::create_section(
 				'kemet_page_options', array(
 					'title'        => __( 'Breadcrumbs', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-tag',
