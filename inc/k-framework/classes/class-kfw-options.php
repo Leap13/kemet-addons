@@ -1,6 +1,6 @@
 <?php
 /**
- * Nav Menu Options Class
+ * Options Class
  *
  * @package Kemet Framework
  */
