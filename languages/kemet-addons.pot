@@ -2729,20 +2729,20 @@ msgstr ""
 msgid "Edit %1$s with %2$s"
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:258
+#: inc/k-framework/classes/class-kfw-metabox.php:258
 #: inc/k-framework/classes/options.class.php:614
 msgid "No option provided by developer."
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:276
+#: inc/k-framework/classes/class-kfw-metabox.php:276
 msgid "Restore"
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:277
+#: inc/k-framework/classes/class-kfw-metabox.php:277
 msgid "update post for restore "
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:277
+#: inc/k-framework/classes/class-kfw-metabox.php:277
 msgid "Cancel"
 msgstr ""
 

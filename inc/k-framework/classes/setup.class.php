@@ -218,7 +218,7 @@ if (! class_exists('KFW')) {
             self::include_plugin_file('classes/options.class.php');
             // includes premium version classes
             if (self::$premium) {
-                self::include_plugin_file('classes/metabox.class.php');
+                self::include_plugin_file('classes/class-kfw-metabox.php');
                 self::include_plugin_file('classes/class-kfw-customize-options.php');
                 self::include_plugin_file('classes/nav-menu-options.class.php');
             }

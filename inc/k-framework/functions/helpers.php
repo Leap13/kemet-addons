@@ -1,31 +1,31 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 /**
  *
  * Array search key & value
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! function_exists( 'kfw_array_search' ) ) {
-  function kfw_array_search( $array, $key, $value ) {
+	function kfw_array_search( $array, $key, $value ) {
 
-    $results = array();
+		$results = array();
 
-    if ( is_array( $array ) ) {
-      if ( isset( $array[$key] ) && $array[$key] == $value ) {
-        $results[] = $array;
-      }
+		if ( is_array( $array ) ) {
+			if ( isset( $array[ $key ] ) && $array[ $key ] == $value ) {
+				 $results[] = $array;
+			}
 
-      foreach ( $array as $sub_array ) {
-        $results = array_merge( $results, kfw_array_search( $sub_array, $key, $value ) );
-      }
+			foreach ( $array as $sub_array ) {
+				$results = array_merge( $results, kfw_array_search( $sub_array, $key, $value ) );
+			}
+		}
 
-    }
+		return $results;
 
-    return $results;
-
-  }
+	}
 }
 
 /**
@@ -34,22 +34,21 @@ if ( ! function_exists( 'kfw_array_search' ) ) {
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! function_exists( 'kfw_get_var' ) ) {
-  function kfw_get_var( $var, $default = '' ) {
+	function kfw_get_var( $var, $default = '' ) {
 
-    if( isset( $_POST[$var] ) ) {
-      return $_POST[$var];
-    }
+		if ( isset( $_POST[ $var ] ) ) {
+			return $_POST[ $var ];
+		}
 
-    if( isset( $_GET[$var] ) ) {
-      return $_GET[$var];
-    }
+		if ( isset( $_GET[ $var ] ) ) {
+			return $_GET[ $var ];
+		}
 
-    return $default;
+		return $default;
 
-  }
+	}
 }
 
 /**
@@ -58,22 +57,21 @@ if ( ! function_exists( 'kfw_get_var' ) ) {
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! function_exists( 'kfw_get_vars' ) ) {
-  function kfw_get_vars( $var, $depth, $default = '' ) {
+	function kfw_get_vars( $var, $depth, $default = '' ) {
 
-    if( isset( $_POST[$var][$depth] ) ) {
-      return $_POST[$var][$depth];
-    }
+		if ( isset( $_POST[ $var ][ $depth ] ) ) {
+			return $_POST[ $var ][ $depth ];
+		}
 
-    if( isset( $_GET[$var][$depth] ) ) {
-      return $_GET[$var][$depth];
-    }
+		if ( isset( $_GET[ $var ][ $depth ] ) ) {
+			return $_GET[ $var ][ $depth ];
+		}
 
-    return $default;
+		return $default;
 
-  }
+	}
 }
 
 /**
@@ -82,14 +80,13 @@ if ( ! function_exists( 'kfw_get_vars' ) ) {
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! function_exists( 'kfw_microtime' ) ) {
-  function kfw_timeout( $timenow, $starttime, $timeout = 30 ) {
+	function kfw_timeout( $timenow, $starttime, $timeout = 30 ) {
 
-    return ( ( $timenow - $starttime ) < $timeout ) ? true : false;
+		return ( ( $timenow - $starttime ) < $timeout ) ? true : false;
 
-  }
+	}
 }
 
 /**
@@ -98,14 +95,65 @@ if ( ! function_exists( 'kfw_microtime' ) ) {
  *
  * @since 1.0.0
  * @version 1.0.0
- *
  */
 if ( ! function_exists( 'kfw_wp_editor_api' ) ) {
-  function kfw_wp_editor_api() {
+	function kfw_wp_editor_api() {
 
-    global $wp_version;
+		global $wp_version;
 
-    return version_compare( $wp_version, '4.8', '>=' );
+		return version_compare( $wp_version, '4.8', '>=' );
 
-  }
+	}
 }
+
+if ( ! function_exists( 'kfw_allowed_html' ) ) {
+	/**
+	 * Allowed HTML
+	 *
+	 * @param string $allowed_elements .
+	 * @return mixed
+	 */
+	function kfw_allowed_html( $allowed_elements = '' ) {
+
+		// bail early if parameter is empty.
+		if ( empty( $allowed_elements ) ) {
+			return array();
+		}
+
+		if ( 'post' == $allowed_elements ) {
+			  return wp_kses_allowed_html( 'post' );
+		}
+
+		if ( is_string( $allowed_elements ) ) {
+			$allowed_elements = explode( ',', $allowed_elements );
+		}
+
+		$allowed_html = array();
+
+		$allowed_tags          = wp_kses_allowed_html( 'post' );
+		$allowed_tags['input'] = array(
+			'disabled'         => true,
+			'name'             => true,
+			'readonly'         => true,
+			'aria-describedby' => true,
+			'aria-details'     => true,
+			'aria-label'       => true,
+			'aria-labelledby'  => true,
+			'aria-hidden'      => true,
+			'class'            => true,
+			'id'               => true,
+			'style'            => true,
+			'title'            => true,
+			'role'             => true,
+			'data-*'           => true,
+		);
+		foreach ( $allowed_elements as $element ) {
+			$element = trim( $element );
+			if ( array_key_exists( $element, $allowed_tags ) ) {
+				$allowed_html[ $element ] = $allowed_tags[ $element ];
+			}
+		}
+		return $allowed_html;
+	}
+}
+

@@ -72,7 +72,7 @@ if ( ! class_exists( 'KFW_Customize_Options' ) ) {
 		/**
 		 * Args
 		 *
-		 * @var int
+		 * @var array
 		 */
 		public $args = array(
 			'database'        => 'option',

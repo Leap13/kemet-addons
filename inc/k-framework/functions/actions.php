@@ -179,38 +179,3 @@ if (! function_exists('kfw_set_icons')) {
     add_action('admin_footer', 'kfw_set_icons');
     add_action('customize_controls_print_footer_scripts', 'kfw_set_icons');
 }
-
-if ( ! function_exists( 'kfw_allowed_html' ) ) {
-	/**
-	 * Allowed HTML
-	 *
-	 * @param string $allowed_elements .
-	 * @return mixed
-	 */
-	function kfw_allowed_html( $allowed_elements = '' ) {
-
-		// bail early if parameter is empty.
-		if ( empty( $allowed_elements ) ) {
-			return array();
-		}
-
-		if ( 'post' == $allowed_elements ) {
-			return wp_kses_allowed_html( 'post' );
-		}
-
-		if ( is_string( $allowed_elements ) ) {
-			$allowed_elements = explode( ',', $allowed_elements );
-		}
-
-		$allowed_html = array();
-
-		$allowed_tags = wp_kses_allowed_html( 'post' );
-		foreach ( $allowed_elements as $element ) {
-			$element = trim( $element );
-			if ( array_key_exists( $element, $allowed_tags ) ) {
-				$allowed_html[ $element ] = $allowed_tags[ $element ];
-			}
-		}
-		return $allowed_html;
-	}
-}
