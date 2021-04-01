@@ -582,7 +582,7 @@ if ( ! class_exists( 'KFW_Options' ) ) {
 		 */
 		public function add_admin_footer_text() {
 			$default = 'Thank you for creating with <a href="' . esc_url( 'http://codestarframework.com/' ) . '" target="_blank">Kemet Framework</a>';
-			echo ! empty( $this->args['footer_credit'] ) ? wp_kses( $this->args['footer_credit'], kfw_allowed_html( 'post' ) ) : wp_kses( $default, kfw_allowed_html( array( 'a' ) ) );
+			echo ! empty( $this->args['footer_credit'] ) ? wp_kses( $this->args['footer_credit'], kfw_allowed_html( 'all' ) ) : wp_kses( $default, kfw_allowed_html( array( 'a' ) ) );
 		}
 
 		/**
@@ -792,7 +792,7 @@ if ( ! class_exists( 'KFW_Options' ) ) {
 
 			echo wp_kses( '<div class="clear"></div>', kfw_allowed_html( array( 'form' ) ) );
 
-			echo ( ! empty( $this->args['footer_after'] ) ) ? wp_kses( $this->args['footer_after'], kfw_allowed_html( 'post' ) ) : '';
+			echo ( ! empty( $this->args['footer_after'] ) ) ? wp_kses( $this->args['footer_after'], kfw_allowed_html( 'all' ) ) : '';
 
 			echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
 		}

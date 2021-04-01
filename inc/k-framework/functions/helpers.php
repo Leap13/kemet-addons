@@ -120,10 +120,6 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			return array();
 		}
 
-		if ( 'post' == $allowed_elements ) {
-			  return wp_kses_allowed_html( 'post' );
-		}
-
 		if ( is_string( $allowed_elements ) ) {
 			$allowed_elements = explode( ',', $allowed_elements );
 		}
@@ -164,6 +160,11 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 				'autocomplete' => true,
 			)
 		);
+
+		if ( 'all' == $allowed_elements ) {
+			return $allowed_tags;
+		}
+		
 		foreach ( $allowed_elements as $element ) {
 			$element = trim( $element );
 			if ( array_key_exists( $element, $allowed_tags ) ) {

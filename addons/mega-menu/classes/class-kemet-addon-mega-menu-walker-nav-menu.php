@@ -49,10 +49,10 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 					$bg_object = array(
 						'background-color'    => $bg_color,
-						'background-image'    => $bg_obj['background-image']['url'],
 						'background-repeat'   => $bg_obj['background-repeat'],
 						'background-size'     => $bg_obj['background-size'],
 						'background-position' => $bg_obj['background-position'],
+						'background-image'    => 'url(' . $bg_obj['background-image']['url'] . ');',
 					);
 					$style[ 'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap' ] = $bg_object;
 

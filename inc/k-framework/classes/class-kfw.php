@@ -342,8 +342,8 @@ if ( ! class_exists( 'KFW' ) ) {
 		 * @return void
 		 */
 		public static function maybe_include_field( $type = '' ) {
-			if ( ! class_exists( 'KFW_Field_' . $type ) && class_exists( 'KFW_Fields' ) ) {
-				self::include_plugin_file( 'fields/' . $type . '/' . $type . '.php' );
+			if ( ! class_exists( 'KFW_Field_' . ucfirst( $type ) ) && class_exists( 'KFW_Fields' ) ) {
+				self::include_plugin_file( 'fields/' . $type . '/class-kfw-field-' . $type . '.php' );
 			}
 		}
 
@@ -448,7 +448,7 @@ if ( ! class_exists( 'KFW' ) ) {
 			if ( ! empty( self::$fields ) ) {
 				foreach ( self::$fields as $field ) {
 					if ( ! empty( $field['type'] ) ) {
-						$classname = 'KFW_Field_' . $field['type'];
+						$classname = 'KFW_Field_' . ucfirst( $field['type'] );
 						self::maybe_include_field( $field['type'] );
 						if ( class_exists( $classname ) && method_exists( $classname, 'enqueue' ) ) {
 							$instance = new $classname( $field );
@@ -535,7 +535,7 @@ if ( ! class_exists( 'KFW' ) ) {
 
 				self::maybe_include_field( $field_type );
 
-				$classname = 'KFW_Field_' . $field_type;
+				$classname = 'KFW_Field_' . ucfirst( str_replace("-", "_", $field_type) );
 
 				if ( class_exists( $classname ) ) {
 					$instance = new $classname( $field, $value, $unique, $where, $parent );

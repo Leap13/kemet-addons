@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: button_set
+ * Field: Image_Select
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if( ! class_exists( 'KFW_Field_button_set' ) ) {
-  class KFW_Field_button_set extends KFW_Fields {
+if( ! class_exists( 'KFW_Field_Image_Select' ) ) {
+  class KFW_Field_Image_Select extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );
@@ -27,18 +27,20 @@ if( ! class_exists( 'KFW_Field_button_set' ) ) {
 
       if( ! empty( $args['options'] ) ) {
 
-        echo '<div class="kfw-siblings kfw--button-group" data-multiple="'. $args['multiple'] .'">';
+        echo '<div class="kfw-siblings kfw--image-group" data-multiple="'. $args['multiple'] .'">';
+
+        $num = 1;
 
         foreach( $args['options'] as $key => $option ) {
 
           $type    = ( $args['multiple'] ) ? 'checkbox' : 'radio';
           $extra   = ( $args['multiple'] ) ? '[]' : '';
-          $active  = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) )  ) ? ' kfw--active' : '';
-          $checked = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' checked' : '';
+          $active  = ( in_array( $key, $value ) ) ? ' kfw--active' : '';
+          $checked = ( in_array( $key, $value ) ) ? ' checked' : '';
 
-          echo '<div class="kfw--sibling kfw--button'. $active .'">';
+          echo '<div class="kfw--sibling kfw--image'. $active .'">';
+          echo '<img src="'. $option .'" alt="img-'. $num++ .'" />';
           echo '<input type="'. $type .'" name="'. $this->field_name( $extra ) .'" value="'. $key .'"'. $this->field_attributes() . $checked .'/>';
-          echo $option;
           echo '</div>';
 
         }
@@ -50,6 +52,23 @@ if( ! class_exists( 'KFW_Field_button_set' ) ) {
       echo '<div class="clear"></div>';
 
       echo $this->field_after();
+
+    }
+
+    public function output() {
+
+      $output    = '';
+      $bg_image  = array();
+      $important = ( ! empty( $this->field['output_important'] ) ) ? '!important' : '';
+      $elements  = ( is_array( $this->field['output'] ) ) ? join( ',', $this->field['output'] ) : $this->field['output'];
+
+      if( ! empty( $elements ) && isset( $this->value ) && $this->value !== '' ) {
+        $output = $elements .'{background-image:url('. $this->value .')'. $important .';}';
+      }
+
+      $this->parent->output_css .= $output;
+
+      return $output;
 
     }
 

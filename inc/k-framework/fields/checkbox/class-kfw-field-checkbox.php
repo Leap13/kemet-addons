@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: checkbox
+ * Field: Checkbox
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if( ! class_exists( 'KFW_Field_checkbox' ) ) {
-  class KFW_Field_checkbox extends KFW_Fields {
+if( ! class_exists( 'KFW_Field_Checkbox' ) ) {
+  class KFW_Field_Checkbox extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

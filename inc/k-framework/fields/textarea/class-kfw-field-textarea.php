@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: textarea
+ * Field: Textarea
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'KFW_Field_textarea' ) ) {
-  class KFW_Field_textarea extends KFW_Fields {
+if ( ! class_exists( 'KFW_Field_Textarea' ) ) {
+  class KFW_Field_Textarea extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

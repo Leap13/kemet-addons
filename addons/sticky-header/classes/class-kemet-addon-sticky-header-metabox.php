@@ -69,7 +69,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Metabox' ) ) {
 					'fields'       => array(
 						array(
 							'id'      => 'kemet-disable-sticky-header',
-							'type'    => 'button_set',
+							'type'    => 'button-set',
 							'title'   => __( 'Disable Sticky Header', 'kemet-addons' ),
 							'options' => array(
 								'default' => __( 'Default', 'kemet-addons' ),

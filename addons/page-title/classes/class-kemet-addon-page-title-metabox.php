@@ -69,7 +69,7 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Metabox' ) ) {
 					'fields'       => array(
 						array(
 							'id'      => 'kemet-page-title-display',
-							'type'    => 'image_select',
+							'type'    => 'image-select',
 							'title'   => __( 'Display Page Title', 'kemet-addons' ),
 							'options' => array(
 								'default'             => KEMET_PAGE_TITLE_URL . '/assets/images/default-page-title.png',
