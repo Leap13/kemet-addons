@@ -1,6 +1,6 @@
 <?php
 /**
- * Customize Options Class
+ * Metabox Class
  *
  * @package Kemet Framework
  */
