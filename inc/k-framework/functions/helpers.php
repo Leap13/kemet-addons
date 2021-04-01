@@ -131,10 +131,7 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 		$allowed_html = array();
 
 		$allowed_tags          = wp_kses_allowed_html( 'post' );
-		$allowed_tags['input'] = array(
-			'disabled'         => true,
-			'name'             => true,
-			'readonly'         => true,
+		$default_attrs         = array(
 			'aria-describedby' => true,
 			'aria-details'     => true,
 			'aria-label'       => true,
@@ -146,6 +143,26 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			'title'            => true,
 			'role'             => true,
 			'data-*'           => true,
+		);
+		$allowed_tags['input'] = array_merge(
+			$default_attrs, array(
+				'disabled'     => true,
+				'name'         => true,
+				'readonly'     => true,
+				'value'        => true,
+				'autocomplete' => true,
+				'placeholder'  => true,
+				'type'         => true,
+			)
+		);
+		$allowed_tags['form']  = array_merge(
+			$default_attrs, array(
+				'name'         => true,
+				'method'       => true,
+				'action'       => true,
+				'enctype'      => true,
+				'autocomplete' => true,
+			)
 		);
 		foreach ( $allowed_elements as $element ) {
 			$element = trim( $element );
