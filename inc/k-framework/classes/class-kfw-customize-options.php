@@ -1,6 +1,6 @@
 <?php
 /**
- * Abstract Class
+ * Customize Options Class
  *
  * @package Kemet Framework
  */
