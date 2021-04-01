@@ -21,7 +21,7 @@ if ( ! class_exists( 'KFW_Customize_Options' ) ) {
 	class KFW_Customize_Options extends KFW_Abstract {
 
 		/**
-		 * Unique text
+		 * Unique key
 		 *
 		 * @var string
 		 */

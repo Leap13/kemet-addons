@@ -21,7 +21,7 @@ if ( ! class_exists( 'KFW_Metabox' ) ) {
 	class KFW_Metabox extends KFW_Abstract {
 
 		/**
-		 * Unique text
+		 * Unique key
 		 *
 		 * @var string
 		 */

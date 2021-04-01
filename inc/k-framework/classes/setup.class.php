@@ -220,7 +220,7 @@ if (! class_exists('KFW')) {
             if (self::$premium) {
                 self::include_plugin_file('classes/class-kfw-metabox.php');
                 self::include_plugin_file('classes/class-kfw-customize-options.php');
-                self::include_plugin_file('classes/nav-menu-options.class.php');
+                self::include_plugin_file('classes/class-kfw-nav-menu-options.php');
             }
         }
 
