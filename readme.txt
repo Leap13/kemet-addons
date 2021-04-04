@@ -14,14 +14,17 @@ Kemet Addons plugin adds more features to Kemet WordPress Theme like metaboxes, 
 This plugin works only with: [Kemet WordPress Theme](https://kemet.io/) So you must install and activate it first.
 
 - **Single Page/Post Options** Get full control over each page/post design with single page/post options.
-- **Advanced Post Options**
+- **Blog Layouts** 5 Blog Grid layouts with many of customization options.
+- **Advanced Post Options** Get extra options that will allow you to customize your single post content.
 - **Advanced Headers** 5 Advanced horizontal and vertical headers with many of customization options.
 - **Sticky Header** Allows you to display a sticky header when user scrolls the page.
 - **Top bar Section** Adds top area on top of the header with many customization options.
 - **Page Title Area** Adds advanced management for page title and breadcrumbs area. 
 - **Extra Widgets** Adds Social media and Mailchimp widgets.
 - **Go to Top Button** Adds the option for go to top button.
-- **Customizer Features** Export, import  and reset customizer settings.
+- **Custom Layout** Allows you to create your own custom content, script, or code on various hook locations.
+- **Mega Menu** Allows you to build your mega menu up to 6 columns.
+- **Customizer Features** Export, import and reset customizer settings.
 
 
 == Installation ==
