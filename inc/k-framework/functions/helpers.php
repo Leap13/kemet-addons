@@ -152,6 +152,26 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 				'checked'      => array(),
 			)
 		);
+		$allowed_tags['select'] = array_merge(
+			$default_attrs, array(
+				'disabled'     => array(),
+				'name'         => array(),
+				'value'        => array(),
+				'selected'     => array(),
+			)
+		);
+		$allowed_tags['option'] = array_merge(
+			$default_attrs, array(
+				'name'         => array(),
+				'value'        => array(),
+				'selected'     => array(),
+			)
+		);
+		$allowed_tags['optgroup'] = array_merge(
+			$default_attrs, array(
+				'label'        => array(),
+			)
+		);
 		$allowed_tags['form']  = array_merge(
 			$default_attrs, array(
 				'name'         => array(),
