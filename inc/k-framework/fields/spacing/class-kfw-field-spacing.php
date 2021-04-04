@@ -1,6 +1,6 @@
 <?php
 /**
- * Field: Number
+ * Field: Spacing
  *
  * @package Kemet Framework
  */

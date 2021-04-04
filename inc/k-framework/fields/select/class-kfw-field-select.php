@@ -1,6 +1,6 @@
 <?php
 /**
- * Field: Number
+ * Field: Select
  *
  * @package Kemet Framework
  */
