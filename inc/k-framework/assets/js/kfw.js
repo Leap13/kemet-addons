@@ -523,95 +523,6 @@
   };
 
   //
-  // Field: backup
-  //
-  $.fn.kfw_field_backup = function () {
-    return this.each(function () {
-      if (window.wp.customize === undefined) {
-        return;
-      }
-
-      var base = this,
-        $this = $(this),
-        $body = $("body"),
-        $import = $this.find(".kfw-import"),
-        $reset = $this.find(".kfw-reset");
-
-      base.notification = function (message_text) {
-        if (wp.customize.notifications && wp.customize.OverlayNotification) {
-          // clear if there is any saved data.
-          if (!wp.customize.state("saved").get()) {
-            wp.customize.state("changesetStatus").set("trash");
-            wp.customize.each(function (setting) {
-              setting._dirty = false;
-            });
-            wp.customize.state("saved").set(true);
-          }
-
-          // then show a notification overlay
-          wp.customize.notifications.add(
-            new wp.customize.OverlayNotification(
-              "kfw_field_backup_notification",
-              {
-                type: "info",
-                message: message_text,
-                loading: true,
-              }
-            )
-          );
-        }
-      };
-
-      $reset.on("click", function (e) {
-        e.preventDefault();
-
-        if (KFW.vars.is_confirm) {
-          base.notification(window.kfw_vars.i18n.reset_notification);
-
-          window.wp.ajax
-            .post("kfw-reset", {
-              unique: $reset.data("unique"),
-              nonce: $reset.data("nonce"),
-            })
-            .done(function (response) {
-              window.location.reload(true);
-            })
-            .fail(function (response) {
-              alert(response.error);
-              wp.customize.notifications.remove(
-                "kfw_field_backup_notification"
-              );
-            });
-        }
-      });
-
-      $import.on("click", function (e) {
-        e.preventDefault();
-
-        if (KFW.vars.is_confirm) {
-          base.notification(window.kfw_vars.i18n.import_notification);
-
-          window.wp.ajax
-            .post("kfw-import", {
-              unique: $import.data("unique"),
-              nonce: $import.data("nonce"),
-              import_data: $this.find(".kfw-import-data").val(),
-            })
-            .done(function (response) {
-              window.location.reload(true);
-            })
-            .fail(function (response) {
-              alert(response.error);
-              wp.customize.notifications.remove(
-                "kfw_field_backup_notification"
-              );
-            });
-        }
-      });
-    });
-  };
-
-  //
   // Field: background
   //
   $.fn.kfw_field_background = function () {
@@ -3106,7 +3017,6 @@
       if (!$this.data("inited")) {
         // Field plugins
         $this.children(".kfw-field-accordion").kfw_field_accordion();
-        $this.children(".kfw-field-backup").kfw_field_backup();
         $this.children(".kfw-field-background").kfw_field_background();
         $this.children(".kfw-field-date").kfw_field_date();
         $this.children(".kfw-field-fieldset").kfw_field_fieldset();
