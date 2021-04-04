@@ -114,7 +114,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		 */
 		public function create_custom_layout_meta( $prefix ) {
 
-			KFW::createMetabox(
+			KFW::create_metabox(
 				$prefix, array(
 					'title'     => __( 'Kemet Page Options', 'kemet-addons' ),
 					'priority'  => 'high',
@@ -124,7 +124,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 				)
 			);
 
-			KFW::createSection(
+			KFW::create_section(
 				$prefix, array(
 					'priority_num' => 1,
 					'fields'       => array(
@@ -233,7 +233,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		 */
 		public function create_code_editor( $prefix ) {
 
-			KFW::createMetabox(
+			KFW::create_metabox(
 				$prefix, array(
 					'title'     => __( 'Kemet Code Editor', 'kemet-addons' ),
 					'post_type' => array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
@@ -245,7 +245,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			//
 			// Create a section.
 			//
-			KFW::createSection(
+			KFW::create_section(
 				$prefix, array(
 					'priority_num' => 1,
 					'fields'       => array(
