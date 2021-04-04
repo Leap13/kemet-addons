@@ -1,30 +1,55 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
+<?php
 /**
- *
  * Field: Text
  *
- * @since 1.0.0
- * @version 1.0.0
- *
+ * @package Kemet Framework
  */
-if( ! class_exists( 'KFW_Field_Text' ) ) {
-  class KFW_Field_Text extends KFW_Fields {
 
-    public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
-      parent::__construct( $field, $value, $unique, $where, $parent );
-    }
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
 
-    public function render() {
+if ( ! class_exists( 'KFW_Field_Text' ) ) {
 
-      $type = ( ! empty( $this->field['attributes']['type'] ) ) ? $this->field['attributes']['type'] : 'text';
+	/**
+	 *
+	 * Field: Text
+	 *
+	 * @since 1.0.0
+	 * @version 1.0.0
+	 */
+	class KFW_Field_Text extends KFW_Fields {
 
-      echo $this->field_before();
+		/**
+		 * Constructor
+		 *
+		 * @param array  $field field options.
+		 * @param string $value value.
+		 * @param string $unique key.
+		 * @param string $where location.
+		 * @param string $parent parent.
+		 * @return void
+		 */
+		public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
+			parent::__construct( $field, $value, $unique, $where, $parent );
+		}
 
-      echo '<input type="'. $type .'" name="'. $this->field_name() .'" value="'. $this->value .'"'. $this->field_attributes() .' />';
+		/**
+		 * Render field html
+		 *
+		 * @return void
+		 */
+		public function render() {
 
-      echo $this->field_after();
+			$type = ( ! empty( $this->field['attributes']['type'] ) ) ? $this->field['attributes']['type'] : 'text';
 
-    }
+			echo wp_kses( $this->field_before(), kfw_allowed_html( 'all' ) );
 
-  }
+			echo wp_kses( '<input type="' . $type . '" name="' . $this->field_name() . '" value="' . $this->value . '"' . $this->field_attributes() . ' />', kfw_allowed_html( array( 'input' ) ) );
+
+			echo wp_kses( $this->field_after(), kfw_allowed_html( 'all' ) );
+
+		}
+
+	}
 }
