@@ -469,7 +469,7 @@ if ( ! class_exists( 'KFW' ) ) {
 
 				if ( ! empty( $field['title'] ) ) {
 					$subtitle = ( ! empty( $field['subtitle'] ) ) ? '<p class="kfw-text-subtitle">' . $field['subtitle'] . '</p>' : '';
-					echo wp_kses( '<div class="kfw-title"><h4>' . $field['title'] . '</h4>' . $subtitle . '</div>', kfw_allowed_html( array( 'div', 'h4', 'p' ) ) );
+					echo wp_kses( '<div class="kfw-title"><h4>' . $field['title'] . '</h4>' . $subtitle . '</div>', kfw_allowed_html( 'all' ) );
 				}
 
 				echo ( ! empty( $field['title'] ) ) ? wp_kses( '<div class="kfw-fieldset">', kfw_allowed_html( array( 'div' ) ) ) : '';
