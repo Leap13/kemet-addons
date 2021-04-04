@@ -103,6 +103,7 @@
           action: "kemet-panel-save-options",
           class: class_name,
           options: optionsArray,
+          nonce: kemetPanelVars.nonce,
         },
       }).done(function (response) {
         if (response.success) {
@@ -123,6 +124,7 @@
         data: {
           action: "kemet-panel-reset-options",
           class: class_name,
+          nonce: kemetPanelVars.nonce,
         },
       }).done(function (response) {
         if (response.success) {
@@ -152,6 +154,7 @@
           action: "kemet-panel-enable-all",
           class: class_name,
           options: optionsArray,
+          nonce: kemetPanelVars.nonce,
         },
       }).done(function (response) {
         if (response.success) {
@@ -181,6 +184,7 @@
           action: "kemet-panel-disable-all",
           class: class_name,
           options: optionsArray,
+          nonce: kemetPanelVars.nonce,
         },
       }).done(function (response) {
         if (response.success) {

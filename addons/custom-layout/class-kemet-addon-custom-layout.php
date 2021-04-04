@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Kemet Custom Layout Addon
  *
@@ -9,13 +9,12 @@ define( 'KEMET_CUSTOM_LAYOUT_DIR', KEMET_ADDONS_DIR . 'addons/custom-layout/' );
 define( 'KEMET_CUSTOM_LAYOUT_URL', KEMET_ADDONS_URL . 'addons/custom-layout/' );
 define( 'KEMET_CUSTOM_LAYOUT_POST_TYPE', 'kemet_custom_layouts' );
 
-if ( ! class_exists( 'Kemet_Custom_Layout' ) ) {
+if ( ! class_exists( 'Kemet_Addon_Custom_Layout' ) ) {
 
 	/**
 	 * Custom Layout
-	 *
 	 */
-	class Kemet_Custom_Layout {
+	class Kemet_Addon_Custom_Layout {
 
 		/**
 		 * Member Variable
@@ -29,7 +28,7 @@ if ( ! class_exists( 'Kemet_Custom_Layout' ) ) {
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -37,17 +36,16 @@ if ( ! class_exists( 'Kemet_Custom_Layout' ) ) {
 		/**
 		 *  Constructor
 		 */
-		
 		public function __construct() {
 
-			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-settings.php';
-			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-partials.php';
-			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-custom-layout-meta.php';
-            
+			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-kemet-addon-custom-layout-settings.php';
+			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-kemet-addon-custom-layout-partials.php';
+			require_once KEMET_CUSTOM_LAYOUT_DIR . 'classes/class-kemet-addon-custom-layout-meta.php';
+
 		}
 
 	}
-    Kemet_Custom_Layout::get_instance();
+	Kemet_Addon_Custom_Layout::get_instance();
 }
 
 /**

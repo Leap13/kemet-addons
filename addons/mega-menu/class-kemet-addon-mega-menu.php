@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Kemet Mega Menu Addon
  *
@@ -8,13 +8,12 @@
 define( 'KEMET_MEGA_MENU_DIR', KEMET_ADDONS_DIR . 'addons/mega-menu/' );
 define( 'KEMET_MEGA_MENU_URL', KEMET_ADDONS_URL . 'addons/mega-menu/' );
 
-if ( ! class_exists( 'Kemet_Mega_Menu' ) ) {
+if ( ! class_exists( 'Kemet_Addon_Mega_Menu' ) ) {
 
 	/**
 	 * Mega Menu
-	 *
 	 */
-	class Kemet_Mega_Menu {
+	class Kemet_Addon_Mega_Menu {
 
 		/**
 		 * Member Variable
@@ -24,11 +23,13 @@ if ( ! class_exists( 'Kemet_Mega_Menu' ) ) {
 		private static $instance;
 
 		/**
-		 *  Initiator
+		 * Initiator
+		 *
+		 * @return object
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -36,13 +37,12 @@ if ( ! class_exists( 'Kemet_Mega_Menu' ) ) {
 		/**
 		 *  Constructor
 		 */
-		
 		public function __construct() {
 
-			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-settings.php';
-			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-partials.php';
-			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-options.php';
-			require_once KEMET_MEGA_MENU_DIR . 'classes/class-mega-menu-walker.php';
+			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-settings.php';
+			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-partials.php';
+			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-options.php';
+			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-walker-nav-menu.php';
 
 			if ( ! is_admin() ) {
 				require_once KEMET_MEGA_MENU_DIR . 'classes/dynamic.css.php';
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Kemet_Mega_Menu' ) ) {
 		}
 
 	}
-    Kemet_Mega_Menu::get_instance();
+	Kemet_Addon_Mega_Menu::get_instance();
 }
 
 /**

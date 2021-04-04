@@ -1128,7 +1128,7 @@ msgstr ""
 #: addons/page-title/customizer/customizer-options.php:756
 #: addons/sticky-header/classes/class-sticky-headers-meta.php:57
 #: addons/top-bar-section/customizer/customizer-options.php:368
-#: inc/k-framework/classes/setup.class.php:290
+#: inc/k-framework/classes/class-kfw.php:290
 msgid "Default"
 msgstr ""
 
@@ -2720,134 +2720,134 @@ msgstr ""
 msgid "Placeholder"
 msgstr ""
 
-#: inc/compatibility/classes/kemet-addons-advanced-posts-search.php:345
+#: inc/compatibility/classes/class-kemet-addons-advanced-posts-search.php:345
 msgid "Search pages / post / categories"
 msgstr ""
 
-#: inc/compatibility/classes/kemet-addons-page-builder-compatiblity.php:306
+#: inc/compatibility/classes/class-kemet-addons-page-builder-compatiblity.php:306
 #, php-format
 msgid "Edit %1$s with %2$s"
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:258
-#: inc/k-framework/classes/options.class.php:614
+#: inc/k-framework/classes/class-kfw-metabox.php:258
+#: inc/k-framework/classes/class-kfw-options.php:614
 msgid "No option provided by developer."
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:276
+#: inc/k-framework/classes/class-kfw-metabox.php:276
 msgid "Restore"
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:277
+#: inc/k-framework/classes/class-kfw-metabox.php:277
 msgid "update post for restore "
 msgstr ""
 
-#: inc/k-framework/classes/metabox.class.php:277
+#: inc/k-framework/classes/class-kfw-metabox.php:277
 msgid "Cancel"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:236
+#: inc/k-framework/classes/class-kfw-options.php:236
 msgid "Error while saving."
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:285
+#: inc/k-framework/classes/class-kfw-options.php:285
 msgid "Success. Imported backup options."
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:293
+#: inc/k-framework/classes/class-kfw-options.php:293
 msgid "Default options restored."
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:303
+#: inc/k-framework/classes/class-kfw-options.php:303
 msgid "Default options restored for only this section."
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:354
+#: inc/k-framework/classes/class-kfw-options.php:354
 msgid "Settings saved."
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:526
+#: inc/k-framework/classes/class-kfw-options.php:526
 msgid "show all options"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:528
+#: inc/k-framework/classes/class-kfw-options.php:528
 msgid "Search option(s)"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:531
-#: inc/k-framework/classes/options.class.php:636
+#: inc/k-framework/classes/class-kfw-options.php:531
+#: inc/k-framework/classes/class-kfw-options.php:636
 #: inc/kemet-panel/class-kemet-addons-panel.php:166
 msgid "Save"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:531
-#: inc/k-framework/classes/options.class.php:636
+#: inc/k-framework/classes/class-kfw-options.php:531
+#: inc/k-framework/classes/class-kfw-options.php:636
 msgid "Saving..."
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:532
-#: inc/k-framework/classes/options.class.php:637
+#: inc/k-framework/classes/class-kfw-options.php:532
+#: inc/k-framework/classes/class-kfw-options.php:637
 msgid "Reset Section"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:532
-#: inc/k-framework/classes/options.class.php:637
+#: inc/k-framework/classes/class-kfw-options.php:532
+#: inc/k-framework/classes/class-kfw-options.php:637
 msgid "Are you sure to reset this section options?"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:533
-#: inc/k-framework/classes/options.class.php:638
+#: inc/k-framework/classes/class-kfw-options.php:533
+#: inc/k-framework/classes/class-kfw-options.php:638
 #: inc/kemet-panel/class-kemet-addons-panel.php:171
 msgid "Reset All"
 msgstr ""
 
-#: inc/k-framework/classes/options.class.php:533
-#: inc/k-framework/classes/options.class.php:638
+#: inc/k-framework/classes/class-kfw-options.php:533
+#: inc/k-framework/classes/class-kfw-options.php:638
 msgid "Are you sure to reset all options?"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:288
+#: inc/k-framework/classes/class-kfw.php:288
 msgid "Clear"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:289
+#: inc/k-framework/classes/class-kfw.php:289
 msgid "Clear color"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:291
+#: inc/k-framework/classes/class-kfw.php:291
 msgid "Select default color"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:292
+#: inc/k-framework/classes/class-kfw.php:292
 msgid "Select Color"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:293
+#: inc/k-framework/classes/class-kfw.php:293
 msgid "Color value"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:316
+#: inc/k-framework/classes/class-kfw.php:316
 msgid "Are you sure?"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:317
+#: inc/k-framework/classes/class-kfw.php:317
 msgid "Restoring options."
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:318
+#: inc/k-framework/classes/class-kfw.php:318
 msgid "Importing options."
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:354
+#: inc/k-framework/classes/class-kfw.php:354
 #, php-format
 msgid "Ooops! This field type (%s) can not be used here, yet."
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:413
+#: inc/k-framework/classes/class-kfw.php:413
 msgid "This field class is not available!"
 msgstr ""
 
-#: inc/k-framework/classes/setup.class.php:416
+#: inc/k-framework/classes/class-kfw.php:416
 msgid "This type is not found!"
 msgstr ""
 

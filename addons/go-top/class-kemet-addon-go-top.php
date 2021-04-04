@@ -8,14 +8,14 @@
 define( 'KEMET_GOTOP_DIR', KEMET_ADDONS_DIR . 'addons/go-top/' );
 define( 'KEMET_GOTOP_URL', KEMET_ADDONS_URL . 'addons/go-top/' );
 
-if ( ! class_exists( 'Kemet_GoTop' ) ) {
+if ( ! class_exists( 'Kemet_Addon_Go_Top' ) ) {
 
 	/**
 	 * Go Top Setup
 	 *
 	 * @since 1.0.0
 	 */
-	class Kemet_GoTop {
+	class Kemet_Addon_Go_Top {
 
 		/**
 		 * Member Variable
@@ -40,8 +40,8 @@ if ( ! class_exists( 'Kemet_GoTop' ) ) {
 		
 		public function __construct() {
             
-			require_once KEMET_GOTOP_DIR . 'classes/class-go-top-settings.php';
-			require_once KEMET_GOTOP_DIR . 'classes/class-go-top-partials.php';
+			require_once KEMET_GOTOP_DIR . 'classes/class-kemet-addon-go-top-settings.php';
+			require_once KEMET_GOTOP_DIR . 'classes/class-kemet-addon-go-top-partials.php';
 
             if ( ! is_admin() ) {
 				require_once KEMET_GOTOP_DIR . 'classes/dynamic.css.php';
@@ -50,5 +50,5 @@ if ( ! class_exists( 'Kemet_GoTop' ) ) {
 
 	}
 
-    Kemet_GoTop::get_instance();
+Kemet_Addon_Go_Top::get_instance();
 }

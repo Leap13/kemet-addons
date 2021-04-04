@@ -1,96 +1,117 @@
 <?php
 /**
- * Kemet Addons Class.
+ * Kemet Addons Activate
+ *
+ * @package Kemet Addons
  */
 
-if (! class_exists('Kemet_Addons')) {
-    
-    /**
-     * Kemet Theme Addons initial setup
-     *
-     */
-    class Kemet_Addons
-    {
-        /*
-         * @var instance
-        */
+if ( ! class_exists( 'Kemet_Addons' ) ) {
 
-        private static $instance;
+	/**
+	 * Kemet Theme Addons initial setup
+	 */
+	class Kemet_Addons {
 
-        /**
-         *  Initiator.
-         */
-        public static function get_instance()
-        {
-            if (!isset(self::$instance)) {
-                self::$instance = new self();
-            }
-        }
+		/**
+		 * Plugin
+		 *
+		 * @var mixed
+		 */
+		public $plugin;
 
-        /**
-         * Constructor.
-         */
-        public $plugin;
+		/**
+		 * Member Variable
+		 *
+		 * @var object instance
+		 */
+		private static $instance;
 
-        public function __construct()
-        {
+		/**
+		 * Instance
+		 *
+		 * @return void
+		 */
+		public static function get_instance() {
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
+			}
+		}
 
-            // Included Files
-            $this->includes();
-            
-            // Activation hook.
-            register_activation_hook(KEMET_ADDONS_FILE, array( $this, 'activation' ));
+		/**
+		 *  Constructor
+		 */
+		public function __construct() {
 
-            // deActivation hook.
-            register_deactivation_hook(KEMET_ADDONS_FILE, array( $this, 'deactivation' ));
+			// Included Files.
+			$this->includes();
 
-            add_action('plugins_loaded', array( $this, 'load_plugin_textdomain' ));
-            
-            add_action('after_setup_theme', array($this, 'setup'));
-        }
+			// Activation hook.
+			register_activation_hook( KEMET_ADDONS_FILE, array( $this, 'activation' ) );
 
-        public function activation()
-        {
-            //registered KA
-            //Flush rewrite rules
-            flush_rewrite_rules();
-        }
+			// deActivation hook.
+			register_deactivation_hook( KEMET_ADDONS_FILE, array( $this, 'deactivation' ) );
 
-        /**
-         * After Setup Theme.
-         */
-        public function setup()
-        {
-            if (!defined('KEMET_THEME_VERSION')) {
-                return;
-            }
+			add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
 
-            require_once KEMET_ADDONS_DIR.'classes/class-kemet-addons-activate.php';
-        }
+			add_action( 'after_setup_theme', array( $this, 'setup' ) );
+		}
 
-        public function deactivation()
-        {
-            //Flush rewrite rules
-            flush_rewrite_rules();
-        }
-        
-        /**
-         * Includes
-         */
-        public function includes()
-        {
-            require_once KEMET_ADDONS_DIR.'inc/kemet-panel/class-kemet-addons-panel.php';
-            require_once KEMET_ADDONS_DIR.'inc/compatibility/class-kemet-addons-compatibility.php';
-            require_once KEMET_ADDONS_DIR.'classes/class-kemet-style-generator.php';
-            require_once KEMET_ADDONS_DIR.'inc/k-framework/k-framework.php';
-            require_once KEMET_ADDONS_DIR.'inc/functions.php';
-        }
-        
-        public function load_plugin_textdomain()
-        {
-            load_plugin_textdomain('kemet-addons', false, dirname(plugin_basename(__FILE__)) . '/languages/');
-        }
-    }
+		/**
+		 * Plugin activation
+		 *
+		 * @return void
+		 */
+		public function activation() {
+			// registered KA.
+			// Flush rewrite rules.
+			flush_rewrite_rules();
+		}
+
+		/**
+		 * After Setup Theme
+		 *
+		 * @return void
+		 */
+		public function setup() {
+			if ( ! defined( 'KEMET_THEME_VERSION' ) ) {
+				return;
+			}
+
+			require_once KEMET_ADDONS_DIR . 'classes/class-kemet-addons-activate.php';
+		}
+
+		/**
+		 * Plugin deactivation
+		 *
+		 * @return void
+		 */
+		public function deactivation() {
+			// Flush rewrite rules.
+			flush_rewrite_rules();
+		}
+
+		/**
+		 * Includes
+		 *
+		 * @return void
+		 */
+		public function includes() {
+			require_once KEMET_ADDONS_DIR . 'inc/kemet-panel/class-kemet-addons-panel.php';
+			require_once KEMET_ADDONS_DIR . 'inc/compatibility/class-kemet-addons-compatibility.php';
+			require_once KEMET_ADDONS_DIR . 'classes/class-kemet-style-generator.php';
+			require_once KEMET_ADDONS_DIR . 'inc/k-framework/k-framework.php';
+			require_once KEMET_ADDONS_DIR . 'inc/functions.php';
+		}
+
+		/**
+		 * Plugin domain
+		 *
+		 * @return void
+		 */
+		public function load_plugin_textdomain() {
+			load_plugin_textdomain( 'kemet-addons', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		}
+	}
 }
 
 Kemet_Addons::get_instance();

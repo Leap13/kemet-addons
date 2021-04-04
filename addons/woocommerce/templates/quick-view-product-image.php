@@ -2,10 +2,11 @@
 /**
  * Quick view image template.
  *
+ * @package Kemet Addons
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 global $post, $product, $woocommerce; ?>
@@ -22,12 +23,14 @@ global $post, $product, $woocommerce; ?>
 					'alt'   => $props['alt'],
 				)
 			);
-			echo
-				sprintf(
-					'<li class="%s">%s</li>',
-					'woocommerce-product-gallery__image',
-					$image
-				);
+			echo sprintf(
+				'<li class="%s">%s</li>',
+				esc_attr( 'woocommerce-product-gallery__image' ),
+				wp_kses(
+					$image,
+					kemet_allowed_html( array( 'img' ) )
+				)
+			);
 
 			if ( $attachment_ids ) {
 				$loop = 0;
@@ -40,18 +43,18 @@ global $post, $product, $woocommerce; ?>
 						continue;
 					}
 
-					echo
-						sprintf(
-							'<li class="%s">%s</li>',
-							'woocommerce-product-gallery__image',
-							wp_get_attachment_image( $attachment_id, 'shop_single', 0, $props )
-						);
+					echo sprintf(
+						'<li class="%s">%s</li>',
+						'woocommerce-product-gallery__image',
+						wp_get_attachment_image( $attachment_id, 'shop_single', 0, $props )
+					);
 
 					$loop++;
 				}
 			}
 		} else {
-			echo sprintf( '<li><img src="%s" alt="%s" /></li>', wc_placeholder_img_src(), __( 'Placeholder', 'kemet-addons' ) );
-		} ?>
+			echo sprintf( '<li><img src="%s" alt="%s" /></li>', wp_kses( wc_placeholder_img_src(), kemet_allowed_html( array( 'img' ) ) ), esc_html__( 'Placeholder', 'kemet-addons' ) );
+		}
+		?>
 	</ul>
 </div>

@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   // Mailchimp Widget.
   "use strict";
   var valid = false;
@@ -20,10 +20,10 @@
     }
   }
 
-  $(".kmt-mailchimp-form").each(function() {
+  $(".kmt-mailchimp-form").each(function () {
     var $this = $(this);
 
-    $this.submit(function(event) {
+    $this.submit(function (event) {
       // 1. Prevent form submit default
 
       event.preventDefault();
@@ -46,30 +46,31 @@
         $.ajax({
           type: "POST",
           url: $this.attr("action"),
-          data: formData
+          action: "kmt_mailchimp",
+          data: formData,
         })
-          .done(function(response) {
+          .done(function (response) {
             // 5. If success show the success message to user
 
             $this.find(".sending").removeClass("visible");
             $this.find(".kmt-mailchimp-success").addClass("visible");
-            setTimeout(function() {
+            setTimeout(function () {
               $this.find(".kmt-mailchimp-success").removeClass("visible");
             }, 2000);
           })
-          .fail(function(data) {
+          .fail(function (data) {
             // 6. If fail show the error message to user
 
             $this.find(".sending").removeClass("visible");
             $this.find(".kmt-mailchimp-error").addClass("visible");
-            setTimeout(function() {
+            setTimeout(function () {
               $this.find(".kmt-mailchimp-error").removeClass("visible");
             }, 2000);
           })
-          .always(function() {
+          .always(function () {
             // 7. Clear the form fields for next subscibe request
 
-            setTimeout(function() {
+            setTimeout(function () {
               $this
                 .find("input[name='email']")
                 .val(email.attr("data-placeholder"));

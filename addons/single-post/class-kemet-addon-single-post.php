@@ -1,4 +1,4 @@
-<?php // 
+<?php
 /**
  * Kemet Single Post
  *
@@ -8,14 +8,14 @@
 define( 'KEMET_SINGLE_POST_DIR', KEMET_ADDONS_DIR . 'addons/single-post/' );
 define( 'KEMET_SINGLE_POST_URL', KEMET_ADDONS_URL . 'addons/single-post/' );
 
-if ( ! class_exists( 'Kemet_Single_Post' ) ) {
+if ( ! class_exists( 'Kemet_Addon_Single_Post' ) ) {
 
 	/**
 	 * Single Post
 	 *
 	 * @since 1.0.0
 	 */
-	class Kemet_Single_Post {
+	class Kemet_Addon_Single_Post {
 
 		/**
 		 * Member Variable
@@ -25,11 +25,13 @@ if ( ! class_exists( 'Kemet_Single_Post' ) ) {
 		private static $instance;
 
 		/**
-		 *  Initiator
+		 * Instance
+		 *
+		 * @return object
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -37,22 +39,18 @@ if ( ! class_exists( 'Kemet_Single_Post' ) ) {
 		/**
 		 *  Constructor
 		 */
-		
 		public function __construct() {
-            
-            require_once KEMET_SINGLE_POST_DIR . 'classes/class-single-post-partials.php';
-            require_once KEMET_SINGLE_POST_DIR . 'classes/class-single-post-settings.php';
-            
-            if ( ! is_admin() ) {
+
+			require_once KEMET_SINGLE_POST_DIR . 'classes/class-kemet-addon-single-post-partials.php';
+			require_once KEMET_SINGLE_POST_DIR . 'classes/class-kemet-addon-single-post-settings.php';
+
+			if ( ! is_admin() ) {
 				require_once KEMET_SINGLE_POST_DIR . 'classes/dynamic.css.php';
 			}
 		}
-		
-
 	}
-    Kemet_Single_Post::get_instance();
+	Kemet_Addon_Single_Post::get_instance();
 }
-
 /**
 *  Kicking this off by calling 'get_instance()' method
 */

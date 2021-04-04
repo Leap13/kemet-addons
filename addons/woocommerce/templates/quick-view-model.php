@@ -1,8 +1,10 @@
-<?php 
+<?php
 /**
  * WooCommerce - Product Images
  *
+ * @package Kemet Addons
  */
+
 ?>
 <div id="kmt-qv-wrap">
 	<div class="kmt-qv-container">

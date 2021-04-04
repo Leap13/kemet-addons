@@ -25,7 +25,8 @@
     width: 100%;
   }
   .main-header-menu {
-    li.menu-item {
+    li.menu-item,
+    li.page_item {
       > a {
         width: 100%;
       }
@@ -95,7 +96,8 @@ body {
               }
             }
           }
-          &.menu-item-has-children {
+          &.menu-item-has-children,
+          &.page_item_has_children {
             width: 80%;
             margin: auto;
             > a {
