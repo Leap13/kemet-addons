@@ -5,6 +5,10 @@
  * @package Kemet Framework
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+} // Cannot access directly.
+
 if ( ! class_exists( 'KFW_Field_Color' ) ) {
 
 	/**
