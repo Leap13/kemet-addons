@@ -123,22 +123,8 @@ if ( ! class_exists( 'KFW' ) ) {
 						KFW_Options::instance( $key, $params );
 
 						if ( ! empty( $value['show_in_customizer'] ) ) {
-							self::$args['customize_options'][ $key ] = $value;
 							self::$inited[ $key ]                    = null;
 						}
-					}
-				}
-			}
-
-			// setup customize options.
-			$params = array();
-			if ( ! empty( self::$args['customize_options'] ) ) {
-				foreach ( self::$args['customize_options'] as $key => $value ) {
-					if ( ! empty( self::$args['sections'][ $key ] ) && ! isset( self::$inited[ $key ] ) ) {
-						$params['args']       = $value;
-						$params['sections']   = self::$args['sections'][ $key ];
-						self::$inited[ $key ] = true;
-						KFW_Customize_Options::instance( $key, $params );
 					}
 				}
 			}
@@ -183,17 +169,6 @@ if ( ! class_exists( 'KFW' ) ) {
 		 */
 		public static function create_options( $id, $args = array() ) {
 			self::$args['options'][ $id ] = $args;
-		}
-
-		/**
-		 * Create customize options
-		 *
-		 * @param string $id option id.
-		 * @param array  $args option arguments.
-		 * @return void
-		 */
-		public static function create_customize_options( $id, $args = array() ) {
-			self::$args['customize_options'][ $id ] = $args;
 		}
 
 		/**
@@ -330,7 +305,6 @@ if ( ! class_exists( 'KFW' ) ) {
 			// includes premium version classes.
 			if ( self::$premium ) {
 				self::include_plugin_file( 'classes/class-kfw-metabox.php' );
-				self::include_plugin_file( 'classes/class-kfw-customize-options.php' );
 				self::include_plugin_file( 'classes/class-kfw-nav-menu-options.php' );
 			}
 		}
