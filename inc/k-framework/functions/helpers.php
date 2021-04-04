@@ -109,6 +109,7 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 				'name'     => array(),
 				'value'    => array(),
 				'selected' => array(),
+				'multiple' => array(),
 			)
 		);
 		$allowed_tags['option']   = array_merge(
