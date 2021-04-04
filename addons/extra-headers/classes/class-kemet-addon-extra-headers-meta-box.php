@@ -62,7 +62,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 		 */
 		public function add_extra_headers_meta_box() {
 
-			KFW::create_section(
+			KFW::createSection(
 				'kemet_page_options', array(
 					'title'        => __( 'Header', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-admin-post',
@@ -70,7 +70,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 					'fields'       => array(
 						array(
 							'id'      => 'kemet-main-header-display',
-							'type'    => 'image-select',
+							'type'    => 'image_select',
 							'title'   => __( 'Display Primary Header', 'kemet-addons' ),
 							'options' => array(
 								'default'              => KEMET_EXTRA_HEADERS_URL . '/assets/images/default.png',
@@ -88,7 +88,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 						),
 						array(
 							'id'         => 'kemet-meta-enable-header-transparent',
-							'type'       => 'button-set',
+							'type'       => 'button_set',
 							'title'      => __( 'Overlay Header', 'kemet-addons' ),
 							'options'    => array(
 								'default' => __( 'Default', 'kemet-addons' ),

@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: Media
+ * Field: media
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'KFW_Field_Media' ) ) {
-  class KFW_Field_Media extends KFW_Fields {
+if ( ! class_exists( 'KFW_Field_media' ) ) {
+  class KFW_Field_media extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: Fieldset
+ * Field: fieldset
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if ( ! class_exists( 'KFW_Field_Fieldset' ) ) {
-  class KFW_Field_Fieldset extends KFW_Fields {
+if ( ! class_exists( 'KFW_Field_fieldset' ) ) {
+  class KFW_Field_fieldset extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

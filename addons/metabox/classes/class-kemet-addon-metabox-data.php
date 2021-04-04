@@ -9,7 +9,7 @@ if ( class_exists( 'KFW' ) ) {
 
 	$prefix_page_opts = 'kemet_page_options';
 
-	KFW::create_metabox(
+	KFW::createMetabox(
 		$prefix_page_opts, array(
 			'title'     => __( 'Kemet Page Options', 'kemet-addons' ),
 			'post_type' => array(
@@ -24,7 +24,7 @@ if ( class_exists( 'KFW' ) ) {
 	);
 
 	// Create a section.
-	KFW::create_section(
+	KFW::createSection(
 		$prefix_page_opts, array(
 			'title'        => __( 'Main', 'kemet-addons' ),
 			'icon'         => 'dashicons dashicons-admin-home',
@@ -74,7 +74,7 @@ if ( class_exists( 'KFW' ) ) {
 		)
 	);
 
-	KFW::create_section(
+	KFW::createSection(
 		$prefix_page_opts, array(
 			'title'        => __( 'Footer', 'kemet-addons' ),
 			'icon'         => 'dashicons dashicons-admin-generic',

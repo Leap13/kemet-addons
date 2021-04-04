@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: Switcher
+ * Field: switcher
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if( ! class_exists( 'KFW_Field_Switcher' ) ) {
-  class KFW_Field_Switcher extends KFW_Fields {
+if( ! class_exists( 'KFW_Field_switcher' ) ) {
+  class KFW_Field_switcher extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

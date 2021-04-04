@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: Color
+ * Field: color
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if( ! class_exists( 'KFW_Field_Color' ) ) {
-  class KFW_Field_Color extends KFW_Fields {
+if( ! class_exists( 'KFW_Field_color' ) ) {
+  class KFW_Field_color extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );

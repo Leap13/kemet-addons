@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 /**
  *
- * Field: Image_Select
+ * Field: image_select
  *
  * @since 1.0.0
  * @version 1.0.0
  *
  */
-if( ! class_exists( 'KFW_Field_Image_Select' ) ) {
-  class KFW_Field_Image_Select extends KFW_Fields {
+if( ! class_exists( 'KFW_Field_image_select' ) ) {
+  class KFW_Field_image_select extends KFW_Fields {
 
     public function __construct( $field, $value = '', $unique = '', $where = '', $parent = '' ) {
       parent::__construct( $field, $value, $unique, $where, $parent );
