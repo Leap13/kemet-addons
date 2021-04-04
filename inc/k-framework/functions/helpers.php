@@ -75,10 +75,6 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			return array();
 		}
 
-		if ( is_string( $allowed_elements ) ) {
-			$allowed_elements = explode( ',', $allowed_elements );
-		}
-
 		$allowed_html = array();
 
 		$allowed_tags             = wp_kses_allowed_html( 'post' );
