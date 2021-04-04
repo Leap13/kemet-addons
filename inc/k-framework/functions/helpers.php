@@ -142,22 +142,23 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 		);
 		$allowed_tags['input'] = array_merge(
 			$default_attrs, array(
-				'disabled'     => true,
-				'name'         => true,
-				'readonly'     => true,
-				'value'        => true,
-				'autocomplete' => true,
-				'placeholder'  => true,
-				'type'         => true,
+				'disabled'     => array(),
+				'name'         => array(),
+				'readonly'     => array(),
+				'value'        => array(),
+				'autocomplete' => array(),
+				'placeholder'  => array(),
+				'type'         => array(),
+				'checked'      => array(),
 			)
 		);
 		$allowed_tags['form']  = array_merge(
 			$default_attrs, array(
-				'name'         => true,
-				'method'       => true,
-				'action'       => true,
-				'enctype'      => true,
-				'autocomplete' => true,
+				'name'         => array(),
+				'method'       => array(),
+				'action'       => array(),
+				'enctype'      => array(),
+				'autocomplete' => array(),
 			)
 		);
 

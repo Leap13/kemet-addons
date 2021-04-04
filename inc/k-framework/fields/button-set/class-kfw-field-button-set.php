@@ -64,7 +64,7 @@ if ( ! class_exists( 'KFW_Field_Button_Set' ) ) {
 					$checked = ( in_array( $key, $value ) || ( empty( $value ) && empty( $key ) ) ) ? ' checked' : '';
 
 					echo wp_kses( '<div class="kfw--sibling kfw--button' . $active . '">', kfw_allowed_html( array( 'div' ) ) );
-					echo wp_kses( '<input type="' . $type . '" name="' . $this->field_name( $extra ) . '" value="' . $key . '"' . $this->field_attributes() . $checked . '/>', kfw_allowed_html( array( 'input' ) ) );
+					echo wp_kses( '<input type="' . $type . '" name="' . $this->field_name( $extra ) . '" value="' . $key . '"' . $this->field_attributes() . $checked . ' />', kfw_allowed_html( array( 'input' ) ) );
 					echo esc_html( $option );
 					echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
 
