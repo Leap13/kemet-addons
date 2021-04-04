@@ -262,7 +262,7 @@ if ( ! class_exists( 'KFW_Customize_Options' ) ) {
 		public function add_customize_options( $wp_customize ) {
 
 			if ( ! class_exists( 'WP_Customize_Panel_KFW' ) ) {
-				KFW::include_plugin_file( 'functions/customize.php' );
+				KFW::include_plugin_file( 'functions/class-wp-customize-panel-kfw.php' );
 			}
 
 			if ( ! empty( $this->sections ) ) {
