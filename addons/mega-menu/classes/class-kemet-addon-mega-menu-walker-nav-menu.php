@@ -48,11 +48,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				if ( ! empty( $bg_color ) || ! empty( $bg_obj['background-image']['url'] ) ) {
 
 					$bg_object = array(
-						'background-color'    => $bg_color,
-						'background-repeat'   => $bg_obj['background-repeat'],
-						'background-size'     => $bg_obj['background-size'],
-						'background-position' => $bg_obj['background-position'],
-						'background-image'    => 'url(' . $bg_obj['background-image']['url'] . ');',
+						'background-color'      => $bg_color,
+						'background-repeat'     => $bg_obj['background-repeat'],
+						'background-size'       => $bg_obj['background-size'],
+						'background-position'   => $bg_obj['background-position'],
+						'background-image'      => 'url(' . $bg_obj['background-image']['url'] . ');',
+						'background-attachment' => $bg_obj['background-attachment'],
 					);
 					$style[ 'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap' ] = $bg_object;
 

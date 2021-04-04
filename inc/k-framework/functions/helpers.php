@@ -1,21 +1,30 @@
-<?php if ( ! defined( 'ABSPATH' ) ) {
+<?php
+/**
+ * Helpers
+ *
+ * @package Kemet Framework
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
 	die;
 } // Cannot access directly.
-/**
- *
- * Array search key & value
- *
- * @since 1.0.0
- * @version 1.0.0
- */
+
 if ( ! function_exists( 'kfw_array_search' ) ) {
+	/**
+	 * Array search key & value
+	 *
+	 * @param array  $array array.
+	 * @param string $key array key.
+	 * @param mixed  $value array value.
+	 * @return mixed
+	 */
 	function kfw_array_search( $array, $key, $value ) {
 
 		$results = array();
 
 		if ( is_array( $array ) ) {
 			if ( isset( $array[ $key ] ) && $array[ $key ] == $value ) {
-				 $results[] = $array;
+				$results[] = $array;
 			}
 
 			foreach ( $array as $sub_array ) {
@@ -28,80 +37,26 @@ if ( ! function_exists( 'kfw_array_search' ) ) {
 	}
 }
 
-/**
- *
- * Getting POST Var
- *
- * @since 1.0.0
- * @version 1.0.0
- */
 if ( ! function_exists( 'kfw_get_var' ) ) {
+
+	/**
+	 * Getting POST Var
+	 *
+	 * @param string $var var.
+	 * @param string $default default.
+	 * @return string
+	 */
 	function kfw_get_var( $var, $default = '' ) {
 
 		if ( isset( $_POST[ $var ] ) ) {
-			return $_POST[ $var ];
+			return sanitize_post( wp_unslash( $_POST[ $var ] ) );
 		}
 
 		if ( isset( $_GET[ $var ] ) ) {
-			return $_GET[ $var ];
+			return sanitize_post( wp_unslash( $_GET[ $var ] ) );
 		}
 
 		return $default;
-
-	}
-}
-
-/**
- *
- * Getting POST Vars
- *
- * @since 1.0.0
- * @version 1.0.0
- */
-if ( ! function_exists( 'kfw_get_vars' ) ) {
-	function kfw_get_vars( $var, $depth, $default = '' ) {
-
-		if ( isset( $_POST[ $var ][ $depth ] ) ) {
-			return $_POST[ $var ][ $depth ];
-		}
-
-		if ( isset( $_GET[ $var ][ $depth ] ) ) {
-			return $_GET[ $var ][ $depth ];
-		}
-
-		return $default;
-
-	}
-}
-
-/**
- *
- * Between Microtime
- *
- * @since 1.0.0
- * @version 1.0.0
- */
-if ( ! function_exists( 'kfw_microtime' ) ) {
-	function kfw_timeout( $timenow, $starttime, $timeout = 30 ) {
-
-		return ( ( $timenow - $starttime ) < $timeout ) ? true : false;
-
-	}
-}
-
-/**
- *
- * Check for wp editor api
- *
- * @since 1.0.0
- * @version 1.0.0
- */
-if ( ! function_exists( 'kfw_wp_editor_api' ) ) {
-	function kfw_wp_editor_api() {
-
-		global $wp_version;
-
-		return version_compare( $wp_version, '4.8', '>=' );
 
 	}
 }
@@ -126,8 +81,8 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 
 		$allowed_html = array();
 
-		$allowed_tags          = wp_kses_allowed_html( 'post' );
-		$default_attrs         = array(
+		$allowed_tags             = wp_kses_allowed_html( 'post' );
+		$default_attrs            = array(
 			'aria-describedby' => true,
 			'aria-details'     => true,
 			'aria-label'       => true,
@@ -140,7 +95,7 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			'role'             => true,
 			'data-*'           => true,
 		);
-		$allowed_tags['input'] = array_merge(
+		$allowed_tags['input']    = array_merge(
 			$default_attrs, array(
 				'disabled'     => array(),
 				'name'         => array(),
@@ -152,27 +107,27 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 				'checked'      => array(),
 			)
 		);
-		$allowed_tags['select'] = array_merge(
+		$allowed_tags['select']   = array_merge(
 			$default_attrs, array(
-				'disabled'     => array(),
-				'name'         => array(),
-				'value'        => array(),
-				'selected'     => array(),
+				'disabled' => array(),
+				'name'     => array(),
+				'value'    => array(),
+				'selected' => array(),
 			)
 		);
-		$allowed_tags['option'] = array_merge(
+		$allowed_tags['option']   = array_merge(
 			$default_attrs, array(
-				'name'         => array(),
-				'value'        => array(),
-				'selected'     => array(),
+				'name'     => array(),
+				'value'    => array(),
+				'selected' => array(),
 			)
 		);
 		$allowed_tags['optgroup'] = array_merge(
 			$default_attrs, array(
-				'label'        => array(),
+				'label' => array(),
 			)
 		);
-		$allowed_tags['form']  = array_merge(
+		$allowed_tags['form']     = array_merge(
 			$default_attrs, array(
 				'name'         => array(),
 				'method'       => array(),
@@ -185,7 +140,7 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 		if ( 'all' == $allowed_elements ) {
 			return $allowed_tags;
 		}
-		
+
 		foreach ( $allowed_elements as $element ) {
 			$element = trim( $element );
 			if ( array_key_exists( $element, $allowed_tags ) ) {
