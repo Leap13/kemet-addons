@@ -67,6 +67,8 @@ if ( class_exists( 'KFW' ) ) {
 					'title'       => 'Content Padding',
 					'left'        => false,
 					'right'       => false,
+					'top_icon'    => false,
+					'bottom_icon' => false,
 				),
 			),
 		)
