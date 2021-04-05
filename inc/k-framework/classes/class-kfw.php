@@ -21,7 +21,6 @@ if ( ! class_exists( 'KFW' ) ) {
 	 */
 	class KFW {
 
-
 		/**
 		 * Version
 		 *
@@ -104,6 +103,20 @@ if ( ! class_exists( 'KFW' ) ) {
 		 */
 		public static function setup() {
 
+			// setup options.
+			$params = array();
+			if ( ! empty( self::$args['options'] ) ) {
+				foreach ( self::$args['options'] as $key => $value ) {
+					if ( ! empty( self::$args['sections'][ $key ] ) && ! isset( self::$inited[ $key ] ) ) {
+						$params['args']       = $value;
+						$params['sections']   = self::$args['sections'][ $key ];
+						self::$inited[ $key ] = true;
+
+						KFW_Options::instance( $key, $params );
+					}
+				}
+			}
+
 			// setup metaboxes.
 			$params = array();
 			if ( ! empty( self::$args['metaboxes'] ) ) {
@@ -133,6 +146,17 @@ if ( ! class_exists( 'KFW' ) ) {
 			}
 
 			do_action( 'kfw_loaded' );
+		}
+
+		/**
+		 * Create options
+		 *
+		 * @param string $id option id.
+		 * @param array  $args arguments.
+		 * @return void
+		 */
+		public static function create_options( $id, $args = array() ) {
+			self::$args['options'][ $id ] = $args;
 		}
 
 		/**
@@ -268,6 +292,7 @@ if ( ! class_exists( 'KFW' ) ) {
 			self::include_plugin_file( 'classes/class-kfw-fields.php' );
 			self::include_plugin_file( 'classes/class-kfw-metabox.php' );
 			self::include_plugin_file( 'classes/class-kfw-nav-menu-options.php' );
+			self::include_plugin_file( 'classes/class-kfw-options.php' );
 		}
 
 		/**
@@ -470,7 +495,7 @@ if ( ! class_exists( 'KFW' ) ) {
 
 				self::maybe_include_field( $field_type );
 
-				$classname = 'KFW_Field_' . ucfirst( str_replace("-", "_", $field_type) );
+				$classname = 'KFW_Field_' . ucfirst( str_replace( '-', '_', $field_type ) );
 
 				if ( class_exists( $classname ) ) {
 					$instance = new $classname( $field, $value, $unique, $where, $parent );
