@@ -30,13 +30,6 @@ if ( ! class_exists( 'KFW' ) ) {
 		public static $version = '2.0.9';
 
 		/**
-		 * Premium
-		 *
-		 * @var boolean
-		 */
-		public static $premium = true;
-
-		/**
 		 * Dir
 		 *
 		 * @var string
@@ -267,16 +260,14 @@ if ( ! class_exists( 'KFW' ) ) {
 		 * @return void
 		 */
 		public static function includes() {
+			// Functions.
 			self::include_plugin_file( 'functions/helpers.php' );
 			self::include_plugin_file( 'functions/actions.php' );
-			// includes free version classes.
+			// Classes.
 			self::include_plugin_file( 'classes/class-kfw-abstract.php' );
 			self::include_plugin_file( 'classes/class-kfw-fields.php' );
-			// includes premium version classes.
-			if ( self::$premium ) {
-				self::include_plugin_file( 'classes/class-kfw-metabox.php' );
-				self::include_plugin_file( 'classes/class-kfw-nav-menu-options.php' );
-			}
+			self::include_plugin_file( 'classes/class-kfw-metabox.php' );
+			self::include_plugin_file( 'classes/class-kfw-nav-menu-options.php' );
 		}
 
 		/**
