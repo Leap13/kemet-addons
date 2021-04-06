@@ -49,7 +49,8 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 		public function create_menu_options( $prefix ) {
 			if ( method_exists( 'KFW', 'create_nav_menu_options' ) ) {
 				KFW::create_nav_menu_options(
-					$prefix, array(
+					$prefix,
+					array(
 						'data_type' => 'unserialize',
 					)
 				);
@@ -64,7 +65,8 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 		 */
 		public function create_sections( $prefix ) {
 			KFW::create_section(
-				$prefix, array(
+				$prefix,
+				array(
 					'title'  => __( 'Menu Options', 'kemet-addons' ),
 					'fields' => array(
 
@@ -136,7 +138,8 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 				)
 			);
 			KFW::create_section(
-				$prefix, array(
+				$prefix,
+				array(
 					'fields' => array(
 						array(
 							'id'      => 'disable-item-label',
@@ -173,7 +176,8 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 				)
 			);
 			KFW::create_section(
-				$prefix, array(
+				$prefix,
+				array(
 					'title'  => __( 'Label', 'kemet-addons' ),
 					'fields' => array(
 						array(

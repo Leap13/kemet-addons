@@ -92,7 +92,8 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			'data-*'           => true,
 		);
 		$allowed_tags['input']    = array_merge(
-			$default_attrs, array(
+			$default_attrs,
+			array(
 				'disabled'     => array(),
 				'name'         => array(),
 				'readonly'     => array(),
@@ -104,7 +105,8 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			)
 		);
 		$allowed_tags['select']   = array_merge(
-			$default_attrs, array(
+			$default_attrs,
+			array(
 				'disabled' => array(),
 				'name'     => array(),
 				'value'    => array(),
@@ -113,19 +115,22 @@ if ( ! function_exists( 'kfw_allowed_html' ) ) {
 			)
 		);
 		$allowed_tags['option']   = array_merge(
-			$default_attrs, array(
+			$default_attrs,
+			array(
 				'name'     => array(),
 				'value'    => array(),
 				'selected' => array(),
 			)
 		);
 		$allowed_tags['optgroup'] = array_merge(
-			$default_attrs, array(
+			$default_attrs,
+			array(
 				'label' => array(),
 			)
 		);
 		$allowed_tags['form']     = array_merge(
-			$default_attrs, array(
+			$default_attrs,
+			array(
 				'name'         => array(),
 				'method'       => array(),
 				'action'       => array(),

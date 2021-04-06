@@ -762,8 +762,11 @@ class Kemet_Addon_Breadcrumb_Trail {
 						array(
 							'm' => get_the_time( 'Y' ),
 							'w' => get_the_time( 'W' ),
-						), home_url()
-					), $week, false
+						),
+						home_url()
+					),
+					$week,
+					false
 				)
 			);
 		} elseif ( true === $this->args['show_title'] ) {

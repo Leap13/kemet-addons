@@ -42,7 +42,8 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'background_color'              => true,
 					'background_image'              => true,
 					'background_position'           => true,
@@ -96,7 +97,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 						'id'      => 'background-color',
 						'type'    => 'color',
 						'default' => $default_value['background-color'],
-					), $this->value['background-color'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-color'],
+					$this->field_name(),
+					'field/background'
 				);
 
 				echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
@@ -115,7 +119,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 						'id'      => 'background-gradient-color',
 						'type'    => 'color',
 						'default' => $default_value['background-gradient-color'],
-					), $this->value['background-gradient-color'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-gradient-color'],
+					$this->field_name(),
+					'field/background'
 				);
 
 				echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
@@ -140,7 +147,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'135deg'    => esc_html__( '&#8664; corner top to right', 'kfw' ),
 							'-135deg'   => esc_html__( '&#8665; corner top to left', 'kfw' ),
 						),
-					), $this->value['background-gradient-direction'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-gradient-direction'],
+					$this->field_name(),
+					'field/background'
 				);
 
 				echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
@@ -163,7 +173,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 						'preview'     => $args['background_image_preview'],
 						'placeholder' => $args['background_image_placeholder'],
 						'attributes'  => array( 'data-depend-id' => $this->field['id'] ),
-					), $this->value['background-image'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-image'],
+					$this->field_name(),
+					'field/background'
 				);
 
 				echo wp_kses( '</div>', kfw_allowed_html( array( 'div' ) ) );
@@ -194,7 +207,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'right center'  => esc_html__( 'Right Center', 'kfw' ),
 							'right bottom'  => esc_html__( 'Right Bottom', 'kfw' ),
 						),
-					), $this->value['background-position'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-position'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}
@@ -213,7 +229,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'repeat-x'  => esc_html__( 'Repeat Horizontally', 'kfw' ),
 							'repeat-y'  => esc_html__( 'Repeat Vertically', 'kfw' ),
 						),
-					), $this->value['background-repeat'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-repeat'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}
@@ -230,7 +249,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'scroll' => esc_html__( 'Scroll', 'kfw' ),
 							'fixed'  => esc_html__( 'Fixed', 'kfw' ),
 						),
-					), $this->value['background-attachment'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-attachment'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}
@@ -248,7 +270,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'contain' => esc_html__( 'Contain', 'kfw' ),
 							'auto'    => esc_html__( 'Auto', 'kfw' ),
 						),
-					), $this->value['background-size'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-size'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}
@@ -266,7 +291,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'border-box'  => esc_html__( 'Border Box', 'kfw' ),
 							'content-box' => esc_html__( 'Content Box', 'kfw' ),
 						),
-					), $this->value['background-origin'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-origin'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}
@@ -284,7 +312,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'padding-box' => esc_html__( 'Padding Box', 'kfw' ),
 							'content-box' => esc_html__( 'Content Box', 'kfw' ),
 						),
-					), $this->value['background-clip'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-clip'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}
@@ -309,7 +340,10 @@ if ( ! class_exists( 'KFW_Field_Background' ) ) {
 							'color'       => esc_html__( 'Color', 'kfw' ),
 							'luminosity'  => esc_html__( 'Luminosity', 'kfw' ),
 						),
-					), $this->value['background-blend-mode'], $this->field_name(), 'field/background'
+					),
+					$this->value['background-blend-mode'],
+					$this->field_name(),
+					'field/background'
 				);
 
 			}

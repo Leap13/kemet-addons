@@ -78,9 +78,9 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					'group'  => null,
 					'title'  => __( 'Kemet', 'kemet-addons' ), // you can use img tag with image link. it will show the image icon Instead of the title.
 					'href'   => admin_url( 'admin.php?page=kemet_panel' ),
-					'meta'   => [
+					'meta'   => array(
 						'title' => __( 'Kemet', 'kemet-addons' ), // This title will show on hover.
-					],
+					),
 				)
 			);
 		}
@@ -362,7 +362,8 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			wp_enqueue_script( 'kemet-panel-js', KEMET_PANEL_URL . 'assets/js/' . $dir . '/kemet-panel' . $js_prefix, array( 'jquery', 'jquery-ui-tabs', 'jquery-ui-core' ), KEMET_ADDONS_VERSION );
 
 			wp_localize_script(
-				'kemet-panel-js', 'kemetPanelVars',
+				'kemet-panel-js',
+				'kemetPanelVars',
 				array(
 					'nonce' => wp_create_nonce( 'kemet-panel' ),
 				)

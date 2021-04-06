@@ -52,7 +52,9 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Settings' ) ) {
 			// Update the Customizer Sections under Layout.
 			$wp_customize->add_section(
 				new Kemet_WP_Customize_Section(
-					$wp_customize, 'section-topbar-header', array(
+					$wp_customize,
+					'section-topbar-header',
+					array(
 						'title'    => __( 'Top Bar Section', 'kemet-addons' ),
 						'panel'    => 'panel-layout',
 						'section'  => 'section-header-group',

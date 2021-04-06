@@ -42,7 +42,8 @@ if ( ! class_exists( 'KFW_Field_Group' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'max'                    => 0,
 					'min'                    => 0,
 					'fields'                 => array(),

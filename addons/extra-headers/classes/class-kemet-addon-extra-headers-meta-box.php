@@ -63,7 +63,8 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 		public function add_extra_headers_meta_box() {
 
 			KFW::create_section(
-				'kemet_page_options', array(
+				'kemet_page_options',
+				array(
 					'title'        => __( 'Header', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-admin-post',
 					'priority_num' => 3,

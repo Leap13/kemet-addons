@@ -160,7 +160,8 @@ if ( ! class_exists( 'KFW_Fields' ) ) {
 
 						$query = new WP_Query(
 							wp_parse_args(
-								$query_args, array(
+								$query_args,
+								array(
 									's'              => $term,
 									'post_type'      => $option,
 									'post_status'    => 'publish',
@@ -173,7 +174,8 @@ if ( ! class_exists( 'KFW_Fields' ) ) {
 
 						$query = new WP_Query(
 							wp_parse_args(
-								$query_args, array(
+								$query_args,
+								array(
 									'post_type'   => $option,
 									'post_status' => 'publish',
 								)
@@ -200,7 +202,8 @@ if ( ! class_exists( 'KFW_Fields' ) ) {
 
 						$query = new WP_Term_Query(
 							wp_parse_args(
-								$query_args, array(
+								$query_args,
+								array(
 									'search'     => $term,
 									'taxonomy'   => $option,
 									'hide_empty' => false,
@@ -213,7 +216,8 @@ if ( ! class_exists( 'KFW_Fields' ) ) {
 
 						$query = new WP_Term_Query(
 							wp_parse_args(
-								$query_args, array(
+								$query_args,
+								array(
 									'taxonomy'   => $option,
 									'hide_empty' => false,
 								)

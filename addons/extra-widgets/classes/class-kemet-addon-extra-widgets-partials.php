@@ -59,7 +59,8 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 
 			// Define array of custom widgets for the theme.
 			$widgets = apply_filters(
-				'kemet_custom_widgets', array(
+				'kemet_custom_widgets',
+				array(
 					'mailchimp',
 					'social-icons',
 					'posts-in-images',
@@ -193,9 +194,13 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 			}
 
 			wp_enqueue_script(
-				'kemet-addons-extra-widgets-js', KEMET_WIDGETS_URL . 'assets/js/' . $dir . '/extra-widgets-admin' . $js_prefix, array(
+				'kemet-addons-extra-widgets-js',
+				KEMET_WIDGETS_URL . 'assets/js/' . $dir . '/extra-widgets-admin' . $js_prefix,
+				array(
 					'jquery',
-				), KEMET_ADDONS_VERSION, true
+				),
+				KEMET_ADDONS_VERSION,
+				true
 			);
 		}
 	}

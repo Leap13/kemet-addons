@@ -295,13 +295,15 @@ if ( ! function_exists( 'kemet_widget_social_profiles' ) ) {
 		$style_id = str_replace( array( '#', ' ' ), '', $id );
 		printf(
 			wp_kses(
-				"<style type='text/css' class='" . $style_id . "-inline-style'>%s</style>", array(
+				"<style type='text/css' class='" . $style_id . "-inline-style'>%s</style>",
+				array(
 					'style' => array(
 						'type'  => true,
 						'class' => true,
 					),
 				)
-			), esc_attr( $parse_css )
+			),
+			esc_attr( $parse_css )
 		);
 
 		echo $args['after_widget'];

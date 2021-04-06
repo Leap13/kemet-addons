@@ -377,22 +377,24 @@ if ( ! class_exists( 'KFW' ) ) {
 			}
 
 			// cdn styles.
-			wp_enqueue_style( 'kfw-fa', KFW::include_plugin_url( 'assets/css/font-awesome' . $min . '.css' ), array(), '4.7.0', 'all' );
+			wp_enqueue_style( 'kfw-fa', self::include_plugin_url( 'assets/css/font-awesome' . $min . '.css' ), array(), '4.7.0', 'all' );
 
 			// framework core styles.
-			wp_enqueue_style( 'kfw', KFW::include_plugin_url( 'assets/css/kfw' . $min . '.css' ), array(), '1.0.0', 'all' );
+			wp_enqueue_style( 'kfw', self::include_plugin_url( 'assets/css/kfw' . $min . '.css' ), array(), '1.0.0', 'all' );
 
 			// rtl styles.
 			if ( is_rtl() ) {
-				wp_enqueue_style( 'kfw-rtl', KFW::include_plugin_url( 'assets/css/kfw-rtl' . $min . '.css' ), array(), '1.0.0', 'all' );
+				wp_enqueue_style( 'kfw-rtl', self::include_plugin_url( 'assets/css/kfw-rtl' . $min . '.css' ), array(), '1.0.0', 'all' );
 			}
 
 			// framework core scripts.
-			wp_enqueue_script( 'kfw-plugins', KFW::include_plugin_url( 'assets/js/kfw-plugins' . $min . '.js' ), array(), '1.0.0', true );
-			wp_enqueue_script( 'kfw', KFW::include_plugin_url( 'assets/js/kfw' . $min . '.js' ), array( 'kfw-plugins' ), '1.0.0', true );
+			wp_enqueue_script( 'kfw-plugins', self::include_plugin_url( 'assets/js/kfw-plugins' . $min . '.js' ), array(), '1.0.0', true );
+			wp_enqueue_script( 'kfw', self::include_plugin_url( 'assets/js/kfw' . $min . '.js' ), array( 'kfw-plugins' ), '1.0.0', true );
 
 			wp_localize_script(
-				'kfw', 'kfw_vars', array(
+				'kfw',
+				'kfw_vars',
+				array(
 					'color_palette' => apply_filters( 'kfw_color_palette', array() ),
 					'i18n'          => array(
 						'confirm'             => esc_html__( 'Are you sure?', 'kfw' ),

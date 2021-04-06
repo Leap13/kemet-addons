@@ -42,7 +42,8 @@ if ( ! class_exists( 'KFW_Field_Icon' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'button_title' => esc_html__( 'Add Icon', 'kfw' ),
 					'remove_title' => esc_html__( 'Remove Icon', 'kfw' ),
 				)

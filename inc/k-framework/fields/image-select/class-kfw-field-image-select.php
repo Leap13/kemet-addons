@@ -43,7 +43,8 @@ if ( ! class_exists( 'KFW_Field_Image_Select' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'multiple' => false,
 					'options'  => array(),
 				)

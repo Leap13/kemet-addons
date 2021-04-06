@@ -42,7 +42,8 @@ if ( ! class_exists( 'KFW_Field_Spacing' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'top_icon'           => '<i class="fa fa-arrow-up"></i>',
 					'right_icon'         => '<i class="fa fa-arrow-right"></i>',
 					'bottom_icon'        => '<i class="fa fa-arrow-down"></i>',

@@ -115,7 +115,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		public function create_custom_layout_meta( $prefix ) {
 
 			KFW::create_metabox(
-				$prefix, array(
+				$prefix,
+				array(
 					'title'     => __( 'Kemet Page Options', 'kemet-addons' ),
 					'priority'  => 'high',
 					'post_type' => array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
@@ -125,7 +126,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			);
 
 			KFW::create_section(
-				$prefix, array(
+				$prefix,
+				array(
 					'priority_num' => 1,
 					'fields'       => array(
 						array(
@@ -234,7 +236,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		public function create_code_editor( $prefix ) {
 
 			KFW::create_metabox(
-				$prefix, array(
+				$prefix,
+				array(
 					'title'     => __( 'Kemet Code Editor', 'kemet-addons' ),
 					'post_type' => array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
 					'data_type' => 'unserialize',
@@ -246,7 +249,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			// Create a section.
 			//
 			KFW::create_section(
-				$prefix, array(
+				$prefix,
+				array(
 					'priority_num' => 1,
 					'fields'       => array(
 						array(
@@ -276,7 +280,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		 */
 		public function register_shortcode_meta_boxes( $post ) {
 			add_meta_box(
-				'kemet-custom-layout-short-code', __( 'Shortcode', 'kemet-addons' ), function( $post ) { ?>
+				'kemet-custom-layout-short-code',
+				__( 'Shortcode', 'kemet-addons' ),
+				function( $post ) { ?>
 
 			<input type="text" class="widefat" value='[Kemet_Addon_Custom_Layout id="<?php echo esc_attr( $post->ID ); ?>"]' readonly />
 					<?php

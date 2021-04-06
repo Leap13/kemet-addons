@@ -151,7 +151,8 @@ if ( ! class_exists( 'KFW_Abstract' ) ) {
 
 			if ( ! empty( $this->output_css ) ) {
 				echo wp_kses(
-					'<style type="text/css">' . $this->output_css . '</style>', array(
+					'<style type="text/css">' . $this->output_css . '</style>',
+					array(
 						'style' => array(
 							'type' => true,
 							'id'   => true,

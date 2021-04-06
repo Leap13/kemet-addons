@@ -43,7 +43,8 @@ if ( ! class_exists( 'KFW_Field_Select' ) ) {
 		public function render() {
 
 			$args = wp_parse_args(
-				$this->field, array(
+				$this->field,
+				array(
 					'placeholder' => '',
 					'chosen'      => false,
 					'multiple'    => false,

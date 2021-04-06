@@ -111,17 +111,24 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			}
 
 			wp_enqueue_script(
-				'kemet-addons-mega-menu-js', KEMET_MEGA_MENU_URL . 'assets/js/' . $dir . '/mega-menu-backend' . $js_prefix, array(
+				'kemet-addons-mega-menu-js',
+				KEMET_MEGA_MENU_URL . 'assets/js/' . $dir . '/mega-menu-backend' . $js_prefix,
+				array(
 					'jquery',
 					'kemet-addons-select2',
-				), KEMET_ADDONS_VERSION, true
+				),
+				KEMET_ADDONS_VERSION,
+				true
 			);
 
 			wp_enqueue_style( 'kemet-addons-mega-menu-css', KEMET_MEGA_MENU_URL . 'assets/css/' . $dir . '/mega-menu' . $css_prefix, KEMET_ADDONS_VERSION );
 
 			wp_localize_script(
-				'kemet-addons-mega-menu-js', 'kemetAddons', apply_filters(
-					'kemet_addons_admin_js_localize', array(
+				'kemet-addons-mega-menu-js',
+				'kemetAddons',
+				apply_filters(
+					'kemet_addons_admin_js_localize',
+					array(
 						'ajax_url'            => admin_url( 'admin-ajax.php' ),
 						'ajax_nonce'          => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
 						'template_meta_value' => self::$meta_values,

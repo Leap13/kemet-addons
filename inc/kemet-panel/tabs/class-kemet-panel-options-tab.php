@@ -148,8 +148,8 @@ if ( ! class_exists( 'Kemet_Panel_Options_Tab' ) ) {
 				'default'  => false,
 			);
 			if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-				$woo_option += [ 'class' => 'hidden-field-input' ];
-				$woo_option += [ 'desc' => __( 'To use this add-on, please activate WooCommerce plugin.', 'kemet-addons' ) ];
+				$woo_option += array( 'class' => 'hidden-field-input' );
+				$woo_option += array( 'desc' => __( 'To use this add-on, please activate WooCommerce plugin.', 'kemet-addons' ) );
 			}
 
 			array_push( $options, $woo_option );

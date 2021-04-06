@@ -12,7 +12,9 @@ $defaults = Kemet_Theme_Options::defaults();
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-on-sale-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-on-sale-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'On Sale Badge', 'kemet-addons' ),
 			'section'  => 'section-woo-general',
@@ -26,14 +28,16 @@ $wp_customize->add_control(
  * Option: Sale Notification
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sale-content]', array(
+	KEMET_THEME_SETTINGS . '[sale-content]',
+	array(
 		'default'           => $defaults['sale-content'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[sale-content]', array(
+	KEMET_THEME_SETTINGS . '[sale-content]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-woo-general',
 		'priority' => 10,
@@ -49,7 +53,8 @@ $wp_customize->add_control(
  * Option: Content Text Color
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sale-text-color]', array(
+	KEMET_THEME_SETTINGS . '[sale-text-color]',
+	array(
 		'default'           => $defaults['sale-text-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -58,7 +63,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sale-text-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sale-text-color]',
+		array(
 			'label'    => __( 'Text Color', 'kemet' ),
 			'priority' => 11,
 			'section'  => 'section-woo-general',
@@ -70,7 +77,8 @@ $wp_customize->add_control(
  * Option: Content Text Color
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sale-background-color]', array(
+	KEMET_THEME_SETTINGS . '[sale-background-color]',
+	array(
 		'default'           => $defaults['sale-background-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -79,7 +87,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sale-background-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sale-background-color]',
+		array(
 			'label'    => __( 'Background Color', 'kemet' ),
 			'priority' => 12,
 			'section'  => 'section-woo-general',
@@ -92,7 +102,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-wishlist]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-wishlist]',
+		array(
 			'type'        => 'kmt-title',
 			'label'       => __( 'Wishlist', 'kemet-addons' ),
 			'description' => sprintf( '%s <a href="%s" target="%s">%s</a> %s', esc_html__( 'You need to activate the', 'kemet-addons' ), esc_url( 'https://wordpress.org/plugins/yith-woocommerce-wishlist/' ), esc_attr( '_blank' ), esc_html__( 'YITH WooCommerce Wishlist', 'kemet-addons' ), esc_html__( 'plugin to add a wishlist button and icon', 'kemet-addons' ) ),
@@ -107,14 +119,16 @@ $wp_customize->add_control(
  * Option: Add wishlist to header
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[wishlist-in-header]', array(
+	KEMET_THEME_SETTINGS . '[wishlist-in-header]',
+	array(
 		'default'           => $defaults['wishlist-in-header'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[wishlist-in-header]', array(
+	KEMET_THEME_SETTINGS . '[wishlist-in-header]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-woo-general',
 		'label'    => __( 'Add Wishlist Header', 'kemet-addons' ),
@@ -126,14 +140,16 @@ $wp_customize->add_control(
  * Option: Shop Layout
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[shop-layout]', array(
+	KEMET_THEME_SETTINGS . '[shop-layout]',
+	array(
 		'default'           => $defaults['shop-layout'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[shop-layout]', array(
+	KEMET_THEME_SETTINGS . '[shop-layout]',
+	array(
 		'type'     => 'select',
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 18,
@@ -149,7 +165,8 @@ $wp_customize->add_control(
  * Option: Product Content Alignment
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
+	KEMET_THEME_SETTINGS . '[product-content-alignment]',
+	array(
 		'default'           => $defaults['product-content-alignment'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -157,7 +174,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Icon_Select(
-		$wp_customize, KEMET_THEME_SETTINGS . '[product-content-alignment]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[product-content-alignment]',
+		array(
 			'priority' => 36,
 			'section'  => 'woocommerce_product_catalog',
 			'label'    => __( 'Product Content Alignment', 'kemet-addons' ),
@@ -181,7 +200,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-quick-view-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-quick-view-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Quick View Settings', 'kemet-addons' ),
 			'section'  => 'woocommerce_product_catalog',
@@ -195,14 +216,16 @@ $wp_customize->add_control(
  * Option: Enable Quick view
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
+	KEMET_THEME_SETTINGS . '[enable-quick-view]',
+	array(
 		'default'           => $defaults['enable-quick-view'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[enable-quick-view]', array(
+	KEMET_THEME_SETTINGS . '[enable-quick-view]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'woocommerce_product_catalog',
 		'label'    => __( 'Enable Quick View', 'kemet-addons' ),
@@ -214,7 +237,8 @@ $wp_customize->add_control(
  * Option: Quick View
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[quick-view-style]', array(
+	KEMET_THEME_SETTINGS . '[quick-view-style]',
+	array(
 		'default'           => $defaults['quick-view-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -227,7 +251,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[quick-view-style]', array(
+	KEMET_THEME_SETTINGS . '[quick-view-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 36,
@@ -245,7 +270,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kemet-product-structure]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kemet-product-structure]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Product Structure', 'kemet-addons' ),
 			'section'  => 'woocommerce_product_catalog',
@@ -259,7 +286,8 @@ $wp_customize->add_control(
  * Option: Shop Structure
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
+	KEMET_THEME_SETTINGS . '[shop-list-product-structure]',
+	array(
 		'default'           => kemet_get_option( 'shop-list-product-structure' ),
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
@@ -272,7 +300,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Sortable(
-		$wp_customize, KEMET_THEME_SETTINGS . '[shop-list-product-structure]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[shop-list-product-structure]',
+		array(
 			'type'     => 'kmt-sortable',
 			'section'  => 'woocommerce_product_catalog',
 			'priority' => 55,
@@ -293,7 +323,8 @@ $wp_customize->add_control(
  * Option: Shop Structure
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[shop-list-style-structure]', array(
+	KEMET_THEME_SETTINGS . '[shop-list-style-structure]',
+	array(
 		'default'           => kemet_get_option( 'shop-list-style-structure' ),
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
@@ -301,7 +332,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Sortable(
-		$wp_customize, KEMET_THEME_SETTINGS . '[shop-list-style-structure]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[shop-list-style-structure]',
+		array(
 			'type'     => 'kmt-sortable',
 			'section'  => 'woocommerce_product_catalog',
 			'priority' => 55,
@@ -322,7 +355,8 @@ $wp_customize->add_control(
  * Option: Disable Short Description In Responsive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-list-short-desc-in-responsive]', array(
+	KEMET_THEME_SETTINGS . '[disable-list-short-desc-in-responsive]',
+	array(
 		'default'           => $defaults['disable-list-short-desc-in-responsive'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
@@ -334,7 +368,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-list-short-desc-in-responsive]', array(
+	KEMET_THEME_SETTINGS . '[disable-list-short-desc-in-responsive]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'woocommerce_product_catalog',
 		'label'    => __( 'Disable Short Description In Responsive', 'kemet-addons' ),
@@ -346,7 +381,8 @@ $wp_customize->add_control(
  * Option: Shop Product Structure
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
+	KEMET_THEME_SETTINGS . '[shop-product-structure]',
+	array(
 		'default'           => kemet_get_option( 'shop-product-structure' ),
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
@@ -359,7 +395,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Sortable(
-		$wp_customize, KEMET_THEME_SETTINGS . '[shop-product-structure]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[shop-product-structure]',
+		array(
 			'type'     => 'kmt-sortable',
 			'section'  => 'woocommerce_product_catalog',
 			'priority' => 60,
@@ -378,7 +416,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-pagination-group-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Pagination Settings', 'kemet-addons' ),
 			'section'  => 'woocommerce_product_catalog',
@@ -392,14 +432,16 @@ $wp_customize->add_control(
  * Option: Pagination Style
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
+	KEMET_THEME_SETTINGS . '[woo-pagination-style]',
+	array(
 		'default'           => $defaults['woo-pagination-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[woo-pagination-style]', array(
+	KEMET_THEME_SETTINGS . '[woo-pagination-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 61,
@@ -415,7 +457,8 @@ $wp_customize->add_control(
  * Option: Load More Style
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[woo-load-more-style]', array(
+	KEMET_THEME_SETTINGS . '[woo-load-more-style]',
+	array(
 		'default'           => $defaults['woo-load-more-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -427,7 +470,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[woo-load-more-style]', array(
+	KEMET_THEME_SETTINGS . '[woo-load-more-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 61,
@@ -443,7 +487,8 @@ $wp_customize->add_control(
  * Option: Load More Text
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[woo-load-more-text]', array(
+	KEMET_THEME_SETTINGS . '[woo-load-more-text]',
+	array(
 		'default'           => $defaults['woo-load-more-text'],
 		'type'              => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
@@ -456,7 +501,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[woo-load-more-text]', array(
+	KEMET_THEME_SETTINGS . '[woo-load-more-text]',
+	array(
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 61,
 		'label'    => __( 'Load More Text', 'kemet' ),
@@ -468,7 +514,8 @@ $wp_customize->add_control(
  * Option: Loader Color
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+	KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]',
+	array(
 		'default'           => $defaults['infinite-scroll-loader-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -483,7 +530,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new WP_Customize_Color_Control(
-		$wp_customize, KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[infinite-scroll-loader-color]',
+		array(
 			'section'  => 'woocommerce_product_catalog',
 			'label'    => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
 			'priority' => 61,
@@ -495,7 +544,8 @@ $wp_customize->add_control(
  * Option: Infinite Scroll: Last Text
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
+	KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]',
+	array(
 		'default'           => $defaults['infinite-scroll-last-text'],
 		'type'              => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
@@ -507,7 +557,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]', array(
+	KEMET_THEME_SETTINGS . '[infinite-scroll-last-text]',
+	array(
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 61,
 		'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
@@ -519,14 +570,16 @@ $wp_customize->add_control(
  * Option: Enable Filter Button
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[enable-filter-button]', array(
+	KEMET_THEME_SETTINGS . '[enable-filter-button]',
+	array(
 		'default'           => $defaults['enable-filter-button'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[enable-filter-button]', array(
+	KEMET_THEME_SETTINGS . '[enable-filter-button]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'woocommerce_product_catalog',
 		'label'    => __( 'Enable Filter Button', 'kemet-addons' ),
@@ -538,7 +591,8 @@ $wp_customize->add_control(
  * Option: Title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[kmt-filter-title]', array(
+	KEMET_THEME_SETTINGS . '[kmt-filter-title]',
+	array(
 		'dependency'        => array(
 			'controls'   => KEMET_THEME_SETTINGS . '[enable-filter-button]',
 			'conditions' => '==',
@@ -549,7 +603,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-filter-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-filter-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Filter Settings', 'kemet-addons' ),
 			'section'  => 'woocommerce_product_catalog',
@@ -562,7 +618,8 @@ $wp_customize->add_control(
  * Option: Filter Button Text
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[off-canvas-filter-label]', array(
+	KEMET_THEME_SETTINGS . '[off-canvas-filter-label]',
+	array(
 		'default'           => $defaults['off-canvas-filter-label'],
 		'type'              => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
@@ -574,7 +631,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[off-canvas-filter-label]', array(
+	KEMET_THEME_SETTINGS . '[off-canvas-filter-label]',
+	array(
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 80,
 		'label'    => __( 'Filter Button Text', 'kemet-addons' ),
@@ -587,7 +645,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-single-product-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-single-product-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Single Product Settings', 'kemet-addons' ),
 			'section'  => 'section-woo-shop-single',
@@ -601,14 +661,16 @@ $wp_customize->add_control(
  * Option: Ajax Add To Cart
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[enable-single-ajax-add-to-cart]', array(
+	KEMET_THEME_SETTINGS . '[enable-single-ajax-add-to-cart]',
+	array(
 		'default'           => $defaults['enable-single-ajax-add-to-cart'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[enable-single-ajax-add-to-cart]', array(
+	KEMET_THEME_SETTINGS . '[enable-single-ajax-add-to-cart]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-woo-shop-single',
 		'label'    => __( 'Enable Ajax Add To Cart', 'kemet-addons' ),
@@ -620,14 +682,16 @@ $wp_customize->add_control(
  * Option: Enable Product Navigation
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[enable-product-navigation]', array(
+	KEMET_THEME_SETTINGS . '[enable-product-navigation]',
+	array(
 		'default'           => $defaults['enable-product-navigation'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[enable-product-navigation]', array(
+	KEMET_THEME_SETTINGS . '[enable-product-navigation]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-woo-shop-single',
 		'label'    => __( 'Enable Product Navigation', 'kemet-addons' ),
@@ -639,14 +703,16 @@ $wp_customize->add_control(
  * Option: Gallary Style
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[product-gallery-style]', array(
+	KEMET_THEME_SETTINGS . '[product-gallery-style]',
+	array(
 		'default'           => $defaults['product-gallery-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[product-gallery-style]', array(
+	KEMET_THEME_SETTINGS . '[product-gallery-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-woo-shop-single',
 		'priority' => 20,
@@ -662,7 +728,8 @@ $wp_customize->add_control(
  * Option: Image Width
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[product-image-width]', array(
+	KEMET_THEME_SETTINGS . '[product-image-width]',
+	array(
 		'default'           => $defaults['product-image-width'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -671,7 +738,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[product-image-width]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[product-image-width]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-woo-shop-single',
 			'priority'    => 25,
@@ -691,7 +760,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-related-products-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-related-products-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Related Products Settings', 'kemet-addons' ),
 			'section'  => 'section-woo-shop-single',
@@ -705,14 +776,16 @@ $wp_customize->add_control(
  * Option: Disable Related Products
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-related-products]', array(
+	KEMET_THEME_SETTINGS . '[disable-related-products]',
+	array(
 		'default'           => $defaults['disable-related-products'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-related-products]', array(
+	KEMET_THEME_SETTINGS . '[disable-related-products]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-woo-shop-single',
 		'label'    => __( 'Disable Related Products', 'kemet-addons' ),
@@ -724,7 +797,8 @@ $wp_customize->add_control(
  * Option: Related Products Count
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[related-products-count]', array(
+	KEMET_THEME_SETTINGS . '[related-products-count]',
+	array(
 		'default'           => $defaults['related-products-count'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
@@ -737,7 +811,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[related-products-count]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[related-products-count]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-woo-shop-single',
 			'priority'    => 40,
@@ -756,7 +832,8 @@ $wp_customize->add_control(
  * Option: Related Products Colunms
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[related-products-colunms]', array(
+	KEMET_THEME_SETTINGS . '[related-products-colunms]',
+	array(
 		'default'           => $defaults['related-products-colunms'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
@@ -769,7 +846,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[related-products-colunms]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[related-products-colunms]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-woo-shop-single',
 			'priority'    => 45,
@@ -789,7 +868,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-up-sells-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-up-sells-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Up-Sells Products Settings', 'kemet-addons' ),
 			'section'  => 'section-woo-shop-single',
@@ -803,14 +884,16 @@ $wp_customize->add_control(
  * Option: Disable Up-Sells
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-up-sells-products]', array(
+	KEMET_THEME_SETTINGS . '[disable-up-sells-products]',
+	array(
 		'default'           => $defaults['disable-up-sells-products'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-up-sells-products]', array(
+	KEMET_THEME_SETTINGS . '[disable-up-sells-products]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-woo-shop-single',
 		'label'    => __( 'Disable Up-Sells Products', 'kemet-addons' ),
@@ -822,7 +905,8 @@ $wp_customize->add_control(
  * Option: Up-Sells Count
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[up-sells-products-count]', array(
+	KEMET_THEME_SETTINGS . '[up-sells-products-count]',
+	array(
 		'default'           => $defaults['up-sells-products-count'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
@@ -835,7 +919,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[up-sells-products-count]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[up-sells-products-count]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-woo-shop-single',
 			'priority'    => 55,
@@ -854,7 +940,8 @@ $wp_customize->add_control(
  * Option: Up-Sells Colunms
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[up-sells-products-colunms]', array(
+	KEMET_THEME_SETTINGS . '[up-sells-products-colunms]',
+	array(
 		'default'           => $defaults['up-sells-products-colunms'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
@@ -867,7 +954,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[up-sells-products-colunms]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[up-sells-products-colunms]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-woo-shop-single',
 			'priority'    => 60,

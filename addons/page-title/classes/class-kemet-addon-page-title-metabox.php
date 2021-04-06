@@ -62,7 +62,8 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Metabox' ) ) {
 		 */
 		public function add_page_title_meta_box() {
 			KFW::create_section(
-				'kemet_page_options', array(
+				'kemet_page_options',
+				array(
 					'title'        => __( 'Page Title', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-format-quote',
 					'priority_num' => 5,
@@ -95,7 +96,8 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Metabox' ) ) {
 				)
 			);
 			KFW::create_section(
-				'kemet_page_options', array(
+				'kemet_page_options',
+				array(
 					'title'        => __( 'Breadcrumbs', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-tag',
 					'priority_num' => 6,

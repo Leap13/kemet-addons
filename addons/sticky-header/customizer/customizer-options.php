@@ -10,14 +10,16 @@ $defaults = Kemet_Theme_Options::defaults();
  * Option: Enable Sticky Header
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[enable-sticky]', array(
+	KEMET_THEME_SETTINGS . '[enable-sticky]',
+	array(
 		'default'           => $defaults['enable-sticky'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[enable-sticky]', array(
+	KEMET_THEME_SETTINGS . '[enable-sticky]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-sticky-header',
 		'label'    => __( 'Enable Sticky Header', 'kemet-addons' ),
@@ -29,7 +31,8 @@ $wp_customize->add_control(
  * Option: Enable Sticky Top Bar
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
+	KEMET_THEME_SETTINGS . '[sticky-top-bar]',
+	array(
 		'default'           => $defaults['sticky-top-bar'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
@@ -42,7 +45,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[sticky-top-bar]', array(
+	KEMET_THEME_SETTINGS . '[sticky-top-bar]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-sticky-header',
 		'label'    => __( 'Enable Sticky Top Bar', 'kemet-addons' ),
@@ -54,7 +58,8 @@ $wp_customize->add_control(
  * Option: Title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[kmt-sticky-header]', array(
+	KEMET_THEME_SETTINGS . '[kmt-sticky-header]',
+	array(
 		'dependency'        => array(
 			'controls'   => KEMET_THEME_SETTINGS . '[enable-sticky]',
 			'conditions' => '==',
@@ -65,7 +70,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-sticky-header]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-sticky-header]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Sticky Header Logo Settings', 'kemet-addons' ),
 			'section'  => 'section-sticky-header',
@@ -79,7 +86,8 @@ $wp_customize->add_control(
  * Option: Logo Image
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-logo]', array(
+	KEMET_THEME_SETTINGS . '[sticky-logo]',
+	array(
 		'default'           => $defaults['sticky-logo'],
 		'type'              => 'option',
 		'sanitize_callback' => 'esc_url_raw',
@@ -92,7 +100,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new WP_Customize_Image_Control(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sticky-logo]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sticky-logo]',
+		array(
 			'section'        => 'section-sticky-header',
 			'priority'       => 20,
 			'label'          => __( 'Logo Image', 'kemet-addons' ),
@@ -105,7 +115,8 @@ $wp_customize->add_control(
  * Option: Sticky Logo Width
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-logo-width]', array(
+	KEMET_THEME_SETTINGS . '[sticky-logo-width]',
+	array(
 		'default'           => $defaults['sticky-logo-width'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -119,7 +130,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sticky-logo-width]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sticky-logo-width]',
+		array(
 			'type'         => 'kmt-responsive-slider',
 			'section'      => 'section-sticky-header',
 			'priority'     => 25,
@@ -149,7 +162,8 @@ $wp_customize->add_control(
  * Option: Sticky Border Size
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-border-width]', array(
+	KEMET_THEME_SETTINGS . '[sticky-border-width]',
+	array(
 		'default'           => $defaults['sticky-border-width'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -163,7 +177,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sticky-border-width]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sticky-border-width]',
+		array(
 			'type'         => 'kmt-responsive-slider',
 			'section'      => 'section-sticky-header',
 			'priority'     => 26,
@@ -183,7 +199,8 @@ $wp_customize->add_control(
  * Option: Title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[kmt-sticky-header-style]', array(
+	KEMET_THEME_SETTINGS . '[kmt-sticky-header-style]',
+	array(
 		'dependency'        => array(
 			'controls'   => KEMET_THEME_SETTINGS . '[enable-sticky]',
 			'conditions' => '==',
@@ -194,7 +211,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-sticky-header-style]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-sticky-header-style]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Sticky Header Style', 'kemet-addons' ),
 			'section'  => 'section-sticky-header',
@@ -208,7 +227,8 @@ $wp_customize->add_control(
  * Option:Enable Box Shadow
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]', array(
+	KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]',
+	array(
 		'default'           => $defaults['sticky-header-box-shadow'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
@@ -220,7 +240,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]', array(
+	KEMET_THEME_SETTINGS . '[sticky-header-box-shadow]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-sticky-header',
 		'label'    => __( 'Enable Box Shadow', 'kemet-addons' ),
@@ -364,7 +385,8 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  * Option:Sticky Responsive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-responsive]', array(
+	KEMET_THEME_SETTINGS . '[sticky-responsive]',
+	array(
 		'default'           => $defaults['sticky-responsive'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -376,7 +398,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[sticky-responsive]', array(
+	KEMET_THEME_SETTINGS . '[sticky-responsive]',
+	array(
 		'priority' => 75,
 		'section'  => 'section-sticky-header',
 		'type'     => 'select',
@@ -394,7 +417,8 @@ $wp_customize->add_control(
  * Option:Sticky Responsive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-style]', array(
+	KEMET_THEME_SETTINGS . '[sticky-style]',
+	array(
 		'default'           => $defaults['sticky-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -406,7 +430,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[sticky-style]', array(
+	KEMET_THEME_SETTINGS . '[sticky-style]',
+	array(
 		'priority' => 80,
 		'section'  => 'section-sticky-header',
 		'type'     => 'select',
@@ -422,7 +447,8 @@ $wp_customize->add_control(
 * Option - Sticky Header Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-header-padding]', array(
+	KEMET_THEME_SETTINGS . '[sticky-header-padding]',
+	array(
 		'default'           => $defaults['sticky-header-padding'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -436,7 +462,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sticky-header-padding]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sticky-header-padding]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-sticky-header',
 			'priority'       => 90,
@@ -457,7 +485,8 @@ $wp_customize->add_control(
 * Option - Site Identity Padding
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-site-identity-spacing]', array(
+	KEMET_THEME_SETTINGS . '[sticky-site-identity-spacing]',
+	array(
 		'default'           => $defaults['sticky-site-identity-spacing'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -471,7 +500,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sticky-site-identity-spacing]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sticky-site-identity-spacing]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-sticky-header',
 			'priority'       => 95,
@@ -492,7 +523,8 @@ $wp_customize->add_control(
 * Option - Menu Item Padding
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sticky-menu-item-spacing]', array(
+	KEMET_THEME_SETTINGS . '[sticky-menu-item-spacing]',
+	array(
 		'default'           => $defaults['sticky-menu-item-spacing'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -506,7 +538,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sticky-menu-item-spacing]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sticky-menu-item-spacing]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-sticky-header',
 			'priority'       => 100,

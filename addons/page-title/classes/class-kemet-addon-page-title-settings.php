@@ -52,7 +52,9 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Settings' ) ) {
 			// Update the Customizer Sections under Layout.
 			$wp_customize->add_section(
 				new Kemet_WP_Customize_Section(
-					$wp_customize, 'section-page-title-header', array(
+					$wp_customize,
+					'section-page-title-header',
+					array(
 						'title'    => __( 'Page Title', 'kemet-addons' ),
 						'panel'    => 'panel-layout',
 						'section'  => 'section-header-group',
@@ -63,7 +65,9 @@ if ( ! class_exists( 'Kemet_Addon_Page_Title_Settings' ) ) {
 
 			$wp_customize->add_section(
 				new Kemet_WP_Customize_Section(
-					$wp_customize, 'section-breadcrumbs', array(
+					$wp_customize,
+					'section-breadcrumbs',
+					array(
 						'title'    => __( 'Breadcrumbs', 'kemet-addons' ),
 						'panel'    => 'panel-layout',
 						'section'  => 'section-header-group',
