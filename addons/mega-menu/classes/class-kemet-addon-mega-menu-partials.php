@@ -121,7 +121,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 				true
 			);
 
-			wp_enqueue_style( 'kemet-addons-mega-menu-css', KEMET_MEGA_MENU_URL . 'assets/css/' . $dir . '/mega-menu' . $css_prefix, KEMET_ADDONS_VERSION );
+			wp_enqueue_style( 'kemet-addons-mega-menu-css', KEMET_MEGA_MENU_URL . 'assets/css/' . $dir . '/mega-menu' . $css_prefix, KEMET_ADDONS_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 			wp_localize_script(
 				'kemet-addons-mega-menu-js',

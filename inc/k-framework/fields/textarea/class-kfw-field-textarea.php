@@ -42,7 +42,7 @@ if ( ! class_exists( 'KFW_Field_Textarea' ) ) {
 		public function render() {
 
 			echo wp_kses( $this->field_before(), kfw_allowed_html( 'all' ) );
-			echo $this->shortcoder();
+			echo $this->shortcoder(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo wp_kses( '<textarea name="' . esc_attr( $this->field_name() ) . '"' . $this->field_attributes() . '>' . $this->value . '</textarea>', kfw_allowed_html( array( 'textarea' ) ) );
 			echo wp_kses( $this->field_after(), kfw_allowed_html( 'all' ) );
 

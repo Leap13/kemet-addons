@@ -1,6 +1,6 @@
 <?php
 /**
- * Social Icons Widget.
+ * Social Widget.
  *
  * @package Kemet Addons
  */
@@ -174,9 +174,9 @@ if ( ! function_exists( 'kemet_widget_social_profiles' ) ) {
 	 * @return void
 	 */
 	function kemet_widget_social_profiles( $args, $instance, $id ) {
-		echo $args['before_widget'];
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title'];
+			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		if ( ! empty( $instance['social-profile'] ) ) {
 			?>
@@ -306,7 +306,7 @@ if ( ! function_exists( 'kemet_widget_social_profiles' ) ) {
 			esc_attr( $parse_css )
 		);
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 

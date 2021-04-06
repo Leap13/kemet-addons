@@ -35,7 +35,7 @@ $separator_class = kemet_get_option( 'disable-logo-icon-separator' ) ? '' : ' ve
 				<div class="outside-menu-mobile-icon-wrap">
 					<?php
 						kemet_toggle_buttons_markup();
-						echo kemet_header_custom_item_outside_menu();
+						echo kemet_header_custom_item_outside_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</div>
 			<?php kemet_main_header_bar_bottom(); ?>

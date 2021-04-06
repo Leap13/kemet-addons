@@ -61,7 +61,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 			global $wp;
 
 			// CSS.
-			wp_enqueue_style( 'kmt-customizer-reset', KEMET_RESET_URL . 'assets/css/kmt-customizer-reset.css', true );
+			wp_enqueue_style( 'kmt-customizer-reset', KEMET_RESET_URL . 'assets/css/kmt-customizer-reset.css', true ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 			// JS.
 			wp_enqueue_script( 'kmt-customizer-reset', KEMET_RESET_URL . 'assets/js/kmt-customizer-reset.js', array( 'jquery' ), KEMET_ADDONS_VERSION, true );
@@ -111,7 +111,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				wp_send_json_error( 'not_preview' );
 			}
 
-			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'kmt-customizer-reset' ) ) {
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ), 'kmt-customizer-reset' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				wp_send_json_error( 'invalid_nonce' );
 			}
 
@@ -131,11 +131,11 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_GET['action'] ) || 'customizer_export' !== $_GET['action'] ) {
+			if ( ! isset( $_GET['action'] ) || 'customizer_export' !== $_GET['action'] ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				return;
 			}
 
-			if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_GET['nonce'] ), 'customizer-export' ) ) {
+			if ( ! isset( $_GET['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_GET['nonce'] ), 'customizer-export' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				return;
 			}
 
@@ -154,7 +154,7 @@ if ( ! class_exists( 'Kemet_Addon_Reset' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_POST['kemet_import_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['kemet_import_nonce'] ), 'kemet_import_nonce' ) ) {
+			if ( ! isset( $_POST['kemet_import_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['kemet_import_nonce'] ), 'kemet_import_nonce' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				return;
 			}
 			if ( empty( $_POST['kemet_ie_action'] ) || 'import_settings' !== $_POST['kemet_ie_action'] ) {

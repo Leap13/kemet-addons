@@ -228,7 +228,7 @@ if ( ! class_exists( 'KFW_Nav_Menu_Options' ) ) {
 
 			// XSS ok.
 			// No worries, This "POST" requests is sanitizing in the below foreach.
-			$request = ( ! empty( $_POST[ $this->unique ][ $menu_item_db_id ] ) ) ? $_POST[ $this->unique ][ $menu_item_db_id ] : array();
+			$request = ( ! empty( $_POST[ $this->unique ][ $menu_item_db_id ] ) ) ? $_POST[ $this->unique ][ $menu_item_db_id ] : array(); // phpcs:ignore
 
 			if ( ! empty( $request ) ) {
 

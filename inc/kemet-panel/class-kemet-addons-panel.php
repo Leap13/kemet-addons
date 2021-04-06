@@ -216,7 +216,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public function save_options() {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
-			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array();
+			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$class   = isset( $_POST['class'] ) ? sanitize_text_field( wp_unslash( $_POST['class'] ) ) : '';
 			switch ( $class ) {
 				case 'options':
@@ -264,7 +264,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
 			$class   = isset( $_POST['class'] ) ? sanitize_text_field( wp_unslash( $_POST['class'] ) ) : '';
-			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array();
+			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			switch ( $class ) {
 				case 'options':
@@ -284,7 +284,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
 			$class   = isset( $_POST['class'] ) ? sanitize_text_field( wp_unslash( $_POST['class'] ) ) : '';
-			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array();
+			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			switch ( $class ) {
 				case 'options':
 					update_option( 'kemet_addons_' . $class, $options );

@@ -95,7 +95,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			if ( isset( $yith_wcwl ) ) {
 				$content .= do_shortcode( '[yith_wcwl_add_to_wishlist]' );
-				printf( '%s', $content );
+				printf( '%s', $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 		}
@@ -864,8 +864,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			} elseif ( $product->is_type( 'variable' ) ) {
 				$available_variations = $product->get_available_variations();
 				$maximumper           = 0;
-
-				for ( $i = 0; $i < count( $available_variations ); ++$i ) {
+				$counter              = count( $available_variations );
+				for ( $i = 0; $i < $counter; ++$i ) {
 					$variation_id     = $available_variations[ $i ]['variation_id'];
 					$variable_product = new WC_Product_Variation( $variation_id );
 
@@ -918,7 +918,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			echo '<div id="kmt-off-canvas-wrap">';
 			echo '<div class="kmt-off-canvas-sidebar">';
 			echo '<a href="javascript:void(0)" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
-			echo kemet_get_custom_widget( 'off-canvas-filter' );
+			echo kemet_get_custom_widget( 'off-canvas-filter' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 			echo '<div class="kmt-off-canvas-overlay"></div>';
 			echo '</div>';
@@ -1168,7 +1168,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			// load content template.
 			kemetaddons_get_template( 'woocommerce/templates/quick-view-product.php' );
 
-			echo ob_get_clean();
+			echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			die();
 		}

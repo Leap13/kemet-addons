@@ -129,7 +129,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 			<tbody>
 				<tr>
 					<td><?php esc_html_e( 'Server Info', 'kemet-addons' ); ?>:</td>
-					<td><?php echo esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ); ?></td>
+					<td><?php echo isset( $_SERVER['SERVER_SOFTWARE'] ) ? esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ) : ''; ?></td>
 				</tr>
 				<tr>
 					<td><?php esc_html_e( 'PHP Version', 'kemet-addons' ); ?>:</td>

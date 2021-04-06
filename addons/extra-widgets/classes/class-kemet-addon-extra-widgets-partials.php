@@ -104,6 +104,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 				'Authorization: Basic ' . base64_encode( 'user:' . $api_key ),
 			);
 			$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+			// @codingStandardsIgnoreStart WordPress.WP.AlternativeFunctions.curl_curl_setopt
 			$mailchimp  = curl_init();
 
 			curl_setopt( $mailchimp, CURLOPT_URL, $url );
@@ -117,6 +118,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 			curl_setopt( $mailchimp, CURLOPT_SSL_VERIFYPEER, false );
 
 			return curl_exec( $mailchimp );
+			// @codingStandardsIgnoreEnd WordPress.WP.AlternativeFunctions.curl_curl_setopt
 		}
 
 		/**

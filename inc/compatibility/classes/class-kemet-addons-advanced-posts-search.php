@@ -355,7 +355,7 @@ if ( ! class_exists( 'Kemet_Addons_Advanced_Posts_Search' ) ) {
 				}
 			}
 
-			wp_enqueue_style( 'kemet-addons-select2', KEMET_COMPATIBLITY_URL . 'assets/css/' . $dir . '/select2' . $css_prefix, KEMET_ADDONS_VERSION );
+			wp_enqueue_style( 'kemet-addons-select2', KEMET_COMPATIBLITY_URL . 'assets/css/' . $dir . '/select2' . $css_prefix, KEMET_ADDONS_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 			wp_localize_script(
 				'kemet-addons-select2',

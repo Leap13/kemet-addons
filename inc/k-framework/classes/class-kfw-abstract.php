@@ -117,8 +117,7 @@ if ( ! class_exists( 'KFW_Abstract' ) ) {
 				$handle = 'kfw-google-web-fonts-' . $this->unique;
 				$src    = esc_url( add_query_arg( $query, $api ) );
 
-				wp_enqueue_style( $handle, $src, array(), null );
-
+				wp_enqueue_style( $handle, $src, array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 			}
 
 			if ( ! empty( $this->typographies ) && ! empty( $this->args['async_webfont'] ) ) {

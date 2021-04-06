@@ -161,7 +161,7 @@ if ( ! class_exists( 'KFW_Metabox' ) ) {
 				$classes[] = 'kfw-post-formats';
 
 				// Sanitize post format for standard to default.
-				if ( false !== ( $key = array_search( 'standard', $this->post_formats ) ) ) {
+				if ( false !== ( $key = array_search( 'standard', $this->post_formats ) ) ) { // phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
 					$this->post_formats[ $key ] = 'default';
 				}
 

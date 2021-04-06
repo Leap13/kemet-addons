@@ -100,8 +100,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 
 			$code_editor = true;
 
-			if ( isset( $_GET['code_editor'] ) || ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) == KEMET_CUSTOM_LAYOUT_POST_TYPE && get_post_meta( $_GET['post'], 'enable-code-editor', true ) == true ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
+			// @codingStandardsIgnoreStart
+			if ( isset( $_GET['code_editor'] ) || ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) == KEMET_CUSTOM_LAYOUT_POST_TYPE && get_post_meta( $_GET['post'], 'enable-code-editor', true ) == true ) ) {
+			// @codingStandardsIgnoreEnd
 				$code_editor = false;
 			}
 

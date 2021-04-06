@@ -5,12 +5,12 @@
  * @package Kemet Addon
  */
 
-$title             = kemet_get_the_title();
+$post_title        = kemet_get_the_title();
 $page_title_layout = apply_filters( 'kemet_the_page_title_layout', kemet_get_option( 'page-title-layouts' ) );
 if ( 'post' == get_post_type() ) {
 	$header_title = kemet_get_option( 'page-header-title' );
 	if ( 'blog' == $header_title ) {
-		$title = esc_html__( 'Blog', 'kemet-addons' );
+		$post_title = esc_html__( 'Blog', 'kemet-addons' );
 	}
 }
 $description        = get_the_archive_description();
@@ -29,11 +29,11 @@ $classes   = implode( ' ', $classes );
 		<div class = 'kmt-container'>
 			<div class = 'kmt-row kmt-flex kemet-top-header-section-wrap'>
 				<div class = 'kmt-page-title-wrap kmt-flex kmt-justify-content-flex-end kmt-col-md-6 kmt-col-xs-12'>
-					<?php if ( $title ) { ?>
+					<?php if ( $post_title ) { ?>
 						<h1 class = 'kemet-page-title'>
 						<?php
 						if ( is_singular() ) {
-							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', $title ) );
+							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', $post_title ) );
 						} else {
 							echo wp_kses_post( apply_filters( 'kemet_page_title_addon_title', Kemet_Addon_Page_Title_Partials::get_instance()->kemet_get_current_page_title() ) );
 						}

@@ -48,12 +48,12 @@ if ( ! function_exists( 'kfw_get_var' ) ) {
 	 */
 	function kfw_get_var( $var, $default = '' ) {
 
-		if ( isset( $_POST[ $var ] ) ) {
-			return sanitize_post( wp_unslash( $_POST[ $var ] ) );
+		if ( isset( $_POST[ $var ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			return sanitize_post( wp_unslash( $_POST[ $var ] ) ); // phpcs:ignore
 		}
 
 		if ( isset( $_GET[ $var ] ) ) {
-			return sanitize_post( wp_unslash( $_GET[ $var ] ) );
+			return sanitize_post( wp_unslash( $_GET[ $var ] ) ); // phpcs:ignore
 		}
 
 		return $default;

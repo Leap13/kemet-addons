@@ -337,7 +337,7 @@ $wp_customize->add_control(
 		'priority' => 41,
 	)
 );
-// Header8
+// Header8.
 /**
  * Option: Disable Logo Icon Separator
  */

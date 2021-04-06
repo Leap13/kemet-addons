@@ -324,7 +324,7 @@ if ( ! class_exists( 'KFW_Options' ) ) {
 		 */
 		public function ajax_save() {
 			if ( ! empty( $_POST['data'] ) ) {
-				$_POST = isset( $_POST['data'] ) ? json_decode( wp_unslash( $_POST['data'] ), true ) : '';
+				$_POST = isset( $_POST['data'] ) ? json_decode( wp_unslash( $_POST['data'] ), true ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 				if ( wp_verify_nonce( kfw_get_var( 'kfw_options_nonce' . $this->unique ), 'kfw_options_nonce' ) ) {
 					$this->set_options();
@@ -522,7 +522,7 @@ if ( ! class_exists( 'KFW_Options' ) ) {
 		 * @return void
 		 */
 		public function add_admin_menu() {
-			extract( $this->args );
+			extract( $this->args ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 
 			if ( 'submenu' === $menu_type ) {
 				$menu_page = call_user_func( 'add_submenu_page', $menu_parent, $menu_title, $menu_title, $menu_capability, $menu_slug, array( &$this, 'add_options_html' ) );
