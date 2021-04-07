@@ -418,7 +418,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Wiz addons Init Woocommerce
+		 * Kemet addons Init Woocommerce
 		 *
 		 * @return void
 		 */
