@@ -94,7 +94,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			$tabs = $this->tabs();
 			add_menu_page( __( 'Kemet Panel', 'kemet-addons' ), __( 'Kemet', 'kemet-addons' ), 'manage_options', 'kemet_panel', array( $this, 'render' ), null );
 			foreach ( $tabs as $tab => $values ) {
-				add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel' . '#tab=' . $values['slug'] );
+				add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel#tab=' . $values['slug'] );
 			}
 			remove_submenu_page( 'kemet_panel', 'kemet_panel' );
 		}
