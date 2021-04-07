@@ -38,7 +38,7 @@ if ( ! function_exists( 'kemet_widget_login_form' ) ) {
 		$redirect = isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ? ( is_ssl() ? 'https://' : 'http://' ) . wp_unslash( $_SERVER['HTTP_HOST'] ) . wp_unslash( $_SERVER['REQUEST_URI'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		?>
 		<?php if ( is_user_logged_in() ) : ?>
-		<p><?php esc_html_e( 'You are logged in as', 'kemet-addons' ); ?> <strong><?php echo esc_attr( $user_identity ); ?></strong>.</p>	
+		<p><?php esc_html_e( 'You are logged in as', 'kemet-addons' ); ?> <strong><?php echo esc_html( $user_identity ); ?></strong>.</p>	
 		<ul>
 			<li><a href="<?php echo esc_url( get_dashboard_url() ); ?>"><?php echo esc_html__( 'Dashboard', 'kemet-addons' ); ?> </a></li>
 			<li><a href="<?php echo esc_url( get_edit_user_link() ); ?>"><?php echo esc_html__( 'Your Profile', 'kemet-addons' ); ?> </a></li>

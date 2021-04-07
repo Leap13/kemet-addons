@@ -128,7 +128,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 		 */
 		public function mailchimp_action() {
 
-			if ( ! isset( $_POST['kmt_mailchimp_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['kmt_mailchimp_nonce'] ), 'kmt_mailchimp_action' ) ) {
+			if ( ! isset( $_POST['kmt_mailchimp_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['wiz_mailchimp_nonce'] ) ), 'wiz_mailchimp_action' ) ) {
 				exit;
 			} else {
 

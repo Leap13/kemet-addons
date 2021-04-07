@@ -239,8 +239,8 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 					%1$s
 				</div>',
 				$content,
-				esc_html__( 'et-boc', 'kemet-addons' ),
-				esc_html__( 'et-boc', 'kemet-addons' )
+				esc_attr__( 'et-boc', 'kemet-addons' ),
+				esc_attr__( 'et-boc', 'kemet-addons' )
 			);
 			return $content;
 		}
