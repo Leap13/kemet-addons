@@ -100,8 +100,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 
 			$code_editor = true;
 
+			// @codingStandardsIgnoreStart
 			if ( isset( $_GET['code_editor'] ) || ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) == KEMET_CUSTOM_LAYOUT_POST_TYPE && get_post_meta( $_GET['post'], 'enable-code-editor', true ) == true ) ) {
-
+			// @codingStandardsIgnoreEnd
 				$code_editor = false;
 			}
 
@@ -110,8 +111,10 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 			}
 			// Register the post type.
 			register_post_type(
-				KEMET_CUSTOM_LAYOUT_POST_TYPE, apply_filters(
-					'kemet_custon_layouts_args', array(
+				KEMET_CUSTOM_LAYOUT_POST_TYPE,
+				apply_filters(
+					'kemet_custon_layouts_args',
+					array(
 						'labels'              => array(
 							'name'          => esc_html__( 'Custom Layouts', 'kemet-addons' ),
 							'singular_name' => esc_html__( 'Custom Layout', 'kemet-addons' ),

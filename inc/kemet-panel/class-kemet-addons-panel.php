@@ -78,9 +78,9 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					'group'  => null,
 					'title'  => __( 'Kemet', 'kemet-addons' ), // you can use img tag with image link. it will show the image icon Instead of the title.
 					'href'   => admin_url( 'admin.php?page=kemet_panel' ),
-					'meta'   => [
+					'meta'   => array(
 						'title' => __( 'Kemet', 'kemet-addons' ), // This title will show on hover.
-					],
+					),
 				)
 			);
 		}
@@ -94,7 +94,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			$tabs = $this->tabs();
 			add_menu_page( __( 'Kemet Panel', 'kemet-addons' ), __( 'Kemet', 'kemet-addons' ), 'manage_options', 'kemet_panel', array( $this, 'render' ), null );
 			foreach ( $tabs as $tab => $values ) {
-				add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel' . '#tab=' . $values['slug'] );
+				add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel#tab=' . $values['slug'] );
 			}
 			remove_submenu_page( 'kemet_panel', 'kemet_panel' );
 		}
@@ -216,7 +216,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public function save_options() {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
-			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array();
+			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$class   = isset( $_POST['class'] ) ? sanitize_text_field( wp_unslash( $_POST['class'] ) ) : '';
 			switch ( $class ) {
 				case 'options':
@@ -264,7 +264,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
 			$class   = isset( $_POST['class'] ) ? sanitize_text_field( wp_unslash( $_POST['class'] ) ) : '';
-			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array();
+			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			switch ( $class ) {
 				case 'options':
@@ -284,7 +284,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
 			$class   = isset( $_POST['class'] ) ? sanitize_text_field( wp_unslash( $_POST['class'] ) ) : '';
-			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array();
+			$options = isset( $_POST['options'] ) ? sanitize_post( wp_unslash( $_POST['options'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			switch ( $class ) {
 				case 'options':
 					update_option( 'kemet_addons_' . $class, $options );
@@ -362,7 +362,8 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			wp_enqueue_script( 'kemet-panel-js', KEMET_PANEL_URL . 'assets/js/' . $dir . '/kemet-panel' . $js_prefix, array( 'jquery', 'jquery-ui-tabs', 'jquery-ui-core' ), KEMET_ADDONS_VERSION );
 
 			wp_localize_script(
-				'kemet-panel-js', 'kemetPanelVars',
+				'kemet-panel-js',
+				'kemetPanelVars',
 				array(
 					'nonce' => wp_create_nonce( 'kemet-panel' ),
 				)

@@ -4,7 +4,7 @@ Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.7
 Requires PHP: 5.4
-Stable tag: 1.1.14
+Stable tag: 1.1.15
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,6 +44,11 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.1.15 version
+- Fixed: Add to cart button issue in product listing.
+- Added: Disable top bar page option.
+- Tweak: Code refactored for better performance and security.
+
 1.1.14 version
 - Fixed: Mailchimp api issue.
 - Tweak: Code refactored for better performance and security.

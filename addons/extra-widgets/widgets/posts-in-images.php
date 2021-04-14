@@ -59,9 +59,9 @@ if ( ! function_exists( 'kemet_widget_posts_in_images' ) ) {
 	 * @return void
 	 */
 	function kemet_widget_posts_in_images( $args, $instance, $id ) {
-		echo $args['before_widget'];
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title'];
+			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		global $post;
 		$orig_post = $post;
@@ -102,7 +102,7 @@ if ( ! function_exists( 'kemet_widget_posts_in_images' ) ) {
 			?>
 			<?php
 		}
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 

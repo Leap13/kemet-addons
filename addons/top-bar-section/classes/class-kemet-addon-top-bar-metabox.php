@@ -62,12 +62,27 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Metabox' ) ) {
 		 */
 		public function add_top_bar_meta_box() {
 
-			KFW::createSection(
-				'kemet_page_options', array(
+			KFW::create_section(
+				'kemet_page_options',
+				array(
 					'title'        => __( 'Top Bar', 'kemet-addons' ),
 					'icon'         => 'dashicons dashicons-admin-tools',
 					'priority_num' => 2,
 					'fields'       => array(
+						array(
+							'id'      => 'kemet-merge-top-bar-with-header',
+							'type'    => 'checkbox',
+							'title'   => __( 'Merge/Combine Top Bar With Main Header', 'kemet-addons' ),
+							'label'   => __( 'Merge/Combine Top Bar With Main Header in The Current Page/Post.', 'kemet-addons' ),
+							'default' => false,
+						),
+						array(
+							'id'      => 'kemet-disable-top-bar-separators',
+							'type'    => 'checkbox',
+							'title'   => __( 'Disable top bar separators', 'kemet-addons' ),
+							'label'   => __( 'Disable top bar separators in The Current Page/Post.', 'kemet-addons' ),
+							'default' => false,
+						),
 						array(
 							'id'      => 'kemet-top-bar-display',
 							'type'    => 'checkbox',

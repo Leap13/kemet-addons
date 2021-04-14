@@ -88,13 +88,13 @@ if ( in_array( 'search', (array) kemet_get_option( 'top-section-1' ) ) || in_arr
 			<div class="kmt-row kmt-flex kemet-top-header-section-wrap">
 				<?php if ( ! empty( $section_1 ) || $enable_top_section_1 ) { ?>
 					<div class="kemet-top-header-section kemet-top-header-section-1 kmt-flex kmt-justify-content-flex-start mt-topbar-section-equally <?php echo esc_attr( $section1_class ); ?> kmt-col-xs-12 kmt-flex-1" >
-							<?php echo $section_1; ?>
+							<?php echo $section_1; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php do_action( 'kemet_top_bar_section_1' ); ?>
 					</div>
 				<?php } ?>
 				<?php if ( ! empty( $section_2 ) || $enable_top_section_2 ) { ?>
 					<div class="kemet-top-header-section kemet-top-header-section-2 kmt-flex kmt-justify-content-flex-end mt-topbar-section-equally <?php echo esc_attr( $section2_class ); ?> kmt-col-xs-12 kmt-flex-1" >
-							<?php echo $section_2; ?>
+							<?php echo $section_2; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php do_action( 'kemet_top_bar_section_2' ); ?>
 					</div>
 				<?php } ?>

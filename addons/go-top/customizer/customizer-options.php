@@ -15,14 +15,16 @@ $defaults = Kemet_Theme_Options::defaults();
  * Option: Enable Go Top Link
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[enable-go-top]', array(
+	KEMET_THEME_SETTINGS . '[enable-go-top]',
+	array(
 		'default'           => $defaults['enable-go-top'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[enable-go-top]', array(
+	KEMET_THEME_SETTINGS . '[enable-go-top]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-go-top',
 		'label'    => __( 'Enable Go to Top Button', 'kemet-addons' ),
@@ -33,7 +35,8 @@ $wp_customize->add_control(
  * Option:Title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[kmt-go-top-settings]', array(
+	KEMET_THEME_SETTINGS . '[kmt-go-top-settings]',
+	array(
 		'dependency'        => array(
 			'controls'   => KEMET_THEME_SETTINGS . '[enable-go-top]',
 			'conditions' => '==',
@@ -44,7 +47,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-settings]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-go-top-settings]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Button Settings', 'kemet-addons' ),
 			'section'  => 'section-go-top',
@@ -57,7 +62,8 @@ $wp_customize->add_control(
  * Option: Go Top Link Icon Size
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[go-top-icon-size]', array(
+	KEMET_THEME_SETTINGS . '[go-top-icon-size]',
+	array(
 		'default'           => $defaults['go-top-icon-size'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -71,7 +77,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[go-top-icon-size]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[go-top-icon-size]',
+		array(
 			'type'         => 'kmt-responsive-slider',
 			'section'      => 'section-go-top',
 			'priority'     => 10,
@@ -95,7 +103,8 @@ $wp_customize->add_control(
  * Option: Go Top Link Button Size
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
+	KEMET_THEME_SETTINGS . '[go-top-button-size]',
+	array(
 		'default'           => $defaults['go-top-button-size'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -109,7 +118,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[go-top-button-size]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[go-top-button-size]',
+		array(
 			'type'         => 'kmt-responsive-slider',
 			'section'      => 'section-go-top',
 			'priority'     => 15,
@@ -129,7 +140,8 @@ $wp_customize->add_control(
  * Option: Go Top Link Border Radius
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[go-top-border-radius]', array(
+	KEMET_THEME_SETTINGS . '[go-top-border-radius]',
+	array(
 		'default'           => $defaults['go-top-border-radius'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -143,7 +155,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[go-top-border-radius]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[go-top-border-radius]',
+		array(
 			'type'         => 'kmt-responsive-slider',
 			'section'      => 'section-go-top',
 			'priority'     => 20,
@@ -167,7 +181,8 @@ $wp_customize->add_control(
  * Option:Go Top Responsive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[go-top-responsive]', array(
+	KEMET_THEME_SETTINGS . '[go-top-responsive]',
+	array(
 		'default'           => $defaults['go-top-responsive'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -179,7 +194,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[go-top-responsive]', array(
+	KEMET_THEME_SETTINGS . '[go-top-responsive]',
+	array(
 		'priority' => 25,
 		'section'  => 'section-go-top',
 		'type'     => 'select',
@@ -196,7 +212,8 @@ $wp_customize->add_control(
  * Option:Title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[kmt-go-top-style]', array(
+	KEMET_THEME_SETTINGS . '[kmt-go-top-style]',
+	array(
 		'dependency'        => array(
 			'controls'   => KEMET_THEME_SETTINGS . '[enable-go-top]',
 			'conditions' => '==',
@@ -207,7 +224,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-go-top-style]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-go-top-style]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Button Style', 'kemet-addons' ),
 			'section'  => 'section-go-top',

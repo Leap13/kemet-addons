@@ -81,7 +81,8 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 							wp_kses(
 								'<mark>%s - %s</mark>',
 								kemet_allowed_html( array( 'mark' ) )
-							), esc_html( size_format( $memory_limit ) ),
+							),
+							esc_html( size_format( $memory_limit ) ),
 							esc_html__( 'We recommend setting wp memory at least 64MB.', 'kemet-addons' )
 						);
 					} else {
@@ -128,7 +129,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 			<tbody>
 				<tr>
 					<td><?php esc_html_e( 'Server Info', 'kemet-addons' ); ?>:</td>
-					<td><?php echo esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ); ?></td>
+					<td><?php echo isset( $_SERVER['SERVER_SOFTWARE'] ) ? esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ) : ''; ?></td>
 				</tr>
 				<tr>
 					<td><?php esc_html_e( 'PHP Version', 'kemet-addons' ); ?>:</td>
@@ -164,7 +165,8 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 									wp_kses(
 										'<mark>%s - %s</mark>',
 										kemet_allowed_html( array( 'mark' ) )
-									), esc_html( $time_limit ),
+									),
+									esc_html( $time_limit ),
 									esc_html__( 'We recommend setting max execution time at least 60.', 'kemet-addons' )
 								);
 							} else {

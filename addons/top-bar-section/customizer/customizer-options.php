@@ -11,7 +11,8 @@ $defaults = Kemet_Theme_Options::defaults();
  * Option: Top Bar Section 1 Item/s
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[top-section-1]', array(
+	KEMET_THEME_SETTINGS . '[top-section-1]',
+	array(
 		'default'           => $defaults['top-section-1'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
@@ -19,7 +20,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Sortable(
-		$wp_customize, KEMET_THEME_SETTINGS . '[top-section-1]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[top-section-1]',
+		array(
 			'type'     => 'kmt-sortable',
 			'section'  => 'section-topbar-header',
 			'priority' => 5,
@@ -38,7 +41,8 @@ $wp_customize->add_control(
  * Option: Right Section Text / HTML
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[top-section-1-html]', array(
+	KEMET_THEME_SETTINGS . '[top-section-1-html]',
+	array(
 		'default'           => $defaults['top-section-1-html'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
@@ -50,7 +54,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[top-section-1-html]', array(
+	KEMET_THEME_SETTINGS . '[top-section-1-html]',
+	array(
 		'type'     => 'textarea',
 		'section'  => 'section-topbar-header',
 		'priority' => 10,
@@ -60,7 +65,8 @@ $wp_customize->add_control(
 
 if ( isset( $wp_customize->selective_refresh ) ) {
 	$wp_customize->selective_refresh->add_partial(
-		KEMET_THEME_SETTINGS . '[topbar-section-1-html]', array(
+		KEMET_THEME_SETTINGS . '[topbar-section-1-html]',
+		array(
 			'selector'            => '.kemet-top-header-section-1',
 			'container_inclusive' => true,
 			'render_callback'     => array( 'Kemet_Customizer_Partials', '_render_topbar_section_1_html' ),
@@ -72,7 +78,8 @@ if ( isset( $wp_customize->selective_refresh ) ) {
  * Option: Top Bar Section 1 Item/s Alignment
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[section1-content-align]', array(
+	KEMET_THEME_SETTINGS . '[section1-content-align]',
+	array(
 		'default'           => $defaults['section1-content-align'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -86,7 +93,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Icon_Select(
-		$wp_customize, KEMET_THEME_SETTINGS . '[section1-content-align]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[section1-content-align]',
+		array(
 			'priority' => 15,
 			'section'  => 'section-topbar-header',
 			'label'    => __( 'Section 1 Item/s Alignment', 'kemet-addons' ),
@@ -109,7 +118,8 @@ $wp_customize->add_control(
  * Option: Top Bar Section 2 Item/s
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[top-section-2]', array(
+	KEMET_THEME_SETTINGS . '[top-section-2]',
+	array(
 		'default'           => $defaults['top-section-2'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
@@ -117,7 +127,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Sortable(
-		$wp_customize, KEMET_THEME_SETTINGS . '[top-section-2]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[top-section-2]',
+		array(
 			'type'     => 'kmt-sortable',
 			'section'  => 'section-topbar-header',
 			'priority' => 20,
@@ -136,7 +148,8 @@ $wp_customize->add_control(
  * Option: Right Section Text / HTML
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[top-section-2-html]', array(
+	KEMET_THEME_SETTINGS . '[top-section-2-html]',
+	array(
 		'default'           => $defaults['top-section-2-html'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
@@ -148,7 +161,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[top-section-2-html]', array(
+	KEMET_THEME_SETTINGS . '[top-section-2-html]',
+	array(
 		'type'     => 'textarea',
 		'section'  => 'section-topbar-header',
 		'priority' => 25,
@@ -158,7 +172,8 @@ $wp_customize->add_control(
 
 if ( isset( $wp_customize->selective_refresh ) ) {
 	$wp_customize->selective_refresh->add_partial(
-		KEMET_THEME_SETTINGS . '[top-section-2-html]', array(
+		KEMET_THEME_SETTINGS . '[top-section-2-html]',
+		array(
 			'selector'            => '.kemet-top-header-section-2',
 			'container_inclusive' => true,
 			'render_callback'     => array( 'Kemet_Customizer_Partials', '_render_topbar_section_2_html' ),
@@ -170,7 +185,8 @@ if ( isset( $wp_customize->selective_refresh ) ) {
  * Option: Top Bar Section 2 Item/s Alignment
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[section2-content-align]', array(
+	KEMET_THEME_SETTINGS . '[section2-content-align]',
+	array(
 		'default'           => $defaults['section2-content-align'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -184,7 +200,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Icon_Select(
-		$wp_customize, KEMET_THEME_SETTINGS . '[section2-content-align]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[section2-content-align]',
+		array(
 			'priority' => 28,
 			'section'  => 'section-topbar-header',
 			'label'    => __( 'Section 2 Item/s Alignment', 'kemet-addons' ),
@@ -208,7 +226,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-top-bar-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-top-bar-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Top Bar Settings', 'kemet-addons' ),
 			'section'  => 'section-topbar-header',
@@ -222,7 +242,8 @@ $wp_customize->add_control(
 * Option - Top Bar Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[topbar-item-padding]', array(
+	KEMET_THEME_SETTINGS . '[topbar-item-padding]',
+	array(
 		'default'           => $defaults['topbar-item-padding'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -231,7 +252,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[topbar-item-padding]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[topbar-item-padding]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-topbar-header',
 			'priority'       => 35,
@@ -252,7 +275,8 @@ $wp_customize->add_control(
 * Option - Top Bar Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[topbar-padding]', array(
+	KEMET_THEME_SETTINGS . '[topbar-padding]',
+	array(
 		'default'           => $defaults['topbar-padding'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -261,7 +285,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[topbar-padding]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[topbar-padding]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-topbar-header',
 			'priority'       => 33,
@@ -282,7 +308,8 @@ $wp_customize->add_control(
 * Option - Top Bar Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[topbar-border-size]', array(
+	KEMET_THEME_SETTINGS . '[topbar-border-size]',
+	array(
 		'default'           => $defaults['topbar-border-size'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -290,7 +317,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[topbar-border-size]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[topbar-border-size]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-topbar-header',
 			'priority'       => 40,
@@ -443,14 +472,16 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  * Option:Top Bar Responsive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[topbar-responsive]', array(
+	KEMET_THEME_SETTINGS . '[topbar-responsive]',
+	array(
 		'default'           => $defaults['topbar-responsive'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[topbar-responsive]', array(
+	KEMET_THEME_SETTINGS . '[topbar-responsive]',
+	array(
 		'priority' => 50,
 		'section'  => 'section-topbar-header',
 		'type'     => 'select',
@@ -469,7 +500,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-top-bar-style]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-top-bar-style]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Top Bar Style', 'kemet-addons' ),
 			'section'  => 'section-topbar-header',
@@ -591,14 +624,16 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  * Option: Search Style
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
+	KEMET_THEME_SETTINGS . '[top-bar-search-style]',
+	array(
 		'default'           => $defaults['top-bar-search-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[top-bar-search-style]', array(
+	KEMET_THEME_SETTINGS . '[top-bar-search-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-topbar-header',
 		'priority' => 100,

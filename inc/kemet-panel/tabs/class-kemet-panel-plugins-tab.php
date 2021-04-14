@@ -140,7 +140,7 @@ if ( ! class_exists( 'Kemet_Panel_Plugins_Tab' ) ) {
 								$button       = '<a class="button button-primary kmt-plugin" data-status = ' . $status . ' data-url-install = ' . $install_url . '  data-url-activate = ' . $activate_url . ' >' . $button_label . '</a>';
 							}
 						}
-							printf( '<div>%1$s</div>', $button );
+							printf( '<div>%1$s</div>', $button ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>
 					</div>
 				</div>

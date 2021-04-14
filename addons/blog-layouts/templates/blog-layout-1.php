@@ -25,9 +25,7 @@ $divs_class      = 'blog-layout-1' == $blog_layout ? 'kmt-col-md-12' : '';
 				$overlay_image = 'none' != $enable_overlay ? kemet_addons_get_thumbnail_with_overlay( '<div class="kmt-blog-featured-section post-thumb ' . $divs_class . '">', '</div>' ) : kemet_get_post_thumbnail( '<div class="kmt-blog-featured-section post-thumb ' . $divs_class . '">', '</div>' );
 
 				break;
-			?>
 
-			<?php
 			case 'title-meta':
 				do_action( 'kemet_archive_entry_header_before' );
 				?>
@@ -55,8 +53,7 @@ $divs_class      = 'blog-layout-1' == $blog_layout ? 'kmt-col-md-12' : '';
 			</header><!-- .entry-header -->
 				<?php
 				break;
-			?>
-			<?php
+
 			case 'content-readmore':
 				do_action( 'kemet_archive_entry_header_after' );
 				?>

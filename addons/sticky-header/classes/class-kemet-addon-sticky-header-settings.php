@@ -54,7 +54,9 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Settings' ) ) {
 			// Update the Customizer Sections under Layout.
 			$wp_customize->add_section(
 				new Kemet_WP_Customize_Section(
-					$wp_customize, 'section-sticky-header', array(
+					$wp_customize,
+					'section-sticky-header',
+					array(
 						'title'    => __( 'Sticky Header', 'kemet-addons' ),
 						'panel'    => 'panel-layout',
 						'section'  => 'section-header-group',

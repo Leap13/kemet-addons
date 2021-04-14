@@ -8,7 +8,8 @@
 $defaults = Kemet_Theme_Options::defaults();
 
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-layouts]', array(
+	KEMET_THEME_SETTINGS . '[blog-layouts]',
+	array(
 		'default'           => $defaults['blog-layouts'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -17,7 +18,9 @@ $wp_customize->add_setting(
 
 $wp_customize->add_control(
 	new Kemet_Control_Radio_Image(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-layouts]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-layouts]',
+		array(
 			'section'  => 'section-blog',
 			'priority' => 1,
 			'label'    => __( 'Blog Layouts', 'kemet-addons' ),
@@ -51,7 +54,8 @@ $wp_customize->add_control(
 * Option: Blog Columns
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-grids]', array(
+	KEMET_THEME_SETTINGS . '[blog-grids]',
+	array(
 		'default'           => $defaults['blog-grids'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_select' ),
@@ -64,7 +68,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Select(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-grids]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-grids]',
+		array(
 			'type'     => 'kmt-responsive-select',
 			'section'  => 'section-blog',
 			'priority' => 5,
@@ -82,7 +88,8 @@ $wp_customize->add_control(
 * Option: Grid Style
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-layout-mode]', array(
+	KEMET_THEME_SETTINGS . '[blog-layout-mode]',
+	array(
 		'default'           => $defaults['blog-layout-mode'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -94,7 +101,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[blog-layout-mode]', array(
+	KEMET_THEME_SETTINGS . '[blog-layout-mode]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-blog',
 		'priority' => 5,
@@ -110,7 +118,8 @@ $wp_customize->add_control(
 * Option: Image Position
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[post-image-position]', array(
+	KEMET_THEME_SETTINGS . '[post-image-position]',
+	array(
 		'default'           => $defaults['post-image-position'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -122,7 +131,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[post-image-position]', array(
+	KEMET_THEME_SETTINGS . '[post-image-position]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-blog',
 		'priority' => 5,
@@ -138,7 +148,8 @@ $wp_customize->add_control(
 * Option: Border Size
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-posts-border-size]', array(
+	KEMET_THEME_SETTINGS . '[blog-posts-border-size]',
+	array(
 		'default'           => $defaults['blog-posts-border-size'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -152,7 +163,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-posts-border-size]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-posts-border-size]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-blog',
 			'priority'    => 5,
@@ -171,7 +184,8 @@ $wp_customize->add_control(
 * Option - Border Size
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[layout-2-post-border-size]', array(
+	KEMET_THEME_SETTINGS . '[layout-2-post-border-size]',
+	array(
 		'default'           => $defaults['layout-2-post-border-size'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_responsive_spacing' ),
@@ -184,7 +198,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[layout-2-post-border-size]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[layout-2-post-border-size]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-blog',
 			'priority'       => 5,
@@ -204,7 +220,8 @@ $wp_customize->add_control(
 * Option: Posts Border Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-posts-border-color]', array(
+	KEMET_THEME_SETTINGS . '[blog-posts-border-color]',
+	array(
 		'default'           => $defaults['blog-posts-border-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -218,7 +235,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-posts-border-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-posts-border-color]',
+		array(
 			'label'    => __( 'Posts Border Color', 'kemet-addons' ),
 			'section'  => 'section-blog',
 			'priority' => 5,
@@ -229,7 +248,8 @@ $wp_customize->add_control(
 * Option: Title & Meta Border Size
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-title-meta-border-size]', array(
+	KEMET_THEME_SETTINGS . '[blog-title-meta-border-size]',
+	array(
 		'default'           => $defaults['blog-title-meta-border-size'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -243,7 +263,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-title-meta-border-size]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-title-meta-border-size]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-blog',
 			'priority'    => 5,
@@ -261,7 +283,8 @@ $wp_customize->add_control(
 * Option: Title Meta Border Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-title-meta-border-color]', array(
+	KEMET_THEME_SETTINGS . '[blog-title-meta-border-color]',
+	array(
 		'default'           => $defaults['blog-title-meta-border-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -275,7 +298,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-title-meta-border-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-title-meta-border-color]',
+		array(
 			'label'    => __( 'Title & Meta Border Color', 'kemet-addons' ),
 			'section'  => 'section-blog',
 			'priority' => 5,
@@ -286,7 +311,8 @@ $wp_customize->add_control(
 * Option: Display Post Structure
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-post-structure]', array(
+	KEMET_THEME_SETTINGS . '[blog-post-structure]',
+	array(
 		'default'           => $defaults['blog-post-structure'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_multi_choices' ),
@@ -299,7 +325,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Sortable(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-post-structure]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-post-structure]',
+		array(
 			'type'     => 'kmt-sortable',
 			'section'  => 'section-blog',
 			'priority' => 15,
@@ -316,7 +344,8 @@ $wp_customize->add_control(
 * Option: Excerpt Length
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
+	KEMET_THEME_SETTINGS . '[blog-excerpt-length]',
+	array(
 		'default'           => $defaults['blog-excerpt-length'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
@@ -324,7 +353,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-excerpt-length]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-excerpt-length]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-blog',
 			'priority'    => 26,
@@ -343,7 +374,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-overlay-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-overlay-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Overlay Image Style', 'kemet-addons' ),
 			'section'  => 'section-blog',
@@ -356,14 +389,16 @@ $wp_customize->add_control(
  * Option: Overlay Styles
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[overlay-image-style]', array(
+	KEMET_THEME_SETTINGS . '[overlay-image-style]',
+	array(
 		'default'           => $defaults['overlay-image-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[overlay-image-style]', array(
+	KEMET_THEME_SETTINGS . '[overlay-image-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-blog',
 		'priority' => 119,
@@ -381,14 +416,16 @@ $wp_customize->add_control(
  * Option: Hover Image Effect
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[hover-image-effect]', array(
+	KEMET_THEME_SETTINGS . '[hover-image-effect]',
+	array(
 		'default'           => $defaults['hover-image-effect'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[hover-image-effect]', array(
+	KEMET_THEME_SETTINGS . '[hover-image-effect]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-blog',
 		'priority' => 119,
@@ -406,7 +443,8 @@ $wp_customize->add_control(
 * Option: Title
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]', array(
+	KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]',
+	array(
 		'sanitize_callback' => false,
 		'dependency'        => array(
 			'controls'   => KEMET_THEME_SETTINGS . '[overlay-image-style]',
@@ -417,7 +455,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-blog-overlay-image]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Overlay Image Style', 'kemet-addons' ),
 			'section'  => 'section-blog',
@@ -430,7 +470,8 @@ $wp_customize->add_control(
  * Option: Overlay Image Background Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[overlay-image-bg-color]', array(
+	KEMET_THEME_SETTINGS . '[overlay-image-bg-color]',
+	array(
 		'default'           => $defaults['overlay-image-bg-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -445,7 +486,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[overlay-image-bg-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[overlay-image-bg-color]',
+		array(
 			'section'  => 'section-blog',
 			'priority' => 125,
 			'label'    => __( 'Overlay Image Background Color', 'kemet-addons' ),
@@ -456,7 +499,8 @@ $wp_customize->add_control(
  * Option:Post Overlay Icon Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[overlay-icon-color]', array(
+	KEMET_THEME_SETTINGS . '[overlay-icon-color]',
+	array(
 		'default'           => $defaults['overlay-icon-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -470,7 +514,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[overlay-icon-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[overlay-icon-color]',
+		array(
 			'label'    => __( 'Overlay Icon Color', 'kemet-addons' ),
 			'priority' => 130,
 			'section'  => 'section-blog',
@@ -481,7 +527,8 @@ $wp_customize->add_control(
 * Option - Container Inner Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]', array(
+	KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]',
+	array(
 		'default'           => $defaults['blog-container-inner-spacing'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -490,7 +537,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-container-inner-spacing]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-blog',
 			'priority'       => 150,
@@ -510,7 +559,8 @@ $wp_customize->add_control(
 	* Option: Post Margin Bottom
 	*/
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[post-margin-bottom]', array(
+	KEMET_THEME_SETTINGS . '[post-margin-bottom]',
+	array(
 		'default'           => $defaults['post-margin-bottom'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -519,7 +569,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[post-margin-bottom]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[post-margin-bottom]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-blog',
 			'priority'    => 151,
@@ -538,7 +590,9 @@ $wp_customize->add_control(
 */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kemet-blog-pagination-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kemet-blog-pagination-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Pagination Style', 'kemet-addons' ),
 			'section'  => 'section-blog',
@@ -548,7 +602,8 @@ $wp_customize->add_control(
 	)
 );
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-pagination-style]', array(
+	KEMET_THEME_SETTINGS . '[blog-pagination-style]',
+	array(
 		'default'           => $defaults['blog-pagination-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -558,14 +613,16 @@ $wp_customize->add_setting(
  * Option: Pagination
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-pagination-style]', array(
+	KEMET_THEME_SETTINGS . '[blog-pagination-style]',
+	array(
 		'default'           => $defaults['blog-pagination-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[blog-pagination-style]', array(
+	KEMET_THEME_SETTINGS . '[blog-pagination-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-blog',
 		'priority' => 155,
@@ -581,7 +638,8 @@ $wp_customize->add_control(
 * Option: Pagination Border Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-pagination-border-color]', array(
+	KEMET_THEME_SETTINGS . '[blog-pagination-border-color]',
+	array(
 		'default'           => $defaults['blog-pagination-border-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -595,7 +653,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-pagination-border-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-pagination-border-color]',
+		array(
 			'label'    => __( 'Pagination Border Color', 'kemet-addons' ),
 			'section'  => 'section-blog',
 			'priority' => 160,
@@ -606,7 +666,8 @@ $wp_customize->add_control(
  * Option: Load More Style
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[load-more-style]', array(
+	KEMET_THEME_SETTINGS . '[load-more-style]',
+	array(
 		'default'           => $defaults['load-more-style'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -618,7 +679,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[load-more-style]', array(
+	KEMET_THEME_SETTINGS . '[load-more-style]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-blog',
 		'priority' => 161,
@@ -633,7 +695,8 @@ $wp_customize->add_control(
  * Option: Load More Text
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[load-more-text]', array(
+	KEMET_THEME_SETTINGS . '[load-more-text]',
+	array(
 		'default'           => $defaults['load-more-text'],
 		'type'              => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
@@ -646,7 +709,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[load-more-text]', array(
+	KEMET_THEME_SETTINGS . '[load-more-text]',
+	array(
 		'section'  => 'section-blog',
 		'priority' => 162,
 		'label'    => __( 'Load More Text', 'kemet' ),
@@ -657,7 +721,8 @@ $wp_customize->add_control(
 * Option: Dots Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]', array(
+	KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]',
+	array(
 		'default'           => $defaults['blog-infinite-loader-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -672,7 +737,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[blog-infinite-loader-color]',
+		array(
 			'label'    => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
 			'section'  => 'section-blog',
 			'priority' => 165,
@@ -683,7 +750,8 @@ $wp_customize->add_control(
  * Option: Infinite Scroll: Last Text
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[blog-infinite-scroll-last-text]', array(
+	KEMET_THEME_SETTINGS . '[blog-infinite-scroll-last-text]',
+	array(
 		'default'           => $defaults['blog-infinite-scroll-last-text'],
 		'type'              => 'option',
 		'sanitize_callback' => 'sanitize_text_field',
@@ -695,7 +763,8 @@ $wp_customize->add_setting(
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[blog-infinite-scroll-last-text]', array(
+	KEMET_THEME_SETTINGS . '[blog-infinite-scroll-last-text]',
+	array(
 		'section'  => 'section-blog',
 		'priority' => 170,
 		'label'    => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),

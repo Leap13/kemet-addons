@@ -27,7 +27,7 @@ $icon_label = trim( apply_filters( 'icon_header_label', kemet_get_option( 'heade
 		<div class="kmt-flex main-header-container">
 			<?php kemet_toggle_buttons_markup(); ?>
 			<?php kemet_primary_navigation_markup(); ?>
-			<?php echo kemet_header_custom_item_outside_menu(); ?>
+			<?php echo kemet_header_custom_item_outside_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</div>
 	</div>    
 	<?php kemet_main_header_bar_bottom(); ?>

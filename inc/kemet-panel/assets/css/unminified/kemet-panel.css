@@ -78,6 +78,14 @@
   margin-left: 45%;
 }
 
+.kemet-panel-container .kemet-panel-body .kemet-panel-tabs-group .hidden-field-input .kfw--switcher {
+  display: none;
+}
+
+.kemet-panel-container .kemet-panel-body .kemet-panel-tabs-group .hidden-field-input .clear {
+  clear: none;
+}
+
 .kemet-panel-container .kemet-panel-body .kemet-panel-tabs-group .kemet-panel-tabs {
   margin: 0;
   list-style-type: none;

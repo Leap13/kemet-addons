@@ -64,7 +64,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 					if ( $post ) {
 						self::render_brizy_editor_content( $post_id );
 					}
-				} catch ( Exception $exception ) {
+				} catch ( Exception $exception ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
 				}
 			}
@@ -106,7 +106,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 					if ( $post ) {
 						return self::brizy_enqueue_scripts( $post_id );
 					}
-				} catch ( Exception $exception ) {
+				} catch ( Exception $exception ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
 				}
 			}
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 		 * @param int $post_id post id.
 		 * @return void
 		 */
-		function render_elementor_content( $post_id ) {
+		public function render_elementor_content( $post_id ) {
 
 			// set post to glabal post.
 			$elementor_instance = Elementor\Plugin::instance();
@@ -185,7 +185,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 			$get_post = get_post( $post_id, OBJECT );
 
 			global $post;
-			$post                   = $get_post;
+			$post                   = $get_post; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			$get_post->post_content = self::divi_container_wrap( $get_post->post_content );
 			$get_post->post_content = apply_filters( 'the_content', $get_post->post_content );
 
@@ -193,7 +193,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 				$get_post->post_content = self::divi_main_wrapper( $get_post->post_content );
 			}
 
-			echo $get_post->post_content;
+			echo $get_post->post_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			wp_reset_postdata();
 		}
 
@@ -239,8 +239,8 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 					%1$s
 				</div>',
 				$content,
-				esc_attr( 'et-boc', 'kemet-addons' ),
-				esc_attr( 'et-boc', 'kemet-addons' )
+				esc_attr__( 'et-boc', 'kemet-addons' ),
+				esc_attr__( 'et-boc', 'kemet-addons' )
 			);
 			return $content;
 		}
@@ -289,7 +289,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 						$compiled_html_head = $post->get_compiled_html_head();
 						$compiled_html_head = Brizy_SiteUrlReplacer::restoreSiteUrl( $compiled_html_head );
 						$post->set_needs_compile( true )
-								   ->saveStorage();
+								->saveStorage();
 
 						$params['content'] = $compiled_html_head;
 					} else {
@@ -312,6 +312,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 						$wp_post_id = $post->get_wp_post()->ID;
 						$args       = array(
 							'id'    => 'brizy_Edit_page_' . $wp_post_id . '_link',
+							/* translators: 1: Post id link, 2: Current post id */
 							'title' => sprintf( __( 'Edit %1$s with %2$s', 'kemet-addons' ), get_the_title( $wp_post_id ), is_callable( 'Brizy_Editor::get' ) ? Brizy_Editor::get()->get_name() : 'Brizy' ),
 							'href'  => $post->edit_url(),
 							'meta'  => array(),
@@ -359,7 +360,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 
 			ob_start();
 			echo do_shortcode( $output );
-			echo ob_get_clean();
+			echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 	}

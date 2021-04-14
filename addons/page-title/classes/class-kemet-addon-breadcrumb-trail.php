@@ -21,6 +21,7 @@
  * @link      https://themehybrid.com/plugins/breadcrumb-trail
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
+
 /**
  * Shows a breadcrumb for all types of pages.  This is a wrapper function for the Breadcrumb_Trail class,
  * which should be used in theme templates.
@@ -30,7 +31,6 @@
  * @param  array $args Arguments to pass to Breadcrumb_Trail.
  * @return void
  */
-
 function kemet_breadcrumb_trail( $args = array() ) {
 	$breadcrumbs_display = kemet_get_option( 'breadcrumbs-enabled', true );
 	if ( true != $breadcrumbs_display || is_front_page() ) {
@@ -155,7 +155,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 		$item_position     = 0;
 
 		if ( ! empty( $breadcrumb_prefix ) ) {
-			$breadcrumb .= sprintf( '<span class="%s">%s</span>', 'prefix', __( $breadcrumb_prefix, 'kemet-addons' ) );
+			$breadcrumb .= sprintf( '<span class="%s">%s</span>', 'prefix', esc_html( $breadcrumb_prefix ) );
 		}
 		// Connect the breadcrumb trail if there are items in the trail.
 		if ( 0 < $item_count ) {
@@ -188,7 +188,7 @@ class Kemet_Addon_Breadcrumb_Trail {
 				}
 				// Create list item attributes.
 				$attributes = 'itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="' . $item_class . '"';
-				// Separator
+				// Separator.
 				if ( $item_count === $item_position ) {
 					$sep = '';
 				} else {
@@ -213,9 +213,8 @@ class Kemet_Addon_Breadcrumb_Trail {
 		}
 		// Allow developers to filter the breadcrumb trail HTML.
 		$breadcrumb = apply_filters( 'breadcrumb_trail', $breadcrumb, $this->args );
-		// if ( false === $this->args['echo'] )
-			return $breadcrumb;
-		// echo $breadcrumb;
+
+		return $breadcrumb;
 	}
 	/**
 	 * Echo the breadcrumb trail.
@@ -762,8 +761,11 @@ class Kemet_Addon_Breadcrumb_Trail {
 						array(
 							'm' => get_the_time( 'Y' ),
 							'w' => get_the_time( 'W' ),
-						), home_url()
-					), $week, false
+						),
+						home_url()
+					),
+					$week,
+					false
 				)
 			);
 		} elseif ( true === $this->args['show_title'] ) {

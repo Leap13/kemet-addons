@@ -340,11 +340,11 @@ if ( ! class_exists( 'Kemet_Addons_Advanced_Posts_Search' ) ) {
 					'zh_HK'          => 'zh',
 				);
 
-				if ( isset( $select2_lang[ $wordpress_lang ] ) && file_exists( KEMET_COMPATIBLITY_URL . 'assets/js/' . $dir . '/' . 'i18n/' . $select2_lang[ $wordpress_lang ] . '.js' ) ) {
+				if ( isset( $select2_lang[ $wordpress_lang ] ) && file_exists( KEMET_COMPATIBLITY_URL . 'assets/js/' . $dir . '//i18n/' . $select2_lang[ $wordpress_lang ] . '.js' ) ) {
 					$ast_lang = $select2_lang[ $wordpress_lang ];
 					wp_enqueue_script(
 						'kemet-addons-select2-lang',
-						KEMET_COMPATIBLITY_URL . 'assets/js/' . $dir . '/' . 'i18n/' . $select2_lang[ $wordpress_lang ] . '.js',
+						KEMET_COMPATIBLITY_URL . 'assets/js/' . $dir . '//i18n/' . $select2_lang[ $wordpress_lang ] . '.js',
 						array(
 							'jquery',
 							'kemet-addons-select2',
@@ -355,7 +355,7 @@ if ( ! class_exists( 'Kemet_Addons_Advanced_Posts_Search' ) ) {
 				}
 			}
 
-			wp_enqueue_style( 'kemet-addons-select2', KEMET_COMPATIBLITY_URL . 'assets/css/' . $dir . '/select2' . $css_prefix, KEMET_ADDONS_VERSION );
+			wp_enqueue_style( 'kemet-addons-select2', KEMET_COMPATIBLITY_URL . 'assets/css/' . $dir . '/select2' . $css_prefix, KEMET_ADDONS_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 			wp_localize_script(
 				'kemet-addons-select2',

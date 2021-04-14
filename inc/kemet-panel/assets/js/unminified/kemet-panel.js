@@ -158,7 +158,14 @@
         },
       }).done(function (response) {
         if (response.success) {
-          window.location.reload();
+          saveBtn.removeClass("updating-message");
+          var switchers = $(".kfw--switcher");
+          $.each(switchers, function () {
+            var $this = $(this);
+            $this.addClass("kfw--active");
+            $this.find("input").val(1);
+            $this.find("input").trigger("input");
+          });
         }
       });
     },
@@ -188,7 +195,14 @@
         },
       }).done(function (response) {
         if (response.success) {
-          window.location.reload();
+          saveBtn.removeClass("updating-message");
+          var switchers = $(".kfw--switcher");
+          $.each(switchers, function () {
+            var $this = $(this);
+            $this.removeClass("kfw--active");
+            $this.find("input").val(0);
+            $this.find("input").trigger("input");
+          });
         }
       });
     },

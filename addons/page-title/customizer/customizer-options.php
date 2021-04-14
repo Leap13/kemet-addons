@@ -16,7 +16,8 @@ $defaults = Kemet_Theme_Options::defaults();
  * Option: Page Title Layouts
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
+	KEMET_THEME_SETTINGS . '[page-title-layouts]',
+	array(
 		'default'           => $defaults['page-title-layouts'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
@@ -25,7 +26,9 @@ $wp_customize->add_setting(
 
 $wp_customize->add_control(
 	new Kemet_Control_Radio_Image(
-		$wp_customize, KEMET_THEME_SETTINGS . '[page-title-layouts]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[page-title-layouts]',
+		array(
 			'section'  => 'section-page-title-header',
 			'priority' => 1,
 			'label'    => __( 'Page Title Layouts', 'kemet-addons' ),
@@ -56,7 +59,8 @@ $wp_customize->add_control(
  * Option: Page Title Alignment
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[page_title_alignment]', array(
+	KEMET_THEME_SETTINGS . '[page_title_alignment]',
+	array(
 		'default'           => $defaults['page_title_alignment'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -70,7 +74,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Icon_Select(
-		$wp_customize, KEMET_THEME_SETTINGS . '[page_title_alignment]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[page_title_alignment]',
+		array(
 			'priority' => 5,
 			'section'  => 'section-page-title-header',
 			'label'    => __( 'Page Title Alignment', 'kemet-addons' ),
@@ -92,14 +98,16 @@ $wp_customize->add_control(
  * Option: Merge Page Title with the main header
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[merge-with-header]', array(
+	KEMET_THEME_SETTINGS . '[merge-with-header]',
+	array(
 		'default'           => $defaults['merge-with-header'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[merge-with-header]', array(
+	KEMET_THEME_SETTINGS . '[merge-with-header]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-page-title-header',
 		'label'    => __( 'Merge/Combine Page Title With Main Header', 'kemet-addons' ),
@@ -111,7 +119,8 @@ $wp_customize->add_control(
  * Option: Page Title Divider Color
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
+	KEMET_THEME_SETTINGS . '[page-title-border-right-color]',
+	array(
 		'default'           => $defaults['page-title-border-right-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -125,7 +134,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[page-title-border-right-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[page-title-border-right-color]',
+		array(
 			'section'  => 'section-page-title-header',
 			'priority' => 10,
 			'label'    => __( 'Page Title Divider Color', 'kemet-addons' ),
@@ -161,7 +172,9 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-page-title-settings]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-page-title-settings]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Page Title Settings', 'kemet-addons' ),
 			'section'  => 'section-page-title-header',
@@ -175,7 +188,8 @@ $wp_customize->add_control(
 * Option - Page Title Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[page-title-space]', array(
+	KEMET_THEME_SETTINGS . '[page-title-space]',
+	array(
 		'default'           => $defaults['page-title-space'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -184,7 +198,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[page-title-space]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[page-title-space]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-page-title-header',
 			'priority'       => 30,
@@ -204,14 +220,16 @@ $wp_customize->add_control(
  * Option:Page Title Responsive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[page-title-responsive]', array(
+	KEMET_THEME_SETTINGS . '[page-title-responsive]',
+	array(
 		'default'           => $defaults['page-title-responsive'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[page-title-responsive]', array(
+	KEMET_THEME_SETTINGS . '[page-title-responsive]',
+	array(
 		'priority' => 35,
 		'section'  => 'section-page-title-header',
 		'type'     => 'select',
@@ -229,7 +247,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-page-title-style]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-page-title-style]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Page Title Content Style', 'kemet-addons' ),
 			'section'  => 'section-page-title-header',
@@ -242,7 +262,8 @@ $wp_customize->add_control(
  * Option: Page Title Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[page-title-color]', array(
+	KEMET_THEME_SETTINGS . '[page-title-color]',
+	array(
 		'default'           => $defaults['page-title-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -251,7 +272,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[page-title-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[page-title-color]',
+		array(
 			'label'    => __( 'Font Color', 'kemet-addons' ),
 			'priority' => 45,
 			'section'  => 'section-page-title-header',
@@ -412,7 +435,8 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  * Option: Page Title Bottom Line Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
+	KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]',
+	array(
 		'default'           => $defaults['pagetitle-bottomline-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -421,7 +445,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[pagetitle-bottomline-color]',
+		array(
 			'label'    => __( 'Separator Color', 'kemet-addons' ),
 			'priority' => 75,
 			'section'  => 'section-page-title-header',
@@ -433,7 +459,8 @@ $wp_customize->add_control(
  * Option: Separator Height
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
+	KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]',
+	array(
 		'default'           => $defaults['pagetitle-bottomline-height'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -442,7 +469,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[pagetitle-bottomline-height]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-page-title-header',
 			'priority'    => 80,
@@ -460,7 +489,8 @@ $wp_customize->add_control(
  * Option: Page Title Bottom Line width
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
+	KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]',
+	array(
 		'default'           => $defaults['pagetitle-bottomline-width'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -469,7 +499,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Slider(
-		$wp_customize, KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[pagetitle-bottomline-width]',
+		array(
 			'type'        => 'kmt-slider',
 			'section'     => 'section-page-title-header',
 			'priority'    => 85,
@@ -487,7 +519,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-page-sub-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-page-sub-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Sub Title Content Style', 'kemet-addons' ),
 			'section'  => 'section-page-title-header',
@@ -500,7 +534,8 @@ $wp_customize->add_control(
  * Option: Sub Title Color
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[sub-title-color]', array(
+	KEMET_THEME_SETTINGS . '[sub-title-color]',
+	array(
 		'default'           => $defaults['sub-title-color'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -509,7 +544,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Color(
-		$wp_customize, KEMET_THEME_SETTINGS . '[sub-title-color]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[sub-title-color]',
+		array(
 			'label'    => __( 'Text Color', 'kemet-addons' ),
 			'priority' => 95,
 			'section'  => 'section-page-title-header',
@@ -652,14 +689,16 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  * Option: Show item title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]',
+	array(
 		'default'           => $defaults['breadcrumbs-enabled'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumbs-enabled]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-breadcrumbs',
 		'label'    => __( 'Enable Breadcrumbs', 'kemet-addons' ),
@@ -671,14 +710,16 @@ $wp_customize->add_control(
  * Option: Show item title
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[show-item-title]', array(
+	KEMET_THEME_SETTINGS . '[show-item-title]',
+	array(
 		'default'           => $defaults['show-item-title'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[show-item-title]', array(
+	KEMET_THEME_SETTINGS . '[show-item-title]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-breadcrumbs',
 		'label'    => __( 'Show Current Location', 'kemet-addons' ),
@@ -690,14 +731,16 @@ $wp_customize->add_control(
  * Option: Breadcrumbs Separator
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[breadcrumb-prefix]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-prefix]',
+	array(
 		'default'           => $defaults['breadcrumb-prefix'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[breadcrumb-prefix]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-prefix]',
+	array(
 		'type'     => 'text',
 		'section'  => 'section-breadcrumbs',
 		'priority' => 10,
@@ -840,14 +883,16 @@ new Kemet_Generate_Control_Group( $wp_customize, $group_settings, $fields );
  * Option: Home Item
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[breadcrumb-home-item]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-home-item]',
+	array(
 		'default'           => $defaults['breadcrumb-home-item'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[breadcrumb-home-item]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-home-item]',
+	array(
 		'type'     => 'select',
 		'section'  => 'section-breadcrumbs',
 		'priority' => 45,
@@ -863,7 +908,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-display-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-display-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Breadcrumbs Display', 'kemet-addons' ),
 			'section'  => 'section-breadcrumbs',
@@ -876,14 +923,16 @@ $wp_customize->add_control(
  * Option: Disable on Archive
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]',
+	array(
 		'default'           => $defaults['disable-breadcrumbs-in-archive'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-archive]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-breadcrumbs',
 		'label'    => __( 'Disable on Archive', 'kemet-addons' ),
@@ -895,14 +944,16 @@ $wp_customize->add_control(
  * Option: Disable on Single Page
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]',
+	array(
 		'default'           => $defaults['disable-breadcrumbs-in-single-page'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-page]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-breadcrumbs',
 		'label'    => __( 'Disable on Single Page', 'kemet-addons' ),
@@ -914,14 +965,16 @@ $wp_customize->add_control(
  * Option: Disable on Single Post
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]',
+	array(
 		'default'           => $defaults['disable-breadcrumbs-in-single-post'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-single-post]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-breadcrumbs',
 		'label'    => __( 'Disable on Single Post', 'kemet-addons' ),
@@ -933,14 +986,16 @@ $wp_customize->add_control(
  * Option: Disable on 404 Page
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]',
+	array(
 		'default'           => $defaults['disable-breadcrumbs-in-404-page'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_checkbox' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]', array(
+	KEMET_THEME_SETTINGS . '[disable-breadcrumbs-in-404-page]',
+	array(
 		'type'     => 'checkbox',
 		'section'  => 'section-breadcrumbs',
 		'label'    => __( 'Disable on 404 Page', 'kemet-addons' ),
@@ -953,14 +1008,16 @@ $wp_customize->add_control(
  */
 
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[breadcrumb-separator]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-separator]',
+	array(
 		'default'           => $defaults['breadcrumb-separator'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_html' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[breadcrumb-separator]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-separator]',
+	array(
 		'type'     => 'text',
 		'section'  => 'section-breadcrumbs',
 		'priority' => 95,
@@ -972,14 +1029,16 @@ $wp_customize->add_control(
  * Option: Breadcrumbs Taxonomy
  */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]',
+	array(
 		'default'           => $defaults['breadcrumb-posts-taxonomy'],
 		'type'              => 'option',
 		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_choices' ),
 	)
 );
 $wp_customize->add_control(
-	KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumb-posts-taxonomy]',
+	array(
 		'type'        => 'select',
 		'section'     => 'section-breadcrumbs',
 		'priority'    => 100,
@@ -997,7 +1056,8 @@ $wp_customize->add_control(
 * Option - Breadcrumbs Spacing
 */
 $wp_customize->add_setting(
-	KEMET_THEME_SETTINGS . '[breadcrumbs-space]', array(
+	KEMET_THEME_SETTINGS . '[breadcrumbs-space]',
+	array(
 		'default'           => $defaults['breadcrumbs-space'],
 		'type'              => 'option',
 		'transport'         => 'postMessage',
@@ -1006,7 +1066,9 @@ $wp_customize->add_setting(
 );
 $wp_customize->add_control(
 	new Kemet_Control_Responsive_Spacing(
-		$wp_customize, KEMET_THEME_SETTINGS . '[breadcrumbs-space]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[breadcrumbs-space]',
+		array(
 			'type'           => 'kmt-responsive-spacing',
 			'section'        => 'section-breadcrumbs',
 			'priority'       => 105,
@@ -1028,7 +1090,9 @@ $wp_customize->add_control(
  */
 $wp_customize->add_control(
 	new Kemet_Control_Title(
-		$wp_customize, KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-title]', array(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-breadcrumbs-title]',
+		array(
 			'type'     => 'kmt-title',
 			'label'    => __( 'Breadcrumbs Style', 'kemet-addons' ),
 			'section'  => 'section-breadcrumbs',

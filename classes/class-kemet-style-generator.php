@@ -21,14 +21,14 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 		 *
 		 * @var array
 		 */
-		static private $css_files = array();
+		private static $css_files = array();
 
 		/**
 		 * Js files
 		 *
 		 * @var array
 		 */
-		static private $js_files = array();
+		private static $js_files = array();
 
 		/**
 		 * Member Variable

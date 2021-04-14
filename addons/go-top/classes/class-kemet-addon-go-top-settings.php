@@ -54,7 +54,9 @@ if ( ! class_exists( 'Kemet_Addon_Go_Top_Settings' ) ) {
 			// Update the Customizer Sections under Layout.
 			$wp_customize->add_section(
 				new Kemet_WP_Customize_Section(
-					$wp_customize, 'section-go-top', array(
+					$wp_customize,
+					'section-go-top',
+					array(
 						'title'    => __( 'Go Top Section', 'kemet-addons' ),
 						'panel'    => 'panel-layout',
 						'section'  => 'section-footer-group',

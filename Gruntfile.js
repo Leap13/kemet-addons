@@ -338,7 +338,7 @@ module.exports = function (grunt) {
             poedit: true,
             "x-poedit-keywordslist": true,
           },
-          type: "wp-theme",
+          type: "wp-plugin",
           updateTimestamp: true,
         },
       },
@@ -428,6 +428,108 @@ module.exports = function (grunt) {
         ],
       },
     },
+    copy: {
+      main: {
+        options: {
+          mode: true,
+        },
+        src: [
+          "**",
+          "!node_modules/**",
+          "!nbproject/**",
+          "!.git/**",
+          "!*.ds_store",
+          "!Gruntfile.js",
+          "!package.json",
+          "!.gitignore",
+          "!sass/**",
+          "!composer.json",
+          "!composer.lock",
+          "!package-lock.json",
+          "!phpcs.xml.dist",
+          "!phpcs.xml",
+        ],
+        dest: "kemet-addons/",
+      },
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: "kemet-addons-" + pkgInfo.version + ".zip",
+          mode: "zip",
+        },
+        files: [
+          {
+            src: ["./kemet-addons/**"],
+          },
+        ],
+      },
+    },
+
+    clean: {
+      main: ["kemet-addons"],
+      zip: ["*.zip"],
+    },
+
+    makepot: {
+      target: {
+        options: {
+          domainPath: "/",
+          potFilename: "languages/kemet-addons.pot",
+          potHeaders: {
+            poedit: true,
+            "x-poedit-keywordslist": true,
+          },
+          type: "wp-theme",
+          updateTimestamp: true,
+        },
+      },
+    },
+
+    addtextdomain: {
+      options: {
+        textdomain: "kemet-addons",
+      },
+      target: {
+        files: {
+          src: ["*.php", "**/*.php", "!node_modules/**"],
+        },
+      },
+    },
+
+    bumpup: {
+      options: {
+        updateProps: {
+          pkg: "package.json",
+        },
+      },
+      file: "package.json",
+    },
+
+    replace: {
+      theme_main: {
+        src: ["kemet-addons.php"],
+        overwrite: true,
+        replacements: [
+          {
+            from: /Version: \bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?(?:\+[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?\b/g,
+            to: "Version: <%= pkg.version %>",
+          },
+        ],
+      },
+
+      theme_const: {
+        src: ["kemet-addons.php"],
+        overwrite: true,
+        replacements: [
+          {
+            from: /KEMET_ADDONS_VERSION', '.*?'/g,
+            to: "KEMET_ADDONS_VERSION', '<%= pkg.version %>'",
+          },
+        ],
+      },
+    },
   });
 
   // Load grunt tasks
@@ -449,4 +551,25 @@ module.exports = function (grunt) {
   grunt.registerTask("rtl", ["rtlcss"]);
 
   grunt.registerTask("style", ["sass", "rtl", "minify"]);
+  // Grunt release - Create installable package of the local files
+  grunt.registerTask("release", [
+    "clean:zip",
+    "copy:main",
+    "compress:main",
+    "clean:main",
+  ]);
+  // Bump Version - `grunt version-bump --ver=<version-number>`
+  grunt.registerTask("version-bump", function (ver) {
+    var newVersion = grunt.option("ver");
+
+    if (newVersion) {
+      newVersion = newVersion ? newVersion : "patch";
+
+      grunt.task.run("bumpup:" + newVersion);
+      grunt.task.run("replace");
+    }
+  });
+  // i18n
+  grunt.registerTask("i18n", ["addtextdomain", "makepot"]);
+
 };

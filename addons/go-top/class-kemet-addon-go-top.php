@@ -29,7 +29,7 @@ if ( ! class_exists( 'Kemet_Addon_Go_Top' ) ) {
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -37,18 +37,18 @@ if ( ! class_exists( 'Kemet_Addon_Go_Top' ) ) {
 		/**
 		 *  Constructor
 		 */
-		
+
 		public function __construct() {
-            
+
 			require_once KEMET_GOTOP_DIR . 'classes/class-kemet-addon-go-top-settings.php';
 			require_once KEMET_GOTOP_DIR . 'classes/class-kemet-addon-go-top-partials.php';
 
-            if ( ! is_admin() ) {
+			if ( ! is_admin() ) {
 				require_once KEMET_GOTOP_DIR . 'classes/dynamic.css.php';
 			}
 		}
 
 	}
 
-Kemet_Addon_Go_Top::get_instance();
+	Kemet_Addon_Go_Top::get_instance();
 }

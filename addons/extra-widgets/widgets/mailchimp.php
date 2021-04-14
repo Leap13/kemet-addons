@@ -51,9 +51,9 @@ if ( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 	 * @return void
 	 */
 	function kemet_widget_mail_chimp( $args, $instance, $id ) {
-		echo $args['before_widget'];
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title'];
+			echo $args['before_title'] . esc_html( apply_filters( 'widget_title', $instance['title'] ) ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		$submit_text  = isset( $instance['submit-text'] ) ? $instance['submit-text'] : 'Subscribe';
@@ -119,7 +119,7 @@ if ( ! function_exists( 'kemet_widget_mail_chimp' ) ) {
 		);?>
 
 		<?php
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 

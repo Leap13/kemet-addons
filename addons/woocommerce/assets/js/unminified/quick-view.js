@@ -64,8 +64,16 @@
         modal.fadeIn();
         modal.addClass("is-visible");
 
-        var imageSlider = content.find(".kmt-qv-image");
+        var imageSlider = content.find(".kmt-qv-image"),
+          formVariation = content.find(".variations_form");
 
+        // Initialize variable form.
+        if (formVariation.length > 0) {
+          formVariation.trigger("check_variations");
+          formVariation.trigger("reset_image");
+          formVariation.wc_variation_form();
+          formVariation.find("select").change();
+        }
         if (imageSlider.find("li").length > 1) {
           imageSlider.flexslider();
         }

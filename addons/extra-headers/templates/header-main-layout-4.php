@@ -22,7 +22,7 @@ $classes    = apply_filters( 'header_container_classes', array() );
 				<?php kemet_site_branding_markup(); ?> 
 				<?php kemet_toggle_buttons_markup(); ?>
 				<div class="icon-last-menu-items">
-					<?php echo kemet_header_custom_item_outside_menu(); ?>
+					<?php echo kemet_header_custom_item_outside_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<div class ="menu-icon-social">
 							<?php if ( ! empty( $icon_label ) ) { ?>
 								<span class="header-icon-label"><?php echo esc_html( $icon_label ); ?></span>

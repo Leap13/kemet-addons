@@ -59,7 +59,8 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 
 			// Define array of custom widgets for the theme.
 			$widgets = apply_filters(
-				'kemet_custom_widgets', array(
+				'kemet_custom_widgets',
+				array(
 					'mailchimp',
 					'social-icons',
 					'posts-in-images',
@@ -103,6 +104,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 				'Authorization: Basic ' . base64_encode( 'user:' . $api_key ),
 			);
 			$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+			// @codingStandardsIgnoreStart WordPress.WP.AlternativeFunctions.curl_curl_setopt
 			$mailchimp  = curl_init();
 
 			curl_setopt( $mailchimp, CURLOPT_URL, $url );
@@ -116,6 +118,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 			curl_setopt( $mailchimp, CURLOPT_SSL_VERIFYPEER, false );
 
 			return curl_exec( $mailchimp );
+			// @codingStandardsIgnoreEnd WordPress.WP.AlternativeFunctions.curl_curl_setopt
 		}
 
 		/**
@@ -125,7 +128,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 		 */
 		public function mailchimp_action() {
 
-			if ( ! isset( $_POST['kmt_mailchimp_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['kmt_mailchimp_nonce'] ), 'kmt_mailchimp_action' ) ) {
+			if ( ! isset( $_POST['kmt_mailchimp_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['kmt_mailchimp_nonce'] ) ), 'kmt_mailchimp_action' ) ) {
 				exit;
 			} else {
 
@@ -193,9 +196,13 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Widgets_Partials' ) ) {
 			}
 
 			wp_enqueue_script(
-				'kemet-addons-extra-widgets-js', KEMET_WIDGETS_URL . 'assets/js/' . $dir . '/extra-widgets-admin' . $js_prefix, array(
+				'kemet-addons-extra-widgets-js',
+				KEMET_WIDGETS_URL . 'assets/js/' . $dir . '/extra-widgets-admin' . $js_prefix,
+				array(
 					'jquery',
-				), KEMET_ADDONS_VERSION, true
+				),
+				KEMET_ADDONS_VERSION,
+				true
 			);
 		}
 	}
