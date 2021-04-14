@@ -2,7 +2,7 @@
 /**
  * Options Class
  *
- * @package Kemet Framework
+ * @package K Framework
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -581,7 +581,7 @@ if ( ! class_exists( 'KFW_Options' ) ) {
 		 * @return void
 		 */
 		public function add_admin_footer_text() {
-			$default = 'Thank you for creating with <a href="' . esc_url( 'https://leap13.com/' ) . '" target="_blank">Kemet Framework</a>';
+			$default = 'Thank you for creating with <a href="' . esc_url( 'https://leap13.com/' ) . '" target="_blank">K Framework</a>';
 			echo ! empty( $this->args['footer_credit'] ) ? wp_kses( $this->args['footer_credit'], kfw_allowed_html( 'all' ) ) : wp_kses( $default, kfw_allowed_html( array( 'a' ) ) );
 		}
 
