@@ -138,13 +138,6 @@ if ( ! class_exists( 'Kemet_Panel_Options_Tab' ) ) {
 					'subtitle' => __( 'Enable/Disable Mega Menu', 'kemet-addons' ),
 					'default'  => false,
 				),
-				array(
-					'id'       => 'custom-fonts',
-					'type'     => 'switcher',
-					'title'    => __( 'Custom Fonts', 'kemet-addons' ),
-					'subtitle' => __( 'Enable/Disable Custom fonts.', 'kemet-addons' ),
-					'default'  => false,
-				),
 			);
 
 			$woo_option = array(
