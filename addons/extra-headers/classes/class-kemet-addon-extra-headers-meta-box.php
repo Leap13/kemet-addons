@@ -51,6 +51,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 				add_filter( 'kemet_header_width', array( $this, 'header_width' ) );
 				add_filter( 'kemet_main_menu_link_color', array( $this, 'main_menu_color' ) );
 				add_filter( 'kemet_main_menu_link_h_color', array( $this, 'main_menu_hover_color' ) );
+				add_filter( 'kemet_main_menu_slug', array( $this, 'main_menu_slug' ) );
 			}
 
 		}
@@ -124,9 +125,28 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 							'title'      => __( 'Main menu Item Hover Color', 'kemet-addons' ),
 							'dependency' => array( 'kemet-main-header-display', '!=', 'disable' ),
 						),
+						array(
+							'id'          => 'header-main-menu-slug',
+							'type'        => 'select',
+							'title'       => __( 'Main Menu', 'kemet-addons' ),
+							'placeholder' => __( 'Select an option', 'kemet-addons' ),
+							'options'     => $this->get_wp_menus(),
+						),
 					),
 				)
 			);
+		}
+
+		/**
+		 * Get WP menus
+		 */
+		function get_wp_menus() {
+			$menus     = array();
+			$get_menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
+			foreach ( $get_menus as $menu ) {
+				$menus[ $menu->term_id ] = $menu->name;
+			}
+			return $menus;
 		}
 
 		/**
@@ -233,6 +253,22 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Meta_Box' ) ) {
 				} else {
 					return $main_menu_link_color;
 				}
+			}
+			return $default;
+		}
+
+		/**
+		 * Main menu slug
+		 *
+		 * @param string $default defult menu slug.
+		 * @return mixed
+		 */
+		public function main_menu_slug( $default ) {
+			$meta           = get_post_meta( get_the_ID(), 'kemet_page_options', true );
+			$main_menu_slug = isset( $meta['header-main-menu-slug'] ) ? $meta['header-main-menu-slug'] : '';
+
+			if ( '' != $main_menu_slug ) {
+				return $main_menu_slug;
 			}
 			return $default;
 		}
