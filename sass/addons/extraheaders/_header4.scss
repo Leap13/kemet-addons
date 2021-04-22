@@ -1,12 +1,12 @@
-.site-header{
-    &.kmt-header-transparent{
-        .kemet-merged-top-bar-header{
-            background: transparent;
-        }
-        .main-header-bar{
-            background: transparent;
-        }
+.kmt-header-transparent{
+    .kemet-merged-top-bar-header{
+        background: transparent;
     }
+    .main-header-bar{
+        background: transparent;
+    }
+}
+.site-header{
     .kemet-merged-top-bar-header{
         .main-header-bar{
             background: transparent;
