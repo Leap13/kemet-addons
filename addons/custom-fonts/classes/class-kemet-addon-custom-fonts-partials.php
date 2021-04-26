@@ -67,7 +67,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 
 			$fonts = $this->get_all_fonts();
 
-			foreach ( $fonts as $font_name => $values ) {
+			foreach ( $fonts as $custom_font => $font_values ) {
+				$font_name                     = $font_values['font-name'];
 				$elementor_fonts[ $font_name ] = 'kemet-custom-fonts';
 			}
 
@@ -146,7 +147,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
 				if ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) {
-					$fonts[ $font['font-name'] ] = $font;
+					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
 				}
 			}
 
@@ -162,11 +163,17 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		public function add_custom_fonts_to_customizer( $system_fonts ) {
 			$fonts = $this->get_all_fonts();
 
-			foreach ( $fonts as $font_name => $values ) {
-				$system_fonts[ $font_name ] = array(
-					'fallback' => ! empty( $values['font-fallback'] ) ? $values['font-fallback'] : 'Helvetica, Arial, sans-serif',
-					'weights'  => array( $values['font-weight'] ),
-				);
+			foreach ( $fonts as $custom_font => $font_values ) {
+				$font_name = $font_values['font-name'];
+				if ( isset( $system_fonts[ $font_name ] ) && ! in_array( $font_values['font-weight'], $system_fonts[ $font_name ]['weights'] ) ) {
+					$system_fonts[ $font_name ]['weights'][] = $font_values['font-weight'];
+					sort( $system_fonts[ $font_name ]['weights'] );
+				} else {
+					$system_fonts[ $font_name ] = array(
+						'fallback' => ! empty( $font_values['font-fallback'] ) ? $font_values['font-fallback'] : 'Helvetica, Arial, sans-serif',
+						'weights'  => array( $font_values['font-weight'] ),
+					);
+				}
 			}
 
 			return $system_fonts;
@@ -190,39 +197,40 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		public function render_fonts_css() {
 			$fonts    = $this->get_all_fonts();
 			$font_css = '';
-			foreach ( $fonts as $font_name => $values ) {
+			foreach ( $fonts as $custom_font => $font_values ) {
+				$font_name     = $font_values['font-name'];
 				$font_display  = '';
 				$font_fallback = '';
 				$font_weight   = '';
 				$font_family   = $font_name;
 				$font          = array();
-				if ( ! empty( $values['font-fallback'] ) ) {
-					$font_fallback = $values['font-fallback'];
+				if ( ! empty( $font_values['font-fallback'] ) ) {
+					$font_fallback = $font_values['font-fallback'];
 				}
-				if ( ! empty( $values['font-display'] ) ) {
-					$font_display = $values['font-display'];
+				if ( ! empty( $font_values['font-display'] ) ) {
+					$font_display = $font_values['font-display'];
 				}
-				if ( ! empty( $values['font-weight'] ) ) {
-					$font_weight                    = $values['font-weight'];
-					$font[ $values['font-weight'] ] = array();
+				if ( ! empty( $font_values['font-weight'] ) ) {
+					$font_weight                         = $font_values['font-weight'];
+					$font[ $font_values['font-weight'] ] = array();
 				}
-				if ( ! empty( $values['woff-font'] ) ) {
-					$font[ $values['font-weight'] ][0] = 'url(' . esc_url( $values['woff-font'] ) . ") format('woff')";
+				if ( ! empty( $font_values['woff-font'] ) ) {
+					$font[ $font_values['font-weight'] ][0] = 'url(' . esc_url( $font_values['woff-font'] ) . ") format('woff')";
 				}
-				if ( ! empty( $values['woff2-font'] ) ) {
-					$font[ $values['font-weight'] ][1] = 'url(' . esc_url( $values['woff2-font'] ) . ") format('woff2')";
+				if ( ! empty( $font_values['woff2-font'] ) ) {
+					$font[ $font_values['font-weight'] ][1] = 'url(' . esc_url( $font_values['woff2-font'] ) . ") format('woff2')";
 				}
-				if ( ! empty( $values['ttf-font'] ) ) {
-					$font[ $values['font-weight'] ][2] = 'url(' . esc_url( $values['ttf-font'] ) . ") format('TrueType')";
+				if ( ! empty( $font_values['ttf-font'] ) ) {
+					$font[ $font_values['font-weight'] ][2] = 'url(' . esc_url( $font_values['ttf-font'] ) . ") format('TrueType')";
 				}
-				if ( ! empty( $values['eot-font'] ) ) {
-					$font[ $values['font-weight'] ][3] = 'url(' . esc_url( $values['eot-font'] ) . ") format('eot')";
+				if ( ! empty( $font_values['eot-font'] ) ) {
+					$font[ $font_values['font-weight'] ][3] = 'url(' . esc_url( $font_values['eot-font'] ) . ") format('eot')";
 				}
-				if ( ! empty( $values['svg-font'] ) ) {
-					$font[ $values['font-weight'] ][4] = 'url(' . esc_url( $values['svg-font'] ) . ") format('svg')";
+				if ( ! empty( $font_values['svg-font'] ) ) {
+					$font[ $font_values['font-weight'] ][4] = 'url(' . esc_url( $font_values['svg-font'] ) . ") format('svg')";
 				}
-				if ( ! empty( $values['otf-font'] ) ) {
-					$font[ $values['font-weight'] ][5] = 'url(' . esc_url( $values['otf-font'] ) . ") format('OpenType')";
+				if ( ! empty( $font_values['otf-font'] ) ) {
+					$font[ $font_values['font-weight'] ][5] = 'url(' . esc_url( $font_values['otf-font'] ) . ") format('OpenType')";
 				}
 
 				foreach ( $font as $key => $value ) {
