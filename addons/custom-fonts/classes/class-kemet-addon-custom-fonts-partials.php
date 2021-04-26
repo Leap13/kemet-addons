@@ -60,7 +60,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		/**
 		 * Add custom fonts to elementor fonts
 		 *
-		 * @param array $fonts elementor fonts.
+		 * @param array $elementor_fonts elementor fonts.
 		 * @return array
 		 */
 		public function register_fonts_in_elementor( $elementor_fonts ) {
@@ -116,7 +116,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		 * @param array  $types types.
 		 * @param string $file file.
 		 * @param string $filename file name.
-		 * @param object $mimes mimes.
 		 * @return object
 		 */
 		public function update_mime_types( $types, $file, $filename ) {
@@ -187,7 +186,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		public function fonts_css() {
 			$css = $this->render_fonts_css();
 
-			printf( "<style type='text/css' class='kemet-custom-fonts'>%s</style>", $css );
+			printf( "<style type='text/css' class='kemet-custom-fonts'>%s</style>", $css ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		/**
 		 * Render fonts css

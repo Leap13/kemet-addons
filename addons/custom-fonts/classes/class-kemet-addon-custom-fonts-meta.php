@@ -64,11 +64,13 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 							'id'    => 'font-name',
 							'type'  => 'text',
 							'title' => __( 'Font Name', 'kemet-addons' ),
+							'desc'  => __( 'The name of the font as it appears in the customizer options.', 'kemet-addons' ),
 						),
 						array(
 							'id'    => 'font-fallback',
 							'type'  => 'text',
 							'title' => __( 'Font Fallback', 'kemet-addons' ),
+							'desc'  => __( "Add the font's fallback names with comma(,) separator. eg. Helvetica, Arial", 'kemet-addons' ),
 						),
 						array(
 							'id'      => 'font-display',
@@ -105,31 +107,37 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 							'id'    => 'woff-font',
 							'type'  => 'upload',
 							'title' => __( '.woff Font file', 'kemet-addons' ),
+							'desc'  => __( 'Upload .woff file', 'kemet-addons' ),
 						),
 						array(
 							'id'    => 'woff2-font',
 							'type'  => 'upload',
 							'title' => __( '.woff2 Font file', 'kemet-addons' ),
+							'desc'  => __( 'Upload .woff2 file', 'kemet-addons' ),
 						),
 						array(
 							'id'    => 'ttf-font',
 							'type'  => 'upload',
 							'title' => __( '.ttf Font file', 'kemet-addons' ),
+							'desc'  => __( 'Upload .ttf file', 'kemet-addons' ),
 						),
 						array(
 							'id'    => 'eot-font',
 							'type'  => 'upload',
 							'title' => __( '.eot Font file', 'kemet-addons' ),
+							'desc'  => __( 'Upload .eot file', 'kemet-addons' ),
 						),
 						array(
 							'id'    => 'svg-font',
 							'type'  => 'upload',
 							'title' => __( '.svg Font file', 'kemet-addons' ),
+							'desc'  => __( 'Upload .svg file', 'kemet-addons' ),
 						),
 						array(
 							'id'    => 'otf-font',
 							'type'  => 'upload',
 							'title' => __( '.otf Font file', 'kemet-addons' ),
+							'desc'  => __( 'Upload .otf file', 'kemet-addons' ),
 						),
 					),
 				)
