@@ -118,7 +118,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 * @return string
 		 */
 		public function add_to_wishlist_text( $text ) {
-			$text = __( 'Wishlist', 'kemet' );
+			$text = __( 'Wishlist', 'kemet-addons' );
 			return $text;
 		}
 
