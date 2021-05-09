@@ -66,7 +66,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		KEMET_THEME_SETTINGS . '[sale-text-color]',
 		array(
-			'label'    => __( 'Text Color', 'kemet' ),
+			'label'    => __( 'Text Color', 'kemet-addons' ),
 			'priority' => 11,
 			'section'  => 'section-woo-general',
 		)
@@ -90,7 +90,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		KEMET_THEME_SETTINGS . '[sale-background-color]',
 		array(
-			'label'    => __( 'Background Color', 'kemet' ),
+			'label'    => __( 'Background Color', 'kemet-addons' ),
 			'priority' => 12,
 			'section'  => 'section-woo-general',
 		)
@@ -505,7 +505,7 @@ $wp_customize->add_control(
 	array(
 		'section'  => 'woocommerce_product_catalog',
 		'priority' => 61,
-		'label'    => __( 'Load More Text', 'kemet' ),
+		'label'    => __( 'Load More Text', 'kemet-addons' ),
 		'type'     => 'text',
 	)
 );
