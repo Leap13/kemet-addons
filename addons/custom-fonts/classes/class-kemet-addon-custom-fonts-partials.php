@@ -42,6 +42,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			}
 			add_filter( 'elementor/fonts/groups', array( $this, 'register_fonts_groups' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'register_fonts_in_elementor' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'adobe_fonts_css' ), 10 );
+			add_action( 'admin_enqueue_scripts', array( $this, 'adobe_fonts_css' ), 100 );
 		}
 
 		/**
@@ -70,6 +72,13 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			foreach ( $fonts as $custom_font => $font_values ) {
 				$font_name                     = $font_values['font-name'];
 				$elementor_fonts[ $font_name ] = 'kemet-custom-fonts';
+			}
+
+			$adobe_fonts = $this->get_adobe_fonts();
+			if ( ! empty( $adobe_fonts ) ) {
+				foreach ( $adobe_fonts as $adobe_font => $font_values ) {
+					$elementor_fonts[ $adobe_font ] = 'kemet-custom-fonts';
+				}
 			}
 
 			return $elementor_fonts;
@@ -145,7 +154,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
-				if ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) {
+				if ( 'file' == $font['font-type'] && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
 					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
 				}
 			}
@@ -154,6 +163,65 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		}
 
 		/**
+		 * Get adobe fonts
+		 *
+		 * @return array
+		 */
+		public function get_adobe_fonts() {
+			$args      = array(
+				'post_type' => KEMET_CUSTOM_FONTS_POST_TYPE,
+			);
+			$all_fonts = get_posts( $args );
+			$fonts     = array();
+			foreach ( $all_fonts as $font ) {
+				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
+				if ( 'adobe-kit' == $font['font-type'] && ( isset( $font['adobe-project-id'] ) && ! empty( $font['adobe-project-id'] ) ) ) {
+					$project_id = $font['adobe-project-id'];
+					$data       = $this->get_adobe_project( $project_id );
+					foreach ( $data['kit']['families'] as $font_family ) {
+						$css_names     = isset( $font_family['css_names'][0] ) ? $font_family['css_names'][0] : $font_family['slug'];
+						$font_fallback = isset( $font_family['css_names'] ) && is_array( $font_family['css_names'] ) ? end( $font_family['css_names'] ) : 'sans-serif';
+						$variations    = $font_family['variations'];
+						$weights       = array();
+						foreach ( $variations as $variation ) {
+							$font_variations = str_split( $variation );
+							$weight          = $font_variations[1] . '00';
+							if ( ! in_array( $weight, $weights ) ) {
+								$weights[] = $weight;
+							}
+						}
+						sort( $weights );
+						$fonts[ $font_family['slug'] ] = array(
+							'fallback' => $font_fallback,
+							'weights'  => $weights,
+						);
+					}
+				}
+			}
+
+			return $fonts;
+		}
+		/**
+		 * Get adobe project details
+		 *
+		 * @param string $project_id adobe web project id.
+		 * @return array
+		 */
+		public function get_adobe_project( $project_id ) {
+			$api_args = array(
+				'timeout' => 100,
+			);
+
+			$request = wp_remote_get( 'https://typekit.com/api/v1/json/kits/' . $project_id . '/published', $api_args );
+
+			if ( ! is_wp_error( $request ) && 200 === (int) wp_remote_retrieve_response_code( $request ) ) {
+				$font_data = json_decode( wp_remote_retrieve_body( $request ), true );
+				return $font_data;
+			} else {
+				return array();
+			}
+		}
+		/**
 		 * Add custom fonts to customizer
 		 *
 		 * @param array $system_fonts theme system fonts.
@@ -161,7 +229,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		 */
 		public function add_custom_fonts_to_customizer( $system_fonts ) {
 			$fonts = $this->get_all_fonts();
-
 			foreach ( $fonts as $custom_font => $font_values ) {
 				$font_name = $font_values['font-name'];
 				if ( isset( $system_fonts[ $font_name ] ) && ! in_array( $font_values['font-weight'], $system_fonts[ $font_name ]['weights'] ) ) {
@@ -174,10 +241,31 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 					);
 				}
 			}
-
+			$adobe_fonts = $this->get_adobe_fonts();
+			if ( ! empty( $adobe_fonts ) ) {
+				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
+			}
 			return $system_fonts;
 		}
 
+		/**
+		 * Adobe fonts css
+		 *
+		 * @return void
+		 */
+		public function adobe_fonts_css() {
+			$args      = array(
+				'post_type' => KEMET_CUSTOM_FONTS_POST_TYPE,
+			);
+			$all_fonts = get_posts( $args );
+			$fonts     = array();
+			foreach ( $all_fonts as $font ) {
+				$custom_font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
+				if ( 'adobe-kit' == $custom_font['font-type'] && ( isset( $custom_font['adobe-project-id'] ) && ! empty( $custom_font['adobe-project-id'] ) ) ) {
+					wp_enqueue_style( 'custom-typekit-' . $font->ID, sprintf( 'https://use.typekit.net/%s.css', $custom_font['adobe-project-id'] ), array(), KEMET_ADDONS_VERSION );
+				}
+			}
+		}
 		/**
 		 * Fonts css
 		 *
