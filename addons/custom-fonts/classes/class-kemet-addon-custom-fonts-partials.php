@@ -154,7 +154,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
-				if ( 'file' == $font['font-type'] && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
+				if ( ( isset( $font['font-type'] ) && 'file' == $font['font-type'] ) && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
 					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
 				}
 			}
@@ -175,7 +175,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
-				if ( 'adobe-kit' == $font['font-type'] && ( isset( $font['adobe-project-id'] ) && ! empty( $font['adobe-project-id'] ) ) ) {
+				if ( ( isset( $font['font-type'] ) && 'adobe-kit' == $font['font-type'] ) && ( isset( $font['adobe-project-id'] ) && ! empty( $font['adobe-project-id'] ) ) ) {
 					$project_id = $font['adobe-project-id'];
 					$data       = $this->get_adobe_project( $project_id );
 					foreach ( $data['kit']['families'] as $font_family ) {
@@ -261,7 +261,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$custom_font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
-				if ( 'adobe-kit' == $custom_font['font-type'] && ( isset( $custom_font['adobe-project-id'] ) && ! empty( $custom_font['adobe-project-id'] ) ) ) {
+				if ( ( isset( $custom_font['font-type'] ) && 'adobe-kit' == $custom_font['font-type'] ) && ( isset( $custom_font['adobe-project-id'] ) && ! empty( $custom_font['adobe-project-id'] ) ) ) {
 					wp_enqueue_style( 'custom-typekit-' . $font->ID, sprintf( 'https://use.typekit.net/%s.css', $custom_font['adobe-project-id'] ), array(), KEMET_ADDONS_VERSION );
 				}
 			}
