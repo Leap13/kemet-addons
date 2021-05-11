@@ -209,7 +209,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					$action           = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
 					$priority         = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : 10;
 					$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
-
+					$widgets_hooks    = array( 'kemet_header-widget', 'kemet_header-right-section' );
 					if ( in_array( $action, $top_bar_sections ) ) {
 
 						switch ( $action ) {
@@ -223,7 +223,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 						}
 					}
 
-					if ( strpos( $action, 'kemet_main-footer-widget' ) !== false ) {
+					if ( strpos( $action, 'kemet_main-footer-widget' ) !== false || in_array( $action, $widgets_hooks ) ) {
 						add_filter( $action . '_hook', '__return_true' );
 					}
 
@@ -561,6 +561,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 						'kemet_top_bar_section_1'      => esc_html__( 'Top Bar Section 1', 'kemet-addons' ),
 						'kemet_top_bar_section_2'      => esc_html__( 'Top Bar Section 2', 'kemet-addons' ),
 						'kemet_header'                 => __( 'Main Header', 'kemet-addons' ),
+						'kemet_header-widget'          => __( 'Replace Header Sidebar', 'kemet-addons' ),
+						'kemet_header-right-section'   => __( 'Replace Header Right Section Sidebar', 'kemet-addons' ),
 						'kemet_main_header_bar_top'    => __( 'Top of Header Content', 'kemet-addons' ),
 						'kemet_sitehead_top'           => esc_html__( 'Top of <header> tag', 'kemet-addons' ),
 						'kemet_sitehead'               => __( 'Header Content', 'kemet-addons' ),
