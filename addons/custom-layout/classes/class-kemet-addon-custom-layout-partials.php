@@ -603,8 +603,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 				'sidebar' => array(
 					'title' => __( 'sidebar', 'kemet-addons' ),
 					'value' => array(
-						'kemet_sidebars_before' => __( 'Before Sidebar Wrapper', 'kemet-addons' ),
-						'kemet_sidebars_after'  => __( 'After Sidebar Wrapper', 'kemet-addons' ),
+						'kemet_sidebars_before'         => __( 'Before Sidebar Wrapper', 'kemet-addons' ),
+						'kemet_dynamic_sidebar_content' => __( 'Replace Sidebar', 'kemet-addons' ),
+						'kemet_sidebars_after'          => __( 'After Sidebar Wrapper', 'kemet-addons' ),
 					),
 				),
 				'footer'  => array(
