@@ -222,6 +222,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 								break;
 						}
 					}
+
+					if ( strpos( $action, 'kemet_main-footer-widget' ) !== false ) {
+						add_filter( $action . '_hook', '__return_true' );
+					}
+
 					// Add Action.
 					add_action(
 						$action,
@@ -407,7 +412,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 				$priority = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
 
 				$exclude_wrapper_hooks = array( 'kemet_head_top', 'wp_head', 'wp_footer' );
-				if ( in_array( $action, $exclude_wrapper_hooks ) ) {
+				if ( in_array( $action, $exclude_wrapper_hooks ) || strpos( $action, 'kemet_main-footer-widget' ) !== false ) {
 					remove_filter( 'the_content', 'wpautop' );
 				}
 
@@ -417,7 +422,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 					$action = 'kemet_addons_custom_layout_hook';
 				}
-				if ( 'kemet_addons_custom_layout_hook' == $action ) {
+				if ( 'kemet_addons_custom_layout_hook' == $action || strpos( $action, 'kemet_main-footer-widget' ) !== false ) {
 
 					remove_action( 'kemet_addons_custom_layout_hook', array( $this, 'default_content' ) );
 					add_action( 'kemet_addons_custom_layout_hook', 'the_content' );
@@ -613,6 +618,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					'value' => array(
 						'kemet_footer_before'           => esc_html__( 'Before of <footer> tag', 'kemet-addons' ),
 						'kemet_footer_content_top'      => esc_html__( 'Top of <footer> tag', 'kemet-addons' ),
+						'kemet_main-footer-widget-1'    => esc_html__( 'Replace Footer 1 Sidebar', 'kemet-addons' ),
+						'kemet_main-footer-widget-2'    => esc_html__( 'Replace Footer 2 Sidebar', 'kemet-addons' ),
+						'kemet_main-footer-widget-3'    => esc_html__( 'Replace Footer 3 Sidebar', 'kemet-addons' ),
+						'kemet_main-footer-widget-4'    => esc_html__( 'Replace Footer 4 Sidebar', 'kemet-addons' ),
+						'kemet_main-footer-widget-5'    => esc_html__( 'Replace Footer 5 Sidebar', 'kemet-addons' ),
 						'kemet_footer_content'          => __( 'Top of Footer Content', 'kemet-addons' ),
 						'kemet_footer_container_top'    => __( 'Top of footer container', 'kemet-addons' ),
 						'kemet_footer_container_bottom' => __( 'Bottom of footer container', 'kemet-addons' ),
