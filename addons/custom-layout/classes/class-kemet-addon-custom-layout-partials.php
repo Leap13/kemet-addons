@@ -209,7 +209,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					$action           = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
 					$priority         = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : 10;
 					$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
-					$widgets_hooks    = array( 'kemet_header-widget', 'kemet_header-right-section' );
+					$widgets_hooks    = array( 'kemet_header-widget', 'kemet_header-right-section', 'kemet_copyright-widget-1', 'kemet_copyright-widget-2' );
 					if ( in_array( $action, $top_bar_sections ) ) {
 
 						switch ( $action ) {
@@ -625,6 +625,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 						'kemet_main-footer-widget-3'    => esc_html__( 'Replace Footer 3 Sidebar', 'kemet-addons' ),
 						'kemet_main-footer-widget-4'    => esc_html__( 'Replace Footer 4 Sidebar', 'kemet-addons' ),
 						'kemet_main-footer-widget-5'    => esc_html__( 'Replace Footer 5 Sidebar', 'kemet-addons' ),
+						'kemet_copyright-widget-1'      => esc_html__( 'Replace Footer Copyright Section 1 Sidebar', 'kemet-addons' ),
+						'kemet_copyright-widget-2'      => esc_html__( 'Replace Footer Copyright Section 2 Sidebar', 'kemet-addons' ),
 						'kemet_footer_content'          => __( 'Top of Footer Content', 'kemet-addons' ),
 						'kemet_footer_container_top'    => __( 'Top of footer container', 'kemet-addons' ),
 						'kemet_footer_container_bottom' => __( 'Bottom of footer container', 'kemet-addons' ),
