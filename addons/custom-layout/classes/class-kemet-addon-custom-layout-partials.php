@@ -209,7 +209,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					$action           = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
 					$priority         = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : 10;
 					$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
-					$widgets_hooks    = array( 'kemet_header-widget', 'kemet_header-right-section', 'kemet_copyright-widget-1', 'kemet_copyright-widget-2' );
+					$widgets_hooks    = array( 'kemet_header-widget', 'kemet_header-right-section', 'kemet_copyright-widget-1', 'kemet_copyright-widget-2', 'kemet_top-widget-section1', 'kemet_top-widget-section2', 'kemet_off-canvas-filter-widget' );
 					if ( in_array( $action, $top_bar_sections ) ) {
 
 						switch ( $action ) {
@@ -407,18 +407,18 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 				$post_id = get_the_id();
 
-				$meta     = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-				$action   = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
-				$priority = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
-
+				$meta                  = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
+				$action                = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+				$priority              = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
+				$widgets_hooks         = array( 'kemet_header-widget', 'kemet_header-right-section', 'kemet_copyright-widget-1', 'kemet_copyright-widget-2', 'kemet_top-widget-section1', 'kemet_top-widget-section2', 'kemet_off-canvas-filter-widget' );
 				$exclude_wrapper_hooks = array( 'kemet_head_top', 'wp_head', 'wp_footer' );
-				if ( in_array( $action, $exclude_wrapper_hooks ) || strpos( $action, 'kemet_main-footer-widget' ) !== false ) {
+				if ( in_array( $action, $exclude_wrapper_hooks ) || strpos( $action, 'kemet_main-footer-widget' ) !== false || in_array( $action, $widgets_hooks ) ) {
 					remove_filter( 'the_content', 'wpautop' );
 				}
 
 				$hooks = self::get_hooks_options();
 
-				if ( isset( $hooks['content']['value'][ $action ] ) || isset( $hooks['sidebar']['value'][ $action ] ) ) {
+				if ( isset( $hooks['content']['value'][ $action ] ) || isset( $hooks['sidebar']['value'][ $action ] ) || in_array( $action, $widgets_hooks ) ) {
 
 					$action = 'kemet_addons_custom_layout_hook';
 				}
@@ -559,6 +559,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 						'kemet_body_top'               => esc_html__( 'Top of <body> tag', 'kemet-addons' ),
 						'kemet_before_header_block'    => esc_html__( 'Before <header> tag', 'kemet-addons' ),
 						'kemet_top_bar_section_1'      => esc_html__( 'Top Bar Section 1', 'kemet-addons' ),
+						'kemet_top-widget-section1'    => esc_html__( 'Replace Top Bar Section 1 Sidebar', 'kemet-addons' ),
+						'kemet_top-widget-section2'    => esc_html__( 'Replace Top Bar Section 2 Sidebar', 'kemet-addons' ),
 						'kemet_top_bar_section_2'      => esc_html__( 'Top Bar Section 2', 'kemet-addons' ),
 						'kemet_header'                 => __( 'Main Header', 'kemet-addons' ),
 						'kemet_header-widget'          => __( 'Replace Header Sidebar', 'kemet-addons' ),
@@ -644,6 +646,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 						'woocommerce_before_main_content'  => __( 'Before the WooCommerce Main Content', 'kemet-addons' ),
 						'woocommerce_after_main_content'   => __( 'After the WooCommerce Main Content ', 'kemet-addons' ),
 						'woocommerce_sidebar'              => __( 'WooCommerce sidebar action', 'kemet-addons' ),
+						'kemet_off-canvas-filter-widget'   => __( 'Replace Off-Canvas sidebar', 'kemet-addons' ),
 						'woocommerce_breadcrumb'           => __( 'WooCommerce breadcrumb action', 'kemet-addons' ),
 						'woocommerce_before_template_part' => __( 'Before WooCommerce template part', 'kemet-addons' ),
 						'woocommerce_after_template_part'  => __( 'After WooCommerce template part', 'kemet-addons' ),
