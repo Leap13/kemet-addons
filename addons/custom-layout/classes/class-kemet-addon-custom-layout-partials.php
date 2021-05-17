@@ -406,10 +406,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 				$post_id = get_the_id();
 
-				$meta          = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-				$action        = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
-				$priority      = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
-				$widgets_hooks = $this->get_sidebar_hooks();
+				$meta                  = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
+				$action                = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+				$priority              = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
+				$exclude_wrapper_hooks = array( 'kemet_head_top', 'wp_head', 'wp_footer' );
+				$widgets_hooks         = $this->get_sidebar_hooks();
 				if ( in_array( $action, $exclude_wrapper_hooks ) || strpos( $action, 'kemet_main-footer-widget' ) !== false || in_array( $action, $widgets_hooks ) ) {
 					remove_filter( 'the_content', 'wpautop' );
 				}
