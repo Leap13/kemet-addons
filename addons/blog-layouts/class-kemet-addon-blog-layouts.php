@@ -41,6 +41,12 @@ if ( ! class_exists( 'Kemet_Addon_Blog_Layouts' ) ) {
 		 */
 		public function __construct() {
 
+			require_once KEMET_BLOG_LAYOUTS_DIR . 'library/background-process/class-wp-async-request.php';
+			require_once KEMET_BLOG_LAYOUTS_DIR . 'library/background-process/class-wp-background-process.php';
+			require_once KEMET_BLOG_LAYOUTS_DIR . 'library/class-image-processing-queue.php';
+			require_once KEMET_BLOG_LAYOUTS_DIR . 'library/class-ipq-exception.php';
+			require_once KEMET_BLOG_LAYOUTS_DIR . 'library/class-resize-process.php';
+			require_once KEMET_BLOG_LAYOUTS_DIR . 'library/functions.php';
 			require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-kemet-blog-layouts-partials.php';
 			require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-kemet-blog-layouts-settings.php';
 			require_once KEMET_BLOG_LAYOUTS_DIR . 'classes/class-blog-layouts-helpers.php';
