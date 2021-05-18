@@ -58,8 +58,8 @@ if ( ! class_exists( 'Kemet_Addon_Single_Post_Settings' ) ) {
 			$defaults['content-alignment']                 = 'left';
 			$defaults['featured-image-header']             = false;
 			$defaults['page-header-title']                 = 'post-title';
-			$defaults['single-post-featured-image-width']  = false;
-			$defaults['single-post-featured-image-height'] = 'post-title';
+			$defaults['single-post-featured-image-width']  = '';
+			$defaults['single-post-featured-image-height'] = '';
 			return $defaults;
 		}
 
