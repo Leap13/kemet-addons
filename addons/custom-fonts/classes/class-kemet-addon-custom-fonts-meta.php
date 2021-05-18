@@ -66,7 +66,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 							'title'   => __( 'Font Type', 'kemet-addons' ),
 							'options' => array(
 								'file'      => __( 'Upload File', 'kemet-addons' ),
-								'adobe-kit' => __( 'Adobe Type Kit', 'kemet-addons' ),
+								'adobe-kit' => __( 'Adobe TypeKit', 'kemet-addons' ),
 							),
 							'default' => 'file',
 						),
