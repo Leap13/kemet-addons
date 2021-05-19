@@ -153,13 +153,18 @@
   .kmt-wdg-posts-list {
     margin: 0px;
     list-style: none;
-    li {
+    li.kmt-wgt-post {
+      display: flex;
+      align-items: center;
       padding: 15px 0px 15px 0;
       overflow: hidden;
       list-style: none;
       margin-bottom: 0px !important;
       .wgt-img {
         margin: 0 10px 0 0;
+      }
+      .wgt-post {
+        flex: 1;
       }
       .wdg-posttitle {
         line-height: 1;

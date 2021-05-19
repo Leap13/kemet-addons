@@ -175,18 +175,24 @@
   list-style: none;
 }
 
-.kfw-widget-posts-list .kmt-wdg-posts-list li {
+.kfw-widget-posts-list .kmt-wdg-posts-list li.kmt-wgt-post {
+  display: flex;
+  align-items: center;
   padding: 15px 0 15px 0px;
   overflow: hidden;
   list-style: none;
   margin-bottom: 0px !important;
 }
 
-.kfw-widget-posts-list .kmt-wdg-posts-list li .wgt-img {
+.kfw-widget-posts-list .kmt-wdg-posts-list li.kmt-wgt-post .wgt-img {
   margin: 0 0 0 10px;
 }
 
-.kfw-widget-posts-list .kmt-wdg-posts-list li .wdg-posttitle {
+.kfw-widget-posts-list .kmt-wdg-posts-list li.kmt-wgt-post .wgt-post {
+  flex: 1;
+}
+
+.kfw-widget-posts-list .kmt-wdg-posts-list li.kmt-wgt-post .wdg-posttitle {
   line-height: 1;
 }
 

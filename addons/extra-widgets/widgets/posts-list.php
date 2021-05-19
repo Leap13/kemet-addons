@@ -86,7 +86,7 @@ if ( ! function_exists( 'kemet_widget_posts_list' ) ) {
 				$post_title = get_the_title( $q_post->ID );
 				$title      = ( ! empty( $post_title ) ) ? $post_title : __( '(no title)' );
 				?>
-				<li>
+				<li class="kmt-wgt-post">
 					<?php
 					if ( function_exists( 'has_post_thumbnail' ) && has_post_thumbnail( $q_post->ID ) && $display_thumbnail ) {
 						?>
@@ -94,8 +94,10 @@ if ( ! function_exists( 'kemet_widget_posts_list' ) ) {
 							<a class="ttip" title="<?php echo esc_html( $title ); ?>" href="<?php the_permalink( $q_post->ID ); ?>" ><?php echo get_the_post_thumbnail( $q_post->ID, array( '50', '50' ) ); ?></a>
 					</div><!-- wgt-img /-->
 					<?php } ?>
-					<div class="wdg-posttitle"><a href="<?php the_permalink( $q_post->ID ); ?>"><?php echo esc_html( $title ); ?></a></div>
-					<small class="small"><?php echo get_the_date( '', $q_post->ID ); ?></small>
+					<div class="wgt-post">
+						<div class="wdg-posttitle"><a href="<?php the_permalink( $q_post->ID ); ?>"><?php echo esc_html( $title ); ?></a></div>
+						<small class="small"><?php echo get_the_date( '', $q_post->ID ); ?></small>
+					</div>
 				</li>
 				<?php
 			}
