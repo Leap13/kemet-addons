@@ -1,7 +1,7 @@
 {
   "name": "kemetaddons",
-  "version": "1.1.16",
-  "description": "Smart Theme",
+  "version": "1.1.20",
+  "description": "Plugin",
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",

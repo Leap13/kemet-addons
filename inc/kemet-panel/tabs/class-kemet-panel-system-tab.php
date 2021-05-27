@@ -245,7 +245,7 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 									wp_kses(
 										esc_html__( 'by', 'kemet-addons' ) . ' ' . $plugin_data['Author'] . esc_html( ' &ndash; ' ) . esc_html( $plugin_data['Version'] ) . $version_string . $network_string,
 										kemet_allowed_html( array( 'a' ) )
-									),
+									)
 								);
 							?>
 							</td>

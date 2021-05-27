@@ -77,9 +77,9 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 					'<a href="%1$s" class="custom-logo-link sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
 					wp_get_attachment_image(
-						$custom_logo_id,
-						$size,
-						false,
+						apply_filters( 'kemet_sticky_logo_id', $custom_logo_id ), // Attachment id.
+						$size, // Attachment size.
+						false, // Attachment icon.
 						array(
 							'class' => 'custom-logo',
 						)
@@ -89,9 +89,9 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 					'<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
 					wp_get_attachment_image(
-						get_theme_mod( 'custom_logo' ),
-						$size,
-						false,
+						apply_filters( 'kemet_custom_logo_id', get_theme_mod( 'custom_logo' ) ), // Attachment id.
+						'kmt-logo-size', // Attachment size.
+						false, // Attachment icon.
 						array(
 							'class' => 'custom-logo',
 						)

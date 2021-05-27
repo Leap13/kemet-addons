@@ -483,7 +483,7 @@ module.exports = function (grunt) {
             poedit: true,
             "x-poedit-keywordslist": true,
           },
-          type: "wp-theme",
+          type: "wp-plugin",
           updateTimestamp: true,
         },
       },
@@ -495,7 +495,11 @@ module.exports = function (grunt) {
       },
       target: {
         files: {
-          src: ["*.php", "**/*.php", "!node_modules/**"],
+          src: [
+            "*.php", 
+            "**/*.php", 
+            "!node_modules/**",
+            "!inc/k-framework/**"],
         },
       },
     },
@@ -510,8 +514,19 @@ module.exports = function (grunt) {
     },
 
     replace: {
-      theme_main: {
-        src: ["kemet-addons.php"],
+      plugin_readme: {
+        src: ['readme.txt'],
+        overwrite: true,
+        replacements: [
+          {
+            from: /Stable tag: \bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?(?:\+[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?\b/g,
+            to: "Stable tag: <%= pkg.version %>",
+          },
+        ],
+      },
+
+      plugin_main: {
+        src: ['kemet-addons.php'],
         overwrite: true,
         replacements: [
           {
@@ -521,7 +536,7 @@ module.exports = function (grunt) {
         ],
       },
 
-      theme_const: {
+      plugin_const: {
         src: ["kemet-addons.php"],
         overwrite: true,
         replacements: [
@@ -540,7 +555,14 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   // grunt.loadNpmTasks('grunt-contrib-cssmin');
-  //grunt.loadNpmTasks("grunt-wp-i18n");
+
+  grunt.loadNpmTasks("grunt-wp-i18n");
+  grunt.loadNpmTasks("grunt-bumpup");
+  grunt.loadNpmTasks("grunt-text-replace");
+  grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-contrib-compress");
+  grunt.loadNpmTasks("grunt-contrib-clean");
 
   // SASS compile
   grunt.registerTask("default", ["sass", "cssmin:css"]);
