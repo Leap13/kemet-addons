@@ -48,6 +48,8 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 == Changelog ==
 1.1.20 version
 - Added: Typekit Font to Custom font addon.
+- Added: Replace Sidebar option.
+- Added: Sticky sidebar option.
 
 1.1.19 version
 - Fixed: Logo filter issue.
