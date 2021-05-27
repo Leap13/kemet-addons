@@ -88,10 +88,10 @@ if ( ! class_exists( 'Kemet_Addon_Top_Bar_Settings' ) ) {
 			$defaults['topbar-link-h-color']          = '';
 			$defaults['topbar-border-size']           = array(
 				'desktop'      => array(
-					'top'    => 2,
-					'right'  => 2,
+					'top'    => '',
+					'right'  => '',
 					'bottom' => 2,
-					'left'   => 2,
+					'left'   => '',
 				),
 				'tablet'       => array(
 					'top'    => '',

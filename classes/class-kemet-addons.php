@@ -96,6 +96,7 @@ if ( ! class_exists( 'Kemet_Addons' ) ) {
 		 * @return void
 		 */
 		public function includes() {
+			require_once KEMET_ADDONS_DIR . 'inc/image-processing-queue/class-kemet-image-processing-qeue.php';
 			require_once KEMET_ADDONS_DIR . 'inc/kemet-panel/class-kemet-addons-panel.php';
 			require_once KEMET_ADDONS_DIR . 'inc/compatibility/class-kemet-addons-compatibility.php';
 			require_once KEMET_ADDONS_DIR . 'classes/class-kemet-style-generator.php';

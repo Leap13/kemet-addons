@@ -76,6 +76,8 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Settings' ) ) {
 			$defaults['layout-2-post-border-size']      = '';
 			$defaults['load-more-style']                = 'dots';
 			$defaults['load-more-text']                 = 'Load More';
+			$defaults['blog-featured-image-width']      = '';
+			$defaults['blog-featured-image-height']     = '';
 
 			return $defaults;
 		}

@@ -93,24 +93,6 @@
 .kmt-social-description {
   margin-bottom: 15px;
 }
-.kmt-social-profiles .kmt-profile-link .profile-icon.facebook {
-  color: #3b5998;
-}
-.kmt-social-profiles .kmt-profile-link .profile-icon.facebook-alt {
-  color: #3b5998;
-}
-.kmt-social-profiles .kmt-profile-link .profile-icon.twitter {
-  color: #1da1f2;
-}
-.kmt-social-profiles .kmt-profile-link .profile-icon.googleplus {
-  color: #db4437;
-}
-.kmt-social-profiles .kmt-profile-link .profile-icon.wordpress-alt {
-  color: #21759b;
-}
-.kmt-social-profiles .kmt-profile-link .profile-icon.wordpress {
-  color: #21759b;
-}
 /********************** posts in images widget **********************/
 .wgt-img {
   margin: 0px 9px 9px 0px;
@@ -153,13 +135,18 @@
   .kmt-wdg-posts-list {
     margin: 0px;
     list-style: none;
-    li {
+    li.kmt-wgt-post {
+      display: flex;
+      align-items: center;
       padding: 15px 0px 15px 0;
       overflow: hidden;
       list-style: none;
       margin-bottom: 0px !important;
       .wgt-img {
         margin: 0 10px 0 0;
+      }
+      .wgt-post {
+        flex: 1;
       }
       .wdg-posttitle {
         line-height: 1;

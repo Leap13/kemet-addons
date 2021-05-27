@@ -62,7 +62,7 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 - Fixed: PHP Version 7.2 compatibility issue.
 
 1.1.16 version
-- Tweak: Update K framework
+- Tweak: Update K framework.
 - Tweak: Code refactored for better performance and security.
 
 1.1.15 version

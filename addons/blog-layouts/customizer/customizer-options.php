@@ -771,3 +771,68 @@ $wp_customize->add_control(
 		'type'     => 'text',
 	)
 );
+
+/**
+* Option: Title
+*/
+$wp_customize->add_control(
+	new Kemet_Control_Title(
+		$wp_customize,
+		KEMET_THEME_SETTINGS . '[kmt-featured-image]',
+		array(
+			'type'     => 'kmt-title',
+			'label'    => __( 'Featured Image Settings', 'kemet' ),
+			'section'  => 'section-blog',
+			'priority' => 180,
+			'settings' => array(),
+		)
+	)
+);
+
+/**
+ * Option: Featured Image Custom Width
+ */
+$wp_customize->add_setting(
+	KEMET_THEME_SETTINGS . '[blog-featured-image-width]',
+	array(
+		'default'           => $defaults['blog-featured-image-width'],
+		'type'              => 'option',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+	)
+);
+$wp_customize->add_control(
+	KEMET_THEME_SETTINGS . '[blog-featured-image-width]',
+	array(
+		'type'        => 'number',
+		'section'     => 'section-blog',
+		'priority'    => 185,
+		'label'       => __( 'Featured Image Custom Width', 'kemet' ),
+		'input_attrs' => array(
+			'min' => 0,
+		),
+	)
+);
+
+/**
+ * Option: Featured Image Custom Height
+ */
+$wp_customize->add_setting(
+	KEMET_THEME_SETTINGS . '[blog-featured-image-height]',
+	array(
+		'default'           => $defaults['blog-featured-image-height'],
+		'type'              => 'option',
+		'sanitize_callback' => array( 'Kemet_Customizer_Sanitizes', 'sanitize_number' ),
+	)
+);
+$wp_customize->add_control(
+	KEMET_THEME_SETTINGS . '[blog-featured-image-height]',
+	array(
+		'type'        => 'number',
+		'section'     => 'section-blog',
+		'priority'    => 190,
+		'label'       => __( 'Featured Image Custom Height', 'kemet' ),
+		'input_attrs' => array(
+			'min' => 0,
+		),
+	)
+);
