@@ -59,6 +59,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_item' ), 500 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 			add_action( 'wp_loaded', array( $this, 'set_default_options' ) );
+			add_action( 'enable_kemet_admin_menu_item', '__return_true' );
 		}
 
 		/**
@@ -92,7 +93,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 */
 		public function register_custom_menu_page() {
 			$tabs = $this->tabs();
-			add_menu_page( __( 'Kemet Panel', 'kemet-addons' ), __( 'Kemet', 'kemet-addons' ), 'manage_options', 'kemet_panel', array( $this, 'render' ), null );
+			add_submenu_page( 'kemet_panel', __( 'Kemet Panel', 'kemet-addons' ), __( 'Kemet Panel', 'kemet-addons' ), 'manage_options', 'kemet_panel', array( $this, 'render' ), null );
 			foreach ( $tabs as $tab => $values ) {
 				add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel#tab=' . $values['slug'] );
 			}
