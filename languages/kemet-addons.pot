@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v3.0..
 msgid ""
 msgstr ""
-"Project-Id-Version: Kemet Addons 1.1.19\n"
+"Project-Id-Version: Kemet Addons 1.1.20\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kemet-addons\n"
-"POT-Creation-Date: 2021-05-06 12:30:15+00:00\n"
+"POT-Creation-Date: 2021-05-27 10:51:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -305,6 +305,234 @@ msgstr ""
 msgid "Infinite Scroll: Last Text"
 msgstr ""
 
+#: addons/blog-layouts/customizer/customizer-options.php:784
+#: addons/single-post/customizer/customizer-options.php:260
+msgid "Featured Image Settings"
+msgstr ""
+
+#: addons/blog-layouts/customizer/customizer-options.php:809
+#: addons/single-post/customizer/customizer-options.php:285
+msgid "Featured Image Custom Width"
+msgstr ""
+
+#: addons/blog-layouts/customizer/customizer-options.php:833
+#: addons/single-post/customizer/customizer-options.php:309
+msgid "Featured Image Custom Height"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:50
+msgid "Kemet Custom Font options"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:66
+msgid "Font Type"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:68
+msgid "Upload File"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:69
+msgid "Adobe TypeKit"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:76
+msgid "Adobe TypeKit Project ID"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:83
+msgid "Font Name"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:84
+msgid "The name of the font as it appears in the customizer options."
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:90
+msgid "Font Fallback"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:91
+msgid "Add the font's fallback names with comma(,) separator. eg. Helvetica, Arial"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:97
+msgid "Font Display"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:100
+#: inc/k-framework/fields/background/class-kfw-field-background.php:271
+msgid "Auto"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:101
+msgid "Block"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:102
+msgid "Swap"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:103
+msgid "Fallback"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:104
+msgid "Optional"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:111
+#: addons/page-title/customizer/customizer-options.php:334
+#: addons/page-title/customizer/customizer-options.php:607
+#: addons/page-title/customizer/customizer-options.php:801
+#: addons/top-bar-section/customizer/customizer-options.php:389
+msgid "Font Weight"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:114
+#: addons/page-title/customizer/customizer-options.php:372
+msgid "Inherit"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:115
+msgid "Thin 100"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:116
+msgid "Extra-Light 200"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:117
+msgid "Light 300"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:118
+msgid "Normal 400"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:119
+msgid "Medium 500"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:120
+msgid "Semi-Bold 600"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:121
+msgid "Bold 700"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:122
+msgid "Extra-Bold 800"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:123
+msgid "Ultra-Bold 900"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:130
+msgid ".woff Font file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:131
+msgid "Upload .woff file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:137
+msgid ".woff2 Font file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:138
+msgid "Upload .woff2 file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:144
+msgid ".ttf Font file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:145
+msgid "Upload .ttf file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:151
+msgid ".eot Font file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:152
+msgid "Upload .eot file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:158
+msgid ".svg Font file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:159
+msgid "Upload .svg file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:165
+msgid ".otf Font file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:166
+msgid "Upload .otf file"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:189
+msgid "Fonts"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-meta.php:190
+msgid "Variations"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-partials.php:57
+msgid "Kemet Fonts"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:49
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:50
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:69
+#: inc/kemet-panel/tabs/class-kemet-panel-options-tab.php:144
+msgid "Custom Fonts"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:70
+msgid "Custom Font"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:71
+msgid "Search Custom Fonts"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:72
+msgid "All Custom Fonts"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:73
+msgid "Edit Custom Font"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:74
+msgid "View Custom Font"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:75
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:77
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-settings.php:125
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-settings.php:127
+#: inc/k-framework/fields/group/class-kfw-field-group.php:50
+msgid "Add New"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:76
+msgid "Update Custom Font"
+msgstr ""
+
+#: addons/custom-fonts/classes/class-kemet-addon-custom-fonts-settings.php:78
+msgid "New Custom Font Name"
+msgstr ""
+
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-meta.php:120
 #: addons/metabox/classes/class-kemet-addon-metabox-data.php:15
 msgid "Kemet Page Options"
@@ -322,6 +550,7 @@ msgstr ""
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-meta.php:201
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-meta.php:211
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-meta.php:222
+#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:132
 #: addons/metabox/classes/class-kemet-addon-metabox-data.php:39
 #: addons/metabox/classes/class-kemet-addon-metabox-data.php:51
 msgid "Select an option"
@@ -381,707 +610,767 @@ msgstr ""
 msgid "Rules"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:449
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:512
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:453
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:516
 msgid "Global"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:451
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:455
 msgid "Entire Website"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:452
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:456
 msgid "All Singulars"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:453
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:457
 msgid "All Archives"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:457
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:461
 msgid "General Pages"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:459
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:463
 msgid "404 Page"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:460
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:464
 msgid "Search Page"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:461
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:465
 msgid "Blog / Posts Page"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:462
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:466
 msgid "Front Page"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:463
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:467
 msgid "Date Archive"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:464
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:468
 msgid "Author Archive"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:468
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:472
 msgid "Posts"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:470
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:474
 msgid "All Posts"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:471
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:475
 msgid "Posts Archive"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:472
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:476
 msgid "Categories"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:473
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:477
 msgid "Tags"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:479
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:483
 msgid "WooCommerce Shop Page"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:482
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:486
 msgid "Products"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:484
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:488
 msgid "All Products"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:485
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:489
 msgid "Products Archive"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:486
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:490
 msgid "Product Categories"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:487
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:491
 msgid "Product Tags"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:493
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:497
 msgid "Specific Position"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:495
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:499
 msgid "Specific Pages / Posts / Taxanomies, etc."
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:514
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:518
 msgid "All"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:515
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:519
 msgid "Logged In"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:516
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:520
 msgid "Logged Out"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:520
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:524
 msgid "General"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:543
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:547
 msgid "Head"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:545
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:549
 msgid "before the opening of <html> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:546
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:550
 msgid "top of <head> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:547
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:551
 msgid "custom style, script and meta at the bottom of <head> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:548
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:552
 msgid "Head Top"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:552
-#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:68
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:556
+#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:69
 msgid "Header"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:554
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:558
 msgid "Top of <body> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:555
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:559
 msgid "Before <header> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:556
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:560
 #: addons/top-bar-section/classes/class-kemet-addon-top-bar-partials.php:59
 msgid "Top Bar Section 1"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:557
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:561
+msgid "Replace Top Bar Section 1 Sidebar"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:562
 #: addons/top-bar-section/classes/class-kemet-addon-top-bar-partials.php:76
 msgid "Top Bar Section 2"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:558
-msgid "Main Header"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:559
-msgid "Top of Header Content"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:560
-msgid "Top of <header> tag"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:561
-msgid "Header Content"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:562
-msgid "Before Responsive Menu Toggle Button"
-msgstr ""
-
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:563
-msgid "After Responsive Menu Toggle Button"
+msgid "Replace Top Bar Section 2 Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:564
-msgid "Bottom of <header> tag"
+msgid "Main Header"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:565
-msgid "Bottom of Header Content"
+msgid "Replace Header Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:566
-msgid "After <header> tag"
+msgid "Replace Header Right Section Sidebar"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:567
+msgid "Top of Header Content"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:568
+msgid "Top of <header> tag"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:569
+msgid "Header Content"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:570
+msgid "Before Responsive Menu Toggle Button"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:571
+msgid "After Responsive Menu Toggle Button"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:572
+msgid "Bottom of <header> tag"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:573
+msgid "Bottom of Header Content"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:574
+msgid "After <header> tag"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:578
 #: addons/mega-menu/classes/class-kemet-addon-mega-menu-options.php:86
 msgid "Content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:572
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:580
 msgid "Before main content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:573
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:581
 msgid "Top of main content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:574
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:582
 msgid "Before Loop Start"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:575
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:583
 msgid "Top of Primary Content Loop"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:576
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:584
 msgid "After Loop Start"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:577
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:585
 msgid "Top of Primary Content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:578
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:586
 msgid "Top of the primary content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:579
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:587
 msgid "Top of the primary template content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:580
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:588
 msgid "Before <article> Tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:581
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:589
 msgid "After <article> Tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:582
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:586
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:590
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:594
 msgid "Before Post Content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:583
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:587
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:591
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:595
 msgid "After Post Content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:584
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:592
 msgid "Top of <article> Tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:585
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:593
 msgid "Bottom of <article> Tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:588
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:596
 msgid "Top of Single Post Header"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:589
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:597
 msgid "Bottom of Single Post Header"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:590
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:598
 msgid "Bottom of the primary template content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:591
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:599
 msgid "Bottom of Primary Content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:592
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:600
 msgid "Bottom of main content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:593
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:601
 msgid "After main content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:597
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:605
 msgid "Comment"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:599
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:607
 msgid "Before Opening of Comment Start"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:600
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:608
 msgid "After Closing of Comment Wrapper"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:604
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:612
 msgid "sidebar"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:606
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:614
 msgid "Before Sidebar Wrapper"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:607
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:615
+msgid "Replace Sidebar"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:616
 msgid "After Sidebar Wrapper"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:611
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:620
 #: addons/metabox/classes/class-kemet-addon-metabox-data.php:82
 msgid "Footer"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:613
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:622
 msgid "Before of <footer> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:614
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:623
 msgid "Top of <footer> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:615
-msgid "Top of Footer Content"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:624
+msgid "Replace Footer 1 Sidebar"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:616
-msgid "Top of footer container"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:625
+msgid "Replace Footer 2 Sidebar"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:617
-msgid "Bottom of footer container"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:618
-msgid "Bottom of Footer Content"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:619
-msgid "After of <footer> tag"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:620
-msgid "Bottom of <body> tag"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:621
-msgid "End of the document"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:626
+msgid "Replace Footer 3 Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:627
-msgid "WooCommerce - Global"
+msgid "Replace Footer 4 Sidebar"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:628
+msgid "Replace Footer 5 Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:629
-msgid "Before the WooCommerce Main Content"
+msgid "Replace Footer Copyright Section 1 Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:630
-msgid "After the WooCommerce Main Content "
+msgid "Replace Footer Copyright Section 2 Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:631
-msgid "WooCommerce sidebar action"
+msgid "Top of Footer Content"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:632
-msgid "WooCommerce breadcrumb action"
+msgid "Top of footer container"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:633
-msgid "Before WooCommerce template part"
+msgid "Bottom of footer container"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:634
-msgid "After WooCommerce template part"
+msgid "Bottom of Footer Content"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:638
-msgid "WooCommerce - Shop"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:635
+msgid "After of <footer> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:640
-msgid "archive_description action"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:636
+msgid "Bottom of <body> tag"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:641
-msgid "before WooCommerce shop loop "
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:642
-msgid "before WooCommerce shop loop item"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:637
+msgid "End of the document"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:643
-msgid "after WooCommerce shop loop item"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:644
-msgid "before WooCommerce shop category"
+msgid "WooCommerce - Global"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:645
-msgid "after WooCommerce shop category "
+msgid "Before the WooCommerce Main Content"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:646
-msgid "before WooCommerce shop title"
+msgid "After the WooCommerce Main Content "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:647
-msgid "after WooCommerce shop title"
+msgid "WooCommerce sidebar action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:648
-msgid "before WooCommerce shop price"
+msgid "Replace Shop Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:649
-msgid "after WooCommerce shop price"
+msgid "Replace Single Product Sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:650
-msgid "before WooCommerce shop rating "
+msgid "Replace Off-Canvas sidebar"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:651
-msgid "after WooCommerce shop rating"
+msgid "WooCommerce breadcrumb action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:652
-msgid "before WooCommerce short description"
+msgid "Before WooCommerce template part"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:653
-msgid "after WooCommerce short description"
+msgid "After WooCommerce template part"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:654
-msgid "before WooCommerce shop cart"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:657
+msgid "WooCommerce - Shop"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:655
-msgid "after WooCommerce shop cart "
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:656
-msgid "after WooCommerce shop loop"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:659
+msgid "archive_description action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:660
-msgid "WooCommerce - Product"
+msgid "before WooCommerce shop loop "
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:661
+msgid "before WooCommerce shop loop item"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:662
-msgid "before WooCommerce single product"
+msgid "after WooCommerce shop loop item"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:663
-msgid "before WooCommerce single product summary"
+msgid "before WooCommerce shop category"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:664
-msgid "on WooCommerce single product summary action"
+msgid "after WooCommerce shop category "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:665
-msgid "after WooCommerce single product summary"
+msgid "before WooCommerce shop title"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:666
-msgid "on simple add to cart action"
+msgid "after WooCommerce shop title"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:667
-msgid "before WooCommerce add to cart form "
+msgid "before WooCommerce shop price"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:668
-msgid "before WooCommerce add to cart button"
+msgid "after WooCommerce shop price"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:669
-msgid "before WooCommerce add to cart quantity"
+msgid "before WooCommerce shop rating "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:670
-msgid "after WooCommerce add to cart quantity"
+msgid "after WooCommerce shop rating"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:671
-msgid "after WooCommerce add to cart button"
+msgid "before WooCommerce short description"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:672
-msgid "after WooCommerce add to cart form "
+msgid "after WooCommerce short description"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:673
-msgid "on WooCommerce product meta start action"
+msgid "before WooCommerce shop cart"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:674
-msgid "on WooCommerce product meta end action"
+msgid "after WooCommerce shop cart "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:675
-msgid "on share action"
+msgid "after WooCommerce shop loop"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:676
-msgid "after WooCommerce single product"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:679
+msgid "WooCommerce - Product"
 msgstr ""
 
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:680
-msgid "WooCommerce - Cart"
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:681
+msgid "before WooCommerce single product"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:682
-msgid "on check cart items action"
+msgid "before WooCommerce single product summary"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:683
-msgid "on cart reset"
+msgid "on WooCommerce single product summary action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:684
-msgid "on cart update"
+msgid "after WooCommerce single product summary"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:685
-msgid "on check cart is empty"
+msgid "on simple add to cart action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:686
-msgid "before WooCommerce calculate totals"
+msgid "before WooCommerce add to cart form "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:687
-msgid "on cart calculate fees "
+msgid "before WooCommerce add to cart button"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:688
-msgid "after WooCommerce calculate totals"
+msgid "before WooCommerce add to cart quantity"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:689
-msgid "before WooCommerce cart"
+msgid "after WooCommerce add to cart quantity"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:690
-msgid "before WooCommerce cart table"
+msgid "after WooCommerce add to cart button"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:691
-msgid "before WooCommerce cart contents"
+msgid "after WooCommerce add to cart form "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:692
-msgid "on cart contents "
+msgid "on WooCommerce product meta start action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:693
-msgid "after WooCommerce cart contents"
+msgid "on WooCommerce product meta end action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:694
-msgid "on cart coupon"
+msgid "on share action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:695
-msgid "on cart actions"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:696
-msgid "after WooCommerce cart table"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:697
-msgid "on cart collaterals"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:698
-msgid "before WooCommerce cart totals"
+msgid "after WooCommerce single product"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:699
-msgid "before WooCommerce order total"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:700
-msgid "after WooCommerce order total"
+msgid "WooCommerce - Cart"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:701
-msgid "on proceed to checkout action "
+msgid "on check cart items action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:702
-msgid "after WooCommerce cart totals"
+msgid "on cart reset"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:703
-msgid "after WooCommerce cart"
+msgid "on cart update"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:704
+msgid "on check cart is empty"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:705
+msgid "before WooCommerce calculate totals"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:706
+msgid "on cart calculate fees "
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:707
+msgid "after WooCommerce calculate totals"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:708
-msgid "WooCommerce - Checkout"
+msgid "before WooCommerce cart"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:709
+msgid "before WooCommerce cart table"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:710
-msgid "before WooCommerce checkout form"
+msgid "before WooCommerce cart contents"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:711
-msgid "before WooCommerce customer details"
+msgid "on cart contents "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:712
-msgid "after WooCommerce customer details"
+msgid "after WooCommerce cart contents"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:713
-msgid "on checkout billing"
+msgid "on cart coupon"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:714
-msgid "before WooCommerce checkout billing form"
+msgid "on cart actions"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:715
-msgid "after WooCommerce checkout billing form"
+msgid "after WooCommerce cart table"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:716
-msgid "before WooCommerce order notes"
+msgid "on cart collaterals"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:717
-msgid "after WooCommerce order notes"
+msgid "before WooCommerce cart totals"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:718
-msgid "on checkout shipping action"
+msgid "before WooCommerce order total"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:719
-msgid "before WooCommerce checkout order review"
+msgid "after WooCommerce order total"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:720
-msgid "on checkout order review action "
+msgid "on proceed to checkout action "
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:721
-msgid "before WooCommerce review order cart contents"
+msgid "after WooCommerce cart totals"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:722
-msgid "after WooCommerce review order cart contents"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:723
-msgid "before WooCommerce review order total"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:724
-msgid "after WooCommerce review order total"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:725
-msgid "before WooCommerce order payment"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:726
-msgid "before WooCommerce order submit"
+msgid "after WooCommerce cart"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:727
-msgid "after WooCommerce order submit"
-msgstr ""
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:728
-msgid "after WooCommerce order payment"
+msgid "WooCommerce - Checkout"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:729
-msgid "after WooCommerce checkout order review "
+msgid "before WooCommerce checkout form"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:730
-msgid "after WooCommerce checkout form"
+msgid "before WooCommerce customer details"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:731
+msgid "after WooCommerce customer details"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:732
+msgid "on checkout billing"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:733
+msgid "before WooCommerce checkout billing form"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:734
+msgid "after WooCommerce checkout billing form"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:735
-msgid "WooCommerce - Account"
+msgid "before WooCommerce order notes"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:736
+msgid "after WooCommerce order notes"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:737
-msgid "before WooCommerce account navigation"
+msgid "on checkout shipping action"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:738
-msgid "on WooCommerce account navigation "
+msgid "before WooCommerce checkout order review"
 msgstr ""
 
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:739
+msgid "on checkout order review action "
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:740
+msgid "before WooCommerce review order cart contents"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:741
+msgid "after WooCommerce review order cart contents"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:742
+msgid "before WooCommerce review order total"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:743
+msgid "after WooCommerce review order total"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:744
+msgid "before WooCommerce order payment"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:745
+msgid "before WooCommerce order submit"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:746
+msgid "after WooCommerce order submit"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:747
+msgid "after WooCommerce order payment"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:748
+msgid "after WooCommerce checkout order review "
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:749
+msgid "after WooCommerce checkout form"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:754
+msgid "WooCommerce - Account"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:756
+msgid "before WooCommerce account navigation"
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:757
+msgid "on WooCommerce account navigation "
+msgstr ""
+
+#: addons/custom-layout/classes/class-kemet-addon-custom-layout-partials.php:758
 msgid "after WooCommerce account navigation"
 msgstr ""
 
@@ -1112,13 +1401,6 @@ msgstr ""
 msgid "View Custom Layout"
 msgstr ""
 
-
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-settings.php:125
-#: addons/custom-layout/classes/class-kemet-addon-custom-layout-settings.php:127
-#: inc/k-framework/fields/group/class-kfw-field-group.php:50
-msgid "Add New"
-msgstr ""
-
 #: addons/custom-layout/classes/class-kemet-addon-custom-layout-settings.php:126
 msgid "Update Custom Layout"
 msgstr ""
@@ -1127,16 +1409,16 @@ msgstr ""
 msgid "New Custom Layout Name"
 msgstr ""
 
-#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:75
+#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:76
 msgid "Display Primary Header"
 msgstr ""
 
-#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:93
+#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:94
 msgid "Overlay Header"
 msgstr ""
 
-#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:95
-#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:107
+#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:96
+#: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:108
 #: addons/extra-widgets/customizer/customizer-options.php:124
 #: addons/page-title/customizer/customizer-options.php:352
 #: addons/page-title/customizer/customizer-options.php:625
@@ -1152,14 +1434,12 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-
 #: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:98
 #: addons/extra-headers/customizer/customizer-options.php:33
 #: addons/page-title/customizer/customizer-options.php:38
 #: addons/sticky-header/classes/class-kemet-addon-sticky-header-metabox.php:78
 msgid "Disable"
 msgstr ""
-
 
 #: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:106
 #: addons/extra-headers/customizer/customizer-options.php:250
@@ -1176,13 +1456,11 @@ msgstr ""
 msgid "Content Width"
 msgstr ""
 
-
 #: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:111
 #: addons/extra-headers/customizer/customizer-options.php:254
 #: addons/metabox/classes/class-kemet-addon-metabox-data.php:54
 msgid "Boxed Content"
 msgstr ""
-
 
 #: addons/extra-headers/classes/class-kemet-addon-extra-headers-meta-box.php:112
 #: addons/extra-headers/customizer/customizer-options.php:255
@@ -2084,13 +2362,6 @@ msgstr ""
 msgid "Font Family"
 msgstr ""
 
-#: addons/page-title/customizer/customizer-options.php:334
-#: addons/page-title/customizer/customizer-options.php:607
-#: addons/page-title/customizer/customizer-options.php:801
-#: addons/top-bar-section/customizer/customizer-options.php:389
-msgid "Font Weight"
-msgstr ""
-
 #: addons/page-title/customizer/customizer-options.php:348
 #: addons/page-title/customizer/customizer-options.php:621
 #: addons/page-title/customizer/customizer-options.php:815
@@ -2121,10 +2392,6 @@ msgstr ""
 
 #: addons/page-title/customizer/customizer-options.php:368
 msgid "Font Style"
-msgstr ""
-
-#: addons/page-title/customizer/customizer-options.php:372
-msgid "Inherit"
 msgstr ""
 
 #: addons/page-title/customizer/customizer-options.php:374
@@ -2451,7 +2718,6 @@ msgstr ""
 
 #: addons/top-bar-section/classes/class-kemet-addon-top-bar-metabox.php:82
 msgid "Disable top bar separators"
-
 msgstr ""
 
 #: addons/top-bar-section/classes/class-kemet-addon-top-bar-metabox.php:83
@@ -2632,7 +2898,6 @@ msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:261
 msgid "Top Right Corner"
-
 msgstr ""
 
 #: addons/woocommerce/customizer/customizer-options.php:262
@@ -2780,6 +3045,10 @@ msgstr ""
 msgid "Edit %1$s with %2$s"
 msgstr ""
 
+#: inc/image-processing-queue/background-process/class-wp-background-process.php:435
+msgid "Every %d Minutes"
+msgstr ""
+
 #: inc/k-framework/classes/class-kfw-metabox.php:342
 #: inc/k-framework/classes/class-kfw-options.php:756
 msgid "No option provided by developer."
@@ -2827,7 +3096,7 @@ msgstr ""
 
 #: inc/k-framework/classes/class-kfw-options.php:673
 #: inc/k-framework/classes/class-kfw-options.php:778
-#: inc/kemet-panel/class-kemet-addons-panel.php:199
+#: inc/kemet-panel/class-kemet-addons-panel.php:200
 msgid "Save"
 msgstr ""
 
@@ -2848,7 +3117,7 @@ msgstr ""
 
 #: inc/k-framework/classes/class-kfw-options.php:675
 #: inc/k-framework/classes/class-kfw-options.php:780
-#: inc/kemet-panel/class-kemet-addons-panel.php:204
+#: inc/kemet-panel/class-kemet-addons-panel.php:205
 msgid "Reset All"
 msgstr ""
 
@@ -3104,12 +3373,12 @@ msgstr ""
 
 #: inc/k-framework/fields/media/class-kfw-field-media.php:50
 #: inc/k-framework/fields/upload/class-kfw-field-upload.php:23
-
 msgid "Upload"
 msgstr ""
 
 #: inc/k-framework/fields/media/class-kfw-field-media.php:51
 #: inc/k-framework/fields/upload/class-kfw-field-upload.php:24
+msgid "Remove"
 msgstr ""
 
 #: inc/k-framework/fields/media/class-kfw-field-media.php:85
@@ -3164,49 +3433,48 @@ msgstr ""
 msgid "Search a Icon..."
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:79
-#: inc/kemet-panel/class-kemet-addons-panel.php:82
-#: inc/kemet-panel/class-kemet-addons-panel.php:95
+#: inc/kemet-panel/class-kemet-addons-panel.php:80
+#: inc/kemet-panel/class-kemet-addons-panel.php:83
 msgid "Kemet"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:95
+#: inc/kemet-panel/class-kemet-addons-panel.php:96
 msgid "Kemet Panel"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:110
+#: inc/kemet-panel/class-kemet-addons-panel.php:111
 msgid "Customizer & Page Options"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:116
+#: inc/kemet-panel/class-kemet-addons-panel.php:117
 msgid "Integrations"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:121
+#: inc/kemet-panel/class-kemet-addons-panel.php:122
 msgid "Plugins"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:125
+#: inc/kemet-panel/class-kemet-addons-panel.php:126
 msgid "System Info"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:147
+#: inc/kemet-panel/class-kemet-addons-panel.php:148
 msgid "Welcome to"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:148
+#: inc/kemet-panel/class-kemet-addons-panel.php:149
 msgid "Kemet Theme"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:149
+#: inc/kemet-panel/class-kemet-addons-panel.php:150
 msgid "by Leap13"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:201
+#: inc/kemet-panel/class-kemet-addons-panel.php:202
 msgid "Enable All"
 msgstr ""
 
-#: inc/kemet-panel/class-kemet-addons-panel.php:202
+#: inc/kemet-panel/class-kemet-addons-panel.php:203
 msgid "Disable All"
 msgstr ""
 
