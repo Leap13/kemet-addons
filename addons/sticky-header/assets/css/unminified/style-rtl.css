@@ -39,6 +39,7 @@
   position: fixed;
   width: 100%;
   animation-duration: 0.5s;
+  z-index: 999;
 }
 
 .kmt-is-sticky.header-boxed-width .main-header-content, .kmt-is-sticky.header-stretched-width .main-header-content {

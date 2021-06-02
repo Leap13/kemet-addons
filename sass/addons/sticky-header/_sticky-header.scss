@@ -31,6 +31,7 @@
   position: fixed;
   width: 100%;
   animation-duration: 0.5s;
+  z-index: 999;
   &.header-boxed-width,
   &.header-stretched-width {
     .main-header-content {

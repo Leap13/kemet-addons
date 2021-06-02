@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kemet_Addon_Extra_Headers_Partials' ) ) {
 		public function __construct() {
 
 			add_filter( 'body_class', array( $this, 'kemet_body_classes' ) );
-			add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ), 1 );
+			// add_action( 'kemet_sitehead', array( $this, 'sitehead_markup_loader' ), 1 );
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );

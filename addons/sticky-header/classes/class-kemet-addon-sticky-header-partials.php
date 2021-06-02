@@ -41,6 +41,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			add_filter( 'kemet_header_class', array( $this, 'header_classes' ), 10, 1 );
 			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
+			add_filter( 'kemet_theme_js_localize', array( $this, 'js_localize' ) );
 		}
 
 		/**
@@ -166,6 +167,19 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			return $classes;
 		}
 
+		/**
+		 * Sticky Header JS
+		 *
+		 * @param array $localize   JS localize variables.
+		 * @return array
+		 */
+		public function js_localize( $localize ) {
+
+			$localize['stickyTop']    = kemet_get_option( 'enable-sticky-top' ) ? 'on' : 'off';
+			$localize['stickyMain']   = kemet_get_option( 'enable-sticky-main' ) ? 'on' : 'off';
+			$localize['stickyBottom'] = kemet_get_option( 'enable-sticky-bottom' ) ? 'on' : 'off';
+			return $localize;
+		}
 		/**
 		 * Enqueues styles for sticky header
 		 *

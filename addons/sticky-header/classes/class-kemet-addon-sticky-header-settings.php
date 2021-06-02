@@ -38,6 +38,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Settings' ) ) {
 		 */
 		public function __construct() {
 
+			require_once KEMET_STICKY_HEADER_DIR . 'customizer/customizer.php';
 			add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
@@ -93,6 +94,10 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Settings' ) ) {
 			$defaults['sticky-site-identity-spacing'] = '';
 			$defaults['sticky-menu-item-spacing']     = '';
 			$defaults['sticky-border-width']          = '';
+			$defaults['enable-sticky-top']            = false;
+			$defaults['enable-sticky-main']           = false;
+			$defaults['enable-sticky-bottom']         = false;
+
 			return $defaults;
 		}
 
