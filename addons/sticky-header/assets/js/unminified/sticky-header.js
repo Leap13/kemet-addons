@@ -15,6 +15,9 @@ if (Header != null) {
     topOffSet: 0,
     mainOffSet: 0,
     bottomOffSet: 0,
+    topDefaultHeight: 0,
+    mainDefaultHeight: 0,
+    bottomDefaultHeight: 0,
     stickySections: {
       top: {
         enable: kemet.stickyTop,
@@ -31,13 +34,18 @@ if (Header != null) {
       window.addEventListener("resize", kemetStickyHeader.sticky, false);
       window.addEventListener("scroll", kemetStickyHeader.sticky, false);
       window.addEventListener("load", kemetStickyHeader.sticky, false);
+
       kemetStickyHeader.setHeight();
     },
     stickySection: function (section) {
       var sectionContainer = document.querySelector(
           "." + section + "-header-bar"
         ),
+        sectionWrap = document.querySelector(
+          ".kmt-" + section + "-header-wrap"
+        ),
         top = 0,
+        sectionDefaultHeight = kemetStickyHeader[section + "DefaultHeight"],
         staticOffSet = kemetStickyHeader[section + "OffSet"];
 
       if (kemetStickyHeader.enabledSections.length > 1) {
@@ -47,9 +55,11 @@ if (Header != null) {
 
       if (window.scrollY > staticOffSet) {
         sectionContainer.style.top = top + "px";
+        sectionWrap.style.minHeight = sectionDefaultHeight + "px";
         sectionContainer.classList.add("kmt-is-sticky");
       } else {
         sectionContainer.style.top = null;
+        sectionWrap.style.minHeight = null;
         sectionContainer.classList.remove("kmt-is-sticky", "swing");
       }
     },
@@ -76,31 +86,47 @@ if (Header != null) {
         section,
         index
       ) {
-        var sectionWrap = document.querySelector(
-          ".kmt-" + section + "-header-wrap"
-        );
+        var mainBar = document.querySelector("." + section + "-header-bar");
 
         switch (section) {
           case "top":
             kemetStickyHeader.topOffSet =
-              kemetStickyHeader.getOffset(sectionWrap).top;
+              kemetStickyHeader.getOffset(mainBar).top;
             break;
           case "main":
             kemetStickyHeader.mainOffSet =
-              kemetStickyHeader.getOffset(sectionWrap).top;
+              kemetStickyHeader.getOffset(mainBar).top;
             break;
           case "bottom":
             kemetStickyHeader.bottomOffSet =
-              kemetStickyHeader.getOffset(sectionWrap).top;
+              kemetStickyHeader.getOffset(mainBar).top;
             break;
         }
 
         if ("on" === kemetStickyHeader.stickySections[section].enable) {
           kemetStickyHeader.enabledSections.push(section);
-
-          sectionWrap.setAttribute("data-height", sectionWrap.offsetHeight);
+          kemetStickyHeader[section + "DefaultHeight"] = mainBar.offsetHeight;
         }
       });
+    },
+    setShrinkHeight: function () {
+      var ShrinkHeight = kemet.shrinkHeight,
+        mainInner = document.querySelector(".site-main-header-wrap"),
+        mainBar = document.querySelector(".main-header-bar"),
+        mainWrap = document.querySelector(".kmt-main-header-wrap"),
+        mainBarHeight = kemetStickyHeader.mainDefaultHeight;
+
+      if (mainBar.classList.contains("kmt-is-sticky")) {
+        mainInner.style.height = ShrinkHeight + "px";
+        mainInner.style.minHeight = ShrinkHeight + "px";
+        mainInner.style.maxHeight = ShrinkHeight + "px";
+        mainWrap.style.minHeight = ShrinkHeight + "px";
+      } else {
+        mainInner.style.height = mainBarHeight + "px";
+        mainInner.style.minHeight = mainBarHeight + "px";
+        mainInner.style.maxHeight = mainBarHeight + "px";
+        mainWrap.style.minHeight = mainBarHeight + "px";
+      }
     },
     offSetTop: function (section) {
       var offSet = 0,
@@ -115,25 +141,26 @@ if (Header != null) {
           }
           break;
         case "bottom":
+          var mainHeight =
+            "on" == kemet.enableShrink
+              ? parseInt(kemet.shrinkHeight)
+              : document.querySelector(".kmt-main-header-wrap").offsetHeight;
+          var topHeight = document.querySelector(
+            ".kmt-top-header-wrap"
+          ).offsetHeight;
           if (sections.includes("main") && !sections.includes("top")) {
-            var topHeight = document.querySelector(
-              ".kmt-top-header-wrap"
-            ).offsetHeight;
-            top = kemetStickyHeader.bottomOffSet - topHeight;
+            top = mainHeight;
             offSet = 0;
           }
           if (!sections.includes("main") && sections.includes("top")) {
-            var mainHeight = document.querySelector(
-              ".kmt-main-header-wrap"
-            ).offsetHeight;
-            var topHeight = document.querySelector(
-              ".kmt-top-header-wrap"
-            ).offsetHeight;
             top = kemetStickyHeader.bottomOffSet - mainHeight;
             offSet = kemetStickyHeader.mainOffSet;
           }
           if (sections.includes("main") && sections.includes("top")) {
-            top = kemetStickyHeader.bottomOffSet;
+            top =
+              "on" == kemet.enableShrink
+                ? topHeight + mainHeight
+                : kemetStickyHeader.bottomOffSet;
             offSet = kemetStickyHeader.topOffSet;
           }
           break;
@@ -150,20 +177,11 @@ if (Header != null) {
           kemetStickyHeader.stickySection(section);
         }
       });
-    },
-  };
-  Array.prototype.remove = function () {
-    var what,
-      a = arguments,
-      L = a.length,
-      ax;
-    while (L && this.length) {
-      what = a[--L];
-      while ((ax = this.indexOf(what)) !== -1) {
-        this.splice(ax, 1);
+
+      if (kemet.stickyMain == "on" && kemet.enableShrink == "on") {
+        kemetStickyHeader.setShrinkHeight();
       }
-    }
-    return this;
+    },
   };
   if ("loading" === document.readyState) {
     // The DOM has not yet been loaded.

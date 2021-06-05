@@ -42,8 +42,25 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			add_action( 'kemet_get_js_files', array( $this, 'add_scripts' ) );
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_filter( 'kemet_theme_js_localize', array( $this, 'js_localize' ) );
+			add_filter( 'kemet_header_main_row_classes', array( $this, 'main_row_classes' ) );
 		}
 
+		/**
+		 * Main Row Classes
+		 *
+		 * @param array $classes array of classes.
+		 * @return array
+		 */
+		public function main_row_classes( $classes ) {
+			$shrink      = kemet_get_option( 'enable-shrink-main' );
+			$main_sticky = kemet_get_option( 'enable-sticky-main' );
+
+			if ( $shrink && $main_sticky ) {
+				$classes[] = 'kmt-shrink-effect';
+			}
+
+			return $classes;
+		}
 		/**
 		 * Sticky header logo
 		 *
@@ -178,6 +195,8 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			$localize['stickyTop']    = kemet_get_option( 'enable-sticky-top' ) ? 'on' : 'off';
 			$localize['stickyMain']   = kemet_get_option( 'enable-sticky-main' ) ? 'on' : 'off';
 			$localize['stickyBottom'] = kemet_get_option( 'enable-sticky-bottom' ) ? 'on' : 'off';
+			$localize['enableShrink'] = kemet_get_option( 'enable-shrink-main' ) ? 'on' : 'off';
+			$localize['shrinkHeight'] = kemet_get_option( 'main-row-shrink-height' );
 			return $localize;
 		}
 		/**
