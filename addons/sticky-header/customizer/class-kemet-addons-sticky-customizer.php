@@ -72,7 +72,6 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 				),
 				'main-row-shrink-height' => array(
 					'type'        => 'kmt-slider',
-					'transport'   => 'postMessage',
 					'section'     => 'section-sticky-header-options',
 					'priority'    => 25,
 					'label'       => __( 'Main Row Shrink Height', 'kemet' ),
