@@ -19,9 +19,22 @@
     init: function () {
       window.addEventListener("resize", kemetStickyHeader.sticky, false);
       window.addEventListener("scroll", kemetStickyHeader.sticky, false);
+      window.addEventListener(
+        "scroll",
+        kemetStickyHeader.setShrinkHeight,
+        false
+      );
       window.addEventListener("load", kemetStickyHeader.sticky, false);
+      window.addEventListener("load", kemetStickyHeader.setHeight, false);
+      window.addEventListener("load", kemetStickyHeader.setShrinkHeight, false);
       window.addEventListener("resize", kemetStickyHeader.setHeight, false);
-      kemetStickyHeader.setHeight();
+      if (kemet.stickyMain == "on" && kemet.enableShrink == "on") {
+        window.addEventListener(
+          "scroll",
+          kemetStickyHeader.setShrinkHeight,
+          false
+        );
+      }
     },
     stickySection: function (section) {
       var header = document.querySelector(
@@ -140,6 +153,7 @@
           }
           break;
         case "bottom":
+          offSet = bottomOffSet;
           var mainHeight =
             "on" == kemet.enableShrink
               ? parseInt(kemet.shrinkHeight)
@@ -181,10 +195,6 @@
           kemetStickyHeader.stickySection(section);
         }
       });
-
-      if (kemet.stickyMain == "on" && kemet.enableShrink == "on") {
-        kemetStickyHeader.setShrinkHeight();
-      }
     },
   };
   if ("loading" === document.readyState) {

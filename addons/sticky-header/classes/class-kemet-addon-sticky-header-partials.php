@@ -43,6 +43,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_filter( 'kemet_theme_js_localize', array( $this, 'js_localize' ) );
 			add_filter( 'kemet_header_main_row_classes', array( $this, 'main_row_classes' ) );
+			add_filter( 'kemet_mobile_header_main_row_classes', array( $this, 'main_row_classes' ) );
 		}
 
 		/**
