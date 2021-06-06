@@ -43,7 +43,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
 			add_filter( 'kemet_theme_js_localize', array( $this, 'js_localize' ) );
 			add_filter( 'kemet_header_main_row_classes', array( $this, 'main_row_classes' ) );
-			add_filter( 'kemet_mobile_header_main_row_classes', array( $this, 'main_row_classes' ) );
+			add_filter( 'kemet_mobile_header_main_row_classes', array( $this, 'mobile_main_row_classes' ) );
 		}
 
 		/**
@@ -55,6 +55,23 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 		public function main_row_classes( $classes ) {
 			$shrink      = kemet_get_option( 'enable-shrink-main' );
 			$main_sticky = kemet_get_option( 'enable-sticky-main' );
+
+			if ( $shrink && $main_sticky ) {
+				$classes[] = 'kmt-shrink-effect';
+			}
+
+			return $classes;
+		}
+
+		/**
+		 * Main Row Classes
+		 *
+		 * @param array $classes array of classes.
+		 * @return array
+		 */
+		public function mobile_main_row_classes( $classes ) {
+			$shrink      = kemet_get_option( 'enable-shrink-main-mobile' );
+			$main_sticky = kemet_get_option( 'enable-sticky-mobile-main' );
 
 			if ( $shrink && $main_sticky ) {
 				$classes[] = 'kmt-shrink-effect';

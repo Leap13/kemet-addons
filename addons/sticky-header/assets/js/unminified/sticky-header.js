@@ -19,6 +19,8 @@
       },
     },
     isMobile: false,
+    activeShrink: kemet.enableShrink,
+    activeMain: kemet.stickyMain,
     enabledSections: [],
     init: function () {
       window.addEventListener("resize", kemetStickyHeader.sticky, false);
@@ -108,7 +110,11 @@
           kemetStickyHeader.enabledSections.push(section);
         }
       });
-      if (kemet.stickyMain == "on" && kemet.enableShrink == "on") {
+
+      if (
+        kemetStickyHeader.activeMain == "on" &&
+        kemetStickyHeader.activeShrink == "on"
+      ) {
         var mainBar = header.querySelector(".main-header-bar"),
           mainInner = header.querySelector(".main-header-bar .kmt-grid-row");
 
@@ -116,27 +122,33 @@
       }
     },
     setShrinkHeight: function () {
-      var header = document.querySelector(
-          "#kmt-" + kemetStickyHeader.activeHeader + "-header"
-        ),
-        ShrinkHeight = kemetStickyHeader.isMobile
-          ? kemet.shrinkMobileHeight
-          : kemet.shrinkHeight,
-        mainInner = header.querySelector(
-          ".site-main-header-wrap .kmt-grid-row"
-        ),
-        mainBar = header.querySelector(".main-header-bar"),
-        mainWrap = header.querySelector(".kmt-main-header-wrap"),
-        startHeight = mainBar.getAttribute("data-start-height");
+      if (
+        kemetStickyHeader.activeMain == "on" &&
+        kemetStickyHeader.activeShrink == "on"
+      ) {
+        var header = document.querySelector(
+            "#kmt-" + kemetStickyHeader.activeHeader + "-header"
+          ),
+          ShrinkHeight = kemetStickyHeader.isMobile
+            ? kemet.shrinkMobileHeight
+            : kemet.shrinkHeight,
+          mainInner = header.querySelector(
+            ".site-main-header-wrap .kmt-grid-row"
+          ),
+          mainBar = header.querySelector(".main-header-bar"),
+          mainWrap = header.querySelector(".kmt-main-header-wrap"),
+          startHeight = mainBar.getAttribute("data-start-height");
 
-      if (mainBar.classList.contains("kmt-is-sticky")) {
-        mainInner.style.height = ShrinkHeight + "px";
-        mainInner.style.minHeight = ShrinkHeight + "px";
-        mainInner.style.maxHeight = ShrinkHeight + "px";
-      } else {
-        mainInner.style.height = startHeight + "px";
-        mainInner.style.minHeight = startHeight + "px";
-        mainInner.style.maxHeight = startHeight + "px";
+        if (mainBar.classList.contains("kmt-is-sticky")) {
+          mainInner.style.height = ShrinkHeight + "px";
+          mainInner.style.minHeight = ShrinkHeight + "px";
+          mainInner.style.maxHeight = ShrinkHeight + "px";
+        } else {
+          mainInner.style.height = startHeight + "px";
+          mainInner.style.minHeight = startHeight + "px";
+          mainInner.style.maxHeight = startHeight + "px";
+          mainWrap.style.height = mainBar.getAttribute("data-height") + "px";
+        }
       }
     },
     offSetTop: function (section) {
@@ -175,7 +187,7 @@
               ? parseInt(mainBar.getAttribute("data-height")) - shrinkHeight
               : parseInt(mainBar.getAttribute("data-height")) + shrinkHeight;
           var mainHeight =
-            "on" == kemet.enableShrink
+            "on" == kemetStickyHeader.activeShrink
               ? shrinkHeight
               : header.querySelector(".kmt-main-header-wrap").offsetHeight;
           var topHeight = header.querySelector(
@@ -209,6 +221,12 @@
         kemetStickyHeader.activeHeader = "mobile";
         kemetStickyHeader.isMobile = true;
       }
+      kemetStickyHeader.activeMain = kemetStickyHeader.isMobile
+        ? kemet.stickyMobileMain
+        : kemet.stickyMain;
+      kemetStickyHeader.activeShrink = kemetStickyHeader.isMobile
+        ? kemet.enableMobileShrink
+        : kemet.enableShrink;
       Object.keys(kemetStickyHeader.stickySections).map(function (
         section,
         index
