@@ -71,13 +71,18 @@
         section,
         index
       ) {
-        var mainBar = document.querySelectorAll("." + section + "-header-bar");
-        for (var i = 0; i < mainBar.length; i++) {
-          mainBar[i].setAttribute(
-            "data-offset",
-            kemetStickyHeader.getOffset(mainBar[i]).top
+        var sectionBar = document.querySelectorAll(
+            "." + section + "-header-bar"
+          ),
+          sectionWrap = document.querySelectorAll(
+            ".kmt-" + section + "-header-wrap"
           );
-          mainBar[i].setAttribute("data-height", mainBar[i].offsetHeight);
+        for (var i = 0; i < sectionBar.length; i++) {
+          sectionBar[i].setAttribute(
+            "data-offset",
+            kemetStickyHeader.getOffset(sectionWrap[i]).top
+          );
+          sectionBar[i].setAttribute("data-height", sectionBar[i].offsetHeight);
         }
 
         if ("on" === kemetStickyHeader.stickySections[section].enable) {

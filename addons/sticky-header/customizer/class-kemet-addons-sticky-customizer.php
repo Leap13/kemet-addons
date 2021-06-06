@@ -34,10 +34,6 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 							'setting' => 'tab',
 							'value'   => 'general',
 						),
-						array(
-							'setting' => 'device',
-							'value'   => 'desktop',
-						),
 					),
 				),
 				'enable-sticky-top'      => array(
