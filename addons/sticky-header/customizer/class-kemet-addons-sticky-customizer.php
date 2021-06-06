@@ -92,6 +92,12 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 						),
 					),
 				),
+				'enable-sticky-mobile'   => array(
+					'section'  => 'section-sticky-header-options',
+					'priority' => 30,
+					'label'    => __( 'Enable Sticky on Mobile', 'kemet' ),
+					'type'     => 'checkbox',
+				),
 			);
 			return array_merge( $options, $sticky_options );
 		}

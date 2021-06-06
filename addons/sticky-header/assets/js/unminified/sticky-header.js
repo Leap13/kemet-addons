@@ -1,23 +1,9 @@
-var Header = document.querySelector(".kmt-sticky-header");
-
-if (Header != null) {
-  var sticky = Header.offsetHeight;
-  window.onscroll = function () {
-    if (window.pageYOffset > sticky) {
-      Header.classList.add("kmt-is-sticky");
-    } else {
-      Header.classList.remove("kmt-is-sticky", "swing");
-    }
-  };
-}
 (function () {
   var kemetStickyHeader = {
     topOffSet: 0,
     mainOffSet: 0,
     bottomOffSet: 0,
-    topDefaultHeight: 0,
-    mainDefaultHeight: 0,
-    bottomDefaultHeight: 0,
+    activeHeader: "desktop",
     stickySections: {
       top: {
         enable: kemet.stickyTop,
@@ -34,19 +20,18 @@ if (Header != null) {
       window.addEventListener("resize", kemetStickyHeader.sticky, false);
       window.addEventListener("scroll", kemetStickyHeader.sticky, false);
       window.addEventListener("load", kemetStickyHeader.sticky, false);
-
+      window.addEventListener("resize", kemetStickyHeader.setHeight, false);
       kemetStickyHeader.setHeight();
     },
     stickySection: function (section) {
-      var sectionContainer = document.querySelector(
-          "." + section + "-header-bar"
+      var header = document.querySelector(
+          "#kmt-" + kemetStickyHeader.activeHeader + "-header"
         ),
-        sectionWrap = document.querySelector(
-          ".kmt-" + section + "-header-wrap"
-        ),
+        sectionContainer = header.querySelector("." + section + "-header-bar"),
+        sectionWrap = header.querySelector(".kmt-" + section + "-header-wrap"),
         top = 0,
-        sectionDefaultHeight = kemetStickyHeader[section + "DefaultHeight"],
-        staticOffSet = kemetStickyHeader[section + "OffSet"];
+        sectionDefaultHeight = sectionContainer.getAttribute("data-height"),
+        staticOffSet = sectionContainer.getAttribute("data-offset");
 
       if (kemetStickyHeader.enabledSections.length > 1) {
         top = kemetStickyHeader.offSetTop(section).top;
@@ -86,37 +71,31 @@ if (Header != null) {
         section,
         index
       ) {
-        var mainBar = document.querySelector("." + section + "-header-bar");
-
-        switch (section) {
-          case "top":
-            kemetStickyHeader.topOffSet =
-              kemetStickyHeader.getOffset(mainBar).top;
-            break;
-          case "main":
-            kemetStickyHeader.mainOffSet =
-              kemetStickyHeader.getOffset(mainBar).top;
-            break;
-          case "bottom":
-            kemetStickyHeader.bottomOffSet =
-              kemetStickyHeader.getOffset(mainBar).top;
-            break;
+        var mainBar = document.querySelectorAll("." + section + "-header-bar");
+        for (var i = 0; i < mainBar.length; i++) {
+          mainBar[i].setAttribute(
+            "data-offset",
+            kemetStickyHeader.getOffset(mainBar[i]).top
+          );
+          mainBar[i].setAttribute("data-height", mainBar[i].offsetHeight);
         }
 
         if ("on" === kemetStickyHeader.stickySections[section].enable) {
           kemetStickyHeader.enabledSections.push(section);
-          kemetStickyHeader[section + "DefaultHeight"] = mainBar.offsetHeight;
         }
       });
     },
     setShrinkHeight: function () {
-      var ShrinkHeight = kemet.shrinkHeight,
-        mainInner = document.querySelector(
+      var header = document.querySelector(
+          "#kmt-" + kemetStickyHeader.activeHeader + "-header"
+        ),
+        ShrinkHeight = kemet.shrinkHeight,
+        mainInner = header.querySelector(
           ".site-main-header-wrap .kmt-grid-row"
         ),
-        mainBar = document.querySelector(".main-header-bar"),
-        mainWrap = document.querySelector(".kmt-main-header-wrap"),
-        mainBarHeight = kemetStickyHeader.mainDefaultHeight;
+        mainBar = header.querySelector(".main-header-bar"),
+        mainWrap = header.querySelector(".kmt-main-header-wrap"),
+        mainBarHeight = mainBar.getAttribute("data-height");
 
       if (mainBar.classList.contains("kmt-is-sticky")) {
         mainInner.style.height = ShrinkHeight + "px";
@@ -131,39 +110,52 @@ if (Header != null) {
       }
     },
     offSetTop: function (section) {
-      var offSet = 0,
+      var header = document.querySelector(
+          "#kmt-" + kemetStickyHeader.activeHeader + "-header"
+        ),
+        topOffSet = header
+          .querySelector(".top-header-bar")
+          .getAttribute("data-offset"),
+        mainOffSet = header
+          .querySelector(".main-header-bar")
+          .getAttribute("data-offset"),
+        bottomOffSet = header
+          .querySelector(".bottom-header-bar")
+          .getAttribute("data-offset"),
+        offSet = 0,
         top = 0,
         sections = kemetStickyHeader.enabledSections;
 
       switch (section) {
         case "main":
+          offSet = mainOffSet;
           if (sections.includes("top")) {
-            top = kemetStickyHeader.mainOffSet;
-            offSet = kemetStickyHeader.topOffSet;
+            top = mainOffSet;
+            offSet = topOffSet;
           }
           break;
         case "bottom":
           var mainHeight =
             "on" == kemet.enableShrink
               ? parseInt(kemet.shrinkHeight)
-              : document.querySelector(".kmt-main-header-wrap").offsetHeight;
-          var topHeight = document.querySelector(
+              : header.querySelector(".kmt-main-header-wrap").offsetHeight;
+          var topHeight = header.querySelector(
             ".kmt-top-header-wrap"
           ).offsetHeight;
           if (sections.includes("main") && !sections.includes("top")) {
             top = mainHeight;
-            offSet = 0;
+            offSet = mainOffSet;
           }
           if (!sections.includes("main") && sections.includes("top")) {
-            top = kemetStickyHeader.bottomOffSet - mainHeight;
-            offSet = kemetStickyHeader.mainOffSet;
+            top = topHeight;
+            offSet = bottomOffSet - topHeight;
           }
           if (sections.includes("main") && sections.includes("top")) {
             top =
               "on" == kemet.enableShrink
                 ? topHeight + mainHeight
-                : kemetStickyHeader.bottomOffSet;
-            offSet = kemetStickyHeader.topOffSet;
+                : bottomOffSet;
+            offSet = topOffSet;
           }
           break;
       }
@@ -171,6 +163,11 @@ if (Header != null) {
       return { offSet: offSet, top: top };
     },
     sticky: function () {
+      if (kemet.break_point <= window.innerWidth) {
+        kemetStickyHeader.activeHeader = "desktop";
+      } else {
+        kemetStickyHeader.activeHeader = "mobile";
+      }
       Object.keys(kemetStickyHeader.stickySections).map(function (
         section,
         index
