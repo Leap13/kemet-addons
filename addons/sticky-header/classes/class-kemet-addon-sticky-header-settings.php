@@ -103,7 +103,7 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Settings' ) ) {
 			$defaults['enable-sticky-mobile-top']      = false;
 			$defaults['enable-sticky-mobile-main']     = false;
 			$defaults['enable-sticky-mobile-bottom']   = false;
-			$defaults['mobile-main-row-shrink-height'] = 110;
+			$defaults['mobile-main-row-shrink-height'] = 60;
 			$defaults['enable-shrink-main-mobile']     = false;
 
 			return $defaults;
