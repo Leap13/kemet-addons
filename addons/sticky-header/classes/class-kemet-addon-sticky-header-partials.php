@@ -199,6 +199,11 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Partials' ) ) {
 			$localize['enableShrink']       = kemet_get_option( 'enable-shrink-main' ) ? 'on' : 'off';
 			$localize['enableStickyMobile'] = kemet_get_option( 'enable-sticky-mobile' ) ? 'on' : 'off';
 			$localize['shrinkHeight']       = kemet_get_option( 'main-row-shrink-height' );
+			$localize['stickyMobileTop']    = kemet_get_option( 'enable-sticky-mobile-top' ) ? 'on' : 'off';
+			$localize['stickyMobileMain']   = kemet_get_option( 'enable-sticky-mobile-main' ) ? 'on' : 'off';
+			$localize['stickyMobileBottom'] = kemet_get_option( 'enable-sticky-mobile-bottom' ) ? 'on' : 'off';
+			$localize['enableMobileShrink'] = kemet_get_option( 'enable-shrink-main-mobile' ) ? 'on' : 'off';
+			$localize['shrinkMobileHeight'] = kemet_get_option( 'mobile-main-row-shrink-height' );
 			return $localize;
 		}
 		/**

@@ -7,14 +7,18 @@
     stickySections: {
       top: {
         enable: kemet.stickyTop,
+        mobileEnable: kemet.stickyMobileTop,
       },
       main: {
         enable: kemet.stickyMain,
+        mobileEnable: kemet.stickyMobileMain,
       },
       bottom: {
         enable: kemet.stickyBottom,
+        mobileEnable: kemet.stickyMobileBottom,
       },
     },
+    isMobile: false,
     enabledSections: [],
     init: function () {
       window.addEventListener("resize", kemetStickyHeader.sticky, false);
@@ -80,51 +84,59 @@
       };
     },
     setHeight: function () {
+      var header = document.querySelector(
+        "#kmt-" + kemetStickyHeader.activeHeader + "-header"
+      );
+      kemetStickyHeader.enabledSections = [];
       Object.keys(kemetStickyHeader.stickySections).map(function (
         section,
         index
       ) {
-        var sectionBar = document.querySelectorAll(
-            "." + section + "-header-bar"
-          ),
-          sectionWrap = document.querySelectorAll(
+        var sectionBar = header.querySelector("." + section + "-header-bar"),
+          sectionWrap = header.querySelector(
             ".kmt-" + section + "-header-wrap"
           );
-        for (var i = 0; i < sectionBar.length; i++) {
-          sectionBar[i].setAttribute(
-            "data-offset",
-            kemetStickyHeader.getOffset(sectionWrap[i]).top
-          );
-          sectionBar[i].setAttribute("data-height", sectionBar[i].offsetHeight);
-        }
-
-        if ("on" === kemetStickyHeader.stickySections[section].enable) {
+        sectionBar.setAttribute(
+          "data-offset",
+          kemetStickyHeader.getOffset(sectionWrap).top
+        );
+        sectionBar.setAttribute("data-height", sectionBar.offsetHeight);
+        var enable = kemetStickyHeader.isMobile
+          ? kemetStickyHeader.stickySections[section].mobileEnable
+          : kemetStickyHeader.stickySections[section].enable;
+        if ("on" === enable) {
           kemetStickyHeader.enabledSections.push(section);
         }
       });
+      if (kemet.stickyMain == "on" && kemet.enableShrink == "on") {
+        var mainBar = header.querySelector(".main-header-bar"),
+          mainInner = header.querySelector(".main-header-bar .kmt-grid-row");
+
+        mainBar.setAttribute("data-start-height", mainInner.offsetHeight);
+      }
     },
     setShrinkHeight: function () {
       var header = document.querySelector(
           "#kmt-" + kemetStickyHeader.activeHeader + "-header"
         ),
-        ShrinkHeight = kemet.shrinkHeight,
+        ShrinkHeight = kemetStickyHeader.isMobile
+          ? kemet.shrinkMobileHeight
+          : kemet.shrinkHeight,
         mainInner = header.querySelector(
           ".site-main-header-wrap .kmt-grid-row"
         ),
         mainBar = header.querySelector(".main-header-bar"),
         mainWrap = header.querySelector(".kmt-main-header-wrap"),
-        mainBarHeight = mainBar.getAttribute("data-height");
+        startHeight = mainBar.getAttribute("data-start-height");
 
       if (mainBar.classList.contains("kmt-is-sticky")) {
         mainInner.style.height = ShrinkHeight + "px";
         mainInner.style.minHeight = ShrinkHeight + "px";
         mainInner.style.maxHeight = ShrinkHeight + "px";
-        mainWrap.style.minHeight = ShrinkHeight + "px";
       } else {
-        mainInner.style.height = mainBarHeight + "px";
-        mainInner.style.minHeight = mainBarHeight + "px";
-        mainInner.style.maxHeight = mainBarHeight + "px";
-        mainWrap.style.minHeight = mainBarHeight + "px";
+        mainInner.style.height = startHeight + "px";
+        mainInner.style.minHeight = startHeight + "px";
+        mainInner.style.maxHeight = startHeight + "px";
       }
     },
     offSetTop: function (section) {
@@ -134,14 +146,16 @@
         topOffSet = header
           .querySelector(".top-header-bar")
           .getAttribute("data-offset"),
-        mainOffSet = header
-          .querySelector(".main-header-bar")
-          .getAttribute("data-offset"),
+        mainBar = header.querySelector(".main-header-bar"),
+        mainOffSet = mainBar.getAttribute("data-offset"),
         bottomOffSet = header
           .querySelector(".bottom-header-bar")
           .getAttribute("data-offset"),
         offSet = 0,
         top = 0,
+        ShrinkHeight = kemetStickyHeader.isMobile
+          ? kemet.shrinkMobileHeight
+          : kemet.shrinkHeight,
         sections = kemetStickyHeader.enabledSections;
 
       switch (section) {
@@ -154,9 +168,15 @@
           break;
         case "bottom":
           offSet = bottomOffSet;
+          var startHeight = parseInt(mainBar.getAttribute("data-start-height"));
+          shrinkHeight = Math.abs(startHeight - ShrinkHeight);
+          shrinkHeight =
+            startHeight > ShrinkHeight
+              ? parseInt(mainBar.getAttribute("data-height")) - shrinkHeight
+              : parseInt(mainBar.getAttribute("data-height")) + shrinkHeight;
           var mainHeight =
             "on" == kemet.enableShrink
-              ? parseInt(kemet.shrinkHeight)
+              ? shrinkHeight
               : header.querySelector(".kmt-main-header-wrap").offsetHeight;
           var topHeight = header.querySelector(
             ".kmt-top-header-wrap"
@@ -172,7 +192,7 @@
           if (sections.includes("main") && sections.includes("top")) {
             top =
               "on" == kemet.enableShrink
-                ? topHeight + mainHeight
+                ? mainHeight + topHeight
                 : bottomOffSet;
             offSet = topOffSet;
           }
@@ -184,14 +204,19 @@
     sticky: function () {
       if (kemet.break_point <= window.innerWidth) {
         kemetStickyHeader.activeHeader = "desktop";
+        kemetStickyHeader.isMobile = false;
       } else {
         kemetStickyHeader.activeHeader = "mobile";
+        kemetStickyHeader.isMobile = true;
       }
       Object.keys(kemetStickyHeader.stickySections).map(function (
         section,
         index
       ) {
-        if ("on" === kemetStickyHeader.stickySections[section].enable) {
+        var enable = kemetStickyHeader.isMobile
+          ? kemetStickyHeader.stickySections[section].mobileEnable
+          : kemetStickyHeader.stickySections[section].enable;
+        if ("on" === enable) {
           kemetStickyHeader.stickySection(section);
         }
       });

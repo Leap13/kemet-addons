@@ -75,31 +75,36 @@ if ( ! class_exists( 'Kemet_Addon_Sticky_Header_Settings' ) ) {
 		 * @return object
 		 */
 		public function theme_defaults( $defaults ) {
-			$defaults['enable-sticky']                = false;
-			$defaults['sticky-top-bar']               = false;
-			$defaults['sticky-bg-obj']                = '';
-			$defaults['sticky-logo-width']            = '';
-			$defaults['sticky-logo']                  = '';
-			$defaults['sticky-menu-link-color']       = '';
-			$defaults['sticky-menu-link-h-color']     = '';
-			$defaults['sticky-submenu-bg-color']      = '';
-			$defaults['sticky-submenu-link-color']    = '';
-			$defaults['sticky-submenu-link-h-color']  = '';
-			$defaults['sticky-border-bottom-color']   = '';
-			$defaults['sticky-submenu-border-color']  = '';
-			$defaults['sticky-responsive']            = 'all-devices';
-			$defaults['sticky-style']                 = 'sticky-fade';
-			$defaults['sticky-header-padding']        = '';
-			$defaults['sticky-header-box-shadow']     = false;
-			$defaults['sticky-site-identity-spacing'] = '';
-			$defaults['sticky-menu-item-spacing']     = '';
-			$defaults['sticky-border-width']          = '';
-			$defaults['enable-sticky-top']            = false;
-			$defaults['enable-sticky-main']           = false;
-			$defaults['enable-sticky-bottom']         = false;
-			$defaults['main-row-shrink-height']       = 60;
-			$defaults['enable-shrink-main']           = false;
-			$defaults['enable-sticky-mobile']         = false;
+			$defaults['enable-sticky']                 = false;
+			$defaults['sticky-top-bar']                = false;
+			$defaults['sticky-bg-obj']                 = '';
+			$defaults['sticky-logo-width']             = '';
+			$defaults['sticky-logo']                   = '';
+			$defaults['sticky-menu-link-color']        = '';
+			$defaults['sticky-menu-link-h-color']      = '';
+			$defaults['sticky-submenu-bg-color']       = '';
+			$defaults['sticky-submenu-link-color']     = '';
+			$defaults['sticky-submenu-link-h-color']   = '';
+			$defaults['sticky-border-bottom-color']    = '';
+			$defaults['sticky-submenu-border-color']   = '';
+			$defaults['sticky-responsive']             = 'all-devices';
+			$defaults['sticky-style']                  = 'sticky-fade';
+			$defaults['sticky-header-padding']         = '';
+			$defaults['sticky-header-box-shadow']      = false;
+			$defaults['sticky-site-identity-spacing']  = '';
+			$defaults['sticky-menu-item-spacing']      = '';
+			$defaults['sticky-border-width']           = '';
+			$defaults['enable-sticky-top']             = false;
+			$defaults['enable-sticky-main']            = false;
+			$defaults['enable-sticky-bottom']          = false;
+			$defaults['main-row-shrink-height']        = 80;
+			$defaults['enable-shrink-main']            = false;
+			$defaults['enable-sticky-mobile']          = false;
+			$defaults['enable-sticky-mobile-top']      = false;
+			$defaults['enable-sticky-mobile-main']     = false;
+			$defaults['enable-sticky-mobile-bottom']   = false;
+			$defaults['mobile-main-row-shrink-height'] = 110;
+			$defaults['enable-shrink-main-mobile']     = false;
 
 			return $defaults;
 		}

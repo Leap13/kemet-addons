@@ -21,7 +21,7 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 		public function register_options( $options ) {
 
 			$sticky_options = array(
-				'foucs-sticky-section'   => array(
+				'foucs-sticky-section'          => array(
 					'section'       => 'section-header-builder-layout',
 					'priority'      => 5,
 					'type'          => 'kmt-focus-button',
@@ -36,25 +36,25 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 						),
 					),
 				),
-				'enable-sticky-top'      => array(
+				'enable-sticky-top'             => array(
 					'section'  => 'section-sticky-header-options',
 					'priority' => 5,
 					'label'    => __( 'Sticky Top Header', 'kemet' ),
 					'type'     => 'checkbox',
 				),
-				'enable-sticky-main'     => array(
+				'enable-sticky-main'            => array(
 					'section'  => 'section-sticky-header-options',
 					'priority' => 10,
 					'label'    => __( 'Sticky Main Header', 'kemet' ),
 					'type'     => 'checkbox',
 				),
-				'enable-sticky-bottom'   => array(
+				'enable-sticky-bottom'          => array(
 					'section'  => 'section-sticky-header-options',
 					'priority' => 15,
 					'label'    => __( 'Sticky Bottom Header', 'kemet' ),
 					'type'     => 'checkbox',
 				),
-				'enable-shrink-main'     => array(
+				'enable-shrink-main'            => array(
 					'section'  => 'section-sticky-header-options',
 					'priority' => 20,
 					'label'    => __( 'Enable Main Row Shrinking', 'kemet' ),
@@ -66,7 +66,7 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 						),
 					),
 				),
-				'main-row-shrink-height' => array(
+				'main-row-shrink-height'        => array(
 					'type'        => 'kmt-slider',
 					'section'     => 'section-sticky-header-options',
 					'priority'    => 25,
@@ -88,11 +88,63 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 						),
 					),
 				),
-				'enable-sticky-mobile'   => array(
+				'sticky-mobile-settings'        => array(
+					'type'     => 'kmt-title',
+					'label'    => __( 'Mobile Sticky', 'kemet' ),
 					'section'  => 'section-sticky-header-options',
 					'priority' => 30,
-					'label'    => __( 'Enable Sticky on Mobile', 'kemet' ),
+				),
+				'enable-sticky-mobile-top'      => array(
+					'section'  => 'section-sticky-header-options',
+					'priority' => 35,
+					'label'    => __( 'Sticky Mobile Top Header', 'kemet' ),
 					'type'     => 'checkbox',
+				),
+				'enable-sticky-mobile-main'     => array(
+					'section'  => 'section-sticky-header-options',
+					'priority' => 40,
+					'label'    => __( 'Sticky Mobile Main Header', 'kemet' ),
+					'type'     => 'checkbox',
+				),
+				'enable-sticky-mobile-bottom'   => array(
+					'section'  => 'section-sticky-header-options',
+					'priority' => 45,
+					'label'    => __( 'Sticky Mobile Main Header', 'kemet' ),
+					'type'     => 'checkbox',
+				),
+				'enable-shrink-main-mobile'     => array(
+					'section'  => 'section-sticky-header-options',
+					'priority' => 50,
+					'label'    => __( 'Enable Main Row Shrinking', 'kemet' ),
+					'type'     => 'checkbox',
+					'context'  => array(
+						array(
+							'setting' => 'enable-sticky-mobile-main',
+							'value'   => true,
+						),
+					),
+				),
+				'mobile-main-row-shrink-height' => array(
+					'type'        => 'kmt-slider',
+					'section'     => 'section-sticky-header-options',
+					'priority'    => 55,
+					'label'       => __( 'Main Row Shrink Height', 'kemet' ),
+					'suffix'      => '',
+					'input_attrs' => array(
+						'min'  => 5,
+						'step' => 1,
+						'max'  => 400,
+					),
+					'context'     => array(
+						array(
+							'setting' => 'enable-sticky-mobile-main',
+							'value'   => true,
+						),
+						array(
+							'setting' => 'enable-shrink-main-mobile',
+							'value'   => true,
+						),
+					),
 				),
 			);
 			return array_merge( $options, $sticky_options );
