@@ -94,7 +94,7 @@
   top: 0;
 }
 
-.kmt-shrink-effect {
+.kmt-shrink-effect .kmt-grid-row {
   transition: all 0.3s linear;
 }
 

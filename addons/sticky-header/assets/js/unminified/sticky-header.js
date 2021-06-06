@@ -111,7 +111,9 @@ if (Header != null) {
     },
     setShrinkHeight: function () {
       var ShrinkHeight = kemet.shrinkHeight,
-        mainInner = document.querySelector(".site-main-header-wrap"),
+        mainInner = document.querySelector(
+          ".site-main-header-wrap .kmt-grid-row"
+        ),
         mainBar = document.querySelector(".main-header-bar"),
         mainWrap = document.querySelector(".kmt-main-header-wrap"),
         mainBarHeight = kemetStickyHeader.mainDefaultHeight;
