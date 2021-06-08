@@ -240,4 +240,9 @@
     // The DOM has already been loaded.
     kemetStickyHeader.init();
   }
+
+  document.addEventListener(
+    "kmtPartialContentRendered",
+    kemetStickyHeader.setHeight
+  );
 })(window, document);

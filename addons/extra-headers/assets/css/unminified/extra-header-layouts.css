@@ -407,10 +407,6 @@ body:not(.kmt-header-break-point) .header-main-layout-5 .main-header-bar {
   display: flex;
 }
 
-.kmt-header-break-point .kmt-site-identity {
-  padding: 0;
-}
-
 .kmt-header-break-point .kmt-outside-menu .kmt-sitehead-custom-menu-items {
   display: flex;
 }
