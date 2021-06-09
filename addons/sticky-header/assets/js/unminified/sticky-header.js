@@ -31,9 +31,9 @@
         false
       );
       window.addEventListener("load", kemetStickyHeader.sticky, false);
-      window.addEventListener("load", kemetStickyHeader.setHeight, false);
       window.addEventListener("load", kemetStickyHeader.setShrinkHeight, false);
       window.addEventListener("resize", kemetStickyHeader.setHeight, false);
+      kemetStickyHeader.setHeight();
     },
     stickySection: function (section) {
       var header = document.querySelector(
@@ -243,6 +243,6 @@
 
   document.addEventListener(
     "kmtPartialContentRendered",
-    kemetStickyHeader.setHeight
+    kemetStickyHeader.init
   );
 })(window, document);
