@@ -199,11 +199,11 @@
         case "bottom":
           offSet = bottomOffSet;
           var startHeight = parseInt(mainBar.getAttribute("data-start-height"));
-          shrinkHeight = Math.abs(startHeight - shrinkHeight);
+          var calcDiffernce = Math.abs(startHeight - shrinkHeight);
           shrinkHeight =
             startHeight > shrinkHeight
-              ? parseInt(mainBar.getAttribute("data-height")) - shrinkHeight
-              : parseInt(mainBar.getAttribute("data-height")) + shrinkHeight;
+              ? parseInt(mainBar.getAttribute("data-height")) - calcDiffernce
+              : parseInt(mainBar.getAttribute("data-height")) + calcDiffernce;
           if (sections.includes("main") && !sections.includes("top")) {
             top = kemetStickyHeader.hasAdminBar ? mainHeight + 32 : mainHeight;
             offSet = mainOffSet;
