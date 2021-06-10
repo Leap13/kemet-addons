@@ -109,7 +109,7 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 				'enable-sticky-mobile-bottom'   => array(
 					'section'  => 'section-sticky-header-options',
 					'priority' => 45,
-					'label'    => __( 'Sticky Mobile Main Header', 'kemet' ),
+					'label'    => __( 'Sticky Mobile Bottom Header', 'kemet' ),
 					'type'     => 'checkbox',
 				),
 				'enable-shrink-main-mobile'     => array(
