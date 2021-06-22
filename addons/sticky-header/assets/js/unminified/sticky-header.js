@@ -266,4 +266,8 @@
     "kmtPartialContentRendered",
     kemetStickyHeader.init
   );
+  document.addEventListener(
+    "kmtHeaderBarHeightChanged",
+    kemetStickyHeader.init
+  );
 })(window, document);
