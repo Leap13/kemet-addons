@@ -29,12 +29,6 @@ if ( ! class_exists( 'Kemet_Addons_Sticky_Customizer' ) ) :
 						'title'   => __( 'Sticky Header', 'kemet-addons' ),
 						'section' => 'section-sticky-header-options',
 					),
-					'context'       => array(
-						array(
-							'setting' => 'tab',
-							'value'   => 'general',
-						),
-					),
 				),
 				'enable-sticky-top'             => array(
 					'section'  => 'section-sticky-header-options',
