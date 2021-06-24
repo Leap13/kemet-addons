@@ -76,13 +76,6 @@ if ( ! class_exists( 'Kemet_Panel_Options_Tab' ) ) {
 					'default'  => false,
 				),
 				array(
-					'id'       => 'sticky-header',
-					'type'     => 'switcher',
-					'title'    => __( 'Sticky Header', 'kemet-addons' ),
-					'subtitle' => __( 'Enable/Disable Kemet sticky header options.', 'kemet-addons' ),
-					'default'  => false,
-				),
-				array(
 					'id'       => 'top-bar-section',
 					'type'     => 'switcher',
 					'title'    => __( 'Top Bar Section', 'kemet-addons' ),

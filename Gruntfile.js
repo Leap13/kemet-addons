@@ -63,13 +63,6 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
-            cwd: "addons/sticky-header/assets/css/unminified/",
-            src: ["*.css", "!*-rtl.css"],
-            dest: "addons/sticky-header/assets/css/unminified",
-            ext: "-rtl.css",
-          },
-          {
-            expand: true,
             cwd: "addons/top-bar-section/assets/css/unminified/",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/top-bar-section/assets/css/unminified",
@@ -127,8 +120,6 @@ module.exports = function (grunt) {
             "addons/go-top/assets/css/unminified/style.css": "sass/go-top.scss",
             "addons/page-title/assets/css/unminified/style.css":
               "sass/page-title.scss",
-            "addons/sticky-header/assets/css/unminified/style.css":
-              "sass/sticky-header.scss",
             "addons/single-post/assets/css/unminified/style.css":
               "sass/single-post.scss",
             "addons/woocommerce/assets/css/unminified/style.css":
@@ -156,26 +147,19 @@ module.exports = function (grunt) {
         files: [
           {
             src: "addons/blog-layouts/assets/css/unminified/blog-layouts.css",
-            dest:
-              "addons/blog-layouts/assets/css/minified/blog-layouts.min.css",
+            dest: "addons/blog-layouts/assets/css/minified/blog-layouts.min.css",
           },
           {
-            src:
-              "addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css",
-            dest:
-              "addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css",
+            src: "addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css",
+            dest: "addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css",
           },
           {
-            src:
-              "addons/extra-headers/assets/css/unminified/extra-header-layouts.css",
-            dest:
-              "addons/extra-headers/assets/css/minified/extra-header-layouts.min.css",
+            src: "addons/extra-headers/assets/css/unminified/extra-header-layouts.css",
+            dest: "addons/extra-headers/assets/css/minified/extra-header-layouts.min.css",
           },
           {
-            src:
-              "addons/extra-headers/assets/css/unminified/extra-header-layouts-rtl.css",
-            dest:
-              "addons/extra-headers/assets/css/minified/extra-header-layouts-rtl.min.css",
+            src: "addons/extra-headers/assets/css/unminified/extra-header-layouts-rtl.css",
+            dest: "addons/extra-headers/assets/css/minified/extra-header-layouts-rtl.min.css",
           },
 
           {
@@ -193,8 +177,7 @@ module.exports = function (grunt) {
           },
           {
             src: "addons/top-bar-section/assets/css/unminified/style-rtl.css",
-            dest:
-              "addons/top-bar-section/assets/css/minified/style-rtl.min.css",
+            dest: "addons/top-bar-section/assets/css/minified/style-rtl.min.css",
           },
 
           {
@@ -213,15 +196,6 @@ module.exports = function (grunt) {
           {
             src: "addons/go-top/assets/css/unminified/style-rtl.css",
             dest: "addons/go-top/assets/css/minified/style.min-rtl.css",
-          },
-
-          {
-            src: "addons/sticky-header/assets/css/unminified/style.css",
-            dest: "addons/sticky-header/assets/css/minified/style.min.css",
-          },
-          {
-            src: "addons/sticky-header/assets/css/unminified/style-rtl.css",
-            dest: "addons/sticky-header/assets/css/minified/style-rtl.min.css",
           },
 
           {
@@ -298,10 +272,6 @@ module.exports = function (grunt) {
             "addons/page-title/assets/js/unminified/customizer-preview.js",
           "addons/go-top/assets/js/minified/customizer-preview.min.js":
             "addons/go-top/assets/js/unminified/customizer-preview.js",
-          "addons/sticky-header/assets/js/minified/customizer-preview.min.js":
-            "addons/sticky-header/assets/js/unminified/customizer-preview.js",
-          "addons/sticky-header/assets/js/minified/sticky-header.min.js":
-            "addons/sticky-header/assets/js/unminified/sticky-header.js",
           "addons/single-post/assets/js/minified/customizer-preview.min.js":
             "addons/single-post/assets/js/unminified/customizer-preview.js",
           "addons/extra-widgets/assets/js/minified/extre-widgets.min.js":
@@ -388,13 +358,6 @@ module.exports = function (grunt) {
             cwd: "addons/go-top/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/go-top/assets/css/unminified",
-            ext: "-rtl.css",
-          },
-          {
-            expand: true,
-            cwd: "addons/sticky-header/assets/css/unminified",
-            src: ["*.css", "!*-rtl.css"],
-            dest: "addons/sticky-header/assets/css/unminified",
             ext: "-rtl.css",
           },
           {
@@ -493,11 +456,7 @@ module.exports = function (grunt) {
       },
       target: {
         files: {
-          src: [
-            "*.php", 
-            "**/*.php", 
-            "!node_modules/**",
-            "!inc/k-framework/**"],
+          src: ["*.php", "**/*.php", "!node_modules/**", "!inc/k-framework/**"],
         },
       },
     },
@@ -513,7 +472,7 @@ module.exports = function (grunt) {
 
     replace: {
       plugin_readme: {
-        src: ['readme.txt'],
+        src: ["readme.txt"],
         overwrite: true,
         replacements: [
           {
@@ -524,7 +483,7 @@ module.exports = function (grunt) {
       },
 
       plugin_main: {
-        src: ['kemet-addons.php'],
+        src: ["kemet-addons.php"],
         overwrite: true,
         replacements: [
           {
@@ -591,5 +550,4 @@ module.exports = function (grunt) {
   });
   // i18n
   grunt.registerTask("i18n", ["addtextdomain", "makepot"]);
-
 };
