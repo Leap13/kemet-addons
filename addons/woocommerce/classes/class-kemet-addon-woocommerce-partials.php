@@ -48,7 +48,6 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			add_action( 'wp_ajax_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_action( 'wp_ajax_nopriv_kemet_add_cart_single_product', array( $this, 'kemet_add_cart_single_product' ) );
 			add_filter( 'body_class', array( $this, 'shop_layout' ) );
-			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
 			add_action( 'wp', array( $this, 'init_woocommerce' ) );
 			add_action( 'widgets_init', array( $this, 'kemet_register_off_canvas' ) );
 			add_action( 'wp_ajax_nopriv_kemet_list_post_ajax', array( $this, 'ajax_product_list_style' ) );
