@@ -278,8 +278,6 @@ module.exports = function (grunt) {
             "addons/extra-widgets/assets/js/unminified/extre-widgets.js",
           "addons/extra-widgets/assets/js/minified/extra-widgets-admin.min.js":
             "addons/extra-widgets/assets/js/unminified/extra-widgets-admin.js",
-          "addons/woocommerce/assets/js/minified/customizer-preview.min.js":
-            "addons/woocommerce/assets/js/unminified/customizer-preview.js",
           "addons/woocommerce/assets/js/minified/quick-view.min.js":
             "addons/woocommerce/assets/js/unminified/quick-view.js",
           "addons/woocommerce/assets/js/minified/single-product-ajax-cart.min.js":

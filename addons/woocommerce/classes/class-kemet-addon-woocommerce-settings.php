@@ -39,7 +39,6 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Settings' ) ) {
 		public function __construct() {
 			require_once KEMET_WOOCOMMERCE_DIR . 'customizer/customizer-options.php';
 			add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ), 1 );
 		}
 
 		/**
@@ -70,25 +69,12 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Settings' ) ) {
 			$defaults['woo-shop-off-canvas-filter-label']      = 'Filter';
 			$defaults['woo-shop-enable-quick-view']            = false;
 			$defaults['woo-shop-pagination-style']             = 'standard';
-			$defaults['woo-shop-nfinite-scroll-last-text']     = __( 'No more products to show.', 'kemet-addons' );
+			$defaults['woo-shop-infinite-scroll-last-text']    = __( 'No more products to show.', 'kemet-addons' );
 			$defaults['woo-shop-load-more-style']              = 'dots';
 			$defaults['woo-shop-load-more-text']               = 'Load More';
 			$defaults['disable-list-short-desc-in-responsive'] = true;
 
 			return $defaults;
-		}
-
-		/**
-		 * Add Preview Scripts
-		 *
-		 * @return void
-		 */
-		public function preview_scripts() {
-			if ( SCRIPT_DEBUG ) {
-				wp_enqueue_script( 'kemet-woocommerce-customize-preview-js', KEMET_WOOCOMMERCE_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true );
-			} else {
-				wp_enqueue_script( 'kemet-woocommerce-customize-preview-js', KEMET_WOOCOMMERCE_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'kemet-customizer-preview-js' ), KEMET_ADDONS_VERSION, true );
-			}
 		}
 	}
 }

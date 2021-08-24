@@ -47,7 +47,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce' ) ) {
 				require_once KEMET_WOOCOMMERCE_DIR . 'classes/class-kemet-addon-woocommerce-settings.php';
 
 				if ( ! is_admin() ) {
-					// require_once KEMET_WOOCOMMERCE_DIR . 'classes/dynamic.css.php';
+					require_once KEMET_WOOCOMMERCE_DIR . 'classes/dynamic.css.php';
 				}
 			}
 		}

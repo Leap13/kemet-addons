@@ -153,15 +153,22 @@ function woo_shop_options( $options ) {
 			),
 		),
 		$prefix . '-loader-color'               => array(
-			'type'    => 'kmt-color',
-			'label'   => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
-			'pickers' => array(
+			'type'      => 'kmt-color',
+			'transport' => 'postMessage',
+			'label'     => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
+			'pickers'   => array(
 				array(
 					'id'    => 'initial',
 					'title' => __( 'Color', 'kemet-addons' ),
 				),
 			),
-			'context' => array(
+			'preview'   => array(
+				'initial' => array(
+					'selector' => '.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader',
+					'property' => 'background-color',
+				),
+			),
+			'context'   => array(
 				array(
 					'setting' => $prefix . '-pagination-style',
 					'value'   => 'infinite-scroll',
