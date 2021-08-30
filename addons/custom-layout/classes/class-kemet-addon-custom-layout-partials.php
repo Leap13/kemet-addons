@@ -51,10 +51,10 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 			add_filter( 'wp', array( $this, 'layout' ) );
 			add_filter( 'wp', array( $this, 'get_markup' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_posts_scripts' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'admin_script' ), 1 );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'admin_script' ), 1 );
 			add_action( 'wp_ajax_kemet_ajax_get_posts_list', array( $this, 'kemet_ajax_get_posts_list' ) );
 			add_action( 'wp_ajax_kemet_get_post_title', array( $this, 'ajax_get_post_title' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
+			// add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 			add_shortcode( 'Kemet_Addon_Custom_Layout', array( $this, 'add_shortcode' ) );
 			add_filter( 'et_builder_post_types', array( $this, 'add_to_et_builder_post_types' ) );
 			add_filter( 'brizy_supported_post_types', array( $this, 'add_to_brizy_post_types' ) );

@@ -35,11 +35,123 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			$prefix_page_opts   = 'kemet_custom_layout_options';
 			$code_editor_prefix = 'kemet_code_editor';
 
-			$this->create_custom_layout_meta( $prefix_page_opts );
-			$this->create_code_editor( $code_editor_prefix );
+			// $this->create_custom_layout_meta( $prefix_page_opts );
+			// $this->create_code_editor( $code_editor_prefix );
 			add_action( 'add_meta_boxes_kemet_custom_layouts', array( $this, 'register_shortcode_meta_boxes' ) );
 			add_filter( 'manage_posts_columns', array( $this, 'shortcode_column' ) );
 			add_action( 'manage_kemet_custom_layouts_posts_custom_column', array( $this, 'shortcode_column_content' ), 10, 2 );
+			add_filter( 'kemet_meta_options', array( $this, 'meta_options' ) );
+		}
+
+		/**
+		 * meta_options
+		 *
+		 * @param  array $options
+		 * @return array
+		 */
+		public function meta_options( $options ) {
+			$screen = get_current_screen();
+			if ( ! ( KEMET_CUSTOM_LAYOUT_POST_TYPE == $screen->post_type ) ) {
+				return $options;
+			}
+			$options = array(
+				'hook-action'                   => array(
+					'label'   => __( 'Action', 'kemet-addons' ),
+					'class'   => 'kmt-hooks-select',
+					'type'    => 'kmt-select',
+					'choices' => self::get_options_array( 'hooks' ),
+				),
+				'hook-priority'                 => array(
+					'label'        => __( 'Priority', 'kemet-addons' ),
+					'type'         => 'kmt-slider',
+					'unit_choices' => array(
+						'' => array(
+							'min'  => 0,
+							'step' => 1,
+							'max'  => 1000,
+						),
+					),
+				),
+				'spacing-top'                   => array(
+					'label'        => __( 'Spacing Top', 'kemet-addons' ),
+					'type'         => 'kmt-slider',
+					'unit_choices' => array(
+						'px' => array(
+							'min'  => 0,
+							'step' => 1,
+							'max'  => 1000,
+						),
+					),
+				),
+				'spacing-bottom'                => array(
+					'label'        => __( 'Spacing Bottom', 'kemet-addons' ),
+					'type'         => 'kmt-slider',
+					'unit_choices' => array(
+						'px' => array(
+							'min'  => 0,
+							'step' => 1,
+							'max'  => 1000,
+						),
+					),
+				),
+				'display-on'                    => array(
+					'type'  => 'kmt-title',
+					'label' => __( 'Display', 'kemet-addons' ),
+				),
+				'display-on-rule'               => array(
+					'type'    => 'kmt-select',
+					'class'   => 'display-on-rule',
+					'label'   => __( 'Display On', 'kemet-addons' ),
+					'choices' => self::get_options_array( 'locations' ),
+				),
+				'display-on-specifics-location' => array(
+					'type'     => 'kmt-select',
+					'class'    => 'kmt-display-on-specifics-select',
+					'multiple' => true,
+					'label'    => __( 'Specific Locations', 'kemet-addons' ),
+					'choices'  => array(),
+					'context'  => array(
+						array(
+							'setting' => 'display-on-rule',
+							'value'   => 'specifics-location',
+						),
+					),
+				),
+				'hide-on'                       => array(
+					'type'  => 'kmt-title',
+					'label' => __( 'Hide', 'kemet-addons' ),
+				),
+				'hide-on-rule'                  => array(
+					'type'    => 'kmt-select',
+					'class'   => 'hide-on-rule',
+					'label'   => __( 'Hide On', 'kemet-addons' ),
+					'choices' => self::get_options_array( 'locations' ),
+				),
+				'hide-on-specifics-location'    => array(
+					'type'     => 'kmt-select',
+					'multiple' => true,
+					'class'    => 'kmt-hide-on-specifics-select',
+					'label'    => __( 'Specific Locations', 'kemet-addons' ),
+					'choices'  => array(),
+					'context'  => array(
+						array(
+							'setting' => 'hide-on-rule',
+							'value'   => 'specifics-location',
+						),
+					),
+				),
+				'user'                          => array(
+					'type'  => 'kmt-title',
+					'label' => __( 'User', 'kemet-addons' ),
+				),
+				'user-rules'                    => array(
+					'type'    => 'kmt-select',
+					'class'   => 'kmt-user-rules',
+					'label'   => __( 'User Rules', 'kemet-addons' ),
+					'choices' => self::get_options_array( 'users' ),
+				),
+			);
+			return $options;
 		}
 
 		/**
