@@ -99,10 +99,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 					'label' => __( 'Display', 'kemet-addons' ),
 				),
 				'display-on-rule'               => array(
-					'type'    => 'kmt-select',
-					'class'   => 'display-on-rule',
-					'label'   => __( 'Display On', 'kemet-addons' ),
-					'choices' => self::get_options_array( 'locations' ),
+					'type'     => 'kmt-select',
+					'class'    => 'display-on-rule',
+					'multiple' => true,
+					'label'    => __( 'Display On', 'kemet-addons' ),
+					'choices'  => self::get_options_array( 'locations' ),
 				),
 				'display-on-specifics-location' => array(
 					'type'     => 'kmt-select',
@@ -110,22 +111,24 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 					'multiple' => true,
 					'label'    => __( 'Specific Locations', 'kemet-addons' ),
 					'choices'  => array(),
-					'context'  => array(
-						array(
-							'setting' => 'display-on-rule',
-							'value'   => 'specifics-location',
-						),
-					),
+					// 'context'  => array(
+					// array(
+					// 'setting'  => 'display-on-rule',
+					// 'operator' => 'contain',
+					// 'value'    => 'specifics-location',
+					// ),
+					// ),
 				),
 				'hide-on'                       => array(
 					'type'  => 'kmt-title',
 					'label' => __( 'Hide', 'kemet-addons' ),
 				),
 				'hide-on-rule'                  => array(
-					'type'    => 'kmt-select',
-					'class'   => 'hide-on-rule',
-					'label'   => __( 'Hide On', 'kemet-addons' ),
-					'choices' => self::get_options_array( 'locations' ),
+					'type'     => 'kmt-select',
+					'class'    => 'hide-on-rule',
+					'multiple' => true,
+					'label'    => __( 'Hide On', 'kemet-addons' ),
+					'choices'  => self::get_options_array( 'locations' ),
 				),
 				'hide-on-specifics-location'    => array(
 					'type'     => 'kmt-select',
@@ -145,10 +148,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 					'label' => __( 'User', 'kemet-addons' ),
 				),
 				'user-rules'                    => array(
-					'type'    => 'kmt-select',
-					'class'   => 'kmt-user-rules',
-					'label'   => __( 'User Rules', 'kemet-addons' ),
-					'choices' => self::get_options_array( 'users' ),
+					'type'     => 'kmt-select',
+					'class'    => 'kmt-user-rules',
+					'multiple' => true,
+					'label'    => __( 'User Rules', 'kemet-addons' ),
+					'choices'  => self::get_options_array( 'users' ),
 				),
 			);
 			return $options;

@@ -2,10 +2,10 @@
   document.addEventListener('KemetInitOptionsMeta', function () {
     var container = $(document).find(".kmt-post-options");
     /**
-   * Set options Descriptions
-   */
+     * Set options Descriptions
+     */
     var descriptions = kemetAddons.hooks_descriptions,
-      hooksSelect = container.find(".kmt-hooks-select select"),
+      hooksSelect = container.find(".kmt-hooks-select"),
       hookValue = hooksSelect.val(),
       descriptionDiv = container.find(".kmt-hooks-select .kfw-text-desc");
 
@@ -75,12 +75,12 @@
         kemetAddons.hide_old_value != "" ? kemetAddons.hide_old_value : "";
 
     if (typeof displayOldValues == "object" && displayOldValues != null) {
-      var displaySelector = $(".kmt-display-on-specifics-select").find("select");
+      var displaySelector = container.find(".kmt-display-on-specifics-select");
       setValues(displaySelector, displayOldValues);
     }
 
     if (typeof hideOldValues == "object" && hideOldValues != null) {
-      var hideSelector = $(".kmt-hide-on-specifics-select").find("select");
+      var hideSelector = container.find(".kmt-hide-on-specifics-select");
       setValues(hideSelector, hideOldValues);
     }
 
@@ -92,7 +92,7 @@
       if ($(selector).val() == "") {
         $(selector).html("");
       }
-      console.log($(selector));
+
       $(selector).select2({
         placeholder: kemetAddons.search,
 
@@ -124,67 +124,53 @@
 
     var specificSelect = container.find(
       ".kmt-hide-on-specifics-select , .kmt-display-on-specifics-select"
-    ).find("select");
+    );
     specificSelect.each(function (index, selector) {
       convertToSelect2(selector);
     });
 
-    var displaySelects = container.find(".display-on-rule , .hide-on-rule").find("select");
+    var displaySelects = container.find(".display-on-rule , .hide-on-rule");
     displaySelects.select2({
       width: "100%"
     });
 
     displaySelects.each(function (index, selector) {
-      var value = $(this).val(),
-        ID = $(this).attr("data-depend-id");
+      var value = $(this).val();
 
       if (value != null && value.includes("specifics-location")) {
-        switch (ID) {
-          case "display-on-rule":
-            $(".kmt-display-on-specifics-select").css("display", "block");
-            break;
-          case "hide-on-rule":
-            $(".kmt-hide-on-specifics-select").css("display", "block");
-            break;
+        if ($(selector).hasClass('display-on-rule')) {
+          container.find(".kmt-display-on-specifics-select").css("display", "block");
+        } else {
+          container.find(".kmt-hide-on-specifics-select").css("display", "block");
         }
       } else {
-        switch (ID) {
-          case "display-on-rule":
-            $(".kmt-display-on-specifics-select").css("display", "none");
-            break;
-          case "hide-on-rule":
-            $(".kmt-hide-on-specifics-select").css("display", "none");
-            break;
+        if ($(selector).hasClass('display-on-rule')) {
+          container.find(".kmt-display-on-specifics-select").css("display", "block");
+        } else {
+          container.find(".kmt-hide-on-specifics-select").css("display", "block");
         }
       }
     });
 
     displaySelects.change(function () {
       var value = $(this).val(),
-        ID = $(this).attr("data-depend-id");
+        selector = $(this);
 
       if (value != null && value.includes("specifics-location")) {
-        switch (ID) {
-          case "display-on-rule":
-            $(".kmt-display-on-specifics-select").css("display", "block");
-            break;
-          case "hide-on-rule":
-            $(".kmt-hide-on-specifics-select").css("display", "block");
-            break;
+        if ($(selector).hasClass('display-on-rule')) {
+          container.find(".kmt-display-on-specifics-select").css("display", "block");
+        } else {
+          container.find(".kmt-hide-on-specifics-select").css("display", "block");
         }
       } else {
-        switch (ID) {
-          case "display-on-rule":
-            $(".kmt-display-on-specifics-select").css("display", "none");
-            break;
-          case "hide-on-rule":
-            $(".kmt-hide-on-specifics-select").css("display", "none");
-            break;
+        if ($(selector).hasClass('display-on-rule')) {
+          container.find(".kmt-display-on-specifics-select").css("display", "block");
+        } else {
+          container.find(".kmt-hide-on-specifics-select").css("display", "block");
         }
       }
     });
     container.find(".kmt-user-rules")
-      .find("select")
       .select2({
         width: "100%"
       });
