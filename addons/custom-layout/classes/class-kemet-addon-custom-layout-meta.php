@@ -111,13 +111,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 					'multiple' => true,
 					'label'    => __( 'Specific Locations', 'kemet-addons' ),
 					'choices'  => array(),
-					// 'context'  => array(
-					// array(
-					// 'setting'  => 'display-on-rule',
-					// 'operator' => 'contain',
-					// 'value'    => 'specifics-location',
-					// ),
-					// ),
 				),
 				'hide-on'                       => array(
 					'type'  => 'kmt-title',
@@ -136,12 +129,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 					'class'    => 'kmt-hide-on-specifics-select',
 					'label'    => __( 'Specific Locations', 'kemet-addons' ),
 					'choices'  => array(),
-					'context'  => array(
-						array(
-							'setting' => 'hide-on-rule',
-							'value'   => 'specifics-location',
-						),
-					),
 				),
 				'user'                          => array(
 					'type'  => 'kmt-title',

@@ -119,6 +119,13 @@
         minimumInputLength: 2,
         language: kemetAddons.lang,
         width: "100%"
+      }).on('change', function (e) {
+        var value = $(e.target).val();
+        e.target.dispatchEvent(new CustomEvent("onCustomChange", {
+          detail: {
+            value,
+          },
+        }));
       });
     };
 
@@ -131,7 +138,14 @@
 
     var displaySelects = container.find(".display-on-rule , .hide-on-rule");
     displaySelects.select2({
-      width: "100%"
+      width: "100%",
+    }).on('change', function (e) {
+      var value = $(e.target).val();
+      e.target.dispatchEvent(new CustomEvent("onCustomChange", {
+        detail: {
+          value,
+        },
+      }));
     });
 
     displaySelects.each(function (index, selector) {
@@ -139,40 +153,45 @@
 
       if (value != null && value.includes("specifics-location")) {
         if ($(selector).hasClass('display-on-rule')) {
-          container.find(".kmt-display-on-specifics-select").css("display", "block");
+          container.find("#display-on-specifics-location").css("display", "block");
         } else {
-          container.find(".kmt-hide-on-specifics-select").css("display", "block");
+          container.find("#hide-on-specifics-location").css("display", "block");
         }
       } else {
         if ($(selector).hasClass('display-on-rule')) {
-          container.find(".kmt-display-on-specifics-select").css("display", "block");
+          container.find("#display-on-specifics-location").css("display", "block");
         } else {
-          container.find(".kmt-hide-on-specifics-select").css("display", "block");
+          container.find("#hide-on-specifics-location").css("display", "block");
         }
       }
     });
-
-    displaySelects.change(function () {
+    displaySelects.on('change', function () {
       var value = $(this).val(),
         selector = $(this);
-
       if (value != null && value.includes("specifics-location")) {
         if ($(selector).hasClass('display-on-rule')) {
-          container.find(".kmt-display-on-specifics-select").css("display", "block");
+          container.find("#display-on-specifics-location").css("display", "block");
         } else {
-          container.find(".kmt-hide-on-specifics-select").css("display", "block");
+          container.find("#hide-on-specifics-location").css("display", "block");
         }
       } else {
         if ($(selector).hasClass('display-on-rule')) {
-          container.find(".kmt-display-on-specifics-select").css("display", "block");
+          container.find("#display-on-specifics-location").css("display", "block");
         } else {
-          container.find(".kmt-hide-on-specifics-select").css("display", "block");
+          container.find("#hide-on-specifics-location").css("display", "block");
         }
       }
     });
     container.find(".kmt-user-rules")
       .select2({
         width: "100%"
+      }).on('change', function (e) {
+        var value = $(e.target).val();
+        e.target.dispatchEvent(new CustomEvent("onCustomChange", {
+          detail: {
+            value,
+          },
+        }));
       });
     /**
      * Enable Code Editor

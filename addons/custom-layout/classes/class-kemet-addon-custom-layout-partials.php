@@ -182,9 +182,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		 * @return void
 		 */
 		public function default_content() {
-			$post_id = get_the_id();
-			$meta    = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-			$layout  = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+			$layout = kemet_get_meta( 'hook-action' );
 
 			if ( empty( $layout ) ) {
 				the_content();
@@ -213,9 +211,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 				if ( KEMET_CUSTOM_LAYOUT_POST_TYPE != $post_type ) {
 
-					$meta             = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-					$action           = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
-					$priority         = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : 10;
+					$action           = kemet_get_meta( 'hook-action', $post_id );
+					$priority         = kemet_get_meta( 'hook-priority', $post_id );
 					$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
 					$widgets_hooks    = $this->get_sidebar_hooks();
 					if ( in_array( $action, $top_bar_sections ) ) {
@@ -247,8 +244,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		 */
 		public function render_content( $post_id ) {
 
-			$meta                = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-			$action              = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+			$action = kemet_get_meta( 'hook-action', $post_id );
+
 			$code_editor         = get_post_meta( $post_id, 'enable-code-editor', true );
 			$code_editor_content = get_post_meta( $post_id, 'kemet-hook-custom-code', true );
 
@@ -256,8 +253,10 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 			$enable_wrapper      = ! in_array( $action, $header_footer_hooks );
 
 			$style          = '';
-			$spacing_top    = ( isset( $meta['spacing-top'] ) && ! empty( $meta['spacing-top'] ) ) ? 'padding-top:' . $meta['spacing-top'] . 'px;' : '';
-			$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && ! empty( $meta['spacing-bottom'] ) ) ? 'padding-bottom:' . $meta['spacing-bottom'] . 'px;' : '';
+			$spacing_top    = kemet_get_meta( 'spacing-top' );
+			$spacing_top    = kemet_slider( $spacing_top );
+			$spacing_bottom = kemet_get_meta( 'spacing-bottom' );
+			$spacing_bottom = kemet_slider( $spacing_bottom );
 			$style          = $spacing_top . $spacing_bottom;
 			$html_args      = array(
 				'div' => array(
@@ -299,6 +298,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		public function load_posts_scripts() {
 
 			$all_posts = $this->kemet_get_posts( KEMET_CUSTOM_LAYOUT_POST_TYPE );
+
 			foreach ( $all_posts as $post_id => $post_data ) {
 
 				$this->enqueue_scripts( $post_id );
@@ -334,9 +334,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		 */
 		public function top_bar_hooks() {
 			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
-				$post_id          = get_the_id();
-				$meta             = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-				$action           = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+				$action           = kemet_get_meta( 'hook-action' );
 				$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
 
 				if ( in_array( $action, $top_bar_sections ) ) {
@@ -362,16 +360,17 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		public function custom_layout_content( $content ) {
 			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
 				$post_id             = get_the_id();
-				$meta                = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-				$action              = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
+				$action              = kemet_get_meta( 'hook-action' );
 				$code_editor         = get_post_meta( $post_id, 'enable-code-editor', true );
 				$code_editor_content = get_post_meta( $post_id, 'kemet-hook-custom-code', true );
 
 				$header_footer_hooks = array( 'kemet_head_top', 'wp_head', 'kemet_body_bottom', 'wp_footer' );
 				$enable_wrapper      = ! in_array( $action, $header_footer_hooks );
 
-				$spacing_top    = ( isset( $meta['spacing-top'] ) && ! empty( $meta['spacing-top'] ) ) ? 'padding-top:' . $meta['spacing-top'] . 'px;' : '';
-				$spacing_bottom = ( isset( $meta['spacing-bottom'] ) && ! empty( $meta['spacing-bottom'] ) ) ? 'padding-bottom:' . $meta['spacing-bottom'] . 'px;' : '';
+				$spacing_top    = kemet_get_meta( 'spacing-top' );
+				$spacing_top    = kemet_slider( $spacing_top );
+				$spacing_bottom = kemet_get_meta( 'spacing-bottom' );
+				$spacing_bottom = kemet_slider( $spacing_bottom );
 				$style          = $spacing_top . $spacing_bottom;
 
 				if ( $code_editor ) {
@@ -404,11 +403,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
 
-				$post_id = get_the_id();
-
-				$meta                  = get_post_meta( $post_id, 'kemet_custom_layout_options', true );
-				$action                = ( isset( $meta['hook-action'] ) ) ? $meta['hook-action'] : '';
-				$priority              = ( isset( $meta['hook-priority'] ) ) ? $meta['hook-priority'] : '';
+				$action                = kemet_get_meta( 'hook-action' );
+				$priority              = kemet_get_meta( 'hook-priority' );
 				$exclude_wrapper_hooks = array( 'kemet_head_top', 'wp_head', 'wp_footer' );
 				$widgets_hooks         = $this->get_sidebar_hooks();
 				if ( in_array( $action, $exclude_wrapper_hooks ) || strpos( $action, 'kemet_main-footer-widget' ) !== false || in_array( $action, $widgets_hooks ) ) {
@@ -793,7 +789,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 			$post_id     = false;
 			$query_obj   = get_queried_object();
 
-			$location = esc_sql( 'kemet_custom_layout_options' );
+			$location = esc_sql( 'kemet_meta' );
 
 			$query = "SELECT posts.ID, postmeta.meta_value FROM {$wpdb->postmeta} as postmeta
                         INNER JOIN {$wpdb->posts} as posts ON postmeta.post_id = posts.ID
@@ -905,10 +901,10 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 			foreach ( self::$page_data[ $post_type ] as $c_post_id => $c_data ) {
 
-				$rules_meta    = get_post_meta( $c_post_id, 'kemet_custom_layout_options', true );
-				$hide_on_group = $rules_meta['hide-on-group'] ? $rules_meta['hide-on-group'] : '';
-				$is_hidden     = $this->check_post_display( $post_id, $hide_on_group );
-				$specific      = $this->check_specific_post_display( $post_id, $hide_on_group );
+				$specifics_rules = kemet_get_meta( 'hide-on-specifics-location', $c_post_id );
+				$hide_on         = kemet_get_meta( 'hide-on-rule', $c_post_id );
+				$is_hidden       = $this->check_post_display( $post_id, $hide_on );
+				$specific        = $this->check_specific_post_display( $post_id, $specifics_rules );
 				if ( $is_hidden ) {
 					unset( self::$page_data[ $post_type ][ $c_post_id ] );
 				}
@@ -978,9 +974,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 			$display           = false;
 			$current_post_type = get_post_type( $post_id );
 
-			if ( isset( $rules['hide-on-rule'] ) && is_array( $rules['hide-on-rule'] ) && ! empty( $rules['hide-on-rule'] ) ) {
+			if ( is_array( $rules ) && ! empty( $rules ) ) {
 
-				foreach ( $rules['hide-on-rule'] as $key => $rule ) {
+				foreach ( $rules as $key => $rule ) {
 
 					switch ( $rule ) {
 						case 'global-page':
@@ -1100,9 +1096,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 			$display = false;
 
-			if ( isset( $rules['hide-on-specifics-location'] ) && is_array( $rules['hide-on-specifics-location'] ) && ! empty( $rules['hide-on-specifics-location'] ) ) {
+			if ( is_array( $rules ) && ! empty( $rules ) ) {
 
-				$specifics = $rules['hide-on-specifics-location'];
+				$specifics = $rules;
 
 				foreach ( $specifics as $specific_page ) {
 
@@ -1151,9 +1147,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 
 			foreach ( self::$page_data[ $post_type ] as $c_post_id => $c_data ) {
 
-				$rules_meta = get_post_meta( $c_post_id, 'kemet_custom_layout_options', true );
-				$rules      = isset( $rules_meta['user-rules'] ) ? $rules_meta['user-rules'] : '';
-				$is_user    = $this->check_user_display( $post_id, $rules );
+				$rules   = kemet_get_meta( 'user-rules', $c_post_id );
+				$is_user = $this->check_user_display( $post_id, $rules );
 
 				if ( ! $is_user ) {
 					unset( self::$page_data[ $post_type ][ $c_post_id ] );
@@ -1415,9 +1410,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 				}
 			}
 
-			$meta        = get_post_meta( get_the_ID(), 'kemet_custom_layout_options', true );
-			$all_display = isset( $meta['display-on-group']['display-on-specifics-location'] ) ? $meta['display-on-group']['display-on-specifics-location'] : '';
-			$all_hide    = isset( $meta['hide-on-group']['hide-on-specifics-location'] ) ? $meta['hide-on-group']['hide-on-specifics-location'] : '';
+			$all_display = kemet_get_meta( 'display-on-specifics-location' );
+			$all_hide    = kemet_get_meta( 'hide-on-specifics-location' );
 
 			$display_positions = array();
 			$hide_positions    = array();

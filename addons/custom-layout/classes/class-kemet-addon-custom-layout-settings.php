@@ -39,6 +39,23 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 			}
 			add_filter( 'fl_builder_post_types', array( $this, 'add_to_beaver_builder_post_types' ), 10, 1 );
 			add_action( 'do_meta_boxes', array( $this, 'remove_kemet_page_options' ) );
+			// add_action( 'init', array( $this, 'register_meta' ), 20 );
+		}
+
+		/**
+		 * register_meta
+		 */
+		public function register_meta() {
+			register_post_meta(
+				KEMET_CUSTOM_LAYOUT_POST_TYPE, // Pass an empty string to register the meta key across all existing post types.
+				'kemet_meta',
+				array(
+					'single'        => true,
+					'type'          => 'string',
+					'show_in_rest'  => true,
+					'auth_callback' => '__return_true',
+				)
+			);
 		}
 
 		/**
@@ -138,7 +155,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 						'capability_type'     => 'post',
 						'rewrite'             => false,
 						'show_in_rest'        => $code_editor,
-						'supports'            => array( 'title', 'editor', 'author', 'elementor' ),
+						'supports'            => array( 'title', 'editor', 'author', 'elementor', 'custom-fields' ),
 					)
 				)
 			);
