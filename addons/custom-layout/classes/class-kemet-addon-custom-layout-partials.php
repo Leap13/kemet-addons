@@ -58,7 +58,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 			add_shortcode( 'Kemet_Addon_Custom_Layout', array( $this, 'add_shortcode' ) );
 			add_filter( 'et_builder_post_types', array( $this, 'add_to_et_builder_post_types' ) );
 			add_filter( 'brizy_supported_post_types', array( $this, 'add_to_brizy_post_types' ) );
-			add_action( 'kemet_sitehead_top', array( $this, 'top_bar_hooks' ), 8 );
 
 		}
 
@@ -195,7 +194,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		 * @return array
 		 */
 		public function get_sidebar_hooks() {
-			return array( 'kemet_header-widget', 'kemet_header-right-section', 'kemet_copyright-widget-1', 'kemet_copyright-widget-2', 'kemet_top-widget-section1', 'kemet_top-widget-section2', 'kemet_off-canvas-filter-widget', 'kemet_kemet-woo-shop-sidebar', 'kemet_kemet-woo-single-sidebar', 'kemet_sidebar-1' );
+			return array( 'kemet_off-canvas-filter-widget', 'kemet_kemet-woo-shop-sidebar', 'kemet_kemet-woo-single-sidebar', 'kemet_sidebar-1' );
 		}
 		/**
 		 * Get Template Content.
@@ -215,11 +214,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					$priority         = kemet_get_meta( 'hook-priority', $post_id );
 					$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
 					$widgets_hooks    = $this->get_sidebar_hooks();
-					if ( in_array( $action, $top_bar_sections ) ) {
-						add_filter( 'enable_' . $action, '__return_true' );
-					}
 
-					if ( strpos( $action, 'kemet_main-footer-widget' ) !== false || in_array( $action, $widgets_hooks ) ) {
+					if ( in_array( $action, $widgets_hooks ) ) {
 						add_filter( $action . '_hook', '__return_true' );
 					}
 
@@ -328,30 +324,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		}
 
 		/**
-		 * Top bar hook
-		 *
-		 * @return void
-		 */
-		public function top_bar_hooks() {
-			if ( is_singular( KEMET_CUSTOM_LAYOUT_POST_TYPE ) ) {
-				$action           = kemet_get_meta( 'hook-action' );
-				$top_bar_sections = array( 'kemet_top_bar_section_1', 'kemet_top_bar_section_2' );
-
-				if ( in_array( $action, $top_bar_sections ) ) {
-					switch ( $action ) {
-						case 'kemet_top_bar_section_1':
-							add_filter( 'enable_kemet_top_bar_section_1', '__return_true' );
-							break;
-
-						case 'kemet_top_bar_section_2':
-							add_filter( 'enable_kemet_top_bar_section_2', '__return_true' );
-							break;
-					}
-				}
-			}
-		}
-
-		/**
 		 * Post content
 		 *
 		 * @param string $content the_content markup.
@@ -407,7 +379,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 				$priority              = kemet_get_meta( 'hook-priority' );
 				$exclude_wrapper_hooks = array( 'kemet_head_top', 'wp_head', 'wp_footer' );
 				$widgets_hooks         = $this->get_sidebar_hooks();
-				if ( in_array( $action, $exclude_wrapper_hooks ) || strpos( $action, 'kemet_main-footer-widget' ) !== false || in_array( $action, $widgets_hooks ) ) {
+				if ( in_array( $action, $exclude_wrapper_hooks ) || in_array( $action, $widgets_hooks ) ) {
 					remove_filter( 'the_content', 'wpautop' );
 				}
 
@@ -553,18 +525,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 					'value' => array(
 						'kemet_body_top'               => esc_html__( 'Top of <body> tag', 'kemet-addons' ),
 						'kemet_before_header_block'    => esc_html__( 'Before <header> tag', 'kemet-addons' ),
-						'kemet_top_bar_section_1'      => esc_html__( 'Top Bar Section 1', 'kemet-addons' ),
-						'kemet_top-widget-section1'    => esc_html__( 'Replace Top Bar Section 1 Sidebar', 'kemet-addons' ),
-						'kemet_top_bar_section_2'      => esc_html__( 'Top Bar Section 2', 'kemet-addons' ),
-						'kemet_top-widget-section2'    => esc_html__( 'Replace Top Bar Section 2 Sidebar', 'kemet-addons' ),
-						'kemet_header'                 => __( 'Main Header', 'kemet-addons' ),
-						'kemet_header-widget'          => __( 'Replace Header Sidebar', 'kemet-addons' ),
-						'kemet_header-right-section'   => __( 'Replace Header Right Section Sidebar', 'kemet-addons' ),
 						'kemet_main_header_bar_top'    => __( 'Top of Header Content', 'kemet-addons' ),
 						'kemet_sitehead_top'           => esc_html__( 'Top of <header> tag', 'kemet-addons' ),
 						'kemet_sitehead'               => __( 'Header Content', 'kemet-addons' ),
-						'kemet_sitehead_toggle_buttons_before' => __( 'Before Responsive Menu Toggle Button', 'kemet-addons' ),
-						'kemet_sitehead_toggle_buttons_after' => __( 'After Responsive Menu Toggle Button', 'kemet-addons' ),
 						'kemet_sitehead_bottom'        => esc_html__( 'Bottom of <header> tag', 'kemet-addons' ),
 						'kemet_main_header_bar_bottom' => __( 'Bottom of Header Content', 'kemet-addons' ),
 						'kemet_after_header_block'     => esc_html__( 'After <header> tag', 'kemet-addons' ),
@@ -615,22 +578,14 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 				'footer'  => array(
 					'title' => __( 'Footer', 'kemet-addons' ),
 					'value' => array(
-						'kemet_footer_before'           => esc_html__( 'Before of <footer> tag', 'kemet-addons' ),
-						'kemet_footer_content_top'      => esc_html__( 'Top of <footer> tag', 'kemet-addons' ),
-						'kemet_main-footer-widget-1'    => esc_html__( 'Replace Footer 1 Sidebar', 'kemet-addons' ),
-						'kemet_main-footer-widget-2'    => esc_html__( 'Replace Footer 2 Sidebar', 'kemet-addons' ),
-						'kemet_main-footer-widget-3'    => esc_html__( 'Replace Footer 3 Sidebar', 'kemet-addons' ),
-						'kemet_main-footer-widget-4'    => esc_html__( 'Replace Footer 4 Sidebar', 'kemet-addons' ),
-						'kemet_main-footer-widget-5'    => esc_html__( 'Replace Footer 5 Sidebar', 'kemet-addons' ),
-						'kemet_copyright-widget-1'      => esc_html__( 'Replace Footer Copyright Section 1 Sidebar', 'kemet-addons' ),
-						'kemet_copyright-widget-2'      => esc_html__( 'Replace Footer Copyright Section 2 Sidebar', 'kemet-addons' ),
-						'kemet_footer_content'          => __( 'Top of Footer Content', 'kemet-addons' ),
-						'kemet_footer_container_top'    => __( 'Top of footer container', 'kemet-addons' ),
-						'kemet_footer_container_bottom' => __( 'Bottom of footer container', 'kemet-addons' ),
-						'kemet_footer_content_bottom'   => __( 'Bottom of Footer Content', 'kemet-addons' ),
-						'kemet_footer_after'            => esc_html__( 'After of <footer> tag', 'kemet-addons' ),
-						'kemet_body_bottom'             => esc_html__( 'Bottom of <body> tag', 'kemet-addons' ),
-						'wp_footer'                     => __( 'End of the document', 'kemet-addons' ),
+						'kemet_footer_before'         => esc_html__( 'Before of <footer> tag', 'kemet-addons' ),
+						'kemet_footer_content_top'    => esc_html__( 'Top of <footer> tag', 'kemet-addons' ),
+						'kemet_main_footer'           => esc_html__( 'Main Footer', 'kemet-addons' ),
+						'kemet_footer_content'        => __( 'Top of Footer Content', 'kemet-addons' ),
+						'kemet_footer_content_bottom' => __( 'Bottom of Footer Content', 'kemet-addons' ),
+						'kemet_footer_after'          => esc_html__( 'After of <footer> tag', 'kemet-addons' ),
+						'kemet_body_bottom'           => esc_html__( 'Bottom of <body> tag', 'kemet-addons' ),
+						'wp_footer'                   => __( 'End of the document', 'kemet-addons' ),
 					),
 				),
 			);

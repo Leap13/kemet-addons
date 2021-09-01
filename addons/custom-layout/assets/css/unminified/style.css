@@ -6,6 +6,12 @@
   display: none;
 }
 
+#hook-action .description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #999;
+}
+
 #display-on-specifics-location,
 #hide-on-specifics-location {
   width: 100%;

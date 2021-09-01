@@ -7,7 +7,7 @@
     var descriptions = kemetAddons.hooks_descriptions,
       hooksSelect = container.find(".kmt-hooks-select"),
       hookValue = hooksSelect.val(),
-      descriptionDiv = container.find(".kmt-hooks-select .kfw-text-desc");
+      descriptionDiv = container.find("#hook-action .description");
 
     if (
       descriptions[hookValue] != "" &&
@@ -159,9 +159,9 @@
         }
       } else {
         if ($(selector).hasClass('display-on-rule')) {
-          container.find("#display-on-specifics-location").css("display", "block");
+          container.find("#display-on-specifics-location").css("display", "none");
         } else {
-          container.find("#hide-on-specifics-location").css("display", "block");
+          container.find("#hide-on-specifics-location").css("display", "none");
         }
       }
     });
@@ -176,9 +176,9 @@
         }
       } else {
         if ($(selector).hasClass('display-on-rule')) {
-          container.find("#display-on-specifics-location").css("display", "block");
+          container.find("#display-on-specifics-location").css("display", "none");
         } else {
-          container.find("#hide-on-specifics-location").css("display", "block");
+          container.find("#hide-on-specifics-location").css("display", "none");
         }
       }
     });
@@ -196,7 +196,7 @@
     /**
      * Enable Code Editor
      */
-    var codeEditorSwitcher = $(".enable-code-editor").find("input"),
+    var codeEditorSwitcher = $("#enable-code-editor").find("input"),
       kemetMeta = $("#kemet_code_editor");
 
     var setSwitcherValue = function () {

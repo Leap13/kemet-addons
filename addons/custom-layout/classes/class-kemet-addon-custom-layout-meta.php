@@ -55,22 +55,23 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 				return $options;
 			}
 			$options = array(
+				'enable-code-editor'            => array(
+					'type'  => 'kmt-switcher',
+					'title' => __( 'Enable Code Editor', 'kemet-addons' ),
+				),
 				'hook-action'                   => array(
-					'label'   => __( 'Action', 'kemet-addons' ),
-					'class'   => 'kmt-hooks-select',
-					'type'    => 'kmt-select',
-					'choices' => self::get_options_array( 'hooks' ),
+					'label'       => __( 'Action', 'kemet-addons' ),
+					'class'       => 'kmt-hooks-select',
+					'type'        => 'kmt-select',
+					'description' => true,
+					'choices'     => self::get_options_array( 'hooks' ),
 				),
 				'hook-priority'                 => array(
-					'label'        => __( 'Priority', 'kemet-addons' ),
-					'type'         => 'kmt-slider',
-					'unit_choices' => array(
-						'' => array(
-							'min'  => 0,
-							'step' => 1,
-							'max'  => 1000,
-						),
-					),
+					'label'   => __( 'Priority', 'kemet-addons' ),
+					'default' => 10,
+					'type'    => 'kmt-number',
+					'min'     => 0,
+					'max'     => 1000,
 				),
 				'spacing-top'                   => array(
 					'label'        => __( 'Spacing Top', 'kemet-addons' ),
@@ -207,127 +208,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 				return;
 			}
 
-		}
-
-		/**
-		 * Create Meta
-		 *
-		 * @param string $prefix meta prefix.
-		 * @return void
-		 */
-		public function create_custom_layout_meta( $prefix ) {
-
-			KFW::create_metabox(
-				$prefix,
-				array(
-					'title'     => __( 'Kemet Page Options', 'kemet-addons' ),
-					'priority'  => 'high',
-					'post_type' => array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
-					'data_type' => 'serialize',
-					'theme'     => 'light',
-				)
-			);
-
-			KFW::create_section(
-				$prefix,
-				array(
-					'priority_num' => 1,
-					'fields'       => array(
-						array(
-							'id'          => 'hook-action',
-							'type'        => 'select',
-							'class'       => 'kmt-hooks-select',
-							'title'       => __( 'Action', 'kemet-addons' ),
-							'desc'        => __( 'Select an option', 'kemet-addons' ),
-							'placeholder' => __( 'Select an option', 'kemet-addons' ),
-							'default'     => '',
-							'options'     => self::get_options_array( 'hooks' ),
-						),
-						array(
-							'id'      => 'hook-priority',
-							'type'    => 'number',
-							'title'   => __( 'Priority', 'kemet-addons' ),
-							'default' => 10,
-						),
-						array(
-							'id'          => 'spacing-top',
-							'type'        => 'number',
-							'title'       => __( 'Spacing Top', 'kemet-addons' ),
-							'unit'        => 'px',
-							'output_mode' => 'padding',
-							'default'     => 0,
-						),
-						array(
-							'id'          => 'spacing-bottom',
-							'type'        => 'number',
-							'title'       => __( 'Spacing Bottom', 'kemet-addons' ),
-							'unit'        => 'px',
-							'output_mode' => 'padding',
-							'default'     => 0,
-						),
-						array(
-							'id'     => 'display-on-group',
-							'type'   => 'fieldset',
-							'title'  => __( 'Display On', 'kemet-addons' ),
-							'fields' => array(
-								array(
-									'id'          => 'display-on-rule',
-									'class'       => 'display-on-rule',
-									'type'        => 'select',
-									'multiple'    => true,
-									'placeholder' => __( 'Select an option', 'kemet-addons' ),
-									'options'     => self::get_options_array( 'locations' ),
-								),
-								array(
-									'id'       => 'display-on-specifics-location',
-									'type'     => 'select',
-									'class'    => 'kmt-display-on-specifics-select',
-									'default'  => '',
-									'multiple' => true,
-									'title'    => __( 'Specific Locations', 'kemet-addons' ),
-									'options'  => array(
-										'' => __( 'Select an option', 'kemet-addons' ),
-									),
-								),
-							),
-						),
-						array(
-							'id'     => 'hide-on-group',
-							'type'   => 'fieldset',
-							'title'  => __( 'Hide On', 'kemet-addons' ),
-							'fields' => array(
-								array(
-									'id'          => 'hide-on-rule',
-									'type'        => 'select',
-									'class'       => 'hide-on-rule',
-									'multiple'    => true,
-									'placeholder' => __( 'Select an option', 'kemet-addons' ),
-									'options'     => self::get_options_array( 'locations' ),
-								),
-								array(
-									'id'       => 'hide-on-specifics-location',
-									'type'     => 'select',
-									'class'    => 'kmt-hide-on-specifics-select',
-									'title'    => __( 'Specific Locations', 'kemet-addons' ),
-									'multiple' => true,
-									'options'  => array(
-										'' => __( 'Select an option', 'kemet-addons' ),
-									),
-								),
-							),
-						),
-						array(
-							'id'          => 'user-rules',
-							'class'       => 'kmt-user-rules',
-							'type'        => 'select',
-							'title'       => __( 'User Rules', 'kemet-addons' ),
-							'multiple'    => true,
-							'placeholder' => __( 'Select an option', 'kemet-addons' ),
-							'options'     => self::get_options_array( 'users' ),
-						),
-					),
-				)
-			);
 		}
 
 		/**
