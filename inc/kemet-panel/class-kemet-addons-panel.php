@@ -57,7 +57,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			add_action( 'wp_ajax_kemet-panel-disable-all', array( $this, 'disable_all_options' ) );
 			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ) );
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_item' ), 500 );
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
+			// add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 			add_action( 'wp_loaded', array( $this, 'set_default_options' ) );
 			add_action( 'enable_kemet_admin_menu_item', '__return_true' );
 		}
@@ -93,10 +93,11 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 */
 		public function register_custom_menu_page() {
 			$tabs = $this->tabs();
-			add_submenu_page( 'kemet_panel', __( 'Kemet Panel', 'kemet-addons' ), __( 'Kemet Panel', 'kemet-addons' ), 'manage_options', 'kemet_panel', array( $this, 'render' ), null );
-			foreach ( $tabs as $tab => $values ) {
-				add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel#tab=' . $values['slug'] );
-			}
+			$page = add_submenu_page( 'kemet_panel', __( 'Kemet Panel', 'kemet-addons' ), __( 'Kemet Panel', 'kemet-addons' ), 'manage_options', 'kemet_panel', array( $this, 'render' ), null );
+			add_action( 'admin_print_styles-' . $page, array( $this, 'enqueue_admin_script' ) );
+			// foreach ( $tabs as $tab => $values ) {
+			// add_submenu_page( 'kemet_panel', $values['title'], $values['title'], 'manage_options', 'admin.php?page=kemet_panel#tab=' . $values['slug'] );
+			// }
 			remove_submenu_page( 'kemet_panel', 'kemet_panel' );
 		}
 
@@ -136,8 +137,21 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 *
 		 * @return void
 		 */
-		public function render() {
-			$tabs = $this->tabs();?>
+		public function render() { ?>
+			<div id="kmt-dashboard">
+				
+			</div>
+			<?php
+		}
+
+		/**
+		 * Render panel html
+		 *
+		 * @return void
+		 */
+		public function render_old() {
+			$tabs = $this->tabs();
+			?>
 			<div class="kemet-panel-container">
 				<div class="kemet-panel-header">
 					<div class="kemet-panel-header-inner">
@@ -341,7 +355,42 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 * @param string $hook current location.
 		 * @return void
 		 */
-		public function enqueue_admin_script( $hook ) {
+		public function enqueue_admin_script() {
+			$css_prefix = '.min.css';
+			$dir        = 'minified';
+			if ( SCRIPT_DEBUG ) {
+				$css_prefix = '.css';
+				$dir        = 'unminified';
+			}
+			if ( is_rtl() ) {
+				$css_prefix = '-rtl.min.css';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '-rtl.css';
+				}
+			}
+			wp_enqueue_style( 'kemet-panel-css', KEMET_PANEL_URL . 'assets/css/' . $dir . '/kemet-panel' . $css_prefix, false, KEMET_ADDONS_VERSION );
+			wp_enqueue_script(
+				'kemet-panel-js',
+				KEMET_PANEL_URL . 'assets/js/build/index.js',
+				array(
+					'wp-i18n',
+					'wp-components',
+					'wp-element',
+					'wp-media-utils',
+					'wp-block-editor',
+					// 'kemet-react-custom-control-script',
+				),
+				KEMET_THEME_VERSION,
+				true
+			);
+		}
+		/**
+		 * Enqueue a script in the WordPress admin on edit.php
+		 *
+		 * @param string $hook current location.
+		 * @return void
+		 */
+		public function enqueue_admin_script_old( $hook ) {
 			$js_prefix  = '.min.js';
 			$css_prefix = '.min.css';
 			$dir        = 'minified';
@@ -357,9 +406,6 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				}
 			}
 			wp_enqueue_style( 'kemet-panel-css', KEMET_PANEL_URL . 'assets/css/' . $dir . '/kemet-panel' . $css_prefix, false, KEMET_ADDONS_VERSION );
-			if ( 'toplevel_page_kemet_panel' != $hook ) {
-				return;
-			}
 			wp_enqueue_script( 'kemet-panel-js', KEMET_PANEL_URL . 'assets/js/' . $dir . '/kemet-panel' . $js_prefix, array( 'jquery', 'jquery-ui-tabs', 'jquery-ui-core' ), KEMET_ADDONS_VERSION );
 
 			wp_localize_script(
