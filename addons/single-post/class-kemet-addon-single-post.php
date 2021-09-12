@@ -43,10 +43,6 @@ if ( ! class_exists( 'Kemet_Addon_Single_Post' ) ) {
 
 			require_once KEMET_SINGLE_POST_DIR . 'classes/class-kemet-addon-single-post-partials.php';
 			require_once KEMET_SINGLE_POST_DIR . 'classes/class-kemet-addon-single-post-settings.php';
-
-			if ( ! is_admin() ) {
-				require_once KEMET_SINGLE_POST_DIR . 'classes/dynamic.css.php';
-			}
 		}
 	}
 	Kemet_Addon_Single_Post::get_instance();

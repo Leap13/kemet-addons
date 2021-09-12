@@ -37,10 +37,7 @@ if ( ! class_exists( 'Kemet_Addon_Single_Post_Partials' ) ) {
 		 *  Constructor
 		 */
 		public function __construct() {
-			add_filter( 'body_class', array( $this, 'kemet_body_classes' ) );
 			add_action( 'kemet_get_css_files', array( $this, 'add_styles' ) );
-			add_action( 'kemet_entry_content_single', array( $this, 'kemet_single_post_template_loader' ), 1 );
-			add_filter( 'kemet_the_title_enabled', array( $this, 'enable_page_title_in_content' ) );
 			add_action( 'kemet_featured_image_attrs', array( $this, 'kemet_single_post_featured_image_custom_attrs' ) );
 		}
 
@@ -85,45 +82,6 @@ if ( ! class_exists( 'Kemet_Addon_Single_Post_Partials' ) ) {
 			}
 
 			return $image;
-		}
-
-		/**
-		 * Single post template
-		 *
-		 * @return void
-		 */
-		public function kemet_single_post_template_loader() {
-			remove_action( 'kemet_entry_content_single', 'kemet_entry_content_single_template' );
-			kemetaddons_get_template( 'single-post/templates/single-post-layout.php' );
-		}
-
-		/**
-		 * Body Classes
-		 *
-		 * @param array $classes array of body classes.
-		 * @return array
-		 */
-		public function kemet_body_classes( $classes ) {
-
-			$prev_next_links = kemet_get_option( 'prev-next-links' );
-
-			if ( true == $prev_next_links ) {
-				$classes[] = 'hide-nav-links';
-			}
-			return $classes;
-		}
-
-		/**
-		 * Enable / Disable page title in content area
-		 *
-		 * @param boolean $default default value.
-		 * @return boolean
-		 */
-		public function enable_page_title_in_content( $default ) {
-			if ( is_single() ) {
-				$default = kemet_get_option( 'enable-page-title-content-area' );
-			}
-			return $default;
 		}
 
 		/**
