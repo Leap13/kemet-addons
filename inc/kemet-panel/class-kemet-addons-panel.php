@@ -52,6 +52,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				require_once KEMET_PANEL_DIR . 'tabs/class-kemet-panel-' . $tab . '-tab.php';
 			}
 			add_action( 'wp_ajax_kemet-panel-save-options', array( $this, 'save_options' ) );
+			add_action( 'wp_ajax_kemet-panel-update-option', array( $this, 'update_option' ) );
 			add_action( 'wp_ajax_kemet-panel-reset-options', array( $this, 'reset_options' ) );
 			add_action( 'wp_ajax_kemet-panel-enable-all', array( $this, 'enable_all_options' ) );
 			add_action( 'wp_ajax_kemet-panel-disable-all', array( $this, 'disable_all_options' ) );
@@ -247,6 +248,33 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		}
 
 		/**
+		 * update_option
+		 *
+		 * @return void
+		 */
+		public function update_option() {
+			check_ajax_referer( 'kemet-panel', 'nonce' );
+
+			$option  = isset( $_POST['option'] ) ? sanitize_post( wp_unslash( $_POST['option'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$value   = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : array();
+			$value   = 'true' === $value ? true : false;
+			$options = get_option( 'kemet_addons_options', array() );
+
+			if ( '' !== $value && '' !== $option ) {
+				$options[ $option ] = $value;
+				update_option( 'kemet_addons_options', $options );
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'values'  => $options,
+					)
+				);
+			}
+
+			wp_send_json_error();
+		}
+
+		/**
 		 * Reset options by ajax
 		 *
 		 * @return void
@@ -357,9 +385,30 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public static function panel_options() {
 			$options = array(
 				'options' => array(
-					'test' => array(
-						'type'  => 'kmt-switcher',
-						'label' => __( 'Test', 'kemet-addons' ),
+					'metabox'       => array(
+						'type'        => 'kmt-switcher',
+						'label'       => __( 'Single Page/Post Options', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable the single page/post options that will allow you to individually customize your single page or post.', 'kemet-addons' ),
+					),
+					'blog-layouts'  => array(
+						'type'        => 'kmt-switcher',
+						'label'       => __( 'Blog Layouts', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable Extra Blog Layouts.', 'kemet-addons' ),
+					),
+					'custom-layout' => array(
+						'type'        => 'kmt-switcher',
+						'label'       => __( 'Custom Layout', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
+					),
+					'mega-menu'     => array(
+						'type'        => 'kmt-switcher',
+						'label'       => __( 'Mega Menu', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable Mega Menu', 'kemet-addons' ),
+					),
+					'custom-fonts'  => array(
+						'type'        => 'kmt-switcher',
+						'label'       => __( 'Custom Fonts', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable Custom fonts.', 'kemet-addons' ),
 					),
 				),
 			);
@@ -406,6 +455,11 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'KemetPanelData',
 				array(
 					'options' => self::panel_options(),
+					'values'  => array(
+						'options' => get_option( 'kemet_addons_options', array() ),
+					),
+					'nonce'   => wp_create_nonce( 'kemet-panel' ),
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				)
 			);
 		}
