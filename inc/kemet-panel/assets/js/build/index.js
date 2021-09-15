@@ -289,8 +289,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs/options */ "./src/tabs/options.js");
-/* harmony import */ var _tabs_integration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabs/integration */ "./src/tabs/integration.js");
-
 
 
 
@@ -409,17 +407,6 @@ var OptionsComponent = function OptionsComponent(_ref3) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (OptionsComponent);
-
-/***/ }),
-
-/***/ "./src/tabs/integration.js":
-/*!*********************************!*\
-  !*** ./src/tabs/integration.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/source-map-loader/index.js):\nError: ENOENT: no such file or directory, open '/Applications/XAMPP/xamppfiles/htdocs/kemet/wp-content/plugins/kemet-addons/inc/kemet-panel/assets/js/src/tabs/integration.js'");
 
 /***/ }),
 

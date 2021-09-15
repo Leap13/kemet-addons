@@ -1,5 +1,4 @@
 import OptionsTab from './tabs/options'
-import IntegrationTab from './tabs/integration'
 import { render } from '@wordpress/element'
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody, PanelRow, Button } = wp.components;
