@@ -1,5 +1,5 @@
 import { useState } from "@wordpress/element";
-import RenderOptions from '../options-component'
+import OptionsComponent from '../options-component'
 
 const OptionsTab = (props) => {
     const options = props.options;
@@ -21,14 +21,13 @@ const OptionsTab = (props) => {
                 const { success, data } = await response.json()
                 if (success && data.values) {
                     setValues(data.values)
-                    console.log('Updated');
                 }
             }
         } catch (e) {
             console.log(e);
         }
     };
-    return <RenderOptions options={options} values={values} onChange={(newVal, optionId) => {
+    return <OptionsComponent options={options} values={values} onChange={(newVal, optionId) => {
         handleChange(newVal, optionId)
     }} />
 }

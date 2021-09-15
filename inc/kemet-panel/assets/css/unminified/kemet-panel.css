@@ -2,10 +2,10 @@
 ## kemet Panel
 --------------------------------------------------------------*/
 #kmt-dashboard {
-  width: 500px;
   margin: 200px auto;
   background-color: #fff;
   padding: 25px;
+  margin-right: 20px;
 }
 
 #adminmenu #toplevel_page_kemet_panel .dashicons-admin-generic:before {
@@ -204,8 +204,8 @@
   -moz-box-shadow: 0 1px 0 #ba281e;
   -webkit-box-shadow: 0 1px 0 #ba281e;
   box-shadow: 0 1px 0 #ba281e;
-  text-shadow: 0 -1px 1px #ba281e, 1px 0 1px #ba281e, 0 1px 1px #ba281e, -1px 0 1px;
-  text-shadow: 0 -1px 1px #ba281e, 1px 0 1px #ba281e, 0 1px 1px #ba281e, -1px 0 1px #ba281e;
+  text-shadow: 0 -1px 1px #ba281e, 1px 0 1px #ba281e, 0 1px 1px #ba281e, -1px 0 1px;
+  text-shadow: 0 -1px 1px #ba281e, 1px 0 1px #ba281e, 0 1px 1px #ba281e, -1px 0 1px #ba281e;
 }
 
 /* Kemet Plugins */

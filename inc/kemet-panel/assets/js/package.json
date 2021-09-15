@@ -23,6 +23,7 @@
     "simple-linear-scale": "^1.0.1",
     "use-force-update": "^1.0.4",
     "vanilla-lazyload": "^8.17.0",
+    "@reach/router": "^1.1.1",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {

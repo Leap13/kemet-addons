@@ -289,19 +289,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs/options */ "./src/tabs/options.js");
+/* harmony import */ var _tabs_integration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabs/integration */ "./src/tabs/integration.js");
 
-var OptionComponent = window.KmtOptionComponent.OptionComponent;
 
+
+
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    TabPanel = _wp$components.TabPanel,
+    Panel = _wp$components.Panel,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    Button = _wp$components.Button;
 
 var RendeTabs = function RendeTabs(_ref) {
   var options = _ref.options,
       values = _ref.values;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_tabs_options__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    options: options.options,
-    values: values.options
+  var tabs = [{
+    name: 'customizer-options',
+    title: __('Customizer & Page Options', 'kemet'),
+    className: 'customizer-options'
+  }, {
+    name: 'plugins',
+    title: __('Plugins', 'kemet'),
+    className: 'plugins'
+  }];
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TabPanel, {
+    className: "kemet-dashboard-tab-panel",
+    activeClass: "active-tab",
+    tabs: tabs
+  }, function (tab) {
+    switch (tab.name) {
+      case 'customizer-options':
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Panel, {
+          className: "dashboard-section tab-section"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+          opened: true
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_tabs_options__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          options: options.options,
+          values: values.options
+        })));
+        break;
+    }
   });
 };
-
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('kmt-dashboard')) {
@@ -325,7 +356,6 @@ document.addEventListener('DOMContentLoaded', function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-
 
 
 var SingleOptionComponent = function SingleOptionComponent(_ref) {
@@ -365,7 +395,31 @@ var RenderOptions = function RenderOptions(_ref2) {
   });
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (RenderOptions);
+var OptionsComponent = function OptionsComponent(_ref3) {
+  var options = _ref3.options,
+      onChange = _ref3.onChange,
+      values = _ref3.values;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "kmt-options"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RenderOptions, {
+    options: options,
+    onChange: onChange,
+    values: values
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (OptionsComponent);
+
+/***/ }),
+
+/***/ "./src/tabs/integration.js":
+/*!*********************************!*\
+  !*** ./src/tabs/integration.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/source-map-loader/index.js):\nError: ENOENT: no such file or directory, open '/Applications/XAMPP/xamppfiles/htdocs/kemet/wp-content/plugins/kemet-addons/inc/kemet-panel/assets/js/src/tabs/integration.js'");
 
 /***/ }),
 
@@ -440,7 +494,6 @@ var OptionsTab = function OptionsTab(props) {
 
               if (success && data.values) {
                 setValues(data.values);
-                console.log('Updated');
               }
 
             case 16:

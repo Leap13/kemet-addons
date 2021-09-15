@@ -1,8 +1,3 @@
-import {
-    useEffect, useState
-} from '@wordpress/element'
-
-
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = OptionComponent(option.type);
@@ -23,4 +18,10 @@ const RenderOptions = ({ options, values, onChange }) => {
     })
 }
 
-export default RenderOptions
+const OptionsComponent = ({ options, onChange, values }) => {
+    return <div className="kmt-options">
+        <RenderOptions options={options} onChange={onChange} values={values} />
+    </div>
+}
+
+export default OptionsComponent
