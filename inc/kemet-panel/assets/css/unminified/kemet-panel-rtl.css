@@ -15,6 +15,23 @@
   outline: 3px solid transparent;
 }
 
+#kmt-dashboard #system-info table:not(:first-child) {
+  margin-top: 25px;
+}
+
+#kmt-dashboard #system-info table.widefat {
+  border: 0px;
+  box-shadow: none;
+}
+
+#kmt-dashboard #system-info table.widefat tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+#kmt-dashboard #system-info table.widefat td:first-child {
+  width: 30%;
+}
+
 #kmt-dashboard .kmt-plugins-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

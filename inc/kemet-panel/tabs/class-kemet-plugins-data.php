@@ -253,11 +253,7 @@ if ( ! class_exists( 'Kemet_Panel_Plugins_Data' ) ) {
 				// $install_result can be false if the file system isn't writeable.
 				return false;
 			}
-			$plugin_path     = $plugin_slug . '/' . $plugin_slug . '.php';
-			$activate_result = activate_plugin( $plugin_path );
-			if ( is_wp_error( $activate_result ) ) {
-				return false;
-			}
+			$plugin_path = $plugin_slug . '/' . $plugin_slug . '.php';
 
 			return true;
 		}

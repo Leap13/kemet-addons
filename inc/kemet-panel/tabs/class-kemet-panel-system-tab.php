@@ -42,19 +42,21 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 			global $wpdb;
 
 			$info = array(
-				'home_url'      => get_option( 'home' ),
-				'site_url'      => get_option( 'siteurl' ),
-				'version'       => bloginfo( 'version' ),
-				'multisite'     => is_multisite(),
-				'memory_limit'  => wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ),
-				'theme_version' => esc_html( KEMET_THEME_VERSION ),
-				'wp_path'       => esc_html( ABSPATH ),
-				'debug'         => defined( 'WP_DEBUG' ) && WP_DEBUG,
-				'lang'          => esc_html( get_locale() ),
-				'server'        => isset( $_SERVER['SERVER_SOFTWARE'] ) ? esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ) : '',
-				'php_version'   => function_exists( 'phpversion' ) ? phpversion() : '',
-				'mysql_version' => $wpdb->db_version(),
-				'max_upload'    => esc_html( size_format( wp_max_upload_size() ) ),
+				'home_url'          => get_option( 'home' ),
+				'site_url'          => get_option( 'siteurl' ),
+				'version'           => get_bloginfo( 'version' ),
+				'multisite'         => is_multisite(),
+				'memory_limit'      => wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ),
+				'memory_limit_size' => size_format( wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ) ),
+				'theme_version'     => esc_html( KEMET_THEME_VERSION ),
+				'wp_path'           => esc_html( ABSPATH ),
+				'debug'             => defined( 'WP_DEBUG' ) && WP_DEBUG,
+				'lang'              => esc_html( get_locale() ),
+				'server'            => isset( $_SERVER['SERVER_SOFTWARE'] ) ? esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ) : '',
+				'php_version'       => function_exists( 'phpversion' ) ? phpversion() : '',
+				'mysql_version'     => $wpdb->db_version(),
+				'max_upload'        => esc_html( size_format( wp_max_upload_size() ) ),
+				'ini_get'           => function_exists( 'ini_get' ),
 			);
 			if ( function_exists( 'ini_get' ) ) {
 				$info['php_memory_limit']   = esc_html( size_format( wp_convert_hr_to_bytes( ini_get( 'memory_limit' ) ) ) );

@@ -24,15 +24,16 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
 
                 if (success) {
                     handlePluginChange();
-                    setLoader(false);
                 }
             }
         } catch (e) {
-            console.log(e);
+            alert(e);
         }
+
+        setLoader(false);
     }
     return <li>
-        <h4 className="plugin-title">{plugin.name}</h4>
+        <h4 className="plugin-title">{plugin.name} {loader && <div className="kmt-loader">{__('Loading', 'kemet-addons')}</div>}</h4>
         {plugin.description && (
             <div className="kmt-plugin-description" dangerouslySetInnerHTML={{
                 __html: plugin.description
