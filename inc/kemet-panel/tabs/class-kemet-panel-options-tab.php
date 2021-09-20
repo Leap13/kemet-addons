@@ -147,7 +147,7 @@ if ( ! class_exists( 'Kemet_Panel_Options_Tab' ) ) {
 				'subtitle' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
 				'default'  => false,
 			);
-			if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 				$woo_option += array( 'class' => 'hidden-field-input' );
 				$woo_option += array( 'desc' => __( 'To use this add-on, please activate WooCommerce plugin.', 'kemet-addons' ) );
 			}

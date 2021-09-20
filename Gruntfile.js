@@ -258,22 +258,8 @@ module.exports = function (grunt) {
         files: {
           "addons/blog-layouts/assets/js/minified/blog-layouts.min.js":
             "addons/blog-layouts/assets/js/unminified/blog-layouts.js",
-          "addons/blog-layouts/assets/js/minified/customizer-preview.min.js":
-            "addons/blog-layouts/assets/js/unminified/customizer-preview.js",
           "addons/extra-headers/assets/js/minified/extra-header-layouts.min.js":
             "addons/extra-headers/assets/js/unminified/extra-header-layouts.js",
-          "addons/extra-headers/assets/js/minified/customizer-preview.min.js":
-            "addons/extra-headers/assets/js/unminified/customizer-preview.js",
-          "addons/extra-widgets/assets/js/minified/customizer-preview.min.js":
-            "addons/extra-widgets/assets/js/unminified/customizer-preview.js",
-          "addons/top-bar-section/assets/js/minified/customizer-preview.min.js":
-            "addons/top-bar-section/assets/js/unminified/customizer-preview.js",
-          "addons/page-title/assets/js/minified/customizer-preview.min.js":
-            "addons/page-title/assets/js/unminified/customizer-preview.js",
-          "addons/go-top/assets/js/minified/customizer-preview.min.js":
-            "addons/go-top/assets/js/unminified/customizer-preview.js",
-          "addons/single-post/assets/js/minified/customizer-preview.min.js":
-            "addons/single-post/assets/js/unminified/customizer-preview.js",
           "addons/extra-widgets/assets/js/minified/extre-widgets.min.js":
             "addons/extra-widgets/assets/js/unminified/extre-widgets.js",
           "addons/extra-widgets/assets/js/minified/extra-widgets-admin.min.js":
@@ -284,8 +270,8 @@ module.exports = function (grunt) {
             "addons/woocommerce/assets/js/unminified/single-product-ajax-cart.js",
           "addons/woocommerce/assets/js/minified/woocommerce.min.js":
             "addons/woocommerce/assets/js/unminified/woocommerce.js",
-          "addons/custom-layout/assets/js/minified/custom-layout.min.js":
-            "addons/custom-layout/assets/js/unminified/custom-layout.js",
+          // "addons/custom-layout/assets/js/minified/custom-layout.min.js":
+          //   "addons/custom-layout/assets/js/unminified/custom-layout.js",
           "addons/mega-menu/assets/js/minified/mega-menu.min.js":
             "addons/mega-menu/assets/js/unminified/mega-menu.js",
           "addons/mega-menu/assets/js/minified/mega-menu-backend.min.js":

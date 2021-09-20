@@ -386,11 +386,6 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public static function panel_options() {
 			$options = array(
 				'options' => array(
-					'metabox'       => array(
-						'type'        => 'kmt-switcher',
-						'label'       => __( 'Single Page/Post Options', 'kemet-addons' ),
-						'description' => __( 'Enable/Disable the single page/post options that will allow you to individually customize your single page or post.', 'kemet-addons' ),
-					),
 					'blog-layouts'  => array(
 						'type'        => 'kmt-switcher',
 						'label'       => __( 'Blog Layouts', 'kemet-addons' ),
@@ -411,9 +406,13 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 						'label'       => __( 'Custom Fonts', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable Custom fonts.', 'kemet-addons' ),
 					),
+					'woocommerce'   => array(
+						'type'        => 'kmt-switcher',
+						'label'       => __( 'Woocommerce', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
+					),
 				),
 			);
-
 			return apply_filters( 'kemet_panel_options', $options );
 		}
 

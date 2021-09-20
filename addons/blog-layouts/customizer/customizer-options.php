@@ -15,6 +15,24 @@ add_filter( 'kemet_blog_options', 'extra_blog_options' );
  */
 function extra_blog_options( $options ) {
 	$addon_options = array(
+		'blog-mode-title'                => array(
+			'type'  => 'kmt-title',
+			'label' => __( 'Blog Mode', 'kemet-addons' ),
+		),
+		'blog-layout-mode'               => array(
+			'type'    => 'kmt-select',
+			'label'   => __( 'Grid Style', 'kemet-addons' ),
+			'choices' => array(
+				'masonry'  => __( 'Masonry', 'kemet-addons' ),
+				'fit-rows' => __( 'Fit Rows', 'kemet-addons' ),
+			),
+			'context' => array(
+				array(
+					'setting' => 'blog-layouts',
+					'value'   => 'blog-layout-2',
+				),
+			),
+		),
 		'featured-image-title'           => array(
 			'type'  => 'kmt-title',
 			'label' => __( 'Featured image settings', 'kemet-addons' ),
