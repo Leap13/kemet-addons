@@ -136,7 +136,7 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-me
   background: #fff;
   overflow: hidden;
   border-top-style: solid;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 
 body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-menu-full-wrap .sub-menu {

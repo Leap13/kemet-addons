@@ -2,7 +2,54 @@
   margin: 200px auto;
   background-color: #fff;
   padding: 25px;
-  margin-right: 20px;
+  max-width: 1200px;
+  min-height: 400px;
+  position: relative;
+  .components-tab-panel__tabs-item {
+    &.active-tab {
+      box-shadow: inset 0 var(--wp-admin-border-width-focus)
+        var(--wp-admin-theme-color);
+      outline: 3px solid transparent;
+    }
+  }
+  .kmt-plugins-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin: 0;
+    li {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      border-radius: 3px;
+      border: 1px solid rgba(226, 230, 235, 0.7);
+      .kmt-plugin-description {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 30px;
+        padding: 0 25px;
+      }
+      .plugin-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 30px 0 15px 0;
+        padding: 0 25px;
+      }
+      .plugin-action {
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+        padding: 20px 13px 20px 25px;
+        border-top: 1px solid rgba(226, 230, 235, 0.5);
+        background: rgba(245, 247, 249, 0.6);
+        > a {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 // Kemet Panel
 #adminmenu #toplevel_page_kemet_panel .dashicons-admin-generic:before {
