@@ -1,7 +1,7 @@
 import { useState, useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 
-const SinglePlugin = ({ plugin, status, handlePluginChange }) => {
+const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
     const [loader, setLoader] = useState(false)
     const doAction = async (action) => {
         if (!loader) {
@@ -11,6 +11,7 @@ const SinglePlugin = ({ plugin, status, handlePluginChange }) => {
         body.append('action', action)
         body.append('nonce', KemetPanelData.nonce)
         body.append('path', plugin.path)
+        body.append('slug', slug)
 
         try {
             const response = await fetch(KemetPanelData.ajaxurl, {
@@ -57,7 +58,7 @@ const SinglePlugin = ({ plugin, status, handlePluginChange }) => {
 
             {status === 'install' &&
                 <a
-                    // onClick={}
+                    onClick={() => doAction('kemet-install-plugin')}
                     className="kmt-button">
                     {__('Install', 'kemet-addons')}
                 </a>

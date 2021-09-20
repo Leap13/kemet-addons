@@ -2390,6 +2390,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var SinglePlugin = function SinglePlugin(_ref) {
   var plugin = _ref.plugin,
+      slug = _ref.slug,
       status = _ref.status,
       handlePluginChange = _ref.handlePluginChange;
 
@@ -2414,25 +2415,26 @@ var SinglePlugin = function SinglePlugin(_ref) {
               body.append('action', action);
               body.append('nonce', KemetPanelData.nonce);
               body.append('path', plugin.path);
-              _context.prev = 5;
-              _context.next = 8;
+              body.append('slug', slug);
+              _context.prev = 6;
+              _context.next = 9;
               return fetch(KemetPanelData.ajaxurl, {
                 method: 'POST',
                 body: body
               });
 
-            case 8:
+            case 9:
               response = _context.sent;
 
               if (!(response.status === 200)) {
-                _context.next = 15;
+                _context.next = 16;
                 break;
               }
 
-              _context.next = 12;
+              _context.next = 13;
               return response.json();
 
-            case 12:
+            case 13:
               _yield$response$json = _context.sent;
               success = _yield$response$json.success;
 
@@ -2441,21 +2443,21 @@ var SinglePlugin = function SinglePlugin(_ref) {
                 setLoader(false);
               }
 
-            case 15:
-              _context.next = 20;
+            case 16:
+              _context.next = 21;
               break;
 
-            case 17:
-              _context.prev = 17;
-              _context.t0 = _context["catch"](5);
+            case 18:
+              _context.prev = 18;
+              _context.t0 = _context["catch"](6);
               console.log(_context.t0);
 
-            case 20:
+            case 21:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[5, 17]]);
+      }, _callee, null, [[6, 18]]);
     }));
 
     return function doAction(_x) {
@@ -2483,7 +2485,9 @@ var SinglePlugin = function SinglePlugin(_ref) {
     },
     className: "kmt-button-primary"
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Activate', 'kemet-addons')), status === 'install' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
-    // onClick={}
+    onClick: function onClick() {
+      return doAction('kemet-install-plugin');
+    },
     className: "kmt-button"
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Install', 'kemet-addons'))));
 };
@@ -2942,10 +2946,14 @@ var Plugins = function Plugins() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 
 var System = function System() {
+  console.log(KemetPanelData.system_info);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null);
 };
 

@@ -34,6 +34,69 @@ if ( ! class_exists( 'Kemet_Panel_System_Tab' ) ) {
 		}
 
 		/**
+		 * get_system_info
+		 *
+		 * @return array
+		 */
+		public static function get_system_info() {
+			global $wpdb;
+
+			$info = array(
+				'home_url'      => get_option( 'home' ),
+				'site_url'      => get_option( 'siteurl' ),
+				'version'       => bloginfo( 'version' ),
+				'multisite'     => is_multisite(),
+				'memory_limit'  => wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ),
+				'theme_version' => esc_html( KEMET_THEME_VERSION ),
+				'wp_path'       => esc_html( ABSPATH ),
+				'debug'         => defined( 'WP_DEBUG' ) && WP_DEBUG,
+				'lang'          => esc_html( get_locale() ),
+				'server'        => isset( $_SERVER['SERVER_SOFTWARE'] ) ? esc_html( sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) ) : '',
+				'php_version'   => function_exists( 'phpversion' ) ? phpversion() : '',
+				'mysql_version' => $wpdb->db_version(),
+				'max_upload'    => esc_html( size_format( wp_max_upload_size() ) ),
+			);
+			if ( function_exists( 'ini_get' ) ) {
+				$info['php_memory_limit']   = esc_html( size_format( wp_convert_hr_to_bytes( ini_get( 'memory_limit' ) ) ) );
+				$info['post_max_size']      = esc_html( size_format( wp_convert_hr_to_bytes( ini_get( 'post_max_size' ) ) ) );
+				$info['max_execution_time'] = ini_get( 'max_execution_time' );
+				$info['max_input_vars']     = esc_html( ini_get( 'max_input_vars' ) );
+				$info['suhosin']            = extension_loaded( 'suhosin' );
+			}
+
+			$active_plugins = (array) get_option( 'active_plugins', array() );
+			$plugins        = array();
+			if ( is_multisite() ) {
+				$network_activated_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
+				$active_plugins            = array_merge( $active_plugins, $network_activated_plugins );
+			}
+
+			foreach ( $active_plugins as $plugin ) {
+				$plugin_data    = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
+				$dirname        = dirname( $plugin );
+				$version_string = '';
+				$network_string = '';
+
+				if ( ! empty( $plugin_data['Name'] ) ) {
+					$plugins[ $plugin ] = array(
+						'name'    => $plugin_data['Name'],
+						'author'  => $plugin_data['Author'],
+						'version' => $plugin_data['Version'],
+
+					);
+
+					if ( ! empty( $plugin_data['PluginURI'] ) ) {
+						$plugins[ $plugin ]['PluginURI'] = $plugin_data['PluginURI'];
+					}
+				}
+			}
+
+			$info['active_plugins'] = $plugins;
+
+			return $info;
+		}
+
+		/**
 		 * Render system information tab html
 		 *
 		 * @return void

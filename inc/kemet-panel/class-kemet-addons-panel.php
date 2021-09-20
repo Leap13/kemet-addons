@@ -462,6 +462,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					'nonce'        => wp_create_nonce( 'kemet-panel' ),
 					'ajaxurl'      => admin_url( 'admin-ajax.php' ),
 					'plugins_data' => Kemet_Panel_Plugins_Data::get_instance()->get_plugins_data(),
+					'system_info'  => Kemet_Panel_System_Tab::get_system_info(),
 				)
 			);
 		}
