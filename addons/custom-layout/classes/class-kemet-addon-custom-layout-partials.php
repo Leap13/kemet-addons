@@ -1335,13 +1335,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		 */
 		public function admin_script() {
 
-			$js_prefix  = '.min.js';
-			$css_prefix = '.min.css';
-			$dir        = 'minified';
+			$js_prefix = '.min.js';
+			$dir       = 'minified';
 			if ( SCRIPT_DEBUG ) {
-				$js_prefix  = '.js';
-				$css_prefix = '.css';
-				$dir        = 'unminified';
+				$js_prefix = '.js';
+				$dir       = 'unminified';
 			}
 
 			wp_enqueue_script(
@@ -1354,8 +1352,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 				KEMET_ADDONS_VERSION,
 				true
 			);
-
-			wp_enqueue_style( 'kemet-addons-custom-layout-css', KEMET_CUSTOM_LAYOUT_URL . 'assets/css/' . $dir . '/style' . $css_prefix, '', KEMET_ADDONS_VERSION );
 
 			$hooks             = self::get_hooks_options();
 			$description_array = array();

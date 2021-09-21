@@ -35,8 +35,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			$prefix_page_opts   = 'kemet_custom_layout_options';
 			$code_editor_prefix = 'kemet_code_editor';
 
-			// $this->create_custom_layout_meta( $prefix_page_opts );
-			// $this->create_code_editor( $code_editor_prefix );
 			add_action( 'add_meta_boxes_kemet_custom_layouts', array( $this, 'register_shortcode_meta_boxes' ) );
 			add_filter( 'manage_posts_columns', array( $this, 'shortcode_column' ) );
 			add_action( 'manage_kemet_custom_layouts_posts_custom_column', array( $this, 'shortcode_column_content' ), 10, 2 );
@@ -208,51 +206,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 				return;
 			}
 
-		}
-
-		/**
-		 * Create Meta
-		 *
-		 * @param string $prefix meta prefix.
-		 * @return void
-		 */
-		public function create_code_editor( $prefix ) {
-
-			KFW::create_metabox(
-				$prefix,
-				array(
-					'title'     => __( 'Kemet Code Editor', 'kemet-addons' ),
-					'post_type' => array( KEMET_CUSTOM_LAYOUT_POST_TYPE ),
-					'data_type' => 'unserialize',
-					'theme'     => 'light',
-					'priority'  => 'high',
-				)
-			);
-			//
-			// Create a section.
-			//
-			KFW::create_section(
-				$prefix,
-				array(
-					'priority_num' => 1,
-					'fields'       => array(
-						array(
-							'id'    => 'enable-code-editor',
-							'type'  => 'switcher',
-							'class' => 'enable-code-editor',
-							'title' => __( 'Enable Code Editor', 'kemet-addons' ),
-						),
-						array(
-							'title'     => __( 'Code Editor', 'kemet-addons' ),
-							'id'        => 'kemet-hook-custom-code',
-							'class'     => 'kemet-hook-custom-code',
-							'type'      => 'textarea',
-							'data_type' => 'unserialize',
-							'default'   => esc_html__( '<!-- Add your snippet here. -->', 'kemet-addons' ),
-						),
-					),
-				)
-			);
 		}
 
 		/**

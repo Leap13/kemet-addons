@@ -16,8 +16,14 @@ add_filter( 'kemet_blog_options', 'extra_blog_options' );
 function extra_blog_options( $options ) {
 	$addon_options = array(
 		'blog-mode-title'                => array(
-			'type'  => 'kmt-title',
-			'label' => __( 'Blog Mode', 'kemet-addons' ),
+			'type'    => 'kmt-title',
+			'label'   => __( 'Blog Mode', 'kemet-addons' ),
+			'context' => array(
+				array(
+					'setting' => 'blog-layouts',
+					'value'   => 'blog-layout-2',
+				),
+			),
 		),
 		'blog-layout-mode'               => array(
 			'type'    => 'kmt-select',

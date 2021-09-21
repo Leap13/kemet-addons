@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 
 const System = () => {
     const { system_info } = KemetPanelData;
-    console.log(system_info);
+
     return <div id='system-info'>
         <table className="widefat" cellspacing="0">
             <thead>

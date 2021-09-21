@@ -2959,7 +2959,6 @@ __webpack_require__.r(__webpack_exports__);
 var System = function System() {
   var _KemetPanelData = KemetPanelData,
       system_info = _KemetPanelData.system_info;
-  console.log(system_info);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     id: "system-info"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
