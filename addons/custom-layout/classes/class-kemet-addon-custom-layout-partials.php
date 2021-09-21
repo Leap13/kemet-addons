@@ -1400,7 +1400,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Partials' ) ) {
 		 * @return void
 		 */
 		public function add_styles() {
-			Kemet_Style_Generator::kmt_add_css( KEMET_CUSTOM_LAYOUT_DIR . 'assets/css/unminified/front-style.css' );
+			Kemet_Style_Generator::kmt_add_css( KEMET_CUSTOM_LAYOUT_DIR . 'assets/css/front-style.css' );
 
 		}
 	}
