@@ -1,10 +1,15 @@
+import SingleOption from "./common/SingleOption";
+
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = OptionComponent(option.type);
 
-    return option.type && <div id={optionId} className={`customize-control-${option.type}`}>
-        <Option id={optionId} value={value} params={option} onChange={onChange} />
-    </div>;
+    return option.type && <SingleOption>
+        <div id={optionId} className={`customize-control-${option.type}`}>
+            <Option id={optionId} value={value} params={option} onChange={onChange} />
+            <div className="description customize-control-description">{option.description}</div>
+        </div>
+    </SingleOption>;
 }
 
 const RenderOptions = ({ options, values, onChange }) => {

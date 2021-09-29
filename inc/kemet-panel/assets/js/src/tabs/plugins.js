@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "@wordpress/element";
-import SinglePlugin from '../common/singlePlugins'
+import SinglePlugin from '../common/SinglePlugins'
 import { Transition, animated } from "react-spring/renderprops"
 import { __ } from "@wordpress/i18n";
 let pluginsCache = null;

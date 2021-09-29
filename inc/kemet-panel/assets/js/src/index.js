@@ -1,7 +1,8 @@
 import OptionsTab from './tabs/options'
 import Plugins from './tabs/plugins'
 import System from './tabs/system'
-import { render } from '@wordpress/element'
+import { render, Fragment } from '@wordpress/element'
+import Header from './layout/Header';
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody, PanelRow, Button } = wp.components;
 
@@ -23,46 +24,49 @@ const RendeTabs = ({ options, values }) => {
             className: 'system',
         },
     ]
-    return <TabPanel className="kemet-dashboard-tab-panel"
-        activeClass="active-tab"
-        tabs={tabs}>
-        {
-            (tab) => {
-                switch (tab.name) {
-                    case 'customizer-options':
-                        return (
-                            <Panel className="dashboard-section tab-section">
-                                <PanelBody
-                                    opened={true}
-                                >
-                                    <OptionsTab options={options.options} values={values.options} />
-                                </PanelBody>
-                            </Panel>
-                        );
-                    case 'plugins':
-                        return (
-                            <Panel className="dashboard-section tab-section">
-                                <PanelBody
-                                    opened={true}
-                                >
-                                    <Plugins />
-                                </PanelBody>
-                            </Panel>
-                        );
-                    case 'system':
-                        return (
-                            <Panel className="dashboard-section tab-section">
-                                <PanelBody
-                                    opened={true}
-                                >
-                                    <System />
-                                </PanelBody>
-                            </Panel>
-                        );
+    return <Fragment>
+        <Header />
+        <TabPanel className="kemet-dashboard-tab-panel"
+            activeClass="active-tab"
+            tabs={tabs}>
+            {
+                (tab) => {
+                    switch (tab.name) {
+                        case 'customizer-options':
+                            return (
+                                <Panel className="dashboard-section tab-section">
+                                    <PanelBody
+                                        opened={true}
+                                    >
+                                        <OptionsTab options={options.options} values={values.options} />
+                                    </PanelBody>
+                                </Panel>
+                            );
+                        case 'plugins':
+                            return (
+                                <Panel className="dashboard-section tab-section">
+                                    <PanelBody
+                                        opened={true}
+                                    >
+                                        <Plugins />
+                                    </PanelBody>
+                                </Panel>
+                            );
+                        case 'system':
+                            return (
+                                <Panel className="dashboard-section tab-section">
+                                    <PanelBody
+                                        opened={true}
+                                    >
+                                        <System />
+                                    </PanelBody>
+                                </Panel>
+                            );
+                    }
                 }
             }
-        }
-    </TabPanel>
+        </TabPanel>
+    </Fragment>
 };
 
 document.addEventListener('DOMContentLoaded', () => {
