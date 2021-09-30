@@ -14,10 +14,17 @@
   #wpfooter {
     display: none;
   }
+  #wpbody-content {
+    background-color: #fff;
+    padding-bottom: 0;
+  }
+  #wpbody {
+    padding-bottom: 0;
+  }
 }
 #kmt-dashboard {
-  margin: 25px auto;
-  margin-right: 20px;
+  margin: auto;
+  margin-left: -20px;
   padding-bottom: 20px;
   background-color: #fff;
   height: 100%;
@@ -32,6 +39,9 @@
       font-size: 17px;
       text-decoration: none;
       font-weight: 500;
+      &:hover {
+        color: var(--wp-admin-theme-color);
+      }
     }
   }
   .components-panel__body {
@@ -126,6 +136,7 @@
     height: auto;
     box-shadow: none !important;
     flex: none;
+    font-size: 15px;
   }
 
   #system-info {

@@ -2777,9 +2777,7 @@ var __ = wp.i18n.__;
 var _wp$components = wp.components,
     TabPanel = _wp$components.TabPanel,
     Panel = _wp$components.Panel,
-    PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    Button = _wp$components.Button;
+    PanelBody = _wp$components.PanelBody;
 
 var RendeTabs = function RendeTabs(_ref) {
   var options = _ref.options,
@@ -2832,6 +2830,9 @@ var RendeTabs = function RendeTabs(_ref) {
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('kmt-dashboard')) {
+    var sidebar = document.getElementById("adminmenuwrap"),
+        sidebarHeight = sidebar.offsetHeight + 'px';
+    document.getElementById("wpbody").style.minHeight = sidebarHeight;
     Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RendeTabs, {
       options: KemetPanelData.options,
       values: KemetPanelData.values
@@ -3013,7 +3014,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var pluginsCache = null;
+var pluginsCache = KemetPanelData.plugins_cache;
 
 var Plugins = function Plugins() {
   var plugins = KemetPanelData.plugins_data;
@@ -3105,7 +3106,9 @@ var Plugins = function Plugins() {
   }();
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
-    updatePluginsStatus(!pluginsCache);
+    if (!pluginsCache) {
+      updatePluginsStatus(!pluginsCache);
+    }
   }, []);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(react_spring_renderprops__WEBPACK_IMPORTED_MODULE_5__["Transition"], {
     items: isLoading,

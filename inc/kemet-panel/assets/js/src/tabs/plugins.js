@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from "@wordpress/element";
 import SinglePlugin from '../common/SinglePlugins'
 import { Transition, animated } from "react-spring/renderprops"
 import { __ } from "@wordpress/i18n";
-let pluginsCache = null;
+let pluginsCache = KemetPanelData.plugins_cache;
 
 const Plugins = () => {
     const plugins = KemetPanelData.plugins_data;
@@ -36,7 +36,9 @@ const Plugins = () => {
     }
 
     useEffect(() => {
-        updatePluginsStatus(!pluginsCache)
+        if (!pluginsCache) {
+            updatePluginsStatus(!pluginsCache)
+        }
     }, [])
 
     return (

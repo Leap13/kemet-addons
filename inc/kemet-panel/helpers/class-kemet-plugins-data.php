@@ -139,7 +139,14 @@ if ( ! class_exists( 'Kemet_Panel_Plugins_Data' ) ) {
 		 */
 		public function get_plugins_status() {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
+			$status = $this->plugins_status();
+			wp_send_json_success( $status );
+		}
 
+		/**
+		 * get_plugins_status
+		 */
+		public function plugins_status() {
 			$plugins = self::get_plugins();
 			$status  = array();
 			foreach ( $plugins as $plugin ) {
@@ -156,7 +163,7 @@ if ( ! class_exists( 'Kemet_Panel_Plugins_Data' ) ) {
 					}
 				}
 			}
-			wp_send_json_success( $status );
+			return $status;
 		}
 
 		/**

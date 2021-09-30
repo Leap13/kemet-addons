@@ -4,7 +4,7 @@ import System from './tabs/system'
 import { render, Fragment } from '@wordpress/element'
 import Header from './layout/Header';
 const { __ } = wp.i18n;
-const { TabPanel, Panel, PanelBody, PanelRow, Button } = wp.components;
+const { TabPanel, Panel, PanelBody } = wp.components;
 
 const RendeTabs = ({ options, values }) => {
     const tabs = [
@@ -71,6 +71,10 @@ const RendeTabs = ({ options, values }) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('kmt-dashboard')) {
+        let sidebar = document.getElementById("adminmenuwrap"),
+            sidebarHeight = sidebar.offsetHeight + 'px';
+
+        document.getElementById("wpbody").style.minHeight = sidebarHeight
         render(<RendeTabs options={KemetPanelData.options} values={KemetPanelData.values} />, document.getElementById('kmt-dashboard'))
     }
 })

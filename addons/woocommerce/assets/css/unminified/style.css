@@ -884,43 +884,6 @@ Woo Quick View
   margin: 0;
 }
 
-.content-align-left .kemet-shop-thumbnail-wrap {
-  text-align: left;
-}
-
-.content-align-left .kemet-shop-thumbnail-wrap *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-  text-align: left;
-}
-
-.content-align-left .kemet-shop-thumbnail-wrap .star-rating {
-  margin-left: 0;
-}
-
-.content-align-right .kemet-shop-thumbnail-wrap {
-  text-align: right;
-}
-
-.content-align-right .kemet-shop-thumbnail-wrap *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-  text-align: right;
-}
-
-.content-align-right .kemet-shop-thumbnail-wrap .star-rating {
-  margin-right: 0;
-  margin-left: auto;
-}
-
-.content-align-center .kemet-shop-thumbnail-wrap {
-  text-align: center;
-}
-
-.content-align-center .kemet-shop-thumbnail-wrap *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-  text-align: center;
-}
-
-.content-align-center .kemet-shop-thumbnail-wrap .star-rating {
-  margin: 0 auto;
-}
-
 @media (min-width: 922px) {
   .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-viewport {
     overflow: hidden;
