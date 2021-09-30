@@ -565,9 +565,9 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details', 8 );
 				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title', 1 );
 				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content', 2 );
-				add_action( 'kemet_woo_shop_add_to_cart_before', array( 'Kemet_Woocommerce', 'kemet_get_wishlist' ) );
+				add_action( 'kemet_woo_shop_add_to_cart_before', array( Kemet_Woocommerce::get_instance(), 'kemet_get_wishlist' ) );
 
-				remove_action( 'kemet_woo_shop_add_to_cart_after', array( 'Kemet_Woocommerce', 'kemet_get_wishlist' ) );
+				remove_action( 'kemet_woo_shop_add_to_cart_after', array( Kemet_Woocommerce::get_instance(), 'kemet_get_wishlist' ) );
 				remove_action( 'woocommerce_before_shop_loop_item', 'product_list_details', 8 );
 				remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title', 1 );
 				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content', 2 );

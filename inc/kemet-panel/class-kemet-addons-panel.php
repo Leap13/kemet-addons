@@ -108,10 +108,11 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public function update_option() {
 			check_ajax_referer( 'kemet-panel', 'nonce' );
 
-			$option  = isset( $_POST['option'] ) ? sanitize_post( wp_unslash( $_POST['option'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$value   = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : array();
+			$option  = isset( $_POST['option'] ) ? sanitize_text_field( wp_unslash( $_POST['option'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$value   = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
 			$value   = 'true' === $value ? true : false;
-			$options = get_option( 'kemet_addons_options', array() );
+			$options = get_option( 'kemet_addons_options' );
+			$options = ! is_array( $options ) ? array() : $options;
 
 			if ( '' !== $value && '' !== $option ) {
 				$options[ $option ] = $value;

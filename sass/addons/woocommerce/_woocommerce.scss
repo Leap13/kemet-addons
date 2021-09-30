@@ -852,40 +852,6 @@ Woo Quick View
     }
   }
 }
-.content-align-left {
-  .kemet-shop-thumbnail-wrap {
-    text-align: left;
-    *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-      text-align: left;
-    }
-    .star-rating {
-      margin-left: 0;
-    }
-  }
-}
-.content-align-right {
-  .kemet-shop-thumbnail-wrap {
-    text-align: right;
-    *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-      text-align: right;
-    }
-    .star-rating {
-      margin-right: 0;
-      margin-left: auto;
-    }
-  }
-}
-.content-align-center {
-  .kemet-shop-thumbnail-wrap {
-    text-align: center;
-    *:not(.onsale):not(.kmt-qv-icon):not(.kemet-view) {
-      text-align: center;
-    }
-    .star-rating {
-      margin: 0 auto;
-    }
-  }
-}
 .kmt-article-single {
   @media (min-width: 922px) {
     &.kmt-gallary-vertical {

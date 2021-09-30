@@ -25,6 +25,7 @@
   margin-left: 20px;
   padding-bottom: 20px;
   background-color: #fff;
+  height: 100%;
 }
 
 #kmt-dashboard .kmt-panel-header {
@@ -64,12 +65,24 @@
   margin: 0;
 }
 
+#kmt-dashboard .kmt-options .option-card .option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+#kmt-dashboard .kmt-options .option-card .option > .option-actions {
+  margin-right: 15px;
+}
+
 #kmt-dashboard .kmt-options .option-card .icon {
   width: 48px;
   height: 48px;
   background-color: #f0f0f1;
   border-radius: 50%;
   margin-left: 16px;
+  flex: none;
 }
 
 #kmt-dashboard .kmt-options .option-card [class*="customize-control"] {
@@ -102,10 +115,6 @@
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item {
   position: relative;
-}
-
-#kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item:not(:last-child) {
-  margin-left: 25px;
 }
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item.active-tab, #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item:hover {
