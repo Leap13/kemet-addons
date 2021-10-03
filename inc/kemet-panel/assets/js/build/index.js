@@ -2550,7 +2550,7 @@ var SinglePlugin = function SinglePlugin(_ref) {
 
               body = new FormData();
               body.append('action', action);
-              body.append('nonce', KemetPanelData.nonce);
+              body.append('nonce', KemetPanelData.plugin_manager_nonce);
               body.append('path', plugin.path);
               body.append('slug', slug);
               _context.prev = 6;
@@ -2832,8 +2832,9 @@ var RendeTabs = function RendeTabs(_ref) {
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('kmt-dashboard')) {
-    var sidebar = document.getElementById("adminmenuback"),
+    var sidebar = document.getElementById("adminmenuwrap"),
         sidebarHeight = sidebar.offsetHeight + 'px';
+    console.log(sidebarHeight);
     document.getElementById("wpbody").style.minHeight = sidebarHeight;
     Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RendeTabs, {
       options: KemetPanelData.options,

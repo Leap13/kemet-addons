@@ -71,8 +71,9 @@ const RendeTabs = ({ options, values }) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('kmt-dashboard')) {
-        let sidebar = document.getElementById("adminmenuback"),
+        let sidebar = document.getElementById("adminmenuwrap"),
             sidebarHeight = sidebar.offsetHeight + 'px';
+        console.log(sidebarHeight);
 
         document.getElementById("wpbody").style.minHeight = sidebarHeight
         render(<RendeTabs options={KemetPanelData.options} values={KemetPanelData.values} />, document.getElementById('kmt-dashboard'))

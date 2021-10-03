@@ -277,16 +277,17 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'kemet-panel-js',
 				'KemetPanelData',
 				array(
-					'options'        => self::panel_options(),
-					'values'         => array(
+					'options'              => self::panel_options(),
+					'values'               => array(
 						'options' => get_option( 'kemet_addons_options', array() ),
 					),
-					'nonce'          => wp_create_nonce( 'kemet-panel' ),
-					'ajaxurl'        => admin_url( 'admin-ajax.php' ),
-					'plugins_data'   => Kemet_Panel_Plugins_Data::get_instance()->get_plugins_data(),
-					'plugins_cache'  => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
-					'system_info'    => self::get_system_info(),
-					'customizer_url' => esc_url( admin_url( 'customize.php' ) ),
+					'nonce'                => wp_create_nonce( 'kemet-panel' ),
+					'plugin_manager_nonce' => wp_create_nonce( 'kemet-plugins-manager' ),
+					'ajaxurl'              => admin_url( 'admin-ajax.php' ),
+					'plugins_data'         => Kemet_Panel_Plugins_Data::get_instance()->get_plugins_data(),
+					'plugins_cache'        => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
+					'system_info'          => self::get_system_info(),
+					'customizer_url'       => esc_url( admin_url( 'customize.php' ) ),
 				)
 			);
 		}

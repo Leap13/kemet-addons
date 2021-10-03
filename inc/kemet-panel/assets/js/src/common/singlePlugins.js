@@ -9,7 +9,7 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
         }
         const body = new FormData()
         body.append('action', action)
-        body.append('nonce', KemetPanelData.nonce)
+        body.append('nonce', KemetPanelData.plugin_manager_nonce)
         body.append('path', plugin.path)
         body.append('slug', slug)
 
