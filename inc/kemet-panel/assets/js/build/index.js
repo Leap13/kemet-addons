@@ -2490,7 +2490,9 @@ var SingleOption = function SingleOption(props) {
     onClick: function onClick() {
       handleChange();
     }
-  }, btnText))));
+  }, btnText), value && props.params.url && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
+    href: props.params.url
+  }, __('Customize', 'kemet')))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleOption);
@@ -2830,7 +2832,7 @@ var RendeTabs = function RendeTabs(_ref) {
 
 document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('kmt-dashboard')) {
-    var sidebar = document.getElementById("adminmenuwrap"),
+    var sidebar = document.getElementById("adminmenuback"),
         sidebarHeight = sidebar.offsetHeight + 'px';
     document.getElementById("wpbody").style.minHeight = sidebarHeight;
     Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RendeTabs, {

@@ -71,7 +71,7 @@ const RendeTabs = ({ options, values }) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('kmt-dashboard')) {
-        let sidebar = document.getElementById("adminmenuwrap"),
+        let sidebar = document.getElementById("adminmenuback"),
             sidebarHeight = sidebar.offsetHeight + 'px';
 
         document.getElementById("wpbody").style.minHeight = sidebarHeight

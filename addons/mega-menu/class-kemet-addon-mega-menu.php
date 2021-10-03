@@ -38,7 +38,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu' ) ) {
 		 *  Constructor
 		 */
 		public function __construct() {
-
+			return;
 			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-settings.php';
 			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-partials.php';
 			require_once KEMET_MEGA_MENU_DIR . 'classes/class-kemet-addon-mega-menu-options.php';

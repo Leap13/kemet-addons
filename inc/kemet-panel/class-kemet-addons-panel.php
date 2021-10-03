@@ -205,6 +205,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 						'type'        => 'kmt-switcher',
 						'label'       => __( 'Blog Layouts', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable Extra Blog Layouts.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
 					),
 					'custom-layout'       => array(
 						'type'        => 'kmt-switcher',
@@ -225,11 +226,13 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 						'type'        => 'kmt-switcher',
 						'label'       => __( 'Woocommerce', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
 					),
 					'reset-import-export' => array(
 						'type'        => 'kmt-switcher',
 						'label'       => __( 'Customizer Reset, Import, and Export Buttons', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons' ),
+						'url'         => admin_url( 'customize.php' ),
 					),
 				),
 			);
@@ -274,15 +277,16 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'kemet-panel-js',
 				'KemetPanelData',
 				array(
-					'options'       => self::panel_options(),
-					'values'        => array(
+					'options'        => self::panel_options(),
+					'values'         => array(
 						'options' => get_option( 'kemet_addons_options', array() ),
 					),
-					'nonce'         => wp_create_nonce( 'kemet-panel' ),
-					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-					'plugins_data'  => Kemet_Panel_Plugins_Data::get_instance()->get_plugins_data(),
-					'plugins_cache' => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
-					'system_info'   => self::get_system_info(),
+					'nonce'          => wp_create_nonce( 'kemet-panel' ),
+					'ajaxurl'        => admin_url( 'admin-ajax.php' ),
+					'plugins_data'   => Kemet_Panel_Plugins_Data::get_instance()->get_plugins_data(),
+					'plugins_cache'  => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
+					'system_info'    => self::get_system_info(),
+					'customizer_url' => esc_url( admin_url( 'customize.php' ) ),
 				)
 			);
 		}

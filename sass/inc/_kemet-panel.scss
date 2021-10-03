@@ -61,12 +61,13 @@
         margin: 0;
       }
       .option {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: grid;
+        row-gap: 20px;
         flex: 1;
         > .option-actions {
-          margin-left: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
       .icon {

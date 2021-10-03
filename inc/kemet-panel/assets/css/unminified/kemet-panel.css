@@ -79,14 +79,15 @@
 }
 
 #kmt-dashboard .kmt-options .option-card .option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  row-gap: 20px;
   flex: 1;
 }
 
 #kmt-dashboard .kmt-options .option-card .option > .option-actions {
-  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #kmt-dashboard .kmt-options .option-card .icon {

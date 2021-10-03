@@ -46,6 +46,7 @@ const SingleOption = (props) => {
                 <Button isPrimary={!value} isSecondary={value} disabled={isLoading} onClick={() => {
                     handleChange()
                 }}>{btnText}</Button>
+                {value && props.params.url && <a href={props.params.url}>{__('Customize', 'kemet')}</a>}
             </div>
         </div>
     </div>
