@@ -200,39 +200,71 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 */
 		public static function panel_options() {
 			$options = array(
-				'options' => array(
+				'options'   => array(
 					'blog-layouts'        => array(
-						'type'        => 'kmt-switcher',
+						'type'        => 'kmt-button',
 						'label'       => __( 'Blog Layouts', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable Extra Blog Layouts.', 'kemet-addons' ),
 						'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
 					),
 					'custom-layout'       => array(
-						'type'        => 'kmt-switcher',
+						'type'        => 'kmt-button',
 						'label'       => __( 'Custom Layout', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
 					),
 					'mega-menu'           => array(
-						'type'        => 'kmt-switcher',
+						'type'        => 'kmt-button',
 						'label'       => __( 'Mega Menu', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable Mega Menu', 'kemet-addons' ),
 					),
 					'custom-fonts'        => array(
-						'type'        => 'kmt-switcher',
+						'type'        => 'kmt-button',
 						'label'       => __( 'Custom Fonts', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable Custom fonts.', 'kemet-addons' ),
 					),
 					'woocommerce'         => array(
-						'type'        => 'kmt-switcher',
+						'type'        => 'kmt-button',
 						'label'       => __( 'Woocommerce', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
 						'url'         => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
 					),
 					'reset-import-export' => array(
-						'type'        => 'kmt-switcher',
+						'type'        => 'kmt-button',
 						'label'       => __( 'Customizer Reset, Import, and Export Buttons', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons' ),
 						'url'         => admin_url( 'customize.php' ),
+					),
+				),
+				'customize' => array(
+					'global-colors'       => array(
+						'label'       => __( 'Global Colors', 'kemet-addons' ),
+						'description' => __( 'Select from ready-made Light and Dark color palettes or you can customize and create your own custom palette(s).', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[section]=section-colors-body' ),
+					),
+					'site-identity'       => array(
+						'label'       => __( 'Website Identity', 'kemet-addons' ),
+						'description' => __( 'Upload your logo and favicon. Control and customize your website’s title and tagline.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[section]=title_tagline' ),
+					),
+					'container-settings'  => array(
+						'label'       => __( 'Container Settings', 'kemet-addons' ),
+						'description' => __( 'Manage your website’s container width and adjust inner-pages, blog posts, and blog archives container settings.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[section]=section-container-layout' ),
+					),
+					'builder-builder'     => array(
+						'label'       => __( 'Header Builder', 'kemet-addons' ),
+						'description' => __( 'Create and customize sophisticated header layotus using Kemet Header Builder tool.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[panel]=panel-header-builder-group' ),
+					),
+					'footer-builder'      => array(
+						'label'       => __( 'Footer Builder', 'kemet-addons' ),
+						'description' => __( 'Create outstanding footer layouts with tones of customization options using Kemet Footer Builder tool.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[panel]=panel-footer-builder-group' ),
+					),
+					'page-title-settings' => array(
+						'label'       => __( 'Page Title Settings', 'kemet-addons' ),
+						'description' => __( 'Select from 3 well-designed Page Title layouts or you can disbale it if you want.', 'kemet-addons' ),
+						'url'         => admin_url( '/customize.php?autofocus[section]=section-page-title' ),
 					),
 				),
 			);
@@ -288,6 +320,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					'plugins_cache'        => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
 					'system_info'          => self::get_system_info(),
 					'customizer_url'       => esc_url( admin_url( 'customize.php' ) ),
+					'images_url'           => KEMET_PANEL_URL . 'assets/images/',
 				)
 			);
 		}

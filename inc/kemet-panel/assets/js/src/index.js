@@ -10,12 +10,12 @@ const RendeTabs = ({ options, values }) => {
     const tabs = [
         {
             name: 'customizer-options',
-            title: __('Customizer & Page Options', 'kemet'),
+            title: __('Customize Your Site', 'kemet'),
             className: 'customizer-options',
         },
         {
             name: 'plugins',
-            title: __('Plugins', 'kemet'),
+            title: __('Recommended Plugins', 'kemet'),
             className: 'plugins',
         },
         {
@@ -38,7 +38,7 @@ const RendeTabs = ({ options, values }) => {
                                     <PanelBody
                                         opened={true}
                                     >
-                                        <OptionsTab options={options.options} values={values.options} />
+                                        <OptionsTab customize-options={options.customize} options={options.options} values={values.options} />
                                     </PanelBody>
                                 </Panel>
                             );

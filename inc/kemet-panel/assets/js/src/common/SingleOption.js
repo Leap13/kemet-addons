@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const { __ } = wp.i18n;
-const { Button } = wp.components;
 const SingleOption = (props) => {
     const [value, setValue] = useState(props.value);
     const [isLoading, setIsLoading] = useState(false);
@@ -35,18 +34,18 @@ const SingleOption = (props) => {
     };
 
     let btnText = value === true ? __('Deactivate', 'kemet') : __('Activate', 'kemet')
-    return <div className='option-card'>
-        <div className="icon"></div>
+    const btnClasses = value === true ? 'secondary' : 'primary';
+    return <div id={props.id} className='option-card'>
         <div className='option'>
             <label>
                 <span className="customize-control-title kmt-control-title">{props.params.label}</span>
                 <div className="description customize-control-description">{props.params.description}</div>
             </label>
             <div className="option-actions">
-                <Button isPrimary={!value} isSecondary={value} disabled={isLoading} onClick={() => {
+                <button className={`kmt-button ${btnClasses}`} onClick={() => {
                     handleChange()
-                }}>{btnText}</Button>
-                {value && props.params.url && <a href={props.params.url}>{__('Customize', 'kemet')}</a>}
+                }} disabled={isLoading}>{btnText}</button>
+                {value && props.params.url && <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet')}</a>}
             </div>
         </div>
     </div>

@@ -1,6 +1,36 @@
 .toplevel_page_kemet_panel [class*="notice"] {
   display: none !important;
 }
+.kmt-button {
+  display: inline-block;
+  color: var(--buttonColor);
+  background-color: var(--buttonBgColor);
+  border: 0;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: var(--buttonColor);
+  }
+  &.primary {
+    --buttonColor: #ffffff;
+    --buttonBgColor: #2d3747;
+    &:hover {
+      --buttonBgColor: #4a5568;
+    }
+  }
+  &.secondary {
+    --buttonColor: #2d3747;
+    --buttonBgColor: #f4f5f6;
+    &:hover {
+      --buttonBgColor: #e0e1e4;
+      --buttonBorderColor: #e0e1e4;
+    }
+  }
+}
 .toplevel_page_kemet_panel {
   #wpwrap,
   #wpcontent,
@@ -27,21 +57,49 @@
   margin-left: -20px;
   padding-bottom: 20px;
   background-color: #fff;
-  height: 100%;
+  color: #2d3747;
+  font-size: 14px;
+  min-height: 100%;
+  .options-section {
+    &.customize-site-options {
+      .option-actions {
+        > a {
+          margin-left: 0 !important;
+        }
+      }
+    }
+    h2 {
+      font-size: 19px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: #2d3747;
+        margin-right: 10px;
+      }
+    }
+    &.advanced-options {
+      margin-top: 70px;
+    }
+  }
   .kmt-panel-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 25px;
     > a {
-      color: #777;
       text-transform: uppercase;
       font-size: 17px;
       text-decoration: none;
       font-weight: 500;
-      &:hover {
-        color: var(--wp-admin-theme-color);
-      }
+      padding: 20px 30px;
     }
   }
   .components-panel__body {
@@ -51,14 +109,21 @@
     display: grid;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     .option-card {
       display: flex;
-      align-items: center;
-      padding: 24px;
-      border: 1px solid #eee;
+      padding: 40px;
+      height: 100%;
+      box-sizing: border-box;
+      border: 1px dashed #eee;
+      .kmt-control-title {
+        font-size: 17px !important;
+      }
       .customize-control-description {
         margin: 0;
+        font-size: 14px;
+        margin-top: 15px;
+        color: #2d3747 !important;
       }
       .option {
         display: grid;
@@ -66,17 +131,18 @@
         flex: 1;
         > .option-actions {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
+          align-items: flex-end;
+          > a {
+            color: var(--buttonColor);
+            line-height: normal;
+            transition: none;
+            --buttonColor: #2d3747;
+            &:hover {
+              --buttonBgColor: #e0e1e4;
+            }
+            margin-left: 10px;
+          }
         }
-      }
-      .icon {
-        width: 48px;
-        height: 48px;
-        background-color: #f0f0f1;
-        border-radius: 50%;
-        margin-right: 16px;
-        flex: none;
       }
       [class*="customize-control"] {
         flex: 1;
@@ -84,6 +150,7 @@
     }
     > div {
       margin-top: 0;
+      border: 1px dashed #eee;
     }
   }
   .kemet-dashboard-tab-panel {
@@ -101,16 +168,19 @@
     border-bottom: 1px solid #eee;
     height: auto;
     overflow: visible;
-    justify-content: center;
     .components-tab-panel__tabs-item {
       position: relative;
+      font-size: 17px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #2d3747 !important;
       &.active-tab,
       &:hover {
-        color: var(--wp-admin-theme-color) !important;
+        font-weight: 500;
         &::after {
           height: 3px;
           bottom: -2px;
-          background-color: var(--wp-admin-theme-color);
+          background-color: #2d3747;
           opacity: 1;
           transform: scaleX(1);
         }
@@ -157,39 +227,35 @@
   }
   .kmt-plugins-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-column-gap: 30px;
     grid-row-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
     margin: 0;
     li {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      row-gap: 20px;
+      padding: 40px;
+      box-sizing: border-box;
+      border: 1px dashed #eee;
       margin: 0;
-      border-radius: 3px;
-      border: 1px solid rgba(226, 230, 235, 0.7);
-      .kmt-plugin-description {
-        font-size: 14px;
-        line-height: 1.7;
-        margin-bottom: 30px;
-        padding: 0 25px;
-      }
-      .plugin-title {
+      .kmt-plugin-icon {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: space-between;
-        margin: 30px 0 15px 0;
-        padding: 0 25px;
-      }
-      .plugin-action {
-        display: flex;
-        justify-content: space-between;
-        margin-top: auto;
-        padding: 20px 13px 20px 25px;
-        border-top: 1px solid rgba(226, 230, 235, 0.5);
-        background: rgba(245, 247, 249, 0.6);
-        > a {
-          cursor: pointer;
+        .kmt-loader {
+          font-weight: bold;
         }
+      }
+      .kmt-plugin-title {
+        font-size: 17px;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+      .kmt-plugin-description {
+        margin: 0;
+        font-size: 14px;
+        margin-top: 15px;
+        color: #2d3747;
       }
     }
   }

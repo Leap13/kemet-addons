@@ -1,9 +1,9 @@
+import CustomizerItem from "./common/CustomizerItem";
 import SingleOption from "./common/SingleOption";
 
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
-    return <div id={optionId} className={`customize-control-${option.type}`}>
-        <SingleOption id={optionId} value={value} params={option} onChange={onChange} />
-    </div>;
+    return <SingleOption id={optionId} value={value} params={option} onChange={onChange} />
+        ;
 }
 
 const RenderOptions = ({ options, values, onChange }) => {
@@ -23,4 +23,12 @@ const OptionsComponent = ({ options, onChange, values }) => {
     </div>
 }
 
+export const RenderStaticOptions = ({ options }) => {
+    return <div className="kmt-options">
+        {Object.keys(options).map((optionId) => {
+            const option = options[optionId];
+            return <CustomizerItem id={optionId} params={option} />;
+        })}
+    </div>
+}
 export default OptionsComponent

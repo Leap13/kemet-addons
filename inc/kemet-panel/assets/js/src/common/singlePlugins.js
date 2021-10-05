@@ -24,6 +24,7 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
 
                 if (success) {
                     handlePluginChange();
+                    setLoader(false);
                 }
             }
         } catch (e) {
@@ -32,19 +33,25 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
 
         setLoader(false);
     }
-    return <li>
-        <h4 className="plugin-title">{plugin.name} {loader && <div className="kmt-loader">{__('Loading', 'kemet-addons')}</div>}</h4>
-        {plugin.description && (
-            <div className="kmt-plugin-description" dangerouslySetInnerHTML={{
-                __html: plugin.description
-            }}>
-            </div>
-        )}
+    return <li className='kmt-plugin-card'>
+        <div className='kmt-plugin-icon'>
+            <img src={KemetPanelData.images_url + slug + '.png'} />
+            {loader && <div className="kmt-loader">{__('Loading', 'kemet-addons')}</div>}
+        </div>
+        <div className='kmt-plugin-data'>
+            <h4 className="kmt-plugin-title">{plugin.name}</h4>
+            {plugin.description && (
+                <div className="kmt-plugin-description" dangerouslySetInnerHTML={{
+                    __html: plugin.description
+                }}>
+                </div>
+            )}
+        </div>
         <div className="plugin-action">
             {status === 'deactivate' && (
                 <a
                     onClick={() => doAction('kemet-deactivate-plugin')}
-                    className="kmt-button">
+                    className="kmt-button secondary">
                     {__('Deactivate', 'kemet-addons')}
                 </a>
             )}
@@ -52,7 +59,7 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
             {status === 'activate' && (
                 <a
                     onClick={() => doAction('kemet-activate-plugin')}
-                    className="kmt-button-primary">
+                    className="kmt-button primary">
                     {__('Activate', 'kemet-addons')}
                 </a>
             )}
@@ -60,7 +67,7 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
             {status === 'install' &&
                 <a
                     onClick={() => doAction('kemet-install-plugin')}
-                    className="kmt-button">
+                    className="kmt-button primary">
                     {__('Install', 'kemet-addons')}
                 </a>
             }
