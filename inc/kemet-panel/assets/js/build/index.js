@@ -2362,6 +2362,32 @@ exports.Globals = Globals;
 
 /***/ }),
 
+/***/ "./src/common/Card.js":
+/*!****************************!*\
+  !*** ./src/common/Card.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Card = function Card(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    id: props.id,
+    className: "kmt-card"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "card-body"
+  }, props.children));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Card);
+
+/***/ }),
+
 /***/ "./src/common/CustomizerItem.js":
 /*!**************************************!*\
   !*** ./src/common/CustomizerItem.js ***!
@@ -2373,15 +2399,14 @@ exports.Globals = Globals;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Card */ "./src/common/Card.js");
+
 
 var __ = wp.i18n.__;
 
 var CustomizerItem = function CustomizerItem(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    id: props.id,
-    className: "option-card"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "option"
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    id: props.id
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
     className: "customize-control-title kmt-control-title"
   }, props.params.label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -2391,7 +2416,7 @@ var CustomizerItem = function CustomizerItem(props) {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
     className: "kmt-button",
     href: props.params.url
-  }, __('Customize', 'kemet')))));
+  }, __('Customize', 'kemet'))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CustomizerItem);
@@ -2417,12 +2442,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Card */ "./src/common/Card.js");
+
 
 
 
 
 
 var __ = wp.i18n.__;
+var Dashicon = wp.components.Dashicon;
 
 var SingleOption = function SingleOption(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_4__["useState"])(props.value),
@@ -2507,16 +2535,15 @@ var SingleOption = function SingleOption(props) {
 
   var btnText = value === true ? __('Deactivate', 'kemet') : __('Activate', 'kemet');
   var btnClasses = value === true ? 'secondary' : 'primary';
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-    id: props.id,
-    className: "option-card"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-    className: "option"
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_Card__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    id: props.id
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("label", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("span", {
     className: "customize-control-title kmt-control-title"
   }, props.params.label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: "description customize-control-description"
-  }, props.params.description)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+  }, props.params.description), isLoading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Dashicon, {
+    icon: "update"
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: "option-actions"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("button", {
     className: "kmt-button ".concat(btnClasses),
@@ -2527,7 +2554,7 @@ var SingleOption = function SingleOption(props) {
   }, btnText), value && props.params.url && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
     className: "kmt-button",
     href: props.params.url
-  }, __('Customize', 'kemet')))));
+  }, __('Customize', 'kemet'))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleOption);
@@ -2553,12 +2580,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Card */ "./src/common/Card.js");
 
 
 
 
 
 
+
+var Dashicon = wp.components.Dashicon;
 
 var SinglePlugin = function SinglePlugin(_ref) {
   var plugin = _ref.plugin,
@@ -2568,8 +2598,8 @@ var SinglePlugin = function SinglePlugin(_ref) {
 
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
       _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
-      loader = _useState2[0],
-      setLoader = _useState2[1];
+      isLoading = _useState2[0],
+      setIsLoading = _useState2[1];
 
   var doAction = /*#__PURE__*/function () {
     var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default.a.mark(function _callee(action) {
@@ -2579,8 +2609,8 @@ var SinglePlugin = function SinglePlugin(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (!loader) {
-                setLoader(true);
+              if (!isLoading) {
+                setIsLoading(true);
               }
 
               body = new FormData();
@@ -2612,7 +2642,7 @@ var SinglePlugin = function SinglePlugin(_ref) {
 
               if (success) {
                 handlePluginChange();
-                setLoader(false);
+                setIsLoading(false);
               }
 
             case 16:
@@ -2625,7 +2655,7 @@ var SinglePlugin = function SinglePlugin(_ref) {
               alert(_context.t0);
 
             case 21:
-              setLoader(false);
+              setIsLoading(false);
 
             case 22:
             case "end":
@@ -2640,15 +2670,15 @@ var SinglePlugin = function SinglePlugin(_ref) {
     };
   }();
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("li", {
-    className: "kmt-plugin-card"
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_Card__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    id: slug
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: "kmt-plugin-icon"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {
     src: KemetPanelData.images_url + slug + '.png'
-  }), loader && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-    className: "kmt-loader"
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Loading', 'kemet-addons'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+  }), isLoading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Dashicon, {
+    icon: "update"
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: "kmt-plugin-data"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("h4", {
     className: "kmt-plugin-title"
@@ -2695,7 +2725,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Logo = function Logo() {
-  var style = '.cls-1{fill:#1a1a1a;}.cls-2{fill:#fab522;}';
+  var style = '.cls-1{fill:#2d3747;}.cls-2{fill:#fab522;}';
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
     id: "Layer_1",
     "data-name": "Layer 1",
@@ -3220,7 +3250,7 @@ var Plugins = function Plugins() {
     return function (props) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(react_spring_renderprops__WEBPACK_IMPORTED_MODULE_5__["animated"].div, {
         style: props
-      }, Object.keys(plugins).length > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("ul", {
+      }, Object.keys(plugins).length > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
         className: "kmt-plugins-list"
       }, Object.keys(plugins).map(function (plugin) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_common_SinglePlugins__WEBPACK_IMPORTED_MODULE_4__["default"], {

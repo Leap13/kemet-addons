@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Card from "./Card";
 
 const { __ } = wp.i18n;
+const { Dashicon } = wp.components;
 const SingleOption = (props) => {
     const [value, setValue] = useState(props.value);
     const [isLoading, setIsLoading] = useState(false);
@@ -35,20 +37,21 @@ const SingleOption = (props) => {
 
     let btnText = value === true ? __('Deactivate', 'kemet') : __('Activate', 'kemet')
     const btnClasses = value === true ? 'secondary' : 'primary';
-    return <div id={props.id} className='option-card'>
-        <div className='option'>
-            <label>
-                <span className="customize-control-title kmt-control-title">{props.params.label}</span>
-                <div className="description customize-control-description">{props.params.description}</div>
-            </label>
-            <div className="option-actions">
-                <button className={`kmt-button ${btnClasses}`} onClick={() => {
-                    handleChange()
-                }} disabled={isLoading}>{btnText}</button>
-                {value && props.params.url && <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet')}</a>}
-            </div>
+    return <Card id={props.id}>
+        <label>
+            <span className="customize-control-title kmt-control-title">{props.params.label}</span>
+            <div className="description customize-control-description">{props.params.description}</div>
+            {isLoading && (
+                <Dashicon icon='update' />
+            )}
+        </label>
+        <div className="option-actions">
+            <button className={`kmt-button ${btnClasses}`} onClick={() => {
+                handleChange()
+            }} disabled={isLoading}>{btnText}</button>
+            {value && props.params.url && <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet')}</a>}
         </div>
-    </div>
+    </Card>
 }
 
 export default SingleOption

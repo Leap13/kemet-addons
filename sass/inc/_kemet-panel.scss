@@ -105,48 +105,59 @@
   .components-panel__body {
     margin-top: 40px;
   }
+  .kmt-card {
+    display: flex;
+    padding: 40px;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px dashed #eee;
+    .card-body {
+      display: grid;
+      row-gap: 20px;
+      flex: 1;
+    }
+  }
   .kmt-options {
     display: grid;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     grid-template-columns: repeat(3, 1fr);
-    .option-card {
-      display: flex;
-      padding: 40px;
-      height: 100%;
-      box-sizing: border-box;
-      border: 1px dashed #eee;
-      .kmt-control-title {
-        font-size: 17px !important;
+    .kmt-control-title {
+      font-size: 17px !important;
+    }
+    .customize-control-description {
+      margin: 0;
+      font-size: 14px;
+      margin-top: 15px;
+      color: #2d3747 !important;
+    }
+    label {
+      position: relative;
+      .dashicon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        animation: rotate 2s linear infinite;
       }
-      .customize-control-description {
-        margin: 0;
-        font-size: 14px;
-        margin-top: 15px;
-        color: #2d3747 !important;
-      }
-      .option {
-        display: grid;
-        row-gap: 20px;
-        flex: 1;
-        > .option-actions {
-          display: flex;
-          align-items: flex-end;
-          > a {
-            color: var(--buttonColor);
-            line-height: normal;
-            transition: none;
-            --buttonColor: #2d3747;
-            &:hover {
-              --buttonBgColor: #e0e1e4;
-            }
-            margin-left: 10px;
+    }
+    .card-body {
+      > .option-actions {
+        display: flex;
+        align-items: flex-end;
+        > a {
+          color: var(--buttonColor);
+          line-height: normal;
+          transition: none;
+          --buttonColor: #2d3747;
+          &:hover {
+            --buttonBgColor: #e0e1e4;
           }
+          margin-left: 10px;
         }
       }
-      [class*="customize-control"] {
-        flex: 1;
-      }
+    }
+    [class*="customize-control"] {
+      flex: 1;
     }
     > div {
       margin-top: 0;
@@ -176,7 +187,6 @@
       color: #2d3747 !important;
       &.active-tab,
       &:hover {
-        font-weight: 500;
         &::after {
           height: 3px;
           bottom: -2px;
@@ -184,6 +194,9 @@
           opacity: 1;
           transform: scaleX(1);
         }
+      }
+      &.active-tab {
+        font-weight: 500;
       }
       &::after {
         content: "";
@@ -230,33 +243,33 @@
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     grid-template-columns: repeat(3, 1fr);
-    margin: 0;
-    li {
-      display: grid;
-      row-gap: 20px;
-      padding: 40px;
-      box-sizing: border-box;
-      border: 1px dashed #eee;
-      margin: 0;
-      .kmt-plugin-icon {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .kmt-loader {
-          font-weight: bold;
-        }
-      }
-      .kmt-plugin-title {
-        font-size: 17px;
-        margin-top: 0;
-        margin-bottom: 15px;
-      }
-      .kmt-plugin-description {
-        margin: 0;
-        font-size: 14px;
-        margin-top: 15px;
-        color: #2d3747;
+    .kmt-plugin-icon {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .dashicon {
+        animation: rotate 2s linear infinite;
       }
     }
+    .kmt-plugin-title {
+      font-size: 17px;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .kmt-plugin-description {
+      margin: 0;
+      font-size: 14px;
+      margin-top: 15px;
+      color: #2d3747;
+    }
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

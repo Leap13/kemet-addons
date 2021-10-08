@@ -1,11 +1,12 @@
-import { useState, useEffect } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-
+import Card from "./Card";
+const { Dashicon } = wp.components;
 const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
-    const [loader, setLoader] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const doAction = async (action) => {
-        if (!loader) {
-            setLoader(true);
+        if (!isLoading) {
+            setIsLoading(true);
         }
         const body = new FormData()
         body.append('action', action)
@@ -24,19 +25,21 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
 
                 if (success) {
                     handlePluginChange();
-                    setLoader(false);
+                    setIsLoading(false);
                 }
             }
         } catch (e) {
             alert(e);
         }
 
-        setLoader(false);
+        setIsLoading(false);
     }
-    return <li className='kmt-plugin-card'>
+    return <Card id={slug}>
         <div className='kmt-plugin-icon'>
             <img src={KemetPanelData.images_url + slug + '.png'} />
-            {loader && <div className="kmt-loader">{__('Loading', 'kemet-addons')}</div>}
+            {isLoading && (
+                <Dashicon icon='update' />
+            )}
         </div>
         <div className='kmt-plugin-data'>
             <h4 className="kmt-plugin-title">{plugin.name}</h4>
@@ -72,7 +75,7 @@ const SinglePlugin = ({ plugin, slug, status, handlePluginChange }) => {
                 </a>
             }
         </div>
-    </li>
+    </Card>
 }
 
 export default SinglePlugin;

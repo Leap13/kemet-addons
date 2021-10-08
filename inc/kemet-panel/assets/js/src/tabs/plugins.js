@@ -75,13 +75,13 @@ const Plugins = () => {
                         <animated.div style={props}>
                             {Object.keys(plugins).length > 0 && (
                                 <Fragment>
-                                    <ul className="kmt-plugins-list">
+                                    <div className="kmt-plugins-list">
                                         {Object.keys(plugins).map((plugin) => {
                                             return <SinglePlugin plugin={plugins[plugin]} slug={plugin} status={pluginsStatus[plugin]} handlePluginChange={() => {
                                                 updatePluginsStatus()
                                             }} />
                                         })}
-                                    </ul>
+                                    </div>
                                 </Fragment>
                             )}
                         </animated.div>
