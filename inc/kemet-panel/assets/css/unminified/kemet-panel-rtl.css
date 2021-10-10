@@ -126,7 +126,7 @@
   padding: 40px;
   height: 100%;
   box-sizing: border-box;
-  border: 1px dashed #eee;
+  border: 1px dashed #cdcdcd;
 }
 
 #kmt-dashboard .kmt-card .card-body {
@@ -187,7 +187,7 @@
 
 #kmt-dashboard .kmt-options > div {
   margin-top: 0;
-  border: 1px dashed #eee;
+  border: 1px dashed #cdcdcd;
 }
 
 #kmt-dashboard .kemet-dashboard-tab-panel {
@@ -214,7 +214,7 @@
   font-size: 17px;
   font-weight: 400;
   text-transform: uppercase;
-  color: #2d3747 !important;
+  color: #7e848c !important;
 }
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item.active-tab::after, #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item:hover::after {
@@ -227,6 +227,7 @@
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item.active-tab {
   font-weight: 500;
+  color: #2d3747 !important;
 }
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item::after {

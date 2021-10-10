@@ -110,7 +110,7 @@
     padding: 40px;
     height: 100%;
     box-sizing: border-box;
-    border: 1px dashed #eee;
+    border: 1px dashed #cdcdcd;
     .card-body {
       display: grid;
       row-gap: 20px;
@@ -161,7 +161,7 @@
     }
     > div {
       margin-top: 0;
-      border: 1px dashed #eee;
+      border: 1px dashed #cdcdcd;
     }
   }
   .kemet-dashboard-tab-panel {
@@ -184,7 +184,7 @@
       font-size: 17px;
       font-weight: 400;
       text-transform: uppercase;
-      color: #2d3747 !important;
+      color: #7e848c !important;
       &.active-tab,
       &:hover {
         &::after {
@@ -197,6 +197,7 @@
       }
       &.active-tab {
         font-weight: 500;
+        color: #2d3747 !important;
       }
       &::after {
         content: "";
