@@ -110,6 +110,7 @@
 }
 
 #kmt-dashboard .kmt-panel-header > a {
+  border: 1px solid #c8ccd2;
   text-transform: uppercase;
   font-size: 17px;
   text-decoration: none;
@@ -190,7 +191,7 @@
   border: 1px dashed #cdcdcd;
 }
 
-#kmt-dashboard .kemet-dashboard-tab-panel {
+#kmt-dashboard .kemet-dashboard-tab-panel .components-tab-panel__tab-content {
   margin: 0 auto;
   max-width: 1200px;
   min-height: 400px;
@@ -204,15 +205,19 @@
 }
 
 #kmt-dashboard .components-tab-panel__tabs {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f5f6f5;
   height: auto;
   overflow: visible;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f6f5;
 }
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item {
   position: relative;
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   color: #7e848c !important;
 }
@@ -226,7 +231,6 @@
 }
 
 #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item.active-tab {
-  font-weight: 500;
   color: #2d3747 !important;
 }
 

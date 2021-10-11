@@ -95,6 +95,7 @@
     align-items: center;
     padding: 25px;
     > a {
+      border: 1px solid #c8ccd2;
       text-transform: uppercase;
       font-size: 17px;
       text-decoration: none;
@@ -165,10 +166,12 @@
     }
   }
   .kemet-dashboard-tab-panel {
-    margin: 0 auto;
-    max-width: 1200px;
-    min-height: 400px;
-    position: relative;
+    .components-tab-panel__tab-content {
+      margin: 0 auto;
+      max-width: 1200px;
+      min-height: 400px;
+      position: relative;
+    }
   }
   .components-tab-panel__tabs,
   .components-panel,
@@ -176,13 +179,17 @@
     border: 0;
   }
   .components-tab-panel__tabs {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f5f6f5;
     height: auto;
     overflow: visible;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #f5f6f5;
     .components-tab-panel__tabs-item {
       position: relative;
       font-size: 17px;
-      font-weight: 400;
+      font-weight: 500;
       text-transform: uppercase;
       color: #7e848c !important;
       &.active-tab,
@@ -196,7 +203,6 @@
         }
       }
       &.active-tab {
-        font-weight: 500;
         color: #2d3747 !important;
       }
       &::after {
