@@ -2565,6 +2565,7 @@ var SingleOption = function SingleOption(props) {
   }, props.params.label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: "description customize-control-description"
   }, props.params.description), isLoading && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Dashicon, {
+    className: "kmt-loading",
     icon: "update"
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
     className: "option-actions"
@@ -2965,7 +2966,7 @@ var Header = function Header() {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "logo"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_common_logo__WEBPACK_IMPORTED_MODULE_1__["default"], null)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
-    href: "#",
+    href: "https://kemet.io/docs/",
     className: "docs kmt-button secondary",
     target: "_blank"
   }, __('Documentation', 'kemet')));

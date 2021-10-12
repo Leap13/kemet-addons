@@ -16,6 +16,13 @@
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: none;
+  outline: none;
+}
+
+.kmt-button:hover, .kmt-button:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 .kmt-button:hover {
@@ -128,6 +135,8 @@
   text-decoration: none;
   font-weight: 500;
   padding: 15px 20px;
+  box-shadow: none;
+  outline: none;
 }
 
 #kmt-dashboard .components-panel__body {
@@ -178,6 +187,10 @@
   animation: rotate 2s linear infinite;
 }
 
+#kmt-dashboard .kmt-options .card-body .kmt-loading {
+  color: #687c93;
+}
+
 #kmt-dashboard .kmt-options .card-body > .option-actions {
   display: flex;
   align-items: flex-end;
@@ -188,7 +201,7 @@
   line-height: normal;
   transition: none;
   --buttonColor: #2d3747;
-  border: 1px solid #dcdddf;
+  border: 1px solid #dbdde1;
   margin-right: 10px;
 }
 
@@ -299,7 +312,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  color: #687c93;
 }
 
 #kmt-dashboard .kmt-plugins-list .kmt-plugin-icon .dashicon {
@@ -317,6 +330,7 @@
   font-size: 14px;
   margin-top: 15px;
   color: #2d3747;
+  height: 75px;
 }
 
 @keyframes rotate {

@@ -42,7 +42,7 @@ const SingleOption = (props) => {
             <span className="customize-control-title kmt-control-title">{props.params.label}</span>
             <div className="description customize-control-description">{props.params.description}</div>
             {isLoading && (
-                <Dashicon icon='update' />
+                <Dashicon className='kmt-loading' icon='update' />
             )}
         </label>
         <div className="option-actions">

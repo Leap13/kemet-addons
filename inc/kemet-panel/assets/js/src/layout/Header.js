@@ -6,7 +6,7 @@ const Header = () => {
         <div className='logo'>
             <Logo />
         </div>
-        <a href="#" className='docs kmt-button secondary' target="_blank">{__('Documentation', 'kemet')}</a>
+        <a href="https://kemet.io/docs/" className='docs kmt-button secondary' target="_blank">{__('Documentation', 'kemet')}</a>
     </div>
 }
 
