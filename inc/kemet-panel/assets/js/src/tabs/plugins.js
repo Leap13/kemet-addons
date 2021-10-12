@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "@wordpress/element";
 import SinglePlugin from '../common/SinglePlugins'
 import { Transition, animated } from "react-spring/renderprops"
 import { __ } from "@wordpress/i18n";
+import Container from "../common/Container";
 let pluginsCache = KemetPanelData.plugins_cache;
 
 const Plugins = () => {
@@ -42,7 +43,7 @@ const Plugins = () => {
     }, [])
 
     return (
-        <div>
+        <Container>
             <Transition
                 items={isLoading}
                 from={{ opacity: 0 }}
@@ -88,7 +89,7 @@ const Plugins = () => {
                     )
                 }}
             </Transition>
-        </div>
+        </Container>
     )
 
 }

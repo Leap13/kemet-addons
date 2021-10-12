@@ -32,8 +32,9 @@
 }
 
 .kmt-button.secondary {
+  border: 1px solid #cbccce;
   --buttonColor: #2d3747;
-  --buttonBgColor: #f4f5f6;
+  --buttonBgColor: #f4f6f5;
 }
 
 .kmt-button.secondary:hover {
@@ -75,7 +76,14 @@
   min-height: 100%;
 }
 
+#kmt-dashboard hr {
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+  margin: 0;
+}
+
 #kmt-dashboard .options-section.customize-site-options .option-actions > a {
+  border: 1px solid #dcdddf;
   margin-right: 0 !important;
 }
 
@@ -84,6 +92,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  margin-top: 0;
 }
 
 #kmt-dashboard .options-section h2 .icon {
@@ -91,15 +100,19 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #2d3747;
   margin-left: 10px;
 }
 
 #kmt-dashboard .options-section.advanced-options {
-  margin-top: 70px;
+  padding-top: 70px;
+}
+
+#kmt-dashboard .options-section.customize-site-options {
+  padding-bottom: 70px;
 }
 
 #kmt-dashboard .kmt-panel-header {
@@ -110,16 +123,16 @@
 }
 
 #kmt-dashboard .kmt-panel-header > a {
-  border: 1px solid #c8ccd2;
   text-transform: uppercase;
   font-size: 17px;
   text-decoration: none;
   font-weight: 500;
-  padding: 20px 30px;
+  padding: 15px 20px;
 }
 
 #kmt-dashboard .components-panel__body {
   margin-top: 40px;
+  padding: 16px 0;
 }
 
 #kmt-dashboard .kmt-card {
@@ -175,6 +188,7 @@
   line-height: normal;
   transition: none;
   --buttonColor: #2d3747;
+  border: 1px solid #dcdddf;
   margin-right: 10px;
 }
 
@@ -191,7 +205,7 @@
   border: 1px dashed #cdcdcd;
 }
 
-#kmt-dashboard .kemet-dashboard-tab-panel .components-tab-panel__tab-content {
+#kmt-dashboard .kemet-dashboard-tab-panel .components-tab-panel__tab-content .kmt-container {
   margin: 0 auto;
   max-width: 1200px;
   min-height: 400px;
