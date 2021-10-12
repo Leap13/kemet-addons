@@ -194,6 +194,7 @@
 #kmt-dashboard .kmt-options .card-body > .option-actions {
   display: flex;
   align-items: flex-end;
+  height: 40px;
 }
 
 #kmt-dashboard .kmt-options .card-body > .option-actions > a {
@@ -317,6 +318,10 @@
 
 #kmt-dashboard .kmt-plugins-list .kmt-plugin-icon .dashicon {
   animation: rotate 2s linear infinite;
+}
+
+#kmt-dashboard .kmt-plugins-list .plugin-action {
+  height: 40px;
 }
 
 #kmt-dashboard .kmt-plugins-list .kmt-plugin-title {

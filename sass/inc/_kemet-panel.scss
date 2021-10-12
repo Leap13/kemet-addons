@@ -169,6 +169,7 @@
       > .option-actions {
         display: flex;
         align-items: flex-end;
+        height: 40px;
         > a {
           color: var(--buttonColor);
           line-height: normal;
@@ -285,6 +286,9 @@
       .dashicon {
         animation: rotate 2s linear infinite;
       }
+    }
+    .plugin-action {
+      height: 40px;
     }
     .kmt-plugin-title {
       font-size: 17px;

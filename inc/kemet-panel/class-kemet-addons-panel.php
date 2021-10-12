@@ -207,11 +207,6 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 						'description' => __( 'Enable/Disable Extra Blog Layouts.', 'kemet-addons' ),
 						'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
 					),
-					'custom-layout'       => array(
-						'type'        => 'kmt-button',
-						'label'       => __( 'Custom Layout', 'kemet-addons' ),
-						'description' => __( 'Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
-					),
 					'mega-menu'           => array(
 						'type'        => 'kmt-button',
 						'label'       => __( 'Mega Menu', 'kemet-addons' ),
@@ -221,6 +216,11 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 						'type'        => 'kmt-button',
 						'label'       => __( 'Custom Fonts', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable Custom fonts.', 'kemet-addons' ),
+					),
+					'custom-layout'       => array(
+						'type'        => 'kmt-button',
+						'label'       => __( 'Custom Layout', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
 					),
 					'woocommerce'         => array(
 						'type'        => 'kmt-button',
