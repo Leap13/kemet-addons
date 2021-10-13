@@ -53,10 +53,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 				return $options;
 			}
 			$options = array(
-				'enable-code-editor'            => array(
-					'type'  => 'kmt-switcher',
-					'title' => __( 'Enable Code Editor', 'kemet-addons' ),
-				),
 				'hook-action'                   => array(
 					'label'       => __( 'Action', 'kemet-addons' ),
 					'class'       => 'kmt-hooks-select',

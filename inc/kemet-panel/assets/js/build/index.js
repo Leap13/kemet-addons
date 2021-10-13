@@ -2501,54 +2501,52 @@ var SingleOption = function SingleOption(props) {
               body.append('nonce', KemetPanelData.nonce);
               body.append('option', props.id);
               body.append('value', newValue);
-              console.log(props.id, newValue);
-              _context.prev = 8;
-              _context.next = 11;
+              _context.prev = 7;
+              _context.next = 10;
               return fetch(KemetPanelData.ajaxurl, {
                 method: 'POST',
                 body: body
               });
 
-            case 11:
+            case 10:
               response = _context.sent;
 
               if (!(response.status === 200)) {
-                _context.next = 19;
+                _context.next = 18;
                 break;
               }
 
-              _context.next = 15;
+              _context.next = 14;
               return response.json();
 
-            case 15:
+            case 14:
               _yield$response$json = _context.sent;
               success = _yield$response$json.success;
               data = _yield$response$json.data;
 
               if (success && data.values) {
-                console.log(data.values);
                 setValue(newValue);
                 props.onChange(data.values);
               }
 
-            case 19:
-              _context.next = 24;
+            case 18:
+              _context.next = 23;
               break;
 
-            case 21:
-              _context.prev = 21;
-              _context.t0 = _context["catch"](8);
+            case 20:
+              _context.prev = 20;
+              _context.t0 = _context["catch"](7);
               console.log(_context.t0);
 
-            case 24:
+            case 23:
               setIsLoading(false);
 
-            case 25:
+            case 24:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[8, 21]]);
+      }, _callee, null, [[7, 20]]);
     }));
 
     return function handleChange() {

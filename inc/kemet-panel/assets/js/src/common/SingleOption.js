@@ -15,7 +15,7 @@ const SingleOption = (props) => {
         body.append('nonce', KemetPanelData.nonce)
         body.append('option', props.id)
         body.append('value', newValue)
-        console.log(props.id, newValue);
+
         try {
             const response = await fetch(KemetPanelData.ajaxurl, {
                 method: 'POST',
@@ -24,7 +24,6 @@ const SingleOption = (props) => {
             if (response.status === 200) {
                 const { success, data } = await response.json()
                 if (success && data.values) {
-                    console.log(data.values);
                     setValue(newValue);
                     props.onChange(data.values);
                 }
