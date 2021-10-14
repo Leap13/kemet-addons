@@ -224,6 +224,8 @@
   max-width: 1200px;
   min-height: 400px;
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #kmt-dashboard .components-tab-panel__tabs,
@@ -348,5 +350,56 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #kmt-dashboard .kemet-dashboard-tab-panel .components-tab-panel__tab-content .kmt-container {
+    padding-left: 30px;
+  }
+  #kmt-dashboard .kmt-panel-header > a {
+    font-size: 15px;
+    padding: 15px 10px;
+  }
+  #kmt-dashboard .options-section .card-body > .option-actions {
+    height: 40px;
+    flex-wrap: wrap;
+  }
+  #kmt-dashboard .options-section .card-body > .option-actions > a {
+    margin-left: 5px;
+    margin-top: 0;
+  }
+  #kmt-dashboard .components-tab-panel__tabs {
+    flex-wrap: wrap;
+    width: auto;
+  }
+  #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item {
+    font-size: 15px;
+  }
+  #kmt-dashboard .components-tab-panel__tabs .components-tab-panel__tabs-item:not(:first-child) {
+    margin-left: 5px;
+  }
+  #kmt-dashboard .kmt-options {
+    grid-template-columns: auto;
+  }
+  #kmt-dashboard .kmt-plugins-list {
+    grid-template-columns: auto;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+  #kmt-dashboard .kmt-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #kmt-dashboard .options-section .card-body > .option-actions {
+    height: 90px;
+    flex-wrap: wrap;
+  }
+  #kmt-dashboard .options-section .card-body > .option-actions > a {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  #kmt-dashboard .kmt-plugins-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
