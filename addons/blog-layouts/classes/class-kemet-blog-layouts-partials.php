@@ -168,9 +168,15 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 			$localize['blog_infinite_count']   = 2;
 			$localize['blog_infinite_total']   = $wp_query->max_num_pages;
 			$localize['blog_pagination_style'] = $blog_pagination;
+			$localize['post_type']             = get_post_type();
 			$localize['blog_infinite_nonce']   = wp_create_nonce( 'kmt-load-more-nonce' );
 			$localize['query_vars']            = wp_json_encode( $wp_query->query_vars );
 			$localize['blog_load_more_style']  = kemet_get_option( 'load-more-style' );
+			$localize['is_archive']            = is_category() || is_tag();
+			if ( is_category() || is_tag() ) {
+				$localize['taxonomy']      = is_category() ? 'category_name' : 'tag';
+				$localize['taxonomy_name'] = $wp_query->get_queried_object()->slug;
+			}
 
 			return $localize;
 		}
@@ -184,11 +190,22 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Partials' ) ) {
 			check_ajax_referer( 'kmt-load-more-nonce', 'nonce' );
 
 			do_action( 'kemet_pagination_infinite' );
+			global $wp_query;
 
-			$query_vars                = isset( $_POST['query_vars'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query_vars'] ) ), true ) : '';
+			$query_vars                = $wp_query->query;
+			$query_vars['post_type']   = isset( $_POST['post_type'] ) && ! empty( $_POST['post_type'] ) ? sanitize_text_field( $_POST['post_type'] ) : 'any';
 			$query_vars['paged']       = ( isset( $_POST['page_no'] ) ) ? sanitize_text_field( wp_unslash( $_POST['page_no'] ) ) : 1;
 			$query_vars['post_status'] = 'publish';
-			$posts                     = new WP_Query( $query_vars );
+			$is_archive                = isset( $_POST['is_archive'] ) ? absint( wp_unslash( $_POST['is_archive'] ) ) : false;
+
+			if ( $is_archive ) {
+				$taxonomy_type                = ! empty( $_POST['taxonomy_type'] ) ? sanitize_text_field( wp_unslash( $_POST['taxonomy_type'] ) ) : '';
+				$taxonomy_slug                = ! empty( $_POST['taxonomy_name'] ) ? sanitize_text_field( wp_unslash( $_POST['taxonomy_name'] ) ) : '';
+				$query_vars[ $taxonomy_type ] = $taxonomy_slug;
+			}
+
+			$query_vars = array_map( 'esc_sql', $query_vars );
+			$posts      = new WP_Query( $query_vars );
 
 			if ( $posts->have_posts() ) {
 				while ( $posts->have_posts() ) {

@@ -37,7 +37,6 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Settings' ) ) {
 		public function __construct() {
 			$this->customize_register();
 			add_filter( 'kemet_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'kemet_pagination_infinite', 'kemet_entry_content_blog_template' );
 		}
 
 		/**

@@ -15,6 +15,9 @@
     totalPages = parseInt(kemet.blog_infinite_total) || "",
     counter = parseInt(kemet.blog_infinite_count) || "",
     ajax_url = kemet.ajax_url || "",
+    is_archive = kemet.is_archive || '',
+    taxonomy = kemet.taxonomy || '',
+    taxonomy_name = kemet.taxonomy_name || '',
     loadStatus = true,
     loader = $(".kmt-infinite-scroll-dots"),
     loadMore = $(".load-more-text"),
@@ -79,7 +82,10 @@
         action: "kemet_pagination_infinite",
         page_no: pageNumber,
         nonce: blog_infinite_nonce,
-        query_vars: kemet.query_vars,
+        post_type: kemet.post_type,
+        is_archive: is_archive,
+        taxonomy_type: taxonomy,
+        taxonomy_name: taxonomy_name,
         kemet_infinite: "kemet_pagination_ajax",
       };
 
