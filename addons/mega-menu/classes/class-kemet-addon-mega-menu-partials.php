@@ -57,6 +57,75 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			add_filter( 'wp_setup_nav_menu_item', array( $this, 'update_meta_values_array' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_filter( 'wp_setup_nav_menu_item', array( $this, 'update_meta_values_array' ) );
+			add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_field' ), 10, 5 );
+			add_action( 'wp_ajax_kemet_addons_menu_item_settings', array( $this, 'get_item_gettings' ) );
+		}
+
+		/**
+		 * update_option
+		 *
+		 * @return void
+		 */
+		public function get_item_gettings() {
+			check_ajax_referer( 'kemet-addons-mega-menu', 'nonce' );
+
+			$item_id = isset( $_POST['item_id'] ) ? sanitize_text_field( wp_unslash( $_POST['item_id'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+			if ( $item_id && '' !== $item_id ) {
+				$data = $this->get_item_meta_values( $item_id );
+				update_option( 'kemet_addons_options', $options );
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'values'  => $data,
+					)
+				);
+			}
+
+			wp_send_json_error();
+		}
+
+		/**
+		 * get_item_meta_values
+		 *
+		 * @param  int $item_id
+		 * @return array
+		 */
+		public function get_item_meta_values( $item_id ) {
+			$data                         = array();
+			$data['enable-mega-menu']     = get_post_meta( $item_id, 'enable-mega-menu', true );
+			$data['mega-menu-icon']       = get_post_meta( $item_id, 'mega-menu-icon', true );
+			$data['disable-link']         = get_post_meta( $item_id, 'disable-link', true );
+			$data['enable-mega-menu']     = get_post_meta( $item_id, 'enable-mega-menu', true );
+			$data['mega-menu-columns']    = get_post_meta( $item_id, 'mega-menu-columns', true );
+			$data['mega-menu-background'] = get_post_meta( $item_id, 'mega-menu-background', true );
+			$data['mega-menu-spacing']    = get_post_meta( $item_id, 'mega-menu-spacing', true );
+			$data['column-heading']       = get_post_meta( $item_id, 'column-heading', true );
+			$data['mega-menu-width']      = get_post_meta( $item_id, 'mega-menu-width', true );
+			$data['label-text']           = get_post_meta( $item_id, 'label-text', true );
+			$data['label-color']          = get_post_meta( $item_id, 'label-color', true );
+			$data['label-bg-color']       = get_post_meta( $item_id, 'label-bg-color', true );
+			$data['column-template']      = get_post_meta( $item_id, 'column-template', true );
+			$data['disable-item-label']   = get_post_meta( $item_id, 'disable-item-label', true );
+			$data['enable-template']      = get_post_meta( $item_id, 'enable-template', true );
+
+			return $data;
+		}
+
+		/**
+		 * custom_field
+		 *
+		 * @param  int      $item_id
+		 * @param  WP_Post  $item
+		 * @param  int      $depth
+		 * @param  stdClass $args
+		 * @param  int      $id
+		 */
+		function custom_field( $item_id, $item, $depth, $args, $id ) { ?>
+			<p class="kmt-menu-item-settings description-wide" data-item-id="<?php echo esc_attr( $item_id ); ?>" data-nav-id="<?php echo esc_attr( $id ); ?>" data-depth="<?php echo esc_attr( $depth ); ?>">
+				<button class="button"><?php echo esc_html__( 'Menu Item Settings', 'kemet-addons' ); ?></button>
+			</p>
+			<?php
 		}
 
 		/**
@@ -121,7 +190,27 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 				true
 			);
 
+			wp_enqueue_script(
+				'kemet-addons-megamenu-js',
+				KEMET_MEGA_MENU_URL . 'assets/js/build/index.js',
+				array(),
+				KEMET_ADDONS_VERSION,
+				true
+			);
+
 			wp_enqueue_style( 'kemet-addons-mega-menu-css', KEMET_MEGA_MENU_URL . 'assets/css/' . $dir . '/mega-menu' . $css_prefix, KEMET_ADDONS_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+
+			wp_localize_script(
+				'kemet-addons-megamenu-js',
+				'kemetMegaMenu',
+				apply_filters(
+					'kemet_addons_mega_menu_js_localize',
+					array(
+						'ajax_url'   => admin_url( 'admin-ajax.php' ),
+						'ajax_nonce' => wp_create_nonce( 'kemet-addons-mega-menu' ),
+					)
+				)
+			);
 
 			wp_localize_script(
 				'kemet-addons-mega-menu-js',
