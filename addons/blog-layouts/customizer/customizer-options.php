@@ -45,7 +45,7 @@ function extra_blog_options( $options ) {
 		),
 		'blog-featured-image-width'      => array(
 			'type'    => 'kmt-number',
-			'label'   => __( 'Featured Image Custom Width', 'kemet' ),
+			'label'   => __( 'Custom Width', 'kemet' ),
 			'min'     => 0,
 			'step'    => 1,
 			'max'     => 1200,
@@ -59,7 +59,7 @@ function extra_blog_options( $options ) {
 		),
 		'blog-featured-image-height'     => array(
 			'type'    => 'kmt-number',
-			'label'   => __( 'Featured Image Custom Height', 'kemet' ),
+			'label'   => __( 'Custom Height', 'kemet' ),
 			'min'     => 0,
 			'step'    => 1,
 			'max'     => 1200,
