@@ -8,7 +8,7 @@
   border: 0;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px 30px;
+  padding: 0.7em 2em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -172,7 +172,10 @@
       > .option-actions {
         display: flex;
         align-items: flex-end;
+        flex-wrap: wrap;
         height: 40px;
+        row-gap: 10px;
+        column-gap: 10px;
         > a {
           color: var(--buttonColor);
           line-height: normal;
@@ -182,7 +185,6 @@
           &:hover {
             --buttonBgColor: #e0e1e4;
           }
-          margin-left: 10px;
         }
       }
     }

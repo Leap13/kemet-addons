@@ -12,7 +12,7 @@
   border: 0;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px 30px;
+  padding: 0.7em 2em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -198,7 +198,10 @@
 #kmt-dashboard .kmt-options .card-body > .option-actions {
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   height: 40px;
+  row-gap: 10px;
+  column-gap: 10px;
 }
 
 #kmt-dashboard .kmt-options .card-body > .option-actions > a {
@@ -207,7 +210,6 @@
   transition: none;
   --buttonColor: #2d3747;
   border: 1px solid #dbdde1;
-  margin-left: 10px;
 }
 
 #kmt-dashboard .kmt-options .card-body > .option-actions > a:hover {
