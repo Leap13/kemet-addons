@@ -75,6 +75,9 @@
   }
   .options-section {
     &.customize-site-options {
+      .customize-control-description {
+        height: 55px;
+      }
       .option-actions {
         > a {
           border: 1px solid #dcdddf;

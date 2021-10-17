@@ -230,7 +230,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					),
 					'reset-import-export' => array(
 						'type'        => 'kmt-button',
-						'label'       => __( 'Customizer Reset, Import, and Export Buttons', 'kemet-addons' ),
+						'label'       => __( 'Reset, Import, and Export', 'kemet-addons' ),
 						'description' => __( 'Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons' ),
 						'url'         => admin_url( 'customize.php' ),
 					),

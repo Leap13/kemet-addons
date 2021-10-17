@@ -89,6 +89,10 @@
   margin: 0;
 }
 
+#kmt-dashboard .options-section.customize-site-options .customize-control-description {
+  height: 55px;
+}
+
 #kmt-dashboard .options-section.customize-site-options .option-actions > a {
   border: 1px solid #dcdddf;
   margin-right: 0 !important;
