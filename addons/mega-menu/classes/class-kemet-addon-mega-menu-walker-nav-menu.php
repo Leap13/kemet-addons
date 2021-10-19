@@ -37,18 +37,17 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			$columns = ! empty( $this->megamenu_col ) ? ( 'col-' . $this->megamenu_col ) : 'col-2';
 			$style   = array();
+
 			if ( 0 === $depth && true == $this->megamenu ) {
 				$classes[] = 'kemet-megamenu';
 				$classes[] = $columns;
 
-				$bg_obj          = $this->megamenu_bg_obj;
-				$global_bg_color = kemet_get_option( 'global-background-color' );
-				$bg_color        = empty( $bg_obj['background-color'] ) ? kemet_get_option( 'submenu-bg-color', kemet_color_brightness( $global_bg_color, 0.99, 'dark' ) ) : $bg_obj['background-color'];
+				$bg_obj = $this->megamenu_bg_obj;
 
 				if ( ! empty( $bg_color ) || ! empty( $bg_obj['background-image']['url'] ) ) {
 
 					$bg_object = array(
-						'background-color'    => $bg_color,
+						'background-color'    => $bg_obj['background-color'],
 						'background-repeat'   => $bg_obj['background-repeat'],
 						'background-size'     => $bg_obj['background-size'],
 						'background-position' => $bg_obj['background-position'],
@@ -137,6 +136,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				$this->megamenu_spacing = get_post_meta( $item->ID, 'mega-menu-spacing', true );
 				$this->menu_item_id     = $item->ID;
 			}
+
 			$this->column_heading              = get_post_meta( $item->ID, 'column-heading', true );
 			$this->megamenu_disable_link       = get_post_meta( $item->ID, 'disable-link', true );
 			$this->megamenu_disable_item_label = get_post_meta( $item->ID, 'disable-item-label', true );
@@ -258,7 +258,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			if ( isset( $item->megamenu_icon ) && ! empty( $item->megamenu_icon ) ) {
 
-				$title_html .= '<span class="dashicons ' . esc_html( $item->megamenu_icon ) . '"></span>' . $item->title;
+				$title_html .= '<span class="' . esc_html( $item->megamenu_icon['icon'] ) . '"></span>' . $item->title;
 			} else {
 
 				$title_html .= $item->title;

@@ -22,7 +22,7 @@ function kemet_mega_menu_dynamic_css( $dynamic_css ) {
 	$submenu_has_boxshadow    = kemet_get_option( 'submenu-box-shadow' );
 	$submenu_top_border_size  = kemet_get_option( 'submenu-top-border-size' );
 	$submenu_top_border_color = kemet_get_option( 'submenu-top-border-color', $global_border_color );
-	$submenu_bg_color         = kemet_get_option( 'submenu-bg-color', kemet_color_brightness( $global_bg_color, 0.99, 'dark' ) );
+	$submenu_bg_color         = kemet_get_sub_option( 'submenu-bg-color', 'initial', kemet_color_brightness( $global_bg_color, 0.99, 'dark' ) );
 	$submenu_font_size        = kemet_get_option( 'submenu-font-size' );
 	$display_submenu_border   = kemet_get_option( 'display-submenu-border' );
 	$submenu_border_color     = kemet_get_option( 'submenu-border-color', $global_border_color );

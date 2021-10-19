@@ -42,3 +42,58 @@
 .kfw-nav-menu-options .mega-menu-field-template.hidden {
   display: none !important;
 }
+.kmt-item-setting-modal .kmt-options {
+  margin: 0 calc(25px * -1);
+  padding: 20px 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.kmt-item-setting-modal .kmt-button {
+  display: block;
+  width: 100%;
+  color: var(--buttonColor);
+  background-color: var(--buttonBgColor);
+  border: 0;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+}
+
+.kmt-item-setting-modal .kmt-button:hover,
+.kmt-button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.kmt-item-setting-modal .kmt-button:hover {
+  color: var(--buttonColor);
+}
+
+.kmt-item-setting-modal .kmt-button.primary {
+  --buttonColor: #ffffff;
+  --buttonBgColor: #2d3747;
+}
+
+.kmt-item-setting-modal .kmt-button.primary:hover {
+  --buttonBgColor: #4a5568;
+}
+
+.kmt-item-setting-modal .components-modal__header {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+.kmt-item-setting-modal .modal-actions {
+  padding-top: 30px;
+}
+.kmt-item-setting-modal .components-modal__content {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(80vh - 25px * 2);
+  padding: 25px;
+  padding-top: 20px;
+}

@@ -59,10 +59,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			add_filter( 'wp_setup_nav_menu_item', array( $this, 'update_meta_values_array' ) );
 			add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_field' ), 10, 5 );
 			add_action( 'wp_ajax_kemet_addons_menu_item_settings', array( $this, 'get_item_gettings' ) );
+			add_action( 'wp_ajax_kemet_addons_menu_update_item_settings', array( $this, 'update_item_gettings' ) );
 		}
 
 		/**
-		 * update_option
+		 * get_options
 		 *
 		 * @return void
 		 */
@@ -73,7 +74,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 
 			if ( $item_id && '' !== $item_id ) {
 				$data = $this->get_item_meta_values( $item_id );
-				update_option( 'kemet_addons_options', $options );
+
 				wp_send_json_success(
 					array(
 						'success' => true,
@@ -83,6 +84,41 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			}
 
 			wp_send_json_error();
+		}
+
+		/**
+		 * update_options
+		 *
+		 * @return void
+		 */
+		public function update_item_gettings() {
+			check_ajax_referer( 'kemet-addons-mega-menu', 'nonce' );
+
+			$item_id = isset( $_POST['item_id'] ) ? sanitize_text_field( wp_unslash( $_POST['item_id'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$data    = isset( $_POST['data'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['data'] ) ), true ) : array();
+
+			if ( $item_id && ! empty( $data ) ) {
+				$this->update_item_meta_values( $item_id, $data );
+				wp_send_json_success(
+					array(
+						'success' => true,
+					)
+				);
+			}
+
+			wp_send_json_error();
+		}
+
+		/**
+		 * update_item_meta_values
+		 *
+		 * @param  int   $item_id
+		 * @param  array $values
+		 */
+		public function update_item_meta_values( $item_id, $values ) {
+			foreach ( $values as $key => $value ) {
+				update_post_meta( $item_id, $key, $value );
+			}
 		}
 
 		/**
@@ -156,7 +192,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 		 */
 		public function nav_menu_args( $args ) {
 
-			if ( 'primary' == $args['theme_location'] ) {
+			if ( 'primary-menu' == $args['theme_location'] || 'secondary-menu' == $args['theme_location'] ) {
 				$args['walker'] = new Kemet_Addon_Mega_Menu_Walker_Nav_Menu();
 			}
 
@@ -208,6 +244,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 					array(
 						'ajax_url'   => admin_url( 'admin-ajax.php' ),
 						'ajax_nonce' => wp_create_nonce( 'kemet-addons-mega-menu' ),
+						'options'    => Kemet_Addon_Mega_Menu_Options::get_instance()->get_item_fields(),
 					)
 				)
 			);
