@@ -90,7 +90,11 @@ const Options = ({ options, onChange, values, depth }) => {
                         container.find('.components-button.kemet-color-icon-indicate.open').click();
                     }
                 });
-            }, []);
+                if (optionId === 'column-template' && isVisible) {
+                    let event = new CustomEvent("KemetInitMenuOptions");
+                    document.dispatchEvent(event);
+                }
+            }, [values]);
 
             return isVisible && <SingleOptionComponent value={value} optionId={optionId} option={option} onChange={(newVal) => {
                 onChange(newVal, optionId)

@@ -421,7 +421,12 @@ var Options = function Options(_ref2) {
           container.find('.components-button.kemet-color-icon-indicate.open').click();
         }
       });
-    }, []);
+
+      if (optionId === 'column-template' && isVisible) {
+        var event = new CustomEvent("KemetInitMenuOptions");
+        document.dispatchEvent(event);
+      }
+    }, [values]);
     return isVisible && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SingleOptionComponent, {
       value: value,
       optionId: optionId,
@@ -672,7 +677,7 @@ var SettingsModal = function SettingsModal() {
   }();
 
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, isOpen && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Modal"], {
-    className: "kmt-item-setting-modal",
+    className: "kmt-item-setting-modal menu-item-".concat(itemData.itemId),
     style: {
       width: "35%",
       height: "auto",
@@ -713,17 +718,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
 var __ = wp.i18n.__;
+var Dashicon = wp.components.Dashicon;
 
 var SaveButton = function SaveButton(_ref) {
   var isLoading = _ref.isLoading,
       _onClick = _ref.onClick;
+  var btnClasses = "kmt-button ".concat(isLoading ? 'secondary' : 'primary');
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
-    className: "kmt-button primary",
+    className: btnClasses,
     onClick: function onClick() {
       _onClick();
     },
     disabled: isLoading
-  }, __('Save Settings', 'kemet-addons'));
+  }, isLoading ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Dashicon, {
+    icon: "update"
+  }) : __('Save Settings', 'kemet-addons'));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SaveButton);

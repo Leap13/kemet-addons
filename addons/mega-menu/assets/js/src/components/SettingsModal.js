@@ -89,7 +89,7 @@ const SettingsModal = () => {
     return (
         <>
             {isOpen && (
-                <Modal className='kmt-item-setting-modal' style={{ width: "35%", height: "auto", maxHeight: "80vh", maxWidth: "1000px", overflow: "hidden" }} title={__('Menu Item Settings', 'kemet-addons')} onRequestClose={onCloseHandler} shouldCloseOnClickOutside={false}>
+                <Modal className={`kmt-item-setting-modal menu-item-${itemData.itemId}`} style={{ width: "35%", height: "auto", maxHeight: "80vh", maxWidth: "1000px", overflow: "hidden" }} title={__('Menu Item Settings', 'kemet-addons')} onRequestClose={onCloseHandler} shouldCloseOnClickOutside={false}>
                     {<Options options={kemetMegaMenu.options} onChange={handleChange} depth={itemData.depth} values={{ ...itemData.values, ...initialValue }} />}
                     <div className='modal-actions'>
                         <SaveButton isLoading={isLoading} onClick={onSaveHandler} />

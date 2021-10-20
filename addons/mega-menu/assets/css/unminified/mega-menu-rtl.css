@@ -62,12 +62,24 @@
   cursor: pointer;
   box-shadow: none;
   outline: none;
+  border: 1px solid var(--buttonBgColor);
 }
 
 .kmt-item-setting-modal .kmt-button:hover,
 .kmt-button:focus {
   box-shadow: none;
   outline: none;
+}
+
+.kmt-item-setting-modal .kmt-button.secondary {
+  border: 1px solid #cbccce;
+  --buttonColor: #2d3747;
+  --buttonBgColor: #f4f6f5;
+}
+
+.kmt-item-setting-modal .kmt-button.secondary:hover {
+  --buttonBgColor: #e0e1e4;
+  --buttonBorderColor: #e0e1e4;
 }
 
 .kmt-item-setting-modal .kmt-button:hover {
@@ -96,4 +108,24 @@
   max-height: calc(80vh - 25px * 2);
   padding: 25px;
   padding-top: 20px;
+}
+.kmt-item-setting-modal .customize-control-title {
+  line-height: 1.75;
+  font-weight: 600;
+}
+.select2-container {
+  z-index: 999999;
+}
+
+.kmt-item-setting-modal .modal-actions .dashicon {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }

@@ -68,8 +68,8 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 					// The post type is not supported by Brizy hence Brizy should not be used render the post.
 				}
 			}
-
-			$rest_support = $wp_post_types[ KEMET_CUSTOM_LAYOUT_POST_TYPE ]->show_in_rest;
+			$post_type    = get_post_type( $post_id );
+			$rest_support = $wp_post_types[ $post_type ]->show_in_rest;
 
 			if ( $rest_support ) {
 				return self::render_gutenberg_content( $post_id );

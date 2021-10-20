@@ -12,13 +12,18 @@
   }
   li.menu-item {
     &.kemet-megamenu-item {
-      ul.kemet-megamenu {
-        > li {
-          &.disable-item-label {
-            > a {
-              display: none;
-            }
-          }
+      .disable-item-label {
+        > a {
+          display: none;
+        }
+      }
+    }
+  }
+  li.menu-item {
+    &.kemet-megamenu-item {
+      &.disable-item-label {
+        > a {
+          display: none;
         }
       }
     }

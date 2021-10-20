@@ -99,14 +99,13 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 
 			if ( $item_id && ! empty( $data ) ) {
 				$this->update_item_meta_values( $item_id, $data );
-				wp_send_json_success(
-					array(
-						'success' => true,
-					)
-				);
 			}
 
-			wp_send_json_error();
+			wp_send_json_success(
+				array(
+					'success' => true,
+				)
+			);
 		}
 
 		/**
@@ -248,7 +247,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 					)
 				)
 			);
-
+			error_log( wp_json_encode( self::$meta_values ) );
 			wp_localize_script(
 				'kemet-addons-mega-menu-js',
 				'kemetAddons',

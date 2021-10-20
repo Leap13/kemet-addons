@@ -10,7 +10,11 @@
   padding: 0.9em 1em;
 }
 
-.main-navigation li.menu-item.kemet-megamenu-item ul.kemet-megamenu > li.disable-item-label > a {
+.main-navigation li.menu-item.kemet-megamenu-item .disable-item-label > a {
+  display: none;
+}
+
+.main-navigation li.menu-item.kemet-megamenu-item.disable-item-label > a {
   display: none;
 }
 

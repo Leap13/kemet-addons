@@ -81,12 +81,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 					'default' => 2,
 					'label'   => __( 'Mega Menu Columns', 'kemet-addons' ),
 					'choices' => array(
-						1 => __( 'One', 'kemet-addons' ),
-						2 => __( 'Two', 'kemet-addons' ),
-						3 => __( 'Three', 'kemet-addons' ),
-						4 => __( 'Four', 'kemet-addons' ),
-						5 => __( 'Five', 'kemet-addons' ),
-						6 => __( 'Six', 'kemet-addons' ),
+						1 => __( '1', 'kemet-addons' ),
+						2 => __( '2', 'kemet-addons' ),
+						3 => __( '3', 'kemet-addons' ),
+						4 => __( '4', 'kemet-addons' ),
+						5 => __( '5', 'kemet-addons' ),
+						6 => __( '6', 'kemet-addons' ),
 					),
 					'context' => array(
 						array(
@@ -179,6 +179,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 				'column-template'      => array(
 					'type'    => 'kmt-select',
 					'label'   => __( 'Content Source', 'kemet-addons' ),
+					'class'   => 'mega-menu-field-template',
 					'choices' => array(
 						'' => 'Select an Template',
 					),
@@ -206,6 +207,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 							'title' => __( 'Initial', 'kemet-addons' ),
 						),
 					),
+					'context' => array(
+						array(
+							'setting'  => 'label-text',
+							'operator' => 'not_empty',
+						),
+					),
 				),
 				'label-bg-color'       => array(
 					'type'    => 'kmt-color',
@@ -214,6 +221,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 						array(
 							'id'    => 'initial',
 							'title' => __( 'Initial', 'kemet-addons' ),
+						),
+					),
+					'context' => array(
+						array(
+							'setting'  => 'label-text',
+							'operator' => 'not_empty',
 						),
 					),
 				),
