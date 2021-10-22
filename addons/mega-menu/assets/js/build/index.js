@@ -124,6 +124,24 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+
+module.exports = _arrayWithoutHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
@@ -199,6 +217,22 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
@@ -257,6 +291,22 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableSpread;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
 /*!**************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
@@ -277,6 +327,30 @@ function _slicedToArray(arr, i) {
 }
 
 module.exports = _slicedToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
+
+var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
+
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
@@ -389,9 +463,10 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
       onChange = _ref.onChange;
   var OptionComponent = window.KmtOptionComponent.OptionComponent;
   var Option = OptionComponent(option.type);
+  var divider = option.divider ? 'has-divider' : '';
   return option.type && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     id: optionId,
-    className: "customize-control-".concat(option.type)
+    className: "customize-control-".concat(option.type, " ").concat(divider)
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Option, {
     id: optionId,
     value: value,
@@ -503,6 +578,7 @@ var SettingsModal = function SettingsModal() {
 
   var _useState7 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])({
     itemId: null,
+    title: null,
     depth: 0,
     values: null
   }),
@@ -511,7 +587,7 @@ var SettingsModal = function SettingsModal() {
       setItemData = _useState8[1];
 
   var loadItemSettings = /*#__PURE__*/function () {
-    var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee(itemId, depth) {
+    var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee(itemId, title, depth) {
       var body, response, _yield$response$json, success, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee$(_context) {
@@ -529,6 +605,7 @@ var SettingsModal = function SettingsModal() {
                 return _objectSpread(_objectSpread({}, prevValue), {}, {
                   itemId: itemId,
                   depth: depth,
+                  title: title,
                   values: localSettings[itemId]
                 });
               });
@@ -565,6 +642,7 @@ var SettingsModal = function SettingsModal() {
                 setItemData({
                   itemId: itemId,
                   depth: depth,
+                  title: title,
                   values: data.values
                 });
                 localSettings[itemId] = data.values;
@@ -578,7 +656,7 @@ var SettingsModal = function SettingsModal() {
       }, _callee);
     }));
 
-    return function loadItemSettings(_x, _x2) {
+    return function loadItemSettings(_x, _x2, _x3) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -590,15 +668,15 @@ var SettingsModal = function SettingsModal() {
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     document.addEventListener('KemetEditMenuItem', /*#__PURE__*/function () {
       var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee2(_ref2) {
-        var _ref2$detail, itemId, depth;
+        var _ref2$detail, itemId, title, depth;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _ref2$detail = _ref2.detail, itemId = _ref2$detail.itemId, depth = _ref2$detail.depth;
+                _ref2$detail = _ref2.detail, itemId = _ref2$detail.itemId, title = _ref2$detail.title, depth = _ref2$detail.depth;
                 _context2.next = 3;
-                return loadItemSettings(itemId, depth);
+                return loadItemSettings(itemId, title, depth);
 
               case 3:
                 setOpen(true);
@@ -611,7 +689,7 @@ var SettingsModal = function SettingsModal() {
         }, _callee2);
       }));
 
-      return function (_x3) {
+      return function (_x4) {
         return _ref3.apply(this, arguments);
       };
     }());
@@ -685,9 +763,14 @@ var SettingsModal = function SettingsModal() {
       maxWidth: "1000px",
       overflow: "hidden"
     },
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Menu Item Settings', 'kemet-addons'),
-    onRequestClose: onCloseHandler,
-    shouldCloseOnClickOutside: false
+    title: itemData.title + ' - ' + Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__["__"])('Item Settings', 'kemet-addons'),
+    onRequestClose: function onRequestClose(e) {
+      var iconList = document.body.querySelector('.kmt-icon-picker-modal');
+
+      if (!iconList) {
+        onCloseHandler();
+      }
+    }
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_Options__WEBPACK_IMPORTED_MODULE_7__["default"], {
     options: kemetMegaMenu.options,
     onChange: handleChange,
@@ -748,16 +831,19 @@ var SaveButton = function SaveButton(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_SettingsModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/SettingsModal */ "./src/components/SettingsModal.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_SettingsModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SettingsModal */ "./src/components/SettingsModal.js");
+
 
 
 
 window.onload = function () {
   var div = document.createElement('div');
   document.body.appendChild(div);
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_components_SettingsModal__WEBPACK_IMPORTED_MODULE_1__["default"], null), div);
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_SettingsModal__WEBPACK_IMPORTED_MODULE_2__["default"], null), div);
 };
 
 var settingButton = document.querySelectorAll(".kmt-menu-item-settings");
@@ -771,12 +857,16 @@ if (settingButton.length > 0) {
         e.preventDefault();
         var _e$target$parentEleme = e.target.parentElement.dataset,
             itemId = _e$target$parentEleme.itemId,
-            navId = _e$target$parentEleme.navId,
-            depth = _e$target$parentEleme.depth;
+            navId = _e$target$parentEleme.navId;
+        var title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value;
+        var depth = parseFloat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(e.target.closest('.menu-item').classList).find(function (c) {
+          return c.indexOf('menu-item-depth') > -1;
+        }).replace('menu-item-depth-', ''));
         var event = new CustomEvent('KemetEditMenuItem', {
           detail: {
             itemId: itemId,
             depth: depth,
+            title: title,
             navId: navId
           }
         });

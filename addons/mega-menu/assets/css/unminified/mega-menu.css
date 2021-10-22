@@ -43,8 +43,8 @@
   display: none !important;
 }
 .kmt-item-setting-modal .kmt-options {
-  margin: 0 calc(25px * -1);
-  padding: 20px 25px;
+  margin: 0 calc(50px * -1);
+  padding: 20px 50px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -97,6 +97,7 @@
 
 .kmt-item-setting-modal .components-modal__header {
   padding-bottom: 20px;
+  border-bottom: 0;
   margin-bottom: 0;
 }
 .kmt-item-setting-modal .modal-actions {
@@ -105,14 +106,28 @@
 .kmt-item-setting-modal .components-modal__content {
   display: flex;
   flex-direction: column;
-  max-height: calc(80vh - 25px * 2);
-  padding: 25px;
-  padding-top: 20px;
+  max-height: calc(80vh - 50px * 2);
+  padding: 50px;
+  padding-top: 45px;
 }
-.kmt-item-setting-modal .customize-control-title {
+.kmt-item-setting-modal .customize-control-kmt-title .customize-control-title {
   line-height: 1.75;
   font-weight: 600;
+  background-color: #f5f5f5;
+  margin: 0;
 }
+.kmt-item-setting-modal .components-modal__header-heading {
+  line-height: 1.75;
+  font-size: 17px;
+}
+.kmt-item-setting-modal .has-divider::before {
+  content: "";
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #dcdcde;
+}
+
 .select2-container {
   z-index: 999999;
 }

@@ -157,7 +157,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 		 * @param  int      $id
 		 */
 		function custom_field( $item_id, $item, $depth, $args, $id ) { ?>
-			<p class="kmt-menu-item-settings description-wide" data-item-id="<?php echo esc_attr( $item_id ); ?>" data-nav-id="<?php echo esc_attr( $id ); ?>" data-depth="<?php echo esc_attr( $depth ); ?>">
+			<p class="kmt-menu-item-settings description-wide" data-item-id="<?php echo esc_attr( $item_id ); ?>" data-nav-id="<?php echo esc_attr( $id ); ?>">
 				<button class="button"><?php echo esc_html__( 'Menu Item Settings', 'kemet-addons' ); ?></button>
 			</p>
 			<?php

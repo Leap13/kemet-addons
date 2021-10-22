@@ -67,7 +67,8 @@ export const isDisplay = (rules, values, depth = 0) => {
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = OptionComponent(option.type);
-    return option.type && <div id={optionId} className={`customize-control-${option.type}`}>
+    const divider = option.divider ? 'has-divider' : '';
+    return option.type && <div id={optionId} className={`customize-control-${option.type} ${divider}`}>
         <Option id={optionId} value={value} params={option} onChange={onChange} />
     </div>;
 }

@@ -12,17 +12,19 @@ const SettingsModal = () => {
     const [initialValue, setInitialValue] = useState({});
     const [itemData, setItemData] = useState({
         itemId: null,
+        title: null,
         depth: 0,
         values: null,
     })
 
-    const loadItemSettings = async (itemId, depth) => {
+    const loadItemSettings = async (itemId, title, depth) => {
         setInitialValue(null);
         if (localSettings[itemId]) {
             setItemData((prevValue) => ({
                 ...prevValue,
                 itemId,
                 depth,
+                title,
                 values: localSettings[itemId]
             }))
             return
@@ -42,6 +44,7 @@ const SettingsModal = () => {
                 setItemData({
                     itemId,
                     depth,
+                    title,
                     values: data.values,
                 })
                 localSettings[itemId] = data.values;
@@ -52,8 +55,8 @@ const SettingsModal = () => {
         setOpen(false);
     }
     useEffect(() => {
-        document.addEventListener('KemetEditMenuItem', async function ({ detail: { itemId, depth } }) {
-            await loadItemSettings(itemId, depth);
+        document.addEventListener('KemetEditMenuItem', async function ({ detail: { itemId, title, depth } }) {
+            await loadItemSettings(itemId, title, depth);
             setOpen(true);
         })
     }, [])
@@ -89,7 +92,12 @@ const SettingsModal = () => {
     return (
         <>
             {isOpen && (
-                <Modal className={`kmt-item-setting-modal menu-item-${itemData.itemId}`} style={{ width: "35%", height: "auto", maxHeight: "80vh", maxWidth: "1000px", overflow: "hidden" }} title={__('Menu Item Settings', 'kemet-addons')} onRequestClose={onCloseHandler} shouldCloseOnClickOutside={false}>
+                <Modal className={`kmt-item-setting-modal menu-item-${itemData.itemId}`} style={{ width: "35%", height: "auto", maxHeight: "80vh", maxWidth: "1000px", overflow: "hidden" }} title={itemData.title + ' - ' + __('Item Settings', 'kemet-addons')} onRequestClose={(e) => {
+                    const iconList = document.body.querySelector('.kmt-icon-picker-modal');
+                    if (!iconList) {
+                        onCloseHandler()
+                    }
+                }}>
                     {<Options options={kemetMegaMenu.options} onChange={handleChange} depth={itemData.depth} values={{ ...itemData.values, ...initialValue }} />}
                     <div className='modal-actions'>
                         <SaveButton isLoading={isLoading} onClick={onSaveHandler} />

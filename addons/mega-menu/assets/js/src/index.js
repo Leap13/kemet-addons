@@ -15,11 +15,18 @@ if (settingButton.length > 0) {
             const button = settingButton[i].querySelector('button');
             button.onclick = (e) => {
                 e.preventDefault();
-                const { itemId, navId, depth } = e.target.parentElement.dataset;
+                const { itemId, navId } = e.target.parentElement.dataset;
+                const title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value
+                const depth = parseFloat(
+                    [...e.target.closest('.menu-item').classList]
+                        .find((c) => c.indexOf('menu-item-depth') > -1)
+                        .replace('menu-item-depth-', '')
+                );
                 var event = new CustomEvent('KemetEditMenuItem', {
                     detail: {
                         itemId,
                         depth,
+                        title,
                         navId
                     }
                 });
