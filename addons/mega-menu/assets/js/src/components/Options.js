@@ -1,4 +1,6 @@
-import { useEffect } from '@wordpress/element';
+import { Fragment, useContext, useEffect } from '@wordpress/element';
+import OptionsContext from '../store/options-context';
+import Tabs from './Tabs';
 
 export const isDisplay = (rules, values, depth = 0) => {
     if (!values) {
@@ -65,43 +67,38 @@ export const isDisplay = (rules, values, depth = 0) => {
 };
 
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
+    const { itemId } = useContext(OptionsContext);
     const { OptionComponent } = window.KmtOptionComponent;
-    const Option = OptionComponent(option.type);
+    const Option = option.type === 'kmt-tabs' ? Tabs : OptionComponent(option.type);
     const divider = option.divider ? 'has-divider' : '';
+    if (optionId === 'column-template') {
+        let event = new CustomEvent("KemetInitMenuOptions", { detail: { itemId } });
+        document.dispatchEvent(event);
+    }
     return option.type && <div id={optionId} className={`customize-control-${option.type} ${divider}`}>
         <Option id={optionId} value={value} params={option} onChange={onChange} />
     </div>;
 }
 
-const Options = ({ options, onChange, values, depth }) => {
-    return <div className="kmt-options">
-        {Object.keys(options).map((optionId) => {
+const Options = ({ options }) => {
+    const { values, depth, onChange } = useContext(OptionsContext);
+
+    const renderOptions = (options) => {
+        return Object.keys(options).map((optionId) => {
             let value = values[optionId];
             let option = options[optionId];
             let isVisible = option.context ? isDisplay(option.context, values, depth) : true;
 
-            useEffect(() => {
-                jQuery(document).mouseup(function (e) {
-                    var container = jQuery(document);
-                    var colorWrap = container.find('.kemet-color-picker-wrap');
-                    var resetBtnWrap = container.find('.kmt-color-btn-reset-wrap');
-
-                    // If the target of the click isn't the container nor a descendant of the container.
-                    if (colorWrap.has(e.target).length === 0 && resetBtnWrap.has(e.target).length === 0) {
-                        container.find('.components-button.kemet-color-icon-indicate.open').click();
-                    }
-                });
-                if (optionId === 'column-template' && isVisible) {
-                    let event = new CustomEvent("KemetInitMenuOptions");
-                    document.dispatchEvent(event);
-                }
-            }, [values]);
-
             return isVisible && <SingleOptionComponent value={value} optionId={optionId} option={option} onChange={(newVal) => {
                 onChange(newVal, optionId)
             }} key={optionId} />;
-        })}
-    </div>
+        })
+    }
+
+    return <Fragment>
+        {renderOptions(options)}
+    </Fragment>
+
 }
 
 export default Options

@@ -141,7 +141,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				$classes[] = 'has-description';
 			}
 
-			if ( $this->column_heading ) {
+			if ( $this->column_heading && 0 < $depth ) {
 				$classes[] = 'heading-item';
 			}
 			if ( $this->megamenu_disable_item_label ) {
@@ -294,7 +294,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			ob_start();
 			$content = '';
 
-			if ( false != $this->megamenu && $item->megamenu_enable_template && ! empty( $item->megamenu_column_template ) ) {
+			if ( false != $this->megamenu && $item->megamenu_enable_template && ! empty( $item->megamenu_column_template ) && 0 > $depth ) {
 
 				$template_id = explode( '-', $item->megamenu_column_template );
 				$content    .= '<div class="kemet-mega-menu-content">';

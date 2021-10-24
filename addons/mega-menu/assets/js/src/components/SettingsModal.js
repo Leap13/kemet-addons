@@ -1,8 +1,9 @@
-import { Button, Modal } from '@wordpress/components';
 import { useState, useEffect, useMemo } from '@wordpress/element';
 import { __ } from "@wordpress/i18n";
 import Options from './Options';
 import SaveButton from './UI/SaveButton';
+import Modal from './UI/Modal'
+import OptionsContext from '../store/options-context';
 
 const localSettings = {};
 
@@ -89,22 +90,23 @@ const SettingsModal = () => {
         }
     }
 
+    const contextValues = {
+        itemId: itemData.itemId,
+        onChange: handleChange,
+        depth: itemData.depth,
+        values: { ...itemData.values, ...initialValue }
+    }
     return (
-        <>
+        <OptionsContext.Provider value={contextValues}>
             {isOpen && (
-                <Modal className={`kmt-item-setting-modal menu-item-${itemData.itemId}`} style={{ width: "35%", height: "auto", maxHeight: "80vh", maxWidth: "1000px", overflow: "hidden" }} title={itemData.title + ' - ' + __('Item Settings', 'kemet-addons')} onRequestClose={(e) => {
-                    const iconList = document.body.querySelector('.kmt-icon-picker-modal');
-                    if (!iconList) {
-                        onCloseHandler()
-                    }
-                }}>
-                    {<Options options={kemetMegaMenu.options} onChange={handleChange} depth={itemData.depth} values={{ ...itemData.values, ...initialValue }} />}
+                <Modal className={`kmt-item-setting-modal menu-item-${itemData.itemId}`} title={itemData.title + ' - ' + __('Item Settings', 'kemet-addons')} onClose={onCloseHandler}>
+                    {<Options options={kemetMegaMenu.options} />}
                     <div className='modal-actions'>
                         <SaveButton isLoading={isLoading} onClick={onSaveHandler} />
                     </div>
                 </Modal>
             )}
-        </>
+        </OptionsContext.Provider>
     );
 }
 

@@ -42,9 +42,48 @@
 .kfw-nav-menu-options .mega-menu-field-template.hidden {
   display: none !important;
 }
-.kmt-item-setting-modal .kmt-options {
+.kmt-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.kmt-modal {
+  position: fixed;
+  width: 35%;
+  height: auto;
+  max-height: 80vh;
+  max-width: 1000px;
+  overflow: hidden;
+  top: 50%;
+  left: auto;
+  bottom: auto;
+  right: 50%;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  transform: translate(50%, -50%);
+  animation: components-modal__appear-animation 0.1s ease-out;
+  animation-fill-mode: none;
+  animation-fill-mode: forwards;
+}
+
+.kmt-item-setting-modal .customize-control-kmt-tabs {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   margin: 0 calc(50px * -1);
-  padding: 20px 50px;
+}
+
+.kmt-item-setting-modal .current-tab-options {
+  padding: 0 50px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -95,20 +134,29 @@
   --buttonBgColor: #4a5568;
 }
 
-.kmt-item-setting-modal .components-modal__header {
-  padding-bottom: 20px;
-  border-bottom: 0;
-  margin-bottom: 0;
+.kmt-item-setting-modal .kmt-modal-header {
+  margin: 0 0 2em 0;
+  position: relative;
 }
 .kmt-item-setting-modal .modal-actions {
   padding-top: 30px;
 }
-.kmt-item-setting-modal .components-modal__content {
+.kmt-item-setting-modal .kmt-modal-content {
   display: flex;
   flex-direction: column;
-  max-height: calc(80vh - 50px * 2);
-  padding: 50px;
-  padding-top: 45px;
+  max-height: calc(80vh - 50px * 3);
+}
+.kmt-item-setting-modal
+  .customize-control-kmt-tabs
+  .current-tab-options
+  > div:first-child {
+  margin-top: 25px;
+}
+.kmt-item-setting-modal
+  .customize-control-kmt-tabs
+  .current-tab-options
+  > div:last-child {
+  margin-bottom: 25px;
 }
 .kmt-item-setting-modal .customize-control-kmt-title .customize-control-title {
   line-height: 1.75;
@@ -116,7 +164,8 @@
   background-color: #f5f5f5;
   margin: 0;
 }
-.kmt-item-setting-modal .components-modal__header-heading {
+.kmt-item-setting-modal .kmt-modal-header h2 {
+  margin: 0;
   line-height: 1.75;
   font-size: 17px;
 }
@@ -127,7 +176,18 @@
   margin-bottom: 25px;
   border-bottom: 1px solid #dcdcde;
 }
-
+.kmt-item-setting-modal .kmt-close-modal {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  left: -30px;
+  top: -30px;
+  color: #717a84;
+  opacity: 0.4;
+}
+.kmt-item-setting-modal .kmt-close-modal:hover {
+  opacity: 1;
+}
 .select2-container {
   z-index: 999999;
 }
