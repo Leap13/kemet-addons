@@ -8,35 +8,26 @@ window.onload = function () {
     render(<SettingsModal />, div)
 };
 
-const settingButton = document.querySelectorAll(".kmt-menu-item-settings");
-if (settingButton.length > 0) {
-    for (let i = 0; i < settingButton.length; i++) {
-        if ("undefined" !== typeof settingButton[i]) {
-            const button = settingButton[i].querySelector('button');
-            button.onclick = (e) => {
-                e.preventDefault();
-                const { itemId, navId } = e.target.parentElement.dataset;
-                const title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value
-                const depth = parseFloat(
-                    [...e.target.closest('.menu-item').classList]
-                        .find((c) => c.indexOf('menu-item-depth') > -1)
-                        .replace('menu-item-depth-', '')
-                );
-                var event = new CustomEvent('KemetEditMenuItem', {
-                    detail: {
-                        itemId,
-                        depth,
-                        title,
-                        navId
-                    }
-                });
-                document.dispatchEvent(event);
-            }
-        }
-    }
-}
-
 (function ($) {
+    $(document).on('click', '.kmt-menu-item-settings button', (e) => {
+        e.preventDefault();
+        const { itemId, navId } = e.target.parentElement.dataset;
+        const title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value
+        const depth = parseFloat(
+            [...e.target.closest('.menu-item').classList]
+                .find((c) => c.indexOf('menu-item-depth') > -1)
+                .replace('menu-item-depth-', '')
+        );
+        var event = new CustomEvent('KemetEditMenuItem', {
+            detail: {
+                itemId,
+                depth,
+                title,
+                navId
+            }
+        });
+        document.dispatchEvent(event);
+    })
     document.addEventListener('KemetInitMenuOptions', function (e) {
         var itemId = e.detail.itemId;
         /**

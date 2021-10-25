@@ -101,31 +101,13 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
-								'disable-link'       => array(
-									'type'    => 'kmt-switcher',
-									'label'   => __( 'Disable link', 'kemet-addons' ),
-									'context' => array(
-										array(
-											'setting' => 'depth',
-											'value'   => 0,
-										),
-										array(
-											'setting' => 'enable-mega-menu',
-											'value'   => true,
-										),
-									),
-								),
 								'mega-menu-icon'     => array(
 									'type'  => 'icon-picker',
 									'label' => __( 'Icon', 'kemet-addons' ),
 								),
-								'disable-item-label' => array(
-									'type'  => 'kmt-switcher',
-									'label' => __( 'Hide Menu Item Text', 'kemet-addons' ),
-								),
-								'column-heading'     => array(
-									'type'    => 'kmt-switcher',
-									'label'   => __( 'Make This Item As Column Heading', 'kemet-addons' ),
+								'template-title'     => array(
+									'type'    => 'kmt-title',
+									'label'   => __( 'Custom content', 'kemet-addons' ),
 									'context' => array(
 										array(
 											'setting'  => 'depth',
@@ -164,6 +146,39 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
+								'label-title'        => array(
+									'type'  => 'kmt-title',
+									'label' => __( 'Item Label Settings', 'kemet-addons' ),
+								),
+								'disable-link'       => array(
+									'type'    => 'kmt-switcher',
+									'label'   => __( 'Disable link', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
+								),
+								'disable-item-label' => array(
+									'type'  => 'kmt-switcher',
+									'label' => __( 'Hide Menu Item Text', 'kemet-addons' ),
+								),
+								'column-heading'     => array(
+									'type'    => 'kmt-switcher',
+									'label'   => __( 'Make This Item As Column Heading', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting'  => 'depth',
+											'operator' => '>',
+											'value'    => 0,
+										),
+									),
+								),
 								'menu-label-title'   => array(
 									'type'  => 'kmt-title',
 									'label' => __( 'Menu Item Badge', 'kemet-addons' ),
@@ -177,7 +192,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 						'design'  => array(
 							'title'   => __( 'Design', 'kemet' ),
 							'options' => array(
-								'mega-menu-background' => array(
+								'mega-menu-background'     => array(
 									'type'    => 'kmt-background',
 									'label'   => __( 'Mega Menu Background', 'kemet-addons' ),
 									'context' => array(
@@ -191,11 +206,172 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
-								'mega-menu-spacing'    => array(
+								'mega-menu-link-color'     => array(
+									'type'    => 'kmt-color',
+									'label'   => __( 'Link Color', 'kemet-addons' ),
+									'pickers' => array(
+										array(
+											'id'    => 'initial',
+											'title' => __( 'Initial', 'kemet-addons' ),
+										),
+										array(
+											'id'    => 'hover',
+											'title' => __( 'hover', 'kemet-addons' ),
+										),
+										array(
+											'id'    => 'background',
+											'title' => __( 'Background', 'kemet-addons' ),
+										),
+									),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
+								),
+								'mega-menu-heading-color'  => array(
+									'type'    => 'kmt-color',
+									'label'   => __( 'Headings Color', 'kemet-addons' ),
+									'pickers' => array(
+										array(
+											'id'    => 'initial',
+											'title' => __( 'Initial', 'kemet-addons' ),
+										),
+									),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
+								),
+								'mega-menu-text-color'     => array(
+									'type'    => 'kmt-color',
+									'label'   => __( 'Text Color', 'kemet-addons' ),
+									'pickers' => array(
+										array(
+											'id'    => 'initial',
+											'title' => __( 'Initial', 'kemet-addons' ),
+										),
+									),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
+								),
+								'mega-menu-icon-color'     => array(
+									'type'    => 'kmt-color',
+									'label'   => __( 'Icon Color', 'kemet-addons' ),
+									'pickers' => array(
+										array(
+											'id'    => 'initial',
+											'title' => __( 'Initial', 'kemet-addons' ),
+										),
+									),
+								),
+								'mega-menu-column-divider' => array(
+									'divider' => true,
+									'type'    => 'kmt-radio',
+									'default' => 'none',
+									'label'   => __( 'Column Divider', 'kemet-addons' ),
+									'choices' => array(
+										'none'   => __( 'None', 'kemet-addons' ),
+										'solid'  => __( 'Solid', 'kemet-addons' ),
+										'dashed' => __( 'Dashed', 'kemet-addons' ),
+										'dotted' => __( 'Dotted', 'kemet-addons' ),
+									),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
+								),
+								'mega-menu-column-divider-size' => array(
+									'type'         => 'kmt-slider',
+									'responsive'   => false,
+									'default'      => array(
+										'value' => 1,
+										'unit'  => 'px',
+									),
+									'label'        => __( 'Divider Size', 'kemet-addons' ),
+									'unit_choices' => array(
+										'px' => array(
+											'min'  => 1,
+											'step' => 1,
+											'max'  => 100,
+										),
+										'em' => array(
+											'min'  => 1,
+											'step' => 0.1,
+											'max'  => 12,
+										),
+									),
+									'context'      => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+										array(
+											'setting'  => 'mega-menu-column-divider',
+											'operator' => 'in_array',
+											'value'    => array( 'solid', 'dashed', 'dotted' ),
+										),
+									),
+								),
+								'mega-menu-column-divider-color' => array(
+									'type'    => 'kmt-color',
+									'label'   => __( 'Divider Color', 'kemet-addons' ),
+									'pickers' => array(
+										array(
+											'id'    => 'initial',
+											'title' => __( 'Initial Color', 'kemet-addons' ),
+										),
+									),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+										array(
+											'setting'  => 'mega-menu-column-divider',
+											'operator' => 'in_array',
+											'value'    => array( 'solid', 'dashed', 'dotted' ),
+										),
+									),
+								),
+								'mega-menu-spacing'        => array(
 									'type'           => 'kmt-spacing',
 									'responsive'     => false,
 									'divider'        => true,
-									'label'          => __( 'Spacing', 'kemet-addons' ),
+									'label'          => __( 'Padding', 'kemet-addons' ),
 									'linked_choices' => true,
 									'unit_choices'   => array( 'px' ),
 									'choices'        => array(
@@ -215,11 +391,42 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
-								'menu-badge-title'     => array(
+								'column-setting-title'     => array(
+									'type'    => 'kmt-title',
+									'label'   => __( 'Column Settings', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting'  => 'depth',
+											'operator' => '>',
+											'value'    => 0,
+										),
+									),
+								),
+								'mega-menu-item-spacing'   => array(
+									'type'           => 'kmt-spacing',
+									'responsive'     => false,
+									'label'          => __( 'Item Padding', 'kemet-addons' ),
+									'linked_choices' => true,
+									'unit_choices'   => array( 'px' ),
+									'choices'        => array(
+										'top'    => __( 'Top', 'kemet' ),
+										'right'  => __( 'Right', 'kemet' ),
+										'bottom' => __( 'Bottom', 'kemet' ),
+										'left'   => __( 'Left', 'kemet' ),
+									),
+									'context'        => array(
+										array(
+											'setting'  => 'depth',
+											'operator' => '>',
+											'value'    => 0,
+										),
+									),
+								),
+								'menu-badge-title'         => array(
 									'type'  => 'kmt-title',
 									'label' => __( 'Menu Item Badge', 'kemet-addons' ),
 								),
-								'label-color'          => array(
+								'label-color'              => array(
 									'type'    => 'kmt-color',
 									'label'   => __( 'Font Color', 'kemet-addons' ),
 									'pickers' => array(
@@ -229,7 +436,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
-								'label-bg-color'       => array(
+								'label-bg-color'           => array(
 									'type'    => 'kmt-color',
 									'label'   => __( 'Background Color', 'kemet-addons' ),
 									'pickers' => array(

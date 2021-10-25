@@ -1,10 +1,16 @@
 .main-navigation {
   .kemet-megamenu {
+    > li:not(:last-child) {
+      border-right: var(--columnDivider);
+    }
     .heading-item {
       > a {
         font-weight: 700;
         font-size: 1.1em;
       }
+    }
+    .kmt-svg-icon.icon-dropdown-menu {
+      display: none;
     }
     .kemet-mega-menu-content {
       padding: 0.9em 1em;

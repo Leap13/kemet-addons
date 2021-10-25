@@ -64,7 +64,7 @@
   bottom: auto;
   right: 50%;
   box-sizing: border-box;
-  background-color: white;
+  background-color: #f0f0f1;
   padding: 50px;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -75,6 +75,21 @@
   animation-fill-mode: forwards;
 }
 
+.kmt-item-setting-modal .customize-control-title,
+.kmt-item-setting-modal .toggle-control-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: #2d3748;
+  color: #2d3748;
+}
+.kmt-item-setting-modal .customize-control-kmt-select,
+.kmt-item-setting-modal .customize-control-kmt-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .kmt-item-setting-modal .customize-control-kmt-tabs {
   overflow: hidden;
   display: flex;
@@ -159,10 +174,11 @@
   margin-bottom: 25px;
 }
 .kmt-item-setting-modal .customize-control-kmt-title .customize-control-title {
+  display: block;
   line-height: 1.75;
   font-weight: 600;
-  background-color: #f5f5f5;
-  margin: 0;
+  padding: 10px 50px;
+  margin: 0 -51px;
 }
 .kmt-item-setting-modal .kmt-modal-header h2 {
   margin: 0;

@@ -465,6 +465,7 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
       optionId = _ref.optionId,
       option = _ref.option,
       onChange = _ref.onChange;
+  value = value ? value : option.type === 'kmt-color' ? {} : '';
 
   var _useContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
       itemId = _useContext.itemId;
@@ -954,37 +955,26 @@ window.onload = function () {
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_components_SettingsModal__WEBPACK_IMPORTED_MODULE_2__["default"], null), div);
 };
 
-var settingButton = document.querySelectorAll(".kmt-menu-item-settings");
-
-if (settingButton.length > 0) {
-  for (var i = 0; i < settingButton.length; i++) {
-    if ("undefined" !== typeof settingButton[i]) {
-      var button = settingButton[i].querySelector('button');
-
-      button.onclick = function (e) {
-        e.preventDefault();
-        var _e$target$parentEleme = e.target.parentElement.dataset,
-            itemId = _e$target$parentEleme.itemId,
-            navId = _e$target$parentEleme.navId;
-        var title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value;
-        var depth = parseFloat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(e.target.closest('.menu-item').classList).find(function (c) {
-          return c.indexOf('menu-item-depth') > -1;
-        }).replace('menu-item-depth-', ''));
-        var event = new CustomEvent('KemetEditMenuItem', {
-          detail: {
-            itemId: itemId,
-            depth: depth,
-            title: title,
-            navId: navId
-          }
-        });
-        document.dispatchEvent(event);
-      };
-    }
-  }
-}
-
 (function ($) {
+  $(document).on('click', '.kmt-menu-item-settings button', function (e) {
+    e.preventDefault();
+    var _e$target$parentEleme = e.target.parentElement.dataset,
+        itemId = _e$target$parentEleme.itemId,
+        navId = _e$target$parentEleme.navId;
+    var title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value;
+    var depth = parseFloat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(e.target.closest('.menu-item').classList).find(function (c) {
+      return c.indexOf('menu-item-depth') > -1;
+    }).replace('menu-item-depth-', ''));
+    var event = new CustomEvent('KemetEditMenuItem', {
+      detail: {
+        itemId: itemId,
+        depth: depth,
+        title: title,
+        navId: navId
+      }
+    });
+    document.dispatchEvent(event);
+  });
   document.addEventListener('KemetInitMenuOptions', function (e) {
     var itemId = e.detail.itemId;
     /**

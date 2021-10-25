@@ -1,9 +1,17 @@
 /*--------------------------------------------------------------
 ## Mega Menu
 --------------------------------------------------------------*/
+.main-navigation .kemet-megamenu > li:not(:last-child) {
+  border-left: var(--columnDivider);
+}
+
 .main-navigation .kemet-megamenu .heading-item > a {
   font-weight: 700;
   font-size: 1.1em;
+}
+
+.main-navigation .kemet-megamenu .kmt-svg-icon.icon-dropdown-menu {
+  display: none;
 }
 
 .main-navigation .kemet-megamenu .kemet-mega-menu-content {

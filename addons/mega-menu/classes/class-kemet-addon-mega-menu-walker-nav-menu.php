@@ -35,13 +35,19 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			// Default class.
 			$classes = array( 'sub-menu' );
 
-			$columns = ! empty( $this->megamenu_col ) ? ( 'col-' . $this->megamenu_col ) : 'col-2';
-			$style   = array();
+			$columns    = ! empty( $this->megamenu_col ) ? ( 'col-' . $this->megamenu_col ) : 'col-2';
+			$style      = array();
+			$output_css = '';
 
 			if ( 0 === $depth && true == $this->megamenu ) {
 				$classes[]       = 'kemet-megamenu';
 				$classes[]       = $columns;
 				$global_bg_color = kemet_get_sub_option( 'global-background-color', 'initial' );
+				$text_color      = isset( $this->megamenu_text_color['initial'] ) ? $this->megamenu_text_color['initial'] : '';
+				$heading_color   = isset( $this->megamenu_heading_color['initial'] ) ? $this->megamenu_heading_color['initial'] : '';
+				$link_color      = isset( $this->megamenu_link_color['initial'] ) ? $this->megamenu_link_color['initial'] : '';
+				$link_h_color    = isset( $this->megamenu_link_color['hover'] ) ? $this->megamenu_link_color['hover'] : '';
+				$link_bg_color   = isset( $this->megamenu_link_color['background'] ) ? $this->megamenu_link_color['background'] : 'transparent';
 				$default_bg      = array(
 					'background-type'  => 'color',
 					'background-color' => $global_bg_color,
@@ -49,18 +55,30 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				$bg_obj          = $this->megamenu_bg_obj ? $this->megamenu_bg_obj : $default_bg;
 				$spacing         = $this->megamenu_spacing;
 				$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .kemet-megamenu' ] = array(
-					'padding' => kemet_spacing( $spacing, 'all' ),
+					'--textColor'       => esc_attr( $text_color ),
+					'--linksColor'      => esc_attr( $link_color ),
+					'--linksHoverColor' => esc_attr( $link_h_color ),
+					'--backgroundColor' => esc_attr( $link_bg_color ),
+					'--headingColor'    => esc_attr( $heading_color ),
+					'padding'           => kemet_spacing( $spacing, 'all' ),
 				);
 
-				$output_css  = kemet_parse_css( $style );
+				if ( $this->megamenu_column_divider && 'none' !== $this->megamenu_column_divider ) {
+					$divider_color = isset( $this->megamenu_column_divider_color['initial'] ) ? $this->megamenu_column_divider_color['initial'] : 'var(--borderColor)';
+					$divider_size  = isset( $this->megamenu_column_divider_size ) ? kemet_slider( $this->megamenu_column_divider_size ) : '1px';
+					$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu' ] = array(
+						'--columnDivider' => $divider_size . ' ' . $this->megamenu_column_divider . ' ' . $divider_color,
+					);
+				}
 				$output_css .= kemet_get_background_obj( 'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap', $bg_obj );
-				Kemet_Addon_Mega_Menu_Partials::add_css( $output_css );
 
 				if ( 'full' === $this->megamenu_width ) {
 					$output .= "\n$indent<div class='mega-menu-full-wrap'>\n";
 				}
 			}
 
+			$output_css .= kemet_parse_css( $style );
+			Kemet_Addon_Mega_Menu_Partials::add_css( $output_css );
 			/**
 			 * Filters the CSS class(es) applied to a menu list element.
 			 *
@@ -118,12 +136,21 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			// Set some vars.
 			if ( 0 === $depth ) {
-				$this->megamenu         = get_post_meta( $item->ID, 'enable-mega-menu', true );
-				$this->megamenu_col     = get_post_meta( $item->ID, 'mega-menu-columns', true );
-				$this->megamenu_bg_obj  = get_post_meta( $item->ID, 'mega-menu-background', true );
-				$this->megamenu_width   = get_post_meta( $item->ID, 'mega-menu-width', true );
-				$this->megamenu_spacing = get_post_meta( $item->ID, 'mega-menu-spacing', true );
-				$this->menu_item_id     = $item->ID;
+				$this->megamenu                      = get_post_meta( $item->ID, 'enable-mega-menu', true );
+				$this->megamenu_col                  = get_post_meta( $item->ID, 'mega-menu-columns', true );
+				$this->megamenu_bg_obj               = get_post_meta( $item->ID, 'mega-menu-background', true );
+				$this->megamenu_width                = get_post_meta( $item->ID, 'mega-menu-width', true );
+				$this->megamenu_spacing              = get_post_meta( $item->ID, 'mega-menu-spacing', true );
+				$this->megamenu_text_color           = get_post_meta( $item->ID, 'mega-menu-text-color', true );
+				$this->megamenu_link_color           = get_post_meta( $item->ID, 'mega-menu-link-color', true );
+				$this->megamenu_heading_color        = get_post_meta( $item->ID, 'mega-menu-heading-color', true );
+				$this->megamenu_column_divider       = get_post_meta( $item->ID, 'mega-menu-column-divider', true );
+				$this->megamenu_column_divider_size  = get_post_meta( $item->ID, 'mega-menu-column-divider-size', true );
+				$this->megamenu_column_divider_color = get_post_meta( $item->ID, 'mega-menu-column-divider-color', true );
+				$this->menu_item_id                  = $item->ID;
+			}
+			if ( 0 < $depth ) {
+				$this->megamenu_item_spacing = get_post_meta( $item->ID, 'mega-menu-item-spacing', true );
 			}
 
 			$this->column_heading              = get_post_meta( $item->ID, 'column-heading', true );
@@ -246,11 +273,26 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			}
 
 			if ( isset( $item->megamenu_icon ) && ! empty( $item->megamenu_icon ) ) {
-
-				$title_html .= '<span class="' . esc_html( $item->megamenu_icon['icon'] ) . '"></span>' . $item->title;
+				$icon_color = isset( $item->megamenu_icon_color['initial'] ) ? $item->megamenu_icon_color['initial'] : '';
+				$style      = array(
+					'.main-navigation .menu-item-' . $item->ID . ' .menu-item' . $item->ID . '-icon' => array(
+						'color' => esc_attr( $icon_color ),
+					),
+				);
+				Kemet_Addon_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
+				$title_html .= '<span class="menu-item' . $item->ID . '-icon ' . esc_html( $item->megamenu_icon['icon'] ) . '"></span>' . $item->title;
 			} else {
-
 				$title_html .= $item->title;
+			}
+
+			if ( 0 < $depth ) {
+				$spacing = $this->megamenu_item_spacing;
+				$style   = array(
+					'.main-navigation .menu-item-' . $item->ID => array(
+						'padding' => kemet_spacing( $spacing, 'all' ),
+					),
+				);
+				Kemet_Addon_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
 			}
 
 			if ( isset( $item->megamenu_label ) && ! empty( $item->megamenu_label ) ) {
