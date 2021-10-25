@@ -120,13 +120,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'label' => __( 'Icon', 'kemet-addons' ),
 								),
 								'disable-item-label' => array(
-									'type'    => 'kmt-switcher',
-									'divider' => true,
-									'label'   => __( 'Hide Menu Item Text', 'kemet-addons' ),
+									'type'  => 'kmt-switcher',
+									'label' => __( 'Hide Menu Item Text', 'kemet-addons' ),
 								),
 								'column-heading'     => array(
 									'type'    => 'kmt-switcher',
-									'divider' => true,
 									'label'   => __( 'Make This Item As Column Heading', 'kemet-addons' ),
 									'context' => array(
 										array(
@@ -138,7 +136,6 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 								),
 								'enable-template'    => array(
 									'type'    => 'kmt-switcher',
-									'divider' => true,
 									'label'   => __( 'Enable Templates', 'kemet-addons' ),
 									'context' => array(
 										array(
@@ -150,7 +147,6 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 								),
 								'column-template'    => array(
 									'type'    => 'kmt-select',
-									'divider' => true,
 									'label'   => __( 'Content Source', 'kemet-addons' ),
 									'class'   => 'mega-menu-field-template',
 									'choices' => array(
