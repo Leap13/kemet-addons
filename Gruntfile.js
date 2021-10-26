@@ -140,8 +140,6 @@ module.exports = function (grunt) {
             "addons/woocommerce/assets/js/unminified/single-product-ajax-cart.js",
           "addons/woocommerce/assets/js/minified/woocommerce.min.js":
             "addons/woocommerce/assets/js/unminified/woocommerce.js",
-          // "addons/custom-layout/assets/js/minified/custom-layout.min.js":
-          //   "addons/custom-layout/assets/js/unminified/custom-layout.js",
           "addons/mega-menu/assets/js/minified/mega-menu.min.js":
             "addons/mega-menu/assets/js/unminified/mega-menu.js",
         },
@@ -266,6 +264,12 @@ module.exports = function (grunt) {
           "!inc/kemet-panel/assets/js/package-lock.json",
           "!inc/kemet-panel/assets/js/build/index.asset.php",
           "!inc/kemet-panel/assets/js/build/index.js.map",
+          "!addons/mega-menu/assets/js/node_modules/**",
+          "!addons/mega-menu/assets/js/src/**",
+          "!addons/mega-menu/assets/js/package.json",
+          "!addons/mega-menu/assets/js/package-lock.json",
+          "!addons/mega-menu/assets/js/build/index.asset.php",
+          "!addons/mega-menu/assets/js/build/index.js.map",
         ],
         dest: "kemet-addons/",
       },
