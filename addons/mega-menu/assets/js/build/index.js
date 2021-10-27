@@ -1022,7 +1022,7 @@ window.onload = function () {
               // search term
               page: params.page,
               action: "kemet_ajax_get_posts_list",
-              nonce: kemetMegaMenu.ajax_nonce
+              nonce: kemetMegaMenu.select2_ajax_nonce
             };
           },
           processResults: function processResults(data) {

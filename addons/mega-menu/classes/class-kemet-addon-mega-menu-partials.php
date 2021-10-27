@@ -245,6 +245,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 						'options'             => Kemet_Addon_Mega_Menu_Options::get_instance()->get_item_fields(),
 						'template_meta_value' => self::$meta_values,
 						'ajax_title_nonce'    => wp_create_nonce( 'kemet-addons-ajax-get-title' ),
+						'select2_ajax_nonce'  => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
 					)
 				)
 			);
