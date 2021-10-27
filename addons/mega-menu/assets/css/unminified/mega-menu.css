@@ -84,6 +84,11 @@
   color: #2d3748;
   color: #2d3748;
 }
+.kmt-item-setting-modal
+  .customize-control-kmt-select
+  .customize-control-content {
+  min-width: 200px;
+}
 .kmt-item-setting-modal .customize-control-kmt-select,
 .kmt-item-setting-modal .customize-control-kmt-text {
   display: flex;

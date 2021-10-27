@@ -72,10 +72,12 @@ const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = option.type === 'kmt-tabs' ? Tabs : OptionComponent(option.type);
     const divider = option.divider ? 'has-divider' : '';
-    if (optionId === 'column-template') {
-        let event = new CustomEvent("KemetInitMenuOptions", { detail: { itemId } });
-        document.dispatchEvent(event);
-    }
+    useEffect(() => {
+        if (optionId === 'column-template') {
+            let event = new CustomEvent("KemetInitMenuOptions", { detail: { itemId } });
+            document.dispatchEvent(event);
+        }
+    }, []);
     return option.type && <div id={optionId} className={`customize-control-${option.type} ${divider}`}>
         <Option id={optionId} value={value} params={option} onChange={onChange} />
     </div>;
