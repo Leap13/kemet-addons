@@ -2931,7 +2931,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('kmt-dashboard')) {
     var sidebar = document.getElementById("adminmenuwrap"),
         sidebarHeight = sidebar.offsetHeight + 'px';
-    console.log(sidebarHeight);
     document.getElementById("wpbody").style.minHeight = sidebarHeight;
     Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RendeTabs, {
       options: KemetPanelData.options,

@@ -94,9 +94,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 * @return void
 		 */
 		public function render() { ?>
-			<div id="kmt-dashboard">
-				
-			</div>
+			<div id="kmt-dashboard"></div>
 			<?php
 		}
 

@@ -49,23 +49,11 @@
   --buttonBorderColor: #e0e1e4;
 }
 
-.toplevel_page_kemet_panel #wpwrap,
-.toplevel_page_kemet_panel #wpcontent,
-.toplevel_page_kemet_panel #wpbody {
-  height: 100%;
-  min-height: 100%;
-}
-
-.toplevel_page_kemet_panel #wpbody-content {
-  height: 100%;
-}
-
-.toplevel_page_kemet_panel #wpfooter {
-  display: none;
-}
-
-.toplevel_page_kemet_panel #wpbody-content {
+.toplevel_page_kemet_panel {
   background-color: #fff;
+}
+
+.toplevel_page_kemet_panel #wpbody-content {
   padding-bottom: 0;
 }
 
@@ -81,6 +69,7 @@
   color: #2d3747;
   font-size: 14px;
   min-height: 100%;
+  margin-bottom: 25px;
 }
 
 #kmt-dashboard hr {

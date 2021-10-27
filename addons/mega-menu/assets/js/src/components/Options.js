@@ -67,7 +67,6 @@ export const isDisplay = (rules, values, depth = 0) => {
 };
 
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
-    value = value ? value : option.type === 'kmt-color' ? {} : '';
     const { itemId } = useContext(OptionsContext);
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = option.type === 'kmt-tabs' ? Tabs : OptionComponent(option.type);
