@@ -44,8 +44,48 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'register_fonts_in_elementor' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'adobe_fonts_css' ), 10 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'adobe_fonts_css' ), 100 );
+			add_action( 'add_meta_boxes', array( $this, 'add_custom_box' ) );
+			add_action( 'admin_print_scripts-post-new.php', array( $this, 'admin_scripts' ) );
+			add_action( 'admin_print_scripts-post.php', array( $this, 'admin_scripts' ) );
 		}
 
+		function add_custom_box() {
+			add_meta_box(
+				'kemet_meta',
+				'Custom Meta Box Title',
+				array( $this, 'custom_box_html' ),
+				KEMET_CUSTOM_FONTS_POST_TYPE,
+				'advanced',
+				'high',
+				null
+			);
+		}
+
+		public function custom_box_html() {
+			?>
+			<div id="kmt-meta-box"></div>
+			<?php
+		}
+
+		public function admin_scripts() {
+			global $post_type;
+			if ( KEMET_CUSTOM_FONTS_POST_TYPE == $post_type ) {
+				wp_enqueue_script(
+					'custom-font-admin-script',
+					KEMET_CUSTOM_FONTS_URL . 'assets/js/build/index.js',
+					array(
+						'wp-edit-post',
+						'wp-i18n',
+						'wp-components',
+						'wp-element',
+						'wp-media-utils',
+						'wp-block-editor',
+					),
+					KEMET_ADDONS_VERSION,
+					true
+				);
+			}
+		}
 		/**
 		 * Add custom fonts to elementor
 		 *
