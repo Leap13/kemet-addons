@@ -285,6 +285,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
+								'mega-menu-column-border'  => array(
+									'divider'     => true,
+									'type'        => 'kmt-border',
+									'label'       => __( 'Column Border Test', 'kemet-addons' ),
+									'secondColor' => true,
+								),
 								'mega-menu-column-divider' => array(
 									'divider' => true,
 									'type'    => 'kmt-radio',
