@@ -126,31 +126,29 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 		 * @return array
 		 */
 		public function get_item_meta_values( $item_id ) {
-			$data                                   = array();
-			$data['enable-mega-menu']               = get_post_meta( $item_id, 'enable-mega-menu', true );
-			$data['mega-menu-icon']                 = get_post_meta( $item_id, 'mega-menu-icon', true );
-			$data['mega-menu-icon-color']           = get_post_meta( $item_id, 'mega-menu-icon-color', true );
-			$data['disable-link']                   = get_post_meta( $item_id, 'disable-link', true );
-			$data['enable-mega-menu']               = get_post_meta( $item_id, 'enable-mega-menu', true );
-			$data['mega-menu-columns']              = get_post_meta( $item_id, 'mega-menu-columns', true );
-			$data['mega-menu-background']           = get_post_meta( $item_id, 'mega-menu-background', true );
-			$data['mega-menu-spacing']              = get_post_meta( $item_id, 'mega-menu-spacing', true );
-			$data['column-heading']                 = get_post_meta( $item_id, 'column-heading', true );
-			$data['mega-menu-width']                = get_post_meta( $item_id, 'mega-menu-width', true );
-			$data['label-text']                     = get_post_meta( $item_id, 'label-text', true );
-			$data['label-color']                    = get_post_meta( $item_id, 'label-color', true );
-			$data['label-bg-color']                 = get_post_meta( $item_id, 'label-bg-color', true );
-			$data['column-template']                = get_post_meta( $item_id, 'column-template', true );
-			$data['disable-item-label']             = get_post_meta( $item_id, 'disable-item-label', true );
-			$data['item-content']                   = get_post_meta( $item_id, 'item-content', true );
-			$data['mega-menu-text-color']           = get_post_meta( $item_id, 'mega-menu-text-color', true );
-			$data['mega-menu-heading-color']        = get_post_meta( $item_id, 'mega-menu-heading-color', true );
-			$data['mega-menu-link-color']           = get_post_meta( $item_id, 'mega-menu-link-color', true );
-			$data['mega-menu-item-spacing']         = get_post_meta( $item_id, 'mega-menu-item-spacing', true );
-			$data['mega-menu-column-divider']       = get_post_meta( $item_id, 'mega-menu-column-divider', true );
-			$data['mega-menu-column-divider-size']  = get_post_meta( $item_id, 'mega-menu-column-divider-size', true );
-			$data['mega-menu-column-divider-color'] = get_post_meta( $item_id, 'mega-menu-column-divider-color', true );
-			$data['mega-menu-border-radius']        = get_post_meta( $item_id, 'mega-menu-border-radius', true );
+			$data                             = array();
+			$data['enable-mega-menu']         = get_post_meta( $item_id, 'enable-mega-menu', true );
+			$data['mega-menu-icon']           = get_post_meta( $item_id, 'mega-menu-icon', true );
+			$data['mega-menu-icon-color']     = get_post_meta( $item_id, 'mega-menu-icon-color', true );
+			$data['disable-link']             = get_post_meta( $item_id, 'disable-link', true );
+			$data['enable-mega-menu']         = get_post_meta( $item_id, 'enable-mega-menu', true );
+			$data['mega-menu-columns']        = get_post_meta( $item_id, 'mega-menu-columns', true );
+			$data['mega-menu-background']     = get_post_meta( $item_id, 'mega-menu-background', true );
+			$data['mega-menu-spacing']        = get_post_meta( $item_id, 'mega-menu-spacing', true );
+			$data['column-heading']           = get_post_meta( $item_id, 'column-heading', true );
+			$data['mega-menu-width']          = get_post_meta( $item_id, 'mega-menu-width', true );
+			$data['label-text']               = get_post_meta( $item_id, 'label-text', true );
+			$data['label-color']              = get_post_meta( $item_id, 'label-color', true );
+			$data['label-bg-color']           = get_post_meta( $item_id, 'label-bg-color', true );
+			$data['column-template']          = get_post_meta( $item_id, 'column-template', true );
+			$data['disable-item-label']       = get_post_meta( $item_id, 'disable-item-label', true );
+			$data['item-content']             = get_post_meta( $item_id, 'item-content', true );
+			$data['mega-menu-text-color']     = get_post_meta( $item_id, 'mega-menu-text-color', true );
+			$data['mega-menu-heading-color']  = get_post_meta( $item_id, 'mega-menu-heading-color', true );
+			$data['mega-menu-link-color']     = get_post_meta( $item_id, 'mega-menu-link-color', true );
+			$data['mega-menu-item-spacing']   = get_post_meta( $item_id, 'mega-menu-item-spacing', true );
+			$data['mega-menu-column-divider'] = get_post_meta( $item_id, 'mega-menu-column-divider', true );
+			$data['mega-menu-border-radius']  = get_post_meta( $item_id, 'mega-menu-border-radius', true );
 
 			return $data;
 		}

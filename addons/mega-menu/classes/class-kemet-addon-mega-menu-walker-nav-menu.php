@@ -67,10 +67,9 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				);
 
 				if ( $this->megamenu_column_divider && 'none' !== $this->megamenu_column_divider ) {
-					$divider_color = isset( $this->megamenu_column_divider_color['initial'] ) ? $this->megamenu_column_divider_color['initial'] : 'var(--borderColor)';
-					$divider_size  = isset( $this->megamenu_column_divider_size ) ? kemet_slider( $this->megamenu_column_divider_size ) : '1px';
+					$divider = isset( $this->megamenu_column_divider ) ? $this->megamenu_column_divider : array();
 					$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu' ] = array(
-						'--columnDivider' => $divider_size . ' ' . $this->megamenu_column_divider . ' ' . $divider_color,
+						'--columnDivider' => kemet_border( $divider ),
 					);
 				}
 				$output_css .= kemet_get_background_obj( 'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap', $bg_obj );
@@ -139,18 +138,16 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			// Set some vars.
 			if ( 0 === $depth ) {
-				$this->megamenu                      = get_post_meta( $item->ID, 'enable-mega-menu', true );
-				$this->megamenu_col                  = get_post_meta( $item->ID, 'mega-menu-columns', true );
-				$this->megamenu_bg_obj               = get_post_meta( $item->ID, 'mega-menu-background', true );
-				$this->megamenu_width                = get_post_meta( $item->ID, 'mega-menu-width', true );
-				$this->megamenu_spacing              = get_post_meta( $item->ID, 'mega-menu-spacing', true );
-				$this->megamenu_link_color           = get_post_meta( $item->ID, 'mega-menu-link-color', true );
-				$this->megamenu_heading_color        = get_post_meta( $item->ID, 'mega-menu-heading-color', true );
-				$this->megamenu_column_divider       = get_post_meta( $item->ID, 'mega-menu-column-divider', true );
-				$this->megamenu_column_divider_size  = get_post_meta( $item->ID, 'mega-menu-column-divider-size', true );
-				$this->megamenu_column_divider_color = get_post_meta( $item->ID, 'mega-menu-column-divider-color', true );
-				$this->megamenu_border_radius        = get_post_meta( $item->ID, 'mega-menu-border-radius', true );
-				$this->menu_item_id                  = $item->ID;
+				$this->megamenu                = get_post_meta( $item->ID, 'enable-mega-menu', true );
+				$this->megamenu_col            = get_post_meta( $item->ID, 'mega-menu-columns', true );
+				$this->megamenu_bg_obj         = get_post_meta( $item->ID, 'mega-menu-background', true );
+				$this->megamenu_width          = get_post_meta( $item->ID, 'mega-menu-width', true );
+				$this->megamenu_spacing        = get_post_meta( $item->ID, 'mega-menu-spacing', true );
+				$this->megamenu_link_color     = get_post_meta( $item->ID, 'mega-menu-link-color', true );
+				$this->megamenu_heading_color  = get_post_meta( $item->ID, 'mega-menu-heading-color', true );
+				$this->megamenu_column_divider = get_post_meta( $item->ID, 'mega-menu-column-divider', true );
+				$this->megamenu_border_radius  = get_post_meta( $item->ID, 'mega-menu-border-radius', true );
+				$this->menu_item_id            = $item->ID;
 			}
 			if ( 0 < $depth ) {
 				$this->megamenu_item_spacing = get_post_meta( $item->ID, 'mega-menu-item-spacing', true );

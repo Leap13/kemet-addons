@@ -285,94 +285,10 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
-								'mega-menu-column-border'  => array(
-									'divider'     => true,
-									'type'        => 'kmt-border',
-									'label'       => __( 'Column Border Test', 'kemet-addons' ),
-									'secondColor' => true,
-								),
 								'mega-menu-column-divider' => array(
 									'divider' => true,
-									'type'    => 'kmt-radio',
-									'default' => 'none',
+									'type'    => 'kmt-border',
 									'label'   => __( 'Column Divider', 'kemet-addons' ),
-									'choices' => array(
-										'none'   => __( 'None', 'kemet-addons' ),
-										'solid'  => __( 'Solid', 'kemet-addons' ),
-										'dashed' => __( 'Dashed', 'kemet-addons' ),
-										'dotted' => __( 'Dotted', 'kemet-addons' ),
-									),
-									'context' => array(
-										array(
-											'setting' => 'depth',
-											'value'   => 0,
-										),
-										array(
-											'setting' => 'enable-mega-menu',
-											'value'   => true,
-										),
-									),
-								),
-								'mega-menu-column-divider-size' => array(
-									'type'         => 'kmt-slider',
-									'responsive'   => false,
-									'default'      => array(
-										'value' => 1,
-										'unit'  => 'px',
-									),
-									'label'        => __( 'Divider Size', 'kemet-addons' ),
-									'unit_choices' => array(
-										'px' => array(
-											'min'  => 1,
-											'step' => 1,
-											'max'  => 100,
-										),
-										'em' => array(
-											'min'  => 1,
-											'step' => 0.1,
-											'max'  => 12,
-										),
-									),
-									'context'      => array(
-										array(
-											'setting' => 'depth',
-											'value'   => 0,
-										),
-										array(
-											'setting' => 'enable-mega-menu',
-											'value'   => true,
-										),
-										array(
-											'setting'  => 'mega-menu-column-divider',
-											'operator' => 'in_array',
-											'value'    => array( 'solid', 'dashed', 'dotted' ),
-										),
-									),
-								),
-								'mega-menu-column-divider-color' => array(
-									'type'    => 'kmt-color',
-									'label'   => __( 'Divider Color', 'kemet-addons' ),
-									'pickers' => array(
-										array(
-											'id'    => 'initial',
-											'title' => __( 'Initial Color', 'kemet-addons' ),
-										),
-									),
-									'context' => array(
-										array(
-											'setting' => 'depth',
-											'value'   => 0,
-										),
-										array(
-											'setting' => 'enable-mega-menu',
-											'value'   => true,
-										),
-										array(
-											'setting'  => 'mega-menu-column-divider',
-											'operator' => 'in_array',
-											'value'    => array( 'solid', 'dashed', 'dotted' ),
-										),
-									),
 								),
 								'mega-menu-border-radius'  => array(
 									'type'         => 'kmt-slider',
