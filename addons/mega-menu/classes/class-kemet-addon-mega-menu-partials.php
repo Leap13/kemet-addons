@@ -142,7 +142,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			$data['label-bg-color']                 = get_post_meta( $item_id, 'label-bg-color', true );
 			$data['column-template']                = get_post_meta( $item_id, 'column-template', true );
 			$data['disable-item-label']             = get_post_meta( $item_id, 'disable-item-label', true );
-			$data['enable-template']                = get_post_meta( $item_id, 'enable-template', true );
+			$data['item-content']                   = get_post_meta( $item_id, 'item-content', true );
 			$data['mega-menu-text-color']           = get_post_meta( $item_id, 'mega-menu-text-color', true );
 			$data['mega-menu-heading-color']        = get_post_meta( $item_id, 'mega-menu-heading-color', true );
 			$data['mega-menu-link-color']           = get_post_meta( $item_id, 'mega-menu-link-color', true );
@@ -150,6 +150,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			$data['mega-menu-column-divider']       = get_post_meta( $item_id, 'mega-menu-column-divider', true );
 			$data['mega-menu-column-divider-size']  = get_post_meta( $item_id, 'mega-menu-column-divider-size', true );
 			$data['mega-menu-column-divider-color'] = get_post_meta( $item_id, 'mega-menu-column-divider-color', true );
+			$data['mega-menu-border-radius']        = get_post_meta( $item_id, 'mega-menu-border-radius', true );
 
 			return $data;
 		}
@@ -165,7 +166,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 		 */
 		function custom_field( $item_id, $item, $depth, $args, $id ) { ?>
 			<p class="kmt-menu-item-settings description-wide" data-item-id="<?php echo esc_attr( $item_id ); ?>" data-nav-id="<?php echo esc_attr( $id ); ?>">
-				<button class="button"><?php echo esc_html__( 'Menu Item Settings', 'kemet-addons' ); ?></button>
+				<button class="button"><?php echo esc_html__( 'Kemet Menu settings', 'kemet-addons' ); ?></button>
 			</p>
 			<?php
 		}
@@ -246,9 +247,49 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 						'template_meta_value' => self::$meta_values,
 						'ajax_title_nonce'    => wp_create_nonce( 'kemet-addons-ajax-get-title' ),
 						'select2_ajax_nonce'  => wp_create_nonce( 'kemet-addons-ajax-get-post' ),
+						'search'              => __( 'Templates / Reusable Blocks', 'kemet-addons' ),
+						'edit_post_link'      => admin_url( '/edit.php?post_type=post_name' ),
+						'posts_count'         => array(
+							'elementor_library'    => post_type_exists( 'elementor_library' ) ? wp_count_posts( 'elementor_library' )->publish : 0,
+							'wp_block'             => post_type_exists( 'wp_block' ) ? wp_count_posts( 'wp_block' )->publish : 0,
+							'kemet_custom_layouts' => post_type_exists( 'kemet_custom_layouts' ) ? wp_count_posts( 'kemet_custom_layouts' )->publish : 0,
+						),
+						'posts'               => array(
+							'elementor_library'    => $this->get_all_posts( 'elementor_library' ),
+							'wp_block'             => $this->get_all_posts( 'wp_block' ),
+							'kemet_custom_layouts' => $this->get_all_posts( 'kemet_custom_layouts' ),
+						),
 					)
 				)
 			);
+		}
+
+		/**
+		 * get_all_posts
+		 *
+		 * @param  string $post_type
+		 * @return array
+		 */
+		public function get_all_posts( $post_type ) {
+			$data  = array();
+			$query = new WP_Query(
+				array(
+					'post_type'      => $post_type,
+					'posts_per_page' => -1,
+				)
+			);
+
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$title                 = get_the_title();
+					$title                .= ( 0 != $query->post->post_parent ) ? ' (' . get_the_title( $query->post->post_parent ) . ')' : '';
+					$id                    = get_the_id();
+					$data[ 'post-' . $id ] = $title;
+				}
+			}
+
+			return $data;
 		}
 
 		/**

@@ -1,6 +1,7 @@
 import { Fragment, useContext, useEffect } from '@wordpress/element';
 import OptionsContext from '../store/options-context';
 import Tabs from './Tabs';
+import CreatePostButton from './UI/CreatePostButton';
 
 export const isDisplay = (rules, values, depth = 0) => {
     if (!values) {
@@ -67,16 +68,27 @@ export const isDisplay = (rules, values, depth = 0) => {
 };
 
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
-    const { itemId } = useContext(OptionsContext);
+    const { itemId, values } = useContext(OptionsContext);
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = option.type === 'kmt-tabs' ? Tabs : OptionComponent(option.type);
     const divider = option.divider ? 'has-divider' : '';
+
+    if (optionId === 'column-template') {
+        const postType = values['item-content'];
+        if (kemetMegaMenu.posts_count[postType] === 0) {
+            return <CreatePostButton type={postType} />
+        }
+        const contentTemplateChoices = kemetMegaMenu.posts[postType];
+        option.choices = contentTemplateChoices;
+    }
+
     useEffect(() => {
         if (optionId === 'column-template') {
             let event = new CustomEvent("KemetInitMenuOptions", { detail: { itemId } });
             document.dispatchEvent(event);
         }
     }, []);
+
     return option.type && <div id={optionId} className={`customize-control-${option.type} ${divider}`}>
         <Option id={optionId} value={value} params={option} onChange={onChange} />
     </div>;

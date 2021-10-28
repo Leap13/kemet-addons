@@ -392,6 +392,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store_options_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/options-context */ "./src/store/options-context.js");
 /* harmony import */ var _Tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tabs */ "./src/components/Tabs.js");
+/* harmony import */ var _UI_CreatePostButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UI/CreatePostButton */ "./src/components/UI/CreatePostButton.js");
+
 
 
 
@@ -467,11 +469,26 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
       onChange = _ref.onChange;
 
   var _useContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
-      itemId = _useContext.itemId;
+      itemId = _useContext.itemId,
+      values = _useContext.values;
 
   var OptionComponent = window.KmtOptionComponent.OptionComponent;
   var Option = option.type === 'kmt-tabs' ? _Tabs__WEBPACK_IMPORTED_MODULE_2__["default"] : OptionComponent(option.type);
   var divider = option.divider ? 'has-divider' : '';
+
+  if (optionId === 'column-template') {
+    var postType = values['item-content'];
+
+    if (kemetMegaMenu.posts_count[postType] === 0) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_UI_CreatePostButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        type: postType
+      });
+    }
+
+    var contentTemplateChoices = kemetMegaMenu.posts[postType];
+    option.choices = contentTemplateChoices;
+  }
+
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (optionId === 'column-template') {
       var event = new CustomEvent("KemetInitMenuOptions", {
@@ -843,6 +860,40 @@ var Tabs = function Tabs(props) {
 
 /***/ }),
 
+/***/ "./src/components/UI/CreatePostButton.js":
+/*!***********************************************!*\
+  !*** ./src/components/UI/CreatePostButton.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var __ = wp.i18n.__;
+
+var CreatePostButton = function CreatePostButton(props) {
+  var titles = {
+    'elemetor_library': __('Create a new Elementor Template', 'kemet-addons'),
+    'wp_block': __('Create a new Reusable Block', 'kemet-addons'),
+    'kemet_custom_layouts': __('Create a new Custom Template', 'kemet-addons')
+  };
+  var link = kemetMegaMenu.edit_post_link.replace('post_name', props.type);
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "kmt-create-post"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+    className: "kmt-button secondary",
+    href: link,
+    target: "_blank"
+  }, titles[props.type]));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreatePostButton);
+
+/***/ }),
+
 /***/ "./src/components/UI/Modal.js":
 /*!************************************!*\
   !*** ./src/components/UI/Modal.js ***!
@@ -975,80 +1026,18 @@ window.onload = function () {
     document.dispatchEvent(event);
   });
   document.addEventListener('KemetInitMenuOptions', function (e) {
-    var itemId = e.detail.itemId;
-    /**
-    * set meta value to select
-    */
-
-    var oldMetaValues = kemetMegaMenu.template_meta_value;
-
-    if (oldMetaValues[itemId]) {
-      var menuItem = $(".kmt-item-setting-modal.menu-item-" + itemId),
-          templateSelect = menuItem.find(".mega-menu-field-template"),
-          postID = oldMetaValues[itemId];
-      $.post(kemetMegaMenu.ajax_url, {
-        post_id: postID,
-        action: "kemet_get_post_title",
-        nonce: kemetMegaMenu.ajax_title_nonce
-      }).done(function (data) {
-        templateSelect.append(new Option(data, postID, false, true));
-      });
-    }
-    /**
-     * convert to select2 with ajax search
-     * @param {string} selector
-     */
-
-
-    var convertToSelect2 = function convertToSelect2(selector) {
-      if ($(selector).hasClass("select2-hidden-accessible")) {
-        return;
-      }
-
-      if ($(selector).val() == "") {
-        $(selector).html("");
-      }
-
-      $(selector).select2({
-        placeholder: kemetMegaMenu.search,
-        ajax: {
-          url: kemetMegaMenu.ajax_url,
-          dataType: "json",
-          method: "post",
-          delay: 250,
-          data: function data(params) {
-            return {
-              query: params.term,
-              // search term
-              page: params.page,
-              action: "kemet_ajax_get_posts_list",
-              nonce: kemetMegaMenu.select2_ajax_nonce
-            };
-          },
-          processResults: function processResults(data) {
-            return {
-              results: data
-            };
-          },
-          cache: true
-        },
-        minimumInputLength: 2,
-        language: kemetMegaMenu.lang,
-        width: "100%"
-      }).on('change', function (e) {
-        var value = $(e.target).val();
-        e.target.dispatchEvent(new CustomEvent("onCustomChange", {
-          detail: {
-            value: value
-          }
-        }));
-      });
-    };
-
     var specificSelect = $(".mega-menu-field-template");
-    specificSelect.each(function (index, selector) {
-      convertToSelect2(selector);
+    specificSelect.select2({
+      placeholder: 'Select a Template'
+    }).on('change', function (e) {
+      var value = $(e.target).val();
+      e.target.dispatchEvent(new CustomEvent("onCustomChange", {
+        detail: {
+          value: value
+        }
+      }));
     });
+    ;
   });
 })(jQuery);
 

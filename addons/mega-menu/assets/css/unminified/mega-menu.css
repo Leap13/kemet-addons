@@ -122,8 +122,13 @@
   box-shadow: none;
   outline: none;
   border: 1px solid var(--buttonBgColor);
+  text-decoration: none;
 }
-
+.kmt-item-setting-modal .kmt-create-post {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 .kmt-item-setting-modal .kmt-button:hover,
 .kmt-button:focus {
   box-shadow: none;

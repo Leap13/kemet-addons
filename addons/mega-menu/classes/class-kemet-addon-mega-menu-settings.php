@@ -64,7 +64,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Settings' ) ) {
 				$menu_item->megamenu_label_bg_color       = get_post_meta( $menu_item->ID, 'label-bg-color', true );
 				$menu_item->megamenu_column_template      = get_post_meta( $menu_item->ID, 'column-template', true );
 				$menu_item->megamenu_disable_item_label   = get_post_meta( $menu_item->ID, 'disable-item-label', true );
-				$menu_item->megamenu_enable_template      = get_post_meta( $menu_item->ID, 'enable-template', true );
+				$menu_item->megamenu_item_content         = get_post_meta( $menu_item->ID, 'item-content', true );
 				$menu_item->megamenu_text_color           = get_post_meta( $menu_item->ID, 'mega-menu-text-color', true );
 				$menu_item->megamenu_heading_color        = get_post_meta( $menu_item->ID, 'mega-menu-heading-color', true );
 				$menu_item->megamenu_link_color           = get_post_meta( $menu_item->ID, 'mega-menu-link-color', true );
@@ -72,6 +72,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Settings' ) ) {
 				$menu_item->megamenu_column_divider       = get_post_meta( $menu_item->ID, 'mega-menu-column-divider', true );
 				$menu_item->megamenu_column_divider_size  = get_post_meta( $menu_item->ID, 'mega-menu-column-divider-size', true );
 				$menu_item->megamenu_column_divider_color = get_post_meta( $menu_item->ID, 'mega-menu-column-divider-color', true );
+				$menu_item->megamenu_border_radius        = get_post_meta( $menu_item->ID, 'mega-menu-border-radius', true );
 			}
 
 			return $menu_item;
