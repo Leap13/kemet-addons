@@ -272,7 +272,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			}
 
-			if ( isset( $item->megamenu_icon ) && ! empty( $item->megamenu_icon ) ) {
+			if ( isset( $item->megamenu_icon ) && ! empty( $item->megamenu_icon ) && isset( $item->megamenu_icon['icon'] ) ) {
 				$icon_color = isset( $item->megamenu_icon_color['initial'] ) ? $item->megamenu_icon_color['initial'] : '';
 				$style      = array(
 					'.main-navigation .menu-item-' . $item->ID . ' .menu-item' . $item->ID . '-icon' => array(
