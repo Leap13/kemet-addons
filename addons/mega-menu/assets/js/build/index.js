@@ -405,6 +405,9 @@ var isDisplay = function isDisplay(rules, values) {
     return;
   }
 
+  var _useContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
+      parent = _useContext.parent;
+
   var relation = undefined != rules.relation ? rules.relation : "AND",
       isVisible = "AND" === relation ? true : false;
 
@@ -417,6 +420,7 @@ var isDisplay = function isDisplay(rules, values) {
         operator = undefined != rule.operator ? rule.operator : "=",
         ruleValue = rule.value;
     var settingValue = rule.setting === 'depth' ? depth : values[rule.setting];
+    settingValue = rule.operator === 'parent' ? parent.values[rule.setting] : settingValue;
 
     switch (operator) {
       case "in_array":
@@ -468,9 +472,9 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
       option = _ref.option,
       onChange = _ref.onChange;
 
-  var _useContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
-      itemId = _useContext.itemId,
-      values = _useContext.values;
+  var _useContext2 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
+      itemId = _useContext2.itemId,
+      values = _useContext2.values;
 
   var OptionComponent = window.KmtOptionComponent.OptionComponent;
   var Option = option.type === 'kmt-tabs' ? _Tabs__WEBPACK_IMPORTED_MODULE_2__["default"] : OptionComponent(option.type);
@@ -513,10 +517,10 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
 var Options = function Options(_ref2) {
   var options = _ref2.options;
 
-  var _useContext2 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
-      values = _useContext2.values,
-      depth = _useContext2.depth,
-      _onChange = _useContext2.onChange;
+  var _useContext3 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
+      values = _useContext3.values,
+      depth = _useContext3.depth,
+      _onChange = _useContext3.onChange;
 
   var renderOptions = function renderOptions(options) {
     return Object.keys(options).map(function (optionId) {
@@ -572,10 +576,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -605,24 +609,100 @@ var SettingsModal = function SettingsModal() {
     itemId: null,
     title: null,
     depth: 0,
-    values: null
+    values: null,
+    parent: {}
   }),
       _useState8 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useState7, 2),
       itemData = _useState8[0],
       setItemData = _useState8[1];
 
-  var loadItemSettings = /*#__PURE__*/function () {
-    var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee(itemId, title, depth) {
+  var getParentDataRequest = /*#__PURE__*/function () {
+    var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee(parentId) {
       var body, response, _yield$response$json, success, data;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              setInitialValue(null);
+              body = new FormData();
+              body.append('action', 'kemet_addons_parent_menu_item_settings');
+              body.append('parent_id', parentId);
+              body.append('nonce', kemetMegaMenu.ajax_nonce);
+              _context.next = 6;
+              return fetch(kemetMegaMenu.ajax_url, {
+                method: 'POST',
+                body: body
+              });
 
+            case 6:
+              response = _context.sent;
+
+              if (!(response.status === 200)) {
+                _context.next = 15;
+                break;
+              }
+
+              _context.next = 10;
+              return response.json();
+
+            case 10:
+              _yield$response$json = _context.sent;
+              success = _yield$response$json.success;
+              data = _yield$response$json.data;
+
+              if (!success) {
+                _context.next = 15;
+                break;
+              }
+
+              return _context.abrupt("return", data.values);
+
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function getParentDataRequest(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var loadItemSettings = /*#__PURE__*/function () {
+    var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee2(itemId, title, depth) {
+      var parent,
+          parentData,
+          body,
+          response,
+          _yield$response$json2,
+          success,
+          data,
+          _args2 = arguments;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              parent = _args2.length > 3 && _args2[3] !== undefined ? _args2[3] : false;
+              setInitialValue(null);
+              parentData = {};
+
+              if (!parent) {
+                _context2.next = 7;
+                break;
+              }
+
+              _context2.next = 6;
+              return getParentDataRequest(parent);
+
+            case 6:
+              parentData = _context2.sent;
+
+            case 7:
               if (!localSettings[itemId]) {
-                _context.next = 4;
+                _context2.next = 10;
                 break;
               }
 
@@ -631,58 +711,71 @@ var SettingsModal = function SettingsModal() {
                   itemId: itemId,
                   depth: depth,
                   title: title,
+                  parent: {
+                    id: parent,
+                    values: parentData
+                  },
                   values: localSettings[itemId]
                 });
               });
-              return _context.abrupt("return");
+              return _context2.abrupt("return");
 
-            case 4:
+            case 10:
               body = new FormData();
               body.append('action', 'kemet_addons_menu_item_settings');
               body.append('item_id', itemId);
+
+              if (parent) {
+                body.append('parent_id', parent);
+              }
+
               body.append('nonce', kemetMegaMenu.ajax_nonce);
-              _context.next = 10;
+              _context2.next = 17;
               return fetch(kemetMegaMenu.ajax_url, {
                 method: 'POST',
                 body: body
               });
 
-            case 10:
-              response = _context.sent;
+            case 17:
+              response = _context2.sent;
 
               if (!(response.status === 200)) {
-                _context.next = 18;
+                _context2.next = 25;
                 break;
               }
 
-              _context.next = 14;
+              _context2.next = 21;
               return response.json();
 
-            case 14:
-              _yield$response$json = _context.sent;
-              success = _yield$response$json.success;
-              data = _yield$response$json.data;
+            case 21:
+              _yield$response$json2 = _context2.sent;
+              success = _yield$response$json2.success;
+              data = _yield$response$json2.data;
 
               if (success) {
                 setItemData({
                   itemId: itemId,
                   depth: depth,
                   title: title,
+                  parent: {
+                    id: parent,
+                    values: parentData
+                  },
                   values: data.values
                 });
                 localSettings[itemId] = data.values;
               }
 
-            case 18:
+            case 25:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee);
+      }, _callee2);
     }));
 
-    return function loadItemSettings(_x, _x2, _x3) {
-      return _ref.apply(this, arguments);
+    return function loadItemSettings(_x2, _x3, _x4) {
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -692,30 +785,30 @@ var SettingsModal = function SettingsModal() {
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     document.addEventListener('KemetEditMenuItem', /*#__PURE__*/function () {
-      var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee2(_ref2) {
-        var _ref2$detail, itemId, title, depth;
+      var _ref4 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee3(_ref3) {
+        var _ref3$detail, itemId, title, depth, parent;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _ref2$detail = _ref2.detail, itemId = _ref2$detail.itemId, title = _ref2$detail.title, depth = _ref2$detail.depth;
-                _context2.next = 3;
-                return loadItemSettings(itemId, title, depth);
+                _ref3$detail = _ref3.detail, itemId = _ref3$detail.itemId, title = _ref3$detail.title, depth = _ref3$detail.depth, parent = _ref3$detail.parent;
+                _context3.next = 3;
+                return loadItemSettings(itemId, title, depth, parent);
 
               case 3:
                 setOpen(true);
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }));
 
-      return function (_x4) {
-        return _ref3.apply(this, arguments);
+      return function (_x5) {
+        return _ref4.apply(this, arguments);
       };
     }());
   }, []);
@@ -727,12 +820,12 @@ var SettingsModal = function SettingsModal() {
   };
 
   var onSaveHandler = /*#__PURE__*/function () {
-    var _ref4 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee3() {
-      var body, response, _yield$response$json2, success;
+    var _ref5 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.mark(function _callee4() {
+      var body, response, _yield$response$json3, success;
 
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee3$(_context3) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_4___default.a.wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
               localSettings[itemData.itemId] = _objectSpread(_objectSpread({}, itemData.values), initialValue);
               setIsLoading(true);
@@ -741,26 +834,26 @@ var SettingsModal = function SettingsModal() {
               body.append('item_id', itemData.itemId);
               body.append('data', JSON.stringify(initialValue));
               body.append('nonce', kemetMegaMenu.ajax_nonce);
-              _context3.next = 9;
+              _context4.next = 9;
               return fetch(kemetMegaMenu.ajax_url, {
                 method: 'POST',
                 body: body
               });
 
             case 9:
-              response = _context3.sent;
+              response = _context4.sent;
 
               if (!(response.status === 200)) {
-                _context3.next = 16;
+                _context4.next = 16;
                 break;
               }
 
-              _context3.next = 13;
+              _context4.next = 13;
               return response.json();
 
             case 13:
-              _yield$response$json2 = _context3.sent;
-              success = _yield$response$json2.success;
+              _yield$response$json3 = _context4.sent;
+              success = _yield$response$json3.success;
 
               if (success) {
                 setIsLoading(false);
@@ -768,14 +861,14 @@ var SettingsModal = function SettingsModal() {
 
             case 16:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
         }
-      }, _callee3);
+      }, _callee4);
     }));
 
     return function onSaveHandler() {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -783,7 +876,8 @@ var SettingsModal = function SettingsModal() {
     itemId: itemData.itemId,
     onChange: handleChange,
     depth: itemData.depth,
-    values: _objectSpread(_objectSpread({}, itemData.values), initialValue)
+    values: _objectSpread(_objectSpread({}, itemData.values), initialValue),
+    parent: itemData.parent
   };
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_store_options_context__WEBPACK_IMPORTED_MODULE_9__["default"].Provider, {
     value: contextValues
@@ -1008,6 +1102,7 @@ window.onload = function () {
 (function ($) {
   $(document).on('click', '.kmt-menu-item-settings button', function (e) {
     e.preventDefault();
+    var parentItemID;
     var _e$target$parentEleme = e.target.parentElement.dataset,
         itemId = _e$target$parentEleme.itemId,
         navId = _e$target$parentEleme.navId;
@@ -1015,12 +1110,19 @@ window.onload = function () {
     var depth = parseFloat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(e.target.closest('.menu-item').classList).find(function (c) {
       return c.indexOf('menu-item-depth') > -1;
     }).replace('menu-item-depth-', ''));
+
+    if (depth > 0) {
+      var parentItem = $(e.target).parents('.menu-item').prevAll(".menu-item-depth-0");
+      parentItemID = parseFloat(parentItem.attr("id").replace('menu-item-', ''));
+    }
+
     var event = new CustomEvent('KemetEditMenuItem', {
       detail: {
         itemId: itemId,
         depth: depth,
         title: title,
-        navId: navId
+        navId: navId,
+        parent: parentItemID
       }
     });
     document.dispatchEvent(event);

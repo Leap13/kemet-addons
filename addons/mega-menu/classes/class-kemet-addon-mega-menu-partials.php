@@ -59,6 +59,31 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			add_action( 'wp_nav_menu_item_custom_fields', array( $this, 'custom_field' ), 10, 5 );
 			add_action( 'wp_ajax_kemet_addons_menu_item_settings', array( $this, 'get_item_gettings' ) );
 			add_action( 'wp_ajax_kemet_addons_menu_update_item_settings', array( $this, 'update_item_gettings' ) );
+			add_action( 'wp_ajax_kemet_addons_parent_menu_item_settings', array( $this, 'get_parent_item_gettings' ) );
+		}
+
+		/**
+		 * get_options
+		 *
+		 * @return void
+		 */
+		public function get_parent_item_gettings() {
+			check_ajax_referer( 'kemet-addons-mega-menu', 'nonce' );
+
+			$parent_id = isset( $_POST['parent_id'] ) ? sanitize_text_field( wp_unslash( $_POST['parent_id'] ) ) : '';
+
+			$data = array();
+			if ( $parent_id ) {
+				$data['enable-mega-menu'] = get_post_meta( $parent_id, 'enable-mega-menu', true );
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'values'  => $data,
+					)
+				);
+			}
+
+			wp_send_json_error();
 		}
 
 		/**

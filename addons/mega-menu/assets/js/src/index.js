@@ -11,6 +11,7 @@ window.onload = function () {
 (function ($) {
     $(document).on('click', '.kmt-menu-item-settings button', (e) => {
         e.preventDefault();
+        let parentItemID;
         const { itemId, navId } = e.target.parentElement.dataset;
         const title = e.target.closest('.menu-item').querySelector('.edit-menu-item-title').value
         const depth = parseFloat(
@@ -18,12 +19,17 @@ window.onload = function () {
                 .find((c) => c.indexOf('menu-item-depth') > -1)
                 .replace('menu-item-depth-', '')
         );
+        if (depth > 0) {
+            const parentItem = $(e.target).parents('.menu-item').prevAll(".menu-item-depth-0");
+            parentItemID = parseFloat(parentItem.attr("id").replace('menu-item-', ''));
+        }
         var event = new CustomEvent('KemetEditMenuItem', {
             detail: {
                 itemId,
                 depth,
                 title,
-                navId
+                navId,
+                parent: parentItemID
             }
         });
         document.dispatchEvent(event);

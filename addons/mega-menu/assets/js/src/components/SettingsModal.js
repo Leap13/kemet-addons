@@ -16,16 +16,41 @@ const SettingsModal = () => {
         title: null,
         depth: 0,
         values: null,
+        parent: {}
     })
+    const getParentDataRequest = async (parentId) => {
+        const body = new FormData()
+        body.append('action', 'kemet_addons_parent_menu_item_settings')
+        body.append('parent_id', parentId);
+        body.append('nonce', kemetMegaMenu.ajax_nonce)
+        const response = await fetch(kemetMegaMenu.ajax_url, {
+            method: 'POST',
+            body,
+        })
+        if (response.status === 200) {
+            const { success, data } = await response.json()
+            if (success) {
+                return data.values;
+            }
+        }
+    }
 
-    const loadItemSettings = async (itemId, title, depth) => {
+    const loadItemSettings = async (itemId, title, depth, parent = false) => {
         setInitialValue(null);
+        let parentData = {};
+        if (parent) {
+            parentData = await getParentDataRequest(parent);
+        }
         if (localSettings[itemId]) {
             setItemData((prevValue) => ({
                 ...prevValue,
                 itemId,
                 depth,
                 title,
+                parent: {
+                    id: parent,
+                    values: parentData
+                },
                 values: localSettings[itemId]
             }))
             return
@@ -34,6 +59,9 @@ const SettingsModal = () => {
         const body = new FormData()
         body.append('action', 'kemet_addons_menu_item_settings')
         body.append('item_id', itemId);
+        if (parent) {
+            body.append('parent_id', parent);
+        }
         body.append('nonce', kemetMegaMenu.ajax_nonce)
         const response = await fetch(kemetMegaMenu.ajax_url, {
             method: 'POST',
@@ -46,6 +74,10 @@ const SettingsModal = () => {
                     itemId,
                     depth,
                     title,
+                    parent: {
+                        id: parent,
+                        values: parentData
+                    },
                     values: data.values,
                 })
                 localSettings[itemId] = data.values;
@@ -56,8 +88,8 @@ const SettingsModal = () => {
         setOpen(false);
     }
     useEffect(() => {
-        document.addEventListener('KemetEditMenuItem', async function ({ detail: { itemId, title, depth } }) {
-            await loadItemSettings(itemId, title, depth);
+        document.addEventListener('KemetEditMenuItem', async function ({ detail: { itemId, title, depth, parent } }) {
+            await loadItemSettings(itemId, title, depth, parent);
             setOpen(true);
         })
     }, [])
@@ -94,7 +126,8 @@ const SettingsModal = () => {
         itemId: itemData.itemId,
         onChange: handleChange,
         depth: itemData.depth,
-        values: { ...itemData.values, ...initialValue }
+        values: { ...itemData.values, ...initialValue },
+        parent: itemData.parent
     }
     return (
         <OptionsContext.Provider value={contextValues}>

@@ -102,8 +102,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 			// Name.
 			add_submenu_page(
 				'kemet_panel',
-				esc_html__( 'Custom Layouts', 'kemet-addons' ),
-				esc_html__( 'Custom Layouts', 'kemet-addons' ),
+				esc_html__( 'Custom Content', 'kemet-addons' ),
+				esc_html__( 'Custom Content', 'kemet-addons' ),
 				'manage_options',
 				'edit.php?post_type=' . KEMET_CUSTOM_LAYOUT_POST_TYPE
 			);
@@ -133,16 +133,16 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 					'kemet_custon_layouts_args',
 					array(
 						'labels'              => array(
-							'name'          => esc_html__( 'Custom Layouts', 'kemet-addons' ),
-							'singular_name' => esc_html__( 'Custom Layout', 'kemet-addons' ),
-							'search_items'  => esc_html__( 'Search Custom Layouts', 'kemet-addons' ),
-							'all_items'     => esc_html__( 'All Custom Layouts', 'kemet-addons' ),
-							'edit_item'     => esc_html__( 'Edit Custom Layout', 'kemet-addons' ),
-							'view_item'     => esc_html__( 'View Custom Layout', 'kemet-addons' ),
+							'name'          => esc_html__( 'Custom Contents', 'kemet-addons' ),
+							'singular_name' => esc_html__( 'Custom Content', 'kemet-addons' ),
+							'search_items'  => esc_html__( 'Search Custom Contents', 'kemet-addons' ),
+							'all_items'     => esc_html__( 'All Custom Contents', 'kemet-addons' ),
+							'edit_item'     => esc_html__( 'Edit Custom Content', 'kemet-addons' ),
+							'view_item'     => esc_html__( 'View Custom Content', 'kemet-addons' ),
 							'add_new'       => esc_html__( 'Add New', 'kemet-addons' ),
-							'update_item'   => esc_html__( 'Update Custom Layout', 'kemet-addons' ),
+							'update_item'   => esc_html__( 'Update Custom Content', 'kemet-addons' ),
 							'add_new_item'  => esc_html__( 'Add New', 'kemet-addons' ),
-							'new_item_name' => esc_html__( 'New Custom Layout Name', 'kemet-addons' ),
+							'new_item_name' => esc_html__( 'New Custom Content Name', 'kemet-addons' ),
 						),
 						'public'              => true,
 						'hierarchical'        => false,

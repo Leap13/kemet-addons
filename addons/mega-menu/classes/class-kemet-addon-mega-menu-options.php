@@ -125,6 +125,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 											'operator' => '>',
 											'value'    => 0,
 										),
+										array(
+											'setting'  => 'enable-mega-menu',
+											'operator' => 'parent',
+											'value'    => true,
+										),
 									),
 								),
 								'item-content'       => array(
@@ -137,6 +142,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 											'setting'  => 'depth',
 											'operator' => '>',
 											'value'    => 0,
+										),
+										array(
+											'setting'  => 'enable-mega-menu',
+											'operator' => 'parent',
+											'value'    => true,
 										),
 									),
 								),
@@ -155,6 +165,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 											'setting'  => 'item-content',
 											'operator' => 'in_array',
 											'value'    => array( 'elementor_library', 'wp_block', 'kemet_custom_layouts' ),
+										),
+										array(
+											'setting'  => 'enable-mega-menu',
+											'operator' => 'parent',
+											'value'    => true,
 										),
 									),
 								),
@@ -289,6 +304,16 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'divider' => true,
 									'type'    => 'kmt-border',
 									'label'   => __( 'Column Divider', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
 								),
 								'mega-menu-border-radius'  => array(
 									'type'         => 'kmt-slider',

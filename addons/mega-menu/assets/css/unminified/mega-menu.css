@@ -222,6 +222,10 @@
   animation: rotate 2s linear infinite;
 }
 
+.kmt-item-setting-modal .current-tab-options {
+  padding: 15px 50px 0px 50px;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);

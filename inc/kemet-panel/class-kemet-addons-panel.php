@@ -217,8 +217,8 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					),
 					'custom-layout'       => array(
 						'type'        => 'kmt-button',
-						'label'       => __( 'Custom Layout', 'kemet-addons' ),
-						'description' => __( 'Enable/Disable custom layout option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
+						'label'       => __( 'Custom Content', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable custom content option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
 					),
 					'woocommerce'         => array(
 						'type'        => 'kmt-button',

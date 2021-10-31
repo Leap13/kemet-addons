@@ -7,6 +7,7 @@ export const isDisplay = (rules, values, depth = 0) => {
     if (!values) {
         return;
     }
+    const { parent } = useContext(OptionsContext);
     var relation = undefined != rules.relation ? rules.relation : "AND",
         isVisible = "AND" === relation ? true : false;
     _.each(rules, function (rule, ruleKey) {
@@ -18,7 +19,7 @@ export const isDisplay = (rules, values, depth = 0) => {
             ruleValue = rule.value;
 
         var settingValue = rule.setting === 'depth' ? depth : values[rule.setting];
-
+        settingValue = rule.operator === 'parent' ? parent.values[rule.setting] : settingValue;
         switch (operator) {
             case "in_array":
                 boolean = ruleValue.includes(settingValue);
