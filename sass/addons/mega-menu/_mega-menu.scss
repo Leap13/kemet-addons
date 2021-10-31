@@ -4,6 +4,9 @@
       border-right: var(--columnDivider);
     }
     > li {
+      > a {
+        border-bottom: none !important;
+      }
       .sub-menu {
         li > a {
           border-top: var(--itemDivider);

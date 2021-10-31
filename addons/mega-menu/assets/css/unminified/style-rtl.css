@@ -5,6 +5,10 @@
   border-left: var(--columnDivider);
 }
 
+.main-navigation .kemet-megamenu > li > a {
+  border-bottom: none !important;
+}
+
 .main-navigation .kemet-megamenu > li .sub-menu li > a {
   border-top: var(--itemDivider);
   border-bottom: none;
