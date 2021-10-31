@@ -173,6 +173,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			$data['mega-menu-link-color']     = get_post_meta( $item_id, 'mega-menu-link-color', true );
 			$data['mega-menu-item-spacing']   = get_post_meta( $item_id, 'mega-menu-item-spacing', true );
 			$data['mega-menu-column-divider'] = get_post_meta( $item_id, 'mega-menu-column-divider', true );
+			$data['mega-menu-items-divider']  = get_post_meta( $item_id, 'mega-menu-items-divider', true );
 			$data['mega-menu-border-radius']  = get_post_meta( $item_id, 'mega-menu-border-radius', true );
 
 			return $data;

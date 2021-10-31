@@ -3,6 +3,14 @@
     > li:not(:last-child) {
       border-right: var(--columnDivider);
     }
+    > li {
+      .sub-menu {
+        li > a {
+          border-top: var(--itemDivider);
+          border-bottom: none;
+        }
+      }
+    }
     .heading-item {
       > a {
         font-weight: 700;

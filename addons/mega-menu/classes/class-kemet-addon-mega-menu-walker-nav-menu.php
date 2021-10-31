@@ -58,7 +58,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 					'--linksHoverColor' => esc_attr( $link_h_color ),
 					'--backgroundColor' => esc_attr( $link_bg_color ),
 					'padding'           => kemet_spacing( $spacing, 'all' ),
-					'border-radius'     => kemet_slider( $this->megamenu_border_radius ),
+					'border-radius'     => kemet_spacing( $this->megamenu_border_radius, 'all' ),
 				);
 
 				$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .kemet-megamenu .heading-item' ] = array(
@@ -67,9 +67,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				);
 
 				if ( $this->megamenu_column_divider && 'none' !== $this->megamenu_column_divider ) {
-					$divider = isset( $this->megamenu_column_divider ) ? $this->megamenu_column_divider : array();
+					$divider       = isset( $this->megamenu_column_divider ) ? $this->megamenu_column_divider : array();
+					$items_divider = isset( $this->megamenu_items_divider ) ? $this->megamenu_items_divider : array();
 					$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu' ] = array(
 						'--columnDivider' => kemet_border( $divider ),
+						'--itemDivider'   => kemet_border( $items_divider ),
 					);
 				}
 				$output_css .= kemet_get_background_obj( 'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu ,body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .mega-menu-full-wrap', $bg_obj );
@@ -146,6 +148,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				$this->megamenu_link_color     = get_post_meta( $item->ID, 'mega-menu-link-color', true );
 				$this->megamenu_heading_color  = get_post_meta( $item->ID, 'mega-menu-heading-color', true );
 				$this->megamenu_column_divider = get_post_meta( $item->ID, 'mega-menu-column-divider', true );
+				$this->megamenu_items_divider  = get_post_meta( $item->ID, 'mega-menu-items-divider', true );
 				$this->megamenu_border_radius  = get_post_meta( $item->ID, 'mega-menu-border-radius', true );
 				$this->menu_item_id            = $item->ID;
 			}

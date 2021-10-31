@@ -5,6 +5,11 @@
   border-left: var(--columnDivider);
 }
 
+.main-navigation .kemet-megamenu > li .sub-menu li > a {
+  border-top: var(--itemDivider);
+  border-bottom: none;
+}
+
 .main-navigation .kemet-megamenu .heading-item > a {
   font-weight: 700;
   font-size: 1.1em;

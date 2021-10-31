@@ -69,6 +69,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Settings' ) ) {
 				$menu_item->megamenu_heading_color      = get_post_meta( $menu_item->ID, 'mega-menu-heading-color', true );
 				$menu_item->megamenu_link_color         = get_post_meta( $menu_item->ID, 'mega-menu-link-color', true );
 				$menu_item->megamenu_item_spacing       = get_post_meta( $menu_item->ID, 'mega-menu-item-spacing', true );
+				$menu_item->megamenu_items_divider      = get_post_meta( $menu_item->ID, 'mega-menu-items-divider', true );
 				$menu_item->megamenu_column_divider     = get_post_meta( $menu_item->ID, 'mega-menu-column-divider', true );
 				$menu_item->megamenu_border_radius      = get_post_meta( $menu_item->ID, 'mega-menu-border-radius', true );
 			}

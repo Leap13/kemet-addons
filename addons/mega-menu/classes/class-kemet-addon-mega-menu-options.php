@@ -300,6 +300,21 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
+								'mega-menu-items-divider'  => array(
+									'divider' => true,
+									'type'    => 'kmt-border',
+									'label'   => __( 'Items Divider', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting' => 'depth',
+											'value'   => 0,
+										),
+										array(
+											'setting' => 'enable-mega-menu',
+											'value'   => true,
+										),
+									),
+								),
 								'mega-menu-column-divider' => array(
 									'divider' => true,
 									'type'    => 'kmt-border',
@@ -316,21 +331,18 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									),
 								),
 								'mega-menu-border-radius'  => array(
-									'type'         => 'kmt-slider',
-									'responsive'   => false,
-									'default'      => array(
-										'value' => 1,
-										'unit'  => 'px',
+									'type'           => 'kmt-spacing',
+									'responsive'     => false,
+									'label'          => __( 'Border Radius', 'kemet-addons' ),
+									'linked_choices' => true,
+									'unit_choices'   => array( 'px' ),
+									'choices'        => array(
+										'top'    => __( 'Top', 'kemet' ),
+										'right'  => __( 'Right', 'kemet' ),
+										'bottom' => __( 'Bottom', 'kemet' ),
+										'left'   => __( 'Left', 'kemet' ),
 									),
-									'label'        => __( 'Border Radius', 'kemet-addons' ),
-									'unit_choices' => array(
-										'px' => array(
-											'min'  => 0,
-											'step' => 1,
-											'max'  => 500,
-										),
-									),
-									'context'      => array(
+									'context'        => array(
 										array(
 											'setting' => 'depth',
 											'value'   => 0,
