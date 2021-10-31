@@ -66,7 +66,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 					'--linksHoverColor' => esc_attr( $headings_color ),
 				);
 
-				if ( $this->megamenu_column_divider && 'none' !== $this->megamenu_column_divider ) {
+				if ( $this->megamenu_column_divider || $this->megamenu_items_divider ) {
 					$divider       = isset( $this->megamenu_column_divider ) ? $this->megamenu_column_divider : array();
 					$items_divider = isset( $this->megamenu_items_divider ) ? $this->megamenu_items_divider : array();
 					$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' ul.kemet-megamenu' ] = array(
