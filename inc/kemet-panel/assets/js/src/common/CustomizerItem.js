@@ -7,7 +7,7 @@ const CustomizerItem = (props) => {
             <div className="description customize-control-description">{props.params.description}</div>
         </label>
         <div className="option-actions">
-            <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet')}</a>
+            <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet-addons')}</a>
         </div>
     </Card>
 }

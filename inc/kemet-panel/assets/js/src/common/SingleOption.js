@@ -34,7 +34,7 @@ const SingleOption = (props) => {
         setIsLoading(false)
     };
 
-    let btnText = value === true ? __('Deactivate', 'kemet') : __('Activate', 'kemet')
+    let btnText = value === true ? __('Deactivate', 'kemet-addons') : __('Activate', 'kemet-addons')
     const btnClasses = value === true ? 'secondary' : 'primary';
     return <Card id={props.id}>
         <label>
@@ -48,7 +48,7 @@ const SingleOption = (props) => {
             <button className={`kmt-button ${btnClasses}`} onClick={() => {
                 handleChange()
             }} disabled={isLoading}>{btnText}</button>
-            {value && props.params.url && <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet')}</a>}
+            {value && props.params.url && <a className='kmt-button' href={props.params.url}>{__('Customize', 'kemet-addons')}</a>}
         </div>
     </Card>
 }

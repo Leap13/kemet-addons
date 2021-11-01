@@ -10,17 +10,17 @@ const RendeTabs = ({ options, values }) => {
     const tabs = [
         {
             name: 'customizer-options',
-            title: __('Customize Your Site', 'kemet'),
+            title: __('Customize Your Site', 'kemet-addons'),
             className: 'customizer-options',
         },
         {
             name: 'plugins',
-            title: __('Recommended Plugins', 'kemet'),
+            title: __('Recommended Plugins', 'kemet-addons'),
             className: 'plugins',
         },
         {
             name: 'system',
-            title: __('System Info', 'kemet'),
+            title: __('System Info', 'kemet-addons'),
             className: 'system',
         },
     ]

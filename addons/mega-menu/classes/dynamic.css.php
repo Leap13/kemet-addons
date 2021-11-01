@@ -18,7 +18,7 @@ function kemet_mega_menu_dynamic_css( $dynamic_css ) {
 		'body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .mega-menu-full-wrap' => array(
 			'background-color' => 'var(--globalBackgroundColor)',
 			'border-top-width' => 'var(--borderTopWidth)',
-			'border-top-color' => 'var(--borderTopColor)',
+			'border-top-color' => 'var(--borderTopColor,var(--themeColor))',
 		),
 		'.main-navigation .kemet-megamenu .heading-item>a' => array(
 			'font-size' => 'var(--fontSize)',

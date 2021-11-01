@@ -174,7 +174,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			if ( $this->column_heading && 0 < $depth ) {
 				$classes[] = 'heading-item';
 			}
-			if ( $this->megamenu_disable_item_label ) {
+			if ( $this->megamenu_disable_item_label && 0 < $depth ) {
 				$classes[] = 'disable-item-label';
 			}
 			$classes[] = 'menu-item-' . $item->ID;

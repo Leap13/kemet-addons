@@ -45,7 +45,7 @@ function extra_blog_options( $options ) {
 		),
 		'blog-featured-image-width'      => array(
 			'type'    => 'kmt-number',
-			'label'   => __( 'Custom Width', 'kemet' ),
+			'label'   => __( 'Custom Width', 'kemet-addons' ),
 			'min'     => 0,
 			'step'    => 1,
 			'max'     => 1200,
@@ -59,7 +59,7 @@ function extra_blog_options( $options ) {
 		),
 		'blog-featured-image-height'     => array(
 			'type'    => 'kmt-number',
-			'label'   => __( 'Custom Height', 'kemet' ),
+			'label'   => __( 'Custom Height', 'kemet-addons' ),
 			'min'     => 0,
 			'step'    => 1,
 			'max'     => 1200,
@@ -123,7 +123,7 @@ function extra_blog_options( $options ) {
 		),
 		'load-more-text'                 => array(
 			'type'    => 'kmt-text',
-			'label'   => __( 'Load More Text', 'kemet' ),
+			'label'   => __( 'Load More Text', 'kemet-addons' ),
 			'context' => array(
 				array(
 					'setting' => 'blog-pagination-style',
@@ -138,7 +138,7 @@ function extra_blog_options( $options ) {
 		'blog-infinite-loader-color'     => array(
 			'type'      => 'kmt-color',
 			'transport' => 'postMessage',
-			'label'     => __( 'Infinite Scroll Loader Color', 'kemet' ),
+			'label'     => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
 			'pickers'   => array(
 				array(
 					'id'    => 'initial',
@@ -164,7 +164,7 @@ function extra_blog_options( $options ) {
 		),
 		'blog-infinite-scroll-last-text' => array(
 			'type'    => 'kmt-text',
-			'label'   => __( 'Infinite Scroll: Last Text', 'kemet' ),
+			'label'   => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
 			'context' => array(
 				array(
 					'setting' => 'blog-pagination-style',

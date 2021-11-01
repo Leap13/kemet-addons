@@ -17,26 +17,26 @@ function woo_shop_options( $options ) {
 	$addon_options = array(
 		$prefix . '-title'                      => array(
 			'type'  => 'kmt-title',
-			'label' => __( 'Shop Settings', 'kemet' ),
+			'label' => __( 'Shop Settings', 'kemet-addons' ),
 		),
 		$prefix . '-layout'                     => array(
 			'type'    => 'kmt-select',
-			'label'   => __( 'Shop Layout', 'kemet' ),
+			'label'   => __( 'Shop Layout', 'kemet-addons' ),
 			'choices' => array(
-				'shop-grid'   => __( 'Boxed', 'kemet' ),
-				'hover-style' => __( 'Simple', 'kemet' ),
+				'shop-grid'   => __( 'Boxed', 'kemet-addons' ),
+				'hover-style' => __( 'Simple', 'kemet-addons' ),
 			),
 		),
 		$prefix . '-simple-product-structure'   => array(
 			'type'    => 'kmt-sortable',
-			'label'   => __( 'Product Structure', 'kemet' ),
+			'label'   => __( 'Product Structure', 'kemet-addons' ),
 			'choices' => array(
-				'title'      => __( 'Title', 'kemet' ),
-				'price'      => __( 'Price', 'kemet' ),
-				'ratings'    => __( 'Ratings', 'kemet' ),
-				'short_desc' => __( 'Short Description', 'kemet' ),
-				'add_cart'   => __( 'Add To Cart', 'kemet' ),
-				'category'   => __( 'Category', 'kemet' ),
+				'title'      => __( 'Title', 'kemet-addons' ),
+				'price'      => __( 'Price', 'kemet-addons' ),
+				'ratings'    => __( 'Ratings', 'kemet-addons' ),
+				'short_desc' => __( 'Short Description', 'kemet-addons' ),
+				'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
+				'category'   => __( 'Category', 'kemet-addons' ),
 			),
 			'context' => array(
 				array(
@@ -47,11 +47,11 @@ function woo_shop_options( $options ) {
 		),
 		$prefix . '-product-structure'          => array(
 			'type'    => 'kmt-sortable',
-			'label'   => __( 'Product Structure', 'kemet' ),
+			'label'   => __( 'Product Structure', 'kemet-addons' ),
 			'choices' => array(
-				'short_desc' => __( 'Short Description', 'kemet' ),
-				'add_cart'   => __( 'Add To Cart', 'kemet' ),
-				'category'   => __( 'Category', 'kemet' ),
+				'short_desc' => __( 'Short Description', 'kemet-addons' ),
+				'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
+				'category'   => __( 'Category', 'kemet-addons' ),
 			),
 			'context' => array(
 				array(
@@ -62,19 +62,19 @@ function woo_shop_options( $options ) {
 		),
 		$prefix . '-list-product-structure'     => array(
 			'type'    => 'kmt-sortable',
-			'label'   => __( 'List Style Product Structure', 'kemet' ),
+			'label'   => __( 'List Style Product Structure', 'kemet-addons' ),
 			'choices' => array(
-				'title'      => __( 'Title', 'kemet' ),
-				'price'      => __( 'Price', 'kemet' ),
-				'ratings'    => __( 'Ratings', 'kemet' ),
-				'short_desc' => __( 'Short Description', 'kemet' ),
-				'add_cart'   => __( 'Add To Cart', 'kemet' ),
-				'category'   => __( 'Category', 'kemet' ),
+				'title'      => __( 'Title', 'kemet-addons' ),
+				'price'      => __( 'Price', 'kemet-addons' ),
+				'ratings'    => __( 'Ratings', 'kemet-addons' ),
+				'short_desc' => __( 'Short Description', 'kemet-addons' ),
+				'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
+				'category'   => __( 'Category', 'kemet-addons' ),
 			),
 		),
 		'disable-list-short-desc-in-responsive' => array(
 			'type'    => 'kmt-switcher',
-			'label'   => __( 'Disable Short Description In Responsive', 'kemet' ),
+			'label'   => __( 'Disable Short Description In Responsive', 'kemet-addons' ),
 			'context' => array(
 				array(
 					'setting'  => $prefix . '-list-product-structure',
