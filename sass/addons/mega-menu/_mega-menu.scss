@@ -28,22 +28,6 @@
     }
   }
   li.menu-item {
-    &.kemet-megamenu-item {
-      .disable-item-label {
-        > a {
-          display: none;
-        }
-      }
-    }
-  }
-  li.menu-item {
-    &.kemet-megamenu-item {
-      &.disable-item-label {
-        > a {
-          display: none;
-        }
-      }
-    }
     &.has-description.menu-item-has-children {
       > a {
         display: flex;
@@ -282,11 +266,6 @@ body:not(.kmt-header-break-point) {
       .kemet-megamenu {
         > li {
           width: 100%;
-          &.disable-item-label {
-            > ul.sub-menu {
-              display: block !important;
-            }
-          }
           > ul.sub-menu {
             li {
               a {

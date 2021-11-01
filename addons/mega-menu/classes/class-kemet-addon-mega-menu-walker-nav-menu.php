@@ -174,9 +174,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			if ( $this->column_heading && 0 < $depth ) {
 				$classes[] = 'heading-item';
 			}
-			if ( $this->megamenu_disable_item_label && 0 < $depth ) {
-				$classes[] = 'disable-item-label';
-			}
+
 			$classes[] = 'menu-item-' . $item->ID;
 
 			/**
@@ -275,6 +273,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			}
 
+			$title_text = $item->title;
+
+			if ( $this->megamenu_disable_item_label && 0 < $depth ) {
+				$title_text = '';
+			}
+
 			if ( isset( $item->megamenu_icon ) && ! empty( $item->megamenu_icon ) && isset( $item->megamenu_icon['icon'] ) ) {
 				$icon_color = isset( $item->megamenu_icon_color['initial'] ) ? $item->megamenu_icon_color['initial'] : '';
 				$style      = array(
@@ -283,9 +287,9 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 					),
 				);
 				Kemet_Addon_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
-				$title_html .= '<span class="menu-item' . $item->ID . '-icon ' . esc_html( $item->megamenu_icon['icon'] ) . '"></span>' . $item->title;
+				$title_html .= '<span class="menu-item' . $item->ID . '-icon ' . esc_html( $item->megamenu_icon['icon'] ) . '"></span>' . $title_text;
 			} else {
-				$title_html .= $item->title;
+				$title_html .= $title_text;
 			}
 
 			if ( 0 < $depth ) {
