@@ -15,10 +15,8 @@
       }
     }
     .heading-item {
-      > a {
-        font-weight: 700;
-        font-size: 1.1em;
-      }
+      font-weight: 700;
+      font-size: 1.1em;
     }
     .kmt-svg-icon.icon-dropdown-menu {
       display: none;
@@ -28,6 +26,31 @@
     }
   }
   li.menu-item {
+    > a {
+      .kmt-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+        vertical-align: middle;
+        &.dashicons {
+          width: var(--iconSize, 15px);
+          height: var(--iconSize, 15px);
+          font-size: var(--iconSize, 15px);
+          color: var(--iconColor, var(--linksColor));
+        }
+        svg {
+          position: relative;
+          width: var(--iconSize, 15px);
+          height: var(--iconSize, 15px);
+          fill: var(--iconColor, var(--linksColor));
+          transition: var(
+            --iconTransition,
+            fill 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          );
+        }
+      }
+    }
     &.has-description.menu-item-has-children {
       > a {
         display: flex;
@@ -36,28 +59,6 @@
           display: none;
         }
       }
-      > a > span:first-child {
-        &:after {
-          content: "\e907";
-          display: inline-block;
-          font-family: Kemet-font;
-          font-size: 1rem;
-          font-weight: 700;
-          text-rendering: auto;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          margin-left: 10px;
-          vertical-align: middle;
-          line-height: normal;
-        }
-      }
-    }
-    span.dashicons {
-      margin-right: 5px;
-    }
-    .dashicons,
-    .dashicons-before:before {
-      vertical-align: middle;
     }
     .kemet-mega-menu-label {
       font-size: 0.7em;

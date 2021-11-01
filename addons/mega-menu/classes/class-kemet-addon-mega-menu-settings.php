@@ -51,6 +51,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Settings' ) ) {
 			if ( isset( $menu_item->ID ) ) {
 				$menu_item->megamenu                    = get_post_meta( $menu_item->ID, 'enable-mega-menu', true );
 				$menu_item->megamenu_icon               = get_post_meta( $menu_item->ID, 'mega-menu-icon', true );
+				$menu_item->megamenu_icon_size          = get_post_meta( $menu_item->ID, 'mega-menu-icon-size', true );
 				$menu_item->megamenu_icon_color         = get_post_meta( $menu_item->ID, 'mega-menu-icon-color', true );
 				$menu_item->megamenu_disable_link       = get_post_meta( $menu_item->ID, 'disable-link', true );
 				$menu_item->megamenu                    = get_post_meta( $menu_item->ID, 'enable-mega-menu', true );
@@ -67,6 +68,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Settings' ) ) {
 				$menu_item->megamenu_item_content       = get_post_meta( $menu_item->ID, 'item-content', true );
 				$menu_item->megamenu_text_color         = get_post_meta( $menu_item->ID, 'mega-menu-text-color', true );
 				$menu_item->megamenu_heading_color      = get_post_meta( $menu_item->ID, 'mega-menu-heading-color', true );
+				$menu_item->megamenu_heading_bg_color   = get_post_meta( $menu_item->ID, 'mega-menu-heading-bg-color', true );
 				$menu_item->megamenu_link_color         = get_post_meta( $menu_item->ID, 'mega-menu-link-color', true );
 				$menu_item->megamenu_item_spacing       = get_post_meta( $menu_item->ID, 'mega-menu-item-spacing', true );
 				$menu_item->megamenu_items_divider      = get_post_meta( $menu_item->ID, 'mega-menu-items-divider', true );
