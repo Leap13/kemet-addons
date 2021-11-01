@@ -207,6 +207,10 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'label'   => __( 'Make This Item As Column Heading', 'kemet-addons' ),
 									'context' => array(
 										array(
+											'setting' => 'disable-item-label',
+											'value'   => false,
+										),
+										array(
 											'setting'  => 'depth',
 											'operator' => '>',
 											'value'    => 0,

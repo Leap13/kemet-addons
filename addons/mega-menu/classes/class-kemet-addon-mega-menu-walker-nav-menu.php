@@ -308,8 +308,8 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			}
 
 			if ( isset( $item->megamenu_label ) && ! empty( $item->megamenu_label ) ) {
-				$label_color = isset( $item->megamenu_label_color['initial'] ) ? $item->megamenu_label_color['initial'] : '';
-				$label_bg    = isset( $item->megamenu_label_bg_color['initial'] ) ? $item->megamenu_label_bg_color['initial'] : '';
+				$label_color = isset( $item->megamenu_label_color['initial'] ) ? $item->megamenu_label_color['initial'] : '#ffffff';
+				$label_bg    = isset( $item->megamenu_label_bg_color['initial'] ) ? $item->megamenu_label_bg_color['initial'] : 'var(--themeColor)';
 
 				$style = array(
 					'.menu-item-' . $item->ID . ' .kemet-mega-menu-label' => array(
