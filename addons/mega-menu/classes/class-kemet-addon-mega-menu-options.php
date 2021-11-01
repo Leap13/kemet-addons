@@ -223,9 +223,16 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'label'   => __( 'Icon', 'kemet-addons' ),
 								),
 								'mega-menu-icon-size' => array(
-									'type'       => 'kmt-slider',
-									'responsive' => false,
-									'label'      => __( 'Icon Size', 'kemet-addons' ),
+									'type'         => 'kmt-slider',
+									'responsive'   => false,
+									'label'        => __( 'Icon Size', 'kemet-addons' ),
+									'unit_choices' => array(
+										'px' => array(
+											'min'  => 1,
+											'step' => 1,
+											'max'  => 50,
+										),
+									),
 								),
 								'menu-label-title'    => array(
 									'type'  => 'kmt-title',
