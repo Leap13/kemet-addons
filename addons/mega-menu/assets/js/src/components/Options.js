@@ -1,5 +1,6 @@
 import { Fragment, useContext, useEffect } from '@wordpress/element';
 import OptionsContext from '../store/options-context';
+import MegaMenuLayout from './Options/MegaMenuLayout';
 import Tabs from './Tabs';
 import CreatePostButton from './UI/CreatePostButton';
 
@@ -71,7 +72,7 @@ export const isDisplay = (rules, values, depth = 0) => {
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { itemId, values } = useContext(OptionsContext);
     const { OptionComponent } = window.KmtOptionComponent;
-    const Option = option.type === 'kmt-tabs' ? Tabs : OptionComponent(option.type);
+    const Option = option.type === 'kmt-tabs' ? Tabs : option.type === 'kmt-row-layout' ? MegaMenuLayout : OptionComponent(option.type);
     const divider = option.divider ? 'has-divider' : '';
 
     if (optionId === 'column-template') {

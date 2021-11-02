@@ -1,6 +1,39 @@
 /*--------------------------------------------------------------
 ## Mega Menu
 --------------------------------------------------------------*/
+.kmt-disable-link {
+  pointer-events: none;
+}
+
+.main-navigation .kemet-megamenu {
+  display: grid;
+  grid-template-columns: var(--gridTemplateColummns, 1fr);
+}
+
+.main-navigation .kemet-megamenu.col-1 {
+  --gridTemplateColummns: minmax(0, 1fr);
+}
+
+.main-navigation .kemet-megamenu.col-2 {
+  --gridTemplateColummns: repeat(2, minmax(0, 1fr));
+}
+
+.main-navigation .kemet-megamenu.col-3 {
+  --gridTemplateColummns: repeat(3, minmax(0, 1fr));
+}
+
+.main-navigation .kemet-megamenu.col-4 {
+  --gridTemplateColummns: repeat(4, minmax(0, 1fr));
+}
+
+.main-navigation .kemet-megamenu.col-5 {
+  --gridTemplateColummns: repeat(5, minmax(0, 1fr));
+}
+
+.main-navigation .kemet-megamenu.col-6 {
+  --gridTemplateColummns: repeat(6, minmax(0, 1fr));
+}
+
 .main-navigation .kemet-megamenu > li:not(:last-child) {
   border-right: var(--columnDivider);
 }
@@ -190,35 +223,6 @@ body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-m
 
 body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu .sub-menu li .sub-menu {
   padding-left: 24px;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu > li {
-  display: none;
-  float: left;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-1 > li {
-  width: 100%;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-2 > li {
-  width: 50%;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-3 > li {
-  width: 33.33333333%;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-4 > li {
-  width: 25%;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-5 > li {
-  width: 20%;
-}
-
-body:not(.kmt-header-break-point) #site-navigation .kemet-megamenu-item .kemet-megamenu.col-6 > li {
-  width: 16.66666667%;
 }
 
 .kmt-header-break-point #site-navigation li.menu-item.has-description.menu-item-has-children > a > span.kemet-menu-decription:after {

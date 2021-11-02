@@ -38,6 +38,7 @@ window.onload = function () {
         var specificSelect = $(".mega-menu-field-template");
         specificSelect.select2({
             placeholder: 'Select a Template',
+            dropdownCssClass: 'kmt-mega-menu-select2'
         }).on('change', function (e) {
             var value = $(e.target).val();
             e.target.dispatchEvent(new CustomEvent("onCustomChange", {

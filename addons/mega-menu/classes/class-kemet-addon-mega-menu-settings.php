@@ -56,6 +56,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Settings' ) ) {
 				$menu_item->megamenu_disable_link       = get_post_meta( $menu_item->ID, 'disable-link', true );
 				$menu_item->megamenu                    = get_post_meta( $menu_item->ID, 'enable-mega-menu', true );
 				$menu_item->megamenu_col                = get_post_meta( $menu_item->ID, 'mega-menu-columns', true );
+				$menu_item->megamenu_layout             = get_post_meta( $menu_item->ID, 'mega-menu-layout', true );
 				$menu_item->megamenu_bg_obj             = get_post_meta( $menu_item->ID, 'mega-menu-background', true );
 				$menu_item->megamenu_spacing            = get_post_meta( $menu_item->ID, 'mega-menu-spacing', true );
 				$menu_item->column_heading              = get_post_meta( $menu_item->ID, 'column-heading', true );

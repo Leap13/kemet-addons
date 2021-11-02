@@ -126,6 +126,10 @@ module.exports = function (grunt) {
             src: "inc/kemet-panel/assets/css/unminified/kemet-panel-rtl.css",
             dest: "inc/kemet-panel/assets/css/minified/kemet-panel-rtl.min.css",
           },
+          {
+            src: "inc/compatibility/assets/css/unminified/select2.css",
+            dest: "inc/compatibility/assets/css/minified/select2.min.css",
+          },
         ],
       },
     },

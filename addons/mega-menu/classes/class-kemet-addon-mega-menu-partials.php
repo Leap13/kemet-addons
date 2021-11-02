@@ -159,6 +159,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			$data['disable-link']               = get_post_meta( $item_id, 'disable-link', true );
 			$data['enable-mega-menu']           = get_post_meta( $item_id, 'enable-mega-menu', true );
 			$data['mega-menu-columns']          = get_post_meta( $item_id, 'mega-menu-columns', true );
+			$data['mega-menu-layout']           = get_post_meta( $item_id, 'mega-menu-layout', true );
 			$data['mega-menu-background']       = get_post_meta( $item_id, 'mega-menu-background', true );
 			$data['mega-menu-spacing']          = get_post_meta( $item_id, 'mega-menu-spacing', true );
 			$data['column-heading']             = get_post_meta( $item_id, 'column-heading', true );

@@ -1,5 +1,28 @@
+.kmt-disable-link {
+  pointer-events: none;
+}
 .main-navigation {
   .kemet-megamenu {
+    display: grid;
+    grid-template-columns: var(--gridTemplateColummns, 1fr);
+    &.col-1 {
+      --gridTemplateColummns: minmax(0, 1fr);
+    }
+    &.col-2 {
+      --gridTemplateColummns: repeat(2, minmax(0, 1fr));
+    }
+    &.col-3 {
+      --gridTemplateColummns: repeat(3, minmax(0, 1fr));
+    }
+    &.col-4 {
+      --gridTemplateColummns: repeat(4, minmax(0, 1fr));
+    }
+    &.col-5 {
+      --gridTemplateColummns: repeat(5, minmax(0, 1fr));
+    }
+    &.col-6 {
+      --gridTemplateColummns: repeat(6, minmax(0, 1fr));
+    }
     > li:not(:last-child) {
       border-right: var(--columnDivider);
     }
@@ -219,28 +242,6 @@ body:not(.kmt-header-break-point) {
               padding-left: 24px;
             }
           }
-        }
-        > li {
-          display: none;
-          float: left;
-        }
-        &.col-1 > li {
-          width: 100%;
-        }
-        &.col-2 > li {
-          width: 50%;
-        }
-        &.col-3 > li {
-          width: 33.33333333%;
-        }
-        &.col-4 > li {
-          width: 25%;
-        }
-        &.col-5 > li {
-          width: 20%;
-        }
-        &.col-6 > li {
-          width: 16.66666667%;
         }
       }
     }
