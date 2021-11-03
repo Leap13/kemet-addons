@@ -55,7 +55,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				);
 				$bg_obj            = $this->megamenu_bg_obj ? $this->megamenu_bg_obj : $default_bg;
 				$spacing           = $this->megamenu_spacing;
-				$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id ] = array(
+				$style[ '.kmt-is-sticky .main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .kemet-megamenu a' ] = array(
+					'--linksColor'      => esc_attr( $link_color ),
+					'--linksHoverColor' => esc_attr( $link_h_color ),
+					'--backgroundColor' => esc_attr( $link_bg_color ),
+				);
+				$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id ]                                       = array(
 					'--borderRadius' => kemet_spacing( $this->megamenu_border_radius, 'all' ),
 				);
 
