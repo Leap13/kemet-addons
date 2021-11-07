@@ -192,8 +192,15 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'label' => __( 'Item Label Settings', 'kemet-addons' ),
 								),
 								'disable-link'        => array(
-									'type'  => 'kmt-switcher',
-									'label' => __( 'Disable link', 'kemet-addons' ),
+									'type'    => 'kmt-switcher',
+									'label'   => __( 'Disable link', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting'  => 'depth',
+											'operator' => '>',
+											'value'    => 0,
+										),
+									),
 								),
 								'disable-item-label'  => array(
 									'type'    => 'kmt-switcher',
@@ -221,10 +228,13 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										),
 									),
 								),
+								'icon-title'          => array(
+									'type'  => 'kmt-title',
+									'label' => __( 'Item Icon Settings', 'kemet-addons' ),
+								),
 								'mega-menu-icon'      => array(
-									'type'    => 'icon-picker',
-									'divider' => true,
-									'label'   => __( 'Icon', 'kemet-addons' ),
+									'type'  => 'icon-picker',
+									'label' => __( 'Icon', 'kemet-addons' ),
 								),
 								'mega-menu-icon-size' => array(
 									'type'         => 'kmt-slider',

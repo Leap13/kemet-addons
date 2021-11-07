@@ -243,7 +243,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 			if ( $item->column_heading && 0 < $depth ) {
 				$item_link_classes[] = 'heading-item';
 			}
-			if ( $item->megamenu_disable_link ) {
+			if ( $item->megamenu_disable_link && 0 < $depth ) {
 				$item_link_classes[] = 'kmt-disable-link';
 			}
 
