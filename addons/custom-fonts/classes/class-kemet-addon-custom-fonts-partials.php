@@ -47,12 +47,60 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_action( 'add_meta_boxes', array( $this, 'add_custom_box' ) );
 			add_action( 'admin_print_scripts-post-new.php', array( $this, 'admin_scripts' ) );
 			add_action( 'admin_print_scripts-post.php', array( $this, 'admin_scripts' ) );
+			add_action( 'wp_ajax_kemet_addons_update_font_settings', array( $this, 'update_font_gettings' ) );
+			add_action( 'wp_ajax_kemet_addons_get_custom_font_settings', array( $this, 'get_font_gettings' ) );
+		}
+
+		/**
+		 * get_font_gettings
+		 *
+		 * @return void
+		 */
+		public function get_font_gettings() {
+			check_ajax_referer( 'kemet-addons-custom-font', 'nonce' );
+
+			$post_id = isset( $_POST['post_id'] ) ? sanitize_text_field( wp_unslash( $_POST['post_id'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+			if ( $post_id && '' !== $post_id ) {
+				$data = get_post_meta( $post_id, 'kemet_custom_font_options', true );
+				$data = $data ? $data : array();
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'values'  => $data,
+					)
+				);
+			}
+
+			wp_send_json_error();
+		}
+
+		/**
+		 * update_options
+		 *
+		 * @return void
+		 */
+		public function update_font_gettings() {
+			check_ajax_referer( 'kemet-addons-custom-font', 'nonce' );
+
+			$post_id = isset( $_POST['post_id'] ) ? sanitize_text_field( wp_unslash( $_POST['post_id'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$data    = isset( $_POST['data'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['data'] ) ), true ) : array();
+
+			if ( $post_id && ! empty( $data ) ) {
+				update_post_meta( $post_id, 'kemet_custom_font_options', $data );
+			}
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+				)
+			);
 		}
 
 		function add_custom_box() {
 			add_meta_box(
 				'kemet_meta',
-				'Custom Meta Box Title',
+				'Font Settings',
 				array( $this, 'custom_box_html' ),
 				KEMET_CUSTOM_FONTS_POST_TYPE,
 				'advanced',
@@ -61,9 +109,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			);
 		}
 
-		public function custom_box_html() {
+		public function custom_box_html( $post ) {
 			?>
-			<div id="kmt-meta-box"></div>
+			<div id="kmt-meta-box" data-id="<?php echo esc_attr( $post->ID ); ?>"></div>
 			<?php
 		}
 
@@ -71,7 +119,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			global $post_type;
 			if ( KEMET_CUSTOM_FONTS_POST_TYPE == $post_type ) {
 				wp_enqueue_script(
-					'custom-font-admin-script',
+					'kemet-custom-font-admin-script',
 					KEMET_CUSTOM_FONTS_URL . 'assets/js/build/index.js',
 					array(
 						'wp-edit-post',
@@ -83,6 +131,20 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 					),
 					KEMET_ADDONS_VERSION,
 					true
+				);
+
+				wp_localize_script(
+					'kemet-custom-font-admin-script',
+					'kemetCustomFont',
+					apply_filters(
+						'kemet_addons_custom_font_js_localize',
+						array(
+							'ajax_url'   => admin_url( 'admin-ajax.php' ),
+							'ajax_nonce' => wp_create_nonce( 'kemet-addons-custom-font' ),
+							'options'    => Kemet_Addon_Custom_Fonts_Meta::get_instance()->get_item_fields(),
+							'defaults'   => Kemet_Addon_Custom_Fonts_Meta::get_instance()->get_defaults(),
+						)
+					)
 				);
 			}
 		}
@@ -194,6 +256,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
+				error_log( wp_json_encode( $font ) );
 				if ( ( isset( $font['font-type'] ) && 'file' == $font['font-type'] ) && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
 					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
 				}
