@@ -188,8 +188,15 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									),
 								),
 								'label-title'         => array(
-									'type'  => 'kmt-title',
-									'label' => __( 'Item Label Settings', 'kemet-addons' ),
+									'type'    => 'kmt-title',
+									'label'   => __( 'Item Label Settings', 'kemet-addons' ),
+									'context' => array(
+										array(
+											'setting'  => 'depth',
+											'operator' => '>',
+											'value'    => 0,
+										),
+									),
 								),
 								'disable-link'        => array(
 									'type'    => 'kmt-switcher',
