@@ -146,6 +146,8 @@ module.exports = function (grunt) {
             "addons/woocommerce/assets/js/unminified/woocommerce.js",
           "addons/mega-menu/assets/js/minified/mega-menu.min.js":
             "addons/mega-menu/assets/js/unminified/mega-menu.js",
+          "addons/custom-layout/assets/js/minified/custom-layout.min.js":
+            "addons/custom-layout/assets/js/unminified/custom-layout.js",
         },
       },
     },

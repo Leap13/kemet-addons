@@ -193,55 +193,5 @@
           },
         }));
       });
-    /**
-     * Enable Code Editor
-     */
-    var codeEditorSwitcher = $("#enable-code-editor").find("input"),
-      kemetMeta = $("#kemet_code_editor");
-
-    var setSwitcherValue = function () {
-      var url = window.location.href;
-
-      if (
-        url.indexOf("&code_editor") > -1 ||
-        (codeEditorSwitcher.val() == 1 && url.indexOf("&wordpress_editor") == -1)
-      ) {
-        codeEditorSwitcher.parent().addClass("kfw--active");
-        $("body").addClass("kemet-code-editor");
-        codeEditorSwitcher.val(1);
-      } else if (
-        url.indexOf("&wordpress_editor") > -1 ||
-        codeEditorSwitcher.val() == 0 ||
-        url.indexOf("&code_editor") == -1
-      ) {
-        if ($("body").hasClass("kemet-code-editor")) {
-          $("body").removeClass("kemet-code-editor");
-        }
-        codeEditorSwitcher.parent().removeClass("kfw--active");
-        codeEditorSwitcher.val(0);
-      } else {
-        codeEditorSwitcher.val(0);
-      }
-    };
-    setSwitcherValue();
-    codeEditorSwitcher.change(function () {
-      var value = $(this).val(),
-        url = window.location.href;
-
-      if (value == 1) {
-        if (url.indexOf("&wordpress_editor") > -1) {
-          url = url.replace("&wordpress_editor", "");
-        }
-        window.location.replace(url + "&code_editor");
-      } else {
-        if (url.indexOf("&code_editor") > -1) {
-          url = url.replace("&code_editor", "");
-        }
-
-        url = url + "&wordpress_editor";
-
-        window.location.replace(url);
-      }
-    });
   })
 })(jQuery);
