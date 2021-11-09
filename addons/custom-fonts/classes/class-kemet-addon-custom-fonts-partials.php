@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_filter( 'mime_types', array( $this, 'allow_font_mimes' ) );
 			add_filter( 'wp_check_filetype_and_ext', array( $this, 'update_mime_types' ), 10, 3 );
 			add_action( 'kemet_render_fonts', array( $this, 'render_fonts' ) );
-			add_action( 'kemet_system_fonts', array( $this, 'add_custom_fonts_to_customizer' ) );
+			add_action( 'kemet_custom_fonts', array( $this, 'add_custom_fonts_to_customizer' ) );
 			add_action( 'wp_head', array( $this, 'fonts_css' ) );
 			if ( is_admin() ) {
 				add_action( 'enqueue_block_assets', array( $this, 'fonts_css' ) );
@@ -256,7 +256,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
-				error_log( wp_json_encode( $font ) );
+
 				if ( ( isset( $font['font-type'] ) && 'file' == $font['font-type'] ) && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
 					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
 				}
@@ -348,6 +348,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			if ( ! empty( $adobe_fonts ) ) {
 				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
 			}
+
+			error_log( wp_json_encode( $system_fonts ) );
+
 			return $system_fonts;
 		}
 
