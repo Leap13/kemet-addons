@@ -154,16 +154,18 @@ Woo Quick View
   border-style: solid;
 }
 
-.kmt-qv-icon > span:before {
-  content: "\e913";
-  display: inline-block;
-  font-family: "Kemet-font";
-  font-size: 19px;
-  font-weight: 500;
-  text-rendering: auto;
-  vertical-align: middle;
+.kmt-qv-icon span {
   position: relative;
-  line-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+}
+
+.kmt-qv-icon span svg {
+  width: 20px;
+  height: 20px;
 }
 
 .product-list-details:hover > .kmt-qv-icon {
@@ -1079,6 +1081,6 @@ Woo Quick View
 .woocommerce-page .woocommerce-cart-form .quantity .qty,
 .woocommerce-page form.cart .quantity .qty {
   width: 2.631em;
-  min-height: 35px;
+  min-height: 46px;
   -moz-appearance: textfield;
 }

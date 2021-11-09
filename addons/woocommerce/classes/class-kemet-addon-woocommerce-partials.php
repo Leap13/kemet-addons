@@ -862,8 +862,11 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button    = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="kemet-view"></span></a>';
-			$html_args = kemet_allowed_html( array( 'a', 'span' ) );
+			$button    = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="kemet-view"><svg data-name="Layer 1" viewBox="0 0 90 71.1" xmlns="http://www.w3.org/2000/svg">
+			<path transform="translate(-2.5 -12)" d="M79.2,25.6C73.7,20.5,62.2,12,47.5,12S21.3,20.6,15.8,25.6C7.9,32.8,2.5,41.8,2.5,47.5S7.9,62.2,15.8,69.4c5.5,5.1,17,13.7,31.7,13.7s26.2-8.6,31.7-13.6C87,62.3,92.5,53.3,92.5,47.6S87.1,32.8,79.2,25.6ZM47.5,78.1C25.6,78.1,7.4,55.9,7.4,47.5S25.6,16.9,47.5,16.9,87.6,39.1,87.6,47.5,69.4,78.1,47.5,78.1Z"/>
+			<path transform="translate(-2.5 -12)" d="m47.5 28.5a19 19 0 1 0 19 19 19 19 0 0 0-19-19zm0 33.1a14.1 14.1 0 1 1 14.1-14.1 14.08 14.08 0 0 1-14.1 14.1z"/>
+			</svg></span></a>';
+			$html_args = kemet_allowed_html( array( 'a', 'span', 'svg' ) );
 
 			echo wp_kses(
 				$button,
