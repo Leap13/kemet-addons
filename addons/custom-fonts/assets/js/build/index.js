@@ -480,7 +480,9 @@ var Uploader = function Uploader(_ref) {
   var onChange = _ref.onChange,
       value = _ref.value,
       params = _ref.params;
-  var label = params.label;
+  var label = params.label,
+      fontType = params.fontType;
+  var allowed = fontType === 'svg' ? 'image/svg+xml' : "application/x-font-".concat(fontType);
   var labelContent = label ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
     className: "customize-control-title kmt-control-title"
   }, label) : null;
@@ -491,6 +493,7 @@ var Uploader = function Uploader(_ref) {
     }
   }, labelContent, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_media_utils__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
     title: __("Select File", 'kemet'),
+    allowedTypes: [allowed],
     onSelect: function onSelect(media) {
       return onChange(media.url);
     },

@@ -124,6 +124,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'woff-font'        => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.woff Font file', 'kemet-addons' ),
+					'fontType'    => 'woff',
 					'description' => __( 'Upload .woff file', 'kemet-addons' ),
 					'context'     => array(
 						array(
@@ -135,6 +136,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'woff2-font'       => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.woff2 Font file', 'kemet-addons' ),
+					'fontType'    => 'woff2',
 					'description' => __( 'Upload .woff2 file', 'kemet-addons' ),
 					'context'     => array(
 						array(
@@ -146,6 +148,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'ttf-font'         => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.ttf Font file', 'kemet-addons' ),
+					'fontType'    => 'ttf',
 					'description' => __( 'Upload .ttf file', 'kemet-addons' ),
 					'context'     => array(
 						array(
@@ -157,6 +160,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'eot-font'         => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.eot Font file', 'kemet-addons' ),
+					'fontType'    => '.eot',
 					'description' => __( 'Upload .eot file', 'kemet-addons' ),
 					'context'     => array(
 						array(
@@ -168,6 +172,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'svg-font'         => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.svg Font file', 'kemet-addons' ),
+					'fontType'    => 'svg',
 					'description' => __( 'Upload .svg file', 'kemet-addons' ),
 					'context'     => array(
 						array(
@@ -179,6 +184,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'otf-font'         => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.otf Font file', 'kemet-addons' ),
+					'fontType'    => 'otf',
 					'description' => __( 'Upload .otf file', 'kemet-addons' ),
 					'context'     => array(
 						array(
