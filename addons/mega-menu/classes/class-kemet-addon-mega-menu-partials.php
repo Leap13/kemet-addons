@@ -328,12 +328,12 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 						'posts_count'         => array(
 							'elementor_library'    => post_type_exists( 'elementor_library' ) ? wp_count_posts( 'elementor_library' )->publish : 0,
 							'wp_block'             => post_type_exists( 'wp_block' ) ? wp_count_posts( 'wp_block' )->publish : 0,
-							'kemet_custom_layouts' => post_type_exists( 'kemet_custom_layouts' ) ? wp_count_posts( 'kemet_custom_layouts' )->publish : 0,
+							'kemet_custom_content' => post_type_exists( 'kemet_custom_content' ) ? wp_count_posts( 'kemet_custom_content' )->publish : 0,
 						),
 						'posts'               => array(
 							'elementor_library'    => $this->get_all_posts( 'elementor_library' ),
 							'wp_block'             => $this->get_all_posts( 'wp_block' ),
-							'kemet_custom_layouts' => $this->get_all_posts( 'kemet_custom_layouts' ),
+							'kemet_custom_content' => $this->get_all_posts( 'kemet_custom_content' ),
 						),
 					)
 				)

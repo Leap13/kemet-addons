@@ -39,23 +39,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 			}
 			add_filter( 'fl_builder_post_types', array( $this, 'add_to_beaver_builder_post_types' ), 10, 1 );
 			add_action( 'do_meta_boxes', array( $this, 'remove_kemet_page_options' ) );
-			// add_action( 'init', array( $this, 'register_meta' ), 20 );
-		}
-
-		/**
-		 * register_meta
-		 */
-		public function register_meta() {
-			register_post_meta(
-				KEMET_CUSTOM_LAYOUT_POST_TYPE, // Pass an empty string to register the meta key across all existing post types.
-				'kemet_meta',
-				array(
-					'single'        => true,
-					'type'          => 'string',
-					'show_in_rest'  => true,
-					'auth_callback' => '__return_true',
-				)
-			);
 		}
 
 		/**
@@ -133,10 +116,10 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Settings' ) ) {
 					'kemet_custon_layouts_args',
 					array(
 						'labels'              => array(
-							'name'          => esc_html__( 'Custom Contents', 'kemet-addons' ),
+							'name'          => esc_html__( 'Custom Content', 'kemet-addons' ),
 							'singular_name' => esc_html__( 'Custom Content', 'kemet-addons' ),
-							'search_items'  => esc_html__( 'Search Custom Contents', 'kemet-addons' ),
-							'all_items'     => esc_html__( 'All Custom Contents', 'kemet-addons' ),
+							'search_items'  => esc_html__( 'Search Custom Content', 'kemet-addons' ),
+							'all_items'     => esc_html__( 'All Custom Content', 'kemet-addons' ),
 							'edit_item'     => esc_html__( 'Edit Custom Content', 'kemet-addons' ),
 							'view_item'     => esc_html__( 'View Custom Content', 'kemet-addons' ),
 							'add_new'       => esc_html__( 'Add New', 'kemet-addons' ),

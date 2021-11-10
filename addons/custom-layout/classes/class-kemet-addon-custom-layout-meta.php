@@ -35,9 +35,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			$prefix_page_opts   = 'kemet_custom_layout_options';
 			$code_editor_prefix = 'kemet_code_editor';
 
-			add_action( 'add_meta_boxes_kemet_custom_layouts', array( $this, 'register_shortcode_meta_boxes' ) );
+			add_action( 'add_meta_boxes_kemet_custom_content', array( $this, 'register_shortcode_meta_boxes' ) );
 			add_filter( 'manage_posts_columns', array( $this, 'shortcode_column' ) );
-			add_action( 'manage_kemet_custom_layouts_posts_custom_column', array( $this, 'shortcode_column_content' ), 10, 2 );
+			add_action( 'manage_kemet_custom_content_posts_custom_column', array( $this, 'shortcode_column_content' ), 10, 2 );
 			add_filter( 'kemet_meta_options', array( $this, 'meta_options' ) );
 		}
 
@@ -219,7 +219,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 			<input type="text" class="widefat" value='[Kemet_Addon_Custom_Layout id="<?php echo esc_attr( $post->ID ); ?>"]' readonly />
 					<?php
 				},
-				'kemet_custom_layouts',
+				'kemet_custom_content',
 				'side',
 				'low'
 			);
@@ -234,7 +234,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Layout_Meta' ) ) {
 		public function shortcode_column( $columns ) {
 
 			$post_type = get_post_type();
-			if ( 'kemet_custom_layouts' == $post_type ) {
+			if ( 'kemet_custom_content' == $post_type ) {
 				$custom_columns = array(
 					'kemet_layout_action' => esc_html__( 'Action', 'kemet-addons' ),
 					'kemet_layout_rules'  => esc_html__( 'Rules', 'kemet-addons' ),

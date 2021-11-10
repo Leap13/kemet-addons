@@ -1167,7 +1167,7 @@ var CreatePostButton = function CreatePostButton(props) {
   var titles = {
     'elemetor_library': __('Create a new Elementor Template', 'kemet-addons'),
     'wp_block': __('Create a new Reusable Block', 'kemet-addons'),
-    'kemet_custom_layouts': __('Create a new Custom Template', 'kemet-addons')
+    'kemet_custom_content': __('Create a new Custom Template', 'kemet-addons')
   };
   var link = kemetMegaMenu.edit_post_link.replace('post_name', props.type);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {

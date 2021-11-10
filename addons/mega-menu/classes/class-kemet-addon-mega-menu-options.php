@@ -48,7 +48,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 			$custom_templates = array(
 				'elementor_library'    => __( 'Elementor templates', 'kemet-addons' ),
 				'wp_block'             => __( 'Reusable blocks', 'kemet-addons' ),
-				'kemet_custom_layouts' => __( 'Kemet Custom Content', 'kemet-addons' ),
+				'kemet_custom_content' => __( 'Kemet Custom Content', 'kemet-addons' ),
 			);
 
 			foreach ( $custom_templates as $key => $title ) {
@@ -178,7 +178,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 										array(
 											'setting'  => 'item-content',
 											'operator' => 'in_array',
-											'value'    => array( 'elementor_library', 'wp_block', 'kemet_custom_layouts' ),
+											'value'    => array( 'elementor_library', 'wp_block', 'kemet_custom_content' ),
 										),
 										array(
 											'setting'  => 'enable-mega-menu',

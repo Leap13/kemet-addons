@@ -7,7 +7,7 @@
 
 define( 'KEMET_CUSTOM_LAYOUT_DIR', KEMET_ADDONS_DIR . 'addons/custom-layout/' );
 define( 'KEMET_CUSTOM_LAYOUT_URL', KEMET_ADDONS_URL . 'addons/custom-layout/' );
-define( 'KEMET_CUSTOM_LAYOUT_POST_TYPE', 'kemet_custom_layouts' );
+define( 'KEMET_CUSTOM_LAYOUT_POST_TYPE', 'kemet_custom_content' );
 
 if ( ! class_exists( 'Kemet_Addon_Custom_Layout' ) ) {
 
