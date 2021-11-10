@@ -134,7 +134,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		public function custom_box_html( $post ) {
 			$value = get_post_meta( $post->ID, 'kemet_custom_font_options', true );
 			?>
-			<div id="kmt-meta">
+			<div id="kmt-custom-fonts-meta">
 				<input id="kmt-font-meta" type="hidden" name="kemet_custom_font_options" value='<?php echo wp_json_encode( $value ); ?>'>
 				<div id="kmt-meta-box" data-id="<?php echo esc_attr( $post->ID ); ?>"></div>
 			</div>
@@ -147,6 +147,19 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		public function admin_scripts() {
 			global $post_type;
 			if ( KEMET_CUSTOM_FONTS_POST_TYPE == $post_type ) {
+				$css_prefix = '.min.css';
+				$dir        = 'minified';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '.css';
+					$dir        = 'unminified';
+				}
+				if ( is_rtl() ) {
+					$css_prefix = '-rtl.min.css';
+					if ( SCRIPT_DEBUG ) {
+						$css_prefix = '-rtl.css';
+					}
+				}
+				wp_enqueue_style( 'kemet-custom-fonts-css', KEMET_CUSTOM_FONTS_URL . 'assets/css/' . $dir . '/custom-fonts' . $css_prefix, false, KEMET_ADDONS_VERSION );
 				wp_enqueue_script(
 					'kemet-custom-font-admin-script',
 					KEMET_CUSTOM_FONTS_URL . 'assets/js/build/index.js',

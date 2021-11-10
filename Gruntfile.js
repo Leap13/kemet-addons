@@ -35,6 +35,13 @@ module.exports = function (grunt) {
           },
           {
             expand: true,
+            cwd: "addons/custom-fonts/assets/css/unminified/",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/custom-fonts/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
             cwd: "inc/kemet-panel/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "inc/kemet-panel/assets/css/unminified",
@@ -62,6 +69,8 @@ module.exports = function (grunt) {
           {
             "addons/blog-layouts/assets/css/unminified/blog-layouts.css":
               "sass/blog-layouts.scss",
+            "addons/custom-fonts/assets/css/unminified/custom-fonts.css":
+              "sass/custom-fonts.scss",
             "addons/woocommerce/assets/css/unminified/style.css":
               "sass/woocommerce.scss",
             "addons/mega-menu/assets/css/unminified/style.css":
@@ -90,7 +99,16 @@ module.exports = function (grunt) {
           {
             src: "addons/blog-layouts/assets/css/unminified/blog-layouts-rtl.css",
             dest: "addons/blog-layouts/assets/css/minified/blog-layouts-rtl.min.css",
-          }, {
+          },
+          {
+            src: "addons/custom-fonts/assets/css/unminified/custom-fonts.css",
+            dest: "addons/custom-fonts/assets/css/minified/custom-fonts.min.css",
+          },
+          {
+            src: "addons/custom-fonts/assets/css/unminified/custom-fonts-rtl.css",
+            dest: "addons/custom-fonts/assets/css/minified/custom-fonts-rtl.min.css",
+          },
+          {
             src: "addons/woocommerce/assets/css/unminified/style.css",
             dest: "addons/woocommerce/assets/css/minified/style.min.css",
           },
@@ -229,6 +247,13 @@ module.exports = function (grunt) {
             cwd: "addons/mega-menu/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/mega-menu/assets/css/unminified",
+            ext: "-rtl.css",
+          },
+          {
+            expand: true,
+            cwd: "addons/custom-fonts/assets/css/unminified",
+            src: ["*.css", "!*-rtl.css"],
+            dest: "addons/custom-fonts/assets/css/unminified",
             ext: "-rtl.css",
           },
           {

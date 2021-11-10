@@ -69,9 +69,9 @@ export const isDisplay = (rules) => {
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { OptionComponent } = window.KmtOptionComponent;
     const Option = option.type === 'kmt-upload' ? Uploader : OptionComponent(option.type);
-    const divider = option.divider ? 'has-divider' : '';
+    const divider = option.divider ? ' has-divider' : '';
 
-    return option.type && <div id={optionId} className={`customize-control-${option.type} ${divider}`}>
+    return option.type && <div id={optionId} className={`customize-control-${option.type}${divider}`}>
         <Option id={optionId} value={value} params={option} onChange={onChange} />
     </div>;
 }

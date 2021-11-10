@@ -301,7 +301,9 @@ var MetaOptions = function MetaOptions(props) {
   var handleChange = function handleChange(value, optionId) {
     var updatedValues = values;
     updatedValues[optionId] = value;
-    setValues(updatedValues);
+    setValues(function (prevValue) {
+      return _objectSpread(_objectSpread({}, prevValue), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, optionId, value));
+    });
     metaInput.value = JSON.stringify(updatedValues);
   };
 
@@ -411,10 +413,10 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
       onChange = _ref.onChange;
   var OptionComponent = window.KmtOptionComponent.OptionComponent;
   var Option = option.type === 'kmt-upload' ? _Uploader__WEBPACK_IMPORTED_MODULE_2__["default"] : OptionComponent(option.type);
-  var divider = option.divider ? 'has-divider' : '';
+  var divider = option.divider ? ' has-divider' : '';
   return option.type && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     id: optionId,
-    className: "customize-control-".concat(option.type, " ").concat(divider)
+    className: "customize-control-".concat(option.type).concat(divider)
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Option, {
     id: optionId,
     value: value,
@@ -481,17 +483,14 @@ var Uploader = function Uploader(_ref) {
       value = _ref.value,
       params = _ref.params;
   var label = params.label,
-      fontType = params.fontType;
+      fontType = params.fontType,
+      description = params.description;
   var allowed = fontType === 'svg' ? 'image/svg+xml' : "application/x-font-".concat(fontType);
   var labelContent = label ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
     className: "customize-control-title kmt-control-title"
   }, label) : null;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'space-between'
-    }
-  }, labelContent, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_media_utils__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
+  console.log(value);
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, labelContent, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_media_utils__WEBPACK_IMPORTED_MODULE_2__["MediaUpload"], {
     title: __("Select File", 'kemet'),
     allowedTypes: [allowed],
     onSelect: function onSelect(media) {
@@ -500,17 +499,24 @@ var Uploader = function Uploader(_ref) {
     value: value && value ? value : '',
     render: function render(_ref2) {
       var open = _ref2.open;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, value && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        className: "customize-control-content"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
+        type: "text",
         style: {
           marginRight: "5px"
-        }
-      }, value), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        },
+        value: value,
+        readOnly: true
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         className: "upload-button button-add-media",
         isDefault: true,
         onClick: function onClick() {
           return open(open);
         }
-      }, __("Upload", 'kemet'))));
+      }, __("Upload", 'kemet'))), description && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+        className: "customize-control-description"
+      }, description)));
     }
   }));
 };

@@ -12,7 +12,10 @@ const MetaOptions = (props) => {
     const handleChange = (value, optionId) => {
         let updatedValues = values;
         updatedValues[optionId] = value;
-        setValues(updatedValues);
+        setValues((prevValue) => ({
+            ...prevValue,
+            [optionId]: value
+        }));
         metaInput.value = JSON.stringify(updatedValues);
     }
 

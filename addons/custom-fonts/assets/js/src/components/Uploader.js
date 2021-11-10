@@ -3,11 +3,11 @@ import { MediaUpload } from "@wordpress/media-utils";
 const { __ } = wp.i18n;
 
 const Uploader = ({ onChange, value, params }) => {
-    const { label, fontType } = params;
+    const { label, fontType, description } = params;
     let allowed = fontType === 'svg' ? 'image/svg+xml' : `application/x-font-${fontType}`;
     let labelContent = label ? <span className="customize-control-title kmt-control-title">{label}</span> : null;
-
-    return <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    console.log(value);
+    return <div>
         {labelContent}
         <MediaUpload
             title={__("Select File", 'kemet')}
@@ -16,11 +16,14 @@ const Uploader = ({ onChange, value, params }) => {
             value={(value && value ? value : '')}
             render={({ open }) => (
                 <>
-                    <div>
-                        {value && <span style={{ marginRight: "5px" }}>{value}</span>}
-                        <Button className="upload-button button-add-media" isDefault onClick={() => open(open)}>
-                            {__("Upload", 'kemet')}
-                        </Button>
+                    <div className='customize-control-content'>
+                        <div>
+                            <input type="text" style={{ marginRight: "5px" }} value={value} readOnly />
+                            <Button className="upload-button button-add-media" isDefault onClick={() => open(open)}>
+                                {__("Upload", 'kemet')}
+                            </Button>
+                        </div>
+                        {description && <p className='customize-control-description'>{description}</p>}
                     </div>
                 </>
             )}

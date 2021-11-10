@@ -1,0 +1,50 @@
+/*--------------------------------------------------------------
+## Custom Font
+--------------------------------------------------------------*/
+#kmt-custom-fonts-meta .kmt-options > div {
+  padding: 1.8em 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div:not(:last-child) {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div .customize-control-title {
+  width: 18%;
+  padding: 0 2% 0 0;
+  float: left;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div .customize-control-description {
+  margin-bottom: 0;
+  color: #848484 !important;
+  font-size: 12px;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div .customize-control-content {
+  width: 80%;
+  float: right;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div .kmt-select-input {
+  width: auto;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div.customize-control-kmt-upload .customize-control-content > div {
+  display: flex;
+  align-items: center;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div.customize-control-kmt-upload .customize-control-content input {
+  margin-right: 5px;
+  padding: 3px;
+}
+
+#kmt-custom-fonts-meta .kmt-options > div input[type="text"] {
+  width: 25em;
+  line-height: 2;
+  min-height: 30px;
+  padding: 5px;
+}
