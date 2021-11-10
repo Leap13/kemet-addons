@@ -49,6 +49,23 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_action( 'admin_print_scripts-post.php', array( $this, 'admin_scripts' ) );
 			add_action( 'wp_ajax_kemet_addons_update_font_settings', array( $this, 'update_font_gettings' ) );
 			add_action( 'wp_ajax_kemet_addons_get_custom_font_settings', array( $this, 'get_font_gettings' ) );
+			add_action( 'save_post', array( $this, 'save_postdata' ) );
+		}
+
+		/**
+		 * save_postdata
+		 *
+		 * @param  int $post_id
+		 */
+		function save_postdata( $post_id ) {
+			if ( array_key_exists( 'kemet_custom_font_options', $_POST ) ) {
+				$value = json_decode( stripslashes( $_POST['kemet_custom_font_options'] ), true );
+				update_post_meta(
+					$post_id,
+					'kemet_custom_font_options',
+					$value
+				);
+			}
 		}
 
 		/**
@@ -109,12 +126,24 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			);
 		}
 
+		/**
+		 * custom_box_html
+		 *
+		 * @param  object $post
+		 */
 		public function custom_box_html( $post ) {
+			$value = get_post_meta( $post->ID, 'kemet_custom_font_options', true );
 			?>
-			<div id="kmt-meta-box" data-id="<?php echo esc_attr( $post->ID ); ?>"></div>
+			<div id="kmt-meta">
+				<input id="kmt-font-meta" type="hidden" name="kemet_custom_font_options" value='<?php echo wp_json_encode( $value ); ?>'>
+				<div id="kmt-meta-box" data-id="<?php echo esc_attr( $post->ID ); ?>"></div>
+			</div>
 			<?php
 		}
 
+		/**
+		 * admin_scripts
+		 */
 		public function admin_scripts() {
 			global $post_type;
 			if ( KEMET_CUSTOM_FONTS_POST_TYPE == $post_type ) {
