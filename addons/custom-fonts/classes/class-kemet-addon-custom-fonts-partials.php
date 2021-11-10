@@ -287,45 +287,11 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 						$variations    = $font_family['variations'];
 						$weights       = array();
 						foreach ( $variations as $variation ) {
-							// $font_variations = str_split( $variation );
-							// $weight          = $font_variations[1] . '00';
-							// if ( ! in_array( $weight, $weights ) ) {
-							// 	$weights[] = $weight;
-							// }
-							$prefix = 'n';
-							$sufix  = '4';
-							$value  = strtolower( trim( $variation  ) );
-							$value  = str_replace( ' ', '', $variation  );
-							if ( is_numeric( $value ) && isset( $value[0] ) ) {
-								$sufix  = $value[0];
-								$prefix = 'n';
+							$font_variations = str_split( $variation );
+							$weight          = $font_variations[1] . '00';
+							if ( ! in_array( $weight, $weights ) ) {
+								$weights[] = $weight;
 							}
-							if ( preg_match( '#italic#', $value ) ) {
-							if ( 'italic' === $value ) {
-								$sufix  = 4;
-								$prefix = 'i';
-							} else {
-								$value = trim( str_replace( 'italic', '', $value ) );
-								if ( is_numeric( $value ) && isset( $value[0] ) ) {
-									$sufix  = $value[0];
-									$prefix = 'i';
-								}
-							}
-							}
-							if ( preg_match( '#regular|normal#', $value ) ) {
-								if ( 'regular' === $value ) {
-									$sufix  = 4;
-									$prefix = 'n';
-								} else {
-									$value = trim( str_replace( array( 'regular', 'normal' ), '', $value ) );
-
-									if ( is_numeric( $value ) && isset( $value[0] ) ) {
-										$sufix  = $value[0];
-										$prefix = 'n';
-									}
-								}
-							}
-							$variation = "{$prefix}{$sufix}";
 						}
 						sort( $weights );
 						$fonts[ $font_family['slug'] ] = array(
@@ -374,10 +340,14 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 				} else {
 					$system_fonts[ $font_name ] = array(
 						'fallback' => ! empty( $font_values['font-fallback'] ) ? $font_values['font-fallback'] : 'Helvetica, Arial, sans-serif',
-						'weights'  => array(convertVartions($font_values['font-weight']) ),
+						'weights'  => array( $font_values['font-weight'] ),
 					);
 				}
+				if (isset( $system_fonts[ $font_name ]['weights'])) {
+			  $system_fonts[ $font_name ]['weights'] = $this->change_variations($system_fonts[ $font_name ]['weights']);
 			}
+			
+		}
 			$adobe_fonts = $this->get_adobe_fonts();
 			if ( ! empty( $adobe_fonts ) ) {
 				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
@@ -387,6 +357,61 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 
 			return $system_fonts;
 		}
+
+			private function change_variations( $structure ) {
+				$result = [];
+
+				foreach($structure as $weight) {
+					$result[] = $this->get_weight($weight);
+				}
+
+				return $result;
+			}
+
+			private function get_weight($code) {
+				$prefix = 'n'; 
+				$sufix = '4';  
+
+				$value = strtolower(trim($code));
+				$value = str_replace(' ', '', $value);
+
+				# Only number.
+				if (is_numeric($value) && isset($value[0])) {
+					$sufix = $value[0];
+					$prefix = 'n';
+				}
+
+				// Italic.
+				if (preg_match("#italic#", $value)) {
+					if ('italic' === $value) {
+						$sufix = 4;
+						$prefix = 'i';
+					} else {
+						$value = trim(str_replace('italic', '', $value));
+						if (is_numeric($value) && isset($value[0])) {
+							$sufix = $value[0];
+							$prefix = 'i';
+						}
+					}
+				}
+
+				// Regular.
+				if (preg_match("#regular|normal#", $value)) {
+					if ('regular' === $value) {
+						$sufix = 4;
+						$prefix = 'n';
+					} else {
+						$value = trim(str_replace(array('regular', 'normal') , '', $value));
+
+						if (is_numeric($value) && isset($value[0])) {
+							$sufix = $value[0];
+							$prefix = 'n';
+						}
+					}
+				}
+
+				return "{$prefix}{$sufix}";
+			}
 
 		/**
 		 * Adobe fonts css
@@ -405,44 +430,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 					wp_enqueue_style( 'custom-typekit-' . $font->ID, sprintf( 'https://use.typekit.net/%s.css', $custom_font['adobe-project-id'] ), array(), KEMET_ADDONS_VERSION );
 				}
 			}
-		}
-
-		public function convertVartions( $variant){
-						$prefix = '';
-						$sufix  = '';
-						$value  = strtolower( trim( $variant ) );
-						$value  = str_replace( ' ', '', $variant );
-						if ( is_numeric( $value ) && isset( $value[0] ) ) {
-							$sufix  = $value[0];
-							$prefix = 'n';
-						}
-						if ( preg_match( '#italic#', $value ) ) {
-							if ( 'italic' === $value ) {
-								$sufix  = 4;
-								$prefix = 'i';
-							} else {
-								$value = trim( str_replace( 'italic', '', $value ) );
-								if ( is_numeric( $value ) && isset( $value[0] ) ) {
-									$sufix  = $value[0];
-									$prefix = 'i';
-								}
-							}
-						}
-						if ( preg_match( '#regular|normal#', $value ) ) {
-							if ( 'regular' === $value ) {
-								$sufix  = 4;
-								$prefix = 'n';
-							} else {
-								$value = trim( str_replace( array( 'regular', 'normal' ), '', $value ) );
-
-								if ( is_numeric( $value ) && isset( $value[0] ) ) {
-									$sufix  = $value[0];
-									$prefix = 'n';
-								}
-							}
-						}
-						return "{$prefix}{$sufix}";
-					
 		}
 		/**
 		 * Fonts css
