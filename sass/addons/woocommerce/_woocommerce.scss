@@ -171,17 +171,16 @@ Woo Quick View
   text-align: center;
   border-width: 2px;
   border-style: solid;
-  > span {
-    &:before {
-      content: "\e913";
-      display: inline-block;
-      font-family: "Kemet-font";
-      font-size: 19px;
-      font-weight: 500;
-      text-rendering: auto;
-      vertical-align: middle;
-      position: relative;
-      line-height: 38px;
+  span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 }
@@ -553,15 +552,10 @@ Woo Quick View
             }
             .kmt-quickview-icon {
               margin: 0;
-              &:before {
-                content: "\e912";
-                font-family: Kemet-font;
-                font-style: normal;
-                font-size: 19px;
-                text-decoration: inherit;
-                text-align: center;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
+              display: inline-flex;
+              align-items: center;
+              svg {
+                fill: var(--buttonColor);
               }
             }
             .added_to_cart {
@@ -737,15 +731,13 @@ Woo Quick View
             border-width: 1px;
             border-style: solid;
             margin-left: 10px;
-            .kmt-quick-view-icon {
-              &:before {
-                content: "\e912";
-                font-family: Kemet-font;
-                font-style: normal;
-                font-weight: 600;
-                text-decoration: inherit;
-                text-align: center;
-                -webkit-font-smoothing: antialiased;
+            display: inline-flex !important;
+            vertical-align: middle;
+            .icon-view-fill {
+              display: inline-flex;
+              vertical-align: middle;
+              svg {
+                fill: var(--textColor);
               }
             }
           }
@@ -879,7 +871,7 @@ Woo Quick View
 }
 .kmt-woo-filter {
   float: left;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--borderColor);
   padding: 0 20px;
   margin-right: 15px;
   text-align: center;
@@ -964,17 +956,17 @@ Woo Quick View
     a {
       display: inline-block;
       span {
-        display: inline-block;
+        display: inline-flex;
         width: 28px;
         height: 28px;
         line-height: 24px;
-        border: 2px solid #eaeaea;
+        border: 2px solid var(--borderColor);
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         -ms-border-radius: 50%;
         border-radius: 50%;
         font-size: 14px;
-        text-align: center;
+        justify-content: center;
         margin-left: 10px;
       }
       .prev {
@@ -1023,7 +1015,7 @@ Woo Quick View
       }
       .qty {
         width: 2.631em;
-        min-height: 35px;
+        min-height: 46px;
         -moz-appearance: textfield;
       }
     }

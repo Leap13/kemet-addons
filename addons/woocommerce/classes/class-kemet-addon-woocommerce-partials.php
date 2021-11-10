@@ -843,8 +843,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button    = '<a href="#" class="kmt-qv-on-list button" data-product_id="' . $product_id . '"><span class="kmt-quick-view-icon"></span></a>';
-			$html_args = kemet_allowed_html( array( 'a', 'span' ) );
+			$button    = '<a href="#" class="kmt-qv-on-list button" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view-fill' ) . '</a>';
+			$html_args = kemet_allowed_html( array( 'a', 'span', 'svg' ) );
 
 			echo wp_kses(
 				$button,
@@ -862,8 +862,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button    = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '"><span class="kemet-view"></span></a>';
-			$html_args = kemet_allowed_html( array( 'a', 'span' ) );
+			$button    = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view' ) . '</a>';
+			$html_args = kemet_allowed_html( array( 'a', 'span', 'svg' ) );
 
 			echo wp_kses(
 				$button,
@@ -881,8 +881,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button    = '<a href="#" class="button kmt-quickview-icon" data-product_id="' . $product_id . '"></a>';
-			$html_args = kemet_allowed_html( array( 'a' ) );
+			$button    = '<a href="#" class="button kmt-quickview-icon" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view-fill' ) . '</a>';
+			$html_args = kemet_allowed_html( array( 'a', 'svg' ) );
 
 			echo wp_kses(
 				$button,
