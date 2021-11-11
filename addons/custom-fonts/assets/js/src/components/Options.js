@@ -1,9 +1,10 @@
 import { Fragment, useContext } from '@wordpress/element';
 import OptionsContext from '../store/options-context';
+import Table from './Table';
 import Uploader from './Uploader';
 
 export const isDisplay = (rules) => {
-    const { values, defaults } = useContext(OptionsContext);
+    const { values } = useContext(OptionsContext);
     if (!values) {
         return;
     }
@@ -16,7 +17,7 @@ export const isDisplay = (rules) => {
         var boolean = false,
             operator = undefined != rule.operator ? rule.operator : "=",
             ruleValue = rule.value;
-        var settingValue = values[rule.setting] ? values[rule.setting] : defaults[rule.setting];
+        var settingValue = values[rule.setting];
 
         switch (operator) {
             case "in_array":
@@ -68,7 +69,7 @@ export const isDisplay = (rules) => {
 
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { OptionComponent } = window.KmtOptionComponent;
-    const Option = option.type === 'kmt-upload' ? Uploader : OptionComponent(option.type);
+    const Option = option.type === 'kmt-upload' ? Uploader : option.type === 'kmt-table' ? Table : OptionComponent(option.type);
     const divider = option.divider ? ' has-divider' : '';
 
     return option.type && <div id={optionId} className={`customize-control-${option.type}${divider}`}>

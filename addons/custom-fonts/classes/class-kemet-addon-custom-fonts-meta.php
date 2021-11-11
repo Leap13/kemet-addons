@@ -41,7 +41,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 		 */
 		public function get_item_fields() {
 			$fields = array(
-				'font-type'        => array(
+				'font-type'           => array(
 					'type'    => 'kmt-select',
 					'default' => 'file',
 					'label'   => __( 'Font Type', 'kemet-addons' ),
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						'adobe-kit' => __( 'Adobe TypeKit', 'kemet-addons' ),
 					),
 				),
-				'adobe-project-id' => array(
+				'adobe-project-id'    => array(
 					'type'    => 'kmt-text',
 					'label'   => __( 'Adobe TypeKit Project ID', 'kemet-addons' ),
 					'context' => array(
@@ -60,7 +60,22 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'font-name'        => array(
+				'adobe-project-fonts' => array(
+					'type'    => 'kmt-table',
+					'label'   => __( 'Adobe TypeKit Project Fonts', 'kemet-addons' ),
+					'data'    => $this->typekit_fonts(),
+					'context' => array(
+						array(
+							'setting'  => 'adobe-project-id',
+							'operator' => 'not_empty',
+						),
+						array(
+							'setting' => 'font-type',
+							'value'   => 'adobe-kit',
+						),
+					),
+				),
+				'font-name'           => array(
 					'type'        => 'kmt-text',
 					'label'       => __( 'Font Name', 'kemet-addons' ),
 					'description' => __( 'The name of the font as it appears in the customizer options.', 'kemet-addons' ),
@@ -71,7 +86,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'font-fallback'    => array(
+				'font-fallback'       => array(
 					'type'        => 'kmt-text',
 					'label'       => __( 'Font Fallback', 'kemet-addons' ),
 					'description' => __( "Add the font's fallback names with comma(,) separator. eg. Helvetica, Arial", 'kemet-addons' ),
@@ -82,7 +97,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'font-display'     => array(
+				'font-display'        => array(
 					'type'    => 'kmt-select',
 					'label'   => __( 'Font Display', 'kemet-addons' ),
 					'choices' => array(
@@ -99,7 +114,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'font-weight'      => array(
+				'font-weight'         => array(
 					'type'    => 'kmt-select',
 					'label'   => __( 'Font Weight', 'kemet-addons' ),
 					'choices' => array(
@@ -121,7 +136,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'woff-font'        => array(
+				'woff-font'           => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.woff Font file', 'kemet-addons' ),
 					'fontType'    => 'woff',
@@ -133,7 +148,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'woff2-font'       => array(
+				'woff2-font'          => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.woff2 Font file', 'kemet-addons' ),
 					'fontType'    => 'woff2',
@@ -145,7 +160,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'ttf-font'         => array(
+				'ttf-font'            => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.ttf Font file', 'kemet-addons' ),
 					'fontType'    => 'ttf',
@@ -157,7 +172,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'eot-font'         => array(
+				'eot-font'            => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.eot Font file', 'kemet-addons' ),
 					'fontType'    => '.eot',
@@ -169,7 +184,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'svg-font'         => array(
+				'svg-font'            => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.svg Font file', 'kemet-addons' ),
 					'fontType'    => 'svg',
@@ -181,7 +196,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'otf-font'         => array(
+				'otf-font'            => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.otf Font file', 'kemet-addons' ),
 					'fontType'    => 'otf',
@@ -222,38 +237,12 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 					$font_type = $meta['font-type'];
 					$html      = '';
 					if ( 'adobe-kit' == $font_type && ! empty( $meta['adobe-project-id'] ) ) {
-						$fonts = Kemet_Addon_Custom_Fonts_Partials::get_instance()->get_adobe_project( $meta['adobe-project-id'] );
-						$html .= '<table class="wp-list-table widefat striped" style="margin-top: 20px;">';
-						$html .= '<thead>';
-						$html .= '<tr>';
-						$html .= '<td>' . esc_html__( 'Fonts', 'kemet-addons' ) . '</td>';
-						$html .= '<td>' . esc_html__( 'Variations', 'kemet-addons' ) . '</td>';
-						$html .= '</thead>';
-						$html .= '<tbody>';
-						foreach ( $fonts['kit']['families'] as $font_family ) {
-							$html      .= '<tr>';
-							$variations = $font_family['variations'];
-							$weights    = array();
-							foreach ( $variations as $variation ) {
-								$font_variations = str_split( $variation );
-								$weight          = $font_variations[1] . '00';
-								if ( ! in_array( $weight, $weights ) ) {
-									$weights[] = $weight;
-								}
-							}
-							sort( $weights );
-							$weights = implode( ', ', $weights );
-							$html   .= '<td>' . esc_html( $font_family['name'] ) . '</td>';
-							$html   .= '<td>' . esc_html( $weights ) . '</td>';
-							$html   .= '</tr>';
-						}
-						$html .= '</tbody>';
-						$html .= '</table>';
-
-						return $html;
+						return Kemet_Addon_Custom_Fonts_Partials::get_instance()->get_adobe_project( $meta['adobe-project-id'] );
 					}
 				}
 			}
+
+			return array();
 		}
 
 		/**

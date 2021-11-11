@@ -335,15 +335,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store_options_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/options-context */ "./src/store/options-context.js");
-/* harmony import */ var _Uploader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Uploader */ "./src/components/Uploader.js");
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Table */ "./src/components/Table.js");
+/* harmony import */ var _Uploader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Uploader */ "./src/components/Uploader.js");
+
 
 
 
 
 var isDisplay = function isDisplay(rules) {
   var _useContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_1__["default"]),
-      values = _useContext.values,
-      defaults = _useContext.defaults;
+      values = _useContext.values;
 
   if (!values) {
     return;
@@ -360,7 +361,7 @@ var isDisplay = function isDisplay(rules) {
     var boolean = false,
         operator = undefined != rule.operator ? rule.operator : "=",
         ruleValue = rule.value;
-    var settingValue = values[rule.setting] ? values[rule.setting] : defaults[rule.setting];
+    var settingValue = values[rule.setting];
 
     switch (operator) {
       case "in_array":
@@ -412,7 +413,7 @@ var SingleOptionComponent = function SingleOptionComponent(_ref) {
       option = _ref.option,
       onChange = _ref.onChange;
   var OptionComponent = window.KmtOptionComponent.OptionComponent;
-  var Option = option.type === 'kmt-upload' ? _Uploader__WEBPACK_IMPORTED_MODULE_2__["default"] : OptionComponent(option.type);
+  var Option = option.type === 'kmt-upload' ? _Uploader__WEBPACK_IMPORTED_MODULE_3__["default"] : option.type === 'kmt-table' ? _Table__WEBPACK_IMPORTED_MODULE_4__["default"] : OptionComponent(option.type);
   var divider = option.divider ? ' has-divider' : '';
   return option.type && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     id: optionId,
@@ -455,6 +456,45 @@ var Options = function Options(_ref2) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Options);
+
+/***/ }),
+
+/***/ "./src/components/Table.js":
+/*!*********************************!*\
+  !*** ./src/components/Table.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var __ = wp.i18n.__;
+
+var Table = function Table(props) {
+  var _props$params = props.params,
+      label = _props$params.label,
+      data = _props$params.data;
+  var value = props.value ? props.value : '';
+  var labelContent = label ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+    className: "customize-control-title kmt-control-title"
+  }, label) : null;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, labelContent, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "customize-control-content"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("table", {
+    className: "wp-list-table widefat striped"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("thead", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tr", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("td", null, __('Fonts', 'kemet-addons')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("td", null, __('Variations', 'kemet-addons')))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tbody", null, data.kit.families.map(function (font) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("tr", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("td", null, font.name), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("td", null, Object.keys(font.variations).map(function (key) {
+      var fontType = 'n' == font.variations[key][0] ? '' : 'italic';
+      var variation = font.variations[key][1] + '00' + fontType;
+      return variation;
+    }).join(", ")));
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Table);
 
 /***/ }),
 
