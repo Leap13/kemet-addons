@@ -37,7 +37,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts' ) ) {
 		 *  Constructor
 		 */
 		public function __construct() {
-			return;
 			require_once KEMET_CUSTOM_FONTS_DIR . 'classes/class-kemet-addon-custom-fonts-settings.php';
 			require_once KEMET_CUSTOM_FONTS_DIR . 'classes/class-kemet-addon-custom-fonts-partials.php';
 			require_once KEMET_CUSTOM_FONTS_DIR . 'classes/class-kemet-addon-custom-fonts-meta.php';

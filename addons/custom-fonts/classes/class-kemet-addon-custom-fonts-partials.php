@@ -35,7 +35,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_filter( 'mime_types', array( $this, 'allow_font_mimes' ) );
 			add_filter( 'wp_check_filetype_and_ext', array( $this, 'update_mime_types' ), 10, 3 );
 			add_action( 'kemet_render_fonts', array( $this, 'render_fonts' ) );
-			add_action( 'kemet_system_fonts', array( $this, 'add_custom_fonts_to_customizer' ) );
+			add_action( 'kemet_custom_fonts', array( $this, 'add_custom_fonts_to_customizer' ) );
 			add_action( 'wp_head', array( $this, 'fonts_css' ) );
 			if ( is_admin() ) {
 				add_action( 'enqueue_block_assets', array( $this, 'fonts_css' ) );
@@ -44,8 +44,104 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'register_fonts_in_elementor' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'adobe_fonts_css' ), 10 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'adobe_fonts_css' ), 100 );
+			add_action( 'add_meta_boxes', array( $this, 'add_custom_box' ) );
+			add_action( 'admin_print_scripts-post-new.php', array( $this, 'admin_scripts' ) );
+			add_action( 'admin_print_scripts-post.php', array( $this, 'admin_scripts' ) );
+			add_action( 'save_post', array( $this, 'save_postdata' ) );
 		}
 
+		/**
+		 * save_postdata
+		 *
+		 * @param  int $post_id
+		 */
+		function save_postdata( $post_id ) {
+			if ( array_key_exists( 'kemet_custom_font_options', $_POST ) ) {
+				$value = json_decode( stripslashes( $_POST['kemet_custom_font_options'] ), true );
+				update_post_meta(
+					$post_id,
+					'kemet_custom_font_options',
+					$value
+				);
+			}
+		}
+
+		function add_custom_box() {
+			add_meta_box(
+				'kemet_meta',
+				'Font Settings',
+				array( $this, 'custom_box_html' ),
+				KEMET_CUSTOM_FONTS_POST_TYPE,
+				'advanced',
+				'high',
+				null
+			);
+		}
+
+		/**
+		 * custom_box_html
+		 *
+		 * @param  object $post
+		 */
+		public function custom_box_html( $post ) {
+			$value = get_post_meta( $post->ID, 'kemet_custom_font_options', true );
+			?>
+			<div id="kmt-custom-fonts-meta">
+				<input id="kmt-font-meta" type="hidden" name="kemet_custom_font_options" value='<?php echo wp_json_encode( $value ); ?>'>
+				<div id="kmt-meta-box" data-id="<?php echo esc_attr( $post->ID ); ?>"></div>
+			</div>
+			<?php
+		}
+
+		/**
+		 * admin_scripts
+		 */
+		public function admin_scripts() {
+			global $post_type;
+			if ( KEMET_CUSTOM_FONTS_POST_TYPE == $post_type ) {
+				$css_prefix = '.min.css';
+				$dir        = 'minified';
+				if ( SCRIPT_DEBUG ) {
+					$css_prefix = '.css';
+					$dir        = 'unminified';
+				}
+				if ( is_rtl() ) {
+					$css_prefix = '-rtl.min.css';
+					if ( SCRIPT_DEBUG ) {
+						$css_prefix = '-rtl.css';
+					}
+				}
+				wp_enqueue_style( 'kemet-custom-fonts-css', KEMET_CUSTOM_FONTS_URL . 'assets/css/' . $dir . '/custom-fonts' . $css_prefix, false, KEMET_ADDONS_VERSION );
+				wp_enqueue_script(
+					'kemet-custom-font-admin-script',
+					KEMET_CUSTOM_FONTS_URL . 'assets/js/build/index.js',
+					array(
+						'wp-edit-post',
+						'wp-i18n',
+						'wp-components',
+						'wp-element',
+						'wp-media-utils',
+						'wp-block-editor',
+					),
+					KEMET_ADDONS_VERSION,
+					true
+				);
+
+				wp_localize_script(
+					'kemet-custom-font-admin-script',
+					'kemetCustomFont',
+					apply_filters(
+						'kemet_addons_custom_font_js_localize',
+						array(
+							'ajax_url'   => admin_url( 'admin-ajax.php' ),
+							'ajax_nonce' => wp_create_nonce( 'kemet-addons-custom-font' ),
+							'options'    => Kemet_Addon_Custom_Fonts_Meta::get_instance()->get_item_fields(),
+							'defaults'   => Kemet_Addon_Custom_Fonts_Meta::get_instance()->get_defaults(),
+						)
+					)
+				);
+			}
+		}
 		/**
 		 * Add custom fonts to elementor
 		 *
@@ -154,6 +250,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts     = array();
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
+
 				if ( ( isset( $font['font-type'] ) && 'file' == $font['font-type'] ) && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
 					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
 				}
@@ -193,7 +290,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 						sort( $weights );
 						$fonts[ $font_family['slug'] ] = array(
 							'fallback' => $font_fallback,
-							'weights'  => $weights,
+							'weights'  => $this->change_variations( $weights ),
 						);
 					}
 				}
@@ -240,12 +337,73 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 						'weights'  => array( $font_values['font-weight'] ),
 					);
 				}
+				if ( isset( $system_fonts[ $font_name ]['weights'] ) ) {
+					$system_fonts[ $font_name ]['weights'] = $this->change_variations( $system_fonts[ $font_name ]['weights'] );
+				}
 			}
 			$adobe_fonts = $this->get_adobe_fonts();
 			if ( ! empty( $adobe_fonts ) ) {
 				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
 			}
+
+			error_log( wp_json_encode( $system_fonts ) );
+
 			return $system_fonts;
+		}
+
+		private function change_variations( $structure ) {
+			$result = array();
+
+			foreach ( $structure as $weight ) {
+				$result[] = $this->get_weight( $weight );
+			}
+
+			return $result;
+		}
+
+		private function get_weight( $code ) {
+			$prefix = 'n';
+			$sufix  = '4';
+
+			$value = strtolower( trim( $code ) );
+			$value = str_replace( ' ', '', $value );
+
+			// Only number.
+			if ( is_numeric( $value ) && isset( $value[0] ) ) {
+				$sufix  = $value[0];
+				$prefix = 'n';
+			}
+
+			// Italic.
+			if ( preg_match( '#italic#', $value ) ) {
+				if ( 'italic' === $value ) {
+					$sufix  = 4;
+					$prefix = 'i';
+				} else {
+					$value = trim( str_replace( 'italic', '', $value ) );
+					if ( is_numeric( $value ) && isset( $value[0] ) ) {
+						$sufix  = $value[0];
+						$prefix = 'i';
+					}
+				}
+			}
+
+			// Regular.
+			if ( preg_match( '#regular|normal#', $value ) ) {
+				if ( 'regular' === $value ) {
+					$sufix  = 4;
+					$prefix = 'n';
+				} else {
+					$value = trim( str_replace( array( 'regular', 'normal' ), '', $value ) );
+
+					if ( is_numeric( $value ) && isset( $value[0] ) ) {
+						$sufix  = $value[0];
+						$prefix = 'n';
+					}
+				}
+			}
+
+			return "{$prefix}{$sufix}";
 		}
 
 		/**

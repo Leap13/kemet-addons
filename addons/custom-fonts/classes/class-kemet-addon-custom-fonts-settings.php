@@ -89,7 +89,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Settings' ) ) {
 						'show_in_rest'        => true,
 						'hierarchical'        => false,
 						'menu_position'       => null,
-						'supports'            => array( 'title', 'custom-fields' ),
+						'supports'            => array( 'title' ),
 					)
 				)
 			);
