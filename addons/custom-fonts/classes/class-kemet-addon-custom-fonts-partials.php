@@ -47,8 +47,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			add_action( 'add_meta_boxes', array( $this, 'add_custom_box' ) );
 			add_action( 'admin_print_scripts-post-new.php', array( $this, 'admin_scripts' ) );
 			add_action( 'admin_print_scripts-post.php', array( $this, 'admin_scripts' ) );
-			add_action( 'wp_ajax_kemet_addons_update_font_settings', array( $this, 'update_font_gettings' ) );
-			add_action( 'wp_ajax_kemet_addons_get_custom_font_settings', array( $this, 'get_font_gettings' ) );
 			add_action( 'save_post', array( $this, 'save_postdata' ) );
 		}
 
@@ -66,52 +64,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 					$value
 				);
 			}
-		}
-
-		/**
-		 * get_font_gettings
-		 *
-		 * @return void
-		 */
-		public function get_font_gettings() {
-			check_ajax_referer( 'kemet-addons-custom-font', 'nonce' );
-
-			$post_id = isset( $_POST['post_id'] ) ? sanitize_text_field( wp_unslash( $_POST['post_id'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-			if ( $post_id && '' !== $post_id ) {
-				$data = get_post_meta( $post_id, 'kemet_custom_font_options', true );
-				$data = $data ? $data : array();
-				wp_send_json_success(
-					array(
-						'success' => true,
-						'values'  => $data,
-					)
-				);
-			}
-
-			wp_send_json_error();
-		}
-
-		/**
-		 * update_options
-		 *
-		 * @return void
-		 */
-		public function update_font_gettings() {
-			check_ajax_referer( 'kemet-addons-custom-font', 'nonce' );
-
-			$post_id = isset( $_POST['post_id'] ) ? sanitize_text_field( wp_unslash( $_POST['post_id'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$data    = isset( $_POST['data'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['data'] ) ), true ) : array();
-
-			if ( $post_id && ! empty( $data ) ) {
-				update_post_meta( $post_id, 'kemet_custom_font_options', $data );
-			}
-
-			wp_send_json_success(
-				array(
-					'success' => true,
-				)
-			);
 		}
 
 		function add_custom_box() {
@@ -338,7 +290,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 						sort( $weights );
 						$fonts[ $font_family['slug'] ] = array(
 							'fallback' => $font_fallback,
-							'weights'  => $weights,
+							'weights'  => $this->change_variations( $weights ),
 						);
 					}
 				}
@@ -385,6 +337,9 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 						'weights'  => array( $font_values['font-weight'] ),
 					);
 				}
+				if ( isset( $system_fonts[ $font_name ]['weights'] ) ) {
+					$system_fonts[ $font_name ]['weights'] = $this->change_variations( $system_fonts[ $font_name ]['weights'] );
+				}
 			}
 			$adobe_fonts = $this->get_adobe_fonts();
 			if ( ! empty( $adobe_fonts ) ) {
@@ -394,6 +349,61 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			error_log( wp_json_encode( $system_fonts ) );
 
 			return $system_fonts;
+		}
+
+		private function change_variations( $structure ) {
+			$result = array();
+
+			foreach ( $structure as $weight ) {
+				$result[] = $this->get_weight( $weight );
+			}
+
+			return $result;
+		}
+
+		private function get_weight( $code ) {
+			$prefix = 'n';
+			$sufix  = '4';
+
+			$value = strtolower( trim( $code ) );
+			$value = str_replace( ' ', '', $value );
+
+			// Only number.
+			if ( is_numeric( $value ) && isset( $value[0] ) ) {
+				$sufix  = $value[0];
+				$prefix = 'n';
+			}
+
+			// Italic.
+			if ( preg_match( '#italic#', $value ) ) {
+				if ( 'italic' === $value ) {
+					$sufix  = 4;
+					$prefix = 'i';
+				} else {
+					$value = trim( str_replace( 'italic', '', $value ) );
+					if ( is_numeric( $value ) && isset( $value[0] ) ) {
+						$sufix  = $value[0];
+						$prefix = 'i';
+					}
+				}
+			}
+
+			// Regular.
+			if ( preg_match( '#regular|normal#', $value ) ) {
+				if ( 'regular' === $value ) {
+					$sufix  = 4;
+					$prefix = 'n';
+				} else {
+					$value = trim( str_replace( array( 'regular', 'normal' ), '', $value ) );
+
+					if ( is_numeric( $value ) && isset( $value[0] ) ) {
+						$sufix  = $value[0];
+						$prefix = 'n';
+					}
+				}
+			}
+
+			return "{$prefix}{$sufix}";
 		}
 
 		/**
