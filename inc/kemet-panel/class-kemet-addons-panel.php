@@ -49,7 +49,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public function __construct() {
 			require_once KEMET_PANEL_DIR . 'helpers/class-kemet-plugins-data.php';
 			add_action( 'wp_ajax_kemet-panel-update-option', array( $this, 'update_option' ) );
-			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ), 99 );
+			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ), 100 );
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_item' ), 500 );
 			add_action( 'enable_kemet_admin_menu_item', '__return_true' );
 		}
