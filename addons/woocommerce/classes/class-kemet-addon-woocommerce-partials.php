@@ -738,7 +738,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			echo '<div id="kmt-off-canvas-wrap">';
 			echo '<div class="kmt-off-canvas-sidebar">';
 			echo '<a href="javascript:void(0)" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
-			echo kemet_get_custom_widget( 'off-canvas-filter' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo Kemet_Builder_Helper::get_custom_widget( 'off-canvas-filter' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 			echo '<div class="kmt-off-canvas-overlay"></div>';
 			echo '</div>';
