@@ -201,8 +201,8 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'options'   => array(
 					'blog-layouts'        => array(
 						'type'        => 'kmt-button',
-						'label'       => __( 'Blog Layouts', 'kemet-addons' ),
-						'description' => __( 'Enable/Disable Extra Blog Layouts.', 'kemet-addons' ),
+						'label'       => __( 'Blog Options', 'kemet-addons' ),
+						'description' => __( 'Enable/Disable Extra Blog Options.', 'kemet-addons' ),
 						'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
 					),
 					'mega-menu'           => array(
