@@ -989,40 +989,6 @@ Woo Quick View
   cursor: pointer;
 }
 
-/************ Single Prodcut ************/
-.kmt-product-navigation {
-  float: left;
-}
-
-.kmt-product-navigation .kmt-product-links a {
-  display: inline-block;
-}
-
-.kmt-product-navigation .kmt-product-links a span {
-  display: inline-flex;
-  width: 28px;
-  height: 28px;
-  line-height: 24px;
-  border: 2px solid var(--borderColor);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  font-size: 14px;
-  justify-content: center;
-  margin-right: 10px;
-}
-
-.kmt-product-navigation .kmt-product-links a .prev:before {
-  font-family: dashicons;
-  content: "\f341";
-}
-
-.kmt-product-navigation .kmt-product-links a .next:before {
-  font-family: dashicons;
-  content: "\f345";
-}
-
 .woocommerce .woocommerce-cart-form .quantity,
 .woocommerce form.cart .quantity,
 .woocommerce-page .woocommerce-cart-form .quantity,
