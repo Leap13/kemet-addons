@@ -209,7 +209,7 @@ function woo_shop_options( $options ) {
 		),
 	);
 
-	return array_merge( $addon_options, $options );
+	return $addon_options + $options;
 }
 
 
