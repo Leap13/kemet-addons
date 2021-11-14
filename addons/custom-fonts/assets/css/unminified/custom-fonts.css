@@ -48,3 +48,7 @@
   min-height: 30px;
   padding: 5px;
 }
+
+#kmt-custom-fonts-meta .kmt-options > div input[type="text"][readonly] {
+  background-color: #fff;
+}
