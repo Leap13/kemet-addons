@@ -53,6 +53,7 @@ if ( ! class_exists( 'Kemet_Blog_Layouts_Settings' ) ) {
 			$defaults['load-more-text']                 = 'Load More';
 			$defaults['blog-featured-image-width']      = '';
 			$defaults['blog-featured-image-height']     = '';
+			$defaults['blog-pagination-style']          = 'next-prev';
 
 			return $defaults;
 		}
