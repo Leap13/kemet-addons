@@ -69,7 +69,7 @@ if ( ! class_exists( 'Kemet_Addons_Page_Builder_Compatiblity' ) ) {
 				}
 			}
 			$post_type    = get_post_type( $post_id );
-			$rest_support = $wp_post_types[ $post_type ]->show_in_rest;
+			$rest_support = isset( $wp_post_types[ $post_type ] ) ? $wp_post_types[ $post_type ]->show_in_rest : false;
 
 			if ( $rest_support ) {
 				return self::render_gutenberg_content( $post_id );
