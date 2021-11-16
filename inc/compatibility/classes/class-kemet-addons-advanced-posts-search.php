@@ -212,7 +212,6 @@ if ( ! class_exists( 'Kemet_Addons_Advanced_Posts_Search' ) ) {
 		public function admin_script( $hook ) {
 			$screen = get_current_screen();
 			if ( ( 'post.php' === $hook || 'post-new.php' === $hook ) && ( defined( 'KEMET_CUSTOM_LAYOUT_POST_TYPE' ) && KEMET_CUSTOM_LAYOUT_POST_TYPE === $screen->post_type ) || ( 'nav-menus.php' === $hook ) ) {
-				error_log( $hook );
 				$js_prefix  = '.min.js';
 				$css_prefix = '.min.css';
 				$dir        = 'minified';
