@@ -287,8 +287,10 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 		 *
 		 * @return void
 		 */
-		public function admin_script() {
-
+		public function admin_script( $hook_suffix ) {
+			if ( 'nav-menus.php' !== $hook_suffix ) {
+				return;
+			}
 			$css_prefix = '.min.css';
 			$js_prefix  = '.min.js';
 			$dir        = 'minified';
