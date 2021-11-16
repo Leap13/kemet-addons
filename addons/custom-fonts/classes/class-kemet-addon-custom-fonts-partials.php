@@ -346,8 +346,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
 			}
 
-			error_log( wp_json_encode( $system_fonts ) );
-
 			return $system_fonts;
 		}
 
