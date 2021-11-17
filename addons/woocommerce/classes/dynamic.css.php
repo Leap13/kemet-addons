@@ -22,21 +22,10 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$loader_color        = kemet_get_sub_option( 'woo-shop-loader-color', 'initial', $theme_color );
 	$inifinte_text_color = kemet_get_option( 'woo-shop-infinite-text-color', $btn_color );
 
-	$css_content                = array(
-		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'       => array(
+	$css_content = array(
+		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'      => array(
 			'background-color' => 'var(--globalBackgroundColor)',
 			'border-color'     => 'var(--borderColor)',
-		),
-		'.woocommerce .kmt-toolbar ,body .kmt-toolbar' => array(
-			'border-top-color'    => 'var(--borderColor)',
-			'border-bottom-color' => 'var(--borderColor)',
-		),
-		'.woocommerce .kmt-toolbar .shop-list-style a , body .kmt-toolbar .shop-list-style a' => array(
-			'border-color' => 'var(--borderColor)',
-		),
-		'.woocommerce .kmt-toolbar .shop-list-style a:hover , .woocommerce .kmt-toolbar .shop-list-style a.active,body .kmt-toolbar .shop-list-style a.active' => array(
-			'border-color' => 'var(--themeColor)',
-			'color'        => 'var(--themeColor)',
 		),
 		'.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn' => array(
 			'background-color' => 'var(--buttonBackgroundColor)',
@@ -76,29 +65,20 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 		'.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader' => array(
 			'background-color' => esc_attr( $loader_color ),
 		),
-		'a.plus, a.minus'                              => array(
+		'a.plus, a.minus'                             => array(
 			'border-color'     => 'var(--borderColor)',
 			'background-color' => 'var(--inputBackgroundColor)',
 		),
-		'.kmt-woo-load-more .woo-load-more-text'       => array(
+		'.kmt-woo-load-more .woo-load-more-text'      => array(
 			'color' => esc_attr( $inifinte_text_color ),
 		),
-		'.shop-grid .yith-wcwl-add-to-wishlist'        => array(
+		'.shop-grid .yith-wcwl-add-to-wishlist'       => array(
 			'color' => 'var(--headingLinksColor)',
 		),
-		'.shop-grid .yith-wcwl-add-to-wishlist:hover'  => array(
+		'.shop-grid .yith-wcwl-add-to-wishlist:hover' => array(
 			'color' => 'var(--themeColor)',
 		),
 	);
-	$parse_css                  = kemet_parse_css( $css_content );
-	$disable_desc_in_responsive = kemet_get_option( 'disable-list-short-desc-in-responsive' );
-	if ( $disable_desc_in_responsive ) {
-		$desc_in_responsive = array(
-			'.woocommerce .kmt-woo-shop-product-description' => array(
-				'display' => esc_attr( 'none' ),
-			),
-		);
-		$parse_css         .= kemet_parse_css( $desc_in_responsive, '', '768' );
-	}
+	$parse_css   = kemet_parse_css( $css_content );
 	return $dynamic_css . $parse_css;
 }

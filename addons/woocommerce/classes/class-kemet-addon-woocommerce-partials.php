@@ -66,11 +66,9 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			}
 
 			add_action( 'ajax_product_layout_style', array( $this, 'init_woocommerce' ) );
-			add_filter( 'kemet_shop_layout_style', array( $this, 'kemet_get_shop_layout_cookie' ) );
 			add_action( 'kemet_infinite_scroll', array( $this, 'init_woocommerce' ) );
 			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
-			add_filter( 'kemet_shop_layout_style', array( $this, 'related_posts_layout' ) );
 		}
 
 		/**
@@ -91,40 +89,12 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Related Post Layout
-		 *
-		 * @param string $layout shop layout.
-		 * @return string
-		 */
-		public function related_posts_layout( $layout ) {
-			if ( ! ( is_shop() || is_product_taxonomy() ) ) {
-				$layout = kemet_get_option( 'woo-shop-layout' );
-				ob_start();
-
-				setcookie( 'kemet_single_product_layout', $layout, 0.1, '/' );
-
-				ob_clean();
-			}
-
-			return $layout;
-		}
-
-		/**
 		 * Infinite Scroll
 		 *
 		 * @return void
 		 */
 		public function kemet_infinite_scroll() {
 			check_ajax_referer( 'kmt-shop-load-more-nonce', 'nonce' );
-
-			if ( isset( $_COOKIE['kemet_shop_layout'] ) ) {
-				add_filter(
-					'kemet_shop_layout_style',
-					function () {
-						return sanitize_text_field( wp_unslash( $_COOKIE['kemet_shop_layout'] ) );
-					}
-				);
-			}
 
 			do_action( 'kemet_infinite_scroll' );
 
@@ -191,149 +161,6 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Get Shop Layout Cookie
-		 *
-		 * @param string $default default shop layout from cookies.
-		 * @return string
-		 */
-		public function kemet_get_shop_layout_cookie( $default ) {
-			global $wp_customize;
-
-			if ( isset( $_COOKIE['kemet_shop_layout'] ) && ! isset( $wp_customize ) ) {
-				return sanitize_text_field( wp_unslash( $_COOKIE['kemet_shop_layout'] ) );
-			} elseif ( isset( $_COOKIE['kemet_shop_layout'] ) && isset( $wp_customize ) ) {
-				ob_start();
-
-				setcookie( 'kemet_shop_layout', kemet_get_option( 'woo-shop-layout' ), 0.1, '/' );
-
-				ob_clean();
-			}
-
-			return $default;
-		}
-
-		/**
-		 * Load shop list style by ajax
-		 *
-		 * @return void
-		 */
-		public function ajax_product_list_style() {
-			check_ajax_referer( 'shop-load-layout-style-nonce', 'nonce' );
-
-			add_filter(
-				'kemet_shop_layout_style',
-				function () {
-					return 'shop-list';
-				}
-			);
-
-			do_action( 'ajax_product_layout_style' );
-
-			// prepare our arguments for the query.
-			$args = isset( $_POST['query'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true ) : '';
-
-			$posts = new WP_Query( $args );
-
-			if ( $posts->have_posts() ) {
-				while ( $posts->have_posts() ) {
-					$posts->the_post();
-
-					/**
-					 * Woocommerce: woocommerce_shop_loop hook.
-					 *
-					 * @hooked WC_Structured_Data::generate_product_data() - 10
-					 */
-					do_action( 'woocommerce_shop_loop' );
-					wc_get_template_part( 'content', 'product' );
-				}
-			}
-			wp_reset_query();
-
-			wp_die();
-		}
-
-		/**
-		 * Load shop simple style by ajax
-		 *
-		 * @return void
-		 */
-		public function ajax_product_hover_style() {
-			check_ajax_referer( 'shop-load-layout-style-nonce', 'nonce' );
-
-			add_filter(
-				'kemet_shop_layout_style',
-				function () {
-					return 'hover-style';
-				}
-			);
-
-			do_action( 'ajax_product_layout_style' );
-
-			// prepare our arguments for the query.
-			$args = isset( $_POST['query'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true ) : '';
-
-			$posts = new WP_Query( $args );
-
-			if ( $posts->have_posts() ) {
-				while ( $posts->have_posts() ) {
-					$posts->the_post();
-
-					/**
-					 * Woocommerce: woocommerce_shop_loop hook.
-					 *
-					 * @hooked WC_Structured_Data::generate_product_data() - 10
-					 */
-					do_action( 'woocommerce_shop_loop' );
-					wc_get_template_part( 'content', 'product' );
-				}
-			}
-			wp_reset_query();
-
-			wp_die();
-		}
-
-		/**
-		 * Load shop boxed style by ajax
-		 *
-		 * @return void
-		 */
-		public function ajax_product_default_style() {
-			check_ajax_referer( 'shop-load-layout-style-nonce', 'nonce' );
-
-			add_filter(
-				'kemet_shop_layout_style',
-				function () {
-					return 'shop-grid';
-				}
-			);
-
-			do_action( 'ajax_product_layout_style' );
-
-			// prepare our arguments for the query.
-			$args = isset( $_POST['query'] ) ? json_decode( sanitize_text_field( wp_unslash( $_POST['query'] ) ), true ) : '';
-
-			$posts = new WP_Query( $args );
-
-			if ( $posts->have_posts() ) {
-				while ( $posts->have_posts() ) {
-					$posts->the_post();
-
-					/**
-					 * Woocommerce: woocommerce_shop_loop hook.
-					 *
-					 * @hooked WC_Structured_Data::generate_product_data() - 10
-					 */
-					do_action( 'woocommerce_shop_loop' );
-					wc_get_template_part( 'content', 'product' );
-				}
-			}
-
-			wp_reset_query();
-
-			wp_die();
-		}
-
-		/**
 		 * Kemet addons Init Woocommerce
 		 *
 		 * @return void
@@ -361,107 +188,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_list_style' ), 1 );
 			}
 
-			if ( 'shop-list' === $shop_style ) {
-				/**
-				 * Woocommerce shop/product details div tag
-				 *
-				 * @return void
-				 */
-				function kemet_addons_product_list_details() {
-					echo '<div class="product-list-details">';
-					echo '<a href="' . esc_url( get_the_permalink() ) . '" class="kmt-loop-product__link">';
-					do_action( 'kemet_product_list_details_top' );
-				}
-				/**
-				 * Woocommerce shop/product details div close tag
-				 *
-				 * @return void
-				 */
-				function kemet_addons_after_shop_loop_item_title() {
-					do_action( 'kemet_product_list_details_bottom' );
-					echo '</a>';
-					echo '</div>';
-				}
-
-				/**
-				 * Show the product title in the product loop. By default this is an H2
-				 *
-				 * @return void
-				 */
-				function kemet_addons_woo_woocommerce_shop_product_content() {
-					$shop_structure = kemet_get_option( 'woo-shop-list-product-structure' );
-
-					if ( is_array( $shop_structure ) && ! empty( $shop_structure ) ) {
-						do_action( 'kemet_woo_shop_before_summary_wrap' );
-						echo '<div class="kemet-shop-summary-wrap">';
-						do_action( 'kemet_woo_shop_summary_wrap_top' );
-
-						foreach ( $shop_structure as $value ) {
-							switch ( $value ) {
-								case 'title':
-									/**
-									 * Add Product Title on shop page for all products.
-									 */
-									do_action( 'kemet_woo_shop_title_before' );
-									kemet_woo_shop_products_title();
-									do_action( 'kemet_woo_shop_title_after' );
-									break;
-								case 'price':
-									/**
-									 * Add Product Price on shop page for all products.
-									 */
-									do_action( 'kemet_woo_shop_price_before' );
-									woocommerce_template_loop_price();
-									do_action( 'kemet_woo_shop_price_after' );
-									break;
-								case 'ratings':
-									/**
-									 * Add rating on shop page for all products.
-									 */
-									do_action( 'kemet_woo_shop_rating_before' );
-									woocommerce_template_loop_rating();
-									do_action( 'kemet_woo_shop_rating_after' );
-									break;
-
-								case 'short_desc':
-									do_action( 'kemet_woo_shop_short_description_before' );
-									kemet_woo_shop_product_short_description();
-									do_action( 'kemet_woo_shop_short_description_after' );
-									break;
-								case 'add_cart':
-									do_action( 'kemet_woo_shop_add_to_cart_before' );
-									printf( '<div class="%s">', esc_attr( 'add-to-cart-group' ) );
-									woocommerce_template_loop_add_to_cart();
-									printf( '</div>' );
-									do_action( 'kemet_woo_shop_add_to_cart_after' );
-									break;
-								case 'category':
-									/**
-									 * Add and/or Remove Categories from shop archive page.
-									 */
-									do_action( 'kemet_woo_shop_category_before' );
-									kemet_woo_shop_parent_category();
-									do_action( 'kemet_woo_shop_category_after' );
-									break;
-								default:
-									break;
-							}
-						}
-
-						do_action( 'kemet_woo_shop_summary_wrap_bottom' );
-						echo '</div>';
-						do_action( 'kemet_woo_shop_after_summary_wrap' );
-					}
-				}
-
-				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details', 8 );
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title', 1 );
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content', 2 );
-
-				remove_action( 'woocommerce_before_shop_loop_item', 'product_list_details', 8 );
-				remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title', 1 );
-				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content', 2 );
-			} elseif ( 'hover-style' == $shop_style ) {
+			if ( 'hover-style' == $shop_style ) {
 				/**
 				 * Woocommerce shop/product details div tag
 				 *
@@ -603,9 +330,6 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			}
 
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'start_tool_bar_div' ) );
-			if ( is_shop() || is_product_taxonomy() ) {
-				add_action( 'woocommerce_before_shop_loop', array( $this, 'toolbar_buttons' ), 20 );
-			}
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'end_tool_bar_div' ), 40 );
 		}
 
@@ -625,26 +349,6 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 */
 		public function end_tool_bar_div() {
 			echo '</div>';
-		}
-
-		/**
-		 * Tool Bar Button
-		 *
-		 * @return void
-		 */
-		public function toolbar_buttons() {
-			$shop_style = kemet_get_option( 'woo-shop-layout' );
-			$html       = '<div class="shop-list-style">';
-			$html      .= '<span>View As: </span>';
-			$html      .= '<a href="#" class="kmt-grid-style" data-layout= ' . $shop_style . '><span class="dashicons dashicons-screenoptions"></span></a>';
-			$html      .= '<a href="#" class="kmt-list-style" data-layout="shop-list"><span class="dashicons dashicons-editor-ul"></span></a>';
-			$html      .= '</div>';
-			$html_args  = kemet_allowed_html( array( 'div', 'a', 'span' ) );
-
-			echo wp_kses(
-				$html,
-				$html_args
-			);
 		}
 
 		/**

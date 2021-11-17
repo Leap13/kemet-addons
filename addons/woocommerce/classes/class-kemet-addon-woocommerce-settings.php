@@ -48,31 +48,22 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Settings' ) ) {
 		 * @return object
 		 */
 		public function theme_defaults( $defaults ) {
-			$defaults['woo-shop-quick-view-style']             = 'qv-icon';
-			$defaults['woo-shop-layout']                       = 'shop-grid';
-			$defaults['enable-single-ajax-add-to-cart']        = false;
-			$defaults['woo-shop-simple-product-structure']     = array(
+			$defaults['woo-shop-quick-view-style']          = 'qv-icon';
+			$defaults['woo-shop-layout']                    = 'shop-grid';
+			$defaults['enable-single-ajax-add-to-cart']     = false;
+			$defaults['woo-shop-simple-product-structure']  = array(
 				'title',
 				'price',
 				'ratings',
 				'category',
 				'add_cart',
 			);
-			$defaults['woo-shop-list-product-structure']       = array(
-				'title',
-				'price',
-				'ratings',
-				'category',
-				'short_desc',
-				'add_cart',
-			);
-			$defaults['woo-shop-off-canvas-filter-label']      = 'Filter';
-			$defaults['woo-shop-enable-quick-view']            = false;
-			$defaults['woo-shop-pagination-style']             = 'standard';
-			$defaults['woo-shop-infinite-scroll-last-text']    = __( 'No more products to show.', 'kemet-addons' );
-			$defaults['woo-shop-load-more-style']              = 'dots';
-			$defaults['woo-shop-load-more-text']               = 'Load More';
-			$defaults['disable-list-short-desc-in-responsive'] = true;
+			$defaults['woo-shop-off-canvas-filter-label']   = 'Filter';
+			$defaults['woo-shop-enable-quick-view']         = false;
+			$defaults['woo-shop-pagination-style']          = 'standard';
+			$defaults['woo-shop-infinite-scroll-last-text'] = __( 'No more products to show.', 'kemet-addons' );
+			$defaults['woo-shop-load-more-style']           = 'dots';
+			$defaults['woo-shop-load-more-text']            = 'Load More';
 
 			return $defaults;
 		}

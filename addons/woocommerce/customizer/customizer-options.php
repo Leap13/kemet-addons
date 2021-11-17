@@ -15,11 +15,11 @@ add_filter( 'woo_shop_options', 'woo_shop_options' );
 function woo_shop_options( $options ) {
 	$prefix        = 'woo-shop';
 	$addon_options = array(
-		$prefix . '-title'                      => array(
+		$prefix . '-title'                     => array(
 			'type'  => 'kmt-title',
 			'label' => __( 'Shop Settings', 'kemet-addons' ),
 		),
-		$prefix . '-layout'                     => array(
+		$prefix . '-layout'                    => array(
 			'type'    => 'kmt-select',
 			'label'   => __( 'Shop Layout', 'kemet-addons' ),
 			'choices' => array(
@@ -27,7 +27,7 @@ function woo_shop_options( $options ) {
 				'hover-style' => __( 'Simple', 'kemet-addons' ),
 			),
 		),
-		$prefix . '-simple-product-structure'   => array(
+		$prefix . '-simple-product-structure'  => array(
 			'type'    => 'kmt-sortable',
 			'label'   => __( 'Product Structure', 'kemet-addons' ),
 			'choices' => array(
@@ -45,7 +45,7 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-product-structure'          => array(
+		$prefix . '-product-structure'         => array(
 			'type'    => 'kmt-sortable',
 			'label'   => __( 'Product Structure', 'kemet-addons' ),
 			'choices' => array(
@@ -60,38 +60,15 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-list-product-structure'     => array(
-			'type'    => 'kmt-sortable',
-			'label'   => __( 'List Style Product Structure', 'kemet-addons' ),
-			'choices' => array(
-				'title'      => __( 'Title', 'kemet-addons' ),
-				'price'      => __( 'Price', 'kemet-addons' ),
-				'ratings'    => __( 'Ratings', 'kemet-addons' ),
-				'short_desc' => __( 'Short Description', 'kemet-addons' ),
-				'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
-				'category'   => __( 'Category', 'kemet-addons' ),
-			),
-		),
-		'disable-list-short-desc-in-responsive' => array(
-			'type'    => 'kmt-switcher',
-			'label'   => __( 'Disable Short Description In Responsive', 'kemet-addons' ),
-			'context' => array(
-				array(
-					'setting'  => $prefix . '-list-product-structure',
-					'operator' => 'in_array',
-					'value'    => 'short_desc',
-				),
-			),
-		),
-		$prefix . '-quick-view'                 => array(
+		$prefix . '-quick-view'                => array(
 			'type'  => 'kmt-title',
 			'label' => __( 'Quick View Settings', 'kemet-addons' ),
 		),
-		$prefix . '-enable-quick-view'          => array(
+		$prefix . '-enable-quick-view'         => array(
 			'type'  => 'kmt-switcher',
 			'label' => __( 'Enable Quick View', 'kemet-addons' ),
 		),
-		$prefix . '-quick-view-style'           => array(
+		$prefix . '-quick-view-style'          => array(
 			'type'    => 'kmt-select',
 			'default' => 'qv-icon',
 			'label'   => __( 'Quick View Position', 'kemet-addons' ),
@@ -111,11 +88,11 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-pagination-group'           => array(
+		$prefix . '-pagination-group'          => array(
 			'type'  => 'kmt-title',
 			'label' => __( 'Pagination Settings', 'kemet-addons' ),
 		),
-		$prefix . '-pagination-style'           => array(
+		$prefix . '-pagination-style'          => array(
 			'type'    => 'kmt-select',
 			'label'   => __( 'Pagination Style', 'kemet-addons' ),
 			'choices' => array(
@@ -123,7 +100,7 @@ function woo_shop_options( $options ) {
 				'infinite-scroll' => __( 'Infinite Scroll', 'kemet-addons' ),
 			),
 		),
-		$prefix . '-load-more-style'            => array(
+		$prefix . '-load-more-style'           => array(
 			'type'    => 'kmt-select',
 			'default' => 'dots',
 			'label'   => __( 'Load More Style', 'kemet-addons' ),
@@ -138,7 +115,7 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-load-more-text'             => array(
+		$prefix . '-load-more-text'            => array(
 			'type'    => 'kmt-text',
 			'label'   => __( 'Load More Text', 'kemet-addons' ),
 			'context' => array(
@@ -152,7 +129,7 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-loader-color'               => array(
+		$prefix . '-loader-color'              => array(
 			'type'      => 'kmt-color',
 			'transport' => 'postMessage',
 			'label'     => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
@@ -179,7 +156,7 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-infinite-scroll-last-text'  => array(
+		$prefix . '-infinite-scroll-last-text' => array(
 			'type'    => 'kmt-text',
 			'label'   => __( 'Infinite Scroll: Last Text', 'kemet-addons' ),
 			'context' => array(
@@ -189,15 +166,15 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-filter'                     => array(
+		$prefix . '-filter'                    => array(
 			'type'  => 'kmt-title',
 			'label' => __( 'Filter Settings', 'kemet-addons' ),
 		),
-		$prefix . '-enable-filter-button'       => array(
+		$prefix . '-enable-filter-button'      => array(
 			'type'  => 'kmt-switcher',
 			'label' => __( 'Enable Filter Button', 'kemet-addons' ),
 		),
-		$prefix . '-off-canvas-filter-label'    => array(
+		$prefix . '-off-canvas-filter-label'   => array(
 			'type'    => 'kmt-text',
 			'label'   => __( 'Filter Button Text', 'kemet-addons' ),
 			'context' => array(

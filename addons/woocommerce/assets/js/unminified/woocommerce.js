@@ -19,150 +19,14 @@
     offCanvas.addClass("side-off-canvas-filter");
   });
 
-  /**
-   *
-   * @class Kemet_Shop_Layout
-   */
-  var Kemet_Shop_Layout = {
-    /**
-     * @access private
-     * @method init
-     */
-    init: function () {
-      var $this = this,
-        cookie = "",
-        toolBar = $(".kmt-toolbar .shop-list-style");
-
-      if (kemet.is_shop) {
-        cookie = $this.getCookie("kemet_shop_layout");
-      } else {
-        cookie = $this.getCookie("kemet_single_product_layout");
-      }
-
-      if (cookie != "" && cookie != "undefined" && !kemet.in_customizer) {
-        $this.defaultStyle(cookie);
-      }
-
-      toolBar.find("a").click(function (e) {
-        var $link = $(this);
-
-        e.preventDefault();
-        $this.loadAjax($link);
-      });
-    },
-    loadAjax: function ($this) {
-      if ($this.hasClass("active")) return;
-
-      var $body = $("body"),
-        layoutStyle = $this.data("layout"),
-        loadMore = $(".woo-load-more-text"),
-        prevClass = $this.siblings("a").data("layout"),
-        container = $(".kmt-woocommerce-container .products"),
-        shop_load_template = kemet.shop_load_layout_style || "",
-        action = "";
-
-      switch (layoutStyle) {
-        case "hover-style":
-          action = "kemet_hover_style_post_ajax";
-          break;
-        case "shop-grid":
-          action = "kemet_product_default_style";
-          break;
-        case "shop-list":
-          action = "kemet_list_post_ajax";
-          break;
-      }
-
-      var data = {
-        action: action,
-        query: kemet.query_vars,
-        nonce: shop_load_template,
-      };
-
-      $this.addClass("active");
-      $this.siblings().removeClass("active");
-
-      $.ajax({
-        url: kemet.ajax_url,
-        data: data,
-        type: "POST",
-
-        beforeSend: function (xhr) {
-          container.addClass("load-ajax");
-        },
-        success: function (data) {
-          if (data) {
-            container.html(data);
-            $this.addClass("active");
-            $this.siblings().removeClass("active");
-            if (loadMore.length) {
-              loadMore.show();
-            }
-            $body.addClass(layoutStyle);
-            $body.removeClass(prevClass);
-
-            container.removeClass("load-ajax");
-          }
-          Cookies.set("kemet_shop_layout", layoutStyle, {
-            expires: 0.1,
-            path: "/",
-          });
-        },
-      });
-    },
-    getCookie: function (cname) {
-      var name = cname + "=";
-      var decodedCookie = decodeURIComponent(document.cookie);
-      var ca = decodedCookie.split(";");
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == " ") {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
-    },
-    defaultStyle: function (cookie) {
-      var layout = cookie,
-        $body = $("body"),
-        counter = 0,
-        toolBar = $(".kmt-toolbar");
-
-      toolBar.find("a").each(function () {
-        var $this = $(this);
-
-        if ($this.data("layout") == layout) {
-          $this.addClass("active");
-          $this.siblings().removeClass("active");
-          counter++;
-        }
-      });
-      switch (layout) {
-        case "hover-style":
-          $body.removeClass("shop-grid shop-list");
-          break;
-        case "shop-grid":
-          $body.removeClass("hover-style shop-list");
-          break;
-        case "shop-list":
-          $body.removeClass("hover-style shop-grid");
-          break;
-      }
-
-      $body.addClass(layout);
-    },
-  };
 
   /**
    * Custom input number
    */
   var customInputNum = function () {
     var quantity = $(
-        "div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)"
-      ),
+      "div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)"
+    ),
       quantityInput = quantity.find(".qty");
 
     if (
@@ -229,10 +93,6 @@
     }
   };
 
-  $(function () {
-    Kemet_Shop_Layout.init();
-  });
-
   $(window).ready(function () {
     "use strict";
     customInputNum();
@@ -255,22 +115,10 @@
       loader = $(".kmt-woo-infinite-scroll-dots"),
       loadMore = $(".woo-load-more-text"),
       noMoreMsg = $(".woo-infinite-scroll-end-msg"),
-      toolBar = $(".kmt-toolbar .shop-list-style"),
       shop_infinite_nonce = kemet.shop_infinite_nonce || "";
     if (kemet.woo_infinite_scroll_style == "button") {
       loader.hide();
     }
-    /**
-     * Counter with Style Change
-     */
-    toolBar.find("a").on("click", function (e) {
-      var $link = $(this);
-
-      if (!$link.hasClass("active")) {
-        counter = parseInt(kemet.shop_infinite_count) || "";
-        noMoreMsg.hide();
-      }
-    });
 
     /**
      * Get Products via AJAX

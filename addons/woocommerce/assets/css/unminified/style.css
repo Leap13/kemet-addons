@@ -835,53 +835,6 @@ Woo Quick View
   white-space: nowrap;
 }
 
-.kmt-toolbar {
-  overflow: hidden;
-  margin-bottom: 2.5em;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  padding: 10px 0;
-}
-
-.kmt-toolbar .woocommerce-ordering {
-  margin-bottom: 0;
-}
-
-.kmt-toolbar .woocommerce-result-count {
-  line-height: 34px;
-  margin-bottom: 0;
-}
-
-.kmt-toolbar .shop-list-style {
-  float: left;
-  line-height: 34px;
-  margin: 0 2em;
-}
-
-.kmt-toolbar .shop-list-style a {
-  margin: 0 5px;
-  line-height: 1;
-  padding: 7px;
-  cursor: pointer;
-  transition: none;
-  border-width: 1px;
-  border-style: solid;
-}
-
-.kmt-toolbar .shop-list-style a span {
-  vertical-align: middle;
-  height: 25px;
-}
-
-.woocommerce .kmt-toolbar form.woocommerce-ordering,
-.woocommerce .kmt-toolbar .woocommerce-result-count,
-.woocommerce-page .kmt-toolbar form.woocommerce-ordering,
-.woocommerce-page .kmt-toolbar .woocommerce-result-count {
-  margin: 0;
-}
-
 @media (min-width: 922px) {
   .kmt-article-single.kmt-gallary-vertical div.images.woocommerce-product-gallery .flex-viewport {
     overflow: hidden;
