@@ -40,13 +40,6 @@ module.exports = function (grunt) {
             dest: "addons/custom-fonts/assets/css/unminified",
             ext: "-rtl.css",
           },
-          {
-            expand: true,
-            cwd: "inc/kemet-panel/assets/css/unminified",
-            src: ["*.css", "!*-rtl.css"],
-            dest: "inc/kemet-panel/assets/css/unminified",
-            ext: "-rtl.css",
-          },
         ],
       },
     },
@@ -75,8 +68,6 @@ module.exports = function (grunt) {
               "sass/woocommerce.scss",
             "addons/mega-menu/assets/css/unminified/style.css":
               "sass/mega-menu.scss",
-            "inc/kemet-panel/assets/css/unminified/kemet-panel.css":
-              "sass/kemet-panel.scss",
           },
 
           {
@@ -135,14 +126,6 @@ module.exports = function (grunt) {
           {
             src: "addons/mega-menu/assets/css/unminified/style-rtl.css",
             dest: "addons/mega-menu/assets/css/minified/style-rtl.min.css",
-          },
-          {
-            src: "inc/kemet-panel/assets/css/unminified/kemet-panel.css",
-            dest: "inc/kemet-panel/assets/css/minified/kemet-panel.min.css",
-          },
-          {
-            src: "inc/kemet-panel/assets/css/unminified/kemet-panel-rtl.css",
-            dest: "inc/kemet-panel/assets/css/minified/kemet-panel-rtl.min.css",
           },
           {
             src: "inc/compatibility/assets/css/unminified/select2.css",
@@ -258,13 +241,6 @@ module.exports = function (grunt) {
             cwd: "addons/custom-fonts/assets/css/unminified",
             src: ["*.css", "!*-rtl.css"],
             dest: "addons/custom-fonts/assets/css/unminified",
-            ext: "-rtl.css",
-          },
-          {
-            expand: true,
-            cwd: "inc/kemet-panel/assets/css/unminified",
-            src: ["*.css", "!*-rtl.css"],
-            dest: "inc/kemet-panel/assets/css/unminified",
             ext: "-rtl.css",
           },
         ],

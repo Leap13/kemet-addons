@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Card from "./Card";
-
+const { Card } = window.KmtAdminComponents;
 const { __ } = wp.i18n;
 const { Dashicon } = wp.components;
 const SingleOption = (props) => {
@@ -12,12 +11,12 @@ const SingleOption = (props) => {
         let newValue = !value
         const body = new FormData()
         body.append('action', 'kemet-panel-update-option')
-        body.append('nonce', KemetPanelData.nonce)
+        body.append('nonce', KemetAddonsPanelData.nonce)
         body.append('option', props.id)
         body.append('value', newValue)
 
         try {
-            const response = await fetch(KemetPanelData.ajaxurl, {
+            const response = await fetch(KemetAddonsPanelData.ajaxurl, {
                 method: 'POST',
                 body,
             })
