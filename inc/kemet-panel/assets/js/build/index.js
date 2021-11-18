@@ -426,24 +426,22 @@ __webpack_require__.r(__webpack_exports__);
 
 var kmtEvents = window.KmtOptionComponent.kmtEvents;
 var __ = wp.i18n.__;
-var tabs = {
-  tabs: [{
+kmtEvents.on('kmt:dashboard:customtabs', function (_ref) {
+  var tabs = _ref.detail;
+  tabs.push({
     name: 'kemet-addons',
     title: __('Kemet Addons', 'kemet'),
     className: 'kemet-addons',
-    priority: 10
-  }],
-  data: {
-    'kemet-addons': {
+    priority: 10,
+    data: {
       Component: _tabs_options__WEBPACK_IMPORTED_MODULE_0__["default"],
       props: {
         options: KemetAddonsPanelData.options,
         values: KemetAddonsPanelData.values
       }
     }
-  }
-};
-kmtEvents.trigger('kmt:dashboard:customtabs', tabs);
+  });
+});
 
 /***/ }),
 
