@@ -1,5 +1,6 @@
 import { createElement, render } from '@wordpress/element'
 import SettingsModal from './components/SettingsModal'
+const { kmtEvents } = window.KmtOptionComponent;
 
 window.onload = function () {
     const div = document.createElement('div')
@@ -23,7 +24,7 @@ window.onload = function () {
             const parentItem = $(e.target).parents('.menu-item').prevAll(".menu-item-depth-0");
             parentItemID = parseFloat(parentItem.attr("id").replace('menu-item-', ''));
         }
-        var event = new CustomEvent('KemetEditMenuItem', {
+        kmtEvents.trigger('KemetEditMenuItem', {
             detail: {
                 itemId,
                 depth,
@@ -32,7 +33,6 @@ window.onload = function () {
                 parent: parentItemID
             }
         });
-        document.dispatchEvent(event);
     })
     document.addEventListener('KemetInitMenuOptions', function (e) {
         var specificSelect = $(".mega-menu-field-template");

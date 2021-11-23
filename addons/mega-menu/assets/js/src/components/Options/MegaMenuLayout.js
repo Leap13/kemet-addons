@@ -2,6 +2,7 @@ import { Fragment, useState, useContext } from "react";
 import OptionsContext from "../../store/options-context";
 const { __ } = wp.i18n;
 const { ButtonGroup, Dashicon, Tooltip, Button } = wp.components;
+const { kmtEvents } = window.KmtOptionComponent;
 
 const MegaMenuLayout = (props) => {
     const { Icons } = window.KmtOptionComponent;
@@ -120,12 +121,7 @@ const MegaMenuLayout = (props) => {
     });
     const HandleChange = (value) => {
         props.onChange(value);
-
-        let event = new CustomEvent("KemetUpdateFooterColumns", {
-            detail: row,
-        });
-        document.dispatchEvent(event);
-
+        kmtEvents.trigger("KemetUpdateFooterColumns", row);
         setState((prevState) => ({
             ...prevState,
             value,

@@ -1,8 +1,8 @@
 import { Fragment, useContext, useEffect } from '@wordpress/element';
 import OptionsContext from '../store/options-context';
 import MegaMenuLayout from './Options/MegaMenuLayout';
-import Tabs from './Tabs';
 import CreatePostButton from './UI/CreatePostButton';
+const { kmtEvents } = window.KmtOptionComponent;
 
 export const isDisplay = (rules, values, depth = 0) => {
     if (!values) {
@@ -72,8 +72,14 @@ export const isDisplay = (rules, values, depth = 0) => {
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     const { itemId, values } = useContext(OptionsContext);
     const { OptionComponent } = window.KmtOptionComponent;
-    const Option = option.type === 'kmt-tabs' ? Tabs : option.type === 'kmt-row-layout' ? MegaMenuLayout : OptionComponent(option.type);
+    const Option = option.type === 'kmt-row-layout' ? MegaMenuLayout : OptionComponent(option.type);
     const divider = option.divider ? 'has-divider' : '';
+    const extraProps = {};
+
+    if (option.type === 'kmt-tabs') {
+        extraProps.renderOptions = renderOptions;
+        extraProps.currentClass = 'kmt-options';
+    }
 
     if (optionId === 'column-template') {
         const postType = values['item-content'];
@@ -86,31 +92,29 @@ const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
 
     useEffect(() => {
         if (optionId === 'column-template') {
-            let event = new CustomEvent("KemetInitMenuOptions", { detail: { itemId } });
-            document.dispatchEvent(event);
+            kmtEvents.trigger('KemetInitMenuOptions', itemId);
         }
     }, []);
 
     return option.type && <div id={optionId} className={`customize-control-${option.type} ${divider}`}>
-        <Option id={optionId} value={value} params={option} onChange={onChange} />
+        <Option {...extraProps} id={optionId} value={value} params={option} onChange={onChange} />
     </div>;
 }
 
-const Options = ({ options }) => {
+const renderOptions = (options) => {
     const { values, depth, onChange } = useContext(OptionsContext);
+    return Object.keys(options).map((optionId) => {
+        let value = values[optionId];
+        let option = options[optionId];
+        let isVisible = option.context ? isDisplay(option.context, values, depth) : true;
 
-    const renderOptions = (options) => {
-        return Object.keys(options).map((optionId) => {
-            let value = values[optionId];
-            let option = options[optionId];
-            let isVisible = option.context ? isDisplay(option.context, values, depth) : true;
+        return isVisible && <SingleOptionComponent value={value} optionId={optionId} option={option} onChange={(newVal) => {
+            onChange(newVal, optionId)
+        }} key={optionId} />;
+    })
+}
 
-            return isVisible && <SingleOptionComponent value={value} optionId={optionId} option={option} onChange={(newVal) => {
-                onChange(newVal, optionId)
-            }} key={optionId} />;
-        })
-    }
-
+const Options = ({ options }) => {
     return <Fragment>
         {renderOptions(options)}
     </Fragment>
