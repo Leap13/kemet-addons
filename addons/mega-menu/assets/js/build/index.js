@@ -1289,13 +1289,11 @@ window.onload = function () {
     }
 
     kmtEvents.trigger('KemetEditMenuItem', {
-      detail: {
-        itemId: itemId,
-        depth: depth,
-        title: title,
-        navId: navId,
-        parent: parentItemID
-      }
+      itemId: itemId,
+      depth: depth,
+      title: title,
+      navId: navId,
+      parent: parentItemID
     });
   });
   document.addEventListener('KemetInitMenuOptions', function (e) {

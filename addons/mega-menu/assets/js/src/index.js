@@ -25,13 +25,11 @@ window.onload = function () {
             parentItemID = parseFloat(parentItem.attr("id").replace('menu-item-', ''));
         }
         kmtEvents.trigger('KemetEditMenuItem', {
-            detail: {
-                itemId,
-                depth,
-                title,
-                navId,
-                parent: parentItemID
-            }
+            itemId,
+            depth,
+            title,
+            navId,
+            parent: parentItemID
         });
     })
     document.addEventListener('KemetInitMenuOptions', function (e) {
