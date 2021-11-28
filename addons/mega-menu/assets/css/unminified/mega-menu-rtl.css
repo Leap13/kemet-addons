@@ -182,7 +182,9 @@
 .kmt-item-setting-modal .current-tab-options {
   padding: 15px 50px 0px 50px;
 }
-
+.kmt-item-setting-modal .current-tab-options {
+  border-top: 0 !important;
+}
 @keyframes rotate {
   from {
     transform: rotate(0deg);

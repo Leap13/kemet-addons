@@ -139,18 +139,6 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 * @return void
 		 */
 		public function enqueue_admin_script() {
-			$css_prefix = '.min.css';
-			$dir        = 'minified';
-			if ( SCRIPT_DEBUG ) {
-				$css_prefix = '.css';
-				$dir        = 'unminified';
-			}
-			if ( is_rtl() ) {
-				$css_prefix = '-rtl.min.css';
-				if ( SCRIPT_DEBUG ) {
-					$css_prefix = '-rtl.css';
-				}
-			}
 			wp_enqueue_script(
 				'kemet-addons-panel-js',
 				KEMET_PANEL_URL . 'assets/js/build/index.js',

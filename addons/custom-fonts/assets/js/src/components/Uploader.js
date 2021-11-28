@@ -6,7 +6,7 @@ const Uploader = ({ onChange, value, params }) => {
     const { label, fontType, description } = params;
     let allowed = fontType === 'svg' ? 'image/svg+xml' : `application/x-font-${fontType}`;
     let labelContent = label ? <span className="customize-control-title kmt-control-title">{label}</span> : null;
-    console.log(value);
+
     return <div>
         {labelContent}
         <MediaUpload

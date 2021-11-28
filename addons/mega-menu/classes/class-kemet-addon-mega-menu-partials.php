@@ -60,6 +60,16 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Partials' ) ) {
 			add_action( 'wp_ajax_kemet_addons_menu_item_settings', array( $this, 'get_item_gettings' ) );
 			add_action( 'wp_ajax_kemet_addons_menu_update_item_settings', array( $this, 'update_item_gettings' ) );
 			add_action( 'wp_ajax_kemet_addons_parent_menu_item_settings', array( $this, 'get_parent_item_gettings' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
+		}
+
+		/**
+		 * Load dashicons in front
+		 *
+		 * @return void
+		 */
+		public function load_dashicons_front_end() {
+			wp_enqueue_style( 'dashicons' );
 		}
 
 		/**
