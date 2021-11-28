@@ -428,9 +428,14 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		 * @return void
 		 */
 		public function fonts_css() {
-			$css = $this->render_fonts_css();
+			$css       = $this->render_fonts_css();
+			$style     = '<style>' . $css . '</style>';
+			$html_args = kemet_allowed_html( array( 'style' ) );
 
-			printf( "<style type='text/css' class='kemet-custom-fonts'>%s</style>", $css ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo wp_kses(
+				$style,
+				$html_args
+			);
 		}
 		/**
 		 * Render fonts css
