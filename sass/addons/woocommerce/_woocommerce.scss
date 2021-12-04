@@ -156,6 +156,15 @@ Woo Quick View
         visibility: visible;
       }
     }
+    .yith-wcwl-add-to-wishlist {
+      .yith-wcwl-icon {
+       // background-color: var(--buttonBackgroundColor);
+        color: var(--buttonColor);
+      }
+      &:hover {
+        background-color: var(--buttonBackgroundHoverColor);
+      }
+    } 
   }
 }
 .kmt-qv-icon {
@@ -554,6 +563,7 @@ Woo Quick View
               margin: 0;
               display: inline-flex;
               align-items: center;
+              padding: 11px;
               svg {
                 fill: var(--buttonColor);
               }
