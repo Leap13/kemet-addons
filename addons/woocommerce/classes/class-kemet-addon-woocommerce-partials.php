@@ -50,22 +50,13 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			add_filter( 'body_class', array( $this, 'shop_layout' ) );
 			add_action( 'wp', array( $this, 'init_woocommerce' ) );
 			add_action( 'widgets_init', array( $this, 'kemet_register_off_canvas' ) );
-			add_action( 'wp_ajax_nopriv_kemet_list_post_ajax', array( $this, 'ajax_product_list_style' ) );
-			add_action( 'wp_ajax_kemet_list_post_ajax', array( $this, 'ajax_product_list_style' ) );
-			add_action( 'wp_ajax_nopriv_kemet_hover_style_post_ajax', array( $this, 'ajax_product_hover_style' ) );
-			add_action( 'wp_ajax_kemet_hover_style_post_ajax', array( $this, 'ajax_product_hover_style' ) );
-			add_action( 'wp_ajax_nopriv_kemet_product_default_style', array( $this, 'ajax_product_default_style' ) );
-			add_action( 'wp_ajax_kemet_product_default_style', array( $this, 'ajax_product_default_style' ) );
 
 			if ( class_exists( 'Kemet_Woocommerce' ) ) {
 				$kemet_woocommerce_instance = Kemet_Woocommerce::get_instance();
-				add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'shop_customization' ) );
-				add_action( 'ajax_product_layout_style', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
 				add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'shop_customization' ) );
 				add_action( 'kemet_infinite_scroll', array( $kemet_woocommerce_instance, 'woocommerce_init' ) );
 			}
 
-			add_action( 'ajax_product_layout_style', array( $this, 'init_woocommerce' ) );
 			add_action( 'kemet_infinite_scroll', array( $this, 'init_woocommerce' ) );
 			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
@@ -424,8 +415,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 */
 		public function off_canvas_filter_button() {
 			$label     = kemet_get_option( 'woo-shop-off-canvas-filter-label' );
-			$button    = '<a href="#" class="kmt-woo-filter">' . $label . '</a>';
-			$html_args = kemet_allowed_html( array( 'a' ) );
+			$button    = '<a href="#" class="kmt-woo-filter">' . Kemet_Svg_Icons::get_icons( 'menu' ) . $label . '</a>';
+			$html_args = kemet_allowed_html( array( 'a', 'svg', 'span' ) );
 
 			echo wp_kses(
 				$button,
@@ -442,7 +433,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			echo '<div id="kmt-off-canvas-wrap">';
 			echo '<div class="kmt-off-canvas-sidebar">';
 			echo '<a href="javascript:void(0)" class="kmt-close-filter"><span class="dashicons dashicons-no-alt"></span></a>';
-			echo Kemet_Builder_Helper::get_custom_widget( 'off-canvas-filter' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo Kemet_Builder_Helper::get_custom_widget( 'off-canvas-filter-widget' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 			echo '<div class="kmt-off-canvas-overlay"></div>';
 			echo '</div>';

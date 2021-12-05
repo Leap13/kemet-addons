@@ -864,21 +864,39 @@ Woo Quick View
   }
 }
 
+.kmt-toolbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5em;
+}
+
+.kmt-toolbar > p.woocommerce-result-count {
+  margin-bottom: 0;
+}
+
+.kmt-toolbar form.woocommerce-ordering {
+  margin: 0;
+  margin-right: auto;
+}
+
 .kmt-woo-filter {
   float: right;
   border: 1px solid var(--borderColor);
   padding: 0 20px;
   margin-left: 15px;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
   line-height: 2.5;
 }
 
-.kmt-woo-filter:before {
-  font-family: dashicons;
-  content: "\f349";
+.kmt-woo-filter .icon-menu {
+  display: inline-flex;
+}
+
+.kmt-woo-filter .icon-menu svg {
+  width: 20px;
+  height: 20px;
   margin-left: 5px;
-  line-height: inherit;
 }
 
 .admin-bar #kmt-off-canvas-wrap {
