@@ -627,15 +627,15 @@ var MegaMenuLayout = function MegaMenuLayout(props) {
       },
       'left-six-heavy': {
         tooltip: __('Left Heavy 25/15/15/15/15/15', 'kemet'),
-        icon: 'lfiveheavy'
+        icon: 'lsixheavy'
       },
       'center-six-heavy': {
         tooltip: __('Center Heavy 15/15/20/20/15/15', 'kemet'),
-        icon: 'cfiveheavy'
+        icon: 'csixheavy'
       },
       'right-six-heavy': {
         tooltip: __('Right Heavy 15/15/15/15/15/25', 'kemet'),
-        icon: 'rfiveheavy'
+        icon: 'rsixheavy'
       }
     },
     '5': {
