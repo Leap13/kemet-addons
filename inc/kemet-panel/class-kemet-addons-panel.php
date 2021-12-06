@@ -98,18 +98,18 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'blog-layouts'        => array(
 					'type'        => 'kmt-button',
 					'label'       => __( 'Blog Options', 'kemet-addons' ),
-					'description' => __( 'Enable/Disable Extra Blog Options.', 'kemet-addons' ),
+					'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
 					'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
 				),
 				'mega-menu'           => array(
 					'type'        => 'kmt-button',
 					'label'       => __( 'Mega Menu', 'kemet-addons' ),
-					'description' => __( 'Enable/Disable Mega Menu', 'kemet-addons' ),
+					'description' => __( 'Enrich the regular website submenu with Kemet Mega Menu that comes with powerful customization options.', 'kemet-addons' ),
 				),
 				'custom-fonts'        => array(
 					'type'        => 'kmt-button',
 					'label'       => __( 'Custom Fonts', 'kemet-addons' ),
-					'description' => __( 'Enable/Disable Custom fonts.', 'kemet-addons' ),
+					'description' => __( 'Upload and use your own custom font(s) across your Kemet website. And, you can use Adobe Fonts Kit within Kemet Theme.', 'kemet-addons' ),
 				),
 				'custom-layout'       => array(
 					'type'        => 'kmt-button',
