@@ -125,6 +125,11 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 											'value'   => 0,
 										),
 										array(
+											'setting'  => 'mega-menu-columns',
+											'operator' => '>',
+											'value'    => 1,
+										),
+										array(
 											'setting' => 'enable-mega-menu',
 											'value'   => true,
 										),

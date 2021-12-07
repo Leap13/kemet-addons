@@ -1,4 +1,5 @@
 import { Fragment } from "@wordpress/element"
+import ModalActions from "../ModalActions";
 const { Dashicon } = wp.components;
 
 const Backdrop = props => {
@@ -14,6 +15,9 @@ const ModalOverlay = props => {
             </div>
         </div>
         <div className="kmt-modal-content">{props.children}</div>
+        <div className="kmt-modal-footer">
+            <ModalActions />
+        </div>
     </div>
 }
 

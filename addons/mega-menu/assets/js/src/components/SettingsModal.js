@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from '@wordpress/element';
 import { __ } from "@wordpress/i18n";
 import Options from './Options';
-import SaveButton from './UI/SaveButton';
 import Modal from './UI/Modal'
 import OptionsContext from '../store/options-context';
 
@@ -125,18 +124,18 @@ const SettingsModal = () => {
     const contextValues = {
         itemId: itemData.itemId,
         onChange: handleChange,
+        onSave: onSaveHandler,
+        onClose: onCloseHandler,
         depth: itemData.depth,
         values: { ...itemData.values, ...initialValue },
-        parent: itemData.parent
+        parent: itemData.parent,
+        isLoading
     }
     return (
         <OptionsContext.Provider value={contextValues}>
             {isOpen && (
                 <Modal className={`kmt-item-setting-modal menu-item-${itemData.itemId}`} title={itemData.title + ' - ' + __('Item Settings', 'kemet-addons')} onClose={onCloseHandler}>
                     {<Options options={kemetMegaMenu.options} />}
-                    <div className='modal-actions'>
-                        <SaveButton isLoading={isLoading} onClick={onSaveHandler} />
-                    </div>
                 </Modal>
             )}
         </OptionsContext.Provider>

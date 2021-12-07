@@ -11,7 +11,7 @@
 
 .kmt-modal {
   position: fixed;
-  width: 35%;
+  width: 550px;
   height: auto;
   max-height: 80vh;
   max-width: 1000px;
@@ -21,9 +21,7 @@
   bottom: auto;
   right: 50%;
   box-sizing: border-box;
-  background-color: #f0f0f1;
-  padding: 50px;
-  border-radius: 5px;
+  background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   transform: translate(50%, -50%);
@@ -66,21 +64,26 @@
 }
 .kmt-item-setting-modal .kmt-button {
   display: block;
-  width: 100%;
   color: var(--buttonColor);
   background-color: var(--buttonBgColor);
   border: 0;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px 30px;
+  padding: 10px 27px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   box-shadow: none;
-  outline: none;
-  border: 1px solid var(--buttonBgColor);
-  text-decoration: none;
+  outline: 0;
 }
+
+.kmt-item-setting-modal .modal-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 10px;
+  padding: 1.5em 4.5%;
+}
+
 .kmt-item-setting-modal .kmt-create-post {
   display: flex;
   justify-content: center;
@@ -115,18 +118,22 @@
 .kmt-item-setting-modal .kmt-button.primary:hover {
   --buttonBgColor: #4a5568;
 }
-
+.kmt-item-setting-modal .kmt-modal-footer {
+  border-top: 1px solid #ddd;
+}
 .kmt-item-setting-modal .kmt-modal-header {
   margin: 0 0 2em 0;
   position: relative;
-}
-.kmt-item-setting-modal .modal-actions {
-  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
 }
 .kmt-item-setting-modal .kmt-modal-content {
   display: flex;
   flex-direction: column;
-  max-height: calc(80vh - 50px * 3);
+  max-height: calc(80vh - 50px * 5);
+  padding: 0 50px;
 }
 .kmt-item-setting-modal
   .customize-control-kmt-tabs
@@ -151,6 +158,7 @@
   margin: 0;
   line-height: 1.75;
   font-size: 17px;
+  padding: 1.1em 4.5% 1.1em 0;
 }
 .kmt-item-setting-modal .has-divider::before {
   content: "";
@@ -161,12 +169,12 @@
 }
 .kmt-item-setting-modal .kmt-close-modal {
   cursor: pointer;
-  position: absolute;
-  left: 0;
-  left: -30px;
-  top: -30px;
   color: #717a84;
-  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1.85em 4%;
+  border-right: 1px solid #ccc;
 }
 .kmt-item-setting-modal .kmt-close-modal:hover {
   opacity: 1;
@@ -182,8 +190,8 @@
 .kmt-item-setting-modal .current-tab-options {
   padding: 15px 50px 0px 50px;
 }
-.kmt-item-setting-modal .current-tab-options {
-  border-top: 0 !important;
+.kmt-option-modal {
+  --modalWidth: 300px !important;
 }
 @keyframes rotate {
   from {
