@@ -156,17 +156,25 @@ Woo Quick View
         visibility: visible;
       }
     }
-    .yith-wcwl-add-to-wishlist {
-      .yith-wcwl-icon {
-        // background-color: var(--buttonBackgroundColor);
-        color: var(--buttonColor);
-      }
-      &:hover {
-        background-color: var(--buttonBackgroundHoverColor);
-      }
-    }
   }
 }
+.hover-style {
+  .kemet-shop-thumbnail-wrap {
+      &:hover {
+        .yith-wcwl-add-to-wishlist {
+          .add_to_wishlist {
+            // background-color: var(--buttonBackgroundColor);
+            color: var(--buttonColor);
+          }
+          &:hover {
+            background-color: var(--buttonBackgroundHoverColor);
+          }
+        }
+      }
+  }
+}
+    
+
 .kmt-qv-icon {
   position: absolute;
   width: 40px;
