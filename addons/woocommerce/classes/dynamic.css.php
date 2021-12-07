@@ -75,7 +75,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 		'.shop-grid .yith-wcwl-add-to-wishlist'       => array(
 			'color' => 'var(--headingLinksColor)',
 		),
-		'.shop-grid .yith-wcwl-add-to-wishlist:hover' => array(
+		'.hover-style .yith-wcwl-add-to-wishlist:hover' => array(
 			'color' => 'var(--themeColor)',
 			'background-color' => 'var(--buttonBackgroundHoverColor)',
 		),

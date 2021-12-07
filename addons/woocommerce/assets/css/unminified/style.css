@@ -139,11 +139,11 @@ Woo Quick View
   visibility: visible;
 }
 
-.kemet-shop-thumbnail-wrap:hover .yith-wcwl-add-to-wishlist .yith-wcwl-icon {
+.hover-style .kemet-shop-thumbnail-wrap:hover .yith-wcwl-add-to-wishlist .add_to_wishlist {
   color: var(--buttonColor);
 }
 
-.kemet-shop-thumbnail-wrap:hover .yith-wcwl-add-to-wishlist:hover {
+.hover-style .kemet-shop-thumbnail-wrap:hover .yith-wcwl-add-to-wishlist:hover {
   background-color: var(--buttonBackgroundHoverColor);
 }
 
