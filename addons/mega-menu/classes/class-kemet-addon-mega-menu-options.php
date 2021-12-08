@@ -251,7 +251,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 								'mega-menu-icon-size' => array(
 									'type'         => 'kmt-slider',
 									'responsive'   => false,
-									'label'        => __( 'Icon Size', 'kemet-addons' ),
+									'label'        => __( 'Icon Size (px)', 'kemet-addons' ),
 									'unit_choices' => array(
 										'px' => array(
 											'min'  => 1,
@@ -402,7 +402,8 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 								'mega-menu-border-radius'  => array(
 									'type'           => 'kmt-spacing',
 									'responsive'     => false,
-									'label'          => __( 'Border Radius', 'kemet-addons' ),
+									'divider'        => true,
+									'label'          => __( 'Border Radius (px)', 'kemet-addons' ),
 									'linked_choices' => true,
 									'unit_choices'   => array( 'px' ),
 									'choices'        => array(
@@ -426,7 +427,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'type'           => 'kmt-spacing',
 									'responsive'     => false,
 									'divider'        => true,
-									'label'          => __( 'Padding', 'kemet-addons' ),
+									'label'          => __( 'Padding (px)', 'kemet-addons' ),
 									'linked_choices' => true,
 									'unit_choices'   => array( 'px' ),
 									'choices'        => array(
@@ -460,7 +461,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 								'mega-menu-item-spacing'   => array(
 									'type'           => 'kmt-spacing',
 									'responsive'     => false,
-									'label'          => __( 'Item Padding', 'kemet-addons' ),
+									'label'          => __( 'Item Padding (px)', 'kemet-addons' ),
 									'linked_choices' => true,
 									'unit_choices'   => array( 'px' ),
 									'choices'        => array(

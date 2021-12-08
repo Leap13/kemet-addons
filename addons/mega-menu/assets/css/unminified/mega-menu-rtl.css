@@ -190,6 +190,22 @@
 .kmt-item-setting-modal .current-tab-options {
   padding: 15px 50px 0px 50px;
 }
+.kmt-item-setting-modal .current-tab-options .kmt-slider-units,
+.kmt-item-setting-modal .current-tab-options .kmt-spacing-responsive-units {
+  display: none;
+}
+.kmt-item-setting-modal .customize-control-kmt-tabs > ul > li.active {
+  background-color: #ffffff !important;
+}
+.kmt-item-setting-modal .customize-control-kmt-tabs > ul > li {
+  background-color: #f7f7f7;
+}
+.kmt-item-setting-modal .customize-control-kmt-tabs > .current-tab-options {
+  border-color: #e5e5e5;
+}
+.kmt-item-setting-modal .customize-control-kmt-title .customize-control-title {
+  background-color: #f3f3f3;
+}
 .kmt-option-modal {
   --modalWidth: 300px !important;
 }
