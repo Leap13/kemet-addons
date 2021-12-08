@@ -23,7 +23,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$inifinte_text_color = kemet_get_option( 'woo-shop-infinite-text-color', $btn_color );
 
 	$css_content = array(
-		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'      => array(
+		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'        => array(
 			'background-color' => 'var(--globalBackgroundColor)',
 			'border-color'     => 'var(--borderColor)',
 		),
@@ -65,18 +65,17 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 		'.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader' => array(
 			'background-color' => esc_attr( $loader_color ),
 		),
-		'a.plus, a.minus'                             => array(
+		'a.plus, a.minus'                               => array(
 			'border-color'     => 'var(--borderColor)',
 			'background-color' => 'var(--inputBackgroundColor)',
 		),
-		'.kmt-woo-load-more .woo-load-more-text'      => array(
+		'.kmt-woo-load-more .woo-load-more-text'        => array(
 			'color' => esc_attr( $inifinte_text_color ),
 		),
-		'.shop-grid .yith-wcwl-add-to-wishlist'       => array(
-			'color' => 'var(--headingLinksColor)',
+		'.shop-grid .yith-wcwl-add-to-wishlist'         => array(
+			'color' => 'var(--linksColor)',
 		),
 		'.hover-style .yith-wcwl-add-to-wishlist:hover' => array(
-			'color' => 'var(--themeColor)',
 			'background-color' => 'var(--buttonBackgroundHoverColor)',
 		),
 	);

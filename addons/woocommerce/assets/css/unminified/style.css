@@ -621,6 +621,11 @@ Woo Quick View
   height: 100%;
   left: 0;
   top: 0;
+  --linksColor: var(--buttonHoverColor, var(--buttonColor));
+  --linksHoverColor: var(
+                    --buttonHoverColor,
+                    var(--buttonColor)
+                  );
 }
 
 .hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn .yith-wcwl-wishlistexistsbrowse::before,

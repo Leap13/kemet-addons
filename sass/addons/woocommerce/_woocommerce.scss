@@ -160,20 +160,19 @@ Woo Quick View
 }
 .hover-style {
   .kemet-shop-thumbnail-wrap {
-      &:hover {
-        .yith-wcwl-add-to-wishlist {
-          .add_to_wishlist {
-            // background-color: var(--buttonBackgroundColor);
-            color: var(--buttonColor);
-          }
-          &:hover {
-            background-color: var(--buttonBackgroundHoverColor);
-          }
+    &:hover {
+      .yith-wcwl-add-to-wishlist {
+        .add_to_wishlist {
+          // background-color: var(--buttonBackgroundColor);
+          color: var(--buttonColor);
+        }
+        &:hover {
+          background-color: var(--buttonBackgroundHoverColor);
         }
       }
+    }
   }
 }
-    
 
 .kmt-qv-icon {
   position: absolute;
@@ -607,6 +606,11 @@ Woo Quick View
                   height: 100%;
                   left: 0;
                   top: 0;
+                  --linksColor: var(--buttonHoverColor, var(--buttonColor));
+                  --linksHoverColor: var(
+                    --buttonHoverColor,
+                    var(--buttonColor)
+                  );
                 }
                 &::before {
                   content: "\f004";
