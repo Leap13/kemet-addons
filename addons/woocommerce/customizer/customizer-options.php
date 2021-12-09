@@ -1,6 +1,6 @@
 <?php
 /**
- * Woocommerce customizer options
+ * WooCommerce customizer options
  *
  * @package Kemet Addons
  */

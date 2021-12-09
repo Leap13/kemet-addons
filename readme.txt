@@ -80,7 +80,7 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 - Fixed: Recent posts issue with multilanguage websites.
 
 1.1.11 version
-- Added: Yith Woocommerce wishlist compaatibility.
+- Added: Yith WooCommerce wishlist compaatibility.
 - Tweak: Update Pot file.
 - Fixed: RTL Social icons widget styling issue.
 - Fixed: Remove duplicate title of Social icons widget.
@@ -94,7 +94,7 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 1.1.9 version
 - Fixed: Load k-framework js files issue.
 - Fixed: Breadcrumbs Missing field "position" issue.
-- Tweak: Improve Woocommerce styling in responsive.
+- Tweak: Improve WooCommerce styling in responsive.
 
 1.1.8 version
 - Added: Infinite scroll button for blog & Product listing.
@@ -110,7 +110,7 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 1.1.6 version
 - Added: Responsive control for top bar section position.
 - Added: Top bar hooks.
-- Tweak: Improve Woocommerce list style.
+- Tweak: Improve WooCommerce list style.
 
 1.1.5 version
 - Added: Mega menu options.
@@ -123,14 +123,14 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
 - Fixed: Responisve menu isuue.
 
 1.1.2 version
-- Added: Woocommerce notice compatibility.
+- Added: WooCommerce notice compatibility.
 - Fixed: Page title spacing issue with enabled transparent header.
 
 1.1.1 version
-- Fixed: Woocommerce Fatal Error
+- Fixed: WooCommerce Fatal Error
 
 1.1.0 version
-- Added: Woocommerce layouts addons
+- Added: WooCommerce layouts addons
 - Added: Cart icon options in main menu
 - Added: Quick view link to woocommerce listing
 

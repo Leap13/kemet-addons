@@ -1441,7 +1441,7 @@ msgid "Enable/Disable Custom fonts."
 msgstr ""
 
 #: inc/kemet-panel/class-kemet-addons-panel.php:227
-msgid "Woocommerce"
+msgid "WooCommerce"
 msgstr ""
 
 #: inc/kemet-panel/class-kemet-addons-panel.php:228

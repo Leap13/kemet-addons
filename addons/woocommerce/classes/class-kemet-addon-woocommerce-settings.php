@@ -1,6 +1,6 @@
 <?php
 /**
- * Woocommerce
+ * WooCommerce
  *
  * @package Kemet Addons
  */
@@ -8,7 +8,7 @@
 if ( ! class_exists( 'Kemet_Addon_Woocommerce_Settings' ) ) {
 
 	/**
-	 * Woocommerce Settings
+	 * WooCommerce Settings
 	 *
 	 * @since 1.0.3
 	 */

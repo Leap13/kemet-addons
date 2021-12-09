@@ -1,6 +1,6 @@
 <?php
 /**
- * Kemet Woocommerce Addon
+ * Kemet WooCommerce Addon
  *
  * @package Kemet Addons
  */
@@ -11,7 +11,7 @@ define( 'KEMET_WOOCOMMERCE_URL', KEMET_ADDONS_URL . 'addons/woocommerce/' );
 if ( ! class_exists( 'Kemet_Addon_Woocommerce' ) ) {
 
 	/**
-	 * Woocommerce
+	 * WooCommerce
 	 *
 	 * @since 1.0.3
 	 */

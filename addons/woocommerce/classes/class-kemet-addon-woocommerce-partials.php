@@ -1,6 +1,6 @@
 <?php
 /**
- * Woocommerce
+ * WooCommerce
  *
  * @package Kemet Addons
  */
@@ -8,7 +8,7 @@
 if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 	/**
-	 * Woocommerce Partials
+	 * WooCommerce Partials
 	 *
 	 * @since 1.0.3
 	 */
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 					$posts->the_post();
 
 					/**
-					 * Woocommerce: woocommerce_shop_loop hook.
+					 * WooCommerce: woocommerce_shop_loop hook.
 					 *
 					 * @hooked WC_Structured_Data::generate_product_data() - 10
 					 */
@@ -152,7 +152,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Kemet addons Init Woocommerce
+		 * Kemet addons Init WooCommerce
 		 *
 		 * @return void
 		 */
@@ -181,7 +181,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			if ( 'hover-style' == $shop_style ) {
 				/**
-				 * Woocommerce shop/product details div tag
+				 * WooCommerce shop/product details div tag
 				 *
 				 * @return void
 				 */
@@ -191,7 +191,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 					echo '<a href="' . esc_url( get_the_permalink() ) . '" class="kmt-loop-product__link">';
 				}
 				/**
-				 * Woocommerce shop/product details div close tag
+				 * WooCommerce shop/product details div close tag
 				 *
 				 * @return void
 				 */
@@ -354,7 +354,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 					array(
 						'name'          => esc_html__( 'Off Canvas Filter', 'kemet-addons' ),
 						'id'            => 'off-canvas-filter-widget',
-						'description'   => 'This sidebar will show product filters on Shop page. Check "Enable Filter Button" option from `Customizer > Layout > Woocommerce > Shop` to enable this on Shop page.',
+						'description'   => 'This sidebar will show product filters on Shop page. Check "Enable Filter Button" option from `Customizer > Layout > WooCommerce > Shop` to enable this on Shop page.',
 						'before_widget' => '<div id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</div>',
 						'before_title'  => '<div class="widget-head"><div class="title"><h4 class="widget-title">',
@@ -648,7 +648,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Enqueues scripts for Woocommerce
+		 * Enqueues scripts for WooCommerce
 		 *
 		 * @return void
 		 */
@@ -675,7 +675,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Enqueues styles for Woocommerce
+		 * Enqueues styles for WooCommerce
 		 *
 		 * @return void
 		 */

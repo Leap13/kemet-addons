@@ -57,7 +57,9 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 * @return void
 		 */
 		public function register_custom_menu_page() {
-			add_action( 'admin_print_styles-' . KEMET_ADMIN_PAGE, array( $this, 'enqueue_admin_script' ) );
+			if ( defined( 'KEMET_ADMIN_PAGE' ) ) {
+				add_action( 'admin_print_styles-' . KEMET_ADMIN_PAGE, array( $this, 'enqueue_admin_script' ) );
+			}
 		}
 
 		/**
@@ -118,7 +120,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				),
 				'woocommerce'         => array(
 					'type'        => 'kmt-button',
-					'label'       => __( 'Woocommerce', 'kemet-addons' ),
+					'label'       => __( 'WooCommerce', 'kemet-addons' ),
 					'description' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
 					'url'         => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
 				),

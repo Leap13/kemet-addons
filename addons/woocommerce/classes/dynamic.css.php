@@ -1,6 +1,6 @@
 <?php
 /**
- * Woocommerce - Dynamic CSS
+ * WooCommerce - Dynamic CSS
  *
  * @package Kemet Addons
  */
