@@ -57,10 +57,16 @@
   margin: 0 calc(50px * -1);
 }
 
+.kmt-item-setting-modal .customize-control-kmt-tabs > ul.tabs {
+  z-index: 999999;
+  position: relative;
+}
+
 .kmt-item-setting-modal .current-tab-options {
   padding: 0 50px;
   overflow-y: auto;
   overflow-x: hidden;
+  margin-top: -2px;
 }
 .kmt-item-setting-modal .kmt-button {
   display: block;
