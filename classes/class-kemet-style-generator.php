@@ -105,7 +105,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 
 					WP_Filesystem(); // Initial WP file system.
 					$wp_filesystem->mkdir( $dir ); // Make a new folder for storing our file.
-					$wp_filesystem->put_contents( $dir . 'style.css', $merged_style, 0777 | 0644 ); // Finally, store the file :D.
+					file_put_contents( $dir . 'style.css', $merged_style ); // Finally, store the file :D.
 					$wp_upload_dir = $upload_dir['baseurl'] . '/' . 'kemet-addons/';
 					$merged_file   = $wp_upload_dir . 'style.css';
 				}
@@ -143,7 +143,7 @@ if ( ! class_exists( 'Kemet_Style_Generator' ) ) {
 
 					WP_Filesystem(); // Initial WP file system.
 					$wp_filesystem->mkdir( $dir ); // Make a new folder for storing our file.
-					$wp_filesystem->put_contents( $dir . 'style.js', $merged_style, 0777 | 0644 ); // Finally, store the file :D.
+					file_put_contents( $dir . 'style.js', $merged_style ); // Finally, store the file :D.
 					$wp_upload_dir = $upload_dir['baseurl'] . '/' . 'kemet-addons/';
 					$merged_file   = $wp_upload_dir . 'style.js';
 				}
