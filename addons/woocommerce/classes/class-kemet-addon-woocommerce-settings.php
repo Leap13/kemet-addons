@@ -49,7 +49,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Settings' ) ) {
 		 */
 		public function theme_defaults( $defaults ) {
 			$defaults['woo-shop-quick-view-style']          = 'qv-icon';
-			$defaults['woo-shop-layout']                    = 'shop-grid';
+			$defaults['woo-shop-layout']                    = 'woo-style1';
 			$defaults['enable-single-ajax-add-to-cart']     = false;
 			$defaults['woo-shop-simple-product-structure']  = array(
 				'title',

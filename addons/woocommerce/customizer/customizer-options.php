@@ -23,41 +23,8 @@ function woo_shop_options( $options ) {
 			'type'    => 'kmt-select',
 			'label'   => __( 'Shop Layout', 'kemet-addons' ),
 			'choices' => array(
-				'shop-grid'   => __( 'Boxed', 'kemet-addons' ),
-				'hover-style' => __( 'Simple', 'kemet-addons' ),
-			),
-		),
-		$prefix . '-simple-product-structure'  => array(
-			'type'    => 'kmt-sortable',
-			'label'   => __( 'Product Structure', 'kemet-addons' ),
-			'choices' => array(
-				'title'      => __( 'Title', 'kemet-addons' ),
-				'price'      => __( 'Price', 'kemet-addons' ),
-				'ratings'    => __( 'Ratings', 'kemet-addons' ),
-				'short_desc' => __( 'Short Description', 'kemet-addons' ),
-				'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
-				'category'   => __( 'Category', 'kemet-addons' ),
-			),
-			'context' => array(
-				array(
-					'setting' => $prefix . '-layout',
-					'value'   => 'hover-style',
-				),
-			),
-		),
-		$prefix . '-product-structure'         => array(
-			'type'    => 'kmt-sortable',
-			'label'   => __( 'Product Structure', 'kemet-addons' ),
-			'choices' => array(
-				'short_desc' => __( 'Short Description', 'kemet-addons' ),
-				'add_cart'   => __( 'Add To Cart', 'kemet-addons' ),
-				'category'   => __( 'Category', 'kemet-addons' ),
-			),
-			'context' => array(
-				array(
-					'setting' => $prefix . '-layout',
-					'value'   => 'shop-grid',
-				),
+				'woo-style1' => __( 'Style 1', 'kemet-addons' ),
+				'woo-style2' => __( 'Style 2', 'kemet-addons' ),
 			),
 		),
 		$prefix . '-quick-view'                => array(
@@ -67,26 +34,6 @@ function woo_shop_options( $options ) {
 		$prefix . '-enable-quick-view'         => array(
 			'type'  => 'kmt-switcher',
 			'label' => __( 'Enable Quick View', 'kemet-addons' ),
-		),
-		$prefix . '-quick-view-style'          => array(
-			'type'    => 'kmt-select',
-			'default' => 'qv-icon',
-			'label'   => __( 'Quick View Position', 'kemet-addons' ),
-			'choices' => array(
-				'qv-icon'       => __( 'Top Right Corner', 'kemet-addons' ),
-				'on-image'      => __( 'On Product Image', 'kemet-addons' ),
-				'after-summary' => __( 'After Product Summary', 'kemet-addons' ),
-			),
-			'context' => array(
-				array(
-					'setting' => $prefix . '-layout',
-					'value'   => 'shop-grid',
-				),
-				array(
-					'setting' => $prefix . '-enable-quick-view',
-					'value'   => true,
-				),
-			),
 		),
 		$prefix . '-pagination-group'          => array(
 			'type'  => 'kmt-title',

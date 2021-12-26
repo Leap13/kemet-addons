@@ -70,8 +70,8 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 */
 		public function shop_layout( $classes ) {
 			$layout_style = apply_filters( 'kemet_shop_layout_style', kemet_get_option( 'woo-shop-layout' ) );
-			if ( in_array( 'shop-grid', $classes ) ) {
-				$layout_class = array_search( 'shop-grid', $classes );
+			if ( in_array( 'woo-style1', $classes ) ) {
+				$layout_class = array_search( 'woo-style1', $classes );
 				unset( $classes[ $layout_class ] );
 				$classes[] = $layout_style;
 			}
@@ -157,152 +157,28 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 * @return void
 		 */
 		public function init_woocommerce() {
-
-			/**
-			 * Init Quick View
-			 */
+			// Init Quick View.
 			$qv_enable  = kemet_get_option( 'woo-shop-enable-quick-view' );
 			$qv_style   = apply_filters( 'kemet_quick_view_style', kemet_get_option( 'woo-shop-quick-view-style' ) );
 			$shop_style = apply_filters( 'kemet_shop_layout_style', kemet_get_option( 'woo-shop-layout' ), 2 );
 
-			if ( $qv_enable && 'shop-grid' == $shop_style ) {
-				if ( 'on-image' === $qv_style ) {
-					add_action( 'kemet_product_list_image_bottom', array( $this, 'quick_view_on_image' ), 1 );
-				} elseif ( 'after-summary' === $qv_style ) {
-					add_action( 'kemet_woo_shop_summary_wrap_bottom', array( $this, 'quick_view_button' ), 3 );
-				} elseif ( 'qv-icon' === $qv_style ) {
-					add_action( 'kemet_product_list_details_bottom', array( $this, 'quick_view_icon' ), 1 );
-				}
-			} elseif ( $qv_enable && 'hover-style' == $shop_style ) {
+			if ( $qv_enable ) {
 				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_with_group' ), 1 );
-			} elseif ( $qv_enable && 'shop-list' == $shop_style ) {
-				add_action( 'kemet_woo_shop_add_to_cart_after', array( $this, 'quick_view_list_style' ), 1 );
 			}
 
-			if ( 'hover-style' == $shop_style ) {
-				/**
-				 * WooCommerce shop/product details div tag
-				 *
-				 * @return void
-				 */
-				function kemet_addons_product_list_details() {
-					echo '<div class="product-top">';
-					do_action( 'kemet_product_list_details_top' );
-					echo '<a href="' . esc_url( get_the_permalink() ) . '" class="kmt-loop-product__link">';
-				}
-				/**
-				 * WooCommerce shop/product details div close tag
-				 *
-				 * @return void
-				 */
-				function kemet_addons_after_shop_loop_item_title() {
-					echo '</a>';
-					echo '<div class="product-btn-group">';
-					$out_of_stock = get_post_meta( get_the_ID(), '_stock_status', true );
-					do_action( 'kemet_woo_shop_add_to_cart_before' );
-					echo '<div class="add-to-cart-group">';
-					if ( 'outofstock' === $out_of_stock ) {
-						?>
-						<a href="javascript:void(0)" class="kmt-out-of-stock button disabled"><?php esc_html_e( 'Out Of Stock', 'kemet-addons' ); ?></a>
-						<?php
-					} else {
-						woocommerce_template_loop_add_to_cart();
-					}
-					echo '</div>';
-					do_action( 'kemet_woo_shop_add_to_cart_after' );
+			// Styles hooks.
+			if ( 'woo-style2' == $shop_style ) {
+				add_action( 'woocommerce_after_shop_loop_item', array( $this, 'woo_woocommerce_shop_product_content' ) );
+				add_filter( 'woocommerce_loop_add_to_cart_link', array( $this, 'filter_add_to_cart_link_link' ), 9, 3 );
 
-					echo '</div>';
-					do_action( 'kemet_product_list_details_bottom' );
-					echo '</div>';
-				}
-
-				/**
-				 * Show the product title in the product loop. By default this is an H2
-				 *
-				 * @return void
-				 */
-				function kemet_addons_woo_woocommerce_shop_product_content() {
-					$shop_structure = kemet_get_option( 'woo-shop-simple-product-structure' );
-
-					if ( is_array( $shop_structure ) && ! empty( $shop_structure ) ) {
-						do_action( 'kemet_woo_shop_before_summary_wrap' );
-						echo '<div class="kemet-shop-summary-wrap">';
-						do_action( 'kemet_woo_shop_summary_wrap_top' );
-
-						foreach ( $shop_structure as $value ) {
-							switch ( $value ) {
-								case 'title':
-									/**
-									 * Add Product Title on shop page for all products.
-									 */
-									do_action( 'kemet_woo_shop_title_before' );
-									kemet_woo_shop_products_title();
-									do_action( 'kemet_woo_shop_title_after' );
-									break;
-								case 'price':
-									/**
-									 * Add Product Price on shop page for all products.
-									 */
-									do_action( 'kemet_woo_shop_price_before' );
-									woocommerce_template_loop_price();
-									do_action( 'kemet_woo_shop_price_after' );
-									break;
-								case 'ratings':
-									/**
-									 * Add rating on shop page for all products.
-									 */
-									do_action( 'kemet_woo_shop_rating_before' );
-									woocommerce_template_loop_rating();
-									do_action( 'kemet_woo_shop_rating_after' );
-									break;
-
-								case 'short_desc':
-									do_action( 'kemet_woo_shop_short_description_before' );
-									kemet_woo_shop_product_short_description();
-									do_action( 'kemet_woo_shop_short_description_after' );
-									break;
-								case 'category':
-									/**
-									 * Add and/or Remove Categories from shop archive page.
-									 */
-									do_action( 'kemet_woo_shop_category_before' );
-									kemet_woo_shop_parent_category();
-									do_action( 'kemet_woo_shop_category_after' );
-									break;
-								default:
-									break;
-							}
-						}
-
-						do_action( 'kemet_woo_shop_summary_wrap_bottom' );
-						echo '</div>';
-						do_action( 'kemet_woo_shop_after_summary_wrap' );
-					}
-				}
-
-				add_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details', 8 );
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title', 1 );
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content', 2 );
-				add_action( 'kemet_woo_shop_add_to_cart_before', array( Kemet_Woocommerce::get_instance(), 'kemet_get_wishlist' ) );
-
-				remove_action( 'kemet_woo_shop_add_to_cart_after', array( Kemet_Woocommerce::get_instance(), 'kemet_get_wishlist' ) );
+				remove_filter( 'woocommerce_product_loop_start', array( Kemet_Woocommerce::get_instance(), 'add_filter_for_add_to_cart_link' ) );
 				remove_action( 'woocommerce_before_shop_loop_item', 'product_list_details', 8 );
 				remove_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title', 1 );
-				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content', 2 );
+				remove_action( 'woocommerce_shop_loop_item_title', 'kemet_woo_woocommerce_shop_product_content', 2 );
 				remove_action( 'woocommerce_shop_loop_item_title', 'kemet_woo_shop_out_of_stock', 8 );
-			} elseif ( 'shop-grid' == $shop_style ) {
-				add_action( 'woocommerce_before_shop_loop_item', 'product_list_details', 8 );
-				add_action( 'woocommerce_after_shop_loop_item', 'after_shop_loop_item_title', 1 );
-				add_action( 'woocommerce_after_shop_loop_item', 'kemet_woo_woocommerce_shop_product_content', 2 );
-
-				remove_action( 'woocommerce_before_shop_loop_item', 'kemet_addons_product_list_details', 8 );
-				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_after_shop_loop_item_title', 1 );
-				remove_action( 'woocommerce_after_shop_loop_item', 'kemet_addons_woo_woocommerce_shop_product_content', 2 );
 			}
 
-			/**
-			 * Init Off Canvas Sidebar
-			 */
+			// Init Off Canvas Sidebar.
 			$off_canvas_enable = kemet_get_option( 'woo-shop-enable-filter-button' );
 
 			if ( $off_canvas_enable ) {
@@ -310,9 +186,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 				add_action( 'wp_footer', array( $this, 'off_canvas_filter_sidebar' ) );
 			}
 
-			/**
-			 * Infinite Scroll
-			 */
+			// Infinite Scroll.
 			$pagination_style = kemet_get_option( 'woo-shop-pagination-style' );
 
 			if ( 'infinite-scroll' == $pagination_style && ( is_shop() || is_product_taxonomy() ) ) {
@@ -322,6 +196,68 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'start_tool_bar_div' ) );
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'end_tool_bar_div' ), 40 );
+		}
+
+		/**
+		 * woo_woocommerce_shop_product_content
+		 *
+		 * @return void
+		 */
+		function woo_woocommerce_shop_product_content() {
+
+			echo '<div class="product-summary">';
+
+			echo '<div class="product-info">';
+			kemet_shop_loop_item_structure();
+			echo '</div>';
+
+			do_action( 'kemet_woo_shop_before_product_buttons' );
+			echo '<div class="kemet-shop-product-buttons">';
+			do_action( 'kemet_woo_shop_product_buttons_top' );
+
+			do_action( 'kemet_woo_shop_add_to_cart_before' );
+			woocommerce_template_loop_add_to_cart();
+			do_action( 'kemet_woo_shop_add_to_cart_after' );
+
+			do_action( 'kemet_woo_shop_product_buttons_bottom' );
+			echo '</div>';
+			do_action( 'kemet_woo_shop_after_product_buttons' );
+
+			echo '</div>';
+		}
+
+		/**
+		 * Adds filter to add svgs to add to cart link for product archives.
+		 *
+		 * @param string $html the html to start a loop.
+		 * @return string $html the html to start a loop.
+		 */
+		public function add_filter_for_add_to_cart_link( $html ) {
+			add_filter( 'woocommerce_loop_add_to_cart_link', array( $this, 'filter_add_to_cart_link_link' ), 9, 3 );
+			return $html;
+		}
+
+		/**
+		 * Adds Arrow to add to cart button.
+		 *
+		 * @param string $button Current classes.
+		 * @param object $product Product object.
+		 * @param array  $args The Product args.
+		 */
+		public function filter_add_to_cart_link_link( $button, $product, $args = array() ) {
+			$args['class'] = explode( ' ', $args['class'] );
+			if ( 'button' === $args['class'][0] ) {
+				unset( $args['class'][0] );
+			}
+			$button = sprintf(
+				'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
+				esc_url( $product->add_to_cart_url() ),
+				esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+				esc_attr( isset( $args['class'] ) ? implode( ' ', $args['class'] ) : 'button' ),
+				isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+				esc_html( $product->add_to_cart_text() )
+			);
+			return $button;
 		}
 
 		/**
@@ -487,86 +423,6 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		}
 
 		/**
-		 * Quick view button
-		 *
-		 * @return void
-		 */
-		public function quick_view_button() {
-			global $product;
-
-			$product_id = $product->get_id();
-
-			// Get label.
-			$label     = __( 'Quick View', 'kemet-addons' );
-			$button    = '<div class="kmt-qv-btn-wrap">';
-			$button   .= '<a href="#" class="button kmt-quick-view" data-product_id="' . $product_id . '">' . $label . '</a>';
-			$button   .= '</div>';
-			$html_args = kemet_allowed_html( array( 'div', 'a' ) );
-
-			echo wp_kses(
-				$button,
-				$html_args
-			);
-		}
-
-		/**
-		 * Quick view on image
-		 *
-		 * @return void
-		 */
-		public function quick_view_on_image() {
-			global $product;
-
-			$product_id = $product->get_id();
-
-			$button    = '<a href="#" class="kmt-qv-on-image" data-product_id="' . $product_id . '">' . __( 'Quick View', 'kemet-addons' ) . '</a>';
-			$html_args = kemet_allowed_html( array( 'a' ) );
-
-			echo wp_kses(
-				$button,
-				$html_args
-			);
-		}
-
-		/**
-		 * Quick view on image
-		 *
-		 * @return void
-		 */
-		public function quick_view_list_style() {
-			global $product;
-
-			$product_id = $product->get_id();
-
-			$button    = '<a href="#" class="kmt-qv-on-list button" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view-fill' ) . '</a>';
-			$html_args = kemet_allowed_html( array( 'a', 'span', 'svg' ) );
-
-			echo wp_kses(
-				$button,
-				$html_args
-			);
-		}
-
-		/**
-		 * Quick view Icon
-		 *
-		 * @return void
-		 */
-		public function quick_view_icon() {
-			global $product;
-
-			$product_id = $product->get_id();
-
-			$button    = '<a href="#" class="kmt-qv-icon" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view' ) . '</a>';
-			$html_args = kemet_allowed_html( array( 'a', 'span', 'svg' ) );
-
-			echo wp_kses(
-				$button,
-				$html_args
-			);
-		}
-
-		/**
 		 * Quick view Icon
 		 *
 		 * @return void
@@ -576,7 +432,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 
 			$product_id = $product->get_id();
 
-			$button    = '<a href="#" class="button kmt-quickview-icon" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view-fill' ) . '</a>';
+			$button    = '<a href="#" class="kmt-quickview-icon" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view-fill' ) . '</a>';
 			$html_args = kemet_allowed_html( array( 'a', 'svg' ) );
 
 			echo wp_kses(
