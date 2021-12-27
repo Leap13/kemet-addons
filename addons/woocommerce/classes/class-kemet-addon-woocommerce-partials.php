@@ -433,7 +433,7 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			$product_id = $product->get_id();
 
 			$button    = '<a href="#" class="kmt-quickview-icon" data-product_id="' . $product_id . '">' . Kemet_Svg_Icons::get_icons( 'view-fill' ) . '</a>';
-			$html_args = kemet_allowed_html( array( 'a', 'svg' ) );
+			$html_args = kemet_allowed_html( array( 'a', 'svg', 'span' ) );
 
 			echo wp_kses(
 				$button,
