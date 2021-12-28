@@ -51,19 +51,17 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Settings' ) ) {
 			$defaults['woo-shop-quick-view-style']          = 'qv-icon';
 			$defaults['woo-shop-layout']                    = 'woo-style1';
 			$defaults['enable-single-ajax-add-to-cart']     = false;
-			$defaults['woo-shop-simple-product-structure']  = array(
-				'title',
-				'price',
-				'ratings',
-				'category',
-				'add_cart',
-			);
 			$defaults['woo-shop-off-canvas-filter-label']   = 'Filter';
 			$defaults['woo-shop-enable-quick-view']         = false;
 			$defaults['woo-shop-pagination-style']          = 'standard';
 			$defaults['woo-shop-infinite-scroll-last-text'] = __( 'No more products to show.', 'kemet-addons' );
 			$defaults['woo-shop-load-more-style']           = 'dots';
 			$defaults['woo-shop-load-more-text']            = 'Load More';
+			$defaults['woo-shop-product-button-typography'] = array(
+				'family'         => 'Default',
+				'variation'      => 'n6',
+				'text-transform' => 'uppercase',
+			);
 
 			return $defaults;
 		}

@@ -118,7 +118,132 @@ function woo_shop_options( $options ) {
 	);
 
 	$addon_design_options = array(
-		$prefix . '-quick-view-style' => array(
+		$prefix . '-summary-bg-color'          => array(
+			'type'      => 'kmt-color',
+			'priority'  => 25,
+			'transport' => 'postMessage',
+			'label'     => __( 'Product Summary Background Color', 'kemet' ),
+			'pickers'   => array(
+				array(
+					'id'    => 'initial',
+					'title' => __( 'Initial', 'kemet' ),
+				),
+			),
+			'preview'   => array(
+				'initial' => array(
+					'selector' => '.woo-style2 ul.products li.product',
+					'property' => '--backgroundColor',
+				),
+			),
+			'context'   => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-button-style'              => array(
+			'type'     => 'kmt-radio',
+			'priority' => 30,
+			'default'  => 'text',
+			'label'    => __( 'Button Style', 'kemet' ),
+			'choices'  => array(
+				'text'   => __( 'Text', 'kemet' ),
+				'button' => __( 'Button', 'kemet' ),
+			),
+			'context'  => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-style2-icons-color'        => array(
+			'type'      => 'kmt-color',
+			'priority'  => 35,
+			'transport' => 'postMessage',
+			'label'     => __( 'Icons Color', 'kemet' ),
+			'pickers'   => array(
+				array(
+					'id'    => 'initial',
+					'title' => __( 'Initial', 'kemet' ),
+				),
+				array(
+					'id'    => 'hover',
+					'title' => __( 'Hover', 'kemet' ),
+				),
+			),
+			'preview'   => array(
+				'initial' => array(
+					'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons a:not(.added_to_cart):not(.add_to_cart_button), .woo-style2 ul.products li.product .kemet-shop-product-buttons .yith-wcwl-wishlistexistsbrowse',
+					'property' => '--linksColor',
+				),
+				'hover'   => array(
+					'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons a:not(.added_to_cart):not(.add_to_cart_button), .woo-style1 ul.products li.product .kemet-shop-product-buttons .yith-wcwl-wishlistexistsbrowse',
+					'property' => '--linksHoverColor',
+				),
+			),
+			'context'   => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-product-button'            => array(
+			'type'     => 'kmt-title',
+			'priority' => 49,
+			'label'    => __( 'Button Style', 'kemet' ),
+			'context'  => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-product-button-typography' => array(
+			'type'      => 'kmt-typography',
+			'priority'  => 49,
+			'transport' => 'postMessage',
+			'label'     => __( 'Typography', 'kemet' ),
+			'preview'   => array(
+				'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart',
+			),
+			'context'   => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-product-button-spacing'    => array(
+			'type'           => 'kmt-spacing',
+			'priority'       => 49,
+			'transport'      => 'postMessage',
+			'responsive'     => true,
+			'label'          => __( 'Padding', 'kemet' ),
+			'linked_choices' => true,
+			'unit_choices'   => array( 'px' ),
+			'choices'        => array(
+				'top'    => __( 'Top', 'kemet' ),
+				'right'  => __( 'Right', 'kemet' ),
+				'bottom' => __( 'Bottom', 'kemet' ),
+				'left'   => __( 'Left', 'kemet' ),
+			),
+			'preview'        => array(
+				'selector'   => '.woo-style2 ul.products li.product .kemet-shop-product-buttons>:first-child',
+				'property'   => '--padding',
+				'responsive' => true,
+				'sides'      => false,
+			),
+			'context'        => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-quick-view-style'          => array(
 			'type'     => 'kmt-title',
 			'priority' => 120,
 			'label'    => __( 'Quick View Style', 'kemet-addons' ),
@@ -133,7 +258,7 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-loader-color'     => array(
+		$prefix . '-loader-color'              => array(
 			'type'      => 'kmt-color',
 			'priority'  => 125,
 			'transport' => 'postMessage',

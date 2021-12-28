@@ -22,7 +22,18 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$loader_color        = kemet_get_sub_option( 'woo-shop-loader-color', 'initial', $theme_color );
 	$inifinte_text_color = kemet_get_option( 'woo-shop-infinite-text-color', $btn_color );
 
-	$css_content = array(
+	// layout.
+	$product_summary = kemet_get_sub_option( 'woo-shop-summary-bg-color', 'initial' );
+	$icons_color     = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'initial' );
+	$icons_h_color   = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'hover' );
+	$css_content     = array(
+		'.woo-style2 ul.products li.product'            => array(
+			'--backgroundColor' => esc_attr( $product_summary ),
+		),
+		'.woo-style2 ul.products li.product .kemet-shop-product-buttons a:not(.added_to_cart):not(.add_to_cart_button), .woo-style2 ul.products li.product .kemet-shop-product-buttons .yith-wcwl-wishlistexistsbrowse' => array(
+			'--linksColor'      => $icons_color,
+			'--linksHoverColor' => $icons_h_color,
+		),
 		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'        => array(
 			'background-color' => 'var(--globalBackgroundColor)',
 			'border-color'     => 'var(--borderColor)',
@@ -76,6 +87,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 			'background-color' => 'var(--buttonBackgroundHoverColor)',
 		),
 	);
-	$parse_css   = kemet_parse_css( $css_content );
+	$parse_css       = kemet_parse_css( $css_content );
+	$parse_css      .= Kemet_Dynamic_Css_Generator::typography_css( 'woo-shop-product-button', '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' );
 	return $dynamic_css . $parse_css;
 }

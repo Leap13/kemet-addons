@@ -60,6 +60,15 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 			add_action( 'kemet_infinite_scroll', array( $this, 'init_woocommerce' ) );
 			add_action( 'wp_ajax_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
 			add_action( 'wp_ajax_nopriv_kemet_infinite_scroll', array( $this, 'kemet_infinite_scroll' ) );
+			add_action( 'kemet_get_fonts', array( $this, 'add_fonts' ), 1 );
+		}
+
+		/**
+		 * Add Google Fonts
+		 */
+		public function add_fonts() {
+			$typography = kemet_get_option( 'woo-shop-product-button-typography' );
+			Kemet_Fonts::add_font_form_typography( $typography );
 		}
 
 		/**
@@ -204,8 +213,9 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 * @return void
 		 */
 		function woo_woocommerce_shop_product_content() {
+			$button_style = kemet_get_option( 'woo-shop-button-style', 'text' );
 
-			echo '<div class="product-summary">';
+			echo '<div class="product-summary" data-style="' . esc_attr( $button_style ) . '">';
 
 			echo '<div class="product-info">';
 			kemet_shop_loop_item_structure();
@@ -245,8 +255,9 @@ if ( ! class_exists( 'Kemet_Addon_Woocommerce_Partials' ) ) {
 		 * @param array  $args The Product args.
 		 */
 		public function filter_add_to_cart_link_link( $button, $product, $args = array() ) {
+			$button_style  = kemet_get_option( 'woo-shop-button-style', 'text' );
 			$args['class'] = explode( ' ', $args['class'] );
-			if ( 'button' === $args['class'][0] ) {
+			if ( 'button' === $args['class'][0] && 'text' === $button_style ) {
 				unset( $args['class'][0] );
 			}
 			$button = sprintf(

@@ -525,7 +525,8 @@ Woo Quick View
 .woo-style2 {
   ul.products {
     li.product {
-      background-color: var(--paletteColor6);
+      --backgroundColor: var(--paletteColor6);
+      background-color: var(--backgroundColor);
       overflow: hidden;
       transition: box-shadow 0.4s;
       .product-summary {
@@ -535,6 +536,21 @@ Woo Quick View
         padding: 14px 20px;
         transition: transform 0.4s;
       }
+
+      &:hover {
+        .product-summary {
+          &[data-style="button"] {
+            transform: translateY(-65px);
+          }
+        }
+      }
+      &:hover {
+        .product-summary {
+          &[data-style="text"] {
+            transform: translateY(-40px);
+          }
+        }
+      }
       &:hover {
         box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.01);
         .kemet-shop-product-buttons {
@@ -542,8 +558,41 @@ Woo Quick View
           opacity: 1;
         }
         .product-summary {
-          transform: translateY(-40px);
-          background-color: var(--paletteColor6);
+          background-color: var(--backgroundColor);
+        }
+      }
+      .product-summary {
+        &[data-style="button"] {
+          .kemet-shop-product-buttons {
+            display: flex;
+            align-items: center;
+            > .add_to_cart_button,
+            > .added_to_cart {
+              margin-right: auto;
+            }
+            .added_to_cart {
+              color: var(--buttonColor);
+              background-color: var(--buttonBackgroundColor);
+              padding: var(--padding, 0.6em 1em);
+              &:hover {
+                color: var(--buttonHoverColor, var(--buttonColor));
+                background-color: var(
+                  --buttonBackgroundHoverColor,
+                  var(--buttonBackgroundColor)
+                );
+              }
+            }
+          }
+        }
+      }
+      .product-summary {
+        &[data-style="text"] {
+          .kemet-shop-product-buttons {
+            .added_to_cart {
+              position: absolute;
+              left: 0;
+            }
+          }
         }
       }
       .kemet-shop-product-buttons {
@@ -551,14 +600,20 @@ Woo Quick View
         position: absolute;
         left: 20px;
         right: 20px;
-        height: 40px;
+        height: auto;
         opacity: 0;
         transform: translateY(50%);
         transition: 0.4s;
         text-align: right;
-        a {
+        a:not(.button.add_to_cart),
+        .yith-wcwl-wishlistexistsbrowse {
+          --linksHoverColor: var(--linksColor);
+        }
+        .yith-wcwl-wishlistexistsbrowse {
+          position: relative;
+          color: var(--linksColor);
           &:hover {
-            color: var(--linksColor);
+            color: var(--linksHoverColor);
           }
         }
         .add_to_wishlist {
@@ -570,10 +625,6 @@ Woo Quick View
         .added {
           display: none;
         }
-        .added_to_cart {
-          position: absolute;
-          left: 0;
-        }
         .yith-wcwl-add-to-wishlist {
           display: inline-block;
           margin-left: 10px;
@@ -582,8 +633,6 @@ Woo Quick View
           }
         }
         > :first-child {
-          font-weight: 600;
-          text-transform: uppercase;
           float: left;
         }
       }
