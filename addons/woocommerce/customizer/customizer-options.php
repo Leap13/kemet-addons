@@ -241,6 +241,10 @@ function woo_shop_options( $options ) {
 					'setting' => $prefix . '-layout',
 					'value'   => 'woo-style2',
 				),
+				array(
+					'setting' => $prefix . '-button-style',
+					'value'   => 'button',
+				),
 			),
 		),
 		$prefix . '-quick-view-style'          => array(

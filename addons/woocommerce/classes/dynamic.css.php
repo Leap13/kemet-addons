@@ -28,7 +28,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$icons_h_color   = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'hover' );
 	$button_spacing  = kemet_get_option( 'woo-shop-product-button-spacing' );
 	$css_content     = array(
-		'.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' => array(
+		'.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart' => array(
 			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'desktop' ),
 		),
 		'.woo-style2 ul.products li.product'            => array(
@@ -94,7 +94,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$parse_css       = kemet_parse_css( $css_content );
 
 	$tablet = array(
-		'.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' => array(
+		'.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart' => array(
 			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'tablet' ),
 		),
 	);
@@ -103,7 +103,7 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$parse_css .= kemet_parse_css( $tablet, '', '768' );
 
 	$mobile = array(
-		'.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' => array(
+		'.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart' => array(
 			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'mobile' ),
 		),
 	);
