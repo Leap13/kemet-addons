@@ -26,7 +26,11 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$product_summary = kemet_get_sub_option( 'woo-shop-summary-bg-color', 'initial' );
 	$icons_color     = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'initial' );
 	$icons_h_color   = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'hover' );
+	$button_spacing  = kemet_get_option( 'woo-shop-product-button-spacing' );
 	$css_content     = array(
+		'.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' => array(
+			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'desktop' ),
+		),
 		'.woo-style2 ul.products li.product'            => array(
 			'--backgroundColor' => esc_attr( $product_summary ),
 		),
@@ -88,6 +92,26 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 		),
 	);
 	$parse_css       = kemet_parse_css( $css_content );
-	$parse_css      .= Kemet_Dynamic_Css_Generator::typography_css( 'woo-shop-product-button', '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' );
+
+	$tablet = array(
+		'.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' => array(
+			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'tablet' ),
+		),
+	);
+
+	/* Parse CSS from array()*/
+	$parse_css .= kemet_parse_css( $tablet, '', '768' );
+
+	$mobile = array(
+		'.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' => array(
+			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'mobile' ),
+		),
+	);
+
+	/* Parse CSS from array()*/
+	$parse_css .= kemet_parse_css( $mobile, '', '544' );
+
+	$parse_css .= Kemet_Dynamic_Css_Generator::typography_css( 'woo-shop-product-button', '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart' );
+
 	return $dynamic_css . $parse_css;
 }

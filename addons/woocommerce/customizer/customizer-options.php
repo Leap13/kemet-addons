@@ -231,7 +231,7 @@ function woo_shop_options( $options ) {
 				'left'   => __( 'Left', 'kemet' ),
 			),
 			'preview'        => array(
-				'selector'   => '.woo-style2 ul.products li.product .kemet-shop-product-buttons>:first-child',
+				'selector'   => '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart',
 				'property'   => '--padding',
 				'responsive' => true,
 				'sides'      => false,
