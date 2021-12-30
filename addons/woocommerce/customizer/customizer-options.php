@@ -179,7 +179,7 @@ function woo_shop_options( $options ) {
 					'property' => '--linksColor',
 				),
 				'hover'   => array(
-					'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons a:not(.added_to_cart):not(.add_to_cart_button), .woo-style1 ul.products li.product .kemet-shop-product-buttons .yith-wcwl-wishlistexistsbrowse',
+					'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons a:not(.added_to_cart):not(.add_to_cart_button), .woo-style2 ul.products li.product .kemet-shop-product-buttons .yith-wcwl-wishlistexistsbrowse',
 					'property' => '--linksHoverColor',
 				),
 			),
@@ -207,7 +207,7 @@ function woo_shop_options( $options ) {
 			'transport' => 'postMessage',
 			'label'     => __( 'Typography', 'kemet' ),
 			'preview'   => array(
-				'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart',
+				'selector' => '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .product_type_grouped',
 			),
 			'context'   => array(
 				array(
@@ -231,7 +231,7 @@ function woo_shop_options( $options ) {
 				'left'   => __( 'Left', 'kemet' ),
 			),
 			'preview'        => array(
-				'selector'   => '.woo-style2 ul.products li.product .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .kemet-shop-product-buttons .added_to_cart',
+				'selector'   => '.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .product_type_grouped',
 				'property'   => '--padding',
 				'responsive' => true,
 				'sides'      => false,

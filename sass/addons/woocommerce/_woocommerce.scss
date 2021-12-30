@@ -567,7 +567,8 @@ Woo Quick View
             display: flex;
             align-items: center;
             > .add_to_cart_button,
-            > .added_to_cart {
+            > .added_to_cart,
+            > .product_type_grouped {
               margin-right: auto;
             }
             .added_to_cart {
@@ -639,7 +640,7 @@ Woo Quick View
       &.product-type-grouped {
         &:hover {
           .kemet-shop-product-buttons {
-            transform: translateY(100%);
+            transform: translateY(0);
           }
         }
       }
