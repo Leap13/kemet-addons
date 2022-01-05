@@ -29,7 +29,10 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$button_spacing  = kemet_get_option( 'woo-shop-product-button-spacing' );
 	$css_content     = array(
 		'.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .product_type_grouped' => array(
-			'--padding' => kemet_responsive_spacing( $button_spacing, 'all', 'desktop' ),
+			'--padding-top'    => kemet_responsive_spacing( $button_spacing, 'top', 'desktop' ),
+			'--padding-right'  => kemet_responsive_spacing( $button_spacing, 'right', 'desktop' ),
+			'--padding-bottom' => kemet_responsive_spacing( $button_spacing, 'bottom', 'desktop' ),
+			'--padding-left'   => kemet_responsive_spacing( $button_spacing, 'left', 'desktop' ),
 		),
 		'.woo-style2 ul.products li.product'            => array(
 			'--backgroundColor' => esc_attr( $product_summary ),

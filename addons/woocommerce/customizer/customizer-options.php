@@ -234,7 +234,6 @@ function woo_shop_options( $options ) {
 				'selector'   => '.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .product_type_grouped',
 				'property'   => '--padding',
 				'responsive' => true,
-				'sides'      => false,
 			),
 			'context'        => array(
 				array(

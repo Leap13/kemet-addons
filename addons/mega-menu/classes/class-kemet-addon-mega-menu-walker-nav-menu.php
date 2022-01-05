@@ -77,7 +77,10 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 					'--linksColor'           => esc_attr( $link_color ),
 					'--linksHoverColor'      => esc_attr( $link_h_color ),
 					'--backgroundColor'      => esc_attr( $link_bg_color ),
-					'padding'                => kemet_spacing( $spacing, 'all' ),
+					'padding-top'            => kemet_spacing( $spacing, 'top' ),
+					'padding-right'          => kemet_spacing( $spacing, 'right' ),
+					'padding-bottom'         => kemet_spacing( $spacing, 'bottom' ),
+					'padding-left'           => kemet_spacing( $spacing, 'left' ),
 				);
 
 				$style[ '.main-navigation .kemet-megamenu-item.menu-item-' . $this->menu_item_id . ' .kemet-megamenu .heading-item' ] = array(
@@ -324,7 +327,10 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 				$spacing = $this->megamenu_item_spacing;
 				$style   = array(
 					'.main-navigation .menu-item-' . $item->ID => array(
-						'padding' => kemet_spacing( $spacing, 'all' ),
+						'padding-top'    => kemet_spacing( $spacing, 'top' ),
+						'padding-right'  => kemet_spacing( $spacing, 'right' ),
+						'padding-bottom' => kemet_spacing( $spacing, 'bottom' ),
+						'padding-left'   => kemet_spacing( $spacing, 'left' ),
 					),
 				);
 				Kemet_Addon_Mega_Menu_Partials::add_css( kemet_parse_css( $style ) );
