@@ -467,20 +467,27 @@ Woo Quick View
 
   .kmt-qv-close {
     position: absolute;
-    top: 0;
-    right: 8px;
-    color: #333;
-    opacity: 0.5;
-    font-weight: 300;
-    font-size: 40px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    color: var(--buttonColor);
+    background-color: var(--buttonBackgroundColor);
+    padding: 0.6em;
     text-align: center;
     z-index: 1001;
-
+    .icon-close {
+      display: inline-flex;
+      svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
     &:hover {
-      opacity: 1;
+      color: var(--buttonHoverColor, var(--buttonColor));
+      background-color: var(
+        --buttonBackgroundHoverColor,
+        var(--buttonBackgroundColor)
+      );
     }
   }
 
@@ -552,7 +559,7 @@ Woo Quick View
         }
       }
       &:hover {
-        box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.01);
+        box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.1);
         .kemet-shop-product-buttons {
           transform: none;
           opacity: 1;
@@ -607,9 +614,6 @@ Woo Quick View
         transition: 0.4s;
         text-align: right;
         a:not(.button.add_to_cart),
-        .yith-wcwl-wishlistexistsbrowse {
-          --linksHoverColor: var(--linksColor);
-        }
         .yith-wcwl-wishlistexistsbrowse {
           position: relative;
           color: var(--linksColor);

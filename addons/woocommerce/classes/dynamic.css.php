@@ -23,31 +23,38 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 	$inifinte_text_color = kemet_get_option( 'woo-shop-infinite-text-color', $btn_color );
 
 	// layout.
-	$product_summary = kemet_get_sub_option( 'woo-shop-summary-bg-color', 'initial' );
-	$icons_color     = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'initial' );
-	$icons_h_color   = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'hover' );
-	$button_spacing  = kemet_get_option( 'woo-shop-product-button-spacing' );
-	$css_content     = array(
+	$product_summary          = kemet_get_sub_option( 'woo-shop-summary-bg-color', 'initial' );
+	$product_summary_h        = kemet_get_sub_option( 'woo-shop-summary-bg-color', 'hover' );
+	$icons_color              = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'initial' );
+	$icons_h_color            = kemet_get_sub_option( 'woo-shop-style2-icons-color', 'hover' );
+	$button_spacing           = kemet_get_option( 'woo-shop-product-button-spacing' );
+	$add_to_cart_text_color   = kemet_get_sub_option( 'woo-shop-product-add-to-cart-color', 'initial' );
+	$add_to_cart_text_h_color = kemet_get_sub_option( 'woo-shop-product-add-to-cart-color', 'hover' );
+
+	$css_content = array(
+		'.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .product_type_grouped' => array(
+			'--linksColor'      => $add_to_cart_text_color,
+			'--linksHoverColor' => $add_to_cart_text_h_color,
+		),
 		'.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .product_type_grouped' => array(
 			'--padding-top'    => kemet_responsive_spacing( $button_spacing, 'top', 'desktop' ),
 			'--padding-right'  => kemet_responsive_spacing( $button_spacing, 'right', 'desktop' ),
 			'--padding-bottom' => kemet_responsive_spacing( $button_spacing, 'bottom', 'desktop' ),
 			'--padding-left'   => kemet_responsive_spacing( $button_spacing, 'left', 'desktop' ),
 		),
-		'.woo-style2 ul.products li.product'            => array(
+		'.woo-style2 ul.products li.product'       => array(
 			'--backgroundColor' => esc_attr( $product_summary ),
+		),
+		'.woo-style2 ul.products li.product:hover' => array(
+			'--backgroundColor' => esc_attr( $product_summary_h ),
 		),
 		'.woo-style2 ul.products li.product .kemet-shop-product-buttons a:not(.added_to_cart):not(.add_to_cart_button), .woo-style2 ul.products li.product .kemet-shop-product-buttons .yith-wcwl-wishlistexistsbrowse' => array(
 			'--linksColor'      => $icons_color,
 			'--linksHoverColor' => $icons_h_color,
 		),
-		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'        => array(
+		'.woocommerce .kmt-qv-icon,.kmt-qv-icon'   => array(
 			'background-color' => 'var(--globalBackgroundColor)',
 			'border-color'     => 'var(--borderColor)',
-		),
-		'.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn , .shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn' => array(
-			'background-color' => 'var(--buttonBackgroundColor)',
-			'color'            => 'var(--buttonColor)',
 		),
 		'.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .kemet-shop-summary-wrap .kmt-qv-on-list' => array(
 			'border-color' => 'var(--borderColor)',
@@ -62,16 +69,6 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 		'.shop-list ul.products li.product .kemet-shop-thumbnail-wrap .woo-wishlist-btn:hover a' => array(
 			'color' => 'var(--textColor)',
 		),
-		'div.product .summary .yith-wcwl-wishlistexistsbrowse:hover' => array(
-			'color' => 'var(--themeColor)',
-		),
-		'.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist .yith-wcwl-icon, .single-product div.product .entry-summary .compare:before' => array(
-			'background-color' => 'var(--globalBackgroundColor)',
-		),
-		'.hover-style ul.products li.product .kemet-shop-thumbnail-wrap .product-top .product-btn-group .woo-wishlist-btn:hover' => array(
-			'background-color' => 'var(--buttonBackgroundHoverColor)',
-			'color'            => 'var(--buttonHoverColor, var(--buttonColor))',
-		),
 		'.product-list-img a.kmt-qv-on-image, .add-to-cart-group .added_to_cart' => array(
 			'background-color' => 'var(--buttonBackgroundColor)',
 			'color'            => 'var(--buttonColor)',
@@ -83,18 +80,15 @@ function kemet_woocommerce_dynamic_css( $dynamic_css ) {
 		'.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader' => array(
 			'background-color' => esc_attr( $loader_color ),
 		),
-		'a.plus, a.minus'                               => array(
+		'a.plus, a.minus'                          => array(
 			'border-color'     => 'var(--borderColor)',
 			'background-color' => 'var(--inputBackgroundColor)',
 		),
-		'.kmt-woo-load-more .woo-load-more-text'        => array(
+		'.kmt-woo-load-more .woo-load-more-text'   => array(
 			'color' => esc_attr( $inifinte_text_color ),
 		),
-		'.hover-style .yith-wcwl-add-to-wishlist:hover' => array(
-			'background-color' => 'var(--buttonBackgroundHoverColor)',
-		),
 	);
-	$parse_css       = kemet_parse_css( $css_content );
+	$parse_css   = kemet_parse_css( $css_content );
 
 	$tablet = array(
 		'.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=button] .kemet-shop-product-buttons .product_type_grouped' => array(

@@ -29,7 +29,7 @@ final class Kemet_Addons_Activate {
 	 */
 	public function load_kmt_addons() {
 
-		$enabled_addon = get_option( 'kemet_addons_options', array() );
+		$enabled_addon = apply_filters( 'kemet_addons_options', get_option( 'kemet_addons_options', array() ) );
 
 		if ( is_array( $enabled_addon ) && 0 < count( $enabled_addon ) ) {
 

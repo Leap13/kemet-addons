@@ -22,7 +22,7 @@ function woo_shop_options( $options ) {
 		$prefix . '-layout'                    => array(
 			'type'     => 'kmt-select',
 			'priority' => 6,
-			'label'    => __( 'Shop Layout', 'kemet-addons' ),
+			'label'    => __( 'Products Listing Style', 'kemet-addons' ),
 			'choices'  => array(
 				'woo-style1' => __( 'Style 1', 'kemet-addons' ),
 				'woo-style2' => __( 'Style 2', 'kemet-addons' ),
@@ -128,10 +128,18 @@ function woo_shop_options( $options ) {
 					'id'    => 'initial',
 					'title' => __( 'Initial', 'kemet' ),
 				),
+				array(
+					'id'    => 'hover',
+					'title' => __( 'Hover', 'kemet' ),
+				),
 			),
 			'preview'   => array(
 				'initial' => array(
 					'selector' => '.woo-style2 ul.products li.product',
+					'property' => '--backgroundColor',
+				),
+				'hover'   => array(
+					'selector' => '.woo-style2 ul.products li.product:hover',
 					'property' => '--backgroundColor',
 				),
 			),
@@ -198,6 +206,42 @@ function woo_shop_options( $options ) {
 				array(
 					'setting' => $prefix . '-layout',
 					'value'   => 'woo-style2',
+				),
+			),
+		),
+		$prefix . '-product-add-to-cart-color' => array(
+			'type'      => 'kmt-color',
+			'priority'  => 49,
+			'transport' => 'postMessage',
+			'label'     => __( 'Add to Cart Hover Color', 'kemet-addons' ),
+			'pickers'   => array(
+				array(
+					'id'    => 'initial',
+					'title' => __( 'Initial', 'kemet-addons' ),
+				),
+				array(
+					'id'    => 'hover',
+					'title' => __( 'Hover', 'kemet-addons' ),
+				),
+			),
+			'preview'   => array(
+				'initial' => array(
+					'selector' => '.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .product_type_grouped',
+					'property' => '--linksColor',
+				),
+				'hover'   => array(
+					'selector' => '.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .add_to_cart_button ,.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .added_to_cart ,.woo-style2 ul.products li.product .product-summary[data-style=text] .kemet-shop-product-buttons .product_type_grouped',
+					'property' => '--linksHoverColor',
+				),
+			),
+			'context'   => array(
+				array(
+					'setting' => $prefix . '-layout',
+					'value'   => 'woo-style2',
+				),
+				array(
+					'setting' => $prefix . '-button-style',
+					'value'   => 'text',
 				),
 			),
 		),
@@ -298,6 +342,7 @@ function woo_shop_options( $options ) {
 	$options[ $prefix . '-tabs' ]['tabs']['design']['options'][ $prefix . '-icons-border' ]['context'][]     = $style1_context;
 	$options[ $prefix . '-tabs' ]['tabs']['general']['options'] = $addon_general_options + $options[ $prefix . '-tabs' ]['tabs']['general']['options'];
 	$options[ $prefix . '-tabs' ]['tabs']['design']['options']  = $addon_design_options + $options[ $prefix . '-tabs' ]['tabs']['design']['options'];
+	unset( $options[ $prefix . '-tabs' ]['tabs']['general']['options'][ $prefix . '-kemet-addons-notification' ] );
 
 	return $options;
 }

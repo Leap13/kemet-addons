@@ -49,6 +49,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public function __construct() {
 			add_action( 'wp_ajax_kemet-panel-update-option', array( $this, 'update_option' ) );
 			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ), 101 );
+			add_filter( 'kemet_addons_options', array( $this, 'add_default_options' ) );
 		}
 
 		/**
@@ -62,6 +63,18 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			}
 		}
 
+		public function add_default_options( $options ) {
+			$default_options = array(
+				'blog-layouts'        => true,
+				'mega-menu'           => false,
+				'custom-fonts'        => false,
+				'custom-layout'       => false,
+				'woocommerce'         => is_plugin_active( 'woocommerce/woocommerce.php' ) ? true : false,
+				'reset-import-export' => false,
+			);
+
+			return array_merge( $default_options, $options );
+		}
 		/**
 		 * update_option
 		 *
@@ -73,7 +86,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			$option  = isset( $_POST['option'] ) ? sanitize_text_field( wp_unslash( $_POST['option'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$value   = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
 			$value   = 'true' === $value ? true : false;
-			$options = get_option( 'kemet_addons_options' );
+			$options = apply_filters( 'kemet_addons_options', get_option( 'kemet_addons_options', array() ) );
 			$options = ! is_array( $options ) ? array() : $options;
 
 			if ( '' !== $value && '' !== $option ) {
@@ -158,7 +171,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'KemetAddonsPanelData',
 				array(
 					'options'        => self::panel_options(),
-					'values'         => get_option( 'kemet_addons_options', array() ),
+					'values'         => apply_filters( 'kemet_addons_options', get_option( 'kemet_addons_options', array() ) ),
 					'nonce'          => wp_create_nonce( 'kemet-addons-panel' ),
 					'ajaxurl'        => admin_url( 'admin-ajax.php' ),
 					'customizer_url' => esc_url( admin_url( 'customize.php' ) ),
