@@ -69,7 +69,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 				'mega-menu'           => false,
 				'custom-fonts'        => false,
 				'custom-layout'       => false,
-				'woocommerce'         => is_plugin_active( 'woocommerce/woocommerce.php' ) ? true : false,
+				'woocommerce'         => class_exists( 'WooCommerce' ) ? true : false,
 				'reset-import-export' => false,
 			);
 
