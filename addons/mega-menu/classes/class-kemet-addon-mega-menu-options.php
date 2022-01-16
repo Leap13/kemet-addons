@@ -245,7 +245,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 									'label' => __( 'Item Icon Settings', 'kemet-addons' ),
 								),
 								'mega-menu-icon'      => array(
-									'type'  => 'icon-picker',
+									'type'  => 'kmt-icon-picker',
 									'label' => __( 'Icon', 'kemet-addons' ),
 								),
 								'mega-menu-icon-size' => array(

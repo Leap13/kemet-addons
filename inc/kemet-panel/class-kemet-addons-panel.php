@@ -65,6 +65,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 
 		public function add_default_options( $options ) {
 			$default_options = array(
+				'header-elements'     => false,
 				'blog-layouts'        => true,
 				'mega-menu'           => false,
 				'custom-fonts'        => false,
@@ -110,6 +111,12 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 */
 		public static function panel_options() {
 			$options = array(
+				'header-elements'     => array(
+					'type'        => 'kmt-button',
+					'label'       => __( 'Header Elements', 'kemet-addons' ),
+					'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
+					'url'         => admin_url( '/customize.php?autofocus[section]=section-header-builder-layout' ),
+				),
 				'blog-layouts'        => array(
 					'type'        => 'kmt-button',
 					'label'       => __( 'Blog Options', 'kemet-addons' ),
