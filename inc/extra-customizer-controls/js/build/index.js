@@ -336,9 +336,9 @@ var Templates = function Templates(_ref) {
     onChange(newValue);
   };
 
-  var posts = kemetHeaderElements.posts[template];
+  var posts = kemetAddonsExtraCustomizerControls.posts[template];
 
-  if (kemetHeaderElements.posts_count[template]) {
+  if (kemetAddonsExtraCustomizerControls.posts_count[template]) {
     var postsArr = Object.entries(posts);
     var filteredArr = postsArr.filter(function (_ref2) {
       var _ref3 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_ref2, 2),

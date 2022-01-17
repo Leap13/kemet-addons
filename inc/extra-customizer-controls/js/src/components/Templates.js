@@ -11,8 +11,8 @@ const Templates = ({ onChange, params, value: optionValue }) => {
         setValue(newValue);
         onChange(newValue);
     }
-    let posts = kemetHeaderElements.posts[template];
-    if (kemetHeaderElements.posts_count[template]) {
+    let posts = kemetAddonsExtraCustomizerControls.posts[template];
+    if (kemetAddonsExtraCustomizerControls.posts_count[template]) {
         const postsArr = Object.entries(posts);
         const filteredArr = postsArr.filter(function ([key, value]) {
             return value !== 'Default Kit';
