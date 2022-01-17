@@ -10,7 +10,7 @@ const Uploader = ({ onChange, value, params }) => {
     return <div>
         {labelContent}
         <MediaUpload
-            title={__("Select File", 'kemet')}
+            title={__("Select File", 'kemet-addons')}
             allowedTypes={[allowed]}
             onSelect={(media) => onChange(media.url)}
             value={(value && value ? value : '')}
@@ -20,7 +20,7 @@ const Uploader = ({ onChange, value, params }) => {
                         <div>
                             <input type="text" style={{ marginRight: "5px" }} value={value} readOnly />
                             <Button className="upload-button button-add-media" isDefault onClick={() => open(open)}>
-                                {__("Upload", 'kemet')}
+                                {__("Upload", 'kemet-addons')}
                             </Button>
                         </div>
                         {description && <p className='customize-control-description'>{description}</p>}

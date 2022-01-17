@@ -63,8 +63,9 @@ if ( ! class_exists( 'Kemet_Addon_Footer_Elements_Partials' ) ) {
 		 * elementor_template_markup
 		 */
 		public function elementor_template_markup() {
+			$visibility = kemet_get_option( 'footer-elementor-template-visibility' );
 			?>
-			<div class="kmt-footer-elementor-template">
+			<div class="kmt-footer-elementor-template <?php echo get_visibility_class( $visibility ); ?>">
 				<?php
 				$elementor_template = kemet_get_option( 'footer-elementor-template-id' );
 				if ( $elementor_template ) {
@@ -85,8 +86,9 @@ if ( ! class_exists( 'Kemet_Addon_Footer_Elements_Partials' ) ) {
 		 * reusable_block_markup
 		 */
 		public function reusable_block_markup() {
+			$visibility = kemet_get_option( 'footer-reusable-block-visibility' );
 			?>
-			<div class="kmt-footer-reusable-block">
+			<div class="kmt-footer-reusable-block <?php echo get_visibility_class( $visibility ); ?>">
 				<?php
 				$reusable_block = kemet_get_option( 'footer-reusable-block-id' );
 				if ( $reusable_block ) {

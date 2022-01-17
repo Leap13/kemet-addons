@@ -46,7 +46,16 @@ if ( ! class_exists( 'Kemet_Addon_Header_Elements_Settings' ) ) {
 		 * @return array
 		 */
 		public function theme_defaults( $defaults ) {
-			// $defaults['']   = '';
+			$defaults['elementor-template-visibility'] = array(
+				'desktop' => true,
+				'tablet'  => true,
+				'mobile'  => true,
+			);
+			$defaults['reusable-block-visibility']     = array(
+				'desktop' => true,
+				'tablet'  => true,
+				'mobile'  => true,
+			);
 
 			return $defaults;
 		}

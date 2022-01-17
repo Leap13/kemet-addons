@@ -17,12 +17,12 @@ add_filter( 'header_mobile_items', 'extra_header_elements' );
 function extra_header_elements( $options ) {
 	$addon_options = array(
 		'elementor-template' => array(
-			'name'    => __( 'Elementor Template', 'kemet' ),
+			'name'    => __( 'Elementor Template', 'kemet-addons' ),
 			'icon'    => 'admin-appearance',
 			'section' => 'section-header-elementor-template',
 		),
 		'reusable-block'     => array(
-			'name'    => __( 'Reusable Block', 'kemet' ),
+			'name'    => __( 'Reusable Block', 'kemet-addons' ),
 			'icon'    => 'admin-appearance',
 			'section' => 'section-header-reusable-block',
 		),

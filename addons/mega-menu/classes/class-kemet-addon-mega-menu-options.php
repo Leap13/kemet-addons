@@ -118,7 +118,7 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Options' ) ) {
 								),
 								'mega-menu-layout'    => array(
 									'type'    => 'kmt-row-layout',
-									'label'   => __( 'Layout', 'kemet' ),
+									'label'   => __( 'Layout', 'kemet-addons' ),
 									'context' => array(
 										array(
 											'setting' => 'depth',

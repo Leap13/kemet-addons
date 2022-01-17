@@ -16,12 +16,12 @@ add_filter( 'footer_items', 'extra_footer_elements' );
 function extra_footer_elements( $options ) {
 	$addon_options = array(
 		'elementor-template' => array(
-			'name'    => __( 'Elementor Template', 'kemet' ),
+			'name'    => __( 'Elementor Template', 'kemet-addons' ),
 			'icon'    => 'admin-appearance',
 			'section' => 'section-footer-elementor-template',
 		),
 		'reusable-block'     => array(
-			'name'    => __( 'Reusable Block', 'kemet' ),
+			'name'    => __( 'Reusable Block', 'kemet-addons' ),
 			'icon'    => 'admin-appearance',
 			'section' => 'section-footer-reusable-block',
 		),

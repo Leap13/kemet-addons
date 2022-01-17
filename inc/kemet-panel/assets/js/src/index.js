@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 kmtEvents.on('kmt:dashboard:customtabs', function ({ detail: tabs }) {
     tabs.push({
         name: 'kemet-addons',
-        title: __('Kemet Addons', 'kemet'),
+        title: __('Kemet Addons', 'kemet-addons'),
         className: 'kemet-addons',
         priority: 10,
         data: {
