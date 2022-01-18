@@ -175,7 +175,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 				'eot-font'            => array(
 					'type'        => 'kmt-upload',
 					'label'       => __( '.eot Font file', 'kemet-addons' ),
-					'fontType'    => '.eot',
+					'fontType'    => 'eot',
 					'description' => __( 'Upload .eot file', 'kemet-addons' ),
 					'context'     => array(
 						array(
@@ -234,7 +234,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 			if ( $this->check_post_type() ) {
 				$meta = get_post_meta( $this->check_post_type(), 'kemet_custom_font_options', true );
 				if ( $meta ) {
-					$font_type = $meta['font-type'];
+					$font_type = isset( $meta['font-type'] ) ? $meta['font-type'] : 'file';
 					$html      = '';
 					if ( 'adobe-kit' == $font_type && ! empty( $meta['adobe-project-id'] ) ) {
 						return Kemet_Addon_Custom_Fonts_Partials::get_instance()->get_adobe_project( $meta['adobe-project-id'] );

@@ -345,7 +345,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			if ( ! empty( $adobe_fonts ) ) {
 				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
 			}
-
+			// error_log( wp_json_encode( $system_fonts ) );
 			return $system_fonts;
 		}
 
@@ -428,14 +428,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		 * @return void
 		 */
 		public function fonts_css() {
-			$css       = $this->render_fonts_css();
-			$style     = '<style>' . $css . '</style>';
-			$html_args = kemet_allowed_html( array( 'style' ) );
-
-			echo wp_kses(
-				$style,
-				$html_args
-			);
+			$css = $this->render_fonts_css();
+			printf( '<style id="kmt-custom-fonts-css">%s</style>', $css );
 		}
 		/**
 		 * Render fonts css

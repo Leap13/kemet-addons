@@ -7,10 +7,11 @@ const MetaOptions = (props) => {
     const metaInput = document.getElementById('kmt-font-meta');
     let metaValue = JSON.parse(metaInput.value);
     metaValue = metaValue ? metaValue : {};
-    const [values, setValues] = useState(metaValue);
+    const [values, setValues] = useState({ ...kemetCustomFont.defaults, ...metaValue });
 
     const handleChange = (value, optionId) => {
-        let updatedValues = values;
+        let updatedValues = { ...values };
+        console.log(updatedValues);
         updatedValues[optionId] = value;
         setValues((prevValue) => ({
             ...prevValue,
@@ -21,7 +22,7 @@ const MetaOptions = (props) => {
 
     const contextValues = {
         onChange: handleChange,
-        values: { ...kemetCustomFont.defaults, ...values },
+        values: values,
     }
 
     return (

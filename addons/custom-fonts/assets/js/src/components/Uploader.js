@@ -4,7 +4,8 @@ const { __ } = wp.i18n;
 
 const Uploader = ({ onChange, value, params }) => {
     const { label, fontType, description } = params;
-    let allowed = fontType === 'svg' ? 'image/svg+xml' : `application/x-font-${fontType}`;
+    let allowed = fontType === 'eot' ? 'application/vnd.ms-fontobject' : `application/x-font-${fontType}`;
+    allowed = fontType === 'svg' ? 'image/svg+xml' : allowed;
     let labelContent = label ? <span className="customize-control-title kmt-control-title">{label}</span> : null;
 
     return <div>

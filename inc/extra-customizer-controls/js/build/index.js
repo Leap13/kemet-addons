@@ -244,7 +244,7 @@ var CreateTemplateButton = function CreateTemplateButton(props) {
     'elementor_library': __('Create a new Elementor Template', 'kemet-addons'),
     'wp_block': __('Create a new Reusable Block', 'kemet-addons')
   };
-  var link = kemetHeaderElements.edit_post_link.replace('post_name', props.type);
+  var link = kemetAddonsExtraCustomizerControls.edit_post_link.replace('post_name', props.type);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "kmt-create-post"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {

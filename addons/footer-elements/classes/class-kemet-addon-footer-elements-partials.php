@@ -71,11 +71,13 @@ if ( ! class_exists( 'Kemet_Addon_Footer_Elements_Partials' ) ) {
 				if ( $elementor_template ) {
 					$this->render_template_content( $elementor_template );
 				} else {
-					$html_args = kemet_allowed_html( array( 'span' ) );
-					echo wp_kses(
-						'<span>' . __( 'Add Elemetor Template Here', 'kemet-addons' ) . '</span>',
-						$html_args
-					);
+					if ( is_customize_preview() ) {
+						$html_args = kemet_allowed_html( array( 'span' ) );
+						echo wp_kses(
+							'<span>' . __( 'Add Elemetor Template Here', 'kemet-addons' ) . '</span>',
+							$html_args
+						);
+					}
 				}
 				?>
 			</div>
@@ -94,11 +96,13 @@ if ( ! class_exists( 'Kemet_Addon_Footer_Elements_Partials' ) ) {
 				if ( $reusable_block ) {
 					$this->render_template_content( $reusable_block );
 				} else {
-					$html_args = kemet_allowed_html( array( 'span' ) );
-					echo wp_kses(
-						'<span>' . __( 'Add Reusable Block Here', 'kemet-addons' ) . '</span>',
-						$html_args
-					);
+					if ( is_customize_preview() ) {
+						$html_args = kemet_allowed_html( array( 'span' ) );
+						echo wp_kses(
+							'<span>' . __( 'Add Reusable Block Here', 'kemet-addons' ) . '</span>',
+							$html_args
+						);
+					}
 				}
 				?>
 			</div>
