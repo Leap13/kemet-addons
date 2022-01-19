@@ -124,6 +124,24 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+
+module.exports = _arrayWithoutHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
@@ -147,6 +165,22 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
@@ -209,6 +243,22 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableSpread;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
 /*!**************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
@@ -229,6 +279,30 @@ function _slicedToArray(arr, i) {
 }
 
 module.exports = _slicedToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
+
+var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
+
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
@@ -301,7 +375,6 @@ var MetaOptions = function MetaOptions(props) {
   var handleChange = function handleChange(value, optionId) {
     var updatedValues = _objectSpread({}, values);
 
-    console.log(updatedValues);
     updatedValues[optionId] = value;
     setValues(function (prevValue) {
       return _objectSpread(_objectSpread({}, prevValue), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, optionId, value));
@@ -328,17 +401,20 @@ var MetaOptions = function MetaOptions(props) {
 /*!***********************************!*\
   !*** ./src/components/Options.js ***!
   \***********************************/
-/*! exports provided: isDisplay, default */
+/*! exports provided: isDisplay, SingleOptionComponent, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDisplay", function() { return isDisplay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SingleOptionComponent", function() { return SingleOptionComponent; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store_options_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/options-context */ "./src/store/options-context.js");
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Table */ "./src/components/Table.js");
 /* harmony import */ var _Uploader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Uploader */ "./src/components/Uploader.js");
+/* harmony import */ var _Repeater__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Repeater */ "./src/components/Repeater.js");
+
 
 
 
@@ -409,13 +485,37 @@ var isDisplay = function isDisplay(rules) {
   return isVisible;
 };
 
+var OptionComponent = function OptionComponent(type) {
+  var Component;
+
+  switch (type) {
+    case 'kmt-upload':
+      Component = _Uploader__WEBPACK_IMPORTED_MODULE_3__["default"];
+      break;
+
+    case 'kmt-repeater':
+      Component = _Repeater__WEBPACK_IMPORTED_MODULE_4__["default"];
+      break;
+
+    case 'kmt-table':
+      Component = _Table__WEBPACK_IMPORTED_MODULE_2__["default"];
+      break;
+
+    default:
+      var _OptionComponent = window.KmtOptionComponent.OptionComponent;
+      Component = _OptionComponent(type);
+      break;
+  }
+
+  return Component;
+};
+
 var SingleOptionComponent = function SingleOptionComponent(_ref) {
   var value = _ref.value,
       optionId = _ref.optionId,
       option = _ref.option,
       onChange = _ref.onChange;
-  var OptionComponent = window.KmtOptionComponent.OptionComponent;
-  var Option = option.type === 'kmt-upload' ? _Uploader__WEBPACK_IMPORTED_MODULE_3__["default"] : option.type === 'kmt-table' ? _Table__WEBPACK_IMPORTED_MODULE_2__["default"] : OptionComponent(option.type);
+  var Option = OptionComponent(option.type);
   var divider = option.divider ? ' has-divider' : '';
   return option.type && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     id: optionId,
@@ -458,6 +558,156 @@ var Options = function Options(_ref2) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Options);
+
+/***/ }),
+
+/***/ "./src/components/Repeater.js":
+/*!************************************!*\
+  !*** ./src/components/Repeater.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Options */ "./src/components/Options.js");
+/* harmony import */ var _store_options_context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/options-context */ "./src/store/options-context.js");
+
+
+
+
+
+
+
+
+
+
+var RenderOptions = function RenderOptions(_ref) {
+  var values = _ref.values,
+      options = _ref.options,
+      _onChange = _ref.onChange,
+      index = _ref.index;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+    className: "kmt-options"
+  }, Object.keys(options).map(function (optionId) {
+    var value = values[optionId];
+    var option = options[optionId];
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_Options__WEBPACK_IMPORTED_MODULE_5__["SingleOptionComponent"], {
+      value: value,
+      optionId: optionId,
+      option: option,
+      onChange: function onChange(newVal) {
+        _onChange(newVal, optionId, index);
+      },
+      key: optionId
+    });
+  }));
+};
+
+var Repeater = function Repeater(props) {
+  var _props$params = props.params,
+      label = _props$params.label,
+      options = _props$params.options;
+
+  var _useContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_store_options_context__WEBPACK_IMPORTED_MODULE_6__["default"]),
+      values = _useContext.values,
+      onChangeVariation = _useContext.onChange;
+
+  var getDefaultValues = function getDefaultValues() {
+    var obj = {};
+    Object.keys(options).map(function (optionKey) {
+      var defaultValue = options[optionKey].default;
+      obj[optionKey] = defaultValue ? defaultValue : '';
+    });
+    return obj;
+  };
+
+  var defaults = getDefaultValues();
+  var fontVariations = values.variations ? values.variations : [];
+
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["useState"])(fontVariations),
+      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
+      fontVariationsList = _useState2[0],
+      setFontVariationsList = _useState2[1];
+
+  var addVariationHandler = function addVariationHandler() {
+    var updatedList = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(fontVariationsList);
+
+    updatedList.push(defaults);
+    setFontVariationsList(updatedList);
+  };
+
+  var onChange = function onChange(value, optionId, index) {
+    var updatedList = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(fontVariationsList);
+
+    updatedList[index][optionId] = value;
+    setFontVariationsList(updatedList);
+    onChangeVariation(updatedList, 'variations');
+  };
+
+  var deleteVariation = function deleteVariation(index) {
+    var updatedList = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(fontVariationsList);
+
+    updatedList.splice(index, 1);
+    setFontVariationsList(updatedList);
+    onChangeVariation(updatedList, 'variations');
+  };
+
+  var checkProperties = function checkProperties(obj) {
+    for (var key in obj) {
+      if (obj[key] !== null && obj[key] != "" && key.includes('-font')) return false;
+    }
+
+    return true;
+  };
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("p", {
+    className: "kmt-control-title",
+    style: {
+      marginTop: "0"
+    }
+  }, label), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Panel"], {
+    header: false
+  }, fontVariationsList && fontVariationsList.map(function (variation, index) {
+    var weight = "".concat(variation['font-weight'], "00");
+    var style = variation['font-style'] === 'n' ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Normal', 'kemet-addons') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Italic', 'kemet-addons');
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "".concat(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Weight', 'kemet-addons'), ": ").concat(weight, ", ").concat(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Style', 'kemet-addons'), ": ").concat(style),
+      initialOpen: checkProperties(variation),
+      key: index
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(RenderOptions, {
+      options: options,
+      onChange: onChange,
+      values: variation,
+      index: index
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+      style: {
+        marginLeft: "auto"
+      },
+      isDestructive: true,
+      onClick: function onClick() {
+        return deleteVariation(index);
+      }
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Delete", 'kemet-addons'))));
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    className: "repeater-action",
+    isLarge: true,
+    isPrimary: true,
+    onClick: addVariationHandler
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Add Font Variation', 'kemet-addons')));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Repeater);
 
 /***/ }),
 
@@ -556,7 +806,15 @@ var Uploader = function Uploader(_ref) {
         onClick: function onClick() {
           return open(open);
         }
-      }, __("Upload", 'kemet-addons'))), description && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      }, __("Upload", 'kemet-addons')), value && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        style: {
+          marginLeft: "5px"
+        },
+        isDestructive: true,
+        onClick: function onClick() {
+          return onChange('');
+        }
+      }, __("Clear", 'kemet-addons'))), description && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
         className: "customize-control-description"
       }, description)));
     }

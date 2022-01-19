@@ -2,6 +2,7 @@ import { Fragment, useContext } from '@wordpress/element';
 import OptionsContext from '../store/options-context';
 import Table from './Table';
 import Uploader from './Uploader';
+import Repeater from './Repeater';
 
 export const isDisplay = (rules) => {
     const { values } = useContext(OptionsContext);
@@ -67,9 +68,29 @@ export const isDisplay = (rules) => {
     return isVisible;
 };
 
-const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
-    const { OptionComponent } = window.KmtOptionComponent;
-    const Option = option.type === 'kmt-upload' ? Uploader : option.type === 'kmt-table' ? Table : OptionComponent(option.type);
+const OptionComponent = (type) => {
+    let Component;
+    switch (type) {
+        case 'kmt-upload':
+            Component = Uploader;
+            break;
+        case 'kmt-repeater':
+            Component = Repeater;
+            break;
+        case 'kmt-table':
+            Component = Table;
+            break;
+        default:
+            const { OptionComponent } = window.KmtOptionComponent;
+            Component = OptionComponent(type);
+            break;
+    }
+
+    return Component;
+}
+
+export const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
+    const Option = OptionComponent(option.type);
     const divider = option.divider ? ' has-divider' : '';
 
     return option.type && <div id={optionId} className={`customize-control-${option.type}${divider}`}>

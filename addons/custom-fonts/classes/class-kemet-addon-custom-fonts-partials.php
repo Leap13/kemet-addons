@@ -57,7 +57,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 		 */
 		function save_postdata( $post_id ) {
 			if ( array_key_exists( 'kemet_custom_font_options', $_POST ) ) {
-				$value = json_decode( stripslashes( $_POST['kemet_custom_font_options'] ), true );
+				$value              = json_decode( stripslashes( $_POST['kemet_custom_font_options'] ), true );
+				$value['font-name'] = get_the_title( $post_id );
 				update_post_meta(
 					$post_id,
 					'kemet_custom_font_options',
@@ -251,8 +252,8 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			foreach ( $all_fonts as $font ) {
 				$font = get_post_meta( $font->ID, 'kemet_custom_font_options', true );
 
-				if ( ( isset( $font['font-type'] ) && 'file' == $font['font-type'] ) && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) ) {
-					$fonts[ $font['font-name'] . '-' . $font['font-weight'] ] = $font;
+				if ( ( isset( $font['font-type'] ) && 'file' == $font['font-type'] ) && ( isset( $font['font-name'] ) && ! empty( $font['font-name'] ) ) && ( isset( $font['variations'] ) && ! empty( $font['variations'] ) ) ) {
+					$fonts[ $font['font-name'] ] = $font;
 				}
 			}
 
@@ -328,80 +329,40 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 			$fonts = $this->get_all_fonts();
 			foreach ( $fonts as $custom_font => $font_values ) {
 				$font_name = $font_values['font-name'];
-				if ( isset( $system_fonts[ $font_name ] ) && ! in_array( $font_values['font-weight'], $system_fonts[ $font_name ]['weights'] ) ) {
-					$system_fonts[ $font_name ]['weights'][] = $font_values['font-weight'];
-					sort( $system_fonts[ $font_name ]['weights'] );
+				if ( isset( $system_fonts[ $font_name ] ) ) {
+					$system_fonts[ $font_name ][0] = array_merge( $system_fonts[ $font_name ][0], $this->get_font_variations( $font_values['variations'] ) );
+					sort( $system_fonts[ $font_name ]['variants'] );
 				} else {
 					$system_fonts[ $font_name ] = array(
-						'fallback' => ! empty( $font_values['font-fallback'] ) ? $font_values['font-fallback'] : 'Helvetica, Arial, sans-serif',
-						'weights'  => array( $font_values['font-weight'] ),
+						'variations' => $this->get_font_variations( $font_values['variations'] ),
+						'fallback'   => ! empty( $font_values['font-fallback'] ) ? $font_values['font-fallback'] : 'Helvetica, Arial, sans-serif',
 					);
-				}
-				if ( isset( $system_fonts[ $font_name ]['weights'] ) ) {
-					$system_fonts[ $font_name ]['weights'] = $this->change_variations( $system_fonts[ $font_name ]['weights'] );
 				}
 			}
 			$adobe_fonts = $this->get_adobe_fonts();
 			if ( ! empty( $adobe_fonts ) ) {
 				$system_fonts = array_merge( $system_fonts, $adobe_fonts );
 			}
-			// error_log( wp_json_encode( $system_fonts ) );
+
 			return $system_fonts;
 		}
 
-		private function change_variations( $structure ) {
-			$result = array();
+		/**
+		 * get_font_variations
+		 *
+		 * @param  array $variations
+		 * @return array
+		 */
+		public function get_font_variations( $variations ) {
+			$variations_array = array();
 
-			foreach ( $structure as $weight ) {
-				$result[] = $this->get_weight( $weight );
+			foreach ( $variations as $variation ) {
+				$weight             = $variation['font-weight'] ? $variation['font-weight'] : '4';
+				$style              = $variation['font-style'] ? $variation['font-style'] : 'n';
+				$variations_array[] = "{$style}{$weight}";
 			}
 
-			return $result;
-		}
-
-		private function get_weight( $code ) {
-			$prefix = 'n';
-			$sufix  = '4';
-
-			$value = strtolower( trim( $code ) );
-			$value = str_replace( ' ', '', $value );
-
-			// Only number.
-			if ( is_numeric( $value ) && isset( $value[0] ) ) {
-				$sufix  = $value[0];
-				$prefix = 'n';
-			}
-
-			// Italic.
-			if ( preg_match( '#italic#', $value ) ) {
-				if ( 'italic' === $value ) {
-					$sufix  = 4;
-					$prefix = 'i';
-				} else {
-					$value = trim( str_replace( 'italic', '', $value ) );
-					if ( is_numeric( $value ) && isset( $value[0] ) ) {
-						$sufix  = $value[0];
-						$prefix = 'i';
-					}
-				}
-			}
-
-			// Regular.
-			if ( preg_match( '#regular|normal#', $value ) ) {
-				if ( 'regular' === $value ) {
-					$sufix  = 4;
-					$prefix = 'n';
-				} else {
-					$value = trim( str_replace( array( 'regular', 'normal' ), '', $value ) );
-
-					if ( is_numeric( $value ) && isset( $value[0] ) ) {
-						$sufix  = $value[0];
-						$prefix = 'n';
-					}
-				}
-			}
-
-			return "{$prefix}{$sufix}";
+			return $variations_array;
 		}
 
 		/**
@@ -443,7 +404,7 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 				$font_name     = $font_values['font-name'];
 				$font_display  = '';
 				$font_fallback = '';
-				$font_weight   = '';
+				$variations    = $font_values['variations'];
 				$font_family   = $font_name;
 				$font          = array();
 				if ( ! empty( $font_values['font-fallback'] ) ) {
@@ -452,35 +413,41 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Partials' ) ) {
 				if ( ! empty( $font_values['font-display'] ) ) {
 					$font_display = $font_values['font-display'];
 				}
-				if ( ! empty( $font_values['font-weight'] ) ) {
-					$font_weight                         = $font_values['font-weight'];
-					$font[ $font_values['font-weight'] ] = array();
-				}
-				if ( ! empty( $font_values['woff-font'] ) ) {
-					$font[ $font_values['font-weight'] ][0] = 'url(' . esc_url( $font_values['woff-font'] ) . ") format('woff')";
-				}
-				if ( ! empty( $font_values['woff2-font'] ) ) {
-					$font[ $font_values['font-weight'] ][1] = 'url(' . esc_url( $font_values['woff2-font'] ) . ") format('woff2')";
-				}
-				if ( ! empty( $font_values['ttf-font'] ) ) {
-					$font[ $font_values['font-weight'] ][2] = 'url(' . esc_url( $font_values['ttf-font'] ) . ") format('TrueType')";
-				}
-				if ( ! empty( $font_values['eot-font'] ) ) {
-					$font[ $font_values['font-weight'] ][3] = 'url(' . esc_url( $font_values['eot-font'] ) . ") format('eot')";
-				}
-				if ( ! empty( $font_values['svg-font'] ) ) {
-					$font[ $font_values['font-weight'] ][4] = 'url(' . esc_url( $font_values['svg-font'] ) . ") format('svg')";
-				}
-				if ( ! empty( $font_values['otf-font'] ) ) {
-					$font[ $font_values['font-weight'] ][5] = 'url(' . esc_url( $font_values['otf-font'] ) . ") format('OpenType')";
+
+				foreach ( $variations  as $variation ) {
+					$weight = $variation['font-weight'] ? $variation['font-weight'] : '';
+					if ( $weight ) {
+						$style  = $variation['font-style'] ? $variation['font-style'] : '';
+						$weight = $weight . $style;
+						if ( ! empty( $variation['woff-font'] ) ) {
+							$font[ $weight ][0] = 'url(' . esc_url( $variation['woff-font'] ) . ") format('woff')";
+						}
+						if ( ! empty( $variation['woff2-font'] ) ) {
+							$font[ $weight ][1] = 'url(' . esc_url( $variation['woff2-font'] ) . ") format('woff2')";
+						}
+						if ( ! empty( $variation['ttf-font'] ) ) {
+							$font[ $weight ][2] = 'url(' . esc_url( $variation['ttf-font'] ) . ") format('TrueType')";
+						}
+						if ( ! empty( $variation['eot-font'] ) ) {
+							$font[ $weight ][3] = 'url(' . esc_url( $variation['eot-font'] ) . ") format('eot')";
+						}
+						if ( ! empty( $variation['svg-font'] ) ) {
+							$font[ $weight ][4] = 'url(' . esc_url( $variation['svg-font'] ) . ") format('svg')";
+						}
+						if ( ! empty( $variation['otf-font'] ) ) {
+							$font[ $weight ][5] = 'url(' . esc_url( $variation['otf-font'] ) . ") format('OpenType')";
+						}
+					}
 				}
 
 				foreach ( $font as $key => $value ) {
+					$font_style     = 'n' === $key[1] ? 'normal' : 'italic';
 					$font_css      .= '@font-face {';
 					$font_css      .= 'font-family: "' . $font_family . '";';
 					$font_css      .= 'font-display: ' . $font_display . ';';
 					$font_css      .= 'font-fallback: ' . $font_fallback . ';';
-					$font_css      .= 'font-weight: ' . $key . ';';
+					$font_css      .= 'font-weight: ' . $key[0] . '00;';
+					$font_css      .= 'font-style: ' . $font_style . ';';
 					$font_src_array = array();
 					foreach ( $value as $font_file ) {
 						array_push( $font_src_array, $font_file );

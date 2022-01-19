@@ -75,17 +75,6 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'font-name'           => array(
-					'type'        => 'kmt-text',
-					'label'       => __( 'Font Name', 'kemet-addons' ),
-					'description' => __( 'The name of the font as it appears in the customizer options.', 'kemet-addons' ),
-					'context'     => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
 				'font-fallback'       => array(
 					'type'        => 'kmt-text',
 					'label'       => __( 'Font Fallback', 'kemet-addons' ),
@@ -114,94 +103,122 @@ if ( ! class_exists( 'Kemet_Addon_Custom_Fonts_Meta' ) ) {
 						),
 					),
 				),
-				'font-weight'         => array(
-					'type'    => 'kmt-select',
-					'label'   => __( 'Font Weight', 'kemet-addons' ),
-					'choices' => array(
-						'inherit' => __( 'Inherit', 'kemet-addons' ),
-						'100'     => __( 'Thin 100', 'kemet-addons' ),
-						'200'     => __( 'Extra-Light 200', 'kemet-addons' ),
-						'300'     => __( 'Light 300', 'kemet-addons' ),
-						'400'     => __( 'Normal 400', 'kemet-addons' ),
-						'500'     => __( 'Medium 500', 'kemet-addons' ),
-						'600'     => __( 'Semi-Bold 600', 'kemet-addons' ),
-						'700'     => __( 'Bold 700', 'kemet-addons' ),
-						'800'     => __( 'Extra-Bold 800', 'kemet-addons' ),
-						'900'     => __( 'Ultra-Bold 900', 'kemet-addons' ),
+				'fonts-repeater'      => array(
+					'type'    => 'kmt-repeater',
+					'label'   => __( 'Font Variations', 'kemet-addons' ),
+					'options' => array(
+						'font-weight' => array(
+							'type'    => 'kmt-select',
+							'default' => '4',
+							'label'   => __( 'Font Weight', 'kemet-addons' ),
+							'choices' => array(
+								'inherit' => __( 'Inherit', 'kemet-addons' ),
+								'1'       => __( 'Thin 100', 'kemet-addons' ),
+								'2'       => __( 'Extra-Light 200', 'kemet-addons' ),
+								'3'       => __( 'Light 300', 'kemet-addons' ),
+								'4'       => __( 'Normal 400', 'kemet-addons' ),
+								'5'       => __( 'Medium 500', 'kemet-addons' ),
+								'6'       => __( 'Semi-Bold 600', 'kemet-addons' ),
+								'7'       => __( 'Bold 700', 'kemet-addons' ),
+								'8'       => __( 'Extra-Bold 800', 'kemet-addons' ),
+								'9'       => __( 'Ultra-Bold 900', 'kemet-addons' ),
+							),
+							'context' => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'font-style'  => array(
+							'type'    => 'kmt-select',
+							'default' => 'n',
+							'label'   => __( 'Font Style', 'kemet-addons' ),
+							'choices' => array(
+								'n' => __( 'Normal', 'kemet-addons' ),
+								'i' => __( 'Italic', 'kemet-addons' ),
+							),
+							'context' => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'woff-font'   => array(
+							'type'        => 'kmt-upload',
+							'label'       => __( '.woff Font file', 'kemet-addons' ),
+							'fontType'    => 'woff',
+							'description' => __( 'Upload .woff file', 'kemet-addons' ),
+							'context'     => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'woff2-font'  => array(
+							'type'        => 'kmt-upload',
+							'label'       => __( '.woff2 Font file', 'kemet-addons' ),
+							'fontType'    => 'woff2',
+							'description' => __( 'Upload .woff2 file', 'kemet-addons' ),
+							'context'     => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'ttf-font'    => array(
+							'type'        => 'kmt-upload',
+							'label'       => __( '.ttf Font file', 'kemet-addons' ),
+							'fontType'    => 'ttf',
+							'description' => __( 'Upload .ttf file', 'kemet-addons' ),
+							'context'     => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'eot-font'    => array(
+							'type'        => 'kmt-upload',
+							'label'       => __( '.eot Font file', 'kemet-addons' ),
+							'fontType'    => 'eot',
+							'description' => __( 'Upload .eot file', 'kemet-addons' ),
+							'context'     => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'svg-font'    => array(
+							'type'        => 'kmt-upload',
+							'label'       => __( '.svg Font file', 'kemet-addons' ),
+							'fontType'    => 'svg',
+							'description' => __( 'Upload .svg file', 'kemet-addons' ),
+							'context'     => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
+						'otf-font'    => array(
+							'type'        => 'kmt-upload',
+							'label'       => __( '.otf Font file', 'kemet-addons' ),
+							'fontType'    => 'otf',
+							'description' => __( 'Upload .otf file', 'kemet-addons' ),
+							'context'     => array(
+								array(
+									'setting' => 'font-type',
+									'value'   => 'file',
+								),
+							),
+						),
 					),
 					'context' => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
-				'woff-font'           => array(
-					'type'        => 'kmt-upload',
-					'label'       => __( '.woff Font file', 'kemet-addons' ),
-					'fontType'    => 'woff',
-					'description' => __( 'Upload .woff file', 'kemet-addons' ),
-					'context'     => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
-				'woff2-font'          => array(
-					'type'        => 'kmt-upload',
-					'label'       => __( '.woff2 Font file', 'kemet-addons' ),
-					'fontType'    => 'woff2',
-					'description' => __( 'Upload .woff2 file', 'kemet-addons' ),
-					'context'     => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
-				'ttf-font'            => array(
-					'type'        => 'kmt-upload',
-					'label'       => __( '.ttf Font file', 'kemet-addons' ),
-					'fontType'    => 'ttf',
-					'description' => __( 'Upload .ttf file', 'kemet-addons' ),
-					'context'     => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
-				'eot-font'            => array(
-					'type'        => 'kmt-upload',
-					'label'       => __( '.eot Font file', 'kemet-addons' ),
-					'fontType'    => 'eot',
-					'description' => __( 'Upload .eot file', 'kemet-addons' ),
-					'context'     => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
-				'svg-font'            => array(
-					'type'        => 'kmt-upload',
-					'label'       => __( '.svg Font file', 'kemet-addons' ),
-					'fontType'    => 'svg',
-					'description' => __( 'Upload .svg file', 'kemet-addons' ),
-					'context'     => array(
-						array(
-							'setting' => 'font-type',
-							'value'   => 'file',
-						),
-					),
-				),
-				'otf-font'            => array(
-					'type'        => 'kmt-upload',
-					'label'       => __( '.otf Font file', 'kemet-addons' ),
-					'fontType'    => 'otf',
-					'description' => __( 'Upload .otf file', 'kemet-addons' ),
-					'context'     => array(
 						array(
 							'setting' => 'font-type',
 							'value'   => 'file',

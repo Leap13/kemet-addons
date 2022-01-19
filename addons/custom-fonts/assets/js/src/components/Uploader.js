@@ -23,6 +23,9 @@ const Uploader = ({ onChange, value, params }) => {
                             <Button className="upload-button button-add-media" isDefault onClick={() => open(open)}>
                                 {__("Upload", 'kemet-addons')}
                             </Button>
+                            {value && <Button style={{ marginLeft: "5px" }} isDestructive={true} onClick={() => onChange('')}>
+                                {__("Clear", 'kemet-addons')}
+                            </Button>}
                         </div>
                         {description && <p className='customize-control-description'>{description}</p>}
                     </div>

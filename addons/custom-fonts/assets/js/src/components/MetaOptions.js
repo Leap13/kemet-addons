@@ -11,7 +11,7 @@ const MetaOptions = (props) => {
 
     const handleChange = (value, optionId) => {
         let updatedValues = { ...values };
-        console.log(updatedValues);
+
         updatedValues[optionId] = value;
         setValues((prevValue) => ({
             ...prevValue,
