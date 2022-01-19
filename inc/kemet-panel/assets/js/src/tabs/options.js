@@ -13,7 +13,7 @@ const OptionsTab = (props) => {
     };
     return <Container>
         <div className='advanced-options options-section'>
-            <h2><span className='icon'><Dashicon icon="screenoptions" /></span>{__('Advanced Settings', 'kemet-addons')}</h2>
+            <h2 className="kmt-section-title"><span className='icon'><Dashicon icon="screenoptions" /></span>{__('Advanced Settings', 'kemet-addons')}</h2>
             <OptionsComponent options={options} values={values} onChange={(newVal, optionId) => {
                 handleChange(newVal, optionId)
             }} />
