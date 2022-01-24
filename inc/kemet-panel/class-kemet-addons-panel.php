@@ -134,16 +134,19 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 					'type'        => 'kmt-button',
 					'label'       => __( 'Mega Menu', 'kemet-addons' ),
 					'description' => __( 'Enrich the regular website submenu with Kemet Mega Menu that comes with powerful customization options.', 'kemet-addons' ),
+					'url'         => admin_url( '/nav-menus.php' ),
 				),
 				'custom-fonts'        => array(
 					'type'        => 'kmt-button',
 					'label'       => __( 'Custom Fonts', 'kemet-addons' ),
 					'description' => __( 'Upload and use your own custom font(s) across your Kemet website. And, you can use Adobe Fonts Kit within Kemet Theme.', 'kemet-addons' ),
+					'url'         => admin_url( '/edit.php?post_type=kemet_custom_fonts' ),
 				),
 				'custom-layout'       => array(
 					'type'        => 'kmt-button',
 					'label'       => __( 'Custom Content', 'kemet-addons' ),
 					'description' => __( 'Enable/Disable custom content option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
+					'url'         => admin_url( '/edit.php?post_type=kemet_custom_content' ),
 				),
 				'woocommerce'         => array(
 					'type'        => 'kmt-button',
