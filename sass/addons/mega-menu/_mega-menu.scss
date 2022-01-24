@@ -73,6 +73,13 @@
           );
         }
       }
+      &:hover {
+        .kmt-icon {
+          &.dashicons {
+            color: var(--iconColor, var(--linksHoverColor));
+          }
+        }
+      }
     }
     &.has-description.menu-item-has-children {
       > a {
