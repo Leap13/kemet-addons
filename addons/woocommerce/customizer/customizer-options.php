@@ -94,6 +94,49 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
+		$prefix . '-infinite-scroll-style'     => array(
+			'type'     => 'kmt-title',
+			'priority' => 65,
+			'label'    => __( 'Infinite Scroll', 'kemet-addons' ),
+			'context'  => array(
+				array(
+					'setting' => $prefix . '-pagination-style',
+					'value'   => 'infinite-scroll',
+				),
+				array(
+					'setting' => $prefix . '-load-more-style',
+					'value'   => 'dots',
+				),
+			),
+		),
+		$prefix . '-loader-color'              => array(
+			'type'      => 'kmt-color',
+			'priority'  => 65,
+			'transport' => 'postMessage',
+			'label'     => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
+			'pickers'   => array(
+				array(
+					'id'    => 'initial',
+					'title' => __( 'Color', 'kemet-addons' ),
+				),
+			),
+			'preview'   => array(
+				'initial' => array(
+					'selector' => '.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader',
+					'property' => 'background-color',
+				),
+			),
+			'context'   => array(
+				array(
+					'setting' => $prefix . '-pagination-style',
+					'value'   => 'infinite-scroll',
+				),
+				array(
+					'setting' => $prefix . '-load-more-style',
+					'value'   => 'dots',
+				),
+			),
+		),
 		$prefix . '-filter'                    => array(
 			'type'     => 'kmt-title',
 			'priority' => 70,
@@ -290,49 +333,6 @@ function woo_shop_options( $options ) {
 				),
 			),
 		),
-		$prefix . '-quick-view-style'          => array(
-			'type'     => 'kmt-title',
-			'priority' => 120,
-			'label'    => __( 'Quick View Style', 'kemet-addons' ),
-			'context'  => array(
-				array(
-					'setting' => $prefix . '-pagination-style',
-					'value'   => 'infinite-scroll',
-				),
-				array(
-					'setting' => $prefix . '-load-more-style',
-					'value'   => 'dots',
-				),
-			),
-		),
-		$prefix . '-loader-color'              => array(
-			'type'      => 'kmt-color',
-			'priority'  => 125,
-			'transport' => 'postMessage',
-			'label'     => __( 'Infinite Scroll Loader Color', 'kemet-addons' ),
-			'pickers'   => array(
-				array(
-					'id'    => 'initial',
-					'title' => __( 'Color', 'kemet-addons' ),
-				),
-			),
-			'preview'   => array(
-				'initial' => array(
-					'selector' => '.kmt-woo-infinite-scroll-loader .kmt-woo-infinite-scroll-dots .kmt-woo-loader',
-					'property' => 'background-color',
-				),
-			),
-			'context'   => array(
-				array(
-					'setting' => $prefix . '-pagination-style',
-					'value'   => 'infinite-scroll',
-				),
-				array(
-					'setting' => $prefix . '-load-more-style',
-					'value'   => 'dots',
-				),
-			),
-		),
 	);
 
 	$options[ $prefix . '-tabs' ]['tabs']['design']['options'][ $prefix . '-overlay-bg-color' ]['context'][] = $style1_context;
@@ -343,6 +343,7 @@ function woo_shop_options( $options ) {
 	$options[ $prefix . '-tabs' ]['tabs']['general']['options'] = $addon_general_options + $options[ $prefix . '-tabs' ]['tabs']['general']['options'];
 	$options[ $prefix . '-tabs' ]['tabs']['design']['options']  = $addon_design_options + $options[ $prefix . '-tabs' ]['tabs']['design']['options'];
 	unset( $options[ $prefix . '-tabs' ]['tabs']['general']['options'][ $prefix . '-kemet-addons-notification' ] );
+	unset( $options[ $prefix . '-tabs' ]['tabs']['general']['options'][ $prefix . '-woo-addon-notification' ] );
 
 	return $options;
 }

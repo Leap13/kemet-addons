@@ -35,6 +35,7 @@ class Kemet_Addon_Export {
 		$mods          = get_theme_mods();
 		$charset       = get_option( 'blog_charset' );
 		$theme_options = array(
+			'siteurl'  => get_option( 'siteurl' ),
 			'template' => $theme,
 			'mods'     => $mods ? $mods : array(),
 			'options'  => array(),

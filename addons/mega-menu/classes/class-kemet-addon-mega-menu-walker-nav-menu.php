@@ -369,10 +369,13 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			$title = $title_html;
 
-			$item_output  = $args->before;
-			$item_output .= '<a' . $attributes . '>';
-			$item_output .= $args->link_before . $title . $args->link_after;
-			$item_output .= '</a>';
+			$item_output = '';
+			if ( is_object( $args ) ) {
+				$item_output  = $args->before;
+				$item_output .= '<a' . $attributes . '>';
+				$item_output .= $args->link_before . $title . $args->link_after;
+				$item_output .= '</a>';
+			}
 
 			ob_start();
 			$content = '';
@@ -390,7 +393,9 @@ if ( ! class_exists( 'Kemet_Addon_Mega_Menu_Walker_Nav_Menu' ) ) {
 
 			ob_end_clean();
 			$item_output .= $content;
-			$item_output .= $args->after;
+			if ( is_object( $args ) ) {
+				$item_output .= $args->after;
+			}
 
 			/**
 			 * Filters a menu item's starting output.

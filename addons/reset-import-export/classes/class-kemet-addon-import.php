@@ -63,7 +63,7 @@ class Kemet_Addon_Import {
 		$file_contants = $wp_filesystem->get_contents( $import_file );
 		$settings      = json_decode( $file_contants, 1 );
 
-		if ( is_array( $settings['mods'] ) ) {
+		if ( is_array( $settings['mods'] ) && ( isset( $settings['siteurl'] ) && $settings['siteurl'] === get_option( 'siteurl' ) ) ) {
 			foreach ( $settings['mods'] as $mode => $value ) {
 				set_theme_mod( $mode, $value );
 			}

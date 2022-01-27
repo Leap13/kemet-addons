@@ -174,6 +174,9 @@ function extra_blog_options( $options ) {
 		),
 	);
 
+	unset( $options['blog-controls-tabs']['tabs']['general']['options']['blog-kemet-addons-notification'] );
+	unset( $options['blog-controls-tabs']['tabs']['general']['options']['blog-addon-notification'] );
+
 	return array_merge( $options, $addon_options );
 }
 
