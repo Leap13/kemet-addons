@@ -49,7 +49,7 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		public function __construct() {
 			add_action( 'wp_ajax_kemet-panel-update-option', array( $this, 'update_option' ) );
 			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ), 101 );
-			add_filter( 'kemet_addons_options', array( $this, 'add_default_options' ) );
+			// add_filter( 'kemet_addons_options', array( $this, 'add_default_options' ) );
 		}
 
 		/**
@@ -63,20 +63,20 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 			}
 		}
 
-		public function add_default_options( $options ) {
-			$default_options = array(
-				'header-elements'     => false,
-				'footer-elements'     => false,
-				'blog-layouts'        => true,
-				'mega-menu'           => false,
-				'custom-fonts'        => false,
-				'custom-layout'       => false,
-				'woocommerce'         => class_exists( 'WooCommerce' ) ? true : false,
-				'reset-import-export' => false,
-			);
+		// public function add_default_options( $options ) {
+		// $default_options = array(
+		// 'header-elements'     => false,
+		// 'footer-elements'     => false,
+		// 'blog-layouts'        => false,
+		// 'mega-menu'           => false,
+		// 'custom-fonts'        => false,
+		// 'custom-layout'       => false,
+		// 'woocommerce'         => class_exists( 'WooCommerce' ) ? false : false,
+		// 'reset-import-export' => false,
+		// );
 
-			return array_merge( $default_options, $options );
-		}
+		// return array_merge( $default_options, $options );
+		// }
 		/**
 		 * update_option
 		 *
@@ -112,54 +112,59 @@ if ( ! class_exists( 'Kemet_Addons_Panel' ) ) {
 		 */
 		public static function panel_options() {
 			$options = array(
-				'header-elements'     => array(
+				'extra-blocks' => array(
 					'type'        => 'kmt-button',
-					'label'       => __( 'Header Elements', 'kemet-addons' ),
-					'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
-					'url'         => admin_url( '/customize.php?autofocus[section]=section-header-builder-layout' ),
+					'label'       => __( 'Extra Blocks', 'kemet-addons' ),
+					'description' => __( 'Extra Blocks.', 'kemet-addons' ),
 				),
-				'footer-elements'     => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'Footer Elements', 'kemet-addons' ),
-					'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
-					'url'         => admin_url( '/customize.php?autofocus[section]=section-footer-builder-layout' ),
-				),
-				'blog-layouts'        => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'Blog Options', 'kemet-addons' ),
-					'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
-					'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
-				),
-				'mega-menu'           => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'Mega Menu', 'kemet-addons' ),
-					'description' => __( 'Enrich the regular website submenu with Kemet Mega Menu that comes with powerful customization options.', 'kemet-addons' ),
-					'url'         => admin_url( '/nav-menus.php' ),
-				),
-				'custom-fonts'        => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'Custom Fonts', 'kemet-addons' ),
-					'description' => __( 'Upload and use your own custom font(s) across your Kemet website. And, you can use Adobe Fonts Kit within Kemet Theme.', 'kemet-addons' ),
-					'url'         => admin_url( '/edit.php?post_type=kemet_custom_fonts' ),
-				),
-				'custom-layout'       => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'Custom Content', 'kemet-addons' ),
-					'description' => __( 'Enable/Disable custom content option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
-					'url'         => admin_url( '/edit.php?post_type=kemet_custom_content' ),
-				),
-				'woocommerce'         => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'WooCommerce', 'kemet-addons' ),
-					'description' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
-					'url'         => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
-				),
-				'reset-import-export' => array(
-					'type'        => 'kmt-button',
-					'label'       => __( 'Reset, Import, and Export', 'kemet-addons' ),
-					'description' => __( 'Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons' ),
-					'url'         => admin_url( 'customize.php' ),
-				),
+				// 'header-elements'     => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Header Elements', 'kemet-addons' ),
+				// 'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
+				// 'url'         => admin_url( '/customize.php?autofocus[section]=section-header-builder-layout' ),
+				// ),
+				// 'footer-elements'     => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Footer Elements', 'kemet-addons' ),
+				// 'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
+				// 'url'         => admin_url( '/customize.php?autofocus[section]=section-footer-builder-layout' ),
+				// ),
+				// 'blog-layouts'        => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Blog Options', 'kemet-addons' ),
+				// 'description' => __( "Display your blog layout in a grid view or use the infinite scroll option and customize the featured images' width and height.", 'kemet-addons' ),
+				// 'url'         => admin_url( '/customize.php?autofocus[section]=section-blog' ),
+				// ),
+				// 'mega-menu'           => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Mega Menu', 'kemet-addons' ),
+				// 'description' => __( 'Enrich the regular website submenu with Kemet Mega Menu that comes with powerful customization options.', 'kemet-addons' ),
+				// 'url'         => admin_url( '/nav-menus.php' ),
+				// ),
+				// 'custom-fonts'        => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Custom Fonts', 'kemet-addons' ),
+				// 'description' => __( 'Upload and use your own custom font(s) across your Kemet website. And, you can use Adobe Fonts Kit within Kemet Theme.', 'kemet-addons' ),
+				// 'url'         => admin_url( '/edit.php?post_type=kemet_custom_fonts' ),
+				// ),
+				// 'custom-layout'       => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Custom Content', 'kemet-addons' ),
+				// 'description' => __( 'Enable/Disable custom content option that will allow you to create your own custom content, script, or code on various hook locations.', 'kemet-addons' ),
+				// 'url'         => admin_url( '/edit.php?post_type=kemet_custom_content' ),
+				// ),
+				// 'woocommerce'         => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'WooCommerce', 'kemet-addons' ),
+				// 'description' => __( 'Enable/Disable the extra options that allows you to control & customize WooCommerce product page and product listing.', 'kemet-addons' ),
+				// 'url'         => admin_url( '/customize.php?autofocus[section]=woocommerce_product_catalog' ),
+				// ),
+				// 'reset-import-export' => array(
+				// 'type'        => 'kmt-button',
+				// 'label'       => __( 'Reset, Import, and Export', 'kemet-addons' ),
+				// 'description' => __( 'Enable/Disable the import, export and reset buttons that will give you the ability to apply any of those actions to the customizer settings.', 'kemet-addons' ),
+				// 'url'         => admin_url( 'customize.php' ),
+				// ),
 			);
 			return apply_filters( 'kemet_addons_panel_options', $options );
 		}

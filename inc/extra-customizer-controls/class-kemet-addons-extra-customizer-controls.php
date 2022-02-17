@@ -5,9 +5,9 @@
  * @package Kemet Addons
  */
 $enabled_addon = apply_filters( 'kemet_addons_options', get_option( 'kemet_addons_options', array() ) );
-if ( ! $enabled_addon['header-elements'] && ! $enabled_addon['footer-elements'] ) {
-	return;
-}
+// if ( ! $enabled_addon['header-elements'] && ! $enabled_addon['footer-elements'] ) {
+// return;
+// }
 define( 'KEMET_EXTRA_CUSTOMIZER_CONTROLS_DIR', KEMET_ADDONS_DIR . 'inc/extra-customizer-controls/' );
 define( 'KEMET_EXTRA_CUSTOMIZER_CONTROLS_URL', KEMET_ADDONS_URL . 'inc/extra-customizer-controls/' );
 

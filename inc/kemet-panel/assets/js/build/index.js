@@ -424,9 +424,8 @@ var SingleOption = function SingleOption(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs/options */ "./src/tabs/options.js");
 
-var kmtEvents = window.KmtOptionComponent.kmtEvents;
 var __ = wp.i18n.__;
-kmtEvents.on('kmt:dashboard:customtabs', function (_ref) {
+document.addEventListener('kmt:dashboard:customtabs', function (_ref) {
   var tabs = _ref.detail;
   tabs.push({
     name: 'kemet-addons',
