@@ -101,6 +101,17 @@ module.exports = window["wp"]["coreData"];
 
 /***/ }),
 
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -199,6 +210,9 @@ var __webpack_exports__ = {};
   !*** ./breadcrumbs/block.js ***!
   \******************************/
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ usePostTerms; }
+/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
@@ -211,6 +225,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__);
 
 
 /**
@@ -220,6 +236,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * WordPress dependencies
  */
+
 
 
 
@@ -241,7 +258,42 @@ __webpack_require__.r(__webpack_exports__);
         queryId
       }
     } = _ref;
-    const [fullTitle] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.useEntityProp)('postType', postType, 'link', postId);
+    const [fullTitle] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.useEntityProp)('postType', postType, 'title', postId);
+    const selectedTerm = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => {
+      var _taxonomy$visibility;
+
+      const {
+        getTaxonomy
+      } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
+      const taxonomy = getTaxonomy('category');
+      return taxonomy !== null && taxonomy !== void 0 && (_taxonomy$visibility = taxonomy.visibility) !== null && _taxonomy$visibility !== void 0 && _taxonomy$visibility.publicly_queryable ? taxonomy : {};
+    }, ['category']);
+    const templateType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => {
+      if (!select('core/edit-site')) {
+        return;
+      }
+
+      const {
+        getEditedPostType,
+        getEditedPostId
+      } = select('core/edit-site');
+      const {
+        getEditedEntityRecord
+      } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
+      const getEntityArgs = ['postType', getEditedPostType(), getEditedPostId()];
+      const entityRecord = getEditedEntityRecord(...getEntityArgs);
+      const type = (entityRecord === null || entityRecord === void 0 ? void 0 : entityRecord.area) || (entityRecord === null || entityRecord === void 0 ? void 0 : entityRecord.slug);
+      return type;
+    }, []);
+    const {
+      postTerms,
+      hasPostTerms
+    } = usePostTerms({
+      postId,
+      postType,
+      term: selectedTerm
+    });
+    const categoryName = hasPostTerms ? postTerms[0].name : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Post Category');
     const {
       textAlign
     } = attributes;
@@ -250,6 +302,7 @@ __webpack_require__.r(__webpack_exports__);
         [`has-text-align-${textAlign}`]: textAlign
       })
     });
+    const type = templateType || postType;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.BlockControls, {
       group: "block"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.AlignmentControl, {
@@ -267,17 +320,77 @@ __webpack_require__.r(__webpack_exports__);
       style: {
         padding: '0 .4em'
       }
-    }, "\xBB"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, "\xBB"), (type === 'post' || type === 'single') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: "#category-pseudo-link",
       onClick: event => event.preventDefault()
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Post Terms')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, categoryName), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       class: "breadcrumb-sep",
       style: {
         padding: '0 .4em'
       }
-    }, "\xBB"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Post Title'))));
+    }, "\xBB")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Post Title'))));
   }
 });
+function usePostTerms(_ref2) {
+  var _term$visibility2;
+
+  let {
+    postId,
+    postType,
+    term
+  } = _ref2;
+  const {
+    rest_base: restBase,
+    slug
+  } = term;
+  const [termIds] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.useEntityProp)('postType', postType, restBase, postId);
+  return (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => {
+    var _term$visibility;
+
+    const visible = term === null || term === void 0 ? void 0 : (_term$visibility = term.visibility) === null || _term$visibility === void 0 ? void 0 : _term$visibility.publicly_queryable;
+
+    if (!visible) {
+      return {
+        postTerms: [],
+        _isLoading: false,
+        hasPostTerms: false
+      };
+    }
+
+    if (!termIds) {
+      var _term$postTerms;
+
+      // Waiting for post terms to be fetched.
+      return {
+        isLoading: term === null || term === void 0 ? void 0 : (_term$postTerms = term.postTerms) === null || _term$postTerms === void 0 ? void 0 : _term$postTerms.includes(postType)
+      };
+    }
+
+    if (!termIds.length) {
+      return {
+        isLoading: false
+      };
+    }
+
+    const {
+      getEntityRecords,
+      isResolving
+    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
+    const taxonomyArgs = ['taxonomy', slug, {
+      include: termIds,
+      context: 'view'
+    }];
+    const terms = getEntityRecords(...taxonomyArgs);
+
+    const _isLoading = isResolving('getEntityRecords', taxonomyArgs);
+
+    return {
+      postTerms: terms,
+      isLoading: _isLoading,
+      hasPostTerms: !!(terms !== null && terms !== void 0 && terms.length)
+    };
+  }, [termIds, term === null || term === void 0 ? void 0 : (_term$visibility2 = term.visibility) === null || _term$visibility2 === void 0 ? void 0 : _term$visibility2.publicly_queryable]);
+}
 }();
 /******/ })()
 ;
