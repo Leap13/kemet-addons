@@ -5,6 +5,7 @@
   "icon": "universal-access-alt",
   "category": "layout",
   "editorScript": "file:./build/block.js",
+  "style": "file:./build/style-block.css",
   "usesContext": ["postId", "postType", "queryId"],
   "attributes": {
     "textAlign": {
