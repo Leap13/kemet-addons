@@ -16,8 +16,18 @@ require_once KEMET_EXTRA_BLOCKS_DIR . 'breadcrumbs/class-kemet-breadcrumb-trail.
  */
 function render_block_kemet_breadcrumbs( $attributes ) {
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null );
+	$args       = array();
+	if ( isset( $attributes['prefix'] ) ) {
+		$args['prefix'] = $attributes['prefix'];
+	}
+	if ( isset( $attributes['divider'] ) ) {
+		$args['divider'] = $attributes['divider'];
+	}
+	if ( isset( $attributes['homeItemType'] ) ) {
+		$args['home_item_type'] = $attributes['homeItemType'];
+	}
 	if ( ! is_object( $breadcrumb ) ) {
-		$breadcrumb = new Kemet_Breadcrumb_Trail();
+		$breadcrumb = new Kemet_Breadcrumb_Trail( $args );
 	}
 	$align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
 	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );

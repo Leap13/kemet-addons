@@ -95,19 +95,22 @@ class Kemet_Breadcrumb_Trail {
 	 */
 	public function __construct( $args = array() ) {
 		$defaults = array(
-			'container'     => 'nav',
-			'before'        => '',
-			'after'         => '',
+			'container'      => 'nav',
+			'before'         => '',
+			'after'          => '',
 			// 'browse_tag'      => 'h2',
-			'list_tag'      => 'ul',
-			'item_tag'      => 'li',
-			'show_on_front' => false,
-			'network'       => false,
-			'show_title'    => true,
+			'list_tag'       => 'ul',
+			'item_tag'       => 'li',
+			'show_on_front'  => false,
+			'network'        => false,
+			'show_title'     => true,
 			// 'show_browse'     => true,
-			'labels'        => array(),
-			'post_taxonomy' => array(),
-			'echo'          => true,
+			'labels'         => array(),
+			'post_taxonomy'  => array(),
+			'echo'           => true,
+			'prefix'         => '',
+			'home_item_type' => 'text',
+			'divider'        => '»',
 		);
 		// Parse the arguments with the deaults.
 		$this->args = apply_filters( 'breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
@@ -128,13 +131,17 @@ class Kemet_Breadcrumb_Trail {
 	public function get_trail() {
 		// Set up variables that we'll need.
 		$breadcrumb    = '';
-		$separator     = apply_filters( 'kemet_breadcrumb_separator', '»' );
+		$separator     = apply_filters( 'kemet_breadcrumb_separator', $this->args['divider'] );
 		$separator     = '<span class="breadcrumb-sep">' . $separator . '</span>';
 		$item_count    = count( $this->items );
 		$item_position = 0;
 
 		// Connect the breadcrumb trail if there are items in the trail.
 		if ( 0 < $item_count ) {
+			// Prefix.
+			if ( $this->args['prefix'] ) {
+				$breadcrumb .= sprintf( '<span class="%1s">%2s</span>', 'prefix', esc_html( $this->args['prefix'] ) );
+			}
 			// Open the unordered list.
 			$breadcrumb .= sprintf(
 				'<%s class="trail-items" itemscope itemtype="https://schema.org/BreadcrumbList">',
@@ -361,10 +368,15 @@ class Kemet_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_network_home_link() {
-		$text = '<span class="breadcrumb-home">' . $this->labels['home'] . '</span>';
+		$html = '';
+		if ( 'icon' == $this->args['home_item_type'] ) {
+			$html = '<span class="dashicons dashicons-admin-home"></span>';
+		} else {
+			$html = '<span class="breadcrumb-home">' . $this->labels['home'] . '</span>';
+		}
 
 		if ( is_multisite() && ! is_main_site() && true === $this->args['network'] ) {
-			$this->items[] = sprintf( '<a href="%s" rel="home" aria-label="' . $this->labels['home'] . '">%s</a>', esc_url( network_home_url() ), $icon, $text );
+			$this->items[] = sprintf( '<a href="%s" rel="home" aria-label="' . $this->labels['home'] . '">%s</a>', esc_url( network_home_url() ), $html );
 		}
 	}
 
@@ -376,7 +388,12 @@ class Kemet_Breadcrumb_Trail {
 	 * @return void
 	 */
 	protected function add_site_home_link() {
-		$html = '<span class="breadcrumb-home">' . $this->labels['home'] . '</span>';
+		$html = '';
+		if ( 'icon' == $this->args['home_item_type'] ) {
+			$html = '<span class="dashicons dashicons-admin-home"></span>';
+		} else {
+			$html = '<span class="breadcrumb-home">' . $this->labels['home'] . '</span>';
+		}
 
 		// Vars
 		$network = is_multisite() && ! is_main_site() && true === $this->args['network'];

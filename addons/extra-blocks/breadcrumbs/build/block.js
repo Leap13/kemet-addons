@@ -32,11 +32,9 @@ const {
   name
 } = _block_json__WEBPACK_IMPORTED_MODULE_3__;
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(name, {
-  apiVersion: 2,
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kemet Breadcrumbs', 'wp-gb'),
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('The description'),
-  category: 'wp-gb',
-  icon: 'smiley',
+  /**
+   * @see ./edit.js
+   */
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
@@ -66,6 +64,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
 
 
 /**
@@ -75,6 +75,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
 * WordPress dependencies
 */
+
 
 
 
@@ -134,6 +135,24 @@ function Edit(_ref) {
     })
   });
   const type = templateType || postType;
+  const divider = attributes.divider ? attributes.divider : "»";
+  const prefix = attributes.prefix;
+  const separator = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "breadcrumb-sep",
+    style: {
+      padding: '0 .4em'
+    }
+  }, divider);
+  const homeItemType = attributes.homeItemType === 'text' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Home') : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.Dashicon, {
+    icon: "admin-home"
+  });
+  const selectOptions = [{
+    key: 'text',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Text', 'kemet')
+  }, {
+    key: 'icon',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Icon', 'kemet')
+  }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
     group: "block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.AlignmentControl, {
@@ -143,32 +162,54 @@ function Edit(_ref) {
         textAlign: nextAlign
       });
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "prefix",
+    style: {
+      padding: '0 .4em'
+    }
+  }, prefix), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#home-pseudo-link",
     onClick: event => event.preventDefault()
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Home')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    class: "breadcrumb-sep",
-    style: {
-      padding: '0 .4em'
-    }
-  }, "\xBB"), (type === 'post' || type === 'single') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, homeItemType), separator, (type === 'post' || type === 'single') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#category-pseudo-link",
     onClick: event => event.preventDefault()
-  }, categoryName), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    class: "breadcrumb-sep",
-    style: {
-      padding: '0 .4em'
-    }
-  }, "\xBB")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Post Title'))));
+  }, categoryName), separator), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Post Title'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('General Settings', 'kemet'),
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Breadcrumbs Prefix Text', 'kemet-addons'),
+    value: attributes.prefix,
+    onChange: val => setAttributes({
+      prefix: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Custom Levels Divider', 'kemet-addons'),
+    value: attributes.divider,
+    onChange: val => setAttributes({
+      divider: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.CustomSelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Home Item', 'kemet-addons'),
+    options: selectOptions,
+    onChange: _ref2 => {
+      let {
+        selectedItem
+      } = _ref2;
+      return setAttributes({
+        homeItemType: selectedItem.key
+      });
+    },
+    value: selectOptions.find(option => option.key === attributes.homeItemType)
+  }))));
 }
-function usePostTerms(_ref2) {
+function usePostTerms(_ref3) {
   var _term$visibility2;
 
   let {
     postId,
     postType,
     term
-  } = _ref2;
+  } = _ref3;
   const {
     rest_base: restBase,
     slug
@@ -326,6 +367,17 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/core-data":
 /*!**********************************!*\
   !*** external ["wp","coreData"] ***!
@@ -377,7 +429,7 @@ module.exports = window["wp"]["i18n"];
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"name":"kemet/breadcrumbs","title":"Breadcrumbs","icon":"universal-access-alt","category":"layout","editorScript":"file:./build/block.js","style":"file:./build/style-block.css","usesContext":["postId","postType","queryId"],"attributes":{"textAlign":{"type":"string"}},"supports":{"align":["wide","full"],"html":false,"color":{"gradients":true,"link":true,"__experimentalDefaultControls":{"background":true,"text":true,"link":true}},"spacing":{"margin":true,"padding":true},"typography":{"fontSize":true,"lineHeight":true,"__experimentalFontFamily":true,"__experimentalFontWeight":true,"__experimentalFontStyle":true,"__experimentalTextTransform":true,"__experimentalLetterSpacing":true,"__experimentalDefaultControls":{"fontSize":true,"fontAppearance":true,"textTransform":true}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"kemet/breadcrumbs","title":"Breadcrumbs","icon":"universal-access-alt","category":"kemet","editorScript":"file:./build/block.js","style":"file:./build/style-block.css","usesContext":["postId","postType","queryId"],"attributes":{"textAlign":{"type":"string"},"prefix":{"type":"string"},"divider":{"type":"string","default":"»"},"homeItemType":{"type":"string","default":"text"}},"supports":{"align":["wide","full"],"html":false,"color":{"gradients":true,"link":true,"__experimentalDefaultControls":{"background":true,"text":true,"link":true}},"spacing":{"margin":true,"padding":true},"typography":{"fontSize":true,"lineHeight":true,"__experimentalFontFamily":true,"__experimentalFontWeight":true,"__experimentalFontStyle":true,"__experimentalTextTransform":true,"__experimentalLetterSpacing":true,"__experimentalDefaultControls":{"fontSize":true,"fontAppearance":true,"textTransform":true}}}}');
 
 /***/ })
 

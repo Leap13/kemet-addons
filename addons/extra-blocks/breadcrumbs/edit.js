@@ -10,10 +10,12 @@ import { useEntityProp, store as coreStore } from '@wordpress/core-data';
 import {
     AlignmentControl,
     BlockControls,
-    useBlockProps
+    useBlockProps,
+    InspectorControls
 } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { PanelBody, CustomSelectControl, TextControl, Dashicon } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes, context: { postType, postId } }) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
@@ -55,6 +57,21 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         }),
     });
     const type = templateType || postType;
+    const divider = attributes.divider ? attributes.divider : "»";
+    const prefix = attributes.prefix;
+    const separator = <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>{divider}</span>;
+    const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon icon='admin-home' />;
+    const selectOptions = [
+        {
+            key: 'text',
+            name: __('Text', 'kemet'),
+        },
+        {
+            key: 'icon',
+            name: __('Icon', 'kemet'),
+        },
+    ];
+
     return (
         <>
             <BlockControls group="block">
@@ -66,13 +83,14 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                 />
             </BlockControls>
             <div {...blockProps}>
+                {prefix && <span className='prefix' style={{ padding: '0 .4em' }}>{prefix}</span>}
                 <a
                     href="#home-pseudo-link"
                     onClick={(event) => event.preventDefault()}
                 >
-                    {__('Home')}
+                    {homeItemType}
                 </a>
-                <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>»</span>
+                {separator}
                 {(type === 'post' || type === 'single') && <>
                     <a
                         href="#category-pseudo-link"
@@ -80,10 +98,33 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                     >
                         {categoryName}
                     </a>
-                    <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>»</span>
+                    {separator}
                 </>}
                 <span>{fullTitle || __('Post Title')}</span>
             </div>
+            <InspectorControls>
+                <PanelBody
+                    title={__('General Settings', 'kemet')}
+                    initialOpen={true}
+                >
+                    <TextControl
+                        label={__('Breadcrumbs Prefix Text', 'kemet-addons')}
+                        value={attributes.prefix}
+                        onChange={(val) => setAttributes({ prefix: val })}
+                    />
+                    <TextControl
+                        label={__('Custom Levels Divider', 'kemet-addons')}
+                        value={attributes.divider}
+                        onChange={(val) => setAttributes({ divider: val })}
+                    />
+                    <CustomSelectControl
+                        label={__('Home Item', 'kemet-addons')}
+                        options={selectOptions}
+                        onChange={({ selectedItem }) => setAttributes({ homeItemType: selectedItem.key })}
+                        value={selectOptions.find((option) => option.key === attributes.homeItemType)}
+                    />
+                </PanelBody>
+            </InspectorControls>
         </>
     )
 }

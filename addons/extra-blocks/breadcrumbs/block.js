@@ -15,11 +15,9 @@ import edit from './edit';
 const { name } = json;
 
 registerBlockType(name, {
-    apiVersion: 2,
-    title: __('Kemet Breadcrumbs', 'wp-gb'),
-    description: __('The description'),
-    category: 'wp-gb',
-    icon: 'smiley',
+    /**
+     * @see ./edit.js
+     */
     edit,
 });
 
