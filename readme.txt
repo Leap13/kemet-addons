@@ -4,7 +4,7 @@ Tags: metabox, Kemet, addons
 Requires at least: 4.7
 Tested up to: 5.7
 Requires PHP: 5.4
-Stable tag: 1.1.17
+Stable tag: 1.1.21
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,8 @@ This plugin works only with: [Kemet WordPress Theme](https://kemet.io/) So you m
 - **Top bar Section** Adds top area on top of the header with many customization options.
 - **Page Title Area** Adds advanced management for page title and breadcrumbs area. 
 - **Extra Widgets** Adds Social media and Mailchimp widgets.
+- **Woocommerce** Extra options that allows you to control & customize WooCommerce product page and product listing.
+- **Custom Fonts** Upload custom fonts files (woff, woff2, ttf, eot, svg, otf) to use in your website.
 - **Go to Top Button** Adds the option for go to top button.
 - **Custom Layout** Allows you to create your own custom content, script, or code on various hook locations.
 - **Mega Menu** Allows you to build your mega menu up to 6 columns.
@@ -44,6 +46,21 @@ Make sure that Kemet WordPress Theme is Installed and activated first as this pl
  @copyright: Copyright (c) 2008 - 2017, Justin Tadlock @license: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
+1.1.21 version
+- Fixed: Fatal error.
+
+1.1.20 version
+- Added: Typekit Font to Custom font addon.
+- Added: Replace Sidebar option.
+- Added: Sticky sidebar option.
+
+1.1.19 version
+- Fixed: Logo filter issue.
+- Tweak: Code refactored for better performance and security.
+
+1.1.18 version
+- Added: Custom Font Addon.
+
 1.1.17 version
 - Added: Select main menu page option.
 - Added: New filter to custom logo.

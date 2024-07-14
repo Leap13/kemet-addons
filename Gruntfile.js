@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
   "use strict";
   // Project configuration
+  var autoprefixer = require("autoprefixer");
+  var flexibility = require("postcss-flexibility");
 
   var pkgInfo = grunt.file.readJSON("package.json");
   const sass = require("node-sass");
@@ -553,6 +555,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-uglify");
   // grunt.loadNpmTasks('grunt-contrib-cssmin');
+
   grunt.loadNpmTasks("grunt-wp-i18n");
   grunt.loadNpmTasks("grunt-bumpup");
   grunt.loadNpmTasks("grunt-text-replace");
@@ -560,6 +563,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-compress");
   grunt.loadNpmTasks("grunt-contrib-clean");
+
   // SASS compile
   grunt.registerTask("default", ["sass", "cssmin:css"]);
   //grunt.registerTask('minify', ['cssmin']);
@@ -590,6 +594,6 @@ module.exports = function (grunt) {
     }
   });
   // i18n
-  grunt.registerTask("i18n", ["addtextdomain", "makepot"]);
+  //grunt.registerTask("i18n", ["addtextdomain", "makepot"]);
 
 };

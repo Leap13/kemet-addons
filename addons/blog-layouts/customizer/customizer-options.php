@@ -713,7 +713,7 @@ $wp_customize->add_control(
 	array(
 		'section'  => 'section-blog',
 		'priority' => 162,
-		'label'    => __( 'Load More Text', 'kemet' ),
+		'label'    => __( 'Load More Text', 'kemet-addons' ),
 		'type'     => 'text',
 	)
 );

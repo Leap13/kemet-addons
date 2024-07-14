@@ -1,17 +1,17 @@
 {
   "name": "kemetaddons",
-  "version": "1.1.17",
+  "version": "1.1.21",
   "description": "Plugin",
   "main": "Gruntfile.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Leap13/kemet-addons.git"
+    "url": "git+https://gitlab.com/NerminLeap13/kemet-addons.git"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^8.3.0",
-    "grunt": "^0.4.5",
+    "grunt": "^1.3.0",
     "grunt-bumpup": "^0.6.3",
     "grunt-charset": "^1.0.1",
     "grunt-cli": "^1.2.0",
@@ -20,14 +20,11 @@
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-jshint": "^3.0.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^3.4.0",
-    "grunt-newer": "^1.3.0",
     "grunt-postcss": "^0.9.0",
     "grunt-rtlcss": "^2.0.1",
     "grunt-sass": "^2.1.0",
-    "grunt-tasks": "^1.0.0",
     "grunt-text-replace": "^0.4.0",
     "grunt-wp-css": "^0.2.1",
     "grunt-wp-i18n": "^1.0.2",
@@ -35,7 +32,7 @@
     "postcss-flexibility": "^2.0.0"
   },
   "dependencies": {
-    "node": "^12.10.0",
-    "release": "^6.3.0"
+    "autoprefixer": "^10.2.5",
+    "node-sass": "^5.0.0"
   }
 }
